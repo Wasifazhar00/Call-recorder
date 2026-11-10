@@ -1,59 +1,61 @@
-# Voice Recorder for Android
+# Call Recorder for Android
 
-A privacy-first Kotlin Android voice recorder for Android 8.0+ (tested build target: Android 15/API 35; intended to run on Android 16 where platform policies allow).
+**Project direction:** automatic cellular call recording for incoming and outgoing calls — not a microphone/voice-memo recorder.
 
-## Features in this version
+This repository previously contained a microphone recorder. That implementation cannot reliably capture the remote side of a cellular call on modern Android, so it is not presented as a call recorder.
 
-- One-tap microphone recording to AAC/M4A
-- Foreground microphone service with an ongoing notification
-- Pause, resume, stop and save
-- Configurable 64 / 128 / 192 kbps audio quality
-- Optional stereo capture when supported by the selected microphone/device
-- Local recording library, newest first
-- Search by recording filename
-- Playback, rename, favorite, share and delete
-- No account, analytics, advertising or network permission
-- App-private recording storage; share only when the user chooses
+## Target device
 
-## Build an APK
+- OnePlus 11R (CPH2487)
+- Android 16 / OxygenOS 16.0.5
+- Google Phone dialer
+- Non-rooted device
 
-The GitHub Actions workflow builds debug and unsigned release APKs on every push to `main`, on pull requests, and on manual dispatch.
+Device-specific compatibility is **not yet verified**. An Android version being supported by an upstream project does not prove that this exact OnePlus model/build will work.
 
-1. Open the repository's **Actions** tab.
-2. Select **Android APK** and choose **Run workflow**, or push a commit to `main`.
-3. Open the completed workflow run and download the `voice-recorder-debug-apk` artifact.
-4. For a tagged release, push a tag such as `v1.0.0`; Actions creates a GitHub Release with the unsigned release APK attached.
+## Intended features
 
-The debug APK is suitable for device testing. The release APK produced by CI is unsigned. To distribute a production APK, configure a private signing key in GitHub Actions secrets and add a signing step; never commit a keystore or passwords to this repository.
+- Detect incoming and outgoing cellular calls.
+- Start recording automatically after a call connects, according to user-configured rules.
+- Capture both caller and recipient audio when the device audio stack permits it.
+- Save recordings locally with call date/time and available contact metadata.
+- Browse, search, play, export and delete recordings.
+- Show clear recording status and provide user-controlled recording rules.
+- No stealth mode, no attempt to suppress or bypass recording announcements.
 
-## Install on OnePlus 11R
+## Recording engine research
 
-Download the debug APK from the workflow artifact, open it on the phone, and allow installation from that source if Android asks. Launch the app and grant microphone permission. Start recording while the app is visible; the ongoing notification provides recording status and controls.
+The selected integration candidate is [CallVault](https://github.com/madkongo/CallVault), a GPL-3.0 project derived from [ShizuCallRecorder](https://github.com/kitsumed/ShizuCallRecorder).
 
-## Storage and privacy
+CallVault's documented architecture uses Android's wireless debugging / embedded ADB shell privileges (or Shizuku) to access call audio. This is fundamentally different from the ordinary `RECORD_AUDIO` microphone API used by the previous app.
 
-Files are stored in the app-specific external files directory under `Recordings`. Android removes app-specific files when the app is uninstalled unless they are backed up separately. Use Share to export a recording to another app or storage location.
+Upstream source reviewed for this integration:
+- CallVault release commit: https://github.com/madkongo/CallVault/commit/00a77594085d61aee2c8513c649911704fd970c6
+- Upstream project documentation: https://github.com/madkongo/CallVault
+- Upstream notices: https://github.com/madkongo/CallVault/blob/main/NOTICE.md
 
-## Important call-recording limitation
+## Important status
 
-This app records sound from the selected microphone. It does **not** record cellular calls internally, capture both telephony uplink/downlink channels, bypass Android/OxygenOS restrictions, or suppress call recording announcements. The Huawei `HwCallRecorder 11.0.0.109` APK depended on Huawei system UID, signature permissions and Huawei telephony services that are not available to a normal OnePlus app.
+The current integration branch is a **migration foundation**, not a working call-recording APK. It documents the chosen engine, target-device constraints and licensing obligations. The CallVault application is a complete standalone Android app with its own Gradle, native-code, assets, manifest, UI and service architecture; it cannot safely be integrated by copying a few Kotlin files or adding a permission.
 
-For call recording, use only a supported device/OS feature or a separately reviewed solution that explicitly meets the device's requirements and local consent laws. Do not assume a microphone recording contains the remote caller.
+Before an APK is described as working, the full upstream source and notices must be integrated correctly, the application identity and branding adapted without removing upstream attribution, CI build requirements resolved, and real incoming/outgoing calls tested on the OnePlus 11R.
 
-## Open-source inspiration
+## OnePlus setup caveats
 
-The feature design was informed by public projects and app descriptions including:
+CallVault documents that some OPPO/OnePlus/Realme builds may require an additional Developer options setting, **Disable system optimization**, before the ADB permission grants work. This reduces certain platform protections. Do not enable it unless you understand the trade-off and the setup flow specifically confirms it is required on this device.
 
-- [Audio Recorder (Dimowner)](https://github.com/Dimowner/AudioRecorder) — M4A/WAV, playback, waveform, settings and bookmarks (Apache-2.0 project; verify upstream license before reusing code).
-- [Flambo](https://github.com/MoHamed-B-M/flambo) — offline-first recorder, background controls and transcription concepts.
-- [VoiceRecorder](https://github.com/inhahe/VoiceRecorder) — foreground service, pause/resume and audio input configuration.
-- [Android foreground service documentation](https://developer.android.com/develop/background-work/services/fgs/service-types#microphone).
+Wireless debugging access may need to be re-established after reboot. OxygenOS background execution also needs to be configured so the recorder is not killed.
 
-This repository is an independent implementation. No upstream source code is copied into this project.
+## Privacy, consent and safety
 
-## Version
+Call recording laws vary by location. Obtain any consent required by applicable law and respect the other participant's privacy. The app must visibly indicate its recording state and must not claim to bypass system announcements or consent requirements.
 
-- Application ID: `com.wasifazhar.callrecorder`
-- Version: `1.0.0`
-- Minimum Android: 8.0 (API 26)
-- Compile/target SDK: 35
+Recordings should remain on-device unless the user explicitly exports or backs them up.
+
+## License
+
+Any code derived from CallVault/ShizuCallRecorder must retain the applicable GPL-3.0 licensing, copyright notices, modification notices and required source-code availability. Review all bundled assets and third-party licenses separately. See [CallVault LICENSE](https://github.com/madkongo/CallVault/blob/main/LICENSE) and [NOTICE](https://github.com/madkongo/CallVault/blob/main/NOTICE.md).
+
+## Build status
+
+Do not install an APK from the old microphone-recorder workflow expecting cellular call recording. CI success only proves that the previous project builds; it does not validate telephony audio capture.
