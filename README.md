@@ -2,16 +2,25 @@
 
 A privacy-first Kotlin Android voice recorder for Android 8.0+ (tested build target: Android 15/API 35; intended to run on Android 16 where platform policies allow).
 
-## Features in this version
+## Features in this version (1.1.0)
 
+- One-tap microphone recording to AAC/M4A
+- Uncompressed PCM WAV recording with valid WAV headers
+- Selectable microphone input where Android exposes a routable device
+- Live amplitude waveform while recording
+- Playback seeking and playback speed controls
+- Trim M4A or WAV into a separate copy while preserving the original
+- Bookmarks, folders, tags, transcript and notes metadata stored locally
+- On-device WAV transcription when the installed speech service supports PCM file input and an offline model
 - One-tap microphone recording to AAC/M4A
 - Foreground microphone service with an ongoing notification
 - Pause, resume, stop and save
 - Configurable 64 / 128 / 192 kbps audio quality
 - Optional stereo capture when supported by the selected microphone/device
-- Local recording library, newest first
-- Search by recording filename
+- Local recording library, newest first (M4A and WAV)
+- Search by recording filename, folder and tags
 - Playback, rename, favorite, share and delete
+- Bookmark, metadata/notes editor and trim-copy actions
 - No account, analytics, advertising or network permission
 - App-private recording storage; share only when the user chooses
 
@@ -29,6 +38,10 @@ The debug APK is suitable for device testing. The release APK produced by CI is 
 ## Install on OnePlus 11R
 
 Download the debug APK from the workflow artifact, open it on the phone, and allow installation from that source if Android asks. Launch the app and grant microphone permission. Start recording while the app is visible; the ongoing notification provides recording status and controls.
+
+## Feature notes and compatibility
+
+WAV is PCM 16-bit at 44.1 kHz. M4A uses AAC. Input routing is a preference request and Android/OxygenOS may ignore unavailable routes. WAV transcription depends on the device's on-device speech recognizer supporting external PCM audio and having an offline language model installed; language and device support vary. Transcription is offered for WAV files only. Compressed M4A trimming may be approximate around codec frame boundaries. Tags, folders, bookmarks and notes are stored in app preferences keyed to the recording filename.
 
 ## Storage and privacy
 
@@ -54,6 +67,6 @@ This repository is an independent implementation. No upstream source code is cop
 ## Version
 
 - Application ID: `com.wasifazhar.callrecorder`
-- Version: `1.0.0`
+- Version: `1.1.0`
 - Minimum Android: 8.0 (API 26)
 - Compile/target SDK: 35
