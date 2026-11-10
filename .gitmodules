@@ -1,0 +1,3 @@
+[submodule "vendor/CallVault"]
+	path = vendor/CallVault
+	url = https://github.com/madkongo/CallVault.git
