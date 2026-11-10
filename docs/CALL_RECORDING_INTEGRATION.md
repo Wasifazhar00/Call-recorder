@@ -14,8 +14,11 @@ CallVault is the selected upstream engine because it already implements the diff
 - Keep the old microphone implementation from being misrepresented as a call recorder.
 - Preserve the existing `main` branch while the new direction is reviewed.
 
-### Stage 1 — vendor/import upstream source
-- Import the complete CallVault source at a pinned commit, including Gradle version catalog, wrapper, native CMake/JNI sources, assets, resources, workflows, tests, LICENSE and NOTICE.
+### Stage 1 — pin and reproduce upstream source (in progress)
+- Added `vendor/CallVault` as a Git submodule pinned to `00a77594085d61aee2c8513c649911704fd970c6` (CallVault 2.5.0 source snapshot). The complete upstream repository remains intact and independently attributable.
+- `.gitmodules` records the canonical upstream URL. Clone with `git clone --recurse-submodules ...` or run `git submodule update --init --recursive` after cloning.
+- Next, reproduce the upstream debug build from `vendor/CallVault` before changing branding or package identity.
+- The submodule pin references the complete upstream source, including its Gradle version catalog, wrapper, native CMake/JNI sources, assets, resources, workflows, tests, LICENSE and NOTICE.
 - Preserve upstream copyright and GPL-3.0 terms.
 - Audit bundled and downloaded dependencies/models individually.
 - Record all local modifications in a maintained patch or clearly marked files.
@@ -54,4 +57,4 @@ A build is not called a call recorder until all of these pass on the target phon
 
 ## Current branch status
 
-This branch completes Stage 0 only. It does not yet contain the CallVault source or a working call-recording APK. A separate upstream-source import is required before a functional app can be built.
+Stage 0 is complete. Stage 1 now pins the complete upstream repository as a Git submodule; this is a source reference, not a compiled integration. The parent repository's Android build has not yet been wired to it, no APK has been produced, and no OnePlus 11R call-capture test has been performed. Do not merge or install this branch as a working call recorder.
