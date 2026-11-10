@@ -9,6 +9,13 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
+import android.media.AudioManager
+import android.speech.SpeechRecognizer
+import android.speech.RecognitionListener
+import android.speech.RecognizerIntent
+import android.os.ParcelFileDescriptor
+import android.media.AudioFormat
+import android.widget.SeekBar
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -34,6 +41,13 @@ class MainActivity : Activity() {
     private lateinit var search: EditText
     private lateinit var quality: Spinner
     private lateinit var stereo: CheckBox
+    private lateinit var format: Spinner
+    private lateinit var inputDevice: Spinner
+    private lateinit var waveform: WaveformView
+    private lateinit var speed: Spinner
+    private lateinit var seekBar: SeekBar
+    private var inputIds: List<Int> = listOf(-1)
+    private var seeking = false
     private lateinit var recordButton: Button
     private lateinit var pauseButton: Button
     private var player: MediaPlayer? = null
@@ -72,6 +86,7 @@ class MainActivity : Activity() {
                 }
                 RecordingService.EVENT_LEVEL -> {
                     val amplitude = intent.getIntExtra("amplitude", 0)
+                    if (::waveform.isInitialized) waveform.addLevel(amplitude)
                     meter.text = if (amplitude <= 0) "Input level: —" else {
                         val bars = (amplitude / 3276).coerceIn(0, 10)
                         "Input level: " + "▮".repeat(bars) + "▯".repeat(10 - bars)
@@ -138,6 +153,31 @@ class MainActivity : Activity() {
             text = "Stereo (if supported by microphone)"
             isChecked = prefs.getBoolean("stereo", false)
         }
+        format = Spinner(this).apply {
+            adapter = ArrayAdapter(this@MainActivity, android.R.layout.simple_spinner_dropdown_item, listOf("M4A • AAC", "WAV • PCM"))
+            setSelection(prefs.getInt("format", 0).coerceIn(0, 1))
+        }
+        val devices = (getSystemService(AUDIO_SERVICE) as AudioManager).getDevices(AudioManager.GET_DEVICES_INPUTS).toList()
+        inputIds = listOf(-1) + devices.map { it.id }
+        inputDevice = Spinner(this).apply {
+            adapter = ArrayAdapter(this@MainActivity, android.R.layout.simple_spinner_dropdown_item, listOf("Default microphone") + devices.map { it.productName.toString() })
+        }
+        waveform = WaveformView(this).apply { layoutParams = LinearLayout.LayoutParams(-1, 70) }
+        speed = Spinner(this).apply {
+            adapter = ArrayAdapter(this@MainActivity, android.R.layout.simple_spinner_dropdown_item, listOf("0.5×", "0.75×", "1×", "1.25×", "1.5×", "2×"))
+            setSelection(2)
+        }
+        seekBar = SeekBar(this).apply {
+            max = 1000
+            isEnabled = false
+            setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(bar: SeekBar?, progress: Int, fromUser: Boolean) {
+                    if (fromUser) player?.let { try { it.seekTo((it.duration * progress / 1000f).toInt()) } catch (_: Exception) {} }
+                }
+                override fun onStartTrackingTouch(bar: SeekBar?) { seeking = true }
+                override fun onStopTrackingTouch(bar: SeekBar?) { seeking = false }
+            })
+        }
         val options = TextView(this).apply {
             text = "Recording quality"
             textSize = 13f
@@ -188,7 +228,15 @@ class MainActivity : Activity() {
         root.addView(options)
         root.addView(quality)
         root.addView(stereo)
+        root.addView(TextView(this).apply { text = "Recording format" })
+        root.addView(format)
+        root.addView(TextView(this).apply { text = "Microphone input" })
+        root.addView(inputDevice)
+        root.addView(waveform)
         root.addView(controls)
+        root.addView(TextView(this).apply { text = "Playback position / speed"; textSize = 12f })
+        root.addView(seekBar)
+        root.addView(speed)
         root.addView(libraryTitle)
         root.addView(search)
         root.addView(scroll, LinearLayout.LayoutParams(-1, 0, 1f))
@@ -207,10 +255,14 @@ class MainActivity : Activity() {
         }
         prefs.edit().putInt("quality", quality.selectedItemPosition).putBoolean("stereo", stereo.isChecked).apply()
         val bitrates = intArrayOf(64_000, 128_000, 192_000)
+        prefs.edit().putInt("format", format.selectedItemPosition).apply()
+        waveform.clear()
         val intent = Intent(this, RecordingService::class.java).apply {
             action = RecordingService.ACTION_START
             putExtra("bitrate", bitrates[quality.selectedItemPosition.coerceIn(0, 2)])
             putExtra("stereo", stereo.isChecked)
+            putExtra("format", if (format.selectedItemPosition == 1) "WAV" else "M4A")
+            putExtra("inputDeviceId", inputIds.getOrElse(inputDevice.selectedItemPosition) { -1 })
         }
         ContextCompat.startForegroundService(this, intent)
         startedAt = System.currentTimeMillis()
@@ -228,10 +280,13 @@ class MainActivity : Activity() {
         pauseButton.text = if (paused) "Resume" else "Pause"
         quality.isEnabled = !recording
         stereo.isEnabled = !recording
+        format.isEnabled = !recording
+        inputDevice.isEnabled = !recording
     }
 
     private val timerTick = object : Runnable {
         override fun run() {
+            if (playingFile != null && player != null && !seeking) { try { seekBar.progress = (player!!.currentPosition * 1000L / player!!.duration.coerceAtLeast(1)).toInt() } catch (_: Exception) {} }
             if (recording) {
                 val elapsed = if (paused) elapsedBeforePause else elapsedBeforePause + (System.currentTimeMillis() - startedAt)
                 val seconds = (elapsed / 1000).coerceAtLeast(0)
@@ -247,9 +302,9 @@ class MainActivity : Activity() {
         if (!::list.isInitialized) return
         list.removeAllViews()
         val query = if (::search.isInitialized) search.text.toString().trim().lowercase(Locale.ROOT) else ""
-        val files = recordingsDir().listFiles()?.filter { it.isFile && it.extension.equals("m4a", true) }
+        val files = recordingsDir().listFiles()?.filter { it.isFile && (it.extension.equals("m4a", true) || it.extension.equals("wav", true)) }
             ?.sortedByDescending { it.lastModified() }.orEmpty()
-            .filter { it.name.lowercase(Locale.ROOT).contains(query) }
+            .filter { file -> file.name.lowercase(Locale.ROOT).contains(query) || prefs.getString("tags_${file.name}", "").orEmpty().lowercase(Locale.ROOT).contains(query) || prefs.getString("folder_${file.name}", "").orEmpty().lowercase(Locale.ROOT).contains(query) }
         if (files.isEmpty()) {
             list.addView(TextView(this).apply {
                 text = if (query.isEmpty()) "No recordings yet. Tap Record to create your first memo." else "No matching recordings."
@@ -281,6 +336,10 @@ class MainActivity : Activity() {
             action(if (playingFile == file) "Stop" else "Play") { togglePlayback(file) }
             action("Rename") { rename(file) }
             action(if (isFavorite(file)) "★" else "☆") { toggleFavorite(file) }
+            action("Mark") { addBookmark(file) }
+            action("Trim") { trimRecording(file) }
+            action("Details") { editDetails(file) }
+            if (file.extension.equals("wav", true)) action("Transcribe") { transcribeWav(file) }
             action("Share") { share(file) }
             action("Delete") { confirmDelete(file) }
             row.addView(name)
@@ -305,8 +364,11 @@ class MainActivity : Activity() {
                 setOnCompletionListener { stopPlayback(); refreshLibrary() }
                 prepare()
                 start()
+                if (Build.VERSION.SDK_INT >= 23) playbackParams = playbackParams.setSpeed(speedValue())
             }
             playingFile = file
+            seekBar.isEnabled = true
+            seekBar.progress = 0
             status.text = "Playing: ${file.name}"
             refreshLibrary()
         } catch (e: Exception) {
@@ -320,6 +382,7 @@ class MainActivity : Activity() {
         player?.release()
         player = null
         playingFile = null
+        if (::seekBar.isInitialized) { seekBar.progress = 0; seekBar.isEnabled = false }
     }
 
     private fun rename(file: File) {
@@ -352,7 +415,7 @@ class MainActivity : Activity() {
         try {
             val uri: Uri = FileProvider.getUriForFile(this, "$packageName.files", file)
             val send = Intent(Intent.ACTION_SEND).apply {
-                type = "audio/mp4"
+                type = if (file.extension.equals("wav", true)) "audio/wav" else "audio/mp4"
                 putExtra(Intent.EXTRA_STREAM, uri)
                 addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             }
@@ -367,6 +430,88 @@ class MainActivity : Activity() {
         prefs.edit().putBoolean("fav_${file.name}", !isFavorite(file)).apply()
         refreshLibrary()
     }
+
+    private fun speedValue(): Float = floatArrayOf(0.5f, 0.75f, 1f, 1.25f, 1.5f, 2f).getOrElse(speed.selectedItemPosition) { 1f }
+    private fun durationText(ms: Long): String {
+        val sec = ms / 1000L
+        return String.format(Locale.getDefault(), "%02d:%02d", sec / 60, sec % 60)
+    }
+    private fun addBookmark(file: File) {
+        val at = if (playingFile == file) player?.currentPosition?.toLong() ?: 0L else 0L
+        val key = "marks_${file.name}"
+        val marks = prefs.getString(key, "").orEmpty().split(",").filter { it.isNotBlank() }.toMutableList()
+        marks.add(at.toString())
+        prefs.edit().putString(key, marks.joinToString(",")).apply()
+        status.text = "Bookmark saved at ${durationText(at)}"
+    }
+    private fun editDetails(file: File) {
+        val panel = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL; setPadding(24, 8, 24, 8) }
+        val folder = EditText(this).apply { hint = "Folder"; setText(prefs.getString("folder_${file.name}", "")) }
+        val tags = EditText(this).apply { hint = "Tags, comma separated"; setText(prefs.getString("tags_${file.name}", "")) }
+        val notes = EditText(this).apply { hint = "Transcript / notes"; minLines = 3; setText(prefs.getString("notes_${file.name}", "")) }
+        panel.addView(folder); panel.addView(tags); panel.addView(notes)
+        AlertDialog.Builder(this).setTitle("Recording details").setView(panel).setNegativeButton("Cancel", null)
+            .setPositiveButton("Save") { _, _ ->
+                prefs.edit().putString("folder_${file.name}", folder.text.toString())
+                    .putString("tags_${file.name}", tags.text.toString()).putString("notes_${file.name}", notes.text.toString()).apply()
+                refreshLibrary()
+            }.show()
+    }
+    private fun trimRecording(file: File) {
+        val duration = AudioFileTools.durationMs(file)
+        if (duration < 1000L) { status.text = "Recording is too short to trim."; return }
+        val panel = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL; setPadding(24, 8, 24, 8) }
+        val start = EditText(this).apply { hint = "Start seconds"; inputType = 8194; setText("0") }
+        val end = EditText(this).apply { hint = "End seconds"; inputType = 8194; setText((duration / 1000L).toString()) }
+        panel.addView(start); panel.addView(end)
+        AlertDialog.Builder(this).setTitle("Trim recording").setMessage("Creates a trimmed copy; original is kept.")
+            .setView(panel).setNegativeButton("Cancel", null).setPositiveButton("Create copy") { _, _ ->
+                try {
+                    val a = (start.text.toString().toDouble() * 1000).toLong()
+                    val b = (end.text.toString().toDouble() * 1000).toLong()
+                    val target = File(file.parentFile, file.nameWithoutExtension + "_trimmed." + file.extension)
+                    require(!target.exists()) { "Trimmed copy already exists." }
+                    AudioFileTools.trim(file, target, a, b); status.text = "Saved ${target.name}"; refreshLibrary()
+                } catch (e: Exception) { status.text = "Trim failed: ${e.message}" }
+            }.show()
+    }
+    private fun transcribeWav(file: File) {
+        if (Build.VERSION.SDK_INT < 33 || !SpeechRecognizer.isOnDeviceRecognitionAvailable(this)) {
+            status.text = "On-device file transcription is not available on this device. Check for an offline speech model in system settings."
+            return
+        }
+        try {
+            val recognizer = SpeechRecognizer.createOnDeviceSpeechRecognizer(this)
+            recognizer.setRecognitionListener(object : RecognitionListener {
+                override fun onReadyForSpeech(params: Bundle?) {}
+                override fun onBeginningOfSpeech() {}
+                override fun onRmsChanged(rmsdB: Float) {}
+                override fun onBufferReceived(buffer: ByteArray?) {}
+                override fun onEndOfSpeech() {}
+                override fun onError(error: Int) { status.text = "Transcription error: $error"; recognizer.destroy() }
+                override fun onResults(results: Bundle?) {
+                    val text = results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)?.firstOrNull().orEmpty()
+                    prefs.edit().putString("notes_${file.name}", text).apply()
+                    status.text = if (text.isBlank()) "No speech detected." else "Transcript saved in Details."
+                    recognizer.destroy()
+                }
+                override fun onPartialResults(partialResults: Bundle?) {}
+                override fun onEvent(eventType: Int, params: Bundle?) {}
+            })
+            val pfd = ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY)
+            val request = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
+                putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+                putExtra(RecognizerIntent.EXTRA_PREFER_OFFLINE, true)
+                putExtra(RecognizerIntent.EXTRA_AUDIO_SOURCE, pfd)
+                putExtra(RecognizerIntent.EXTRA_AUDIO_SOURCE_CHANNEL_COUNT, 1)
+                putExtra(RecognizerIntent.EXTRA_AUDIO_SOURCE_ENCODING, AudioFormat.ENCODING_PCM_16BIT)
+                putExtra(RecognizerIntent.EXTRA_AUDIO_SOURCE_SAMPLING_RATE, 44100)
+            }
+            status.text = "Transcribing WAV on-device…"
+            recognizer.startListening(request)
+        } catch (e: Exception) { status.text = "Transcription could not start: ${e.message}" }
+    }
+
     private fun formatBytes(bytes: Long): String = when {
         bytes < 1024 -> "$bytes B"
         bytes < 1024 * 1024 -> String.format(Locale.getDefault(), "%.1f KB", bytes / 1024.0)
