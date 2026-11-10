@@ -304,7 +304,7 @@ class MainActivity : Activity() {
         val query = if (::search.isInitialized) search.text.toString().trim().lowercase(Locale.ROOT) else ""
         val files = recordingsDir().listFiles()?.filter { it.isFile && (it.extension.equals("m4a", true) || it.extension.equals("wav", true)) }
             ?.sortedByDescending { it.lastModified() }.orEmpty()
-            .filter { file -> file.name.lowercase(Locale.ROOT).contains(query) || prefs.getString("tags_${file.name}", "").orEmpty().lowercase(Locale.ROOT).contains(query) || prefs.getString("folder_${file.name}", "").orEmpty().lowercase(Locale.ROOT).contains(query) }
+            .filter { file -> file.name.lowercase(Locale.ROOT).contains(query) || prefs.getString("tags_${file.name}", "").orEmpty().lowercase(Locale.ROOT).contains(query) || prefs.getString("folder_${file.name}", "").orEmpty().lowercase(Locale.ROOT).contains(query) || prefs.getString("notes_${file.name}", "").orEmpty().lowercase(Locale.ROOT).contains(query) }
         if (files.isEmpty()) {
             list.addView(TextView(this).apply {
                 text = if (query.isEmpty()) "No recordings yet. Tap Record to create your first memo." else "No matching recordings."
@@ -324,7 +324,7 @@ class MainActivity : Activity() {
                 setTextColor(0xFF17233C.toInt())
             }
             val meta = TextView(this).apply {
-                text = "${formatBytes(file.length())}  •  ${SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).format(Date(file.lastModified()))}"
+                text = "${formatBytes(file.length())}  •  ${durationText(AudioFileTools.durationMs(file))}  •  ${SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).format(Date(file.lastModified()))}"
                 textSize = 12f
                 setTextColor(0xFF687386.toInt())
             }
@@ -337,6 +337,7 @@ class MainActivity : Activity() {
             action("Rename") { rename(file) }
             action(if (isFavorite(file)) "★" else "☆") { toggleFavorite(file) }
             action("Mark") { addBookmark(file) }
+            action("Marks") { showBookmarks(file) }
             action("Trim") { trimRecording(file) }
             action("Details") { editDetails(file) }
             if (file.extension.equals("wav", true)) action("Transcribe") { transcribeWav(file) }
@@ -444,6 +445,18 @@ class MainActivity : Activity() {
         prefs.edit().putString(key, marks.joinToString(",")).apply()
         status.text = "Bookmark saved at ${durationText(at)}"
     }
+    private fun showBookmarks(file: File) {
+        val marks = prefs.getString("marks_${file.name}", "").orEmpty().split(",").filter { it.isNotBlank() }
+        if (marks.isEmpty()) { status.text = "No bookmarks for this recording yet."; return }
+        val labels = marks.mapIndexed { index, value -> "${index + 1}. ${durationText(value.toLongOrNull() ?: 0L)}" }.toTypedArray()
+        AlertDialog.Builder(this).setTitle("Bookmarks • ${file.nameWithoutExtension}")
+            .setItems(labels) { _, which ->
+                val position = marks[which].toLongOrNull()?.toInt() ?: 0
+                if (playingFile != file) togglePlayback(file)
+                handler.postDelayed({ try { player?.seekTo(position) } catch (_: Exception) {} }, 250)
+            }.setNegativeButton("Close", null).show()
+    }
+
     private fun editDetails(file: File) {
         val panel = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL; setPadding(24, 8, 24, 8) }
         val folder = EditText(this).apply { hint = "Folder"; setText(prefs.getString("folder_${file.name}", "")) }
