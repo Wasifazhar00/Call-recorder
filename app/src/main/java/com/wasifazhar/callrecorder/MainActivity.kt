@@ -49,8 +49,17 @@ class MainActivity : Activity() {
         override fun onReceive(context: Context?, intent: Intent?) {
             when (intent?.action) {
                 RecordingService.EVENT_STATE -> {
-                    recording = intent.getBooleanExtra("recording", false)
-                    paused = intent.getBooleanExtra("paused", false)
+                    val wasPaused = paused
+                    val nowRecording = intent.getBooleanExtra("recording", false)
+                    val nowPaused = intent.getBooleanExtra("paused", false)
+                    if (nowRecording && nowPaused && !wasPaused) {
+                        elapsedBeforePause += System.currentTimeMillis() - startedAt
+                    } else if (nowRecording && !nowPaused && wasPaused) {
+                        startedAt = System.currentTimeMillis()
+                    }
+                    recording = nowRecording
+                    paused = nowPaused
+                    if (!recording) elapsedBeforePause = 0L
                     val path = intent.getStringExtra("path")
                     status.text = when {
                         recording && paused -> "Recording paused"
