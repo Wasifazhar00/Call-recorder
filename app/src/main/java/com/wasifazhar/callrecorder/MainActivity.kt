@@ -477,10 +477,26 @@ class MainActivity : Activity() {
     }
     private fun transcribeWav(file: File) {
         if (Build.VERSION.SDK_INT < 33 || !SpeechRecognizer.isOnDeviceRecognitionAvailable(this)) {
-            status.text = "On-device file transcription is not available on this device. Check for an offline speech model in system settings."
+            status.text = "On-device file transcription is not available. Check for an offline speech model in system settings."
             return
         }
         try {
+            val header = ByteArray(44)
+            java.io.RandomAccessFile(file, "r").use { it.readFully(header) }
+            val data = java.nio.ByteBuffer.wrap(header).order(java.nio.ByteOrder.LITTLE_ENDIAN)
+            val channels = data.getShort(22).toInt()
+            val sampleRate = data.getInt(24)
+            val pipe = ParcelFileDescriptor.createPipe()
+            val readEnd = pipe[0]
+            val writeEnd = pipe[1]
+            Thread {
+                try {
+                    java.io.FileInputStream(file).use { input ->
+                        input.skip(44)
+                        ParcelFileDescriptor.AutoCloseOutputStream(writeEnd).use { output -> input.copyTo(output) }
+                    }
+                } catch (_: Exception) { try { writeEnd.close() } catch (_: Exception) {} }
+            }.start()
             val recognizer = SpeechRecognizer.createOnDeviceSpeechRecognizer(this)
             recognizer.setRecognitionListener(object : RecognitionListener {
                 override fun onReadyForSpeech(params: Bundle?) {}
@@ -488,24 +504,27 @@ class MainActivity : Activity() {
                 override fun onRmsChanged(rmsdB: Float) {}
                 override fun onBufferReceived(buffer: ByteArray?) {}
                 override fun onEndOfSpeech() {}
-                override fun onError(error: Int) { status.text = "Transcription error: $error"; recognizer.destroy() }
+                override fun onError(error: Int) {
+                    try { readEnd.close() } catch (_: Exception) {}
+                    status.text = "Transcription error: $error"; recognizer.destroy()
+                }
                 override fun onResults(results: Bundle?) {
-                    val text = results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)?.firstOrNull().orEmpty()
-                    prefs.edit().putString("notes_${file.name}", text).apply()
-                    status.text = if (text.isBlank()) "No speech detected." else "Transcript saved in Details."
-                    recognizer.destroy()
+                    try { readEnd.close() } catch (_: Exception) {}
+                    val transcript = results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)?.firstOrNull().orEmpty()
+                    prefs.edit().putString("notes_${file.name}", transcript).apply()
+                    status.text = if (transcript.isBlank()) "No speech detected." else "Transcript saved in Details."
+                    recognizer.destroy(); refreshLibrary()
                 }
                 override fun onPartialResults(partialResults: Bundle?) {}
                 override fun onEvent(eventType: Int, params: Bundle?) {}
             })
-            val pfd = ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY)
             val request = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
                 putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
                 putExtra(RecognizerIntent.EXTRA_PREFER_OFFLINE, true)
-                putExtra(RecognizerIntent.EXTRA_AUDIO_SOURCE, pfd)
-                putExtra(RecognizerIntent.EXTRA_AUDIO_SOURCE_CHANNEL_COUNT, 1)
+                putExtra(RecognizerIntent.EXTRA_AUDIO_SOURCE, readEnd)
+                putExtra(RecognizerIntent.EXTRA_AUDIO_SOURCE_CHANNEL_COUNT, channels)
                 putExtra(RecognizerIntent.EXTRA_AUDIO_SOURCE_ENCODING, AudioFormat.ENCODING_PCM_16BIT)
-                putExtra(RecognizerIntent.EXTRA_AUDIO_SOURCE_SAMPLING_RATE, 44100)
+                putExtra(RecognizerIntent.EXTRA_AUDIO_SOURCE_SAMPLING_RATE, sampleRate)
             }
             status.text = "Transcribing WAV on-device…"
             recognizer.startListening(request)
