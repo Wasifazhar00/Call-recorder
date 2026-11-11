@@ -13,6 +13,7 @@ ENGINE = ROOT / "vendor" / "CallVault"
 PIN = "00a77594085d61aee2c8513c649911704fd970c6"
 TARGET = ENGINE / "app/src/main/java/com/baba/callvault/data/AppPreferences.kt"
 TEST = ENGINE / "app/src/test/java/com/baba/callvault/data/health/SetupPrerequisitesTest.kt"
+VOIP_GATE = ENGINE / "app/src/main/java/com/baba/callvault/services/recording/VoipTelephonyGate.kt"
 
 actual = subprocess.check_output(
     ["git", "-C", str(ENGINE), "rev-parse", "HEAD"], text=True
@@ -40,6 +41,34 @@ for old, new in replacements.items():
     if old_count == 1:
         source = source.replace(old, new, 1)
 TARGET.write_text(source, encoding="utf-8")
+
+# Lint cannot infer that Kotlin's runCatching handles SecurityException. The guarded
+# Telecom call intentionally fails open; annotate that exact API boundary with its rationale.
+gate_source = VOIP_GATE.read_text(encoding="utf-8")
+gate_import = "import android.content.Context\n"
+gate_imported = "import android.annotation.SuppressLint\n" + gate_import
+if "import android.annotation.SuppressLint\n" not in gate_source:
+    if gate_source.count(gate_import) != 1:
+        sys.exit("VoipTelephonyGate import anchor changed; refusing unsafe patch")
+    gate_source = gate_source.replace(gate_import, gate_imported, 1)
+old_gate = "    fun managedCallInProgress(context: Context): Boolean = runCatching {"
+new_gate = """    @SuppressLint("MissingPermission") // runCatching below explicitly handles a revoked READ_PHONE_STATE grant.
+    fun managedCallInProgress(context: Context): Boolean = runCatching {"""
+if new_gate not in gate_source:
+    if gate_source.count(old_gate) != 1:
+        sys.exit("VoipTelephonyGate permission-guard anchor changed; refusing unsafe patch")
+    gate_source = gate_source.replace(old_gate, new_gate, 1)
+VOIP_GATE.write_text(gate_source, encoding="utf-8")
+
+# Carrier recording must remain globally enabled; the two direction switches control automation.
+for required in (
+    "const val CARRIER_RECORDING_ENABLED = true",
+    "const val AUTO_RECORD_INCOMING = true",
+    "const val AUTO_RECORD_OUTGOING = true",
+    "val PRIVILEGED_MODE: String = PrivilegedMode.SHIZUKU.key",
+):
+    if source.count(required) != 1:
+        sys.exit(f"Shizuku-first profile contract not satisfied: {required!r}")
 
 # These tests exercise the built-in ADB prerequisite path. Make that fixture explicit:
 # the production build's Shizuku default must not silently change what the tests are testing.
