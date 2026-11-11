@@ -30,7 +30,7 @@ method. Depending on the Shizuku setup, it may need to be restarted after reboot
 trusted Wi-Fi auto-start or USB ADB from a computer). This app cannot promise to re-start Shizuku
 with every debugging option disabled.
 
-## Product defaults
+## Preferred Shizuku manager\n\nFor device trials, use [Shizuku-Next](https://github.com/rushiranpise/Shizuku-Next) as the manager. The pinned CallVault Shizuku backend uses the stable Shizuku API and explicitly supports Shizuku variants, so the recorder does not need to embed or fork the manager. Shizuku-Next has optional boot recovery and experimental no-Wi-Fi startup, but these are device-dependent and must be verified on the OnePlus 11R. It uses a different signing key: follow its official migration instructions before replacing an existing Shizuku installation.\n\n## Product defaults
 
 The build-time profile sets Shizuku as the default backend and enables automatic incoming/outgoing
 carrier-call recording after the app's disclaimer/onboarding. Either direction can be disabled by the
