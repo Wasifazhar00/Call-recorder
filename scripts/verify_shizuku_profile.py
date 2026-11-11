@@ -22,6 +22,9 @@ require(
         "const val AUTO_RECORD_INCOMING = true",
         "const val AUTO_RECORD_OUTGOING = true",
         "val PRIVILEGED_MODE: String = PrivilegedMode.SHIZUKU.key",
+        "val AUDIO_SOURCE = ScrcpyAudioSource.VOICE_CALL.cliKey",
+        "const val IGNORE_ANONYMOUS_INCOMING = false",
+        "val RECORDING_STATE = RecordingState.ACTIVE.key",
     ),
 )
 require(
@@ -42,6 +45,14 @@ require(
         ".services.recording.RecordingForegroundService",
         "moe.shizuku.manager.permission.API_V23",
     ),
+)
+require(
+    "app/build.gradle.kts",
+    ("minSdk = 30", "targetSdk = 36", 'applicationId = "com.baba.callvault"'),
+)
+require(
+    "app/src/main/java/com/baba/callvault/services/recording/AudioRecordingEngine.kt",
+    ("audioSourceEnum == ScrcpyAudioSource.VOICE_CALL) 2 else 1",),
 )
 require(
     "app/src/main/java/com/baba/callvault/server/ShizukuBackend.kt",
