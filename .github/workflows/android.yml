@@ -82,7 +82,7 @@ jobs:
           fi
           echo "APK_BYTES=$(stat -c '%s' "$output")" | tee apk-metrics.txt
           echo "APK_SHA256=$(sha256sum "$output" | awk '{print $1}')" | tee -a apk-metrics.txt
-          echo "NATIVE_ABIS=$(unzip -Z1 "$output" | awk -F/ '/^lib\\// {print $2}' | sort -u | paste -sd, -)" | tee -a apk-metrics.txt
+          echo "NATIVE_ABIS=$(unzip -Z1 "$output" | grep '^lib/' | cut -d/ -f2 | sort -u | paste -sd, -)" | tee -a apk-metrics.txt
           ls -lh "$output"
 
       - name: Upload optimized Shizuku-first APK and metrics
