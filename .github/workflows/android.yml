@@ -44,16 +44,14 @@ jobs:
         run: |
           python3 scripts/apply_shizuku_profile.py
           python3 scripts/apply_shizuku_profile.py
+          python3 scripts/verify_shizuku_profile.py
 
       - name: Run release unit tests
         working-directory: vendor/CallVault
         run: env -u GITHUB_ACTIONS ./gradlew --no-daemon --stacktrace :app:testDebugUnitTest
 
-      # Upstream currently reports pre-existing lint findings. Keep the report visible,
-      # but do not let lint prevent generation of a device-test APK.
-      - name: Run Android lint (non-blocking)
+      - name: Run Android lint
         working-directory: vendor/CallVault
-        continue-on-error: true
         run: env -u GITHUB_ACTIONS ./gradlew --no-daemon --stacktrace :app:lintRelease
 
       # Upstream release signing requires the maintainer's private production key.
