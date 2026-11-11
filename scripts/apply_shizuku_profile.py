@@ -179,6 +179,11 @@ def patch_file(relative_path, edits):
     path = ENGINE / relative_path
     text = path.read_text(encoding="utf-8")
     for old, new, description in edits:
+        # Insertions retain their anchor comment inside the replacement block.
+        # Skip those on the second profile pass, but still apply string substitutions
+        # when the replacement already exists elsewhere in the file.
+        if old in new and new in text:
+            continue
         count = text.count(old)
         if count:
             text = text.replace(old, new)
