@@ -1,8 +1,8 @@
-name: CallVault upstream debug APK
+name: Shizuku-first optimized APK
 
 on:
   push:
-    branches: [ "main", "feature/callvault-integration" ]
+    branches: [ "main", "feature/shizuku-first-lean-build" ]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   build-callvault:
-    name: Build pinned CallVault debug APK
+    name: Build Shizuku-first release APK
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository and pinned submodules
@@ -39,17 +39,41 @@ jobs:
 
       - name: Set up Gradle caching
         uses: gradle/actions/setup-gradle@v4
-        with:
-          cache-read-only: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
 
-      - name: Build upstream debug APK
+      - name: Apply revision-checked Shizuku-first profile
+        run: python3 scripts/apply_shizuku_profile.py
+
+      # Build the optimized release variant without requesting upstream release-signing secrets.
+      # The resulting unsigned APK is aligned and signed with a disposable CI test key below.
+      - name: Build optimized release APK
         working-directory: vendor/CallVault
-        run: ./gradlew --no-daemon --stacktrace :app:assembleDebug
+        run: env -u GITHUB_ACTIONS ./gradlew --no-daemon --stacktrace :app:assembleRelease
 
-      - name: Upload upstream debug APK
+      - name: Align and sign with temporary CI test key
+        shell: bash
+        run: |
+          set -euo pipefail
+          unsigned="vendor/CallVault/app/build/outputs/apk/release/app-release-unsigned.apk"
+          aligned="vendor/CallVault/app/build/outputs/apk/release/app-release-aligned.apk"
+          output="vendor/CallVault/app/build/outputs/apk/release/CallRecorder-shizuku-test.apk"
+          mkdir -p "$HOME/.android"
+          if [ ! -f "$HOME/.android/debug.keystore" ]; then
+            keytool -genkeypair -v -keystore "$HOME/.android/debug.keystore" \
+              -storepass android -alias androiddebugkey -keypass android \
+              -keyalg RSA -keysize 2048 -validity 10000 \
+              -dname "CN=Android Debug,O=Android,C=US"
+          fi
+          "$ANDROID_HOME/build-tools/36.0.0/zipalign" -f -p 4 "$unsigned" "$aligned"
+          "$ANDROID_HOME/build-tools/36.0.0/apksigner" sign \
+            --ks "$HOME/.android/debug.keystore" --ks-pass pass:android \
+            --key-pass pass:android --out "$output" "$aligned"
+          "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose "$output"
+          ls -lh "$output"
+
+      - name: Upload optimized Shizuku-first APK
         uses: actions/upload-artifact@v4
         with:
-          name: callvault-upstream-debug-apk
-          path: vendor/CallVault/app/build/outputs/apk/debug/*.apk
+          name: call-recorder-shizuku-release-test
+          path: vendor/CallVault/app/build/outputs/apk/release/CallRecorder-shizuku-test.apk
           if-no-files-found: error
           retention-days: 30
