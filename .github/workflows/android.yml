@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   build-callvault:
-    name: Build Shizuku-first release APK
+    name: Test and build Shizuku-first arm64 APK
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository and pinned submodules
@@ -41,15 +41,21 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Apply revision-checked Shizuku-first profile
-        run: python3 scripts/apply_shizuku_profile.py
+        run: |
+          python3 scripts/apply_shizuku_profile.py
+          python3 scripts/apply_shizuku_profile.py
 
-      # Build the optimized release variant without requesting upstream release-signing secrets.
-      # The resulting unsigned APK is aligned and signed with a disposable CI test key below.
+      - name: Run release unit tests and Android lint
+        working-directory: vendor/CallVault
+        run: env -u GITHUB_ACTIONS ./gradlew --no-daemon --stacktrace :app:testReleaseUnitTest :app:lintRelease
+
+      # Upstream release signing requires the maintainer's private production key.
+      # CI deliberately builds unsigned, then signs with a disposable test key for device trials.
       - name: Build optimized release APK
         working-directory: vendor/CallVault
         run: env -u GITHUB_ACTIONS ./gradlew --no-daemon --stacktrace :app:assembleRelease
 
-      - name: Align and sign with temporary CI test key
+      - name: Align, sign and verify test APK
         shell: bash
         run: |
           set -euo pipefail
@@ -68,12 +74,23 @@ jobs:
             --ks "$HOME/.android/debug.keystore" --ks-pass pass:android \
             --key-pass pass:android --out "$output" "$aligned"
           "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose "$output"
+          "$ANDROID_HOME/build-tools/36.0.0/aapt" dump badging "$output" | grep -F "package: name='com.baba.callvault'"
+          unzip -Z1 "$output" | grep -q '^lib/arm64-v8a/'
+          if unzip -Z1 "$output" | grep -E '^lib/' | grep -v '^lib/arm64-v8a/' ; then
+            echo "Unexpected non-arm64 native library found" >&2
+            exit 1
+          fi
+          echo "APK_BYTES=$(stat -c '%s' "$output")" | tee apk-metrics.txt
+          echo "APK_SHA256=$(sha256sum "$output" | awk '{print $1}')" | tee -a apk-metrics.txt
+          echo "NATIVE_ABIS=$(unzip -Z1 "$output" | awk -F/ '/^lib\\// {print $2}' | sort -u | paste -sd, -)" | tee -a apk-metrics.txt
           ls -lh "$output"
 
-      - name: Upload optimized Shizuku-first APK
+      - name: Upload optimized Shizuku-first APK and metrics
         uses: actions/upload-artifact@v4
         with:
           name: call-recorder-shizuku-release-test
-          path: vendor/CallVault/app/build/outputs/apk/release/CallRecorder-shizuku-test.apk
+          path: |
+            vendor/CallVault/app/build/outputs/apk/release/CallRecorder-shizuku-test.apk
+            apk-metrics.txt
           if-no-files-found: error
           retention-days: 30
