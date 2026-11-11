@@ -1,7 +1,7 @@
 # Call Recorder for Android
 
 **Product direction:** a local-first automatic cellular call recorder for incoming and outgoing calls,
-with a Huawei-like simple call list, visible recording status and playback.
+with a simple call list, visible recording status and playback.
 
 ## Target device
 
@@ -15,10 +15,15 @@ OxygenOS exposes both call-audio directions on this model.
 
 ## Recording engine
 
-The project uses [CallVault](https://github.com/madkongo/CallVault), derived from
+The product build uses [CallVault](https://github.com/madkongo/CallVault), derived from
 [ShizuCallRecorder](https://github.com/kitsumed/ShizuCallRecorder), pinned as the
 `vendor/CallVault` submodule at commit
 `00a77594085d61aee2c8513c649911704fd970c6`.
+
+**Important build layout:** the shipped/test APK is built from `vendor/CallVault`. The top-level
+`app/` directory is the original microphone-recorder prototype and is not included in the
+CallVault release APK. Do not use the top-level Android Studio project as the production build.
+The migration to a single unambiguous root Gradle project remains incomplete.
 
 This product profile selects **Shizuku mode by default**. With Shizuku already running and permission
 granted, the recorder does not need its own Wireless debugging pairing. Wireless debugging can be
@@ -26,15 +31,23 @@ turned off, and core recording/storage/playback work offline. Internet is only n
 features such as update checks, model downloads or cloud backup.
 
 **Important reboot limitation:** on a non-rooted device, Shizuku itself must be started by a supported
-method. Depending on the Shizuku setup, it may need to be restarted after reboot (for example through
-trusted Wi-Fi auto-start or USB ADB from a computer). This app cannot promise to re-start Shizuku
-with every debugging option disabled.
+method. Depending on the Shizuku setup, it may need to be restarted after reboot. This app cannot
+promise to re-start Shizuku with every debugging option disabled.
 
-## Preferred Shizuku manager\n\nFor device trials, use [Shizuku-Next](https://github.com/rushiranpise/Shizuku-Next) as the manager. The pinned CallVault Shizuku backend uses the stable Shizuku API and explicitly supports Shizuku variants, so the recorder does not need to embed or fork the manager. Shizuku-Next has optional boot recovery and experimental no-Wi-Fi startup, but these are device-dependent and must be verified on the OnePlus 11R. It uses a different signing key: follow its official migration instructions before replacing an existing Shizuku installation.\n\n## Product defaults
+## Preferred Shizuku manager
+
+For device trials, use [Shizuku-Next](https://github.com/rushiranpise/Shizuku-Next) as the manager.
+The pinned CallVault Shizuku backend uses the stable Shizuku API and supports Shizuku variants, so
+the recorder does not need to embed or fork the manager. Shizuku-Next has optional boot recovery and
+experimental no-Wi-Fi startup, but these are device-dependent and must be verified on the OnePlus 11R.
+It uses a different signing key: follow its official migration instructions before replacing an
+existing Shizuku installation.
+
+## Product defaults
 
 The build-time profile sets Shizuku as the default backend and enables automatic incoming/outgoing
-carrier-call recording after the app's disclaimer/onboarding. Either direction can be disabled by the
-user. Recording activity must remain visible and applicable consent requirements must be respected.
+carrier-call recording after the app's disclaimer/onboarding. Either direction can be disabled by
+the user. Recording activity must remain visible and applicable consent requirements must be respected.
 No announcement suppression or stealth recording is implemented.
 
 ## Build
@@ -49,19 +62,18 @@ cd vendor/CallVault
 ./gradlew :app:assembleRelease
 ```
 
-The GitHub Actions workflow applies the same revision-checked profile and produces a release-optimized
-arm64 APK signed with a temporary CI test key. That artifact is for testing only; it is not signed
-with a permanent production key. Its size is measured in CI.
+The GitHub Actions workflow applies the same revision-checked profile, runs release unit tests and
+lint, builds the arm64 release APK, verifies its package/ABI/signature, and records its exact byte
+size and SHA-256. The CI APK is signed with a temporary test key, not a permanent production key.
 
 ## Battery and size
 
-Core capture is intended to run only around calls. The app should not continuously poll Shizuku or
-hold wake locks while idle. Transcription, summaries, backup and model downloads remain optional and
-user-triggered. Do not remove native or service code without disabling every dependent UI/JNI path and
-running the acceptance tests.
+The pinned engine already restricts native packaging to `arm64-v8a`, appropriate for this target.
+Core capture is intended to run only around calls. Transcription, summaries, backup and model
+downloads remain optional. A smaller APK does not by itself prove better battery life.
 
-The previous debug APK was 129,452,046 bytes; this is a debug-build measurement, not a release-size
-baseline. A smaller APK does not by itself prove better battery life.
+Do not remove native or service code unless every dependent UI/JNI path is disabled and the call
+recording acceptance tests still pass.
 
 ## Device test status
 
