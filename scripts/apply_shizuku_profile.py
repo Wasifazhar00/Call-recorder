@@ -15,6 +15,7 @@ TARGET = ENGINE / "app/src/main/java/com/baba/callvault/data/AppPreferences.kt"
 TEST = ENGINE / "app/src/test/java/com/baba/callvault/data/health/SetupPrerequisitesTest.kt"
 VOIP_GATE = ENGINE / "app/src/main/java/com/baba/callvault/services/recording/VoipTelephonyGate.kt"
 BYPASSED_AUDIO = ENGINE / "app/src/main/java/com/baba/callvault/server/BypassedAudioRecord.kt"
+MODEL_WORKER = ENGINE / "app/src/main/java/com/baba/callvault/transcription/model/ModelDownloadWorker.kt"
 
 actual = subprocess.check_output(
     ["git", "-C", str(ENGINE), "rev-parse", "HEAD"], text=True
@@ -77,6 +78,43 @@ if new_attribution not in audio_source:
         sys.exit("BypassedAudioRecord attribution-source anchor changed; refusing unsafe patch")
     audio_source = audio_source.replace(old_attribution, new_attribution, 1)
 BYPASSED_AUDIO.write_text(audio_source, encoding="utf-8")
+
+# WorkInfo.getStopReason() was added in API 31. The app supports API 30,
+# where WorkManager still exposes isStopped but not a stop reason.
+worker_source = MODEL_WORKER.read_text(encoding="utf-8")
+worker_import = "import android.content.Context\\n"
+worker_imported = "import android.content.Context\\nimport android.os.Build\\n"
+if "import android.os.Build\\n" not in worker_source:
+    if worker_source.count(worker_import) != 1:
+        sys.exit("ModelDownloadWorker Build import anchor changed; refusing unsafe patch")
+    worker_source = worker_source.replace(worker_import, worker_imported, 1)
+old_stop_reason = """    private fun stopReasonName(): String = when (stopReason) {
+"""
+new_stop_reason = """    private fun stopReasonName(): String {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            return "stop reason unavailable before Android 12"
+        }
+        return when (stopReason) {
+"""
+if new_stop_reason not in worker_source:
+    if worker_source.count(old_stop_reason) != 1:
+        sys.exit("ModelDownloadWorker stop-reason API anchor changed; refusing unsafe patch")
+    worker_source = worker_source.replace(old_stop_reason, new_stop_reason, 1)
+    closing = """        else -> "reason $stopReason"
+    }
+
+    companion object {
+"""
+    replacement = """        else -> "reason $stopReason"
+        }
+    }
+
+    companion object {
+"""
+    if worker_source.count(closing) != 1:
+        sys.exit("ModelDownloadWorker stop-reason closing anchor changed; refusing unsafe patch")
+    worker_source = worker_source.replace(closing, replacement, 1)
+MODEL_WORKER.write_text(worker_source, encoding="utf-8")
 
 # Carrier recording must remain globally enabled; the two direction switches control automation.
 for required in (

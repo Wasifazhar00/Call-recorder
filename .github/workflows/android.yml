@@ -65,6 +65,17 @@ jobs:
         working-directory: vendor/CallVault
         run: env -u GITHUB_ACTIONS ./gradlew --no-daemon --stacktrace :app:lintRelease
 
+      - name: Upload Android lint reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: call-recorder-lint-reports
+          path: |
+            vendor/CallVault/app/build/intermediates/lint_intermediate_text_report/release/lintReportRelease/
+            vendor/CallVault/app/build/reports/lint-results-release.*
+          if-no-files-found: ignore
+          retention-days: 14
+
       # Upstream release signing requires the maintainer's private production key.
       # CI deliberately builds unsigned, then signs with a disposable test key for device trials.
       - name: Build optimized release APK

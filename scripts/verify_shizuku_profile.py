@@ -81,6 +81,15 @@ require(
 )
 
 require(
+    "app/src/main/java/com/baba/callvault/transcription/model/ModelDownloadWorker.kt",
+    (
+        "import android.os.Build",
+        "Build.VERSION.SDK_INT < Build.VERSION_CODES.S",
+        "stop reason unavailable before Android 12",
+    ),
+)
+
+require(
     "app/src/main/java/com/baba/callvault/server/BypassedAudioRecord.kt",
     (
         "Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU",
