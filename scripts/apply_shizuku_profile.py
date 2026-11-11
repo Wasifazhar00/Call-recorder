@@ -170,6 +170,180 @@ if "import org.junit.Before" not in test_source:
     test_source = test_source.replace(anchor, anchor + "import org.junit.Before\n", 1)
 TEST.write_text(test_source, encoding="utf-8")
 
+
+
+# Release-lint remediation for the pinned upstream revision. These edits are applied
+# deterministically to the submodule at build time; every anchor is checked so upstream
+# drift fails closed rather than silently producing a partial profile.
+def patch_file(relative_path, edits):
+    path = ENGINE / relative_path
+    text = path.read_text(encoding="utf-8")
+    for old, new, description in edits:
+        if new in text:
+            continue
+        count = text.count(old)
+        if count != 1:
+            sys.exit(f"{relative_path}: expected one anchor for {description}; found {count}")
+        text = text.replace(old, new, 1)
+    path.write_text(text, encoding="utf-8")
+
+# API 31 WorkManager stopReason access: API 30 has no stop reason. On API 30 we
+# conservatively retain URI grants because we cannot distinguish retry from cancel.
+transfer = ENGINE / "app/src/main/java/com/baba/callvault/transcription/model/ModelTransferWorker.kt"
+transfer_source = transfer.read_text(encoding="utf-8")
+if "import android.os.Build\n" not in transfer_source:
+    anchor = "import android.net.Uri\n"
+    if transfer_source.count(anchor) != 1:
+        sys.exit("ModelTransferWorker Build import anchor changed")
+    transfer_source = transfer_source.replace(anchor, anchor + "import android.os.Build\n", 1)
+transfer_edits = [
+("""    private fun willRunAgain(): Boolean = isStopped && stopReason != WorkInfo.STOP_REASON_CANCELLED_BY_APP
+
+    private fun stopReasonName(): String =
+        if (stopReason == WorkInfo.STOP_REASON_CANCELLED_BY_APP) "cancelled" else "reason $stopReason"
+""",
+"""    private fun willRunAgain(): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return false
+        return isStopped && stopReason != WorkInfo.STOP_REASON_CANCELLED_BY_APP
+    }
+
+    private fun stopReasonName(): String {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return "stop reason unavailable before Android 12"
+        return if (stopReason == WorkInfo.STOP_REASON_CANCELLED_BY_APP) "cancelled" else "reason $stopReason"
+    }
+""", "API-guarded WorkManager stopReason")]
+for old, new, desc in transfer_edits:
+    if new not in transfer_source:
+        if transfer_source.count(old) != 1: sys.exit("ModelTransferWorker stop-reason anchor changed")
+        transfer_source = transfer_source.replace(old, new, 1)
+transfer.write_text(transfer_source, encoding="utf-8")
+
+# MediaExtractor and MediaCodec flag domains are different. Translate supported flags;
+# encrypted samples cannot be safely remuxed by MediaMuxer and are rejected explicitly.
+mux_files = [
+("app/src/main/java/com/baba/callvault/data/merge/AudioConcat.kt", "info.flags = extractor.sampleFlags"),
+("app/src/main/java/com/baba/callvault/data/merge/AudioSplit.kt", "info.flags = extractor.sampleFlags"),
+("app/src/main/java/com/baba/callvault/data/clips/ClipCutter.kt", "info.flags = extractor.sampleFlags"),
+("app/src/main/java/com/baba/callvault/transcription/cloud/CloudAudioSource.kt", "info.set(0, size, timeUs - firstUs, extractor.sampleFlags)"),
+]
+for relative, flag_line in mux_files:
+    path = ENGINE / relative
+    src = path.read_text(encoding="utf-8")
+    if "private fun muxerFlagsFromSampleFlags" not in src:
+        package_end = src.index("\n\n", src.index("package "))
+        helper = """
+
+/** Convert MediaExtractor sample flags to the distinct MediaCodec.BufferInfo flag domain. */
+private fun muxerFlagsFromSampleFlags(sampleFlags: Int): Int {
+    check(sampleFlags and MediaExtractor.SAMPLE_FLAG_ENCRYPTED == 0) {
+        "Encrypted samples cannot be copied into an unencrypted MediaMuxer output"
+    }
+    var flags = 0
+    if (sampleFlags and MediaExtractor.SAMPLE_FLAG_SYNC != 0) {
+        flags = flags or MediaCodec.BUFFER_FLAG_KEY_FRAME
+    }
+    if (sampleFlags and MediaExtractor.SAMPLE_FLAG_PARTIAL_FRAME != 0) {
+        flags = flags or MediaCodec.BUFFER_FLAG_PARTIAL_FRAME
+    }
+    return flags
+}
+"""
+        src = src[:package_end] + helper + src[package_end:]
+    if "import android.media.MediaExtractor\n" not in src:
+        anchor = "import android.media.MediaFormat\n"
+        if src.count(anchor) != 1: sys.exit(f"{relative}: MediaExtractor import anchor changed")
+        src = src.replace(anchor, "import android.media.MediaExtractor\n" + anchor, 1)
+    new_line = flag_line.replace("extractor.sampleFlags", "muxerFlagsFromSampleFlags(extractor.sampleFlags)")
+    if new_line not in src:
+        if src.count(flag_line) != 1: sys.exit(f"{relative}: sample flag anchor changed")
+        src = src.replace(flag_line, new_line, 1)
+    path.write_text(src, encoding="utf-8")
+
+# Compose locale reads must be observable so configuration changes recompose the label.
+patch_file("app/src/main/java/com/baba/callvault/ui/screens/CallHistoryUi.kt", [
+("import androidx.compose.ui.platform.LocalContext\n", "import androidx.compose.ui.platform.LocalContext\nimport androidx.compose.ui.platform.LocalConfiguration\n", "configuration import"),
+("""internal fun callTimeLabel(millis: Long): String {
+    val time = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date(millis))""",
+"""internal fun callTimeLabel(millis: Long): String {
+    val locale = LocalConfiguration.current.locales[0] ?: Locale.getDefault()
+    val time = SimpleDateFormat("HH:mm", locale).format(Date(millis))""", "observable locale"),
+("""else -> SimpleDateFormat("dd/MM/yy HH:mm", Locale.getDefault()).format(Date(millis))""",
+"""else -> SimpleDateFormat("dd/MM/yy HH:mm", locale).format(Date(millis))""", "observable date locale")
+])
+
+# Resolve resource strings in composition, not through LocalContext.getString inside callbacks.
+patch_file("app/src/main/java/com/baba/callvault/ui/screens/PermissionsScreen.kt", [
+("""    // Permission launchers must live inside a composable - the system dialog can only be
+""",
+"""    val cloudFolderRejectedMessage = stringResource(R.string.folder_cloud_rejected)
+
+    // Permission launchers must live inside a composable - the system dialog can only be
+""", "permission screen resource"),
+("activityContext.getString(R.string.folder_cloud_rejected)", "cloudFolderRejectedMessage", "permission callback resource")
+])
+patch_file("app/src/main/java/com/baba/callvault/ui/screens/SettingsScreen.kt", [
+("""    // Folder picker — PersistentFolderPickerContract keeps access alive after a reboot.
+""",
+"""    val cloudFolderRejectedMessage = stringResource(R.string.folder_cloud_rejected)
+    val driveFolderOverlapMessage = stringResource(R.string.folder_drive_overlaps_recordings)
+    val importDoneFormat = stringResource(R.string.settings_import_done)
+    val importFailedMessage = stringResource(R.string.settings_import_failed)
+
+    // Folder picker — PersistentFolderPickerContract keeps access alive after a reboot.
+""", "settings screen resource values"),
+("context.getString(R.string.folder_cloud_rejected)", "cloudFolderRejectedMessage", "cloud folder callback"),
+("context.getString(R.string.folder_drive_overlaps_recordings)", "driveFolderOverlapMessage", "drive overlap callback"),
+("context.getString(R.string.settings_import_done, applied)", "String.format(java.util.Locale.getDefault(), importDoneFormat, applied)", "import result formatting"),
+("context.getString(R.string.settings_import_failed)", "importFailedMessage", "import failure resource")
+])
+patch_file("app/src/main/java/com/baba/callvault/ui/screens/WizardScreen.kt", [
+("""    val updateTrigger by viewModel.updateTrigger.collectAsState()
+
+    // Device/recording folder picker""",
+"""    val updateTrigger by viewModel.updateTrigger.collectAsState()
+    val cloudFolderRejectedMessage = stringResource(R.string.folder_cloud_rejected)
+    val driveFolderOverlapMessage = stringResource(R.string.folder_drive_overlaps_recordings)
+
+    // Device/recording folder picker""", "wizard resource values"),
+("context.getString(R.string.folder_cloud_rejected)", "cloudFolderRejectedMessage", "wizard cloud folder callback"),
+("context.getString(R.string.folder_drive_overlaps_recordings)", "driveFolderOverlapMessage", "wizard drive overlap callback")
+])
+
+# Polish and Russian require few/many plural categories. Preserve each translation's
+# existing wording for those categories rather than leaving the resource incomplete.
+import re
+for locale in ("pl", "ru"):
+    for filename in ("strings.xml", "strings_home.xml"):
+        path = ENGINE / f"app/src/main/res/values-{locale}/{filename}"
+        src = path.read_text(encoding="utf-8")
+        def complete_plural(match):
+            body = match.group(0)
+            if 'quantity="few"' in body and 'quantity="many"' in body:
+                return body
+            other = re.search(r'<item quantity="other">(.*?)</item>', body, re.S)
+            if not other:
+                sys.exit(f"{path}: plural without other quantity")
+            value = other.group(1)
+            additions = ""
+            if 'quantity="few"' not in body:
+                additions += f'        <item quantity="few">{value}</item>\n'
+            if 'quantity="many"' not in body:
+                additions += f'        <item quantity="many">{value}</item>\n'
+            return body.replace(other.group(0), additions + other.group(0), 1)
+        src = re.sub(r'<plurals\b[^>]*>.*?</plurals>', complete_plural, src, flags=re.S)
+        path.write_text(src, encoding="utf-8")
+
+# Telephony is optional hardware: tablets/Chromebooks can install the app without
+# falsely claiming telephony is mandatory.
+manifest = ENGINE / "app/src/main/AndroidManifest.xml"
+manifest_src = manifest.read_text(encoding="utf-8")
+feature = '<uses-feature android:name="android.hardware.telephony" android:required="false" />'
+if feature not in manifest_src:
+    anchor = '<manifest xmlns:android="http://schemas.android.com/apk/res/android"\n    xmlns:tools="http://schemas.android.com/tools">\n'
+    if manifest_src.count(anchor) != 1: sys.exit("Manifest feature insertion anchor changed")
+    manifest_src = manifest_src.replace(anchor, anchor + "\n    " + feature + "\n", 1)
+manifest.write_text(manifest_src, encoding="utf-8")
+
 print(
     "Verified Shizuku-first defaults (Shizuku backend + automatic incoming/outgoing recording); "
     "ADB prerequisite tests now explicitly select standalone mode."
