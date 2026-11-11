@@ -47,7 +47,7 @@ jobs:
 
       - name: Run release unit tests and Android lint
         working-directory: vendor/CallVault
-        run: env -u GITHUB_ACTIONS ./gradlew --no-daemon --stacktrace :app:testReleaseUnitTest :app:lintRelease
+        run: env -u GITHUB_ACTIONS ./gradlew --no-daemon --stacktrace :app:testDebugUnitTest :app:lintRelease
 
       # Upstream release signing requires the maintainer's private production key.
       # CI deliberately builds unsigned, then signs with a disposable test key for device trials.
