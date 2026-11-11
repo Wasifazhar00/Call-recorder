@@ -55,29 +55,18 @@ Target: CPH2487, Android 16 / OxygenOS 16.0.5, Google Phone, non-rooted.
 OxygenOS may require a separate system-optimization permission adjustment for shell grants. Never
 change that setting automatically; explain its security implications and request the user's choice.
 
-## Preferred manager: Shizuku-Next
+## Shizuku manager and startup choice
 
-For this device trial, prefer [Shizuku-Next](https://github.com/rushiranpise/Shizuku-Next) as the
-Shizuku manager/server app rather than bundling its manager APK into the recorder. CallVault's
-pinned `ShizukuBackend` uses the standard Shizuku API and explicitly supports Shizuku variants;
-it detects the manager by its declared permission rather than assuming only the stock package name.
-Shizuku-Next states that it preserves the Shizuku package/API compatibility, so no fork-specific
-recorder code or private API dependency should be necessary.
+Use the official Shizuku manager as the baseline. CallVault's pinned `ShizukuBackend` uses the public
+Shizuku API and does not need a fork-specific private API or bundled manager code.
 
-Shizuku-Next adds watchdog/recovery and optional boot-start features, plus experimental startup
-methods without Wi-Fi. These are useful to test, not guaranteed capabilities on this OnePlus model.
-The no-Wi-Fi startup modes are documented as experimental/device-dependent; the normal wireless
-debugging and USB/PC start paths remain available. The recorder must not call Shizuku-Next's private
-manager internals or bundle its manager code: it should request permission through the stable Shizuku
-API only.
+A compatible fork such as
+[Shizuku-Next](https://github.com/rushiranpise/Shizuku-Next) may offer additional watchdog or
+experimental no-Wi-Fi startup paths. Treat those as optional experiments, not prerequisites or
+guaranteed features. They have not been verified on CPH2487 / OxygenOS 16.0.5.
 
-**Install warning:** Shizuku-Next uses a different signing key from official Shizuku and other forks.
-Its project says the existing official/fork app must be uninstalled before installing Shizuku-Next;
-an old server may remain active until stopped or the phone is rebooted. Back up setup notes first,
-install only from its official releases, then grant the recorder's Shizuku permission again.
-Do not install or uninstall a manager automatically from the recorder.
-
-Test the normal Shizuku-Next wireless-debugging startup first, then turn wireless debugging off
-while the server remains running and verify calls. Separately test its experimental no-Wi-Fi startup
-and boot recovery after a full reboot. Do not label that path supported until verified on CPH2487 /
-OxygenOS 16.0.5.
+Do not automatically install, uninstall or replace a manager. Forks can use different signing keys
+and may require a separate migration. First test the normal official Shizuku startup, grant this
+recorder permission, then turn Wireless debugging off while the Shizuku server remains alive and
+verify actual incoming/outgoing calls. Separately test any alternative startup and reboot-recovery
+method before describing it as supported.
