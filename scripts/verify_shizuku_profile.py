@@ -71,5 +71,14 @@ require(
     ),
 )
 
+require(
+    "app/src/main/java/com/baba/callvault/server/BypassedAudioRecord.kt",
+    (
+        "Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU",
+        "AttributionSource.Builder(callingUid)",
+        "AttributionSource.myAttributionSource()",
+    ),
+)
+
 print("Call-recording profile verified: incoming + outgoing automation, carrier master switch, "
       "telephony receivers, foreground service and Shizuku binder path are present.")
