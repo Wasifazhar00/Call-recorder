@@ -14,6 +14,7 @@ PIN = "00a77594085d61aee2c8513c649911704fd970c6"
 TARGET = ENGINE / "app/src/main/java/com/baba/callvault/data/AppPreferences.kt"
 TEST = ENGINE / "app/src/test/java/com/baba/callvault/data/health/SetupPrerequisitesTest.kt"
 VOIP_GATE = ENGINE / "app/src/main/java/com/baba/callvault/services/recording/VoipTelephonyGate.kt"
+BYPASSED_AUDIO = ENGINE / "app/src/main/java/com/baba/callvault/server/BypassedAudioRecord.kt"
 
 actual = subprocess.check_output(
     ["git", "-C", str(ENGINE), "rev-parse", "HEAD"], text=True
@@ -59,6 +60,23 @@ if new_gate not in gate_source:
         sys.exit("VoipTelephonyGate permission-guard anchor changed; refusing unsafe patch")
     gate_source = gate_source.replace(old_gate, new_gate, 1)
 VOIP_GATE.write_text(gate_source, encoding="utf-8")
+
+# AttributionSource.myAttributionSource() was added in API 33, while this app
+# supports API 30+. Use the public Builder on Android 12/12L and the framework
+# helper on API 33+; API 30 keeps the legacy native_setup path above.
+audio_source = BYPASSED_AUDIO.read_text(encoding="utf-8")
+old_attribution = "        var source = AttributionSource.myAttributionSource()"
+new_attribution = """        val callingUid = Binder.getCallingUid()
+        var source = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            AttributionSource.myAttributionSource()
+        } else {
+            AttributionSource.Builder(callingUid).setPackageName("uid:$callingUid").build()
+        }"""
+if new_attribution not in audio_source:
+    if audio_source.count(old_attribution) != 1:
+        sys.exit("BypassedAudioRecord attribution-source anchor changed; refusing unsafe patch")
+    audio_source = audio_source.replace(old_attribution, new_attribution, 1)
+BYPASSED_AUDIO.write_text(audio_source, encoding="utf-8")
 
 # Carrier recording must remain globally enabled; the two direction switches control automation.
 for required in (
