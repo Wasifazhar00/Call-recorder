@@ -182,9 +182,9 @@ def patch_file(relative_path, edits):
         if new in text:
             continue
         count = text.count(old)
-        if count != 1:
-            sys.exit(f"{relative_path}: expected one anchor for {description}; found {count}")
-        text = text.replace(old, new, 1)
+        if count < 1:
+            sys.exit(f"{relative_path}: missing anchor for {description}")
+        text = text.replace(old, new)
     path.write_text(text, encoding="utf-8")
 
 # API 31 WorkManager stopReason access: API 30 has no stop reason. On API 30 we
