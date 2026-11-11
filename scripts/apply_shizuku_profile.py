@@ -82,9 +82,9 @@ BYPASSED_AUDIO.write_text(audio_source, encoding="utf-8")
 # WorkInfo.getStopReason() was added in API 31. The app supports API 30,
 # where WorkManager still exposes isStopped but not a stop reason.
 worker_source = MODEL_WORKER.read_text(encoding="utf-8")
-worker_import = "import android.content.Context\\n"
-worker_imported = "import android.content.Context\\nimport android.os.Build\\n"
-if "import android.os.Build\\n" not in worker_source:
+worker_import = "import android.content.Context" + chr(10)
+worker_imported = worker_import + "import android.os.Build" + chr(10)
+if "import android.os.Build" + chr(10) not in worker_source:
     if worker_source.count(worker_import) != 1:
         sys.exit("ModelDownloadWorker Build import anchor changed; refusing unsafe patch")
     worker_source = worker_source.replace(worker_import, worker_imported, 1)
