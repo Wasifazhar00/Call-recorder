@@ -30,15 +30,15 @@ matrix, size policy and battery policy.
 
 ## Build pipeline
 
-The previous upstream debug build succeeded and produced a 129,452,046-byte APK. That is a debug
-artifact and not a release-size baseline.
-
-The new workflow:
+The CI workflow:
 1. Checks out the exact CallVault submodule and its nested native submodules.
-2. Applies the revision-checked Shizuku-first defaults.
-3. Builds the optimized release variant.
-4. Aligns and signs the test artifact with a disposable CI debug key.
-5. Uploads the APK and reports its size.
+2. Applies the revision-checked Shizuku-first defaults twice (idempotence check).
+3. Verifies that the master carrier switch, incoming/outgoing automation defaults, call receivers,
+   foreground service and Shizuku binder path remain connected.
+4. Runs the release unit-test suite and blocking Android lint.
+5. Builds the optimized release variant.
+6. Aligns and signs the test artifact with a disposable CI debug key.
+7. Uploads the APK and reports its size and SHA-256.
 
 The CI signing key is not a production signing key. The artifact is for installation/testing only;
 a permanent signing key and update strategy must be selected before public distribution.
