@@ -68,6 +68,22 @@ of every upstream asset, generated translation, model, native dependency or thir
   debugging session while the Shizuku server is already alive.
 - The app keeps recording state visible and does not suppress announcements or consent notices.
 
+## Android platform caveats found during research
+
+- The app targets Android API 36 (minimum API 30), appropriate for the stated Android 16 device.
+- The carrier state path uses `ACTION_PHONE_STATE_CHANGED`; the outgoing receiver also listens for
+  `ACTION_NEW_OUTGOING_CALL` to preserve the originally dialled number for redirection/metadata.
+  Android deprecated that outgoing broadcast in API 29; from Android 15 it is no longer ordered and
+  Android does not guarantee its timeliness. It is therefore a best-effort number-enrichment signal,
+  not the only trigger for recording. The carrier call-state path still determines incoming/outgoing
+  state and requests the recording.
+- `READ_CALL_LOG` is a hard-restricted Android permission that the installer must allowlist.
+  If the installation path does not allowlist it, call-log lookup and number enrichment may be
+  unavailable even when the app is otherwise installed. This can affect contact filters and
+  displayed caller details; it does not by itself prove that the audio capture path is unavailable.
+- The official Shizuku manager is the baseline recommendation. Compatible forks with experimental
+  no-Wi-Fi startup or watchdog behaviour are not verified on this phone and are not prerequisites.
+
 ## CI evidence and release status
 
 Run #45 (commit `0f69c62220ad21427624ded98141375986b97f43`) passed unit tests, built the release
