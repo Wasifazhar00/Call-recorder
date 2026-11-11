@@ -68,6 +68,11 @@ of every upstream asset, generated translation, model, native dependency or thir
   debugging session while the Shizuku server is already alive.
 - The app keeps recording state visible and does not suppress announcements or consent notices.
 
+The default audio source is Android's `VOICE_CALL` source. The engine requests two capture
+channels for that source on its handoff path (uplink/downlink) and downmixes to the app's normal
+mono recording format. This is the correct intended path for both participants, but the shell-level
+capture result remains OEM-dependent and must be listened to on the OnePlus 11R.
+
 ## Android platform caveats found during research
 
 - The app targets Android API 36 (minimum API 30), appropriate for the stated Android 16 device.
