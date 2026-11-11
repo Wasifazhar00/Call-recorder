@@ -1,68 +1,93 @@
 # Call Recorder for Android
 
-**Project direction:** automatic cellular call recording for incoming and outgoing calls — not a microphone/voice-memo recorder.
-
-This repository previously contained a microphone recorder. That implementation cannot reliably capture the remote side of a cellular call on modern Android, so it is not presented as a call recorder.
+**Product direction:** a local-first automatic cellular call recorder for incoming and outgoing calls,
+with a simple call list, visible recording status and playback.
 
 ## Target device
 
 - OnePlus 11R (CPH2487)
 - Android 16 / OxygenOS 16.0.5
 - Google Phone dialer
-- Non-rooted device
+- Non-rooted
 
-Device-specific compatibility is **not yet verified**. An Android version being supported by an upstream project does not prove that this exact OnePlus model/build will work.
+Exact device compatibility is not yet verified. A successful Android build does not prove that
+OxygenOS exposes both call-audio directions on this model.
 
-## Intended features
+## Recording engine
 
-- Detect incoming and outgoing cellular calls.
-- Start recording automatically after a call connects, according to user-configured rules.
-- Capture both caller and recipient audio when the device audio stack permits it.
-- Save recordings locally with call date/time and available contact metadata.
-- Browse, search, play, export and delete recordings.
-- Show clear recording status and provide user-controlled recording rules.
-- No stealth mode, no attempt to suppress or bypass recording announcements.
+The product build uses [CallVault](https://github.com/madkongo/CallVault), derived from
+[ShizuCallRecorder](https://github.com/kitsumed/ShizuCallRecorder), pinned as the
+`vendor/CallVault` submodule at commit
+`00a77594085d61aee2c8513c649911704fd970c6`.
 
-## Recording engine research
+**Important build layout:** the shipped/test APK is built from `vendor/CallVault`. The top-level
+`app/` directory is the original microphone-recorder prototype and is not included in the
+CallVault release APK. Do not use the top-level Android Studio project as the production build.
+The migration to a single unambiguous root Gradle project remains incomplete.
 
-The selected integration candidate is [CallVault](https://github.com/madkongo/CallVault), a GPL-3.0 project derived from [ShizuCallRecorder](https://github.com/kitsumed/ShizuCallRecorder).
+This product profile selects **Shizuku mode by default**. With Shizuku already running and permission
+granted, the recorder does not need its own Wireless debugging pairing. Wireless debugging can be
+turned off, and core recording/storage/playback work offline. Internet is only needed for optional
+features such as update checks, model downloads or cloud backup.
 
-CallVault's documented architecture uses Android's wireless debugging / embedded ADB shell privileges (or Shizuku) to access call audio. This is fundamentally different from the ordinary `RECORD_AUDIO` microphone API used by the previous app.
+**Important reboot limitation:** on a non-rooted device, Shizuku itself must be started by a supported
+method. Depending on the Shizuku setup, it may need to be restarted after reboot. This app cannot
+promise to re-start Shizuku with every debugging option disabled.
 
-Upstream source reviewed for this integration:
-- CallVault release commit: https://github.com/madkongo/CallVault/commit/00a77594085d61aee2c8513c649911704fd970c6
-- Upstream project documentation: https://github.com/madkongo/CallVault
-- Upstream notices: https://github.com/madkongo/CallVault/blob/main/NOTICE.md
+## Preferred Shizuku manager
 
-## Important status
+For device trials, use [Shizuku-Next](https://github.com/rushiranpise/Shizuku-Next) as the manager.
+The pinned CallVault Shizuku backend uses the stable Shizuku API and supports Shizuku variants, so
+the recorder does not need to embed or fork the manager. Shizuku-Next has optional boot recovery and
+experimental no-Wi-Fi startup, but these are device-dependent and must be verified on the OnePlus 11R.
+It uses a different signing key: follow its official migration instructions before replacing an
+existing Shizuku installation.
 
-The current integration branch pins the complete CallVault source as the `vendor/CallVault` Git submodule at the reviewed commit. A GitHub Actions workflow now attempts to build the upstream debug APK from that pinned source. This is a reproducible upstream build step, not yet a branded or merged application: the existing root Android app is not the call-recording engine, and no successful OnePlus 11R call-capture test has been performed.
+## Product defaults
 
-Before an APK is described as working on this phone, the upstream debug build must succeed, its setup flow must be reviewed, any branding/package changes must preserve upstream attribution, and real incoming/outgoing calls must be tested on the OnePlus 11R.
+The build-time profile sets Shizuku as the default backend and enables automatic incoming/outgoing
+carrier-call recording after the app's disclaimer/onboarding. Either direction can be disabled by
+the user. Recording activity must remain visible and applicable consent requirements must be respected.
+No announcement suppression or stealth recording is implemented.
 
-## OnePlus setup caveats
+## Build
 
-CallVault documents that some OPPO/OnePlus/Realme builds may require an additional Developer options setting, **Disable system optimization**, before the ADB permission grants work. This reduces certain platform protections. Do not enable it unless you understand the trade-off and the setup flow specifically confirms it is required on this device.
+Clone with submodules:
 
-Wireless debugging access may need to be re-established after reboot. OxygenOS background execution also needs to be configured so the recorder is not killed.
+```bash
+git clone --recurse-submodules https://github.com/Wasifazhar00/Call-recorder.git
+cd Call-recorder
+python3 scripts/apply_shizuku_profile.py
+cd vendor/CallVault
+./gradlew :app:assembleRelease
+```
 
-## Privacy, consent and safety
+The GitHub Actions workflow applies the same revision-checked profile, runs release unit tests and
+lint, builds the arm64 release APK, verifies its package/ABI/signature, and records its exact byte
+size and SHA-256. The CI APK is signed with a temporary test key, not a permanent production key.
 
-Call recording laws vary by location. Obtain any consent required by applicable law and respect the other participant's privacy. The app must visibly indicate its recording state and must not claim to bypass system announcements or consent requirements.
+## Battery and size
 
-Recordings should remain on-device unless the user explicitly exports or backs them up.
+The pinned engine already restricts native packaging to `arm64-v8a`, appropriate for this target.
+Core capture is intended to run only around calls. Transcription, summaries, backup and model
+downloads remain optional. A smaller APK does not by itself prove better battery life.
 
-## License
+Do not remove native or service code unless every dependent UI/JNI path is disabled and the call
+recording acceptance tests still pass.
 
-Any code derived from CallVault/ShizuCallRecorder must retain the applicable GPL-3.0 licensing, copyright notices, modification notices and required source-code availability. Review all bundled assets and third-party licenses separately. See [CallVault LICENSE](https://github.com/madkongo/CallVault/blob/main/LICENSE) and [NOTICE](https://github.com/madkongo/CallVault/blob/main/NOTICE.md).
+## Device test status
 
-## Build the pinned upstream debug APK
+No physical OnePlus 11R test has been run from CI. Before describing this as working, verify incoming
+and outgoing calls, both audio directions, offline capture with Wireless debugging off, reboot/Shizuku
+recovery, screen-off behaviour, Bluetooth/wired routing, and finalized playable files on the exact
+target phone.
 
-1. Open the repository's **Actions** tab.
-2. Select **CallVault upstream debug APK** and open the run for the integration branch or pull request.
-3. When the workflow succeeds, download the `callvault-upstream-debug-apk` artifact.
-4. This artifact is the upstream CallVault debug build, not yet a customized build of this repository. Review upstream setup instructions and consent requirements before use.
+## Privacy and licensing
 
-To clone locally with the engine source included, use `git clone --recurse-submodules https://github.com/Wasifazhar00/Call-recorder.git`.
+Call recording laws vary. Obtain consent required by applicable law and respect all participants.
+Keep recordings on-device unless the user explicitly exports or enables backup.
 
-A successful CI build proves only that the upstream source compiles. It does not prove that both sides of calls are captured on the OnePlus 11R. Do not install an APK from the old microphone-recorder workflow expecting cellular call recording.
+Retain the upstream GPL-3.0-or-later license, Section 7 additional terms, copyright notices,
+modification notices and third-party notices. See [UPSTREAM_NOTICES.md](UPSTREAM_NOTICES.md) and the
+upstream [LICENSE](https://github.com/madkongo/CallVault/blob/main/LICENSE) and
+[NOTICE](https://github.com/madkongo/CallVault/blob/main/NOTICE.md).
