@@ -20,10 +20,10 @@ The product build uses [CallVault](https://github.com/madkongo/CallVault), deriv
 `vendor/CallVault` submodule at commit
 `00a77594085d61aee2c8513c649911704fd970c6`.
 
-**Important build layout:** the shipped/test APK is built from `vendor/CallVault`. The top-level
-`app/` directory is the original microphone-recorder prototype and is not included in the
-CallVault release APK. Do not use the top-level Android Studio project as the production build.
-The migration to a single unambiguous root Gradle project remains incomplete.
+**Single product engine:** the shipped/test APK is built from the pinned `vendor/CallVault`
+submodule. The obsolete top-level microphone-only recorder and its competing Gradle project have
+been removed so there is no longer a second, misleading APK target. Open/build the CallVault
+submodule as documented below.
 
 This product profile selects **Shizuku mode by default**. With Shizuku already running and permission
 granted, the recorder does not need its own Wireless debugging pairing. Wireless debugging can be
@@ -62,9 +62,10 @@ cd vendor/CallVault
 ./gradlew :app:assembleRelease
 ```
 
-The GitHub Actions workflow applies the same revision-checked profile, runs release unit tests and
-lint, builds the arm64 release APK, verifies its package/ABI/signature, and records its exact byte
-size and SHA-256. The CI APK is signed with a temporary test key, not a permanent production key.
+The GitHub Actions workflow applies the revision-checked profile twice, verifies the incoming/outgoing
+call wiring, runs unit tests and blocking Android lint, builds the arm64 release APK, verifies its
+package/ABI/signature, and records its exact byte size and SHA-256. The CI APK is signed with a
+temporary test key, not a permanent production key.
 
 ## Battery and size
 
