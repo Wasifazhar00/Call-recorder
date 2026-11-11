@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Apply the repository's reproducible Shizuku-first product defaults to the pinned CallVault source.
+"""Apply reproducible Shizuku-first defaults to the exact pinned CallVault source.
 
-This deliberately edits the checked-out submodule only during a build; upstream history and
-copyright notices remain untouched. Fail closed if the pinned source or expected defaults drift.
+Safe to run repeatedly: already-applied values are accepted, while unexpected source drift fails closed.
+The checked-out submodule is modified only during the build; upstream Git history is untouched.
 """
 from pathlib import Path
 import subprocess
@@ -29,10 +29,15 @@ replacements = {
         "const val AUTO_RECORD_OUTGOING = true",
 }
 for old, new in replacements.items():
-    count = source.count(old)
-    if count != 1:
-        sys.exit(f"Expected exactly one occurrence of {old!r}; found {count}")
-    source = source.replace(old, new, 1)
+    old_count = source.count(old)
+    new_count = source.count(new)
+    if old_count + new_count != 1:
+        sys.exit(
+            f"Expected exactly one original-or-profile value for {old!r}; "
+            f"found original={old_count}, profile={new_count}"
+        )
+    if old_count == 1:
+        source = source.replace(old, new, 1)
 
 TARGET.write_text(source, encoding="utf-8")
-print("Applied Shizuku-first defaults: Shizuku backend, automatic incoming and outgoing recording.")
+print("Verified Shizuku-first defaults: Shizuku backend, automatic incoming and outgoing recording.")
