@@ -179,12 +179,11 @@ def patch_file(relative_path, edits):
     path = ENGINE / relative_path
     text = path.read_text(encoding="utf-8")
     for old, new, description in edits:
-        if new in text:
-            continue
         count = text.count(old)
-        if count < 1:
-            sys.exit(f"{relative_path}: missing anchor for {description}")
-        text = text.replace(old, new)
+        if count:
+            text = text.replace(old, new)
+        elif new not in text:
+            sys.exit(f"{relative_path}: neither original nor patched code found for {description}")
     path.write_text(text, encoding="utf-8")
 
 # API 31 WorkManager stopReason access: API 30 has no stop reason. On API 30 we
@@ -267,7 +266,7 @@ patch_file("app/src/main/java/com/baba/callvault/ui/screens/CallHistoryUi.kt", [
 ("""internal fun callTimeLabel(millis: Long): String {
     val time = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date(millis))""",
 """internal fun callTimeLabel(millis: Long): String {
-    val locale = LocalConfiguration.current.locales[0] ?: Locale.getDefault()
+    val locale = LocalConfiguration.current.locales[0]
     val time = SimpleDateFormat("HH:mm", locale).format(Date(millis))""", "observable locale"),
 ("""else -> SimpleDateFormat("dd/MM/yy HH:mm", Locale.getDefault()).format(Date(millis))""",
 """else -> SimpleDateFormat("dd/MM/yy HH:mm", locale).format(Date(millis))""", "observable date locale")
