@@ -230,7 +230,9 @@ for relative, flag_line in mux_files:
     path = ENGINE / relative
     src = path.read_text(encoding="utf-8")
     if "private fun muxerFlagsFromSampleFlags" not in src:
-        package_end = src.index("\n\n", src.index("package "))
+        declaration_anchor = "\n/**\n"
+        if src.count(declaration_anchor) < 1:
+            sys.exit(f"{relative}: declaration insertion anchor changed")
         helper = """
 
 /** Convert MediaExtractor sample flags to the distinct MediaCodec.BufferInfo flag domain. */
@@ -248,7 +250,7 @@ private fun muxerFlagsFromSampleFlags(sampleFlags: Int): Int {
     return flags
 }
 """
-        src = src[:package_end] + helper + src[package_end:]
+        src = src.replace(declaration_anchor, helper + declaration_anchor, 1)
     if "import android.media.MediaExtractor\n" not in src:
         anchor = "import android.media.MediaFormat\n"
         if src.count(anchor) != 1: sys.exit(f"{relative}: MediaExtractor import anchor changed")
@@ -261,7 +263,7 @@ private fun muxerFlagsFromSampleFlags(sampleFlags: Int): Int {
 
 # Compose locale reads must be observable so configuration changes recompose the label.
 patch_file("app/src/main/java/com/baba/callvault/ui/screens/CallHistoryUi.kt", [
-("import androidx.compose.ui.platform.LocalContext\n", "import androidx.compose.ui.platform.LocalContext\nimport androidx.compose.ui.platform.LocalConfiguration\n", "configuration import"),
+("import androidx.compose.ui.res.stringResource\n", "import androidx.compose.ui.res.stringResource\nimport androidx.compose.ui.platform.LocalConfiguration\n", "configuration import"),
 ("""internal fun callTimeLabel(millis: Long): String {
     val time = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date(millis))""",
 """internal fun callTimeLabel(millis: Long): String {
