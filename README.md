@@ -34,14 +34,16 @@ features such as update checks, model downloads or cloud backup.
 method. Depending on the Shizuku setup, it may need to be restarted after reboot. This app cannot
 promise to re-start Shizuku with every debugging option disabled.
 
-## Preferred Shizuku manager
+## Shizuku manager
 
-For device trials, use [Shizuku-Next](https://github.com/rushiranpise/Shizuku-Next) as the manager.
-The pinned CallVault Shizuku backend uses the stable Shizuku API and supports Shizuku variants, so
-the recorder does not need to embed or fork the manager. Shizuku-Next has optional boot recovery and
-experimental no-Wi-Fi startup, but these are device-dependent and must be verified on the OnePlus 11R.
-It uses a different signing key: follow its official migration instructions before replacing an
-existing Shizuku installation.
+Use the official Shizuku manager unless you have a specific reason to test a compatible fork.
+The recorder uses Shizuku's public API and does not need a bundled or modified manager.
+
+On a non-rooted phone, Shizuku still needs a supported startup method. Wireless debugging or
+starting it over USB from a computer are established options. Compatible forks may offer additional
+startup or recovery experiments, but none has been verified on the OnePlus 11R / OxygenOS 16.0.5.
+Do not uninstall or replace an existing Shizuku manager merely to try an experimental startup method;
+manager forks can use different signing keys and require a separate migration.
 
 ## Product defaults
 
