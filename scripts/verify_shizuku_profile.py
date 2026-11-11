@@ -72,6 +72,15 @@ require(
 )
 
 require(
+    "app/src/test/java/com/baba/callvault/data/health/SetupPrerequisitesTest.kt",
+    (
+        'Settings.Global.putInt(context.contentResolver, "adb_wifi_enabled", 0)',
+        "preferences.setOfflineRecordingEnabled(false)",
+        "preferences.setPrivilegedMode(PrivilegedMode.STANDALONE)",
+    ),
+)
+
+require(
     "app/src/main/java/com/baba/callvault/server/BypassedAudioRecord.kt",
     (
         "Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU",

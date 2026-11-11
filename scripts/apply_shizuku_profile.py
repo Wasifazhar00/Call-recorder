@@ -91,6 +91,21 @@ for required in (
 # These tests exercise the built-in ADB prerequisite path. Make that fixture explicit:
 # the production build's Shizuku default must not silently change what the tests are testing.
 test_source = TEST.read_text(encoding="utf-8")
+# Keep alternate live transports disabled so Robolectric state from another test cannot
+# change the missing-grant assertion.
+old_satisfy = """    private fun satisfyAllPrerequisites() {
+        preferences.setRecordingFolderUri("content://tree/a".toUri())
+"""
+new_satisfy = """    private fun satisfyAllPrerequisites() {
+        Settings.Global.putInt(context.contentResolver, "adb_wifi_enabled", 0)
+        preferences.setOfflineRecordingEnabled(false)
+        preferences.setRecordingFolderUri("content://tree/a".toUri())
+"""
+if new_satisfy not in test_source:
+    if test_source.count(old_satisfy) != 1:
+        sys.exit("SetupPrerequisitesTest prerequisite fixture anchor changed; refusing unsafe patch")
+    test_source = test_source.replace(old_satisfy, new_satisfy, 1)
+
 old_import = "import com.baba.callvault.data.AppPreferences\n"
 new_import = old_import + "import com.baba.callvault.data.PrivilegedMode\n"
 old_fixture = "    private val preferences = AppPreferences(context)\n"
@@ -98,6 +113,8 @@ new_fixture = old_fixture + """
     @Before
     fun selectStandaloneModeForAdbPrerequisiteTests() {
         preferences.setPrivilegedMode(PrivilegedMode.STANDALONE)
+        // These tests exercise the missing-grant branch, not the alternate live transports.
+        preferences.setOfflineRecordingEnabled(false)
     }
 """
 if new_import not in test_source:
