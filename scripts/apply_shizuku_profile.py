@@ -406,6 +406,136 @@ patch_file("app/src/test/java/com/baba/callvault/onboarding/OnboardingGateTest.k
 """, "returning-user navigation regression tests")
 ])
 
+
+# Add a read-only report from the actual shell recorder host. Never attempt protected grants.
+patch_file("app/src/main/aidl/com/baba/callvault/server/IRecorderService.aidl", [
+("""    String approveWirelessDebuggingNetwork(boolean alwaysAllow);
+}""",
+"""    String approveWirelessDebuggingNetwork(boolean alwaysAllow);
+
+    /** Read-only protected capture permission report. Appended to preserve Binder transaction IDs. */
+    String capturePermissionReport();
+}""", "append capture permission diagnostics")
+])
+
+patch_file("app/src/main/java/com/baba/callvault/server/RecorderServiceImpl.kt", [
+("""    companion object {
+        private const val TAG = "CV:RecorderServer"
+""",
+"""    override fun capturePermissionReport(): String {
+        val uid = android.os.Process.myUid()
+        val permissions = listOf(
+            "android.permission.CAPTURE_AUDIO_OUTPUT",
+            "android.permission.CAPTURE_VOICE_COMMUNICATION_OUTPUT",
+        )
+        val checks = permissions.joinToString("\\n") { permission ->
+            val status = runCatching {
+                val process = ProcessBuilder(
+                    "/system/bin/cmd", "package", "check-permission", permission, "com.android.shell"
+                ).redirectErrorStream(true).start()
+                if (!process.waitFor(3, TimeUnit.SECONDS)) {
+                    process.destroyForcibly()
+                    "unknown (check timed out)"
+                } else {
+                    val output = process.inputStream.bufferedReader().use { it.readText() }.trim()
+                    when {
+                        output.equals("granted", ignoreCase = true) -> "granted"
+                        output.equals("denied", ignoreCase = true) -> "denied"
+                        else -> "unknown ($output)"
+                    }
+                }
+            }.getOrElse { "unknown (" + it.javaClass.simpleName + ")" }
+            "$permission: $status"
+        }
+        return "Recorder host UID: $uid\\nPermission checks target com.android.shell (not the CallVault app):\\n$checks\\nA granted permission is necessary but does not prove live cellular-call capture."
+    }
+
+    companion object {
+        private const val TAG = "CV:RecorderServer"
+""", "read-only protected capture permission report")
+])
+
+patch_file("app/src/main/java/com/baba/callvault/ui/screens/SettingsAboutDebugSection.kt", [
+("""import com.baba.callvault.server.RecorderBackend
+""",
+"""import com.baba.callvault.server.RecorderBackend
+import com.baba.callvault.server.RecorderConnection
+""", "recorder connection import"),
+("""    SettingsSection(title = stringResource(R.string.settings_section_debug), expanded = expanded, onToggle = onToggle) {
+        SettingsToggleRow(
+""",
+"""    SettingsSection(title = stringResource(R.string.settings_section_debug), expanded = expanded, onToggle = onToggle) {
+        CapturePermissionDiagnostics()
+        SettingsDivider()
+        SettingsToggleRow(
+""", "capture diagnostics section")
+])
+
+patch_file("app/src/main/java/com/baba/callvault/ui/screens/SettingsAboutDebugSection.kt", [
+("""/** How much of the log the in-app viewer shows. The file self-trims at 1000 lines. */
+""",
+"""/**
+ * Reads the live recorder host instead of inferring its privileges from the app UI.
+ * A permission result is diagnostic only; it does not guarantee cellular-call capture.
+ */
+@Composable
+private fun CapturePermissionDiagnostics() {
+    var report by remember { mutableStateOf<String?>(null) }
+    var checking by remember { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
+
+    Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp)) {
+        Text("Capture capability diagnostics", style = MaterialTheme.typography.titleSmall)
+        Text(
+            "Reads the active recorder UID and checks Android protected audio permissions for the shell host. This is read-only and does not record a call.",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        Spacer(Modifier.height(8.dp))
+        CvSecondaryButton(
+            text = if (checking) "Checking…" else "Check recorder permissions",
+            onClick = {
+                if (!checking) {
+                    checking = true
+                    scope.launch {
+                        report = withContext(Dispatchers.IO) {
+                            val service = RecorderConnection.service
+                                ?: return@withContext "Recorder service is not connected. Start the selected backend and check again."
+                            runCatching { service.capturePermissionReport() }
+                                .getOrElse { "Could not query recorder: " + it.javaClass.simpleName + ": " + (it.message ?: "no details") }
+                        }
+                        checking = false
+                    }
+                }
+            },
+            modifier = Modifier.fillMaxWidth(),
+        )
+        if (checking) {
+            Spacer(Modifier.height(8.dp))
+            LinearProgressIndicator(Modifier.fillMaxWidth())
+        }
+        report?.let {
+            Spacer(Modifier.height(8.dp))
+            Surface(
+                modifier = Modifier.fillMaxWidth(),
+                color = MaterialTheme.colorScheme.surfaceVariant,
+                shape = MaterialTheme.shapes.medium,
+            ) {
+                Text(it, modifier = Modifier.padding(12.dp), style = MaterialTheme.typography.bodySmall)
+            }
+        }
+        Spacer(Modifier.height(4.dp))
+        Text(
+            "Denied or unknown means Android/OEM firmware is not exposing that capability to the shell host. Granted does not prove successful two-sided cellular recording; that still requires incoming and outgoing call tests on this phone.",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+    }
+}
+
+/** How much of the log the in-app viewer shows. The file self-trims at 1000 lines. */
+""", "capture diagnostics UI")
+])
 # Shizuku-Next is a drop-in manager: it retains Shizuku's package/API/permission contract.
 # The app must continue using the public Shizuku API and discover the manager by its declared permission,
 # never hard-code a fork-specific package name.
