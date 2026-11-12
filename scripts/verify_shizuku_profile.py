@@ -98,5 +98,23 @@ require(
     ),
 )
 
+
+require(
+    "app/src/main/aidl/com/baba/callvault/server/IRecorderService.aidl",
+    ("String capturePermissionReport();",),
+)
+require(
+    "app/src/main/java/com/baba/callvault/server/RecorderServiceImpl.kt",
+    ("override fun capturePermissionReport(): String", "CAPTURE_AUDIO_OUTPUT", "CAPTURE_VOICE_COMMUNICATION_OUTPUT"),
+)
+require(
+    "app/src/main/java/com/baba/callvault/ui/screens/SettingsAboutDebugSection.kt",
+    ("CapturePermissionDiagnostics()", "service.capturePermissionReport()", "RecorderConnection.service"),
+)
+require(
+    "app/src/test/java/com/baba/callvault/server/RecorderTransactionCodesTest.kt",
+    ("TRANSACTION_capturePermissionReport",),
+)
+
 print("Call-recording profile verified: incoming + outgoing automation, carrier master switch, "
       "telephony receivers, foreground service and Shizuku binder path are present.")
