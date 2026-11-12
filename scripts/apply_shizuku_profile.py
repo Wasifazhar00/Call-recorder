@@ -536,6 +536,24 @@ private fun CapturePermissionDiagnostics() {
 /** How much of the log the in-app viewer shows. The file self-trims at 1000 lines. */
 """, "capture diagnostics UI")
 ])
+
+# Keep the new AIDL report at the end of the positional transaction table.
+patch_file("app/src/test/java/com/baba/callvault/server/RecorderTransactionCodesTest.kt", [
+("""        assertEquals(first + 27, IRecorderService.Stub.TRANSACTION_approveWirelessDebuggingNetwork)
+""",
+"""        assertEquals(first + 27, IRecorderService.Stub.TRANSACTION_approveWirelessDebuggingNetwork)
+        assertEquals(first + 28, IRecorderService.Stub.TRANSACTION_capturePermissionReport)
+""", "capture permission report transaction code")
+])
+
+patch_file("app/src/main/java/com/baba/callvault/ui/screens/SettingsAboutDebugSection.kt", [
+("""import kotlinx.coroutines.withContext
+""",
+"""import kotlinx.coroutines.withContext
+import kotlinx.coroutines.launch
+""", "diagnostics coroutine launch import")
+])
+
 # Shizuku-Next is a drop-in manager: it retains Shizuku's package/API/permission contract.
 # The app must continue using the public Shizuku API and discover the manager by its declared permission,
 # never hard-code a fork-specific package name.
