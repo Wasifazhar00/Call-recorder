@@ -52,6 +52,10 @@ carrier-call recording after the app's disclaimer/onboarding. Either direction c
 the user. Recording activity must remain visible and applicable consent requirements must be respected.
 No announcement suppression or stealth recording is implemented.
 
+## AI project graph
+
+For AI-assisted review and handoff, see the [shareable architecture and knowledge graph](docs/AI_PROJECT_GRAPH.md) and its [machine-readable JSON graph](docs/AI_PROJECT_GRAPH.json). These describe the repository structure, pinned engine, privilege backends, recording/data flow, CI pipeline and target-device validation boundaries.
+
 ## Build
 
 Clone with submodules:
