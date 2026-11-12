@@ -28,6 +28,30 @@ pinned submodule. It intentionally does not rewrite upstream history or remove u
 See [SHIZUKU_FIRST_PROFILE.md](SHIZUKU_FIRST_PROFILE.md) for the reboot limitation, offline test
 matrix, size policy and battery policy.
 
+## Offline operation and fallback boundary
+
+Offline operation is distinct from an audio-capture backend. The app can record locally with an
+already-running, authorized Shizuku server; its embedded ADB mode has its own local debugging
+requirements. Internet access is not required for the core local recording path after setup. Optional
+features such as release updates, cloud backup, remote model downloads and cloud transcription need
+network access and should remain disabled or unavailable in a strict offline session. Local playback
+and already-installed on-device models remain local.
+
+There is currently **no Accessibility-based cellular-call audio recorder** in the pinned engine.
+Accessibility may observe permitted UI events and, on some Android versions, may be allowed to use
+the microphone input during a call. It does not grant the protected call downlink or the
+`CAPTURE_AUDIO_OUTPUT` permission. Therefore a microphone-only fallback, if added in a future
+version, must be an explicit opt-in, visibly disclosed, foreground-notified, and labelled
+"Microphone-only — remote caller may be missing". It must never be represented as two-sided capture,
+must not silently switch audio routes or enable speakerphone, and must not save a failed/near-silent
+capture as a successful recording.
+
+A normal third-party app cannot become a system/privileged process by enabling Accessibility or
+using Shizuku to impersonate Android's system identity. Do not add process-identity spoofing,
+signature-permission workarounds, hidden capture APIs, or announcement suppression. Reliable
+two-sided capture remains dependent on a supported privileged/OEM capture route and successful
+device-level tests. On this OnePlus 11R target, that remains unverified.
+
 ## Build pipeline
 
 The CI workflow:
