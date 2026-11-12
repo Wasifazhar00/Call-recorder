@@ -350,6 +350,65 @@ if feature not in manifest_src:
     manifest_src = manifest_src.replace(anchor, anchor + "\n    " + feature + "\n", 1)
 manifest.write_text(manifest_src, encoding="utf-8")
 
+# A completed user must not be ejected from Home/Settings merely because they turn
+# Shizuku off. Initial onboarding still requires a working transport; returning users
+# retain access to Settings so they can pair embedded ADB or re-enable Shizuku.
+patch_file("app/src/main/java/com/baba/callvault/onboarding/OnboardingStatus.kt", [
+("""        /**
+         * Returns true only when every prerequisite is satisfied, including the disclaimer.
+         */""",
+"""        /**
+         * A returning user may remain in Home while changing recorder transports.
+         * This deliberately does not make setup complete: it only prevents a transport
+         * switch from trapping the user outside Settings. All actual permissions remain required.
+         */
+        fun canReturnToHome(): Boolean =
+            wizardCompleted &&
+                disclaimerAccepted &&
+                notificationsGranted &&
+                contactsGranted &&
+                phoneStateGranted &&
+                callLogGranted &&
+                batteryExempted
+
+        /**
+         * Returns true only when every prerequisite is satisfied, including the disclaimer.
+         */""", "returning-user transport fallback")
+])
+
+patch_file("app/src/main/java/com/baba/callvault/AppNavigationScreen.kt", [
+("""        !status.isComplete()       -> AppScreen.Permissions""",
+"""        !status.isComplete() && !status.canReturnToHome() -> AppScreen.Permissions""",
+"keep returning users in Home after transport changes")
+])
+
+patch_file("app/src/test/java/com/baba/callvault/onboarding/OnboardingGateTest.kt", [
+("""    /**
+     * Storage deliberately does not gate this — folder choice moved into the wizard. Pinned because it
+""",
+"""    /** Turning Shizuku off after setup must not trap a returning user on onboarding. */
+    @Test
+    fun `completed user can return to home without a transport`() {
+        val returningUser = status(adbConnected = false)
+        assertFalse(returningUser.isComplete())
+        assertTrue(returningUser.canReturnToHome())
+    }
+
+    /** Revoked permissions still require the user to return to setup. */
+    @Test
+    fun `returning user with a revoked permission cannot bypass onboarding`() {
+        val returningUser = status(adbConnected = false, batteryExempted = false)
+        assertFalse(returningUser.canReturnToHome())
+    }
+
+    /**
+     * Storage deliberately does not gate this — folder choice moved into the wizard. Pinned because it
+""", "returning-user navigation regression tests")
+])
+
+# Shizuku-Next is a drop-in manager: it retains Shizuku's package/API/permission contract.
+# The app must continue using the public Shizuku API and discover the manager by its declared permission,
+# never hard-code a fork-specific package name.
 print(
     "Verified Shizuku-first defaults (Shizuku backend + automatic incoming/outgoing recording); "
     "ADB prerequisite tests now explicitly select standalone mode."
