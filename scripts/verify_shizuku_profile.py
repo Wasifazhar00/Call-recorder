@@ -118,3 +118,16 @@ require(
 
 print("Call-recording profile verified: incoming + outgoing automation, carrier master switch, "
       "telephony receivers, foreground service and Shizuku binder path are present.")
+
+
+# Pin the cellular-call capture route: both directions are captured through the
+# privileged VOICE_CALL source in the shell-UID recorder. Do not replace this
+# with two competing AudioRecord sessions without device-level concurrency tests.
+require(
+    "app/src/main/java/com/baba/callvault/integrations/scrcpy/ScrcpyAudioSourceMapping.kt",
+    ('"voice-call" -> MediaRecorder.AudioSource.VOICE_CALL',),
+)
+require(
+    "app/src/test/java/com/baba/callvault/integrations/scrcpy/ScrcpyAudioSourceMappingTest.kt",
+    ("voice call maps to the privileged call source", "MediaRecorder.AudioSource.VOICE_CALL"),
+)
