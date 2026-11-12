@@ -80,6 +80,15 @@ flowchart TD
 - In Shizuku mode, this app does not need its own Wireless Debugging pairing once Shizuku is running and permission has been granted. A non-rooted phone still needs a supported way to start Shizuku, and reboot recovery must be tested.
 - The built-in ADB backend is a separate mode with its own setup/debugging requirements.
 
+## Offline and Accessibility fallback constraints
+
+Offline mode is a network-policy setting, not a third audio-capture backend. Shizuku and embedded
+ADB are the implemented capture transports. Accessibility is not currently wired as a cellular-call
+audio recorder. A future microphone-only fallback would be best-effort and potentially one-sided;
+it cannot be labelled two-sided or treated as a substitute for privileged downlink capture. Do not
+spoof system identity, bypass signature permissions, suppress announcements, or silently change
+audio routes. See [CALL_RECORDING_INTEGRATION.md](CALL_RECORDING_INTEGRATION.md).
+
 ## Build and verification path
 
 ```text
