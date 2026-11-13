@@ -58,6 +58,10 @@ require(
         ".services.call.NewOutgoingCallReceiver",
         ".services.recording.RecordingForegroundService",
         "moe.shizuku.manager.permission.API_V23",
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.READ_CALL_LOG",
+        "android.permission.READ_CONTACTS",
+        "android.permission.POST_NOTIFICATIONS",
     ),
 )
 require(
