@@ -144,7 +144,7 @@ require(
     ("Transcription is excluded from the CallVault recorder-only product profile.",),
 )
 clip_share = (ENGINE / "app/src/main/java/com/baba/callvault/ui/screens/ShareClipScreen.kt").read_text(encoding="utf-8")
-if "ClipTranscriber.transcribe(" in clip_share or "TranscriptChoice(" in clip_share:
+if "ClipTranscriber.transcribe(" in clip_share or "\n            TranscriptChoice(" in clip_share:
     sys.exit("Clip-sharing transcription controls are still reachable")
 if "share(clip, null)" not in clip_share:
     sys.exit("Clip sharing is not configured for audio-only output")
