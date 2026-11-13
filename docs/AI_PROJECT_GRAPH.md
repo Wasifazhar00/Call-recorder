@@ -35,8 +35,7 @@ flowchart TD
     Capture --> Audio[Native audio handoff / capture]
     Audio --> Files[Local audio files and metadata]
     Files --> Library
-    Library --> AI[Optional on-device transcription / summaries]
-    AI --> Library
+    Library
     Engine --> DB[Local databases and preferences]
     CI[GitHub Actions] --> Checkout[Checkout repo + recursive submodules]
     Checkout --> Patch
@@ -69,7 +68,7 @@ flowchart TD
 3. The capture service obtains the required privileged execution through the selected backend.
 4. The selected backend is either the Shizuku public API (using an already-running Shizuku-compatible server) or CallVault's built-in ADB flow. The repository profile defaults to Shizuku.
 5. Audio and call metadata are finalized into local storage and surfaced in the recording library.
-6. Transcription, summaries, speaker labels, search and export are downstream features; model downloads are optional.
+6. Transcription, summaries, and AI model downloads are excluded from the product build.
 7. GitHub Actions checks the profile and tests/lints/builds the pinned engine into an arm64 test APK.
 
 ## Privilege backend notes

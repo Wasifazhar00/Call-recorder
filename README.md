@@ -27,8 +27,7 @@ submodule as documented below.
 
 This product profile selects **Shizuku mode by default**. With Shizuku already running and permission
 granted, the recorder does not need its own Wireless debugging pairing. Wireless debugging can be
-turned off, and core recording/storage/playback work offline. Internet is only needed for optional
-features such as update checks, model downloads or cloud backup.
+turned off, and core recording/storage/playback work offline. Internet is only needed for update checks or cloud backup.
 
 **Important reboot limitation:** on a non-rooted device, Shizuku itself must be started by a supported
 method. Depending on the Shizuku setup, it may need to be restarted after reboot. This app cannot
@@ -76,8 +75,7 @@ temporary test key, not a permanent production key.
 ## Battery and size
 
 The pinned engine already restricts native packaging to `arm64-v8a`, appropriate for this target.
-Core capture is intended to run only around calls. Transcription, summaries, backup and model
-downloads remain optional. A smaller APK does not by itself prove better battery life.
+Core capture is intended to run only around calls. AI transcription, summaries and model downloads are excluded from the product build. Backup remains optional. A smaller APK does not by itself prove better battery life.
 
 Do not remove native or service code unless every dependent UI/JNI path is disabled and the call
 recording acceptance tests still pass.

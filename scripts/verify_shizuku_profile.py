@@ -16,6 +16,20 @@ def require(path: str, needles: tuple[str, ...]) -> None:
         sys.exit(f"{path} is missing required profile wiring: {missing}")
 
 require(
+    "app/src/main/cpp/CMakeLists.txt",
+    ("add_library(audiohandoff SHARED audiohandoff.cpp)",),
+)
+if "whisper" in (ENGINE / "app/src/main/cpp/CMakeLists.txt").read_text(encoding="utf-8").lower():
+    sys.exit("AI inference native targets must not be included in the product build")
+for removed_asset in (
+    "app/src/main/cpp/whispercv.cpp",
+    "app/src/main/cpp/llamacv.cpp",
+    "app/src/main/assets/ggml-silero-v5.1.2.bin",
+):
+    if (ENGINE / removed_asset).exists():
+        sys.exit(f"Removed AI runtime asset is still present: {removed_asset}")
+
+require(
     "app/src/main/java/com/baba/callvault/data/AppPreferences.kt",
     (
         "const val CARRIER_RECORDING_ENABLED = true",

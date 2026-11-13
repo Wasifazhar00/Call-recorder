@@ -116,6 +116,29 @@ if new_stop_reason not in worker_source:
     worker_source = worker_source.replace(closing, replacement, 1)
 MODEL_WORKER.write_text(worker_source, encoding="utf-8")
 
+
+# CallVault product profile: keep only the native audio-handoff library required by
+# resilient call recording. Whisper/llama inference engines are excluded from this product.
+native_cmake = ENGINE / "app/src/main/cpp/CMakeLists.txt"
+native_cmake.write_text("""# Native component required for resilient call-recording audio handoff.
+cmake_minimum_required(VERSION 3.22.1)
+project(audiohandoff)
+add_link_options($<$<NOT:$<CONFIG:Debug>>:-Wl,--strip-all>)
+add_link_options("LINKER:--build-id=none")
+get_filename_component(CALLVAULT_REPO_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/../../../.. ABSOLUTE)
+add_compile_options("-ffile-prefix-map=${CALLVAULT_REPO_ROOT}=.")
+add_library(audiohandoff SHARED audiohandoff.cpp)
+find_library(log-lib log)
+target_link_libraries(audiohandoff ${log-lib})
+""", encoding="utf-8")
+for obsolete in (
+    ENGINE / "app/src/main/cpp/whispercv.cpp",
+    ENGINE / "app/src/main/cpp/llamacv.cpp",
+    ENGINE / "app/src/main/assets/ggml-silero-v5.1.2.bin",
+):
+    if obsolete.exists():
+        obsolete.unlink()
+
 # Carrier recording must remain globally enabled; the two direction switches control automation.
 for required in (
     "const val CARRIER_RECORDING_ENABLED = true",
