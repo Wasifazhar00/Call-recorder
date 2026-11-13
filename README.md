@@ -75,7 +75,7 @@ temporary test key, not a permanent production key.
 ## Battery and size
 
 The pinned engine already restricts native packaging to `arm64-v8a`, appropriate for this target.
-Core capture is intended to run only around calls. AI transcription, summaries and model downloads are excluded from the product build. Backup remains optional. A smaller APK does not by itself prove better battery life.
+Core capture is intended to run only around calls. Whisper/Llama native inference targets and the bundled Silero model are removed from the product build. The remaining Kotlin AI screens and workflow code are still pending removal. A smaller APK does not by itself prove better battery life.
 
 Do not remove native or service code unless every dependent UI/JNI path is disabled and the call
 recording acceptance tests still pass.

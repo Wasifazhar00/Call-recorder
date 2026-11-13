@@ -68,7 +68,7 @@ flowchart TD
 3. The capture service obtains the required privileged execution through the selected backend.
 4. The selected backend is either the Shizuku public API (using an already-running Shizuku-compatible server) or CallVault's built-in ADB flow. The repository profile defaults to Shizuku.
 5. Audio and call metadata are finalized into local storage and surfaced in the recording library.
-6. Transcription, summaries, and AI model downloads are excluded from the product build.
+6. Whisper/Llama native inference targets and the bundled Silero model are excluded from the product build; Kotlin AI screens and workflow code remain pending removal.
 7. GitHub Actions checks the profile and tests/lints/builds the pinned engine into an arm64 test APK.
 
 ## Privilege backend notes
