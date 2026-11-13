@@ -149,6 +149,11 @@ if "SummaryCard(" in playback:
 hub = (ENGINE / "app/src/main/java/com/baba/callvault/ui/screens/HubScreen.kt").read_text(encoding="utf-8")
 if "onOpenSection(HomeSection.Transcripts)" in hub or "onOpenSection(HomeSection.Summaries)" in hub:
     sys.exit("Transcript or summary cards are still exposed on the Home hub")
+if "AI transcript and summary cards are excluded from this product profile." not in hub:
+    sys.exit("Home hub feature-removal patch was not applied")
+playback = (ENGINE / "app/src/main/java/com/baba/callvault/ui/screens/PlaybackScreen.kt").read_text(encoding="utf-8")
+if "SummaryCard(" in playback or "Summary UI is excluded from the CallVault recorder-only product profile." not in playback:
+    sys.exit("Summary card removal from playback was not applied")
 require(
     "app/src/main/java/com/baba/callvault/ui/screens/ScopedSettingsContent.kt",
     ("SettingsGroup.MODEL_AND_LANGUAGE", "SettingsGroup.WHEN_TO_TRANSCRIBE", "SettingsGroup.SUMMARIES"),
