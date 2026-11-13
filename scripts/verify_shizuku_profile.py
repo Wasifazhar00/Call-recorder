@@ -145,3 +145,10 @@ require(
     "app/src/test/java/com/baba/callvault/integrations/scrcpy/ScrcpyAudioSourceMappingTest.kt",
     ("voice call maps to the privileged call source", "MediaRecorder.AudioSource.VOICE_CALL"),
 )
+
+# Keep the carrier-call path from silently enabling speakerphone. The user-selected
+# handset route remains authoritative; recording must not force an audio-route change.
+for source_file in (ENGINE / "app/src/main").rglob("*.kt"):
+    source = source_file.read_text(encoding="utf-8")
+    if "setSpeakerphoneOn(true)" in source:
+        sys.exit(f"CallVault must not force speakerphone: {source_file.relative_to(ENGINE)}")
