@@ -12,6 +12,21 @@ permissions, lifecycle handling, recovery, local recording library and playback.
 with a microphone-only `MediaRecorder` implementation: ordinary apps cannot reliably capture both
 cellular call directions through that API on modern Android.
 
+## Android permissions and dialer compatibility
+
+The manifest requests the ordinary app permissions used for call-state detection and metadata:
+`READ_PHONE_STATE`, `READ_CALL_LOG`, and `READ_CONTACTS`; notifications are requested
+through `POST_NOTIFICATIONS`. The setup flow requests these through Android's runtime permission
+UI and must respect denial or revocation. These permissions allow CallVault to observe supported
+call-state/call-log information; they do **not** grant access to Google Phone's private audio
+pipeline or the protected `CAPTURE_AUDIO_OUTPUT` permission.
+
+There is no public Google Phone permission that a third-party app can request to obtain its
+internal uplink/downlink audio stream. Likewise, OnePlus/Oplus dialer permissions protected by
+the platform signature or phone UID cannot be granted to `com.baba.callvault` by adding a
+manifest declaration, Shizuku app-op, or role change. The supported CallVault capture route
+remains the shell-UID `VOICE_CALL` backend, subject to the device actually authorizing it.
+
 ## OEM dialer / InCallUI audit
 
 The supplied OnePlus/Oplus package audit exposed call-recording helpers inside the privileged
