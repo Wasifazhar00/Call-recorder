@@ -12,6 +12,25 @@ permissions, lifecycle handling, recovery, local recording library and playback.
 with a microphone-only `MediaRecorder` implementation: ordinary apps cannot reliably capture both
 cellular call directions through that API on modern Android.
 
+## OEM dialer / InCallUI audit
+
+The supplied OnePlus/Oplus package audit exposed call-recording helpers inside the privileged
+Oplus in-call application. Those helpers run in the phone/OEM security domain and rely on
+platform-protected permissions and UID/signature privileges. Copying the wrapper classes into
+CallVault, declaring the same permission in a normal app manifest, or requesting Shizuku access
+does not transfer those privileges. The Oplus implementation is therefore not a usable drop-in
+third-party backend for this package.
+
+CallVault continues to use its existing shell-UID `VOICE_CALL` capture path through Shizuku.
+The in-app **Capture capability diagnostics** report checks protected permission availability for
+the recorder host; it is diagnostic only and cannot prove that OxygenOS will deliver both sides of
+a live call. The final proof remains a real incoming and outgoing call test on the target handset.
+
+The audit also found no supported third-party API for suppressing Google Phone's mandatory
+recording disclosure. The app must not patch the dialer, mute announcements, spoof the phone UID,
+or silently force speakerphone. CallVault does not need to change the user's audio route to start
+its recorder.
+
 ## Product profile applied by this repository
 
 `scripts/apply_shizuku_profile.py` applies a revision-checked set of build-time defaults to the
