@@ -577,6 +577,165 @@ import kotlinx.coroutines.launch
 """, "diagnostics coroutine launch import")
 ])
 
+
+# CallVault recorder-only product profile. Remove all user-facing entry points to
+# transcription/summarisation and cancel any old queued AI work on first Home entry.
+# Keep the upstream data/schema classes intact so existing installations upgrade
+# without destructive database migrations or loss of recordings/history.
+patch_file("app/src/main/java/com/baba/callvault/ui/screens/HubScreen.kt", [
+("""                item {
+                    HubCard(
+                        icon = Icons.AutoMirrored.Filled.Article,
+                        accent = brand.info,
+                        count = stringResource(R.string.home_transcripts_count, transcriptsCount),
+                        title = stringResource(R.string.home_transcripts_title),
+                        body = stringResource(R.string.home_hub_transcripts_body),
+                        onClick = { onOpenSection(HomeSection.Transcripts) },
+                    )
+                }
+                item {
+                    HubCard(
+                        icon = Icons.Filled.AutoAwesome,
+                        accent = brand.success,
+                        count = stringResource(R.string.home_summaries_count, summariesCount),
+                        title = stringResource(R.string.home_summaries_title),
+                        body = stringResource(R.string.home_hub_summaries_body),
+                        onClick = { onOpenSection(HomeSection.Summaries) },
+                    )
+                }
+""", "", "remove transcript and summary hub cards")
+])
+patch_file("app/src/main/java/com/baba/callvault/ui/screens/ScopedSettingsContent.kt", [
+("val groups = SettingsGroups.forScope(scope)",
+ "val groups = SettingsGroups.forScope(scope).filterNot { it == SettingsGroup.MODEL_AND_LANGUAGE || it == SettingsGroup.WHEN_TO_TRANSCRIBE || it == SettingsGroup.SUMMARIES }",
+ "remove transcription and summary settings groups"),
+("val all = SettingsGroups.forScope(SettingsScope.ALL)",
+ "val all = SettingsGroups.forScope(SettingsScope.ALL).filterNot { it == SettingsGroup.MODEL_AND_LANGUAGE || it == SettingsGroup.WHEN_TO_TRANSCRIBE || it == SettingsGroup.SUMMARIES }",
+ "remove transcription and summary settings search results")
+])
+patch_file("app/src/main/java/com/baba/callvault/ui/common/TranscriptActionButton.kt", [
+("""    val action = TranscriptRowAction.forStatus(status)
+    val description = stringResource(action.contentDescriptionRes)
+
+    // Work in flight is shown, never re-triggerable: a second tap would only queue the same call
+    // again, and the first tap already committed the phone to minutes of CPU.
+    //
+    // The ring itself is shared with the Summaries page — see [WorkProgressRing], which holds the
+    // two traps (a spinner that reads as a hang, and M3's coral track) in one place.
+    if (!action.isTappable) {
+        WorkProgressRing(percent = percent, modifier = modifier)
+        return
+    }
+
+    IconButton(
+        onClick = when (action) {
+            TranscriptRowAction.TRANSCRIBE -> onTranscribe
+            TranscriptRowAction.OPEN -> onOpen
+            TranscriptRowAction.RETRY -> onRetry
+            TranscriptRowAction.BUSY -> return // unreachable: handled above
+        },
+        modifier = modifier
+    ) {
+        Icon(
+            imageVector = when (action) {
+                TranscriptRowAction.TRANSCRIBE -> Icons.Outlined.Subtitles
+                TranscriptRowAction.OPEN -> Icons.AutoMirrored.Filled.Article
+                TranscriptRowAction.RETRY -> Icons.Filled.ErrorOutline
+                TranscriptRowAction.BUSY -> Icons.Outlined.Subtitles // unreachable
+            },
+            contentDescription = description,
+            // A finished transcript is worth drawing attention to; a failure more so.
+            tint = when (action) {
+                TranscriptRowAction.OPEN -> MaterialTheme.colorScheme.primary
+                TranscriptRowAction.RETRY -> MaterialTheme.colorScheme.error
+                else -> MaterialTheme.colorScheme.onSurfaceVariant
+            }
+        )
+    }
+""",
+"""    // Transcription is excluded from the CallVault recorder-only product profile.
+    // Keep the stable composable signature for upstream call sites and upgrade compatibility.
+""", "remove transcription action from recording rows")
+])
+patch_file("app/src/main/java/com/baba/callvault/ui/screens/PlaybackScreen.kt", [
+("""            // Above the transcript row and the note, because it answers the question the transcript
+            // answers more slowly — and because a stamp in it is a jump into the player above.
+            SummaryCard(
+                state = summaryState,
+                onCreate = onSummarise,
+                onRedo = onSummarise,
+                onStop = onStopSummary,
+                // Seek, then play. A jump point that silently moved the cursor without starting
+                // would look like nothing happened.
+                onSeek = { millis ->
+                    onSeek(millis.toInt())
+                    if (!isPlaying) onPlay()
+                }
+            )
+""", "", "remove summary card from recording playback")
+])
+patch_file("app/src/main/java/com/baba/callvault/AppNavigationScreen.kt", [
+("""    val section = chosenSection ?: HomeSection.opening(resolvedScreen, storedSectionKey) ?: HomeSection.Hub
+""",
+"""    val restoredSection = HomeSection.opening(resolvedScreen, storedSectionKey)
+    val section = chosenSection ?: restoredSection
+        .takeUnless { it == HomeSection.Transcripts || it == HomeSection.Summaries }
+        ?: HomeSection.Hub
+""", "route legacy AI sections to the hub"),
+("""        val target = HomeSection.forNotification(resolvedScreen, notificationDestination)
+        if (target != null) goToSection(target)
+""",
+"""        val requestedTarget = HomeSection.forNotification(resolvedScreen, notificationDestination)
+        val target = if (requestedTarget == HomeSection.Transcripts || requestedTarget == HomeSection.Summaries) {
+            HomeSection.Hub
+        } else requestedTarget
+        if (target != null) goToSection(target)
+""", "route legacy transcript notifications to the hub")
+])
+patch_file("app/src/main/java/com/baba/callvault/ui/screens/HomeScreen.kt", [
+("import com.baba.callvault.data.AppPreferences\n",
+ "import com.baba.callvault.data.AppPreferences\nimport com.baba.callvault.data.TranscriptionMode\n",
+ "manual transcription mode import"),
+("""    // A recording named from outside the app — the share target's Open button — joins the same
+""",
+"""    // Recorder-only product profile: cancel old transcription/summarisation work and prevent
+    // the old automatic sweep from being re-created by the saved preference.
+    LaunchedEffect(Unit) {
+        AppPreferences(context).setTranscriptionMode(TranscriptionMode.MANUAL)
+        TranscriptionScheduler.stopNow(context)
+        SummaryScheduler.stopNow(context)
+    }
+
+    // A recording named from outside the app — the share target's Open button — joins the same
+""", "cancel legacy AI work when Home opens"),
+("""    // A transcript named from outside the app — the "transcript ready" notification. Straight to the
+    // reading view rather than through a list: the page reads from the transcripts database and needs
+    // no catalog row, so unlike a recording there is nothing to wait for — and for the case this
+    // exists for, a finished "Transcribe only" import, there will never BE a catalog row to wait for.
+    //
+    // playbackFor is cleared because the reading view is only drawn when no recording is open (see
+    // readingPresentation): without this, a tap arriving while the user had left a recording open
+    // would draw the transcript as a sheet over that other recording's screen.
+    LaunchedEffect(openTranscript) {
+        val requested = openTranscript ?: return@LaunchedEffect
+        onSelectSection(HomeSection.Transcripts)
+        playbackFor = null
+        readingFromSummary = false
+        readingOrder = ArrayList()
+        readingFor = requested
+        onOpenTranscriptHandled()
+    }
+""",
+"""    // Acknowledge legacy transcript notifications without navigating into removed product features.
+    LaunchedEffect(openTranscript) {
+        if (openTranscript != null) {
+            AppLogger.i("CV:Profile", "Ignored legacy transcript notification in recorder-only build")
+            onOpenTranscriptHandled()
+        }
+    }
+""", "disable legacy transcript deep links")
+])
+
 # Shizuku-Next is a drop-in manager: it retains Shizuku's package/API/permission contract.
 # The app must continue using the public Shizuku API and discover the manager by its declared permission,
 # never hard-code a fork-specific package name.
