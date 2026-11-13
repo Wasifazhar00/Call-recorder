@@ -163,6 +163,18 @@ if "AI transcript and summary cards are excluded from this product profile." not
 playback = (ENGINE / "app/src/main/java/com/baba/callvault/ui/screens/PlaybackScreen.kt").read_text(encoding="utf-8")
 if "SummaryCard(" in playback or "Summary UI is excluded from the CallVault recorder-only product profile." not in playback:
     sys.exit("Summary card removal from playback was not applied")
+
+if "TranscriptActionButton(" in playback or "Transcription controls are excluded from the CallVault recorder-only product profile." not in playback:
+    sys.exit("Playback still exposes a call transcription action")
+row_menu = (ENGINE / "app/src/main/java/com/baba/callvault/ui/screens/LibraryRowMenu.kt").read_text(encoding="utf-8")
+if "if (menu.transcribeAgain)" in row_menu:
+    sys.exit("Library row menu still exposes re-transcription")
+selection_ui = (ENGINE / "app/src/main/java/com/baba/callvault/ui/screens/LibrarySelectionUi.kt").read_text(encoding="utf-8")
+if "selection.onTranscribeAgain?.let" in selection_ui:
+    sys.exit("Library bulk actions still expose re-transcription")
+transcript_view = (ENGINE / "app/src/main/java/com/baba/callvault/ui/common/TranscriptView.kt").read_text(encoding="utf-8")
+if "TranscriptPageMenu(summaryState, onSummarise, onTranscribeAgain)" in transcript_view:
+    sys.exit("Transcript reader still exposes re-transcription")
 require(
     "app/src/main/java/com/baba/callvault/ui/screens/ScopedSettingsContent.kt",
     ("SettingsGroup.MODEL_AND_LANGUAGE", "SettingsGroup.WHEN_TO_TRANSCRIBE", "SettingsGroup.SUMMARIES"),
