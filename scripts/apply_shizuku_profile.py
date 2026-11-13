@@ -603,7 +603,8 @@ patch_file("app/src/main/java/com/baba/callvault/ui/screens/HubScreen.kt", [
                         onClick = { onOpenSection(HomeSection.Summaries) },
                     )
                 }
-""", "", "remove transcript and summary hub cards")
+""", """                // AI transcript and summary cards are excluded from this product profile.
+""", "remove transcript and summary hub cards")
 ])
 patch_file("app/src/main/java/com/baba/callvault/ui/screens/ScopedSettingsContent.kt", [
 ("val groups = SettingsGroups.forScope(scope)",
@@ -672,7 +673,8 @@ patch_file("app/src/main/java/com/baba/callvault/ui/screens/PlaybackScreen.kt", 
                     if (!isPlaying) onPlay()
                 }
             )
-""", "", "remove summary card from recording playback")
+""", """            // Summary UI is excluded from the CallVault recorder-only product profile.
+""", "remove summary card from recording playback")
 ])
 patch_file("app/src/main/java/com/baba/callvault/AppNavigationScreen.kt", [
 ("""    val section = chosenSection ?: HomeSection.opening(resolvedScreen, storedSectionKey) ?: HomeSection.Hub
