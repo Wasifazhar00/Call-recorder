@@ -134,6 +134,35 @@ require(
     ("TRANSACTION_capturePermissionReport",),
 )
 
+# The shipped product is a call recorder, not an AI transcription or summarisation app.
+require(
+    "app/src/main/java/com/baba/callvault/ui/common/TranscriptActionButton.kt",
+    ("Transcription is excluded from the CallVault recorder-only product profile.",),
+)
+require(
+    "app/src/main/java/com/baba/callvault/ui/screens/PlaybackScreen.kt",
+    ("TagCard(", "NoteCard("),
+)
+playback = (ENGINE / "app/src/main/java/com/baba/callvault/ui/screens/PlaybackScreen.kt").read_text(encoding="utf-8")
+if "SummaryCard(" in playback:
+    sys.exit("Summarisation UI is still reachable from recording playback")
+hub = (ENGINE / "app/src/main/java/com/baba/callvault/ui/screens/HubScreen.kt").read_text(encoding="utf-8")
+if "onOpenSection(HomeSection.Transcripts)" in hub or "onOpenSection(HomeSection.Summaries)" in hub:
+    sys.exit("Transcript or summary cards are still exposed on the Home hub")
+require(
+    "app/src/main/java/com/baba/callvault/ui/screens/ScopedSettingsContent.kt",
+    ("SettingsGroup.MODEL_AND_LANGUAGE", "SettingsGroup.WHEN_TO_TRANSCRIBE", "SettingsGroup.SUMMARIES"),
+)
+settings_ui = (ENGINE / "app/src/main/java/com/baba/callvault/ui/screens/ScopedSettingsContent.kt").read_text(encoding="utf-8")
+if settings_ui.count("filterNot { it == SettingsGroup.MODEL_AND_LANGUAGE") < 2:
+    sys.exit("Transcription/summarisation settings are still exposed in Settings or search")
+require(
+    "app/src/main/java/com/baba/callvault/ui/screens/HomeScreen.kt",
+    ("TranscriptionMode.MANUAL", "TranscriptionScheduler.stopNow(context)", "SummaryScheduler.stopNow(context)",
+     "Ignored legacy transcript notification in recorder-only build"),
+)
+
+
 print("Call-recording profile verified: incoming + outgoing automation, carrier master switch, "
       "telephony receivers, foreground service and Shizuku binder path are present.")
 
