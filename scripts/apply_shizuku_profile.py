@@ -688,7 +688,8 @@ patch_file("app/src/main/java/com/baba/callvault/AppNavigationScreen.kt", [
 ("""    val section = chosenSection ?: HomeSection.opening(resolvedScreen, storedSectionKey) ?: HomeSection.Hub
 """,
 """    val restoredSection = HomeSection.opening(resolvedScreen, storedSectionKey)
-    val section = chosenSection ?: restoredSection
+    val requestedSection = chosenSection ?: restoredSection
+    val section = requestedSection
         .takeUnless { it == HomeSection.Transcripts || it == HomeSection.Summaries }
         ?: HomeSection.Hub
 """, "route legacy AI sections to the hub"),
