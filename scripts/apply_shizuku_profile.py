@@ -746,6 +746,58 @@ patch_file("app/src/main/java/com/baba/callvault/ui/screens/PlaybackScreen.kt", 
 """, """            // Summary UI is excluded from the CallVault recorder-only product profile.
 """, "remove summary card from recording playback")
 ])
+
+patch_file("app/src/main/java/com/baba/callvault/ui/screens/PlaybackScreen.kt", [
+("""            // The same one-slot control the list rows use — transcribe / in progress / read / retry
+            // — rather than a second thing that means the same. Retry is transcribe: on this screen
+            // there is one recording and one thing a failed run can do next.
+            TranscriptActionButton(
+                status = transcriptStatus,
+                onTranscribe = onTranscribe,
+                onOpen = onOpenTranscript,
+                onRetry = onTranscribe,
+                modifier = Modifier.size(ACTION_TARGET),
+                // Was left at its default of 0, so this one spun without ever filling while the
+                // identical control in the list showed a figure. A ring that turns for minutes and
+                // never moves is indistinguishable from a hang — which is the whole reason the
+                // percentage was added to that control in the first place.
+                percent = transcriptPercent
+            )
+""", """            // Transcription controls are excluded from the CallVault recorder-only product profile.
+""", "remove playback transcription action")
+])
+patch_file("app/src/main/java/com/baba/callvault/ui/screens/LibraryRowMenu.kt", [
+("""            if (menu.transcribeAgain) {
+                DropdownMenuItem(
+                    text = { Text(stringResource(R.string.transcript_retranscribe)) },
+                    leadingIcon = { Icon(Icons.Filled.Refresh, contentDescription = null) },
+                    onClick = {
+                        close()
+                        onTranscribeAgain()
+                    },
+                )
+            }
+""", """            // Re-transcription is excluded from the recorder-only product profile.
+""", "remove transcript retry from library row menu")
+])
+patch_file("app/src/main/java/com/baba/callvault/ui/screens/LibrarySelectionUi.kt", [
+("""        selection.onTranscribeAgain?.let { onTranscribeAgain ->
+            IconButton(onClick = onTranscribeAgain, enabled = hasPicked) {
+                Icon(
+                    imageVector = Icons.Filled.Refresh,
+                    contentDescription = stringResource(R.string.transcript_retranscribe),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+        }
+""", """        // Bulk re-transcription is excluded from the recorder-only product profile.
+""", "remove bulk transcript retry action")
+])
+patch_file("app/src/main/java/com/baba/callvault/ui/common/TranscriptView.kt", [
+("TranscriptPageMenu(summaryState, onSummarise, onTranscribeAgain)",
+ "TranscriptPageMenu(summaryState, onSummarise, null)",
+ "remove re-transcription action from transcript reader"),
+])
 patch_file("app/src/main/java/com/baba/callvault/AppNavigationScreen.kt", [
 ("""    val section = chosenSection ?: HomeSection.opening(resolvedScreen, storedSectionKey) ?: HomeSection.Hub
 """,
