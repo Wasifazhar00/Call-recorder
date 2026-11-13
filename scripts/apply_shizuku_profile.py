@@ -666,6 +666,68 @@ patch_file("app/src/main/java/com/baba/callvault/ui/common/TranscriptActionButto
     // Keep the stable composable signature for upstream call sites and upgrade compatibility.
 """, "remove transcription action from recording rows")
 ])
+patch_file("app/src/main/java/com/baba/callvault/ui/screens/ShareClipScreen.kt", [
+("""            when {
+                !includeText -> share(clip, null)
+                transcribed -> {
+                    // The transcript is read in the background; give it a moment rather than share no text.
+                    val lines = withTimeoutOrNull(LINES_WAIT_MS) { snapshotFlow { linesNow }.first { it.isNotEmpty() } }
+                    share(clip, ClipTranscript.render(ClipTranscript.linesIn(lines ?: linesNow, cutRange)))
+                }
+                source == TextSource.PART && !callInProgress -> {
+                    work = ClipWork.TranscribingPart
+                    when (val outcome = ClipTranscriber.transcribe(context, clip, cutRange)) {
+                        is ClipTranscriber.Outcome.Done -> share(clip, ClipTranscript.render(outcome.lines))
+                        ClipTranscriber.Outcome.Busy -> work = ClipWork.TextProblem(R.string.share_clip_busy)
+                        ClipTranscriber.Outcome.NotSetUp -> work = ClipWork.TextProblem(R.string.share_clip_not_set_up)
+                        is ClipTranscriber.Outcome.Failed -> work = ClipWork.TextProblem(R.string.share_clip_transcribe_failed)
+                    }
+                }
+                else -> {
+                    // The whole call: through the app's own transcription (with its own confirmations), then only
+                    // this part's lines.
+                    work = ClipWork.WaitingForCall
+                    if (!callInProgress) {
+                        onTranscribeWholeCall()
+                        // A previous run's FAILED must not count as this run's result, and a declined confirmation
+                        // leaves it NONE for ever: wait to see this run start first.
+                        val started = withTimeoutOrNull(START_WAIT_MS) {
+                            snapshotFlow { statusNow }
+                                .first { it == TranscriptStatus.QUEUED || it == TranscriptStatus.RUNNING || it == TranscriptStatus.DONE }
+                        }
+                        if (started == null) {
+                            work = ClipWork.TextProblem(R.string.share_clip_transcribe_failed)
+                            return@launch
+                        }
+                    }
+                    val ended = snapshotFlow { statusNow }
+                        .first { it == TranscriptStatus.DONE || it == TranscriptStatus.FAILED }
+                    if (ended == TranscriptStatus.DONE) {
+                        // A silent call has no lines at all, so this waits a little and no longer.
+                        val lines = withTimeoutOrNull(LINES_WAIT_MS) { snapshotFlow { linesNow }.first { it.isNotEmpty() } }
+                        share(clip, ClipTranscript.render(ClipTranscript.linesIn(lines ?: emptyList(), cutRange)))
+                    } else {
+                        work = ClipWork.TextProblem(R.string.share_clip_transcribe_failed)
+                    }
+                }
+            }
+""",
+"""            // Recorder-only product profile: clips are shared as audio only.
+            share(clip, null)
+""", "remove transcription from clip sharing"),
+("""            TranscriptChoice(
+                include = includeText,
+                onInclude = { includeText = it },
+                transcribed = transcribed,
+                callInProgress = callInProgress,
+                linesInPart = if (transcribed) ClipTranscript.linesIn(callLines, range).size else -1,
+                source = source,
+                onSource = { source = it },
+            )
+""",
+"""            // Transcript and transcription controls are excluded from the recorder-only product profile.
+""", "remove transcript controls from clip sharing")
+])
 patch_file("app/src/main/java/com/baba/callvault/ui/screens/PlaybackScreen.kt", [
 ("""            // Above the transcript row and the note, because it answers the question the transcript
             // answers more slowly — and because a stamp in it is a jump into the player above.
