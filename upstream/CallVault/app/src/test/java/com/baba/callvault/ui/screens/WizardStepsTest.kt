@@ -18,8 +18,7 @@ import org.junit.Test
  * step probed the USB default over the embedded shell, which turned **Wireless debugging on** in Shizuku
  * mode — a mode that never pairs and could never have used the answer.
  *
- * And which of them may withhold Next, because the transcription step now starts model downloads and
- * must not be allowed to hold setup hostage to one.
+ * And which of them may withhold Next: storage is the only prerequisite for a usable recorder.
  */
 class WizardStepsTest {
 
@@ -45,42 +44,6 @@ class WizardStepsTest {
     fun `offers the schedule step only when Drive is a target`() {
         assertTrue(wizardSteps(usesDrive = true, usesEmbeddedAdb = true).contains(WizardStep.SCHEDULE))
         assertFalse(wizardSteps(usesDrive = false, usesEmbeddedAdb = true).contains(WizardStep.SCHEDULE))
-    }
-
-    @Test
-    fun `always offers the transcription step`() {
-        // The one route a fresh install has to transcripts and summaries: What's New only fires after
-        // an update, and the wizard cannot be re-run. It also needs nothing from ADB, so no mode or
-        // storage choice may drop it.
-        for (usesDrive in listOf(false, true)) {
-            for (usesEmbeddedAdb in listOf(false, true)) {
-                assertTrue(
-                    "usesDrive=$usesDrive usesEmbeddedAdb=$usesEmbeddedAdb lost the transcription step",
-                    wizardSteps(usesDrive, usesEmbeddedAdb).contains(WizardStep.TRANSCRIPTION),
-                )
-            }
-        }
-    }
-
-    @Test
-    fun `asks about transcription after the recording is made and named`() {
-        val steps = wizardSteps(usesDrive = false, usesEmbeddedAdb = true)
-
-        assertTrue(
-            "Transcription reads a finished recording, so it follows capture, encoding and naming.",
-            steps.indexOf(WizardStep.TRANSCRIPTION) > steps.indexOf(WizardStep.FILE_NAME),
-        )
-    }
-
-    @Test
-    fun `never withholds Next on the transcription step`() {
-        // The step now starts the downloads: 190-574 MB for the speech model, 3.46 GB for the
-        // summariser, both over Wi-Fi only. Gating on any of that would hold a user on mobile data
-        // at step seven of nine until they got home — for work that finishes on its own afterwards.
-        assertTrue(
-            "A download in progress must never gate the wizard.",
-            canAdvanceFrom(WizardStep.TRANSCRIPTION, hasRecordingFolder = false, hasDriveFolder = false),
-        )
     }
 
     @Test
