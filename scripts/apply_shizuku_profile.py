@@ -602,49 +602,8 @@ patch_file("app/src/main/java/com/baba/callvault/AppNavigationScreen.kt", [
         if (target != null) goToSection(target)
 """, "route legacy transcript notifications to the hub")
 ])
-patch_file("app/src/main/java/com/baba/callvault/ui/screens/HomeScreen.kt", [
-("import com.baba.callvault.data.AppPreferences\n",
- "import com.baba.callvault.data.AppPreferences\nimport com.baba.callvault.data.TranscriptionMode\n",
- "manual transcription mode import"),
-("""    // A recording named from outside the app — the share target's Open button — joins the same
-""",
-"""    // Recorder-only product profile: cancel old transcription/summarisation work and prevent
-    // the old automatic sweep from being re-created by the saved preference.
-    LaunchedEffect(Unit) {
-        AppPreferences(context).setTranscriptionMode(TranscriptionMode.MANUAL)
-        TranscriptionScheduler.stopNow(context)
-        SummaryScheduler.stopNow(context)
-    }
+# AI scheduling is removed; no runtime transcription or summary jobs are scheduled.
 
-    // A recording named from outside the app — the share target's Open button — joins the same
-""", "cancel legacy AI work when Home opens"),
-("""    // A transcript named from outside the app — the "transcript ready" notification. Straight to the
-    // reading view rather than through a list: the page reads from the transcripts database and needs
-    // no catalog row, so unlike a recording there is nothing to wait for — and for the case this
-    // exists for, a finished "Transcribe only" import, there will never BE a catalog row to wait for.
-    //
-    // playbackFor is cleared because the reading view is only drawn when no recording is open (see
-    // readingPresentation): without this, a tap arriving while the user had left a recording open
-    // would draw the transcript as a sheet over that other recording's screen.
-    LaunchedEffect(openTranscript) {
-        val requested = openTranscript ?: return@LaunchedEffect
-        onSelectSection(HomeSection.Transcripts)
-        playbackFor = null
-        readingFromSummary = false
-        readingOrder = ArrayList()
-        readingFor = requested
-        onOpenTranscriptHandled()
-    }
-""",
-"""    // Acknowledge legacy transcript notifications without navigating into removed product features.
-    LaunchedEffect(openTranscript) {
-        if (openTranscript != null) {
-            AppLogger.i("CV:Profile", "Ignored legacy transcript notification in recorder-only build")
-            onOpenTranscriptHandled()
-        }
-    }
-""", "disable legacy transcript deep links")
-])
 
 # Shizuku-Next is a drop-in manager: it retains Shizuku's package/API/permission contract.
 # The app must continue using the public Shizuku API and discover the manager by its declared permission,
