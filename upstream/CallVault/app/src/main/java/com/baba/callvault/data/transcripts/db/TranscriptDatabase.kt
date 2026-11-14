@@ -42,15 +42,12 @@ import androidx.sqlite.db.SupportSQLiteDatabase
         RecordingNoteEntry::class,
         RecordingNoteFts::class,
         RecordingWaveformEntry::class,
-        CallSummaryEntry::class,
-        CallSummaryFts::class,
-        SpeakerTurnsEntry::class,
         RecordingTagEntry::class,
         RecordingFavouriteEntry::class,
         RecordingFlagEntry::class,
         RecordingLabelEntry::class
     ],
-    version = 9,
+    version = 10,
     exportSchema = true
 )
 @TypeConverters(TranscriptStateConverter::class)
@@ -59,10 +56,6 @@ abstract class TranscriptDatabase : RoomDatabase() {
     abstract fun transcriptDao(): TranscriptDao
 
     abstract fun noteDao(): RecordingNoteDao
-
-    abstract fun summaryDao(): CallSummaryDao
-
-    abstract fun speakerTurnsDao(): SpeakerTurnsDao
 
     abstract fun tagDao(): RecordingTagDao
 
@@ -293,13 +286,27 @@ abstract class TranscriptDatabase : RoomDatabase() {
         }
 
         /**
+         * v9 → v10: remove AI-generated summary and speaker-analysis storage.
+         * User-authored notes, tags, favourites, flags, labels and waveform cache are retained.
+         */
+        internal val MIGRATION_9_10_SQL = listOf(
+            "DROP TABLE IF EXISTS `call_summaries_fts`",
+            "DROP TABLE IF EXISTS `call_summaries`",
+            "DROP TABLE IF EXISTS `speaker_turns`"
+        )
+
+        private val MIGRATION_9_10 = object : Migration(9, 10) {
+            override fun migrate(db: SupportSQLiteDatabase) = MIGRATION_9_10_SQL.forEach(db::execSQL)
+        }
+
+        /**
          * Every migration, in one place, used by both [get] and the migration test.
          *
          * One list rather than two so a migration that is written but never registered cannot
          * happen — that mistake would look exactly like a correct build until an upgrading user
          * opened the app, and this database has no destructive fallback to catch them.
          */
-        internal val MIGRATIONS: Array<Migration> = arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9)
+        internal val MIGRATIONS: Array<Migration> = arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9, MIGRATION_9_10)
 
         @Volatile
         private var INSTANCE: TranscriptDatabase? = null
