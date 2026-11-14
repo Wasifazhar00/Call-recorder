@@ -9,7 +9,7 @@
 package com.baba.callvault.data.transcripts
 
 import android.content.Context
-import com.baba.callvault.data.transcripts.db.RecordingTagEntry
+import com.baba.callvault.data.recording metadata database.RecordingTagEntry
 import com.baba.callvault.data.transcripts.db.TagCount
 import com.baba.callvault.data.transcripts.db.TranscriptDatabase
 import com.baba.callvault.utils.AppLogger

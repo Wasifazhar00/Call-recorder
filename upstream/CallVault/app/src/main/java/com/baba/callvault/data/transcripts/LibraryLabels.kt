@@ -10,7 +10,7 @@ package com.baba.callvault.data.transcripts
 
 import android.content.Context
 import com.baba.callvault.data.recordings.RecordingsRepository.RecordingItem
-import com.baba.callvault.data.transcripts.db.RecordingLabelEntry
+import com.baba.callvault.data.recording metadata database.RecordingLabelEntry
 import com.baba.callvault.data.transcripts.db.TranscriptDatabase
 import com.baba.callvault.utils.AppLogger
 import kotlinx.coroutines.flow.Flow
