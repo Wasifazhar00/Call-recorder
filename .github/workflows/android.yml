@@ -47,6 +47,20 @@ jobs:
           python3 scripts/verify_shizuku_profile.py
           python3 - <<'PY'
           from pathlib import Path
+          import xml.etree.ElementTree as ET
+          root = Path("upstream/CallVault")
+          errors = []
+          for path in root.rglob("*.xml"):
+              try:
+                  ET.parse(path)
+              except ET.ParseError as exc:
+                  errors.append(f"{path}: {exc}")
+          if errors:
+              raise SystemExit("\n".join(errors))
+          print("All Android XML resources and manifests parse successfully.")
+          PY
+          python3 - <<'PY'
+          from pathlib import Path
           import re
           root = Path("upstream/CallVault/app/src/main/java/com/baba/callvault")
           pattern = re.compile(r"transcri|summar|Transcript|Summary|Whisper|Llama|ModelRepository|ClipTranscriber|TranscriptSidecar|CallSummary|SpeakerTurnsRepository", re.I)
