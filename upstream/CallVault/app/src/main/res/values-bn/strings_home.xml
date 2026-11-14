@@ -125,7 +125,7 @@
     <string name="settings_merge_keep_originals_description">একত্র করার পর যে কলগুলো থেকে এটি তৈরি, সেগুলোও ফোনে রেখে দিন। শুরুতে বন্ধ, তাই একত্র করলে একটি রেকর্ডিং থাকে। একত্রিত কল আলাদা করা দুই ক্ষেত্রেই কাজ করে।</string>
     <string name="settings_merge_keep_originals_title">একত্র করার পর মূল কলগুলো রাখুন</string>
     <string name="unmerge_confirm">আলাদা করুন</string>
-    <string name="unmerge_message">এটি আবার এই কলগুলোতে ভাগ হবে, প্রতিটি তার আগের ট্রান্সক্রিপ্ট ও চিহ্নসহ:</string>
+    <string name="unmerge_message">It becomes these calls again, each with its recording details and marks it had:</string>
     <string name="unmerge_title">এই কলটি আলাদা করবেন?</string>
     <plurals name="merge_row_badge">
         <item quantity="one">%1$d টি কল</item>
@@ -296,44 +296,44 @@
 
     <string name="home_hub_library_title">লাইব্রেরি</string>
     <string name="home_hub_recordings_body">CallVault-এর রেকর্ড করা প্রতিটি কল।</string>
-    <string name="home_hub_transcripts_body">আপনার কল লিখিত রূপে — আর আপনার আনা যেকোনো অডিও।</string>
-    <string name="home_hub_summaries_body">AI সারাংশ, আপনার ফোনেই লেখা।</string>
-    <string name="home_transcripts_title">ট্রান্সক্রিপ্ট</string>
-    <string name="home_summaries_title">সারাংশ</string>
-    <string name="home_transcripts_count">%1$d টি ট্রান্সক্রাইব হয়েছে</string>
-    <string name="home_summaries_count">%1$d টির সারাংশ হয়েছে</string>
-    <string name="home_transcripts_empty_title">এখনো কিছু ট্রান্সক্রাইব হয়নি</string>
-    <string name="home_transcripts_empty_hint">কোনো রেকর্ডিংয়ের মেনু থেকে ট্রান্সক্রিপ্ট চান, বা অডিও ফাইল আনতে “ইমপোর্ট” ট্যাপ করুন। লেখা হয়ে গেলে যেকোনোটি এখানে দেখা যাবে।</string>
-    <string name="home_summaries_empty_title">এখনো কোনো সারাংশ নেই</string>
-    <string name="home_summaries_empty_hint">ট্রান্সক্রিপ্ট আছে এমন একটি কল খুলে সারাংশ চান; লেখা হয়ে গেলে তা এখানে দেখা যাবে।</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
-    <string name="transcripts_working_header">ট্রান্সক্রাইব হচ্ছে</string>
-    <string name="transcripts_failed_header">শেষ হয়নি</string>
-    <string name="transcripts_failed_hint">আবার চেষ্টা করতে একটিতে ট্যাপ করুন।</string>
-    <string name="transcripts_waiting_header">ট্রান্সক্রিপশনের অপেক্ষায়</string>
-    <string name="transcripts_waiting_hint">এগুলো আপনি পড়ার জন্য শেয়ার করেছেন, রাখার জন্য নয়। শুরু করতে একটিতে ট্যাপ করুন, বা শুনতে বা মুছতে খুলুন।</string>
-    <string name="summaries_working_header">সারাংশ তৈরি হচ্ছে</string>
-    <string name="summaries_failed_header">শেষ হয়নি</string>
-    <string name="summaries_failed_hint">আবার চাইতে একটি খুলুন।</string>
-    <string name="transcripts_import_title">অডিও ইমপোর্ট</string>
-    <string name="transcripts_import_working">ইমপোর্ট হচ্ছে…</string>
-    <string name="transcripts_import_fab">ইমপোর্ট</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="import_sheet_keep">অডিও রাখুন</string>
     <string name="import_sheet_keep_hint">আপনার রেকর্ডিংয়ের তালিকায় থাকবে</string>
-    <string name="import_sheet_transcript_only">শুধু ট্রান্সক্রিপ্ট</string>
-    <string name="import_sheet_transcript_only_hint">পরে অডিও মুছে ফেলা হবে</string>
+    
+    
     <string name="import_failed_title">ফাইলটি ইমপোর্ট করা যায়নি</string>
     <string name="import_failed_not_audio">CallVault এই ধরনের ফাইল পড়তে পারে না। একটি .opus, .ogg, .m4a, .mp3 বা .wav রেকর্ডিং চেষ্টা করুন।</string>
-    <string name="import_failed_empty">ফাইলটি খালি, তাই ট্রান্সক্রাইব করার কিছু নেই।</string>
+    
     <string name="import_failed_no_folder">এটি রাখার জন্য কোনো রেকর্ডিং ফোল্ডার নেই। সেটিংসে একটি বেছে নিয়ে আবার চেষ্টা করুন।</string>
     <string name="import_failed_copy">ফাইলটি আপনার রেকর্ডিং ফোল্ডারে লেখা যায়নি। ফোনে জায়গা আছে কিনা এবং ফোল্ডারটি এখনো আছে কিনা দেখুন।</string>
-    <string name="import_failed_undecodable">এই ফোন ফাইলটির ভেতরের অডিও পড়তে পারে না, তাই এটি কখনো ট্রান্সক্রাইব করা যাবে না। ফাইলটি হয়তো ক্ষতিগ্রস্ত, বা এমন ফরম্যাটে যা Android ডিকোড করে না।</string>
+    
     <string name="home_row_imported">ইমপোর্ট করা</string>
     <string name="home_row_text_only">শুধু লেখা</string>
     <string name="share_import_label">অডিও ইমপোর্ট</string>
     <string name="share_import_working_body">কপি করা হচ্ছে এবং এই ফোন এটি পড়তে পারে কিনা দেখা হচ্ছে।</string>
     <string name="share_import_done_title">আপনার রেকর্ডিংয়ে যোগ হয়েছে</string>
-    <string name="share_import_done_body">এটি এখন CallVault-এ আছে। শুনতে বা ট্রান্সক্রিপ্ট চাইতে খুলুন।</string>
+    
     <string name="share_import_open">খুলুন</string>
     <string name="share_import_open_app">CallVault খুলুন</string>
     <string name="share_import_close">বন্ধ করুন</string>
@@ -344,14 +344,14 @@
     <string name="share_import_choice_unnamed">শেয়ার করা অডিও</string>
     <string name="import_choice_keep">ইমপোর্ট ও ট্রান্সক্রাইব</string>
     <string name="import_choice_keep_hint">অডিও আপনার রেকর্ডিংয়ে রাখে এবং ট্রান্সক্রাইব করে।</string>
-    <string name="import_choice_transcribe_only">শুধু ট্রান্সক্রাইব</string>
-    <string name="import_choice_transcribe_only_hint">ট্রান্সক্রাইব করে, তারপর অডিও মুছে দেয়। এটি কখনো আপনার রেকর্ডিংয়ে দেখা যায় না — শুধু কথাগুলো, ট্রান্সক্রিপ্ট-এর অধীনে।</string>
-    <string name="share_import_queued_keep_title">যোগ হয়েছে, এবং সারিতে আছে</string>
-    <string name="share_import_queued_keep_body">এটি আপনার রেকর্ডিংয়ে আছে। শেষ হলে ট্রান্সক্রিপ্ট ট্রান্সক্রিপ্ট-এর অধীনে দেখা যাবে।</string>
-    <string name="share_import_queued_only_title">ট্রান্সক্রিপশনের সারিতে</string>
-    <string name="share_import_queued_only_body">কথাগুলো ট্রান্সক্রিপ্ট-এর অধীনে পাবেন। ট্রান্সক্রিপ্ট সংরক্ষিত হওয়ামাত্র অডিও মুছে ফেলা হবে।</string>
-    <string name="share_import_kept_title">সংরক্ষিত, কিন্তু ট্রান্সক্রাইব হয়নি</string>
-    <string name="share_import_kept_body">এটি আপনার রেকর্ডিংয়ে আছে। যখন খুশি সেখান থেকে ট্রান্সক্রিপ্ট শুরু করতে পারেন।</string>
-    <string name="share_import_kept_only_body">এটি ট্রান্সক্রিপ্ট-এর অধীনে অপেক্ষা করছে। যখন খুশি সেখান থেকে শুরু করুন, বা সেখান থেকেই মুছে দিন।</string>
-    <string name="share_import_no_model">এখনো কোনো ট্রান্সক্রিপশন মডেল ইনস্টল করা নেই, তাই CallVault এটি পড়তে পারছে না। অডিও সংরক্ষিত হয়েছে — সেটিংসে একটি মডেল ইনস্টল করুন, তারপর ট্রান্সক্রিপ্ট থেকে শুরু করুন।</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </resources>

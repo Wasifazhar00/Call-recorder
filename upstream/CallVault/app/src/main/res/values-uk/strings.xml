@@ -26,18 +26,8 @@
         <item quantity="many">%1$d застосунків не записуватимуться</item>
         <item quantity="other">%1$d застосунку не записуватиметься</item>
     </plurals>
-    <plurals name="library_bulk_delete_transcripts_title">
-        <item quantity="one">Видалити %1$d транскрипцію?</item>
-        <item quantity="few">Видалити %1$d транскрипції?</item>
-        <item quantity="many">Видалити %1$d транскрипцій?</item>
-        <item quantity="other">Видалити %1$d транскрипції?</item>
-    </plurals>
-    <plurals name="library_bulk_delete_summaries_title">
-        <item quantity="one">Видалити %1$d підсумок?</item>
-        <item quantity="few">Видалити %1$d підсумки?</item>
-        <item quantity="many">Видалити %1$d підсумків?</item>
-        <item quantity="other">Видалити %1$d підсумку?</item>
-    </plurals>
+    
+    
     <plurals name="library_bulk_delete_text_only_warning">
         <item quantity="one">Для %1$d запису залишився лише текст без аудіо. Цю дію неможливо скасувати.</item>
         <item quantity="few">Для %1$d записів залишився лише текст без аудіо. Цю дію неможливо скасувати.</item>
@@ -77,7 +67,7 @@
     <string name="disclaimer_introduction">Уважно прочитайте застереження перед продовженням.</string>
     <string name="disclaimer_must_read">Спочатку прочитайте застереження.</string>
     <string name="disclaimer_title">Ласкаво просимо до CallVault</string>
-    <string name="export_heading_transcript">Транскрипція</string>
+    
     <string name="folder_cloud_rejected">Не можна записувати безпосередньо в хмарну папку. Виберіть сховище телефону, а для хмари — резервування в Google Drive.</string>
     <string name="folder_drive_overlaps_recordings">Папка Drive не може бути папкою записів. Виберіть папку Google Диска.</string>
     <string name="folder_drive_overlap_warning">Це ваша папка записів (або вона з нею перетинається), тому до Drive нічого не копіюється. Виберіть папку Google Диска.</string>
@@ -103,12 +93,12 @@
     <string name="general_stop">Зупинити</string>
     <string name="general_system_limitation">Системне обмеження</string>
     <string name="general_system_limitation_message">CallVault не працюватиме на цьому пристрої, оскільки системній службі бракує дозволів:\n\n%1$s\n\nЦе обмеження прошивки Android.</string>
-    <string name="heavy_work_backing_up_model">Резервне копіювання моделі</string>
+    
     <string name="heavy_work_channel_name">Фонова обробка</string>
-    <string name="heavy_work_importing_model">Імпорт моделі</string>
+    
     <string name="heavy_work_notification_text">Під час роботи телефон може нагріватися.</string>
-    <string name="heavy_work_summarising">Створення підсумку</string>
-    <string name="heavy_work_transcribing">Розпізнавання запису</string>
+    
+    
     <string name="drive_copy_title">Копіювання записів на Drive</string>
     <string name="drive_copy_progress">Скопійовано %1$d з %2$d</string>
     <string name="drive_copy_stop">Поки що зупинити</string>
@@ -181,12 +171,12 @@
     <string name="honor_dialer_hint">Ваш застосунок «Телефон» може відтворити запис з історії дзвінків, лише якщо його збережено в %1$s у форматі .m4a. У CallVault встановіть для %2$s цю папку, а для %3$s — AAC.</string>
     <string name="honor_dialer_missing">Ще потрібно змінити: %1$s</string>
     <string name="honor_dialer_ready">✓ Готово: папку та формат налаштовано.</string>
-    <string name="library_bulk_delete_summaries_message">Підсумки буде видалено. Транскрипції та записи залишаться.</string>
-    <string name="library_bulk_delete_transcripts_message">Транскрипції буде видалено. Аудіозаписи залишаться.</string>
+    
+    
     <string name="library_nothing_to_share">Немає даних для надсилання.</string>
     <string name="library_row_save">Зберегти у файл</string>
-    <string name="library_summary_delete_confirm_message">Підсумок %1$s буде видалено. Транскрипція та запис залишаться, і підсумок можна буде створити знову.</string>
-    <string name="library_summary_delete_confirm_title">Видалити цей підсумок?</string>
+    
+    
     <string name="list_separator">", "</string>
     <string name="min_duration_caption">Помилкові набори та надто короткі дзвінки видалятимуться після завершення. Старі записи не змінюються.</string>
     <string name="min_duration_label">Відкидати короткі записи</string>
@@ -213,21 +203,21 @@
     <string name="mode_switch_voip_not_armed">Режим змінено, але запис VoIP не вдалося підготувати. Звичайні дзвінки записуватимуться.</string>
     <string name="mode_switch_working">Зупиняємо попередній рекордер і запускаємо новий.</string>
     <string name="model_backing_up">Резервне копіювання… %1$d%%</string>
-    <string name="model_backup">Резервна копія</string>
-    <string name="model_backup_done">Збережено</string>
-    <string name="model_backup_failed">Резервне копіювання не завершилося. Спробуйте ще раз.</string>
-    <string name="model_backup_info">Зберігає файл моделі в обрану вами теку. Після перевстановлення або на новому телефоні імпортуйте цей файл замість повторного завантаження.</string>
-    <string name="model_backup_subtitle">Збережіть копію на випадок перевстановлення</string>
-    <string name="model_backup_waiting">Підготовка до резервного копіювання…</string>
-    <string name="model_import">Імпорт із файлу</string>
-    <string name="model_import_failed_other_model">Це файл іншої моделі (%1$s). Спершу виберіть ту модель, потім імпортуйте.</string>
-    <string name="model_import_failed_space">Недостатньо вільного місця для імпорту.</string>
-    <string name="model_import_failed_unreadable">Не вдалося прочитати файл. Виберіть його ще раз.</string>
-    <string name="model_import_failed_wrong_file">Це не той файл. Виберіть %1$s.</string>
-    <string name="model_import_info">Виберіть офіційний файл моделі (%1$s, %2$d МБ). Перед використанням CallVault перевіряє, що це саме цей файл, і залишає вашу копію на місці.</string>
-    <string name="model_import_subtitle">Використайте копію, яка у вас уже є</string>
-    <string name="model_import_waiting">Підготовка до імпорту…</string>
-    <string name="model_importing">Імпорт… %1$d%%</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="note_saved">Збережено</string>
     <string name="note_saving">Збереження…</string>
     <string name="notif_cut_off_saved_text">Android закрив CallVault під час дзвінка. Збережено записаний фрагмент: %1$s.</string>
@@ -299,7 +289,7 @@
     <string name="playback_marked_moments">Позначені моменти</string>
     <string name="playback_note_hint">Про що була розмова…</string>
     <string name="playback_note_title">Нотатка</string>
-    <string name="playback_open_transcript">Прочитати транскрипцію</string>
+    
     <string name="playback_skip_back">Назад на 10 секунд</string>
     <string name="playback_skip_forward">Уперед на 10 секунд</string>
     <string name="playback_speed">%1$s×</string>
@@ -432,7 +422,7 @@
     <string name="settings_group_model_and_language">Модель і мова</string>
     <string name="settings_group_save_and_sync">Збереження й синхронізація</string>
     <string name="settings_group_sound_and_names">Звук і назви файлів</string>
-    <string name="settings_group_when_to_transcribe">Коли транскрибувати</string>
+    
     <string name="settings_handoff_persist_description">Продовжувати запис, якщо Android зупинить фонову службу під час дзвінка.</string>
     <string name="settings_handoff_persist_label">Продовжувати запис, якщо фонова служба зупиниться</string>
     <string name="settings_hide_recordings_desc">Не показувати ваші записи в музичних плеєрах, галереях та інших медіазастосунках</string>
@@ -455,7 +445,7 @@
     <string name="settings_info_about">Докладніше: %1$s</string>
     <string name="settings_info_got_it">Зрозуміло</string>
     <string name="settings_language">Мова</string>
-    <string name="settings_language_change_in_transcripts">Змінюється в налаштуваннях транскрипцій</string>
+    
     <string name="settings_language_system">Мова системи</string>
     <string name="settings_link_all_settings">Усі налаштування</string>
     <string name="settings_link_share_debug_report">Поділитися звітом діагностики</string>
@@ -470,7 +460,7 @@
         <item quantity="many">%d збігів</item>
         <item quantity="other">%d збігу</item>
     </plurals>
-    <string name="summary_requirements_toggle_label">Показувати вимоги</string>
+    
     <string name="settings_sim_label_label">Показувати, яку SIM використано для дзвінка</string>
     <string name="settings_sim_label_desc">Для телефонів із двома SIM: показує назву, яку ви дали SIM-карті, або SIM 1 / SIM 2</string>
     <string name="sim_label_word">SIM</string>
@@ -498,7 +488,7 @@
     <string name="settings_section_reliability">Надійність</string>
     <string name="settings_section_security">Безпека</string>
     <string name="settings_section_storage">Сховище</string>
-    <string name="settings_section_transcription">Транскрипція</string>
+    
     <string name="settings_section_updates">Оновлення</string>
     <string name="settings_select_contacts">Вибрати контакти (%1$d)</string>
     <string name="settings_select_contacts_incoming">Вибрати вхідні контакти</string>
@@ -541,11 +531,11 @@
     <string name="settings_theme_mode_light">Світла</string>
     <string name="settings_theme_mode_system">Як у системі</string>
     <string name="settings_title_recordings">Налаштування записів</string>
-    <string name="settings_title_summaries">Налаштування підсумків</string>
-    <string name="settings_title_transcripts">Налаштування транскрипцій</string>
-    <string name="settings_transcript_sidecar_desc">Створювати .md поруч із аудіофайлом</string>
-    <string name="settings_transcript_sidecar_hint">Зберігає транскрипцію, нотатки та підсумок у текстовому файлі поряд з аудіо. Під час копіювання на компʼютер тексти залишаться із записами.</string>
-    <string name="settings_transcript_sidecar_label">Зберігати транскрипцію та нотатки поруч із записом</string>
+    
+    
+    
+    
+    
     <string name="settings_unavailable_in_shizuku">Недоступно в режимі Shizuku — потрібен вбудований рекордер.</string>
     <string name="settings_update_check_description">Щодня перевіряти нові версії на GitHub.</string>
     <string name="settings_update_check_label">Перевіряти оновлення</string>
@@ -599,58 +589,58 @@
     <string name="storage_target_both">Пристрій + Google Drive</string>
     <string name="storage_target_drive">Лише Google Drive</string>
     <string name="storage_target_local">Лише на пристрої</string>
-    <string name="summaries_search_hint">Пошук у підсумках</string>
-    <string name="summary_card_actions">Завдання</string>
-    <string name="summary_card_blocked_empty">Транскрипція порожня — немає що підсумовувати.</string>
-    <string name="summary_card_blocked_model">Спочатку завантажте модель підсумків у налаштуваннях.</string>
-    <string name="summary_card_blocked_no_transcript">Спочатку розпізнайте розмову — підсумок створюється з тексту.</string>
-    <string name="summary_card_blocked_summarising">Зараз створюється підсумок іншого дзвінка.</string>
-    <string name="summary_card_blocked_transcribing">Очікування транскрипції — обидві моделі не можуть працювати одночасно.</string>
-    <string name="summary_card_blocked_unfinished">Очікування завершення транскрипції.</string>
-    <string name="summary_card_create">Створити підсумок</string>
-    <string name="summary_card_create_subtitle">Локально на телефоні, приблизно кілька хвилин</string>
-    <string name="summary_card_decisions">Рішення</string>
-    <string name="summary_card_facts">Важливі факти</string>
-    <string name="summary_card_failed">Не вдалося створити підсумок. Спробуйте ще раз.</string>
-    <string name="summary_card_key_points">Основне</string>
-    <string name="summary_card_provenance">Створено на основі транскрипції</string>
-    <string name="summary_card_redo">Створити ще раз</string>
-    <string name="summary_card_running">Створення підсумку… %1$d%%</string>
-    <string name="summary_card_stop">Зупинити</string>
-    <string name="summary_card_title">Підсумок</string>
-    <string name="summary_delete_confirm_body">Звільниться %1$.1f ГБ. Готові підсумки залишаться, але для нових потрібно знову завантажити модель.</string>
-    <string name="summary_delete_confirm_confirm">Видалити</string>
-    <string name="summary_delete_confirm_title">Видалити модель підсумків?</string>
-    <string name="summary_discard_confirm_body">Уже завантажені %1$.1f ГБ буде видалено. Повторне завантаження почнеться з початку.</string>
-    <string name="summary_discard_confirm_confirm">Видалити</string>
-    <string name="summary_discard_confirm_title">Видалити завантажені дані?</string>
-    <string name="summary_model_cancel">Скасувати завантаження</string>
-    <string name="summary_model_delete">Видалити модель підсумків</string>
-    <string name="summary_model_discard">Видалити завантажені дані</string>
-    <string name="summary_model_discard_subtitle">Звільниться %1$.1f ГБ</string>
-    <string name="summary_model_download">Завантажити модель підсумків</string>
-    <string name="summary_model_download_subtitle">%1$.1f ГБ</string>
-    <string name="summary_model_downloading">Завантаження… %1$d%%</string>
-    <string name="summary_model_failed">Завантаження не завершено. Спробуйте ще раз.</string>
-    <string name="summary_model_failed_space">Недостатньо вільного місця. Звільніть памʼять і повторіть.</string>
-    <string name="summary_model_failed_verify">Завантаження пошкоджено та видалено. Спробуйте ще раз.</string>
-    <string name="summary_model_installed">Завантажено й готово</string>
-    <string name="summary_model_licence">Для підсумків використовується модель Gemma 4 від Google за ліцензією Apache 2.0. Її завантажують окремо.</string>
-    <string name="summary_model_resume">Продовжити завантаження</string>
-    <string name="summary_model_resume_subtitle">Завантажено %1$.1f із %2$.1f ГБ</string>
-    <string name="summary_model_waiting">Очікування Wi-Fi</string>
-    <string name="summary_requirements_body">Підсумки створюються безпосередньо на телефоні. Потрібно завантажити %1$.1f ГБ і мати приблизно %2$.1f ГБ оперативної памʼяті.</string>
-    <string name="summary_requirements_cancel">Не зараз</string>
-    <string name="summary_requirements_continue">Завантажити</string>
-    <string name="summary_requirements_dont_ask">Більше не показувати</string>
-    <string name="summary_requirements_download">%1$.1f ГБ для завантаження</string>
-    <string name="summary_requirements_heading">Перед завантаженням</string>
-    <string name="summary_requirements_memory">Приблизно %1$.1f ГБ оперативної памʼяті</string>
-    <string name="summary_requirements_phone">Потрібен сучасний телефон із достатньою кількістю памʼяті.</string>
-    <string name="summary_requirements_private">Усе виконується на телефоні. Дані нікуди не надсилаються.</string>
-    <string name="summary_requirements_time">Для короткого дзвінка приблизно кілька хвилин, для довгого — більше.</string>
-    <string name="summary_requirements_title">Що потрібно</string>
-    <string name="summary_requirements_toggle_description">Показувати вимоги до моделі перед завантаженням.</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="support_appeal_body">Я підтримую CallVault у вільний час. Програма починалася як форк ShizuCallRecorder від kitsumed і відтоді дуже виросла. Безплатно, з відкритим кодом, без реклами та відстеження. Якщо вона корисна, невелика підтримка допомагає продовжувати. Дякую! 🙏</string>
     <string name="support_appeal_title">Підтримати CallVault ☕</string>
     <string name="support_not_now">Не зараз</string>
@@ -658,7 +648,7 @@
     <string name="tile_recording_stopped">Зупинено</string>
     <string name="transcribe_confirm_dont_ask">Більше не запитувати</string>
     <string name="transcribe_long_call_line">Цей дзвінок триває %1$s. На цьому телефоні розпізнавання займає приблизно в %2$s раза більше часу — близько %3$s.</string>
-    <string name="transcribe_confirm_message">Розпізнавання %1$s навантажує телефон і витрачає заряд батареї. Процес можна зупинити.\n\nЗапит підтвердження можна налаштувати пізніше.</string>
+    
     <string name="transcribe_confirm_title">Це займе приблизно %1$s</string>
     <string name="transcribe_confirm_title_first_run">Перший запуск може тривати довше</string>
     <string name="transcribe_confirm_title_unknown">Розпізнати дзвінок?</string>
@@ -709,102 +699,102 @@
     <string name="transcript_speakers_swap">Поміняти</string>
     <string name="transcript_speakers_swap_names">Поміняти імена</string>
     <string name="transcript_speakers_which_is_you">Хто з них ви?</string>
-    <string name="transcription_ask_language_subtitle">Вибирати мову для кожного запису замість того, щоб завжди використовувати вказану вище. Вибір стосується лише цього запису.</string>
-    <!-- Where to transcribe: on this phone or with the user's own cloud key (issue #48). No prices anywhere. -->
-    <string name="transcription_where_title">Де розпізнавати</string>
-    <string name="transcription_where_on_device">На цьому телефоні</string>
-    <string name="transcription_where_on_device_desc">Приватно. Повільніше: близько 1,5 хв на хвилину дзвінка.</string>
-    <string name="transcription_where_groq_desc">Швидко: зазвичай секунди на дзвінок.</string>
-    <string name="transcription_where_openrouter_desc">Один ключ для багатьох сервісів. Microsoft MAI-Transcribe.</string>
-    <string name="transcription_where_custom">Власний сервер (для досвідчених)</string>
-    <string name="transcription_where_custom_desc">Будь-який сервер, сумісний з OpenAI.</string>
-    <string name="transcription_where_custom_service">ваш сервер</string>
-    <string name="transcription_where_recommended">Рекомендовано</string>
-    <string name="transcription_cloud_key_label">Ваш ключ (%1$s)</string>
-    <string name="transcription_cloud_key_label_custom">Ключ вашого сервера</string>
-    <string name="transcription_cloud_key_show">Показати ключ</string>
-    <string name="transcription_cloud_key_hide">Сховати ключ</string>
-    <string name="transcription_cloud_test">Перевірити</string>
-    <string name="transcription_cloud_testing">Перевірка…</string>
-    <string name="transcription_cloud_get_key">Отримати ключ %1$s</string>
-    <string name="transcription_cloud_custom_url">Адреса сервера</string>
-    <string name="transcription_cloud_custom_url_hint">https://… (частина перед /audio/transcriptions)</string>
-    <string name="transcription_cloud_custom_url_invalid">Вкажіть адресу з http(s)://.</string>
-    <string name="transcription_cloud_custom_model">Модель</string>
-    <string name="transcription_cloud_mobile_data">Дозволити мобільний інтернет</string>
-    <string name="transcription_cloud_mobile_data_desc">Коли вимкнено, дзвінки чекають на Wi-Fi і лише тоді надсилаються.</string>
-    <string name="transcription_cloud_privacy_note">Аудіо дзвінка надсилається на %1$s для розпізнавання. Текст повертається на цей телефон; діють правила конфіденційності постачальника. Лише через Wi-Fi, якщо ви не дозволите мобільний інтернет.</string>
-    <string name="transcription_cloud_consent_title">Надсилати аудіо дзвінків на %1$s?</string>
-    <string name="transcription_cloud_consent_body">Під час розпізнавання дзвінка його аудіо надсилається на %1$s з вашим ключем, а текст повертається на цей телефон. Діють правила конфіденційності постачальника. Підсумки залишаються на цьому телефоні.</string>
-    <string name="transcription_cloud_consent_confirm">Використовувати %1$s</string>
-    <string name="transcription_cloud_test_ok">Ключ працює.</string>
-    <string name="transcription_cloud_test_bad_key">Ключ відхилено. Перевірте його та спробуйте ще раз.</string>
-    <string name="transcription_cloud_test_no_timings">Сервіс відповів без часових міток, тому його не можна використати. Спробуйте іншу модель.</string>
-    <string name="transcription_cloud_test_unreachable">Не вдалося з\'єднатися із сервісом. Перевірте підключення та спробуйте ще раз.</string>
-    <string name="transcription_cloud_test_refused">Сервіс відхилив запит. Перевірте адресу та модель.</string>
-    <string name="transcription_cloud_test_no_key">Спочатку вставте ключ.</string>
-    <string name="transcription_cloud_test_incomplete">Спочатку вкажіть адресу сервера та модель.</string>
-    <string name="transcription_ask_language_title">Щоразу запитувати мову</string>
-    <string name="transcription_batch_label">Дзвінків за запуск</string>
-    <string name="transcription_batch_no_limit">Без обмежень</string>
-    <string name="transcription_charging_subtitle">Розпізнавання навантажує процесор і швидше розряджає батарею.</string>
-    <string name="transcription_charging_title">Лише під час заряджання</string>
-    <string name="transcription_confirm_subtitle">Показувати приблизний час і можливість скасування.</string>
-    <string name="transcription_confirm_title">Запитувати перед транскрипцією</string>
-    <string name="transcription_hour_label">Година</string>
-    <string name="transcription_language_arabic">Арабська</string>
-    <string name="transcription_language_auto">Визначати автоматично</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="language_search_placeholder">Пошук мови</string>
     <string name="language_search_clear">Очистити пошук</string>
     <string name="language_search_no_match">Немає відповідних мов</string>
-    <string name="transcription_language_auto_hint">Автовизначення ненадійне для мов із нелатинською абеткою. Для української, російської, арабської та інших краще явно вибрати мову.</string>
-    <string name="transcription_language_chinese">Китайська</string>
-    <string name="transcription_language_english">Англійська</string>
-    <string name="transcription_language_french">Французька</string>
-    <string name="transcription_language_german">Німецька</string>
-    <string name="transcription_language_greek">Грецька</string>
-    <string name="transcription_language_hebrew">Іврит</string>
-    <string name="transcription_language_hungarian">Угорська</string>
-    <string name="transcription_language_italian">Італійська</string>
-    <string name="transcription_language_label">Мова</string>
-    <string name="transcription_language_persian">Перська</string>
-    <string name="transcription_language_urdu">Урду</string>
-    <string name="transcription_language_bengali">Бенгальська</string>
-    <string name="transcription_language_polish">Польська</string>
-    <string name="transcription_language_portuguese">Португальська</string>
-    <string name="transcription_language_russian">Російська</string>
-    <string name="transcription_language_spanish">Іспанська</string>
-    <string name="transcription_language_ukrainian">Українська</string>
-    <string name="transcription_language_vietnamese">Вʼєтнамська</string>
-    <string name="transcription_minute_label">Хвилина</string>
-    <string name="transcription_mode_after_each_call">Після кожного дзвінка</string>
-    <string name="transcription_mode_automatic">За розкладом</string>
-    <string name="transcription_mode_label">Розпізнавання мовлення</string>
-    <string name="transcription_mode_manual">Вручну</string>
-    <string name="transcription_model_best">Найкраща якість</string>
-    <string name="transcription_model_best_small_download">Найкраща якість, менше завантаження</string>
-    <string name="transcription_model_persian">Налаштована на перську</string>
-    <string name="transcription_model_persian_licence">Найкраща якість, навчена на перському мовленні. Whisper large-v3-turbo Persian від givia, ліцензія CC BY 4.0, квантована для whisper.cpp. Завантажується окремо й не входить до CallVault.</string>
-    <string name="transcription_model_delete">Видалити модель</string>
-    <string name="transcription_model_download">Завантажити модель</string>
-    <string name="transcription_model_download_subtitle">%1$d МБ</string>
-    <string name="transcription_model_downloading">Завантаження… %1$d%%</string>
-    <string name="transcription_model_failed">Завантаження не завершено. Спробуйте ще раз.</string>
-    <string name="transcription_model_failed_space">Недостатньо вільного місця. Звільніть памʼять і повторіть.</string>
-    <string name="transcription_model_failed_verify">Завантаження пошкоджено та видалено. Спробуйте ще раз.</string>
-    <string name="transcription_model_installed">Завантажено й готово</string>
-    <string name="transcription_model_label">Модель</string>
-    <string name="transcription_model_resume">Продовжити завантаження</string>
-    <string name="transcription_model_resume_subtitle">Завантажено %1$d із %2$d МБ</string>
-    <string name="transcription_model_small">Швидка</string>
-    <string name="transcription_model_waiting">Очікування Wi-Fi</string>
-    <string name="transcription_note_after_each_call">Кожен новий дзвінок розпізнається після завершення. Старі записи потрібно обробити вручну.</string>
-    <string name="transcription_note_automatic">Дзвінки без транскрипції обробляються за розкладом. Довгі розмови можуть оброблятися довго.</string>
-    <string name="transcription_note_manual">Транскрипція створюється лише за вашим запитом із меню запису.</string>
-    <string name="transcription_time_label">Час запуску</string>
-    <string name="transcription_warning_confirm">Увімкнути</string>
-    <string name="transcription_warning_message">Розпізнавання може тривати приблизно стільки, скільки сама розмова, сильно навантажує процесор і витрачає заряд батареї.\n\nПроцес можна зупинити.</string>
-    <string name="transcription_warning_title">Розпізнавання потребує багато ресурсів</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="transcripts_search_hint">Пошук у розмовах</string>
     <string name="update_popup_later">Пізніше</string>
     <string name="update_popup_text">Нова версія готова до встановлення. Оновлення містить виправлення й покращення.</string>
@@ -890,20 +880,20 @@
     <string name="wizard_storage_subtitle">Виберіть місце збереження записів. Пізніше це можна змінити в налаштуваннях.</string>
     <string name="wizard_storage_title">Де зберігати записи</string>
     <string name="wizard_title">Налаштування CallVault</string>
-    <string name="wizard_transcription_background_note">Завантаження може тривати у фоні; стан можна переглянути в налаштуваннях CallVault.</string>
-    <string name="wizard_transcription_language_note">Виберіть мову розмови. Так надійніше, ніж автоматичне визначення; пізніше можна змінити для кожного запису.</string>
-    <string name="wizard_transcription_line">Дзвінки в текст просто на цьому телефоні.</string>
-    <string name="wizard_transcription_model_note">Для транскрипції потрібно завантажити модель: %1$s — %2$d МБ, %3$s — %4$d МБ. Розпізнавання тривалого дзвінка потребує часу й ресурсів.</string>
-    <string name="wizard_transcription_model_size">%1$s — %2$d МБ</string>
-    <string name="wizard_transcription_model_sizes_note">Для розпізнавання потрібна модель на телефоні: %1$s. Процес може тривати приблизно стільки ж, скільки сама розмова.</string>
-    <string name="wizard_transcription_subtitle">CallVault може локально перетворювати аудіо на текст та створювати короткі підсумки. Оберіть, коли запускати цю функцію.</string>
-    <string name="wizard_transcription_summary_body">Коли розмову розпізнано, CallVault може створити короткий підсумок прямо на телефоні.</string>
-    <string name="wizard_transcription_summary_heading">Підсумки</string>
-    <string name="wizard_transcription_title">Перетворення розмов на текст</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="wizard_updates_line">Як CallVault знаходить нові версії.</string>
     <string name="wizard_updates_subtitle">CallVault перевіряє оновлення через GitHub.</string>
     <string name="wizard_updates_title">Оновлення</string>
-    <!-- Transcribe again (#72) -->
+    
     <string name="transcribe_again_title">Розшифрувати знову?</string>
     <string name="transcribe_again_message_one">%1$s буде розшифровано знову. Якщо новий запуск не вдасться або його зупинять, поточна розшифровка збережеться.</string>
     <string name="transcribe_again_message_many">Розшифровок до повтору: %1$d. Якщо запуск не вдасться або його зупинять, ця розшифровка залишиться як є.</string>

@@ -49,14 +49,14 @@
     <string name="notif_action_turn_usb_on">Activer le débogage USB</string>
 
     <!-- Transcription finished / didn't finish -->
-    <string name="transcript_notice_channel">Transcriptions</string>
-    <string name="transcript_notice_ready_title">Transcription prête</string>
-    <string name="transcript_notice_ready_deleted_text">%1$s — l\'audio a été supprimé, comme demandé.</string>
-    <string name="transcript_notice_ready_many_title">Transcriptions prêtes : %1$d</string>
-    <string name="transcript_notice_ready_many_text">Appuyez pour les lire.</string>
-    <string name="transcript_notice_failed_title">La transcription n\'a pas abouti</string>
-    <string name="transcript_notice_failed_text">%1$s. Appuyez pour réessayer.</string>
-    <string name="transcript_notice_failed_many_title">Transcriptions non abouties : %1$d</string>
-    <string name="transcript_notice_failed_many_text">Appuyez pour les voir.</string>
-    <string name="transcript_notice_failed_kept_text">%1$s. La transcription précédente a été conservée.</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </resources>

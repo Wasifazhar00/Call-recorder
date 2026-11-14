@@ -124,7 +124,7 @@
     <string name="settings_merge_keep_originals_description">Depois de mesclar, deixar também no telefone as chamadas que a formaram. Desativado por padrão, para que uma mesclagem deixe uma única gravação. Separar uma chamada mesclada funciona nos dois casos.</string>
     <string name="settings_merge_keep_originals_title">Manter os originais após mesclar</string>
     <string name="unmerge_confirm">Separar</string>
-    <string name="unmerge_message">Ela volta a ser estas chamadas, cada uma com a transcrição e as marcações que tinha:</string>
+    <string name="unmerge_message">It becomes these calls again, each with its recording details and marks it had:</string>
     <string name="unmerge_title">Separar esta chamada?</string>
     <string name="merge_note_will_delete">As outras chamadas são removidas. Separá-la depois as traz de volta.</string>
     <string name="merge_note_will_keep">As outras chamadas também são mantidas no telefone.</string>
@@ -293,47 +293,47 @@
     <!-- Home: the hub of cards, and the two sections its cards open -->
     <string name="home_hub_library_title">Biblioteca</string>
     <string name="home_hub_recordings_body">Todas as chamadas que o CallVault gravou.</string>
-    <string name="home_hub_transcripts_body">Suas chamadas em palavras — e qualquer áudio que você trouxer.</string>
-    <string name="home_hub_summaries_body">Resumos com IA, feitos no seu telefone.</string>
-    <string name="home_transcripts_title">Transcrições</string>
-    <string name="home_summaries_title">Resumos</string>
-    <string name="home_transcripts_count">%1$d transcritas</string>
-    <string name="home_summaries_count">%1$d resumidas</string>
-    <string name="home_transcripts_empty_title">Nada transcrito ainda</string>
-    <string name="home_transcripts_empty_hint">Peça uma transcrição no menu de uma gravação ou toque em Importar para adicionar um arquivo de áudio. Ela aparece aqui assim que for escrita.</string>
-    <string name="home_summaries_empty_title">Nada resumido ainda</string>
-    <string name="home_summaries_empty_hint">Abra uma chamada que tenha transcrição e peça um resumo; ele aparece aqui assim que ficar pronto.</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     <!-- Transcripts: the two headings above the finished transcripts -->
-    <string name="transcripts_working_header">Sendo transcrito</string>
-    <string name="transcripts_failed_header">Não foi concluída</string>
-    <string name="transcripts_failed_hint">Toque em uma para tentar de novo.</string>
-    <string name="transcripts_waiting_header">Aguardando transcrição</string>
-    <string name="transcripts_waiting_hint">Você compartilhou estes arquivos para lê-los, não para guardá-los. Toque em um para começar, ou abra para ouvir ou excluir.</string>
-    <string name="summaries_working_header">Sendo resumido</string>
-    <string name="summaries_failed_header">Não foi concluída</string>
-    <string name="summaries_failed_hint">Abra um para pedir de novo.</string>
+    
+    
+    
+    
+    
+    
+    
+    
     <!-- Transcripts: bringing in audio CallVault did not record -->
-    <string name="transcripts_import_title">Importar áudio</string>
-    <string name="transcripts_import_working">Importando…</string>
-    <string name="transcripts_import_fab">Importar</string>
+    
+    
+    
     <string name="import_sheet_keep">Manter o áudio</string>
     <string name="import_sheet_keep_hint">Aparece com suas gravações</string>
-    <string name="import_sheet_transcript_only">Só a transcrição</string>
-    <string name="import_sheet_transcript_only_hint">O áudio é apagado depois</string>
+    
+    
     <string name="import_failed_title">Não foi possível importar o arquivo</string>
     <string name="import_failed_not_audio">O CallVault não consegue ler esse tipo de arquivo. Tente uma gravação .opus, .ogg, .m4a, .mp3 ou .wav.</string>
-    <string name="import_failed_empty">Esse arquivo está vazio, então não haveria nada para transcrever.</string>
+    
     <string name="import_failed_no_folder">Não há uma pasta de gravações para guardá-lo. Escolha uma nas configurações e tente de novo.</string>
     <string name="import_failed_copy">Não foi possível gravar o arquivo na sua pasta de gravações. Verifique se há espaço no celular e se a pasta continua disponível.</string>
-    <string name="import_failed_undecodable">Este celular não consegue ler o áudio desse arquivo, então ele nunca poderia ser transcrito. Pode estar danificado ou em um formato que o Android não decodifica.</string>
+    
     <string name="home_row_imported">Importado</string>
     <string name="home_row_text_only">Só texto</string>
     <!-- Menu de compartilhamento: áudio enviado ao CallVault por outro app -->
     <string name="share_import_label">Importar áudio</string>
     <string name="share_import_working_body">Copiando o arquivo e conferindo se este telefone consegue lê-lo.</string>
     <string name="share_import_done_title">Adicionado às suas gravações</string>
-    <string name="share_import_done_body">Já está no CallVault. Abra para ouvir ou para pedir uma transcrição.</string>
+    
     <string name="share_import_open">Abrir</string>
     <string name="share_import_open_app">Abrir o CallVault</string>
     <string name="share_import_close">Fechar</string>
@@ -344,14 +344,14 @@
     <string name="share_import_choice_unnamed">O áudio compartilhado</string>
     <string name="import_choice_keep">Importar e transcrever</string>
     <string name="import_choice_keep_hint">Mantém o áudio nas suas gravações e o transcreve.</string>
-    <string name="import_choice_transcribe_only">Apenas transcrever</string>
-    <string name="import_choice_transcribe_only_hint">Transcreve e depois apaga o áudio. Ele nunca aparece nas suas gravações — só o texto, em Transcrições.</string>
-    <string name="share_import_queued_keep_title">Adicionado e na fila</string>
-    <string name="share_import_queued_keep_body">Está nas suas gravações. A transcrição aparecerá em Transcrições quando ficar pronta.</string>
-    <string name="share_import_queued_only_title">Na fila para transcrição</string>
-    <string name="share_import_queued_only_body">Você encontrará o texto em Transcrições. O áudio é apagado assim que a transcrição é salva.</string>
-    <string name="share_import_kept_title">Salvo, mas não transcrito</string>
-    <string name="share_import_kept_body">Está nas suas gravações. Você pode iniciar a transcrição por lá quando quiser.</string>
-    <string name="share_import_kept_only_body">Está esperando em Transcrições. Inicie por lá quando quiser, ou apague no mesmo lugar.</string>
-    <string name="share_import_no_model">Ainda não há nenhum modelo de transcrição instalado, então o CallVault não consegue ler isto. O áudio foi salvo — instale um modelo em Configurações e depois inicie em Transcrições.</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </resources>

@@ -469,25 +469,12 @@
     <string name="wizard_reliability_usb_desc">On some phones, locking the screen during a call can stop the recording. Setting USB to \"Charging only\" prevents that. (Your phone then defaults to charging when plugged into a PC — pick File transfer manually when you need it.)</string>
     <string name="wizard_reliability_usb_button">Set USB to Charging only</string>
     <string name="wizard_reliability_usb_done">USB is set to Charging only</string>
-    <!--
-      Wizard: transcription and summaries. The one place a new install is ever told either feature
-      exists — the What's New dialog only fires after an update, which a fresh install never has.
-
-      The step offers both downloads. wizard_transcription_cost_note and
-      wizard_transcription_summary_note were replaced rather than reworded: both said the download
-      button was in Settings, and a locale that still had the old sentence translated would have
-      gone on saying so next to a working button. New names fall back to English until translated,
-      which is wrong-language but never wrong.
-    -->
-    <string name="wizard_transcription_title">Turning calls into text</string>
-    <!--
-      Reworded in place, unlike the two notes below it: the old sentence is incomplete now that the
-      step also asks about summaries and models, but it is not untrue, so a locale still showing it
-      until the next translation pass says less rather than something wrong.
-    -->
-    <string name="wizard_transcription_subtitle">CallVault can turn a recording into text on the phone itself, and write a short summary from it — nothing is sent anywhere. Choose when that happens, which language your calls are in, and download what it needs.</string>
-    <string name="wizard_transcription_line">Turn calls into text on this phone.</string>
-    <string name="wizard_transcription_language_note">Set to the language this phone is set to. Naming it is far more reliable than letting the app guess, and you can still pick a different one per call later.</string>
+    
+    
+    
+    
+    
+    
     <!--
       Dead as of the third model tier, and kept only until the translation pass retires it. It is NOT
       edited in place, and the arity of a live string must never be: ten values-* files still carry
@@ -496,20 +483,20 @@
       English — `getString` would have thrown MissingFormatArgumentException and taken the whole
       wizard step down for every non-English user. Superseded by the key below.
     -->
-    <string name="wizard_transcription_model_note">Transcribing needs a speech model on the phone first: %1$s is %2$d MB, %3$s is %4$d MB. Transcribing a call then takes roughly the length of the call and works the processor hard.</string>
+    
     <!--
       Its replacement: one %1$s holding a list built from the catalogue, so a fourth tier needs no
       new placeholder and no second person to notice. Untranslated on purpose — a locale falls back
       to this English sentence until the translation pass, which says less rather than something
       wrong, and is the same trade the subtitle above already made.
     -->
-    <string name="wizard_transcription_model_sizes_note">Transcribing needs a speech model on the phone first: %1$s. Transcribing a call then takes roughly the length of the call and works the processor hard.</string>
-    <string name="wizard_transcription_model_size">%1$s is %2$d MB</string>
+    
+    
     <!-- Joins the list above. A resource because the comma is not the right separator everywhere. -->
     <string name="list_separator">", "</string>
-    <string name="wizard_transcription_summary_heading">Summaries</string>
-    <string name="wizard_transcription_summary_body">Once a call has a transcript, CallVault can also write a short summary of it — on the phone, like everything else here.</string>
-    <string name="wizard_transcription_background_note">Both downloads keep going in the background. You can carry on and finish setup now — CallVault\'s settings show the same progress afterwards.</string>
+    
+    
+    
 
     <string name="wizard_audio_title">Audio quality</string>
     <string name="wizard_audio_subtitle">Pick the recording format and bit rate. Opus at 16 kbps is recommended for clear voice at small file sizes.</string>
@@ -604,31 +591,31 @@
     <string name="settings_debug_log_delete_title">Delete the log?</string>
     <string name="settings_debug_log_delete_message">The entries collected so far are removed. If logging is still on, a new log starts immediately.</string>
     <string name="settings_debug_log_empty">The log is empty.</string>
-    <!-- Transcription (on-device speech to text) -->
-    <string name="settings_section_transcription">Transcription</string>
-    <string name="transcription_mode_label">Transcribe</string>
-    <string name="transcription_mode_manual">Manually</string>
-    <string name="transcription_mode_after_each_call">After each call</string>
-    <string name="transcription_mode_automatic">Scheduled</string>
-    <string name="transcription_hour_label">Hour</string>
-    <string name="transcription_minute_label">Minute</string>
-    <string name="transcription_time_label">Run at</string>
-    <string name="transcription_warning_title">Transcribing is slow and heavy</string>
-    <string name="transcription_warning_message">A call takes roughly its own length to transcribe, and uses every core of your phone while it does. Expect it to get warm and to use noticeable battery.\n\nYou can stop a run at any time from the badge beside the title.</string>
-    <string name="transcription_warning_confirm">Turn it on</string>
-    <string name="transcription_charging_title">Only while charging</string>
-    <string name="transcription_charging_subtitle">Transcribing uses the processor heavily and will drain the battery.</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="heavy_work_channel_name">Background processing</string>
     <string name="heavy_work_notification_text">Your phone may get warm while this runs.</string>
-    <string name="heavy_work_transcribing">Transcribing a recording</string>
-    <string name="heavy_work_summarising">Summarising a recording</string>
-    <string name="heavy_work_importing_model">Importing a model</string>
-    <string name="heavy_work_backing_up_model">Backing up a model</string>
+    
+    
+    
+    
     <string name="drive_copy_title">Copying recordings to Drive</string>
     <string name="drive_copy_progress">%1$d of %2$d copied</string>
     <string name="drive_copy_stop">Stop for now</string>
-    <string name="transcription_model_label">Model</string>
-    <string name="transcription_model_small">Fast</string>
+    
+    
     <!--
       "Best quality" deliberately keeps its key and moves to the q8_0 tier, rather than a new key
       being minted for it. q8_0 is the tier this sentence has always been describing — the best one
@@ -636,155 +623,138 @@
       new, untranslated key is the one below, which lands on the tier that is now the second choice:
       the worst case is one fallback-to-English entry in the picker, on the entry that matters less.
     -->
-    <string name="transcription_model_best">Best quality</string>
-    <string name="transcription_model_best_small_download">Best quality, smaller download</string>
-    <string name="transcription_model_persian">Persian-tuned</string>
-    <string name="transcription_model_persian_licence">Best quality, trained on Persian speech. Whisper large-v3-turbo Persian by givia, CC BY 4.0 licence, quantised for whisper.cpp. It is downloaded separately rather than included in CallVault.</string>
-    <string name="transcription_model_download">Download model</string>
-    <string name="transcription_model_download_subtitle">%1$d MB</string>
-    <string name="transcription_model_delete">Delete model</string>
-    <string name="transcription_model_installed">Downloaded and ready</string>
-    <!--
-      The rest of the download's life, which the speech model never had wording for: its rows flipped
-      from "Download model" straight to "Downloaded and ready" with nothing in between. Deliberately
-      the summariser's sentences in megabytes rather than gigabytes — the same states, six times
-      smaller. "Cancel the download" is not one of them: summary_model_cancel says exactly that and
-      is shared by both, since it names no model.
-    -->
-    <string name="transcription_model_downloading">Downloading… %1$d%%</string>
-    <string name="transcription_model_waiting">Waiting for Wi-Fi</string>
-    <string name="model_importing">Importing… %1$d%%</string>
-    <string name="model_import_waiting">Getting ready to import…</string>
-    <string name="model_import">Import from a file</string>
-    <string name="model_import_subtitle">Use a copy you already have</string>
-    <string name="model_import_info">Pick the official model file (%1$s, %2$d MB). CallVault checks it is exactly that file before using it, and leaves your copy where it is.</string>
-    <string name="model_import_failed_wrong_file">That isn\'t the right file. Pick %1$s.</string>
-    <string name="model_import_failed_other_model">That\'s the file for another model (%1$s). Choose that model first, then import.</string>
-    <string name="model_import_failed_unreadable">Couldn\'t read that file. Pick it again.</string>
-    <string name="model_import_failed_space">Not enough free space to import it.</string>
-    <string name="model_backup">Back up</string>
-    <string name="model_backup_subtitle">Save a copy to keep after a reinstall</string>
-    <string name="model_backup_info">Saves the model file to a folder you choose. After a reinstall or on a new phone, use Import with that file instead of downloading again.</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="model_backing_up">Backing up… %1$d%%</string>
-    <string name="model_backup_waiting">Getting ready to back up…</string>
-    <string name="model_backup_done">Saved</string>
-    <string name="model_backup_failed">The backup didn\'t finish. Try again.</string>
-    <string name="transcription_model_resume">Resume the download</string>
-    <string name="transcription_model_resume_subtitle">%1$d MB of %2$d MB already downloaded</string>
-    <string name="transcription_model_failed_space">Not enough free space. Free some up and try again.</string>
-    <string name="transcription_model_failed_verify">The download was damaged and has been discarded. Try again.</string>
-    <string name="transcription_model_failed">The download did not finish. Try again.</string>
+    
+    
+    
+    
+    
+    
+    
+    
 
-    <!--
-      Call summaries. The numbers here are measured on the OP12, not estimated, and the copy is
-      deliberately plain about the cost: about 2.7 GB to fetch and 3.5 GB of memory to run rules the
-      feature out on smaller phones, and someone deserves to know that before starting, not after.
-      Every size shown to the user is a placeholder filled from SummaryModel, so these numbers move
-      when the model does — do not hardcode one into a string.
-    -->
-    <string name="summary_model_download">Download the summariser</string>
-    <string name="summary_model_download_subtitle">%1$.1f GB</string>
-    <string name="summary_model_delete">Delete the summariser</string>
-    <string name="summary_model_installed">Downloaded and ready</string>
-    <string name="summary_model_downloading">Downloading… %1$d%%</string>
-    <string name="summary_model_waiting">Waiting for Wi-Fi</string>
+    
+    
+    
+    
+    
+    
+    
     <!-- Asked when Download is tapped on mobile data. %1$s is the size as the download row shows it ("190 MB", "3.5 GB"). -->
     <string name="mobile_data_download_title">You\'re not on Wi-Fi</string>
     <string name="mobile_data_download_body">This model is %1$s. Download it now on mobile data, or wait and let it start by itself when you\'re on Wi-Fi?</string>
     <string name="mobile_data_download_wait">Wait for Wi-Fi</string>
     <string name="mobile_data_download_now">Download now on mobile data</string>
-    <string name="summary_model_cancel">Cancel the download</string>
-    <string name="summary_model_resume">Resume the download</string>
-    <string name="summary_model_resume_subtitle">%1$.1f GB of %2$.1f GB already downloaded</string>
-    <string name="summary_model_discard">Discard what was downloaded</string>
-    <string name="summary_model_discard_subtitle">Frees %1$.1f GB</string>
-    <string name="summary_model_failed_space">Not enough free space. Free some up and try again.</string>
-    <string name="summary_model_failed_verify">The download was damaged and has been discarded. Try again.</string>
-    <string name="summary_model_failed">The download did not finish. Try again.</string>
-    <string name="summary_requirements_title">What this needs</string>
-    <string name="summary_requirements_body">Summaries are written on your phone — nothing is sent anywhere. That costs a %1$.1f GB download and about %2$.1f GB of memory while it runs, so it needs a recent phone with room to spare. A short call takes a minute or two.</string>
-    <string name="summary_model_licence">The summariser is Google\'s Gemma 4, used under the Apache 2.0 licence. It is downloaded separately rather than included in CallVault.</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
-    <!--
-      The summary card on the playback screen. "Generated from the transcript" is not decoration:
-      it is the honest label for a machine's reading of a machine's transcription, it explains
-      without apologising why a summary can be wrong, and it is what sends someone to the
-      transcript when it looks off.
-    -->
-    <string name="summary_card_title">Summary</string>
-    <string name="summary_card_decisions">Decisions</string>
-    <string name="summary_card_actions">To do</string>
-    <string name="summary_card_key_points">Key points</string>
-    <string name="summary_card_facts">Worth keeping</string>
-    <string name="summary_card_provenance">Generated from the transcript</string>
-    <string name="summary_card_redo">Write it again</string>
-    <string name="summary_card_create">Summarise this call</string>
-    <string name="summary_card_create_subtitle">Written on your phone, about a minute or two</string>
-    <string name="summary_card_running">Summarising… %1$d%%</string>
-    <string name="summary_card_stop">Stop</string>
-    <string name="summary_card_blocked_no_transcript">Transcribe this call first — the summary is written from the transcript.</string>
-    <string name="summary_card_blocked_unfinished">Waiting for the transcript to finish.</string>
-    <string name="summary_card_blocked_empty">This transcript has no words in it, so there is nothing to summarise.</string>
-    <string name="summary_card_blocked_model">Download the summariser in Settings first.</string>
-    <string name="summary_card_blocked_transcribing">Waiting for the transcription to finish — they cannot share the phone.</string>
-    <string name="summary_card_blocked_summarising">Another call is being summarised.</string>
-    <string name="summary_card_failed">That did not produce a usable summary. You can try again.</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     <!--
       Shown once before the first download. Every number here was measured on the OP12; none is
       estimated. The timing for a long call is an extrapolation and is deliberately not quoted as a
       per-minute rate.
     -->
-    <string name="summary_requirements_heading">Before you download</string>
-    <string name="summary_requirements_download">%1$.1f GB to download</string>
-    <string name="summary_requirements_memory">About %1$.1f GB of memory while it runs</string>
-    <string name="summary_requirements_time">Roughly a minute or two for a short call, longer for a long one</string>
-    <string name="summary_requirements_private">Everything happens on your phone. Nothing is sent anywhere.</string>
-    <string name="summary_requirements_phone">It needs a recent phone with room to spare. On an older one it may be slow or fail.</string>
-    <string name="summary_requirements_continue">Download</string>
-    <string name="summary_requirements_cancel">Not now</string>
-    <string name="summary_requirements_dont_ask">Don\'t show this again</string>
-    <string name="summary_requirements_toggle_description">Show what the summariser costs before downloading it</string>
-    <string name="summary_delete_confirm_title">Delete the summariser?</string>
-    <string name="summary_delete_confirm_body">This frees %1$.1f GB. Summaries you have already written are kept, but you will need to download it again to write any more.</string>
-    <string name="summary_delete_confirm_confirm">Delete</string>
-    <string name="summary_discard_confirm_title">Discard the download?</string>
-    <string name="summary_discard_confirm_body">This throws away the %1$.1f GB already downloaded. Starting again would fetch all of it from the beginning.</string>
-    <string name="summary_discard_confirm_confirm">Discard</string>
-    <string name="transcription_language_label">Language</string>
-    <string name="transcription_language_hebrew">Hebrew</string>
-    <string name="transcription_language_english">English</string>
-    <string name="transcription_language_arabic">Arabic</string>
-    <string name="transcription_language_russian">Russian</string>
-    <string name="transcription_language_french">French</string>
-    <string name="transcription_language_spanish">Spanish</string>
-    <string name="transcription_language_chinese">Chinese</string>
-    <string name="transcription_language_german">German</string>
-    <string name="transcription_language_hungarian">Hungarian</string>
-    <string name="transcription_language_italian">Italian</string>
-    <string name="transcription_language_polish">Polish</string>
-    <string name="transcription_language_portuguese">Portuguese</string>
-    <string name="transcription_language_vietnamese">Vietnamese</string>
-    <string name="transcription_language_greek">Greek</string>
-    <string name="transcription_language_persian">Persian</string>
-    <string name="transcription_language_urdu">Urdu</string>
-    <string name="transcription_language_bengali">Bengali</string>
-    <string name="transcription_language_ukrainian">Ukrainian</string>
-    <string name="transcription_language_auto">Detect automatically</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="language_search_placeholder">Search languages</string>
     <string name="language_search_clear">Clear search</string>
     <string name="language_search_no_match">No language matches</string>
-    <string name="transcription_language_auto_hint">Detection is unreliable for languages that are not written in Latin letters — Hebrew, Arabic, Russian and Chinese often come back spelled out in English letters, or as one long block of text. Name the language if you can.</string>
-    <string name="transcription_note_manual">Transcripts are made only when you ask for one, from the button on a recording.</string>
-    <string name="transcription_note_after_each_call">Each call is transcribed as soon as it ends. Older calls are left alone — transcribe those from the button on a recording.</string>
-    <string name="transcription_note_automatic">Calls that have no transcript yet are transcribed at the chosen time. A 30-minute call takes about 30 minutes.</string>
-    <string name="transcription_batch_label">Calls per run</string>
-    <string name="transcription_batch_no_limit">No limit</string>
+    
+    
+    
+    
+    
+    
     <string name="playback_title">Recording</string>
     <string name="playback_skip_back">Back 10 seconds</string>
     <string name="playback_skip_forward">Forward 10 seconds</string>
     <string name="playback_speed">%1$s×</string>
-    <string name="playback_open_transcript">Read the transcript</string>
+    
     <string name="playback_note_title">Note</string>
     <string name="playback_note_hint">What this call was about…</string>
     <string name="transcript_action_transcribe">Transcribe this call</string>
@@ -795,50 +765,50 @@
     <string name="transcribe_confirm_title">This will take about %1$s</string>
     <string name="transcribe_confirm_title_unknown">Transcribe this call?</string>
     <string name="transcribe_confirm_title_first_run">The first one may take a while</string>
-    <string name="transcribe_confirm_message">Transcribing %1$s keeps your phone busy and uses noticeable battery. You can stop it at any time.\n\nThis question can be turned back on under Transcription in Settings.</string>
+    
     <string name="transcribe_confirm_dont_ask">Don\'t ask again</string>
     <string name="transcribe_long_call_line">This call is %1$s. On this phone, transcribing takes about %2$s× as long — about %3$s.</string>
     <string name="transcribe_language_title">Which language?</string>
     <string name="transcribe_language_message">Transcribe %1$s in:</string>
     <string name="transcribe_language_confirm">Transcribe</string>
-    <string name="transcription_ask_language_title">Ask which language each time</string>
-    <string name="transcription_ask_language_subtitle">Choose the language per recording instead of always using the one above. It applies to that recording only.</string>
-    <!-- Where to transcribe: on this phone or with the user's own cloud key (issue #48). No prices anywhere. -->
-    <string name="transcription_where_title">Where to transcribe</string>
-    <string name="transcription_where_on_device">On this phone</string>
-    <string name="transcription_where_on_device_desc">Private. Slower: about 1.5 min per minute of call.</string>
-    <string name="transcription_where_groq_desc">Fast: usually seconds per call.</string>
-    <string name="transcription_where_openrouter_desc">One key for many services. Microsoft MAI-Transcribe.</string>
-    <string name="transcription_where_custom">Custom (advanced)</string>
-    <string name="transcription_where_custom_desc">Any OpenAI-compatible server.</string>
-    <string name="transcription_where_custom_service">your server</string>
-    <string name="transcription_where_recommended">Recommended</string>
-    <string name="transcription_cloud_key_label">Your %1$s key</string>
-    <string name="transcription_cloud_key_label_custom">Your server\'s key</string>
-    <string name="transcription_cloud_key_show">Show key</string>
-    <string name="transcription_cloud_key_hide">Hide key</string>
-    <string name="transcription_cloud_test">Test</string>
-    <string name="transcription_cloud_testing">Testing…</string>
-    <string name="transcription_cloud_get_key">Get a %1$s key</string>
-    <string name="transcription_cloud_custom_url">Server address</string>
-    <string name="transcription_cloud_custom_url_hint">https://… (the part before /audio/transcriptions)</string>
-    <string name="transcription_cloud_custom_url_invalid">Use an http(s):// address.</string>
-    <string name="transcription_cloud_custom_model">Model</string>
-    <string name="transcription_cloud_mobile_data">Allow mobile data usage</string>
-    <string name="transcription_cloud_mobile_data_desc">When off, calls wait for Wi-Fi before they are sent.</string>
-    <string name="transcription_cloud_privacy_note">Call audio is sent to %1$s to be written out. The words come back to this phone; %1$s\'s privacy terms apply. Wi-Fi only unless you allow mobile data.</string>
-    <string name="transcription_cloud_consent_title">Send call audio to %1$s?</string>
-    <string name="transcription_cloud_consent_body">When a call is transcribed, its audio is sent to %1$s with your key, and the words come back to this phone. %1$s\'s privacy terms apply. Summaries stay on this phone.</string>
-    <string name="transcription_cloud_consent_confirm">Use %1$s</string>
-    <string name="transcription_cloud_test_ok">The key works.</string>
-    <string name="transcription_cloud_test_bad_key">The key was refused. Check it and try again.</string>
-    <string name="transcription_cloud_test_no_timings">The service answered without timings, so it cannot be used. Try another model.</string>
-    <string name="transcription_cloud_test_unreachable">Could not reach the service. Check the connection and try again.</string>
-    <string name="transcription_cloud_test_refused">The service refused the request. Check the address and the model.</string>
-    <string name="transcription_cloud_test_no_key">Paste a key first.</string>
-    <string name="transcription_cloud_test_incomplete">Fill in the server address and the model first.</string>
-    <string name="transcription_confirm_title">Ask before transcribing</string>
-    <string name="transcription_confirm_subtitle">Shows how long it will take and lets you cancel.</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="transcript_action_busy">Transcribing…</string>
     <string name="transcript_action_open">Read the transcript</string>
     <string name="transcript_action_retry">Transcription failed — try again</string>
@@ -931,16 +901,16 @@
         <item quantity="one">%d match</item>
         <item quantity="other">%d matches</item>
     </plurals>
-    <string name="summary_requirements_toggle_label">Show requirements</string>
+    
     <string name="settings_sim_label_label">Show which SIM each call used</string>
     <string name="settings_sim_label_desc">For phones with two SIMs: shows the name you gave the SIM, or SIM 1 / SIM 2</string>
     <string name="sim_label_word">SIM</string>
     <string name="settings_metadata_file_label">Write a details file</string>
     <string name="settings_metadata_file_desc">Save a small .json beside each recording</string>
     <string name="settings_metadata_file_hint">Uses the same format as BCR, so apps built for it — such as bcr-gui — can read your recordings\' details. Only worth turning on if you use one.</string>
-    <string name="settings_transcript_sidecar_label">Save transcript and notes beside the recording</string>
-    <string name="settings_transcript_sidecar_desc">Write a .md text file next to each recording</string>
-    <string name="settings_transcript_sidecar_hint">Saves the transcript, notes and summary as a text file with the same name as the recording, so copying your folder to a PC keeps the text with the audio. Turning it on also saves the ones you already have.</string>
+    
+    
+    
     <string name="settings_hide_recordings_label">Hide recordings</string>
     <string name="settings_hide_recordings_desc">Keep your recordings out of music players, galleries and other media apps</string>
     <string name="settings_hide_recordings_hint">Adds a hidden .nomedia file to your recordings folder, which most apps respect. Your recordings keep their names and still sync. File managers still show them — to hide them there too, give the folder a name that starts with a dot.</string>
@@ -976,7 +946,7 @@
     <string name="voip_recording_paused">Paused. Nothing is being saved right now.</string>
     <string name="voip_recording_held">Held for a phone call. This recording will continue when you return.</string>
     <string name="general_back">Back</string>
-    <string name="export_heading_transcript">Transcript</string>
+    
     <string name="settings_bugreport_save">Save</string>
     <string name="settings_bugreport_saved">Report saved</string>
     <string name="settings_bugreport_save_failed">Could not save the report</string>
@@ -1018,27 +988,21 @@
     <string name="library_row_save">Save as a file</string>
     <string name="library_nothing_to_share">There is nothing there to share any more.</string>
     <string name="transcript_delete_confirm_message_text_only">There is no recording behind these words: deleting the transcript of %1$s deletes the whole thing, and it cannot be brought back.</string>
-    <string name="library_summary_delete_confirm_title">Delete this summary?</string>
-    <string name="library_summary_delete_confirm_message">The summary of %1$s will be deleted. The transcript and the recording are kept, and you can have it written again.</string>
-    <string name="library_bulk_delete_transcripts_message">The words will be deleted. The recordings are kept, and you can transcribe them again later.</string>
-    <string name="library_bulk_delete_summaries_message">The summaries will be deleted. The transcripts and the recordings are kept.</string>
-    <plurals name="library_bulk_delete_transcripts_title">
-        <item quantity="one">Delete %1$d transcript?</item>
-        <item quantity="other">Delete %1$d transcripts?</item>
-    </plurals>
-    <plurals name="library_bulk_delete_summaries_title">
-        <item quantity="one">Delete %1$d summary?</item>
-        <item quantity="other">Delete %1$d summaries?</item>
-    </plurals>
+    
+    
+    
+    
+    
+    
     <plurals name="library_bulk_delete_text_only_warning">
         <item quantity="one">%1$d of these has no recording behind it, so its words are all that is left. That part cannot be undone.</item>
         <item quantity="other">%1$d of these have no recording behind them, so their words are all that is left. That part cannot be undone.</item>
     </plurals>
 
-    <!-- The search line at the head of the Recordings, Transcripts and Summaries pages. %1$s = what was typed. -->
+    
     <string name="home_search_contacts_hint">Search by contact</string>
     <string name="transcripts_search_hint">Search what was said</string>
-    <string name="summaries_search_hint">Search the summaries</string>
+    
     <string name="search_clear">Clear</string>
     <string name="search_no_matches_title">Nothing matches</string>
     <string name="search_no_matches_hint">Nothing here contains “%1$s”. Words match from their start, so a shorter form may find more.</string>
@@ -1063,11 +1027,11 @@
 
     <!-- New Settings screen (settings per page, step 2). -->
     <string name="settings_title_recordings">Recordings settings</string>
-    <string name="settings_title_transcripts">Transcripts settings</string>
-    <string name="settings_title_summaries">Summaries settings</string>
+    
+    
     <string name="settings_link_share_debug_report">Share a debug report</string>
     <string name="settings_link_all_settings">All settings</string>
-    <string name="settings_language_change_in_transcripts">Change it in Transcripts settings</string>
+    
     <string name="settings_summary_off">Off</string>
     <string name="settings_summary_unavailable">Not available here</string>
     <string name="settings_summary_count_on">%1$d of %2$d on</string>
@@ -1089,7 +1053,7 @@
     <string name="settings_group_cleaning_up">Cleaning up</string>
     <string name="settings_group_connection">Connection</string>
     <string name="settings_group_model_and_language">Model and language</string>
-    <string name="settings_group_when_to_transcribe">When to transcribe</string>
+    
     <string name="settings_group_app">App</string>
     <string name="settings_group_help_and_about">Help and about</string>
     <string name="settings_summary_calls_phone_and_app">Phone and app calls</string>
@@ -1103,7 +1067,7 @@
     <string name="settings_subheader_all_calls">All calls</string>
     <string name="settings_voip_auto_start_record_label">Record app calls automatically</string>
 
-    <!-- Transcribe again (#72) -->
+    
     <string name="transcribe_again_title">Transcribe again?</string>
     <string name="transcribe_again_message_one">%1$s will be transcribed again. If the new run fails or is stopped, the current transcript is kept.</string>
     <string name="transcribe_again_message_many">Transcripts to redo: %1$d. If a run fails or is stopped, that transcript is kept as it is.</string>

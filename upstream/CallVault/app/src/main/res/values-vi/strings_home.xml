@@ -124,7 +124,7 @@
     <string name="settings_merge_keep_originals_description">Sau khi gộp, vẫn giữ trên máy những cuộc gọi đã tạo nên nó. Mặc định tắt, nên một lần gộp chỉ để lại một bản ghi. Việc tách một cuộc gọi đã gộp vẫn hoạt động trong cả hai trường hợp.</string>
     <string name="settings_merge_keep_originals_title">Giữ bản gốc sau khi gộp</string>
     <string name="unmerge_confirm">Tách ra</string>
-    <string name="unmerge_message">Nó sẽ trở lại thành các cuộc gọi sau, mỗi cuộc giữ nguyên bản chép lời và các dấu của nó:</string>
+    <string name="unmerge_message">It becomes these calls again, each with its recording details and marks it had:</string>
     <string name="unmerge_title">Tách cuộc gọi này ra?</string>
     <string name="merge_note_will_delete">Các cuộc gọi kia sẽ bị xoá. Tách ra sau này sẽ đưa chúng trở lại.</string>
     <string name="merge_note_will_keep">Các cuộc gọi kia cũng được giữ lại trên máy.</string>
@@ -293,47 +293,47 @@
     <!-- Home: the hub of cards, and the two sections its cards open -->
     <string name="home_hub_library_title">Thư viện</string>
     <string name="home_hub_recordings_body">Mọi cuộc gọi mà CallVault đã ghi âm.</string>
-    <string name="home_hub_transcripts_body">Cuộc gọi của bạn thành chữ — và bất kỳ âm thanh nào bạn mang tới.</string>
-    <string name="home_hub_summaries_body">Tóm tắt bằng AI, ngay trên máy.</string>
-    <string name="home_transcripts_title">Bản chép lời</string>
-    <string name="home_summaries_title">Bản tóm tắt</string>
-    <string name="home_transcripts_count">Đã chép lời %1$d</string>
-    <string name="home_summaries_count">Đã tóm tắt %1$d</string>
-    <string name="home_transcripts_empty_title">Chưa có bản chép lời nào</string>
-    <string name="home_transcripts_empty_hint">Yêu cầu bản chép lời từ menu của một bản ghi, hoặc chạm Nhập để thêm tệp âm thanh. Bản chép lời sẽ hiện ở đây khi xong.</string>
-    <string name="home_summaries_empty_title">Chưa có bản tóm tắt nào</string>
-    <string name="home_summaries_empty_hint">Hãy mở một cuộc gọi đã có bản chép lời và yêu cầu tóm tắt; nó sẽ xuất hiện ở đây khi viết xong.</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     <!-- Transcripts: the two headings above the finished transcripts -->
-    <string name="transcripts_working_header">Đang chép lời</string>
-    <string name="transcripts_failed_header">Chưa hoàn tất</string>
-    <string name="transcripts_failed_hint">Chạm vào một mục để thử lại.</string>
-    <string name="transcripts_waiting_header">Đang chờ chép lời</string>
-    <string name="transcripts_waiting_hint">Bạn đã chia sẻ các tệp này để đọc, không phải để giữ lại. Chạm vào một tệp để bắt đầu, hoặc mở tệp để nghe hoặc xoá.</string>
-    <string name="summaries_working_header">Đang tóm tắt</string>
-    <string name="summaries_failed_header">Chưa hoàn tất</string>
-    <string name="summaries_failed_hint">Mở một mục để yêu cầu lại.</string>
+    
+    
+    
+    
+    
+    
+    
+    
     <!-- Transcripts: bringing in audio CallVault did not record -->
-    <string name="transcripts_import_title">Nhập tệp âm thanh</string>
-    <string name="transcripts_import_working">Đang nhập…</string>
-    <string name="transcripts_import_fab">Nhập</string>
+    
+    
+    
     <string name="import_sheet_keep">Giữ âm thanh</string>
     <string name="import_sheet_keep_hint">Hiện cùng các bản ghi của bạn</string>
-    <string name="import_sheet_transcript_only">Chỉ bản chép lời</string>
-    <string name="import_sheet_transcript_only_hint">Âm thanh sẽ bị xóa sau đó</string>
+    
+    
     <string name="import_failed_title">Không nhập được tệp đó</string>
     <string name="import_failed_not_audio">CallVault không đọc được loại tệp này. Hãy thử bản ghi .opus, .ogg, .m4a, .mp3 hoặc .wav.</string>
-    <string name="import_failed_empty">Tệp đó rỗng, nên sẽ không có gì để chép lời.</string>
+    
     <string name="import_failed_no_folder">Chưa có thư mục bản ghi để cất tệp. Hãy chọn một thư mục trong phần cài đặt rồi thử lại.</string>
     <string name="import_failed_copy">Không ghi được tệp vào thư mục bản ghi của bạn. Hãy kiểm tra điện thoại còn chỗ trống và thư mục vẫn dùng được.</string>
-    <string name="import_failed_undecodable">Điện thoại này không đọc được âm thanh bên trong tệp đó, nên sẽ không bao giờ chép lời được. Tệp có thể đã hỏng, hoặc ở định dạng Android không giải mã.</string>
+    
     <string name="home_row_imported">Đã nhập</string>
     <string name="home_row_text_only">Chỉ văn bản</string>
     <!-- Menu chia sẻ: âm thanh gửi tới CallVault từ ứng dụng khác -->
     <string name="share_import_label">Nhập âm thanh</string>
     <string name="share_import_working_body">Đang chép tệp vào và kiểm tra xem điện thoại có đọc được không.</string>
     <string name="share_import_done_title">Đã thêm vào bản ghi của bạn</string>
-    <string name="share_import_done_body">Tệp đã nằm trong CallVault. Hãy mở để nghe, hoặc để yêu cầu chép lời.</string>
+    
     <string name="share_import_open">Mở</string>
     <string name="share_import_open_app">Mở CallVault</string>
     <string name="share_import_close">Đóng</string>
@@ -344,14 +344,14 @@
     <string name="share_import_choice_unnamed">Tệp âm thanh được chia sẻ</string>
     <string name="import_choice_keep">Nhập và chép lời</string>
     <string name="import_choice_keep_hint">Giữ tệp âm thanh trong các bản ghi của bạn và chép lời.</string>
-    <string name="import_choice_transcribe_only">Chỉ chép lời</string>
-    <string name="import_choice_transcribe_only_hint">Chép lời rồi xoá tệp âm thanh. Tệp không bao giờ xuất hiện trong các bản ghi của bạn — chỉ còn lời, ở mục Bản chép lời.</string>
-    <string name="share_import_queued_keep_title">Đã thêm và đưa vào hàng đợi</string>
-    <string name="share_import_queued_keep_body">Tệp đã nằm trong các bản ghi của bạn. Bản chép lời sẽ xuất hiện ở mục Bản chép lời khi xong.</string>
-    <string name="share_import_queued_only_title">Đã đưa vào hàng đợi chép lời</string>
-    <string name="share_import_queued_only_body">Bạn sẽ thấy lời ở mục Bản chép lời. Tệp âm thanh bị xoá ngay khi bản chép lời được lưu.</string>
-    <string name="share_import_kept_title">Đã lưu nhưng chưa chép lời</string>
-    <string name="share_import_kept_body">Tệp nằm trong các bản ghi của bạn. Bạn có thể bắt đầu chép lời từ đó bất cứ lúc nào.</string>
-    <string name="share_import_kept_only_body">Tệp đang chờ ở mục Bản chép lời. Bắt đầu ở đó bất cứ lúc nào, hoặc xoá ngay tại đó.</string>
-    <string name="share_import_no_model">Chưa có mô hình chép lời nào được cài, nên CallVault không đọc được tệp này. Tệp âm thanh đã được lưu — hãy cài một mô hình trong Cài đặt rồi bắt đầu từ mục Bản chép lời.</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </resources>

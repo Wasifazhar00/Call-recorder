@@ -20,25 +20,15 @@
 <item quantity="other">записей: %1$d</item>
     </plurals>
 
-    <!-- Call summaries. Numbers are measured on the reference device, not estimated. -->
+    
     <plurals name="settings_voip_apps_some">
         <item quantity="one">%1$d приложение не записывается</item>
         <item quantity="few">%1$d приложения не записываются</item>
         <item quantity="many">%1$d приложений не записывается</item>
         <item quantity="other">%1$d приложения не записываются</item>
     </plurals>
-    <plurals name="library_bulk_delete_transcripts_title">
-        <item quantity="one">Удалить расшифровки (%1$d)?</item>
-                <item quantity="few">Удалить расшифровки (%1$d)?</item>
-        <item quantity="many">Удалить расшифровки (%1$d)?</item>
-<item quantity="other">Удалить расшифровки (%1$d)?</item>
-    </plurals>
-    <plurals name="library_bulk_delete_summaries_title">
-        <item quantity="one">Удалить сводки (%1$d)?</item>
-                <item quantity="few">Удалить сводки (%1$d)?</item>
-        <item quantity="many">Удалить сводки (%1$d)?</item>
-<item quantity="other">Удалить сводки (%1$d)?</item>
-    </plurals>
+    
+    
     <plurals name="library_bulk_delete_text_only_warning">
         <item quantity="one">У части из них (%1$d) записи нет — там текст это всё, что осталось. Эту часть не отменить.</item>
                 <item quantity="few">У части из них (%1$d) записи нет — там текст это всё, что осталось. Эту часть не отменить.</item>
@@ -46,7 +36,7 @@
 <item quantity="other">У части из них (%1$d) записи нет — там текст это всё, что осталось. Эту часть не отменить.</item>
     </plurals>
 
-    <!-- The search line at the head of the Recordings, Transcripts and Summaries pages. %1$s = what was typed. -->
+    
     <!-- Master recording On/Off switch -->
 
     <!-- New Settings screen (settings per page, step 2). -->
@@ -81,7 +71,7 @@
     <string name="disclaimer_introduction">Пожалуйста, внимательно прочитайте отказ от ответственности ниже, прежде чем продолжить.</string>
     <string name="disclaimer_must_read">Вы должны прочитать дисклеймер.</string>
     <string name="disclaimer_title">Добро пожаловать в CallVault</string>
-    <string name="export_heading_transcript">Расшифровка</string>
+    
     <string name="folder_cloud_rejected">Облачные папки (например, Google Drive) нельзя использовать для записи. Выберите хранилище на устройстве — для копий в облаке используйте функцию резервного копирования в Google Drive.</string>
     <string name="folder_drive_overlaps_recordings">Папка Drive не может быть папкой записей. Выберите папку Google Диска.</string>
     <string name="folder_drive_overlap_warning">Это ваша папка записей (или она с ней пересекается), поэтому в Drive ничего не копируется. Выберите папку Google Диска.</string>
@@ -107,12 +97,12 @@
     <string name="general_stop">Остановить</string>
     <string name="general_system_limitation">Системное ограничение</string>
     <string name="general_system_limitation_message">Приложение CallVault не будет работать на этом устройстве, так как у вашей системной оболочки (shell) нет необходимых разрешений:\n\n%1$s\n\nВы ничего не можете с этим поделать – приложение не может функционировать и сейчас закроется.</string>
-    <string name="heavy_work_backing_up_model">Резервное копирование модели</string>
+    
     <string name="heavy_work_channel_name">Фоновая обработка</string>
-    <string name="heavy_work_importing_model">Импорт модели</string>
+    
     <string name="heavy_work_notification_text">Телефон может нагреваться во время работы.</string>
-    <string name="heavy_work_summarising">Создание краткого пересказа</string>
-    <string name="heavy_work_transcribing">Расшифровка записи</string>
+    
+    
     <string name="drive_copy_title">Копирование записей в Drive</string>
     <string name="drive_copy_progress">Скопировано %1$d из %2$d</string>
     <string name="drive_copy_stop">Остановить пока</string>
@@ -185,12 +175,12 @@
     <string name="honor_dialer_hint">Приложение «Телефон» может воспроизвести запись из журнала звонков, только если она сохранена в %1$s в формате .m4a. В CallVault укажите в %2$s эту папку, а в %3$s — AAC.</string>
     <string name="honor_dialer_missing">Осталось изменить: %1$s</string>
     <string name="honor_dialer_ready">✓ Готово: папка и формат настроены.</string>
-    <string name="library_bulk_delete_summaries_message">Сводки будут удалены. Расшифровки и записи сохранятся.</string>
-    <string name="library_bulk_delete_transcripts_message">Текст будет удалён. Записи сохранятся, и их можно будет расшифровать снова.</string>
+    
+    
     <string name="library_nothing_to_share">Здесь больше нечем поделиться.</string>
     <string name="library_row_save">Сохранить в файл</string>
-    <string name="library_summary_delete_confirm_message">Сводка «%1$s» будет удалена. Расшифровка и запись сохранятся, и сводку можно написать заново.</string>
-    <string name="library_summary_delete_confirm_title">Удалить эту сводку?</string>
+    
+    
     <string name="list_separator">", "</string>
     <string name="min_duration_caption">Ошибочный или неотвеченный звонок удаляется сразу после завершения — до расшифровки и загрузки. Уже записанное не затрагивается.</string>
     <string name="min_duration_label">Отбрасывать короткие записи</string>
@@ -217,21 +207,21 @@
     <string name="mode_switch_voip_not_armed">Переключено, но подготовить запись звонков в приложениях не удалось. Телефонные звонки будут записываться; звонки в приложениях — возможно, только после повторного открытия CallVault.</string>
     <string name="mode_switch_working">Останавливается старый рекордер и запускается новый. Это займёт несколько секунд.</string>
     <string name="model_backing_up">Резервное копирование… %1$d%%</string>
-    <string name="model_backup">Резервная копия</string>
-    <string name="model_backup_done">Сохранено</string>
-    <string name="model_backup_failed">Резервное копирование не завершилось. Попробуйте ещё раз.</string>
-    <string name="model_backup_info">Сохраняет файл модели в выбранную вами папку. После переустановки или на новом телефоне используйте импорт этого файла вместо повторной загрузки.</string>
-    <string name="model_backup_subtitle">Сохраните копию на случай переустановки</string>
-    <string name="model_backup_waiting">Подготовка к резервному копированию…</string>
-    <string name="model_import">Импорт из файла</string>
-    <string name="model_import_failed_other_model">Это файл другой модели (%1$s). Сначала выберите эту модель, затем импортируйте.</string>
-    <string name="model_import_failed_space">Недостаточно свободного места для импорта.</string>
-    <string name="model_import_failed_unreadable">Не удалось прочитать файл. Выберите его ещё раз.</string>
-    <string name="model_import_failed_wrong_file">Это не тот файл. Выберите %1$s.</string>
-    <string name="model_import_info">Выберите официальный файл модели (%1$s, %2$d МБ). Перед использованием CallVault проверяет, что это именно этот файл, и оставляет вашу копию на месте.</string>
-    <string name="model_import_subtitle">Используйте уже имеющуюся копию</string>
-    <string name="model_import_waiting">Подготовка к импорту…</string>
-    <string name="model_importing">Импорт… %1$d%%</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="note_saved">Сохранено</string>
     <string name="note_saving">Сохранение…</string>
     <string name="notif_cut_off_saved_text">Телефон закрыл CallVault во время звонка. Записанное до этого момента сохранено как %1$s.</string>
@@ -303,7 +293,7 @@
     <string name="playback_marked_moments">Отмеченные моменты</string>
     <string name="playback_note_hint">О чём был этот звонок…</string>
     <string name="playback_note_title">Заметка</string>
-    <string name="playback_open_transcript">Читать расшифровку</string>
+    
     <string name="playback_skip_back">На 10 секунд назад</string>
     <string name="playback_skip_forward">На 10 секунд вперёд</string>
     <string name="playback_speed">%1$s×</string>
@@ -436,7 +426,7 @@
     <string name="settings_group_model_and_language">Модель и язык</string>
     <string name="settings_group_save_and_sync">Сохранение и синхронизация</string>
     <string name="settings_group_sound_and_names">Звук и имена файлов</string>
-    <string name="settings_group_when_to_transcribe">Когда расшифровывать</string>
+    
     <string name="settings_handoff_persist_description">Продолжает запись, даже если фоновый помощник завершается во время звонка (например, при блокировке экрана).</string>
     <string name="settings_handoff_persist_label">Продолжать запись при остановке фонового процесса</string>
     <string name="settings_hide_recordings_desc">Не показывать записи в музыкальных плеерах, галереях и других медиаприложениях</string>
@@ -459,7 +449,7 @@
     <string name="settings_info_about">Подробнее: %1$s</string>
     <string name="settings_info_got_it">Понятно</string>
     <string name="settings_language">Язык</string>
-    <string name="settings_language_change_in_transcripts">Меняется в настройках расшифровок</string>
+    
     <string name="settings_language_system">Системный</string>
     <string name="settings_link_all_settings">Все настройки</string>
     <string name="settings_link_share_debug_report">Поделиться отчётом для отладки</string>
@@ -474,7 +464,7 @@
         <item quantity="many">%d совпадений</item>
         <item quantity="other">%d совпадения</item>
     </plurals>
-    <string name="summary_requirements_toggle_label">Показывать требования</string>
+    
     <string name="settings_sim_label_label">Показывать, какая SIM использовалась для звонка</string>
     <string name="settings_sim_label_desc">Для телефонов с двумя SIM: показывает имя, которое вы дали SIM-карте, или SIM 1 / SIM 2</string>
     <string name="sim_label_word">SIM</string>
@@ -502,7 +492,7 @@
     <string name="settings_section_reliability">Надёжность</string>
     <string name="settings_section_security">Безопасность</string>
     <string name="settings_section_storage">Хранилище</string>
-    <string name="settings_section_transcription">Расшифровка</string>
+    
     <string name="settings_section_updates">Обновления</string>
     <string name="settings_select_contacts">Выбрать контакты (%1$d)</string>
     <string name="settings_select_contacts_incoming">Выбрать входящие контакты</string>
@@ -545,11 +535,11 @@
     <string name="settings_theme_mode_light">Светлая</string>
     <string name="settings_theme_mode_system">Системная</string>
     <string name="settings_title_recordings">Настройки записей</string>
-    <string name="settings_title_summaries">Настройки сводок</string>
-    <string name="settings_title_transcripts">Настройки расшифровок</string>
-    <string name="settings_transcript_sidecar_desc">Создавать текстовый файл .md рядом с каждой записью</string>
-    <string name="settings_transcript_sidecar_hint">Сохраняет расшифровку, заметки и краткое содержание в текстовый файл с тем же именем, что и запись, поэтому при копировании папки на ПК текст остаётся вместе со звуком. При включении также сохраняются уже имеющиеся.</string>
-    <string name="settings_transcript_sidecar_label">Сохранять расшифровку и заметки рядом с записью</string>
+    
+    
+    
+    
+    
     <string name="settings_unavailable_in_shizuku">Недоступно в режиме Shizuku — для этого нужен собственный рекордер CallVault.</string>
     <string name="settings_update_check_description">Раз в день проверяет наличие новой версии на GitHub.</string>
     <string name="settings_update_check_label">Проверять обновления</string>
@@ -603,58 +593,58 @@
     <string name="storage_target_both">Устройство + Google Drive</string>
     <string name="storage_target_drive">Только в Google Drive</string>
     <string name="storage_target_local">Только на этом устройстве</string>
-    <string name="summaries_search_hint">Поиск по сводкам</string>
-    <string name="summary_card_actions">Сделать</string>
-    <string name="summary_card_blocked_empty">В этой расшифровке нет слов, поэтому нечего обобщать.</string>
-    <string name="summary_card_blocked_model">Сначала скачайте модуль сводок в настройках.</string>
-    <string name="summary_card_blocked_no_transcript">Сначала расшифруйте звонок — сводка создаётся по расшифровке.</string>
-    <string name="summary_card_blocked_summarising">Сейчас создаётся сводка другого звонка.</string>
-    <string name="summary_card_blocked_transcribing">Ожидание окончания расшифровки — они не могут работать одновременно.</string>
-    <string name="summary_card_blocked_unfinished">Ожидание окончания расшифровки.</string>
-    <string name="summary_card_create">Сделать сводку звонка</string>
-    <string name="summary_card_create_subtitle">Создаётся на телефоне, минуту-две</string>
-    <string name="summary_card_decisions">Решения</string>
-    <string name="summary_card_facts">Стоит запомнить</string>
-    <string name="summary_card_failed">Пригодной сводки не получилось. Можно попробовать снова.</string>
-    <string name="summary_card_key_points">Главное</string>
-    <string name="summary_card_provenance">Создано по расшифровке</string>
-    <string name="summary_card_redo">Написать заново</string>
-    <string name="summary_card_running">Создание сводки… %1$d %%</string>
-    <string name="summary_card_stop">Стоп</string>
-    <string name="summary_card_title">Сводка</string>
-    <string name="summary_delete_confirm_body">Это освободит %1$.1f ГБ. Уже созданные сводки сохранятся, но чтобы создавать новые, его придётся скачать заново.</string>
-    <string name="summary_delete_confirm_confirm">Удалить</string>
-    <string name="summary_delete_confirm_title">Удалить модуль сводок?</string>
-    <string name="summary_discard_confirm_body">Это выбросит уже скачанные %1$.1f ГБ. Новая попытка загрузит всё с самого начала.</string>
-    <string name="summary_discard_confirm_confirm">Удалить</string>
-    <string name="summary_discard_confirm_title">Удалить загруженное?</string>
-    <string name="summary_model_cancel">Отменить скачивание</string>
-    <string name="summary_model_delete">Удалить модуль сводок</string>
-    <string name="summary_model_discard">Удалить скачанное</string>
-    <string name="summary_model_discard_subtitle">Освободит %1$.1f ГБ</string>
-    <string name="summary_model_download">Скачать модуль сводок</string>
-    <string name="summary_model_download_subtitle">%1$.1f ГБ</string>
-    <string name="summary_model_downloading">Скачивание… %1$d %%</string>
-    <string name="summary_model_failed">Скачивание не завершилось. Попробуйте снова.</string>
-    <string name="summary_model_failed_space">Недостаточно места. Освободите его и попробуйте снова.</string>
-    <string name="summary_model_failed_verify">Загрузка повреждена и удалена. Попробуйте снова.</string>
-    <string name="summary_model_installed">Скачан и готов</string>
-    <string name="summary_model_licence">Краткие пересказы создаёт Gemma 4 от Google по лицензии Apache 2.0. Модель загружается отдельно и не входит в состав CallVault.</string>
-    <string name="summary_model_resume">Продолжить скачивание</string>
-    <string name="summary_model_resume_subtitle">Скачано %1$.1f ГБ из %2$.1f ГБ</string>
-    <string name="summary_model_waiting">Ожидание Wi-Fi</string>
-    <string name="summary_requirements_body">Сводки создаются на вашем телефоне — никуда ничего не отправляется. Это стоит %1$.1f ГБ загрузки и около %2$.1f ГБ памяти во время работы, поэтому нужен современный телефон с запасом. Короткий звонок занимает минуту-две.</string>
-    <string name="summary_requirements_cancel">Не сейчас</string>
-    <string name="summary_requirements_continue">Скачать</string>
-    <string name="summary_requirements_dont_ask">Больше не показывать</string>
-    <string name="summary_requirements_download">%1$.1f ГБ загрузки</string>
-    <string name="summary_requirements_heading">Перед скачиванием</string>
-    <string name="summary_requirements_memory">Около %1$.1f ГБ памяти во время работы</string>
-    <string name="summary_requirements_phone">Нужен современный телефон с запасом. На старом может работать медленно или не работать вовсе.</string>
-    <string name="summary_requirements_private">Всё происходит на вашем телефоне. Никуда ничего не отправляется.</string>
-    <string name="summary_requirements_time">Минута-две для короткого звонка, дольше для длинного</string>
-    <string name="summary_requirements_title">Что для этого нужно</string>
-    <string name="summary_requirements_toggle_description">Показывать, чего требует модуль сводок, перед скачиванием</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="support_appeal_body">Я поддерживаю CallVault в свободное время. Приложение начиналось как форк ShizuCallRecorder от kitsumed и с тех пор сильно выросло. Бесплатно, с открытым кодом, без рекламы и слежки. Если оно вам полезно, небольшая поддержка помогает продолжать. Спасибо! 🙏</string>
     <string name="support_appeal_title">Чаевые для CallVault ☕</string>
     <string name="support_not_now">Не сейчас</string>
@@ -662,7 +652,7 @@
     <string name="tile_recording_stopped">Остановлено</string>
     <string name="transcribe_confirm_dont_ask">Больше не спрашивать</string>
     <string name="transcribe_long_call_line">Этот звонок длится %1$s. На этом телефоне расшифровка занимает примерно в %2$s раза больше времени — около %3$s.</string>
-    <string name="transcribe_confirm_message">Расшифровка %1$s займёт телефон и заметно потратит заряд. Остановить можно в любой момент.\n\nЭтот вопрос можно вернуть в разделе «Расшифровка» в настройках.</string>
+    
     <string name="transcribe_confirm_title">Это займёт около %1$s</string>
     <string name="transcribe_confirm_title_first_run">Первая расшифровка может занять некоторое время</string>
     <string name="transcribe_confirm_title_unknown">Расшифровать этот звонок?</string>
@@ -713,102 +703,102 @@
     <string name="transcript_speakers_swap">Поменять</string>
     <string name="transcript_speakers_swap_names">Поменять имена</string>
     <string name="transcript_speakers_which_is_you">Кто из них вы?</string>
-    <string name="transcription_ask_language_subtitle">Выбирайте язык для каждой записи вместо того, чтобы всегда использовать указанный выше. Действует только для этой записи.</string>
-    <!-- Where to transcribe: on this phone or with the user's own cloud key (issue #48). No prices anywhere. -->
-    <string name="transcription_where_title">Где расшифровывать</string>
-    <string name="transcription_where_on_device">На этом телефоне</string>
-    <string name="transcription_where_on_device_desc">Конфиденциально. Медленнее: около 1,5 мин на минуту звонка.</string>
-    <string name="transcription_where_groq_desc">Быстро: обычно секунды на звонок.</string>
-    <string name="transcription_where_openrouter_desc">Один ключ для многих сервисов. Microsoft MAI-Transcribe.</string>
-    <string name="transcription_where_custom">Свой сервер (для опытных)</string>
-    <string name="transcription_where_custom_desc">Любой сервер, совместимый с OpenAI.</string>
-    <string name="transcription_where_custom_service">ваш сервер</string>
-    <string name="transcription_where_recommended">Рекомендуется</string>
-    <string name="transcription_cloud_key_label">Ваш ключ (%1$s)</string>
-    <string name="transcription_cloud_key_label_custom">Ключ вашего сервера</string>
-    <string name="transcription_cloud_key_show">Показать ключ</string>
-    <string name="transcription_cloud_key_hide">Скрыть ключ</string>
-    <string name="transcription_cloud_test">Проверить</string>
-    <string name="transcription_cloud_testing">Проверка…</string>
-    <string name="transcription_cloud_get_key">Получить ключ %1$s</string>
-    <string name="transcription_cloud_custom_url">Адрес сервера</string>
-    <string name="transcription_cloud_custom_url_hint">https://… (часть до /audio/transcriptions)</string>
-    <string name="transcription_cloud_custom_url_invalid">Укажите адрес с http(s)://.</string>
-    <string name="transcription_cloud_custom_model">Модель</string>
-    <string name="transcription_cloud_mobile_data">Разрешить мобильный интернет</string>
-    <string name="transcription_cloud_mobile_data_desc">Если выключено, звонки ждут Wi-Fi и только потом отправляются.</string>
-    <string name="transcription_cloud_privacy_note">Аудио звонка отправляется в %1$s для расшифровки. Текст возвращается на этот телефон; действуют правила конфиденциальности поставщика. Только по Wi-Fi, если вы не разрешите мобильный интернет.</string>
-    <string name="transcription_cloud_consent_title">Отправлять аудио звонков в %1$s?</string>
-    <string name="transcription_cloud_consent_body">При расшифровке звонка его аудио отправляется в %1$s с вашим ключом, а текст возвращается на этот телефон. Действуют правила конфиденциальности поставщика. Сводки остаются на этом телефоне.</string>
-    <string name="transcription_cloud_consent_confirm">Использовать %1$s</string>
-    <string name="transcription_cloud_test_ok">Ключ работает.</string>
-    <string name="transcription_cloud_test_bad_key">Ключ отклонён. Проверьте его и попробуйте снова.</string>
-    <string name="transcription_cloud_test_no_timings">Сервис ответил без временных меток, поэтому его нельзя использовать. Попробуйте другую модель.</string>
-    <string name="transcription_cloud_test_unreachable">Не удалось связаться с сервисом. Проверьте подключение и попробуйте снова.</string>
-    <string name="transcription_cloud_test_refused">Сервис отклонил запрос. Проверьте адрес и модель.</string>
-    <string name="transcription_cloud_test_no_key">Сначала вставьте ключ.</string>
-    <string name="transcription_cloud_test_incomplete">Сначала укажите адрес сервера и модель.</string>
-    <string name="transcription_ask_language_title">Спрашивать язык каждый раз</string>
-    <string name="transcription_batch_label">Звонков за запуск</string>
-    <string name="transcription_batch_no_limit">Без ограничения</string>
-    <string name="transcription_charging_subtitle">Расшифровка сильно нагружает процессор и разряжает батарею.</string>
-    <string name="transcription_charging_title">Только при зарядке</string>
-    <string name="transcription_confirm_subtitle">Показывает, сколько это займёт, и позволяет отменить.</string>
-    <string name="transcription_confirm_title">Спрашивать перед расшифровкой</string>
-    <string name="transcription_hour_label">Час</string>
-    <string name="transcription_language_arabic">Арабский</string>
-    <string name="transcription_language_auto">Определять автоматически</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="language_search_placeholder">Поиск языка</string>
     <string name="language_search_clear">Очистить поиск</string>
     <string name="language_search_no_match">Нет подходящих языков</string>
-    <string name="transcription_language_auto_hint">Для языков с нелатинской письменностью определение работает ненадёжно — иврит, арабский, русский и китайский часто возвращаются записанными английскими буквами или одним сплошным куском текста. Если можете, укажите язык.</string>
-    <string name="transcription_language_chinese">Китайский</string>
-    <string name="transcription_language_english">Английский</string>
-    <string name="transcription_language_french">Французский</string>
-    <string name="transcription_language_german">Немецкий</string>
-    <string name="transcription_language_greek">Греческий</string>
-    <string name="transcription_language_hebrew">Иврит</string>
-    <string name="transcription_language_hungarian">Венгерский</string>
-    <string name="transcription_language_italian">Итальянский</string>
-    <string name="transcription_language_label">Язык</string>
-    <string name="transcription_language_persian">Персидский</string>
-    <string name="transcription_language_urdu">Урду</string>
-    <string name="transcription_language_bengali">Бенгальский</string>
-    <string name="transcription_language_polish">Польский</string>
-    <string name="transcription_language_portuguese">Португальский</string>
-    <string name="transcription_language_russian">Русский</string>
-    <string name="transcription_language_spanish">Испанский</string>
-    <string name="transcription_language_ukrainian">Украинский</string>
-    <string name="transcription_language_vietnamese">Вьетнамский</string>
-    <string name="transcription_minute_label">Минута</string>
-    <string name="transcription_mode_after_each_call">После каждого звонка</string>
-    <string name="transcription_mode_automatic">По расписанию</string>
-    <string name="transcription_mode_label">Расшифровывать</string>
-    <string name="transcription_mode_manual">Вручную</string>
-    <string name="transcription_model_best">Лучшее качество</string>
-    <string name="transcription_model_best_small_download">Лучшее качество, меньший размер загрузки</string>
-    <string name="transcription_model_persian">Настроена на персидский</string>
-    <string name="transcription_model_persian_licence">Лучшее качество, обучена на персидской речи. Whisper large-v3-turbo Persian от givia, лицензия CC BY 4.0, квантована для whisper.cpp. Загружается отдельно и не входит в CallVault.</string>
-    <string name="transcription_model_delete">Удалить модель</string>
-    <string name="transcription_model_download">Скачать модель</string>
-    <string name="transcription_model_download_subtitle">%1$d МБ</string>
-    <string name="transcription_model_downloading">Скачивание… %1$d %%</string>
-    <string name="transcription_model_failed">Скачивание не завершилось. Попробуйте снова.</string>
-    <string name="transcription_model_failed_space">Недостаточно места. Освободите его и попробуйте снова.</string>
-    <string name="transcription_model_failed_verify">Загрузка повреждена и удалена. Попробуйте снова.</string>
-    <string name="transcription_model_installed">Скачана и готова</string>
-    <string name="transcription_model_label">Модель</string>
-    <string name="transcription_model_resume">Продолжить скачивание</string>
-    <string name="transcription_model_resume_subtitle">Скачано %1$d МБ из %2$d МБ</string>
-    <string name="transcription_model_small">Быстрая</string>
-    <string name="transcription_model_waiting">Ожидание Wi-Fi</string>
-    <string name="transcription_note_after_each_call">Каждый звонок расшифровывается сразу после завершения. Старые звонки не затрагиваются — их можно расшифровать кнопкой на записи.</string>
-    <string name="transcription_note_automatic">Звонки без расшифровки расшифровываются в выбранное время. Разговор в 30 минут занимает около 30 минут.</string>
-    <string name="transcription_note_manual">Расшифровки создаются только по запросу, кнопкой на записи.</string>
-    <string name="transcription_time_label">Запуск в</string>
-    <string name="transcription_warning_confirm">Включить</string>
-    <string name="transcription_warning_message">Расшифровка звонка занимает примерно столько же времени, сколько сам звонок, и задействует все ядра телефона. Он нагреется и заметно потратит заряд.\n\nОстановить выполнение можно в любой момент значком рядом с заголовком.</string>
-    <string name="transcription_warning_title">Расшифровка идёт долго и нагружает телефон</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="transcripts_search_hint">Поиск по сказанному</string>
     <string name="update_popup_later">Позже</string>
     <string name="update_popup_text">Новая версия готова к установке. Обновление сохраняет надёжность записи и приносит последние исправления.</string>
@@ -894,20 +884,20 @@
     <string name="wizard_storage_subtitle">Выберите, где будут храниться ваши записи. Это можно изменить позже в настройках.</string>
     <string name="wizard_storage_title">Куда сохранять записи</string>
     <string name="wizard_title">Настройка CallVault</string>
-    <string name="wizard_transcription_background_note">Обе загрузки продолжаются в фоне. Вы можете продолжить и завершить настройку сейчас — тот же прогресс потом виден в настройках CallVault.</string>
-    <string name="wizard_transcription_language_note">Выбран язык, на который настроен этот телефон. Указать его гораздо надёжнее, чем позволять приложению угадывать, а позже для отдельного звонка можно выбрать другой.</string>
-    <string name="wizard_transcription_line">Звонки в текст прямо на этом телефоне.</string>
-    <string name="wizard_transcription_model_note">Для расшифровки на телефон сначала нужна речевая модель: %1$s — %2$d МБ, %3$s — %4$d МБ. Расшифровка звонка потом занимает примерно столько же, сколько сам звонок, и сильно нагружает процессор.</string>
-    <string name="wizard_transcription_model_size">%1$s — %2$d МБ</string>
-    <string name="wizard_transcription_model_sizes_note">Для расшифровки на телефон сначала нужна речевая модель: %1$s. Расшифровка звонка потом занимает примерно столько же, сколько сам звонок, и сильно нагружает процессор.</string>
-    <string name="wizard_transcription_subtitle">CallVault может расшифровать запись прямо на телефоне и написать по ней краткую сводку — никуда ничего не отправляется. Выберите, когда это происходит и на каком языке ваши звонки, и скачайте то, что для этого нужно.</string>
-    <string name="wizard_transcription_summary_body">Когда у звонка есть расшифровка, CallVault может написать по ней и краткую сводку — на телефоне, как и всё остальное здесь.</string>
-    <string name="wizard_transcription_summary_heading">Сводки</string>
-    <string name="wizard_transcription_title">Звонки в текст</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="wizard_updates_line">Как CallVault находит новые версии.</string>
     <string name="wizard_updates_subtitle">CallVault не публикуется в магазинах приложений, поэтому сам проверяет новые версии на GitHub.</string>
     <string name="wizard_updates_title">Быть в курсе обновлений</string>
-    <!-- Transcribe again (#72) -->
+    
     <string name="transcribe_again_title">Расшифровать заново?</string>
     <string name="transcribe_again_message_one">%1$s будет расшифрован заново. Если новый запуск не удастся или будет остановлен, текущая расшифровка сохранится.</string>
     <string name="transcribe_again_message_many">Расшифровок к повтору: %1$d. Если запуск не удастся или будет остановлен, эта расшифровка останется как есть.</string>

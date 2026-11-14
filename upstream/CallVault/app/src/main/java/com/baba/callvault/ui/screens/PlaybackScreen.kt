@@ -115,8 +115,6 @@ import java.util.Locale
  * than that: somewhere to skip back over a sentence you missed, and a speed control, which is the
  * single thing that makes a long call reviewable at all.
  *
- * The transcript is a doorway rather than a panel here. It already has a sheet that does timestamps,
- * right-to-left text and seek-on-tap; duplicating any of that would mean two things to keep correct.
  */
 @Composable
 fun PlaybackScreen(

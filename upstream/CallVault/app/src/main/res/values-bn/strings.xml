@@ -370,17 +370,17 @@
     <string name="wizard_reliability_usb_desc">কিছু ফোনে কলের সময় স্ক্রিন লক করলে রেকর্ডিং বন্ধ হয়ে যেতে পারে। USB-কে \"শুধু চার্জিং (Charging only)\" করে দিলে তা হয় না। (এরপর PC-তে লাগালে ফোন ডিফল্টভাবে চার্জ হবে — দরকার হলে নিজে ফাইল ট্রান্সফার (File transfer) বেছে নিন।)</string>
     <string name="wizard_reliability_usb_button">USB-কে শুধু চার্জিং করুন</string>
     <string name="wizard_reliability_usb_done">USB শুধু চার্জিংয়ে সেট আছে</string>
-    <string name="wizard_transcription_title">কলকে লেখায় রূপান্তর</string>
-    <string name="wizard_transcription_subtitle">CallVault ফোনের মধ্যেই রেকর্ডিংকে লেখায় রূপান্তর করতে পারে এবং তা থেকে একটি ছোট সারাংশ লিখতে পারে — কিছুই কোথাও পাঠানো হয় না। কখন এটি হবে, আপনার কল কোন ভাষায় তা বাছুন এবং দরকারি জিনিস ডাউনলোড করুন।</string>
-    <string name="wizard_transcription_line">এই ফোনেই কলকে লেখায় রূপান্তর করুন।</string>
-    <string name="wizard_transcription_language_note">এই ফোনের ভাষায় সেট করা হয়েছে। অ্যাপকে অনুমান করতে দেওয়ার চেয়ে ভাষা বলে দেওয়া অনেক বেশি নির্ভরযোগ্য, আর পরে প্রতিটি কলের জন্য আলাদা ভাষা বাছতে পারবেন।</string>
-    <string name="wizard_transcription_model_note">লেখায় রূপান্তরের জন্য আগে ফোনে একটি স্পিচ মডেল লাগবে: %1$s হলো %2$d MB, %3$s হলো %4$d MB। এরপর একটি কল রূপান্তর করতে মোটামুটি কলের সমান সময় লাগে এবং প্রসেসরের ওপর বেশ চাপ পড়ে।</string>
-    <string name="wizard_transcription_model_sizes_note">লেখায় রূপান্তরের জন্য আগে ফোনে একটি স্পিচ মডেল লাগবে: %1$s। এরপর একটি কল রূপান্তর করতে মোটামুটি কলের সমান সময় লাগে এবং প্রসেসরের ওপর বেশ চাপ পড়ে।</string>
-    <string name="wizard_transcription_model_size">%1$s হলো %2$d MB</string>
+    
+    
+    
+    
+    
+    
+    
     <string name="list_separator">", "</string>
-    <string name="wizard_transcription_summary_heading">সারাংশ</string>
-    <string name="wizard_transcription_summary_body">কোনো কলের ট্রান্সক্রিপ্ট তৈরি হলে CallVault তার একটি ছোট সারাংশও লিখতে পারে — এখানকার সবকিছুর মতো এটিও ফোনেই হয়।</string>
-    <string name="wizard_transcription_background_note">দুটি ডাউনলোডই ব্যাকগ্রাউন্ডে চলতে থাকে। আপনি এগিয়ে গিয়ে এখনই সেটআপ শেষ করতে পারেন — পরে CallVault-এর সেটিংসে একই অগ্রগতি দেখা যাবে।</string>
+    
+    
+    
     <string name="wizard_audio_title">অডিওর মান</string>
     <string name="wizard_audio_subtitle">রেকর্ডিং ফরম্যাট ও বিট রেট বাছুন। ছোট ফাইলে পরিষ্কার কণ্ঠের জন্য 16 kbps-এ Opus সুপারিশ করা হয়।</string>
     <string name="wizard_audio_line">ফরম্যাট ও মান বাছুন।</string>
@@ -460,149 +460,149 @@
     <string name="settings_debug_log_delete_title">লগ মুছবেন?</string>
     <string name="settings_debug_log_delete_message">এখন পর্যন্ত জমা হওয়া এন্ট্রিগুলো মুছে যাবে। লগিং চালু থাকলে সঙ্গে সঙ্গে নতুন লগ শুরু হবে।</string>
     <string name="settings_debug_log_empty">লগ খালি।</string>
-    <string name="settings_section_transcription">ট্রান্সক্রিপশন</string>
-    <string name="transcription_mode_label">লেখায় রূপান্তর</string>
-    <string name="transcription_mode_manual">নিজে চালু করলে</string>
-    <string name="transcription_mode_after_each_call">প্রতিটি কলের পরে</string>
-    <string name="transcription_mode_automatic">নির্ধারিত সময়ে</string>
-    <string name="transcription_hour_label">ঘণ্টা</string>
-    <string name="transcription_minute_label">মিনিট</string>
-    <string name="transcription_time_label">চালানোর সময়</string>
-    <string name="transcription_warning_title">লেখায় রূপান্তর ধীর ও ভারী কাজ</string>
-    <string name="transcription_warning_message">একটি কল রূপান্তর করতে মোটামুটি কলের সমান সময় লাগে, আর সেই সময় ফোনের সব কোর ব্যবহার হয়। ফোন গরম হতে পারে এবং ব্যাটারি চোখে পড়ার মতো খরচ হবে।\n\nশিরোনামের পাশের ব্যাজ থেকে যেকোনো সময় কাজটি থামাতে পারবেন।</string>
-    <string name="transcription_warning_confirm">চালু করুন</string>
-    <string name="transcription_charging_title">শুধু চার্জ হওয়ার সময়</string>
-    <string name="transcription_charging_subtitle">লেখায় রূপান্তর প্রসেসরের ওপর বেশি চাপ দেয় এবং ব্যাটারি খরচ করে।</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="heavy_work_channel_name">ব্যাকগ্রাউন্ডের কাজ</string>
     <string name="heavy_work_notification_text">এটি চলার সময় আপনার ফোন গরম হতে পারে।</string>
-    <string name="heavy_work_transcribing">একটি রেকর্ডিং লেখায় রূপান্তর হচ্ছে</string>
-    <string name="heavy_work_summarising">একটি রেকর্ডিংয়ের সারাংশ তৈরি হচ্ছে</string>
-    <string name="heavy_work_importing_model">একটি মডেল ইমপোর্ট হচ্ছে</string>
-    <string name="heavy_work_backing_up_model">একটি মডেলের ব্যাকআপ নেওয়া হচ্ছে</string>
+    
+    
+    
+    
     <string name="drive_copy_title">রেকর্ডিং Drive-এ কপি হচ্ছে</string>
     <string name="drive_copy_progress">%2$dটির মধ্যে %1$dটি কপি হয়েছে</string>
     <string name="drive_copy_stop">আপাতত থামান</string>
-    <string name="transcription_model_label">মডেল</string>
-    <string name="transcription_model_small">দ্রুত</string>
-    <string name="transcription_model_best">সেরা মান</string>
-    <string name="transcription_model_best_small_download">সেরা মান, ছোট ডাউনলোড</string>
-    <string name="transcription_model_persian">ফারসির জন্য তৈরি</string>
-    <string name="transcription_model_persian_licence">সেরা মান, ফারসি কথাবার্তায় প্রশিক্ষিত। givia-র Whisper large-v3-turbo Persian, CC BY 4.0 লাইসেন্স, whisper.cpp-এর জন্য কোয়ান্টাইজ করা। এটি CallVault-এর সঙ্গে আসে না, আলাদাভাবে ডাউনলোড হয়।</string>
-    <string name="transcription_model_download">মডেল ডাউনলোড করুন</string>
-    <string name="transcription_model_download_subtitle">%1$d MB</string>
-    <string name="transcription_model_delete">মডেল মুছুন</string>
-    <string name="transcription_model_installed">ডাউনলোড হয়েছে, প্রস্তুত</string>
-    <string name="transcription_model_downloading">ডাউনলোড হচ্ছে… %1$d%%</string>
-    <string name="transcription_model_waiting">Wi-Fi-এর অপেক্ষায়</string>
-    <string name="model_importing">ইমপোর্ট হচ্ছে… %1$d%%</string>
-    <string name="model_import_waiting">ইমপোর্টের প্রস্তুতি চলছে…</string>
-    <string name="model_import">ফাইল থেকে ইমপোর্ট করুন</string>
-    <string name="model_import_subtitle">আপনার কাছে থাকা কপি ব্যবহার করুন</string>
-    <string name="model_import_info">অফিশিয়াল মডেল ফাইলটি বাছুন (%1$s, %2$d MB)। ব্যবহারের আগে CallVault যাচাই করে যে এটি ঠিক সেই ফাইল, আর আপনার কপি যেখানে আছে সেখানেই থাকে।</string>
-    <string name="model_import_failed_wrong_file">এটি সঠিক ফাইল নয়। %1$s বাছুন।</string>
-    <string name="model_import_failed_other_model">এটি অন্য একটি মডেলের ফাইল (%1$s)। আগে সেই মডেলটি বাছুন, তারপর ইমপোর্ট করুন।</string>
-    <string name="model_import_failed_unreadable">ফাইলটি পড়া যায়নি। আবার বাছুন।</string>
-    <string name="model_import_failed_space">ইমপোর্ট করার মতো যথেষ্ট খালি জায়গা নেই।</string>
-    <string name="model_backup">ব্যাকআপ</string>
-    <string name="model_backup_subtitle">আবার ইনস্টলের পরেও রাখতে একটি কপি সংরক্ষণ করুন</string>
-    <string name="model_backup_info">মডেল ফাইলটি আপনার বাছাই করা ফোল্ডারে সংরক্ষণ করে। আবার ইনস্টলের পরে বা নতুন ফোনে, আবার ডাউনলোড না করে সেই ফাইল দিয়ে ইমপোর্ট ব্যবহার করুন।</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="model_backing_up">ব্যাকআপ হচ্ছে… %1$d%%</string>
-    <string name="model_backup_waiting">ব্যাকআপের প্রস্তুতি চলছে…</string>
-    <string name="model_backup_done">সংরক্ষিত</string>
-    <string name="model_backup_failed">ব্যাকআপ শেষ হয়নি। আবার চেষ্টা করুন।</string>
-    <string name="transcription_model_resume">ডাউনলোড আবার চালু করুন</string>
-    <string name="transcription_model_resume_subtitle">%2$d MB-এর মধ্যে %1$d MB ডাউনলোড হয়েছে</string>
-    <string name="transcription_model_failed_space">যথেষ্ট খালি জায়গা নেই। কিছু জায়গা খালি করে আবার চেষ্টা করুন।</string>
-    <string name="transcription_model_failed_verify">ডাউনলোডটি নষ্ট হয়ে গিয়েছিল, তাই বাদ দেওয়া হয়েছে। আবার চেষ্টা করুন।</string>
-    <string name="transcription_model_failed">ডাউনলোড শেষ হয়নি। আবার চেষ্টা করুন।</string>
-    <string name="summary_model_download">সারাংশকারী ডাউনলোড করুন</string>
-    <string name="summary_model_download_subtitle">%1$.1f GB</string>
-    <string name="summary_model_delete">সারাংশকারী মুছুন</string>
-    <string name="summary_model_installed">ডাউনলোড হয়েছে, প্রস্তুত</string>
-    <string name="summary_model_downloading">ডাউনলোড হচ্ছে… %1$d%%</string>
-    <string name="summary_model_waiting">Wi-Fi-এর অপেক্ষায়</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="mobile_data_download_title">আপনি Wi-Fi-তে নেই</string>
     <string name="mobile_data_download_body">এই মডেলটি %1$s। এখনই মোবাইল ডেটায় ডাউনলোড করবেন, নাকি Wi-Fi-তে গেলে নিজে থেকে শুরু হওয়ার জন্য অপেক্ষা করবেন?</string>
     <string name="mobile_data_download_wait">Wi-Fi-এর জন্য অপেক্ষা করুন</string>
     <string name="mobile_data_download_now">এখনই মোবাইল ডেটায় ডাউনলোড করুন</string>
-    <string name="summary_model_cancel">ডাউনলোড বাতিল করুন</string>
-    <string name="summary_model_resume">ডাউনলোড আবার চালু করুন</string>
-    <string name="summary_model_resume_subtitle">%2$.1f GB-এর মধ্যে %1$.1f GB ডাউনলোড হয়েছে</string>
-    <string name="summary_model_discard">ডাউনলোড হওয়া অংশ বাদ দিন</string>
-    <string name="summary_model_discard_subtitle">%1$.1f GB খালি হবে</string>
-    <string name="summary_model_failed_space">যথেষ্ট খালি জায়গা নেই। কিছু জায়গা খালি করে আবার চেষ্টা করুন।</string>
-    <string name="summary_model_failed_verify">ডাউনলোডটি নষ্ট হয়ে গিয়েছিল, তাই বাদ দেওয়া হয়েছে। আবার চেষ্টা করুন।</string>
-    <string name="summary_model_failed">ডাউনলোড শেষ হয়নি। আবার চেষ্টা করুন।</string>
-    <string name="summary_requirements_title">এর জন্য কী লাগবে</string>
-    <string name="summary_requirements_body">সারাংশ আপনার ফোনেই লেখা হয় — কিছুই কোথাও পাঠানো হয় না। এর জন্য %1$.1f GB ডাউনলোড এবং চলার সময় প্রায় %2$.1f GB মেমরি লাগে, তাই যথেষ্ট জায়গাসহ একটি নতুন ফোন দরকার। একটি ছোট কলে এক-দুই মিনিট লাগে।</string>
-    <string name="summary_model_licence">সারাংশকারী হলো Google-এর Gemma 4, Apache 2.0 লাইসেন্সের অধীনে ব্যবহৃত। এটি CallVault-এর সঙ্গে আসে না, আলাদাভাবে ডাউনলোড হয়।</string>
-    <string name="summary_card_title">সারাংশ</string>
-    <string name="summary_card_decisions">সিদ্ধান্ত</string>
-    <string name="summary_card_actions">করণীয়</string>
-    <string name="summary_card_key_points">মূল বিষয়</string>
-    <string name="summary_card_facts">মনে রাখার মতো</string>
-    <string name="summary_card_provenance">ট্রান্সক্রিপ্ট থেকে তৈরি</string>
-    <string name="summary_card_redo">আবার লিখুন</string>
-    <string name="summary_card_create">এই কলের সারাংশ তৈরি করুন</string>
-    <string name="summary_card_create_subtitle">আপনার ফোনেই লেখা হয়, এক-দুই মিনিট লাগে</string>
-    <string name="summary_card_running">সারাংশ তৈরি হচ্ছে… %1$d%%</string>
-    <string name="summary_card_stop">থামান</string>
-    <string name="summary_card_blocked_no_transcript">আগে এই কলটি লেখায় রূপান্তর করুন — সারাংশ ট্রান্সক্রিপ্ট থেকে লেখা হয়।</string>
-    <string name="summary_card_blocked_unfinished">ট্রান্সক্রিপ্ট শেষ হওয়ার অপেক্ষায়।</string>
-    <string name="summary_card_blocked_empty">এই ট্রান্সক্রিপ্টে কোনো শব্দ নেই, তাই সারাংশ করার কিছু নেই।</string>
-    <string name="summary_card_blocked_model">আগে সেটিংসে সারাংশকারী ডাউনলোড করুন।</string>
-    <string name="summary_card_blocked_transcribing">লেখায় রূপান্তর শেষ হওয়ার অপেক্ষায় — দুটো একসঙ্গে ফোনে চলতে পারে না।</string>
-    <string name="summary_card_blocked_summarising">অন্য একটি কলের সারাংশ তৈরি হচ্ছে।</string>
-    <string name="summary_card_failed">এবার কাজে লাগার মতো সারাংশ হয়নি। আবার চেষ্টা করতে পারেন।</string>
-    <string name="summary_requirements_heading">ডাউনলোডের আগে</string>
-    <string name="summary_requirements_download">%1$.1f GB ডাউনলোড</string>
-    <string name="summary_requirements_memory">চলার সময় প্রায় %1$.1f GB মেমরি লাগে</string>
-    <string name="summary_requirements_time">ছোট কলে মোটামুটি এক-দুই মিনিট, লম্বা কলে আরও বেশি</string>
-    <string name="summary_requirements_private">সবকিছু আপনার ফোনেই হয়। কোথাও কিছু পাঠানো হয় না।</string>
-    <string name="summary_requirements_phone">এর জন্য যথেষ্ট জায়গাসহ নতুন ফোন দরকার। পুরোনো ফোনে এটি ধীর হতে পারে বা ব্যর্থ হতে পারে।</string>
-    <string name="summary_requirements_continue">ডাউনলোড</string>
-    <string name="summary_requirements_cancel">এখন নয়</string>
-    <string name="summary_requirements_dont_ask">আর দেখাবেন না</string>
-    <string name="summary_requirements_toggle_description">ডাউনলোডের আগে সারাংশকারীর কী কী লাগে তা দেখান</string>
-    <string name="summary_delete_confirm_title">সারাংশকারী মুছবেন?</string>
-    <string name="summary_delete_confirm_body">এতে %1$.1f GB খালি হবে। আগে লেখা সারাংশগুলো থাকবে, কিন্তু নতুন সারাংশ লিখতে আবার ডাউনলোড করতে হবে।</string>
-    <string name="summary_delete_confirm_confirm">মুছুন</string>
-    <string name="summary_discard_confirm_title">ডাউনলোড বাতিল করবেন?</string>
-    <string name="summary_discard_confirm_body">এতে আগে ডাউনলোড হওয়া %1$.1f GB মুছে যাবে। আবার শুরু করলে পুরোটা প্রথম থেকে আনতে হবে।</string>
-    <string name="summary_discard_confirm_confirm">বাতিল করুন</string>
-    <string name="transcription_language_label">ভাষা</string>
-    <string name="transcription_language_hebrew">হিব্রু</string>
-    <string name="transcription_language_english">ইংরেজি</string>
-    <string name="transcription_language_arabic">আরবি</string>
-    <string name="transcription_language_russian">রুশ</string>
-    <string name="transcription_language_french">ফরাসি</string>
-    <string name="transcription_language_spanish">স্প্যানিশ</string>
-    <string name="transcription_language_chinese">চীনা</string>
-    <string name="transcription_language_german">জার্মান</string>
-    <string name="transcription_language_hungarian">হাঙ্গেরীয়</string>
-    <string name="transcription_language_italian">ইতালীয়</string>
-    <string name="transcription_language_polish">পোলিশ</string>
-    <string name="transcription_language_portuguese">পর্তুগিজ</string>
-    <string name="transcription_language_vietnamese">ভিয়েতনামি</string>
-    <string name="transcription_language_greek">গ্রিক</string>
-    <string name="transcription_language_persian">ফারসি</string>
-    <string name="transcription_language_urdu">উর্দু</string>
-    <string name="transcription_language_ukrainian">ইউক্রেনীয়</string>
-    <string name="transcription_language_auto">স্বয়ংক্রিয়ভাবে শনাক্ত করুন</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="language_search_placeholder">ভাষা খুঁজুন</string>
     <string name="language_search_clear">খোঁজা মুছুন</string>
     <string name="language_search_no_match">কোনো ভাষা মেলেনি</string>
-    <string name="transcription_language_auto_hint">যেসব ভাষা ল্যাটিন অক্ষরে লেখা হয় না, সেগুলোর শনাক্তকরণ নির্ভরযোগ্য নয় — হিব্রু, আরবি, রুশ ও চীনা প্রায়ই ইংরেজি অক্ষরে বানান করে, বা একটা লম্বা টেক্সটের খণ্ড হয়ে আসে। পারলে ভাষাটি বেছে দিন।</string>
-    <string name="transcription_note_manual">আপনি চাইলেই কেবল ট্রান্সক্রিপ্ট তৈরি হয়, রেকর্ডিংয়ের বোতাম থেকে।</string>
-    <string name="transcription_note_after_each_call">প্রতিটি কল শেষ হওয়ামাত্র ট্রান্সক্রাইব হয়। পুরোনো কলে হাত দেওয়া হয় না — সেগুলো রেকর্ডিংয়ের বোতাম থেকে ট্রান্সক্রাইব করুন।</string>
-    <string name="transcription_note_automatic">যেসব কলের এখনও ট্রান্সক্রিপ্ট নেই, সেগুলো বেছে নেওয়া সময়ে ট্রান্সক্রাইব হয়। 30 মিনিটের কলে প্রায় 30 মিনিট লাগে।</string>
-    <string name="transcription_batch_label">প্রতিবারে কতগুলো কল</string>
-    <string name="transcription_batch_no_limit">সীমা নেই</string>
+    
+    
+    
+    
+    
+    
     <string name="playback_title">রেকর্ডিং</string>
     <string name="playback_skip_back">10 সেকেন্ড পিছনে</string>
     <string name="playback_skip_forward">10 সেকেন্ড সামনে</string>
     <string name="playback_speed">%1$s×</string>
-    <string name="playback_open_transcript">ট্রান্সক্রিপ্ট পড়ুন</string>
+    
     <string name="playback_note_title">নোট</string>
     <string name="playback_note_hint">কলটি কী নিয়ে ছিল…</string>
     <string name="transcript_action_transcribe">এই কলটি ট্রান্সক্রাইব করুন</string>
@@ -613,49 +613,49 @@
     <string name="transcribe_confirm_title">এতে প্রায় %1$s লাগবে</string>
     <string name="transcribe_confirm_title_unknown">এই কলটি ট্রান্সক্রাইব করবেন?</string>
     <string name="transcribe_confirm_title_first_run">প্রথমটিতে কিছুটা সময় লাগতে পারে</string>
-    <string name="transcribe_confirm_message">%1$s ট্রান্সক্রাইব করার সময় ফোন ব্যস্ত থাকে এবং চোখে পড়ার মতো ব্যাটারি খরচ হয়। যেকোনো সময় থামাতে পারবেন।\n\nএই প্রশ্নটি সেটিংসের ট্রান্সক্রিপশন অংশ থেকে আবার চালু করা যায়।</string>
+    
     <string name="transcribe_confirm_dont_ask">আর জিজ্ঞেস করবেন না</string>
     <string name="transcribe_long_call_line">এই কলটি %1$s। এই ফোনে ট্রান্সক্রাইব করতে প্রায় %2$s× সময় লাগে — প্রায় %3$s।</string>
     <string name="transcribe_language_title">কোন ভাষা?</string>
     <string name="transcribe_language_message">%1$s ট্রান্সক্রাইব করুন এই ভাষায়:</string>
     <string name="transcribe_language_confirm">ট্রান্সক্রাইব</string>
-    <string name="transcription_ask_language_title">প্রতিবার ভাষা জিজ্ঞেস করুন</string>
-    <string name="transcription_ask_language_subtitle">সবসময় উপরের ভাষাটি না নিয়ে প্রতিটি রেকর্ডিংয়ের জন্য ভাষা বেছে নিন। এটি শুধু সেই রেকর্ডিংয়েই প্রযোজ্য।</string>
-    <string name="transcription_where_title">কোথায় ট্রান্সক্রাইব হবে</string>
-    <string name="transcription_where_on_device">এই ফোনে</string>
-    <string name="transcription_where_on_device_desc">ব্যক্তিগত। ধীর: কলের প্রতি মিনিটে প্রায় 1.5 মিনিট।</string>
-    <string name="transcription_where_groq_desc">দ্রুত: সাধারণত প্রতি কলে কয়েক সেকেন্ড।</string>
-    <string name="transcription_where_openrouter_desc">অনেক সার্ভিসের জন্য একটি কী। Microsoft MAI-Transcribe।</string>
-    <string name="transcription_where_custom">কাস্টম (উন্নত)</string>
-    <string name="transcription_where_custom_desc">যেকোনো OpenAI-সামঞ্জস্যপূর্ণ সার্ভার।</string>
-    <string name="transcription_where_custom_service">আপনার সার্ভার</string>
-    <string name="transcription_where_recommended">প্রস্তাবিত</string>
-    <string name="transcription_cloud_key_label">আপনার %1$s কী</string>
-    <string name="transcription_cloud_key_label_custom">আপনার সার্ভারের কী</string>
-    <string name="transcription_cloud_key_show">কী দেখান</string>
-    <string name="transcription_cloud_key_hide">কী লুকান</string>
-    <string name="transcription_cloud_test">পরীক্ষা</string>
-    <string name="transcription_cloud_testing">পরীক্ষা হচ্ছে…</string>
-    <string name="transcription_cloud_get_key">একটি %1$s কী নিন</string>
-    <string name="transcription_cloud_custom_url">সার্ভারের ঠিকানা</string>
-    <string name="transcription_cloud_custom_url_hint">https://… (/audio/transcriptions-এর আগের অংশ)</string>
-    <string name="transcription_cloud_custom_url_invalid">একটি http(s):// ঠিকানা দিন।</string>
-    <string name="transcription_cloud_custom_model">মডেল</string>
-    <string name="transcription_cloud_mobile_data">মোবাইল ডেটা ব্যবহারের অনুমতি দিন</string>
-    <string name="transcription_cloud_mobile_data_desc">বন্ধ থাকলে কলগুলো পাঠানোর আগে Wi-Fi-এর জন্য অপেক্ষা করে।</string>
-    <string name="transcription_cloud_privacy_note">লিখে নেওয়ার জন্য কলের অডিও %1$s-এ পাঠানো হয়। লেখাগুলো এই ফোনে ফিরে আসে; %1$s-এর গোপনীয়তার শর্ত প্রযোজ্য। মোবাইল ডেটার অনুমতি না দিলে শুধু Wi-Fi-তে।</string>
-    <string name="transcription_cloud_consent_title">কলের অডিও %1$s-এ পাঠাবেন?</string>
-    <string name="transcription_cloud_consent_body">কোনো কল ট্রান্সক্রাইব হলে তার অডিও আপনার কী দিয়ে %1$s-এ পাঠানো হয়, আর লেখাগুলো এই ফোনে ফিরে আসে। %1$s-এর গোপনীয়তার শর্ত প্রযোজ্য। সারাংশ এই ফোনেই থাকে।</string>
-    <string name="transcription_cloud_consent_confirm">%1$s ব্যবহার করুন</string>
-    <string name="transcription_cloud_test_ok">কী কাজ করছে।</string>
-    <string name="transcription_cloud_test_bad_key">কী গ্রহণ করা হয়নি। দেখে নিয়ে আবার চেষ্টা করুন।</string>
-    <string name="transcription_cloud_test_no_timings">সার্ভিসটি সময়ের তথ্য ছাড়া উত্তর দিয়েছে, তাই এটি ব্যবহার করা যাবে না। অন্য মডেল চেষ্টা করুন।</string>
-    <string name="transcription_cloud_test_unreachable">সার্ভিসে পৌঁছানো যায়নি। সংযোগ দেখে আবার চেষ্টা করুন।</string>
-    <string name="transcription_cloud_test_refused">সার্ভিসটি অনুরোধ প্রত্যাখ্যান করেছে। ঠিকানা আর মডেল দেখে নিন।</string>
-    <string name="transcription_cloud_test_no_key">আগে একটি কী পেস্ট করুন।</string>
-    <string name="transcription_cloud_test_incomplete">আগে সার্ভারের ঠিকানা আর মডেল লিখুন।</string>
-    <string name="transcription_confirm_title">ট্রান্সক্রাইবের আগে জিজ্ঞেস করুন</string>
-    <string name="transcription_confirm_subtitle">কত সময় লাগবে দেখায় এবং বাতিল করতে দেয়।</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="transcript_action_busy">ট্রান্সক্রাইব হচ্ছে…</string>
     <string name="transcript_action_open">ট্রান্সক্রিপ্ট পড়ুন</string>
     <string name="transcript_action_retry">ট্রান্সক্রিপশন ব্যর্থ — আবার চেষ্টা করুন</string>
@@ -748,16 +748,16 @@
         <item quantity="one">%dটি মিল</item>
         <item quantity="other">%dটি মিল</item>
     </plurals>
-    <string name="summary_requirements_toggle_label">কী কী লাগে দেখান</string>
+    
     <string name="settings_sim_label_label">প্রতিটি কলে কোন SIM ব্যবহার হয়েছে দেখান</string>
     <string name="settings_sim_label_desc">দুটি SIM-এর ফোনের জন্য: SIM-কে আপনার দেওয়া নাম, বা SIM 1 / SIM 2 দেখায়</string>
     <string name="sim_label_word">SIM</string>
     <string name="settings_metadata_file_label">একটি বিবরণ ফাইল লিখুন</string>
     <string name="settings_metadata_file_desc">প্রতিটি রেকর্ডিংয়ের পাশে একটি ছোট .json সেভ করুন</string>
     <string name="settings_metadata_file_hint">BCR-এর মতো একই ফরম্যাট ব্যবহার করে, তাই এর জন্য তৈরি অ্যাপ — যেমন bcr-gui — আপনার রেকর্ডিংয়ের বিবরণ পড়তে পারে। এমন কোনো অ্যাপ ব্যবহার করলেই চালু করা সার্থক।</string>
-    <string name="settings_transcript_sidecar_label">রেকর্ডিংয়ের পাশে ট্রান্সক্রিপ্ট ও নোট সেভ করুন</string>
-    <string name="settings_transcript_sidecar_desc">প্রতিটি রেকর্ডিংয়ের পাশে একটি .md টেক্সট ফাইল লিখুন</string>
-    <string name="settings_transcript_sidecar_hint">ট্রান্সক্রিপ্ট, নোট ও সারাংশ রেকর্ডিংয়ের নামেই একটি টেক্সট ফাইলে সেভ করে, তাই ফোল্ডারটি PC-তে কপি করলে লেখা অডিওর সাথেই থাকে। চালু করলে আগের গুলোও সেভ হয়ে যায়।</string>
+    
+    
+    
     <string name="settings_hide_recordings_label">রেকর্ডিং লুকান</string>
     <string name="settings_hide_recordings_desc">মিউজিক প্লেয়ার, গ্যালারি ও অন্যান্য মিডিয়া অ্যাপ থেকে রেকর্ডিং দূরে রাখুন</string>
     <string name="settings_hide_recordings_hint">রেকর্ডিং ফোল্ডারে একটি লুকানো .nomedia ফাইল যোগ করে, যা বেশিরভাগ অ্যাপ মেনে চলে। রেকর্ডিংয়ের নাম একই থাকে এবং সিঙ্কও হয়। ফাইল ম্যানেজারে তবুও দেখা যায় — সেখানেও লুকাতে ফোল্ডারের নাম একটি ডট দিয়ে শুরু করুন।</string>
@@ -793,7 +793,7 @@
     <string name="voip_recording_paused">থামানো আছে। এখন কিছু সেভ হচ্ছে না।</string>
     <string name="voip_recording_held">একটি ফোন কলের জন্য স্থগিত। আপনি ফিরলে এই রেকর্ডিং চলতে থাকবে।</string>
     <string name="general_back">পিছনে</string>
-    <string name="export_heading_transcript">ট্রান্সক্রিপ্ট</string>
+    
     <string name="settings_bugreport_save">সেভ</string>
     <string name="settings_bugreport_saved">রিপোর্ট সেভ হয়েছে</string>
     <string name="settings_bugreport_save_failed">রিপোর্ট সেভ করা যায়নি</string>
@@ -835,25 +835,19 @@
     <string name="library_row_save">ফাইল হিসেবে সেভ করুন</string>
     <string name="library_nothing_to_share">সেখানে শেয়ার করার মতো আর কিছু নেই।</string>
     <string name="transcript_delete_confirm_message_text_only">এই লেখার পিছনে কোনো রেকর্ডিং নেই: %1$s-এর ট্রান্সক্রিপ্ট মুছলে পুরোটাই মুছে যাবে, আর ফেরানো যাবে না।</string>
-    <string name="library_summary_delete_confirm_title">এই সারাংশ মুছবেন?</string>
-    <string name="library_summary_delete_confirm_message">%1$s-এর সারাংশ মুছে যাবে। ট্রান্সক্রিপ্ট ও রেকর্ডিং থাকবে, আর আবার লিখিয়ে নিতে পারবেন।</string>
-    <string name="library_bulk_delete_transcripts_message">লেখাগুলো মুছে যাবে। রেকর্ডিংগুলো থাকবে, আর পরে আবার ট্রান্সক্রাইব করতে পারবেন।</string>
-    <string name="library_bulk_delete_summaries_message">সারাংশগুলো মুছে যাবে। ট্রান্সক্রিপ্ট ও রেকর্ডিং থাকবে।</string>
-    <plurals name="library_bulk_delete_transcripts_title">
-        <item quantity="one">%1$dটি ট্রান্সক্রিপ্ট মুছবেন?</item>
-        <item quantity="other">%1$dটি ট্রান্সক্রিপ্ট মুছবেন?</item>
-    </plurals>
-    <plurals name="library_bulk_delete_summaries_title">
-        <item quantity="one">%1$dটি সারাংশ মুছবেন?</item>
-        <item quantity="other">%1$dটি সারাংশ মুছবেন?</item>
-    </plurals>
+    
+    
+    
+    
+    
+    
     <plurals name="library_bulk_delete_text_only_warning">
         <item quantity="one">এর মধ্যে %1$dটির পিছনে কোনো রেকর্ডিং নেই, তাই এর লেখাটুকুই শুধু বাকি। ওই অংশটি ফেরানো যাবে না।</item>
         <item quantity="other">এর মধ্যে %1$dটির পিছনে কোনো রেকর্ডিং নেই, তাই সেগুলোর লেখাটুকুই শুধু বাকি। ওই অংশটি ফেরানো যাবে না।</item>
     </plurals>
     <string name="home_search_contacts_hint">কন্টাক্ট দিয়ে খুঁজুন</string>
     <string name="transcripts_search_hint">যা বলা হয়েছে তা খুঁজুন</string>
-    <string name="summaries_search_hint">সারাংশে খুঁজুন</string>
+    
     <string name="search_clear">মুছুন</string>
     <string name="search_no_matches_title">কিছু মেলেনি</string>
     <string name="search_no_matches_hint">এখানে কোথাও “%1$s” নেই। শব্দ শুরু থেকে মেলানো হয়, তাই ছোট রূপে খুঁজলে বেশি পেতে পারেন।</string>
@@ -876,11 +870,11 @@
     <string name="update_popup_update_now">এখনই আপডেট করুন</string>
     <string name="update_popup_later">পরে</string>
     <string name="settings_title_recordings">রেকর্ডিং সেটিংস</string>
-    <string name="settings_title_transcripts">ট্রান্সক্রিপ্ট সেটিংস</string>
-    <string name="settings_title_summaries">সারাংশ সেটিংস</string>
+    
+    
     <string name="settings_link_share_debug_report">ডিবাগ রিপোর্ট শেয়ার করুন</string>
     <string name="settings_link_all_settings">সব সেটিংস</string>
-    <string name="settings_language_change_in_transcripts">ট্রান্সক্রিপ্ট সেটিংসে বদলান</string>
+    
     <string name="settings_summary_off">বন্ধ</string>
     <string name="settings_summary_unavailable">এখানে উপলব্ধ নয়</string>
     <string name="settings_summary_count_on">%2$dটির মধ্যে %1$dটি চালু</string>
@@ -898,7 +892,7 @@
     <string name="settings_group_cleaning_up">পরিষ্কার করা</string>
     <string name="settings_group_connection">সংযোগ</string>
     <string name="settings_group_model_and_language">মডেল ও ভাষা</string>
-    <string name="settings_group_when_to_transcribe">কখন ট্রান্সক্রাইব হবে</string>
+    
     <string name="settings_group_app">অ্যাপ</string>
     <string name="settings_group_help_and_about">সাহায্য ও পরিচিতি</string>
     <string name="settings_summary_calls_phone_and_app">ফোন ও অ্যাপ কল</string>
@@ -909,8 +903,8 @@
     <string name="settings_subheader_app_calls">অ্যাপ কল</string>
     <string name="settings_subheader_all_calls">সব কল</string>
     <string name="settings_voip_auto_start_record_label">অ্যাপ কল স্বয়ংক্রিয়ভাবে রেকর্ড করুন</string>
-    <string name="transcription_language_bengali">বাংলা</string>
-    <!-- Transcribe again (#72) -->
+    
+    
     <string name="transcribe_again_title">আবার ট্রান্সক্রাইব করবেন?</string>
     <string name="transcribe_again_message_one">%1$s আবার ট্রান্সক্রাইব করা হবে। নতুন চালনা ব্যর্থ হলে বা থামানো হলে বর্তমান ট্রান্সক্রিপ্ট রাখা হবে।</string>
     <string name="transcribe_again_message_many">আবার করার ট্রান্সক্রিপ্ট: %1$d। কোনো চালনা ব্যর্থ হলে বা থামানো হলে সেই ট্রান্সক্রিপ্ট যেমন আছে তেমনই থাকবে।</string>

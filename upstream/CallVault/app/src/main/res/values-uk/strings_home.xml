@@ -78,31 +78,31 @@
     <string name="merge_progress_cleaning_up">Очищення</string>
     <string name="home_hub_library_title">Бібліотека</string>
     <string name="home_hub_recordings_body">Усі записані дзвінки.</string>
-    <string name="home_hub_transcripts_body">Розмови у текстовому вигляді та імпортоване аудіо.</string>
-    <string name="home_hub_summaries_body">AI-підсумки, створені на телефоні.</string>
-    <string name="home_transcripts_title">Транскрипції</string>
-    <string name="home_summaries_title">Підсумки</string>
-    <string name="home_transcripts_count">Розпізнано: %1$d</string>
-    <string name="home_summaries_count">Підсумків: %1$d</string>
-    <string name="home_transcripts_empty_title">Транскрипцій поки немає</string>
-    <string name="home_summaries_empty_title">Підсумків поки немає</string>
-    <string name="transcripts_working_header">Виконується розпізнавання</string>
-    <string name="transcripts_failed_header">Не вдалося завершити</string>
-    <string name="transcripts_failed_hint">Натисніть, щоб повторити.</string>
-    <string name="transcripts_waiting_header">Очікують на розпізнавання</string>
-    <string name="summaries_working_header">Створюються підсумки</string>
-    <string name="summaries_failed_header">Не вдалося завершити</string>
-    <string name="summaries_failed_hint">Відкрийте, щоб повторити.</string>
-    <string name="transcripts_import_title">Імпортувати аудіо</string>
-    <string name="transcripts_import_working">Імпортування…</string>
-    <string name="transcripts_import_fab">Імпорт</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="import_sheet_keep">Зберегти аудіо</string>
     <string name="import_sheet_keep_hint">З\'явиться серед ваших записів</string>
-    <string name="import_sheet_transcript_only">Лише розшифровка</string>
-    <string name="import_sheet_transcript_only_hint">Аудіо потім видаляється</string>
+    
+    
     <string name="import_failed_title">Не вдалося імпортувати файл</string>
     <string name="import_failed_not_audio">Непідтримуваний формат. Спробуйте .opus, .ogg, .m4a, .mp3 або .wav.</string>
-    <string name="import_failed_empty">Файл порожній — немає звуку для розпізнавання.</string>
+    
     <string name="import_failed_no_folder">Папку записів не вибрано. Налаштуйте її та повторіть.</string>
     <string name="import_failed_copy">Не вдалося записати файл у папку із записами. Перевірте, чи є на телефоні вільне місце і чи папка досі доступна.</string>
     <string name="home_row_imported">Імпортовано</string>
@@ -110,7 +110,7 @@
     <string name="share_import_label">Імпорт аудіо</string>
     <string name="share_import_working_body">Копіювання та перевірка аудіофайлу.</string>
     <string name="share_import_done_title">Додано до записів</string>
-    <string name="share_import_done_body">Аудіофайл уже в CallVault. Можна прослухати чи створити транскрипцію.</string>
+    
     <string name="share_import_open">Відкрити</string>
     <string name="share_import_open_app">Відкрити CallVault</string>
     <string name="share_import_close">Закрити</string>
@@ -119,12 +119,12 @@
     <string name="share_import_choice_unnamed">Надісланий аудіофайл</string>
     <string name="import_choice_keep">Імпортувати й розпізнати</string>
     <string name="import_choice_keep_hint">Зберігає аудіо та створює транскрипцію.</string>
-    <string name="import_choice_transcribe_only">Лише розпізнати</string>
-    <string name="import_choice_transcribe_only_hint">Створює транскрипцію, а потім видаляє аудіо. Файл ніколи не зʼявиться серед ваших записів — лише текст, у розділі «Транскрипції».</string>
-    <string name="share_import_queued_keep_title">Додано до черги</string>
-    <string name="share_import_queued_only_title">Очікує на розпізнавання</string>
-    <string name="share_import_kept_title">Збережено без транскрипції</string>
-    <string name="share_import_no_model">Модель розпізнавання не встановлена. Аудіофайл збережено — завантажте модель у налаштуваннях.</string>
+    
+    
+    
+    
+    
+    
 
     <string name="home_whatsnew_body">• Запис автоматично відновлюється після збоїв\n• Головний екран повідомляє про проблеми із записом\n• Телефонний дзвінок більше не плутається з VoIP</string>
     <string name="offline_failed_needs_wd">Не вдалося ввімкнути: бездротове налагодження вимкнено. Увімкніть його в параметрах розробника та повторіть.</string>
@@ -186,7 +186,7 @@
     <string name="whatsnew_156_body">Для звичайних і VoIP-дзвінків тепер можна незалежно вибирати автоматичний запис, запит дозволу чи вимкнення.\n\nДодано масове видалення й надсилання записів, а також вибір, яку копію видаляти — локальну чи на Drive.</string>
     <string name="whatsnew_156_where">Налаштування ▸ Запис ▸ Телефонні дзвінки</string>
     <string name="settings_merge_keep_originals_description">Після обʼєднання залишати початкові записи на телефоні. За замовчуванням вимкнено. Обʼєднану розмову можна розділити.</string>
-    <string name="unmerge_message">Знову зʼявляться ці дзвінки з їхніми транскрипціями та мітками:</string>
+    <string name="unmerge_message">It becomes these calls again, each with its recording details and marks it had:</string>
     <string name="whatsnew_250_title">Зберегти чи видалити після дзвінка, і ділитися тим, що потрібно</string>
     <string-array name="whatsnew_250_items">
         <item>Зберегти чи видалити: після кожного дзвінка CallVault може спитати, чи залишити запис (Налаштування ▸ Запис)</item>
@@ -247,16 +247,16 @@
     <string name="offline_failed_no_wifi">Не вдалося ввімкнути: немає Wi-Fi. Один раз підключіться до будь-якої мережі й повторіть.</string>
     <string name="offline_failed_wd_refused">Android заборонив бездротове налагодження в цій мережі. Увімкніть його в параметрах розробника та підтвердьте.</string>
     <string name="offline_failed_needs_usb">Спочатку ввімкніть налагодження USB у налаштуваннях CallVault. Воно потрібне для запису без Wi-Fi.</string>
-    <string name="home_transcripts_empty_hint">Попросіть розшифровку в меню запису або натисніть «Імпорт», щоб додати аудіофайл. Вона з\'явиться тут, щойно буде готова.</string>
-    <string name="home_summaries_empty_hint">Відкрийте розмову з транскрипцією та створіть підсумок. Він зʼявиться тут.</string>
-    <string name="transcripts_waiting_hint">Ці файли додані для розпізнавання. Натисніть, щоб розпочати, або відкрийте для прослуховування чи видалення.</string>
-    <string name="import_failed_undecodable">Телефон не може прочитати аудіо в цьому файлі. Він може бути пошкоджений або мати непідтримуваний формат.</string>
+    
+    
+    
+    
     <string name="share_import_nothing">У надісланих даних немає аудіо. Спробуйте поділитися самим файлом.</string>
     <string name="share_import_not_set_up_body">Початкове налаштування CallVault ще не завершено. Відкрийте програму, налаштуйте папку записів і повторіть надсилання.</string>
-    <string name="share_import_queued_keep_body">Файл є у записах. Після завершення текст зʼявиться в розділі «Транскрипції».</string>
-    <string name="share_import_queued_only_body">Текст зʼявиться в розділі «Транскрипції». Аудіофайл видалиться після успішного збереження тексту.</string>
-    <string name="share_import_kept_body">Файл збережено серед записів. Транскрипцію можна створити пізніше.</string>
-    <string name="share_import_kept_only_body">Файл очікує в розділі «Транскрипції». Можна почати обробку або видалити його.</string>
+    
+    
+    
+    
     <string-array name="whatsnew_246_items">
         <item>Головний перемикач запису всіх телефонних і VoIP-дзвінків на головному екрані та у швидких налаштуваннях</item>
         <item>Грецька мова транскрипції</item>

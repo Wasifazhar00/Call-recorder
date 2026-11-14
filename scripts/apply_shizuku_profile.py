@@ -419,13 +419,8 @@ import kotlinx.coroutines.launch
 ])
 
 
-# CallVault recorder-only product profile. Remove all user-facing entry points to
-# transcription/summarisation and cancel any old queued AI work on first Home entry.
-# Keep the upstream data/schema classes intact so existing installations upgrade
-# without destructive database migrations or loss of recordings/history.
-# Home, Settings and Playback screens are already recorder-only in source.
-
-# AI scheduling is removed; no runtime transcription or summary jobs are scheduled.
+# CallVault recorder-only product profile. Core recording, playback and library metadata
+# remain available; the build profile does not add alternate recorder or AI workflows.
 
 
 # Shizuku-Next is a drop-in manager: it retains Shizuku's package/API/permission contract.

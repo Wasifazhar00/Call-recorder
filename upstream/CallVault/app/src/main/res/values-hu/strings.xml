@@ -14,25 +14,19 @@
         <item quantity="other">%1$d felvétel</item>
     </plurals>
 
-    <!-- Call summaries. Numbers are measured on the reference device, not estimated. -->
+    
     <plurals name="settings_voip_apps_some">
         <item quantity="one">%1$d alkalmazás nem lesz rögzítve</item>
         <item quantity="other">%1$d alkalmazás nem lesz rögzítve</item>
     </plurals>
-    <plurals name="library_bulk_delete_transcripts_title">
-        <item quantity="one">Törlöd a kijelölt %1$d átiratot?</item>
-        <item quantity="other">Törlöd a kijelölt %1$d átiratot?</item>
-    </plurals>
-    <plurals name="library_bulk_delete_summaries_title">
-        <item quantity="one">Törlöd a kijelölt %1$d összefoglalót?</item>
-        <item quantity="other">Törlöd a kijelölt %1$d összefoglalót?</item>
-    </plurals>
+    
+    
     <plurals name="library_bulk_delete_text_only_warning">
         <item quantity="one">Ezek közül %1$d mögött nincs felvétel, így ott csak a szöveg maradt. Ez a rész nem vonható vissza.</item>
         <item quantity="other">Ezek közül %1$d mögött nincs felvétel, így ott csak a szöveg maradt. Ez a rész nem vonható vissza.</item>
     </plurals>
 
-    <!-- The search line at the head of the Recordings, Transcripts and Summaries pages. %1$s = what was typed. -->
+    
     <!-- Master recording On/Off switch -->
 
     <!-- New Settings screen (settings per page, step 2). -->
@@ -67,7 +61,7 @@
     <string name="disclaimer_introduction">A folytatás előtt figyelmesen olvassa el az alábbi jogi nyilatkozatot.</string>
     <string name="disclaimer_must_read">Kérjük mindenképp olvasd el a jogi nyilatkozatot.</string>
     <string name="disclaimer_title">Üdvözöljük a CallVault alkalmazásban</string>
-    <string name="export_heading_transcript">Átirat</string>
+    
     <string name="folder_cloud_rejected">A felhőmappák (például a Google Drive) nem használhatók rögzítésre. Válasszon eszközön lévő tárhelyet – a felhőben tárolt másolatokhoz használja a Google Drive biztonsági mentés lehetőséget.</string>
     <string name="folder_drive_overlaps_recordings">A Drive-mappa nem lehet a felvételek mappája. Válasszon Google Drive-mappát.</string>
     <string name="folder_drive_overlap_warning">Ez a felvételek mappája (vagy átfedésben van vele), ezért semmi nem kerül a Drive-ra. Válasszon Google Drive-mappát.</string>
@@ -93,12 +87,12 @@
     <string name="general_stop">Leállítás</string>
     <string name="general_system_limitation">Rendszerkorlát</string>
     <string name="general_system_limitation_message">CallVault nem tud működni ezen a készüléken mivel a shell alkalmazás nem rendelkezik a megfelelő jogosultságokkal.\n\n%1$s\n\nA helyzettel nem lehet mit csinálni, az alkalmazás nem tud működni és most bezáródik.</string>
-    <string name="heavy_work_backing_up_model">Modell biztonsági mentése</string>
+    
     <string name="heavy_work_channel_name">Háttérfeldolgozás</string>
-    <string name="heavy_work_importing_model">Modell importálása</string>
+    
     <string name="heavy_work_notification_text">A telefon felmelegedhet a művelet alatt.</string>
-    <string name="heavy_work_summarising">Felvétel összefoglalója készül</string>
-    <string name="heavy_work_transcribing">Felvétel átirata készül</string>
+    
+    
     <string name="drive_copy_title">Felvételek másolása a Drive-ra</string>
     <string name="drive_copy_progress">%1$d / %2$d átmásolva</string>
     <string name="drive_copy_stop">Leállítás egyelőre</string>
@@ -171,12 +165,12 @@
     <string name="honor_dialer_hint">A telefonalkalmazás csak akkor tud lejátszani egy felvételt a híváselőzményekből, ha az .m4a formátumban, a(z) %1$s mappában van mentve. A CallVaultban állítsd a(z) %2$s beállítást erre a mappára, a(z) %3$s beállítást pedig AAC-re.</string>
     <string name="honor_dialer_missing">Még módosítandó: %1$s</string>
     <string name="honor_dialer_ready">✓ Kész: a mappa és a formátum be van állítva.</string>
-    <string name="library_bulk_delete_summaries_message">Az összefoglalók törlődnek. Az átiratok és a felvételek megmaradnak.</string>
-    <string name="library_bulk_delete_transcripts_message">A szöveg törlődik. A felvételek megmaradnak, és később újra átírhatók.</string>
+    
+    
     <string name="library_nothing_to_share">Már nincs ott semmi megosztható.</string>
     <string name="library_row_save">Mentés fájlba</string>
-    <string name="library_summary_delete_confirm_message">%1$s összefoglalója törlődik. Az átirat és a felvétel megmarad, és újra megíratható.</string>
-    <string name="library_summary_delete_confirm_title">Törlöd ezt az összefoglalót?</string>
+    
+    
     <string name="list_separator">", "</string>
     <string name="min_duration_caption">A téves hívás vagy a kicsengett hívás a befejezés pillanatában törlődik, még az átirat és a feltöltés előtt. A meglévő felvételeket nem érinti.</string>
     <string name="min_duration_label">Rövid felvételek eldobása</string>
@@ -203,21 +197,21 @@
     <string name="mode_switch_voip_not_armed">Átváltva, de az alkalmazáshívások rögzítését nem sikerült előkészíteni. A telefonhívások rögzülnek; az alkalmazáshívások lehet, hogy csak a CallVault újranyitása után.</string>
     <string name="mode_switch_working">A régi felvevő leállítása és az új indítása. Ez néhány másodpercig tart.</string>
     <string name="model_backing_up">Mentés… %1$d%%</string>
-    <string name="model_backup">Biztonsági mentés</string>
-    <string name="model_backup_done">Mentve</string>
-    <string name="model_backup_failed">A biztonsági mentés nem fejeződött be. Próbáld újra.</string>
-    <string name="model_backup_info">A modellfájlt egy általad választott mappába menti. Újratelepítés után vagy új telefonon importáld ezt a fájlt az újbóli letöltés helyett.</string>
-    <string name="model_backup_subtitle">Ments egy másolatot, ami újratelepítés után is megmarad</string>
-    <string name="model_backup_waiting">Felkészülés a biztonsági mentésre…</string>
-    <string name="model_import">Importálás fájlból</string>
-    <string name="model_import_failed_other_model">Ez egy másik modell (%1$s) fájlja. Előbb válaszd ki azt a modellt, aztán importáld.</string>
-    <string name="model_import_failed_space">Nincs elég szabad hely az importáláshoz.</string>
-    <string name="model_import_failed_unreadable">Nem sikerült beolvasni a fájlt. Válaszd ki újra.</string>
-    <string name="model_import_failed_wrong_file">Ez nem a megfelelő fájl. Válaszd ezt: %1$s.</string>
-    <string name="model_import_info">Válaszd ki a hivatalos modellfájlt (%1$s, %2$d MB). A CallVault használat előtt ellenőrzi, hogy pontosan ez a fájl-e, és a másolatodat a helyén hagyja.</string>
-    <string name="model_import_subtitle">Használj egy meglévő másolatot</string>
-    <string name="model_import_waiting">Felkészülés az importálásra…</string>
-    <string name="model_importing">Importálás… %1$d%%</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="note_saved">Mentve</string>
     <string name="note_saving">Mentés…</string>
     <string name="notif_cut_off_saved_text">A telefon hívás közben bezárta a CallVaultot. Az addig rögzített részt %1$s néven mentettük.</string>
@@ -289,7 +283,7 @@
     <string name="playback_marked_moments">Megjelölt pillanatok</string>
     <string name="playback_note_hint">Miről szólt ez a hívás…</string>
     <string name="playback_note_title">Jegyzet</string>
-    <string name="playback_open_transcript">Átirat elolvasása</string>
+    
     <string name="playback_skip_back">10 másodperccel vissza</string>
     <string name="playback_skip_forward">10 másodperccel előre</string>
     <string name="playback_speed">%1$s×</string>
@@ -422,7 +416,7 @@
     <string name="settings_group_model_and_language">Modell és nyelv</string>
     <string name="settings_group_save_and_sync">Mentés és szinkronizálás</string>
     <string name="settings_group_sound_and_names">Hang és fájlnevek</string>
-    <string name="settings_group_when_to_transcribe">Mikor készüljön átirat</string>
+    
     <string name="settings_handoff_persist_description">A rögzítés akkor is folytatódik, ha a háttérsegéd hívás közben leáll (pl. amikor lezárja a képernyőt).</string>
     <string name="settings_handoff_persist_label">Rögzítés folytatása, ha a háttérfolyamat leáll</string>
     <string name="settings_hide_recordings_desc">Tartsa távol a felvételeket a zenelejátszóktól, galériáktól és más médiaalkalmazásoktól</string>
@@ -445,7 +439,7 @@
     <string name="settings_info_about">Erről: %1$s</string>
     <string name="settings_info_got_it">Értem</string>
     <string name="settings_language">Nyelv</string>
-    <string name="settings_language_change_in_transcripts">Az átiratok beállításaiban módosítható</string>
+    
     <string name="settings_language_system">Rendszer alapértelmezett beállítás</string>
     <string name="settings_link_all_settings">Összes beállítás</string>
     <string name="settings_link_share_debug_report">Hibakeresési jelentés megosztása</string>
@@ -458,7 +452,7 @@
         <item quantity="one">%d találat</item>
         <item quantity="other">%d találat</item>
     </plurals>
-    <string name="summary_requirements_toggle_label">Követelmények megjelenítése</string>
+    
     <string name="settings_sim_label_label">A hívásokhoz használt SIM megjelenítése</string>
     <string name="settings_sim_label_desc">Kétkártyás telefonokhoz: a SIM-nek adott nevet mutatja, vagy SIM 1 / SIM 2</string>
     <string name="sim_label_word">SIM</string>
@@ -486,7 +480,7 @@
     <string name="settings_section_reliability">Megbízhatóság</string>
     <string name="settings_section_security">Biztonság</string>
     <string name="settings_section_storage">Tárhely</string>
-    <string name="settings_section_transcription">Átirat</string>
+    
     <string name="settings_section_updates">Frissítések</string>
     <string name="settings_select_contacts">Névjegyek kiválasztása (%1$d)</string>
     <string name="settings_select_contacts_incoming">Bejövő névjegyek kiválasztása</string>
@@ -529,11 +523,11 @@
     <string name="settings_theme_mode_light">Világos</string>
     <string name="settings_theme_mode_system">Rendszer alapértelmezett</string>
     <string name="settings_title_recordings">Felvételek beállításai</string>
-    <string name="settings_title_summaries">Összefoglalók beállításai</string>
-    <string name="settings_title_transcripts">Átiratok beállításai</string>
-    <string name="settings_transcript_sidecar_desc">.md szövegfájl létrehozása minden felvétel mellé</string>
-    <string name="settings_transcript_sidecar_hint">Az átiratot, a jegyzeteket és az összefoglalót a felvétellel azonos nevű szövegfájlként menti, így ha a mappát egy PC-re másolod, a szöveg a hanggal együtt marad. A bekapcsoláskor a meglévőket is menti.</string>
-    <string name="settings_transcript_sidecar_label">Átirat és jegyzetek mentése a felvétel mellé</string>
+    
+    
+    
+    
+    
     <string name="settings_unavailable_in_shizuku">Shizuku módban nem érhető el — ehhez a CallVault saját felvevője kell.</string>
     <string name="settings_update_check_description">Naponta egyszer új verziót keres a GitHubon.</string>
     <string name="settings_update_check_label">Frissítések keresése</string>
@@ -587,58 +581,58 @@
     <string name="storage_target_both">Eszköz + Google Drive</string>
     <string name="storage_target_drive">Csak Google Drive</string>
     <string name="storage_target_local">Csak erre az eszközre</string>
-    <string name="summaries_search_hint">Keresés az összefoglalókban</string>
-    <string name="summary_card_actions">Teendők</string>
-    <string name="summary_card_blocked_empty">Ebben az átiratban nincsenek szavak, így nincs mit összefoglalni.</string>
-    <string name="summary_card_blocked_model">Előbb töltse le az összefoglalót a Beállításokban.</string>
-    <string name="summary_card_blocked_no_transcript">Előbb írassa át a hívást – az összefoglaló az átiratból készül.</string>
-    <string name="summary_card_blocked_summarising">Éppen egy másik hívás összefoglalása készül.</string>
-    <string name="summary_card_blocked_transcribing">Várakozás az átírás végére – nem tudnak osztozni a telefonon.</string>
-    <string name="summary_card_blocked_unfinished">Várakozás az átirat elkészültére.</string>
-    <string name="summary_card_create">Hívás összefoglalása</string>
-    <string name="summary_card_create_subtitle">A telefonján készül, egy-két perc</string>
-    <string name="summary_card_decisions">Döntések</string>
-    <string name="summary_card_facts">Érdemes megjegyezni</string>
-    <string name="summary_card_failed">Ebből nem lett használható összefoglaló. Újra próbálhatja.</string>
-    <string name="summary_card_key_points">Fő pontok</string>
-    <string name="summary_card_provenance">Az átiratból készült</string>
-    <string name="summary_card_redo">Írja meg újra</string>
-    <string name="summary_card_running">Összefoglalás… %1$d %%</string>
-    <string name="summary_card_stop">Leállítás</string>
-    <string name="summary_card_title">Összefoglaló</string>
-    <string name="summary_delete_confirm_body">Ez %1$.1f GB-ot szabadít fel. A már elkészült összefoglalók megmaradnak, de újak írásához ismét le kell tölteni.</string>
-    <string name="summary_delete_confirm_confirm">Törlés</string>
-    <string name="summary_delete_confirm_title">Törli az összefoglalót?</string>
-    <string name="summary_discard_confirm_body">Ezzel eldobja a már letöltött %1$.1f GB-ot. Az újrakezdés az egészet elölről töltené le.</string>
-    <string name="summary_discard_confirm_confirm">Eldobás</string>
-    <string name="summary_discard_confirm_title">Eldobja a letöltést?</string>
-    <string name="summary_model_cancel">Letöltés megszakítása</string>
-    <string name="summary_model_delete">Összefoglaló törlése</string>
-    <string name="summary_model_discard">Letöltött adatok eldobása</string>
-    <string name="summary_model_discard_subtitle">%1$.1f GB szabadul fel</string>
-    <string name="summary_model_download">Összefoglaló letöltése</string>
-    <string name="summary_model_download_subtitle">%1$.1f GB</string>
-    <string name="summary_model_downloading">Letöltés… %1$d %%</string>
-    <string name="summary_model_failed">A letöltés nem fejeződött be. Próbálja újra.</string>
-    <string name="summary_model_failed_space">Nincs elég szabad hely. Szabadítson fel valamennyit, és próbálja újra.</string>
-    <string name="summary_model_failed_verify">A letöltés sérült volt, ezért eldobtuk. Próbálja újra.</string>
-    <string name="summary_model_installed">Letöltve és kész</string>
-    <string name="summary_model_licence">Az összefoglaló a Google Gemma 4 modellje, az Apache 2.0 licenc alatt. Külön töltődik le, nem a CallVault része.</string>
-    <string name="summary_model_resume">Letöltés folytatása</string>
-    <string name="summary_model_resume_subtitle">%1$.1f GB letöltve a %2$.1f GB-ból</string>
-    <string name="summary_model_waiting">Várakozás Wi-Fire</string>
-    <string name="summary_requirements_body">Az összefoglalók a telefonján készülnek – semmi nem kerül elküldésre. Ez %1$.1f GB letöltésbe és futás közben körülbelül %2$.1f GB memóriába kerül, tehát újabb telefon kell, tartalékkal. Egy rövid hívás egy-két percet vesz igénybe.</string>
-    <string name="summary_requirements_cancel">Most nem</string>
-    <string name="summary_requirements_continue">Letöltés</string>
-    <string name="summary_requirements_dont_ask">Ne jelenjen meg többé</string>
-    <string name="summary_requirements_download">%1$.1f GB letöltés</string>
-    <string name="summary_requirements_heading">Letöltés előtt</string>
-    <string name="summary_requirements_memory">Futás közben körülbelül %1$.1f GB memória</string>
-    <string name="summary_requirements_phone">Újabb telefon kell, tartalékkal. Régebbin lassú lehet, vagy meghiúsulhat.</string>
-    <string name="summary_requirements_private">Minden a telefonján történik. Semmi nem kerül elküldésre.</string>
-    <string name="summary_requirements_time">Rövid híváshoz egy-két perc, hosszabbhoz több</string>
-    <string name="summary_requirements_title">Mi kell hozzá</string>
-    <string name="summary_requirements_toggle_description">Mutassa a letöltés előtt, mit igényel az összefoglaló</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="support_appeal_body">A CallVaultot a szabadidőmben tartom karban. kitsumed ShizuCallRecorder projektjének forkjaként indult, és azóta sokat fejlődött. Ingyenes, nyílt forráskódú, nincs hirdetés és nyomkövetés. Ha hasznos neked, egy kis támogatás segít folytatni. Köszönöm! 🙏</string>
     <string name="support_appeal_title">Egy kis borravaló a CallVaultnak ☕</string>
     <string name="support_not_now">Most nem</string>
@@ -646,7 +640,7 @@
     <string name="tile_recording_stopped">Leállítva</string>
     <string name="transcribe_confirm_dont_ask">Ne kérdezze többet</string>
     <string name="transcribe_long_call_line">Ez a hívás %1$s hosszú. Ezen a telefonon az átírás nagyjából %2$s× ennyi ideig tart — körülbelül %3$s.</string>
-    <string name="transcribe_confirm_message">A(z) %1$s átírása leköti a telefont, és érezhetően fogyasztja az akkumulátort. Bármikor leállíthatja.\n\nEz a kérdés a Beállítások Átírás részében kapcsolható vissza.</string>
+    
     <string name="transcribe_confirm_title">Ez körülbelül %1$s lesz</string>
     <string name="transcribe_confirm_title_first_run">Az első eltarthat egy ideig</string>
     <string name="transcribe_confirm_title_unknown">Átírja ezt a hívást?</string>
@@ -697,102 +691,102 @@
     <string name="transcript_speakers_swap">Csere</string>
     <string name="transcript_speakers_swap_names">Nevek cseréje</string>
     <string name="transcript_speakers_which_is_you">Melyik vagy te?</string>
-    <string name="transcription_ask_language_subtitle">Válasszon nyelvet felvételenként a fenti helyett. Csak az adott felvételre vonatkozik.</string>
-    <!-- Where to transcribe: on this phone or with the user's own cloud key (issue #48). No prices anywhere. -->
-    <string name="transcription_where_title">Hol történjen az átírás</string>
-    <string name="transcription_where_on_device">Ezen a telefonon</string>
-    <string name="transcription_where_on_device_desc">Privát. Lassabb: a hívás minden percére kb. 1,5 perc.</string>
-    <string name="transcription_where_groq_desc">Gyors: általában hívásonként néhány másodperc.</string>
-    <string name="transcription_where_openrouter_desc">Egy kulcs sok szolgáltatáshoz. Microsoft MAI-Transcribe.</string>
-    <string name="transcription_where_custom">Egyéni (haladó)</string>
-    <string name="transcription_where_custom_desc">Bármely OpenAI-kompatibilis szerver.</string>
-    <string name="transcription_where_custom_service">saját szerver</string>
-    <string name="transcription_where_recommended">Ajánlott</string>
-    <string name="transcription_cloud_key_label">Az Ön kulcsa (%1$s)</string>
-    <string name="transcription_cloud_key_label_custom">A saját szerver kulcsa</string>
-    <string name="transcription_cloud_key_show">Kulcs megjelenítése</string>
-    <string name="transcription_cloud_key_hide">Kulcs elrejtése</string>
-    <string name="transcription_cloud_test">Teszt</string>
-    <string name="transcription_cloud_testing">Tesztelés…</string>
-    <string name="transcription_cloud_get_key">Kulcs igénylése (%1$s)</string>
-    <string name="transcription_cloud_custom_url">Szervercím</string>
-    <string name="transcription_cloud_custom_url_hint">https://… (a /audio/transcriptions előtti rész)</string>
-    <string name="transcription_cloud_custom_url_invalid">http(s):// kezdetű címet adjon meg.</string>
-    <string name="transcription_cloud_custom_model">Modell</string>
-    <string name="transcription_cloud_mobile_data">Mobiladat-használat engedélyezése</string>
-    <string name="transcription_cloud_mobile_data_desc">Kikapcsolva a hívások a küldés előtt Wi-Fi-re várnak.</string>
-    <string name="transcription_cloud_privacy_note">A hívás hangja átírásra ide kerül: %1$s. A szöveg visszajön erre a telefonra; a szolgáltató adatvédelmi feltételei érvényesek. Csak Wi-Fi-n, hacsak nem engedélyezi a mobiladatot.</string>
-    <string name="transcription_cloud_consent_title">Elküldi a hívások hangját ide: %1$s?</string>
-    <string name="transcription_cloud_consent_body">Egy hívás átírásakor a hangja az Ön kulcsával ide kerül: %1$s, a szöveg pedig visszajön erre a telefonra. A szolgáltató adatvédelmi feltételei érvényesek. Az összefoglalók ezen a telefonon maradnak.</string>
-    <string name="transcription_cloud_consent_confirm">Használat: %1$s</string>
-    <string name="transcription_cloud_test_ok">A kulcs működik.</string>
-    <string name="transcription_cloud_test_bad_key">A kulcsot elutasították. Ellenőrizze, és próbálja újra.</string>
-    <string name="transcription_cloud_test_no_timings">A szolgáltatás időbélyegek nélkül válaszolt, ezért nem használható. Próbáljon másik modellt.</string>
-    <string name="transcription_cloud_test_unreachable">A szolgáltatás nem érhető el. Ellenőrizze a kapcsolatot, és próbálja újra.</string>
-    <string name="transcription_cloud_test_refused">A szolgáltatás elutasította a kérést. Ellenőrizze a címet és a modellt.</string>
-    <string name="transcription_cloud_test_no_key">Előbb illesszen be egy kulcsot.</string>
-    <string name="transcription_cloud_test_incomplete">Előbb adja meg a szervercímet és a modellt.</string>
-    <string name="transcription_ask_language_title">Kérdezzen rá a nyelvre minden alkalommal</string>
-    <string name="transcription_batch_label">Hívások futásonként</string>
-    <string name="transcription_batch_no_limit">Nincs korlát</string>
-    <string name="transcription_charging_subtitle">Az átírás erősen terheli a processzort, és meríti az akkumulátort.</string>
-    <string name="transcription_charging_title">Csak töltés közben</string>
-    <string name="transcription_confirm_subtitle">Megmutatja, mennyi ideig tart, és megszakíthatja.</string>
-    <string name="transcription_confirm_title">Kérdezzen átírás előtt</string>
-    <string name="transcription_hour_label">Óra</string>
-    <string name="transcription_language_arabic">Arab</string>
-    <string name="transcription_language_auto">Automatikus felismerés</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="language_search_placeholder">Nyelvek keresése</string>
     <string name="language_search_clear">Keresés törlése</string>
     <string name="language_search_no_match">Nincs egyező nyelv</string>
-    <string name="transcription_language_auto_hint">A felismerés megbízhatatlan azoknál a nyelveknél, amelyeket nem latin betűkkel írnak — a héber, az arab, az orosz és a kínai gyakran angol betűkkel kiírva jön vissza, vagy egyetlen hosszú szövegtömbként. Ha teheti, nevezze meg a nyelvet.</string>
-    <string name="transcription_language_chinese">Kínai</string>
-    <string name="transcription_language_english">Angol</string>
-    <string name="transcription_language_french">Francia</string>
-    <string name="transcription_language_german">Német</string>
-    <string name="transcription_language_greek">Görög</string>
-    <string name="transcription_language_hebrew">Héber</string>
-    <string name="transcription_language_hungarian">Magyar</string>
-    <string name="transcription_language_italian">Olasz</string>
-    <string name="transcription_language_label">Nyelv</string>
-    <string name="transcription_language_persian">Perzsa</string>
-    <string name="transcription_language_urdu">Urdu</string>
-    <string name="transcription_language_bengali">Bengáli</string>
-    <string name="transcription_language_polish">Lengyel</string>
-    <string name="transcription_language_portuguese">Portugál</string>
-    <string name="transcription_language_russian">Orosz</string>
-    <string name="transcription_language_spanish">Spanyol</string>
-    <string name="transcription_language_ukrainian">Ukrán</string>
-    <string name="transcription_language_vietnamese">Vietnami</string>
-    <string name="transcription_minute_label">Perc</string>
-    <string name="transcription_mode_after_each_call">Minden hívás után</string>
-    <string name="transcription_mode_automatic">Ütemezve</string>
-    <string name="transcription_mode_label">Átírás</string>
-    <string name="transcription_mode_manual">Kézzel</string>
-    <string name="transcription_model_best">Legjobb minőség</string>
-    <string name="transcription_model_best_small_download">Legjobb minőség, kisebb letöltés</string>
-    <string name="transcription_model_persian">Perzsára hangolt</string>
-    <string name="transcription_model_persian_licence">Legjobb minőség, perzsa beszéden tanítva. Whisper large-v3-turbo Persian, készítette: givia, CC BY 4.0 licenc, whisper.cpp-hez kvantálva. Külön töltődik le, nem része a CallVaultnak.</string>
-    <string name="transcription_model_delete">Modell törlése</string>
-    <string name="transcription_model_download">Modell letöltése</string>
-    <string name="transcription_model_download_subtitle">%1$d MB</string>
-    <string name="transcription_model_downloading">Letöltés… %1$d %%</string>
-    <string name="transcription_model_failed">A letöltés nem fejeződött be. Próbálja újra.</string>
-    <string name="transcription_model_failed_space">Nincs elég szabad hely. Szabadítson fel valamennyit, és próbálja újra.</string>
-    <string name="transcription_model_failed_verify">A letöltés sérült volt, ezért eldobtuk. Próbálja újra.</string>
-    <string name="transcription_model_installed">Letöltve, használatra kész</string>
-    <string name="transcription_model_label">Modell</string>
-    <string name="transcription_model_resume">Letöltés folytatása</string>
-    <string name="transcription_model_resume_subtitle">%1$d MB letöltve a %2$d MB-ból</string>
-    <string name="transcription_model_small">Gyors</string>
-    <string name="transcription_model_waiting">Várakozás Wi-Fire</string>
-    <string name="transcription_note_after_each_call">Minden hívás átírásra kerül, amint véget ér. A régebbi hívások érintetlenek maradnak — azokat a felvételen lévő gombbal írathatja át.</string>
-    <string name="transcription_note_automatic">Az átirat nélküli hívások a megadott időpontban kerülnek átírásra. Egy 30 perces hívás körülbelül 30 percet vesz igénybe.</string>
-    <string name="transcription_note_manual">Az átiratok csak kérésre készülnek, a felvételen lévő gombbal.</string>
-    <string name="transcription_time_label">Futtatás ekkor</string>
-    <string name="transcription_warning_confirm">Bekapcsolás</string>
-    <string name="transcription_warning_message">Egy hívás átírása nagyjából annyi ideig tart, mint maga a hívás, és közben a telefon minden magját használja. Fel fog melegedni, és érezhetően fogyasztja az akkumulátort.\n\nA futást bármikor leállíthatja a cím melletti jelvényről.</string>
-    <string name="transcription_warning_title">Az átírás lassú és megterhelő</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="transcripts_search_hint">Keresés az elhangzottakban</string>
     <string name="update_popup_later">Később</string>
     <string name="update_popup_text">Új verzió telepíthető. A frissítés megbízhatóan tartja a rögzítést, és tartalmazza a legújabb javításokat.</string>
@@ -878,20 +872,20 @@
     <string name="wizard_storage_subtitle">Válassza ki, hová mentse a felvételeit. Ezt később a Beállításokban módosíthatja.</string>
     <string name="wizard_storage_title">Hová mentse a felvételeket</string>
     <string name="wizard_title">CallVault beállítása</string>
-    <string name="wizard_transcription_background_note">Mindkét letöltés a háttérben folytatódik. Most nyugodtan továbbléphet, és befejezheti a beállítást — ugyanez az állapot később a CallVault beállításaiban is látszik.</string>
-    <string name="wizard_transcription_language_note">A telefon nyelvére van állítva. Ha megnevezi a nyelvet, az sokkal megbízhatóbb, mintha az alkalmazás találgatna, és később hívásonként is választhat másikat.</string>
-    <string name="wizard_transcription_line">Hívások szöveggé alakítása ezen a telefonon.</string>
-    <string name="wizard_transcription_model_note">Az átíráshoz előbb egy beszédmodell kell a telefonra: %1$s: %2$d MB, %3$s: %4$d MB. Egy hívás átírása utána nagyjából annyi ideig tart, mint maga a hívás, és erősen igénybe veszi a processzort.</string>
-    <string name="wizard_transcription_model_size">%1$s – %2$d MB</string>
-    <string name="wizard_transcription_model_sizes_note">Az átíráshoz előbb egy beszédmodell kell a telefonra: %1$s. Egy hívás átírása utána nagyjából annyi ideig tart, mint maga a hívás, és erősen igénybe veszi a processzort.</string>
-    <string name="wizard_transcription_subtitle">A CallVault magán a telefonon írja át a felvételt, és rövid összefoglalót is ír belőle — semmi nem megy sehová. Válassza ki, mikor történjen ez, és milyen nyelvűek a hívásai, majd töltse le, amire ehhez szükség van.</string>
-    <string name="wizard_transcription_summary_body">Ha egy híváshoz már van átirat, a CallVault rövid összefoglalót is írhat róla — a telefonon, mint itt minden más.</string>
-    <string name="wizard_transcription_summary_heading">Összefoglalók</string>
-    <string name="wizard_transcription_title">Hívásokból szöveg</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="wizard_updates_line">Hogyan talál új verziókat a CallVault.</string>
     <string name="wizard_updates_subtitle">A CallVault nincs alkalmazásboltban, ezért maga keresi az új verziókat a GitHubon.</string>
     <string name="wizard_updates_title">Naprakészen tartás</string>
-    <!-- Transcribe again (#72) -->
+    
     <string name="transcribe_again_title">Újra átírod?</string>
     <string name="transcribe_again_message_one">%1$s újra át lesz írva. Ha az új futás sikertelen vagy leállítod, a jelenlegi átirat megmarad.</string>
     <string name="transcribe_again_message_many">Újra átírandó átiratok: %1$d. Ha egy futás sikertelen vagy leállítod, az az átirat változatlan marad.</string>

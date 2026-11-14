@@ -80,21 +80,8 @@
     <!-- Wizard: Schedule step -->
     <!-- Wizard: Auto-record step -->
     <!-- Wizard: Audio step -->
-    <!--
-      Wizard: transcription and summaries. The one place a new install is ever told either feature
-      exists — the What's New dialog only fires after an update, which a fresh install never has.
-
-      The step offers both downloads. wizard_transcription_cost_note and
-      wizard_transcription_summary_note were replaced rather than reworded: both said the download
-      button was in Settings, and a locale that still had the old sentence translated would have
-      gone on saying so next to a working button. New names fall back to English until translated,
-      which is wrong-language but never wrong.
-    -->
-    <!--
-      Reworded in place, unlike the two notes below it: the old sentence is incomplete now that the
-      step also asks about summaries and models, but it is not untrue, so a locale still showing it
-      until the next translation pass says less rather than something wrong.
-    -->
+    
+    
     <!--
       Dead as of the third model tier, and kept only until the translation pass retires it. It is NOT
       edited in place, and the arity of a live string must never be: ten values-* files still carry
@@ -133,7 +120,7 @@
         <item quantity="one">%1$d εγγραφή</item>
         <item quantity="other">%1$d εγγραφές</item>
     </plurals>
-    <!-- Transcription (on-device speech to text) -->
+    
     <!--
       "Best quality" deliberately keeps its key and moves to the q8_0 tier, rather than a new key
       being minted for it. q8_0 is the tier this sentence has always been describing — the best one
@@ -141,28 +128,11 @@
       new, untranslated key is the one below, which lands on the tier that is now the second choice:
       the worst case is one fallback-to-English entry in the picker, on the entry that matters less.
     -->
-    <!--
-      The rest of the download's life, which the speech model never had wording for: its rows flipped
-      from "Download model" straight to "Downloaded and ready" with nothing in between. Deliberately
-      the summariser's sentences in megabytes rather than gigabytes — the same states, six times
-      smaller. "Cancel the download" is not one of them: summary_model_cancel says exactly that and
-      is shared by both, since it names no model.
-    -->
+    
 
-    <!--
-      Call summaries. The numbers here are measured on the OP12, not estimated, and the copy is
-      deliberately plain about the cost: about 2.7 GB to fetch and 3.5 GB of memory to run rules the
-      feature out on smaller phones, and someone deserves to know that before starting, not after.
-      Every size shown to the user is a placeholder filled from SummaryModel, so these numbers move
-      when the model does — do not hardcode one into a string.
-    -->
+    
 
-    <!--
-      The summary card on the playback screen. "Generated from the transcript" is not decoration:
-      it is the honest label for a machine's reading of a machine's transcription, it explains
-      without apologising why a summary can be wrong, and it is what sends someone to the
-      transcript when it looks off.
-    -->
+    
 
     <!--
       Shown once before the first download. Every number here was measured on the OP12; none is
@@ -173,20 +143,14 @@
         <item quantity="one">%1$d εφαρμογή δεν θα καταγράφεται</item>
         <item quantity="other">%1$d εφαρμογές δεν θα καταγράφονται</item>
     </plurals>
-    <plurals name="library_bulk_delete_transcripts_title">
-        <item quantity="one">Διαγραφή %1$d απομαγνητοφώνησης;</item>
-        <item quantity="other">Διαγραφή %1$d απομαγνητοφωνήσεων;</item>
-    </plurals>
-    <plurals name="library_bulk_delete_summaries_title">
-        <item quantity="one">Διαγραφή %1$d περίληψης;</item>
-        <item quantity="other">Διαγραφή %1$d περιλήψεων;</item>
-    </plurals>
+    
+    
     <plurals name="library_bulk_delete_text_only_warning">
         <item quantity="one">%1$d από αυτά δεν έχει εγγραφή πίσω του, οπότε οι λέξεις του είναι ό,τι έχει απομείνει. Αυτό το μέρος δεν μπορεί να αναιρεθεί.</item>
         <item quantity="other">%1$d από αυτά δεν έχουν εγγραφή πίσω τους, οπότε οι λέξεις τους είναι ό,τι έχει απομείνει. Αυτό το μέρος δεν μπορεί να αναιρεθεί.</item>
     </plurals>
 
-    <!-- The search line at the head of the Recordings, Transcripts and Summaries pages. %1$s = what was typed. -->
+    
     <!-- Master recording On/Off switch -->
 
     <!-- New Settings screen (settings per page, step 2). -->
@@ -221,7 +185,7 @@
     <string name="disclaimer_introduction">Διαβάστε προσεκτικά την παρακάτω αποποίηση ευθύνης πριν συνεχίσετε.</string>
     <string name="disclaimer_must_read">Πρέπει να διαβάσετε την αποποίηση ευθύνης.</string>
     <string name="disclaimer_title">Καλώς ήρθατε στο CallVault</string>
-    <string name="export_heading_transcript">Απομαγνητοφώνηση</string>
+    
     <string name="folder_cloud_rejected">Οι φάκελοι cloud (όπως το Google Drive) δεν μπορούν να χρησιμοποιηθούν για εγγραφή. Επιλέξτε αποθηκευτικό χώρο στη συσκευή — χρησιμοποιήστε την επιλογή αντιγράφου ασφαλείας Google Drive για αντίγραφα στο cloud.</string>
     <string name="folder_drive_overlaps_recordings">Ο φάκελος Drive δεν μπορεί να είναι ο φάκελος εγγραφών. Επιλέξτε φάκελο Google Drive.</string>
     <string name="folder_drive_overlap_warning">Αυτός είναι ο φάκελος εγγραφών σας (ή επικαλύπτεται με αυτόν), οπότε τίποτα δεν αντιγράφεται στο Drive. Επιλέξτε φάκελο Google Drive.</string>
@@ -247,12 +211,12 @@
     <string name="general_stop">Διακοπή</string>
     <string name="general_system_limitation">Περιορισμός συστήματος</string>
     <string name="general_system_limitation_message">Το CallVault δεν θα λειτουργήσει σε αυτή τη συσκευή, καθώς η εφαρμογή κελύφους σας δεν έχει τα απαιτούμενα δικαιώματα:\n\n%1$s\n\nΔεν μπορείτε να κάνετε τίποτα γι\' αυτό· η εφαρμογή δεν μπορεί να λειτουργήσει και θα κλείσει τώρα.</string>
-    <string name="heavy_work_backing_up_model">Δημιουργία αντιγράφου ασφαλείας μοντέλου</string>
+    
     <string name="heavy_work_channel_name">Επεξεργασία στο παρασκήνιο</string>
-    <string name="heavy_work_importing_model">Εισαγωγή μοντέλου</string>
+    
     <string name="heavy_work_notification_text">Το τηλέφωνό σας μπορεί να ζεσταθεί όσο εκτελείται αυτό.</string>
-    <string name="heavy_work_summarising">Σύνταξη περίληψης μιας εγγραφής</string>
-    <string name="heavy_work_transcribing">Απομαγνητοφώνηση μιας εγγραφής</string>
+    
+    
     <string name="drive_copy_title">Αντιγραφή εγγραφών στο Drive</string>
     <string name="drive_copy_progress">Αντιγράφηκαν %1$d από %2$d</string>
     <string name="drive_copy_stop">Διακοπή προς το παρόν</string>
@@ -325,12 +289,12 @@
     <string name="honor_dialer_hint">Η εφαρμογή τηλεφώνου μπορεί να αναπαράγει μια ηχογράφηση από το ιστορικό κλήσεων μόνο αν είναι αποθηκευμένη στο %1$s ως .m4a. Στο CallVault, ορίστε το %2$s σε αυτόν τον φάκελο και το %3$s σε AAC.</string>
     <string name="honor_dialer_missing">Απομένει να αλλάξετε: %1$s</string>
     <string name="honor_dialer_ready">✓ Έτοιμο: ο φάκελος και η μορφή έχουν οριστεί.</string>
-    <string name="library_bulk_delete_summaries_message">Οι περιλήψεις θα διαγραφούν. Οι απομαγνητοφωνήσεις και οι εγγραφές διατηρούνται.</string>
-    <string name="library_bulk_delete_transcripts_message">Οι λέξεις θα διαγραφούν. Οι εγγραφές διατηρούνται, και μπορείτε να τις απομαγνητοφωνήσετε ξανά αργότερα.</string>
+    
+    
     <string name="library_nothing_to_share">Δεν υπάρχει πλέον τίποτα εκεί για κοινοποίηση.</string>
     <string name="library_row_save">Αποθήκευση ως αρχείο</string>
-    <string name="library_summary_delete_confirm_message">Η περίληψη του %1$s θα διαγραφεί. Η απομαγνητοφώνηση και η εγγραφή διατηρούνται, και μπορείτε να την γράψετε ξανά.</string>
-    <string name="library_summary_delete_confirm_title">Διαγραφή αυτής της περίληψης;</string>
+    
+    
     <string name="list_separator">", "</string>
     <string name="min_duration_caption">Μια λάθος κλήση ή μια κλήση που χτύπησε χωρίς απάντηση διαγράφεται τη στιγμή που τελειώνει, πριν απομαγνητοφωνηθεί ή μεταφορτωθεί. Τίποτα από όσα έχουν ήδη καταγραφεί δεν επηρεάζεται.</string>
     <string name="min_duration_label">Απόρριψη σύντομων εγγραφών</string>
@@ -357,21 +321,21 @@
     <string name="mode_switch_voip_not_armed">Έγινε μετάβαση, αλλά η εγγραφή κλήσεων εφαρμογών δεν μπόρεσε να ενεργοποιηθεί. Οι τηλεφωνικές κλήσεις θα καταγράφονται· οι κλήσεις εφαρμογών ίσως όχι μέχρι να ξανανοίξετε το CallVault.</string>
     <string name="mode_switch_working">Διακοπή της παλιάς εγγραφής και εκκίνηση της νέας. Αυτό διαρκεί λίγα δευτερόλεπτα.</string>
     <string name="model_backing_up">Δημιουργία αντιγράφου… %1$d%%</string>
-    <string name="model_backup">Αντίγραφο ασφαλείας</string>
-    <string name="model_backup_done">Αποθηκεύτηκε</string>
-    <string name="model_backup_failed">Το αντίγραφο ασφαλείας δεν ολοκληρώθηκε. Δοκιμάστε ξανά.</string>
-    <string name="model_backup_info">Αποθηκεύει το αρχείο μοντέλου σε φάκελο της επιλογής σας. Μετά από επανεγκατάσταση ή σε νέο τηλέφωνο, χρησιμοποιήστε την Εισαγωγή με αυτό το αρχείο αντί να το κατεβάσετε ξανά.</string>
-    <string name="model_backup_subtitle">Αποθηκεύστε ένα αντίγραφο που μένει μετά από επανεγκατάσταση</string>
-    <string name="model_backup_waiting">Προετοιμασία αντιγράφου ασφαλείας…</string>
-    <string name="model_import">Εισαγωγή από αρχείο</string>
-    <string name="model_import_failed_other_model">Αυτό είναι το αρχείο άλλου μοντέλου (%1$s). Επιλέξτε πρώτα εκείνο το μοντέλο και μετά κάντε εισαγωγή.</string>
-    <string name="model_import_failed_space">Δεν υπάρχει αρκετός ελεύθερος χώρος για την εισαγωγή.</string>
-    <string name="model_import_failed_unreadable">Δεν ήταν δυνατή η ανάγνωση του αρχείου. Επιλέξτε το ξανά.</string>
-    <string name="model_import_failed_wrong_file">Δεν είναι το σωστό αρχείο. Επιλέξτε %1$s.</string>
-    <string name="model_import_info">Επιλέξτε το επίσημο αρχείο μοντέλου (%1$s, %2$d MB). Το CallVault ελέγχει ότι είναι ακριβώς αυτό το αρχείο πριν το χρησιμοποιήσει και αφήνει το αντίγραφό σας εκεί που είναι.</string>
-    <string name="model_import_subtitle">Χρησιμοποιήστε ένα αντίγραφο που ήδη έχετε</string>
-    <string name="model_import_waiting">Προετοιμασία εισαγωγής…</string>
-    <string name="model_importing">Εισαγωγή… %1$d%%</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="note_saved">Αποθηκεύτηκε</string>
     <string name="note_saving">Αποθήκευση…</string>
     <string name="notif_cut_off_saved_text">Το τηλέφωνό σας έκλεισε το CallVault κατά τη διάρκεια μιας κλήσης. Ό,τι καταγράφηκε πριν από αυτό αποθηκεύτηκε ως %1$s.</string>
@@ -443,7 +407,7 @@
     <string name="playback_marked_moments">Σημειωμένες στιγμές</string>
     <string name="playback_note_hint">Για ποιο θέμα ήταν αυτή η κλήση…</string>
     <string name="playback_note_title">Σημείωση</string>
-    <string name="playback_open_transcript">Διαβάστε την απομαγνητοφώνηση</string>
+    
     <string name="playback_skip_back">Πίσω 10 δευτερόλεπτα</string>
     <string name="playback_skip_forward">Μπροστά 10 δευτερόλεπτα</string>
     <string name="playback_speed">%1$s×</string>
@@ -576,7 +540,7 @@
     <string name="settings_group_model_and_language">Μοντέλο και γλώσσα</string>
     <string name="settings_group_save_and_sync">Αποθήκευση και συγχρονισμός</string>
     <string name="settings_group_sound_and_names">Ήχος και ονόματα αρχείων</string>
-    <string name="settings_group_when_to_transcribe">Πότε γίνεται απομαγνητοφώνηση</string>
+    
     <string name="settings_handoff_persist_description">Διατήρηση μιας εγγραφής σε εξέλιξη ακόμα κι αν ο βοηθός παρασκηνίου τερματιστεί στη μέση της κλήσης (π.χ. όταν κλειδώνετε την οθόνη).</string>
     <string name="settings_handoff_persist_label">Συνέχιση εγγραφής αν σταματήσει ο βοηθός</string>
     <string name="settings_hide_recordings_desc">Κρατήστε τις ηχογραφήσεις εκτός προγραμμάτων αναπαραγωγής μουσικής, συλλογών και άλλων εφαρμογών πολυμέσων</string>
@@ -599,7 +563,7 @@
     <string name="settings_info_about">Σχετικά με %1$s</string>
     <string name="settings_info_got_it">Κατάλαβα</string>
     <string name="settings_language">Γλώσσα</string>
-    <string name="settings_language_change_in_transcripts">Αλλάζει στις ρυθμίσεις απομαγνητοφωνήσεων</string>
+    
     <string name="settings_language_system">Προεπιλογή συστήματος</string>
     <string name="settings_link_all_settings">Όλες οι ρυθμίσεις</string>
     <string name="settings_link_share_debug_report">Κοινοποίηση αναφοράς σφαλμάτων</string>
@@ -612,7 +576,7 @@
         <item quantity="one">%d αποτέλεσμα</item>
         <item quantity="other">%d αποτελέσματα</item>
     </plurals>
-    <string name="summary_requirements_toggle_label">Εμφάνιση απαιτήσεων</string>
+    
     <string name="settings_sim_label_label">Εμφάνιση της SIM που χρησιμοποίησε κάθε κλήση</string>
     <string name="settings_sim_label_desc">Για τηλέφωνα με δύο SIM: δείχνει το όνομα που δώσατε στη SIM ή SIM 1 / SIM 2</string>
     <string name="sim_label_word">SIM</string>
@@ -640,7 +604,7 @@
     <string name="settings_section_reliability">Αξιοπιστία</string>
     <string name="settings_section_security">Ασφάλεια</string>
     <string name="settings_section_storage">Αποθηκευτικός χώρος</string>
-    <string name="settings_section_transcription">Απομαγνητοφώνηση</string>
+    
     <string name="settings_section_updates">Ενημερώσεις</string>
     <string name="settings_select_contacts">Επιλογή επαφών (%1$d)</string>
     <string name="settings_select_contacts_incoming">Επιλογή εισερχόμενων επαφών</string>
@@ -683,11 +647,11 @@
     <string name="settings_theme_mode_light">Φωτεινό</string>
     <string name="settings_theme_mode_system">Προεπιλογή συστήματος</string>
     <string name="settings_title_recordings">Ρυθμίσεις εγγραφών</string>
-    <string name="settings_title_summaries">Ρυθμίσεις περιλήψεων</string>
-    <string name="settings_title_transcripts">Ρυθμίσεις απομαγνητοφωνήσεων</string>
-    <string name="settings_transcript_sidecar_desc">Εγγραφή ενός αρχείου κειμένου .md δίπλα σε κάθε εγγραφή</string>
-    <string name="settings_transcript_sidecar_hint">Αποθηκεύει την απομαγνητοφώνηση, τις σημειώσεις και την περίληψη ως αρχείο κειμένου με το ίδιο όνομα με την εγγραφή, ώστε η αντιγραφή του φακέλου σας σε υπολογιστή να κρατά το κείμενο μαζί με τον ήχο. Η ενεργοποίησή του αποθηκεύει επίσης και αυτά που έχετε ήδη.</string>
-    <string name="settings_transcript_sidecar_label">Αποθήκευση απομαγνητοφώνησης και σημειώσεων δίπλα στην εγγραφή</string>
+    
+    
+    
+    
+    
     <string name="settings_unavailable_in_shizuku">Μη διαθέσιμο στη λειτουργία Shizuku — αυτό χρειάζεται την ίδια την εγγραφή του CallVault.</string>
     <string name="settings_update_check_description">Μία φορά την ημέρα, αναζήτηση νέας έκδοσης στο GitHub.</string>
     <string name="settings_update_check_label">Έλεγχος για ενημερώσεις</string>
@@ -741,58 +705,58 @@
     <string name="storage_target_both">Συσκευή + Google Drive</string>
     <string name="storage_target_drive">Μόνο στο Google Drive</string>
     <string name="storage_target_local">Μόνο σε αυτή τη συσκευή</string>
-    <string name="summaries_search_hint">Αναζήτηση στις περιλήψεις</string>
-    <string name="summary_card_actions">Προς εκτέλεση</string>
-    <string name="summary_card_blocked_empty">Αυτή η απομαγνητοφώνηση δεν έχει λέξεις, οπότε δεν υπάρχει τίποτα για περίληψη.</string>
-    <string name="summary_card_blocked_model">Κατεβάστε πρώτα τον συντάκτη περιλήψεων στις Ρυθμίσεις.</string>
-    <string name="summary_card_blocked_no_transcript">Απομαγνητοφωνήστε πρώτα αυτή την κλήση — η περίληψη γράφεται από την απομαγνητοφώνηση.</string>
-    <string name="summary_card_blocked_summarising">Μια άλλη κλήση απομαγνητοφωνείται σε περίληψη.</string>
-    <string name="summary_card_blocked_transcribing">Αναμονή για την ολοκλήρωση της απομαγνητοφώνησης — δεν μπορούν να μοιραστούν το τηλέφωνο.</string>
-    <string name="summary_card_blocked_unfinished">Αναμονή για την ολοκλήρωση της απομαγνητοφώνησης.</string>
-    <string name="summary_card_create">Σύνταξη περίληψης αυτής της κλήσης</string>
-    <string name="summary_card_create_subtitle">Γράφεται στο τηλέφωνό σας, περίπου ένα ή δύο λεπτά</string>
-    <string name="summary_card_decisions">Αποφάσεις</string>
-    <string name="summary_card_facts">Αξίζει να κρατήσετε</string>
-    <string name="summary_card_failed">Αυτό δεν παρήγαγε μια χρήσιμη περίληψη. Μπορείτε να δοκιμάσετε ξανά.</string>
-    <string name="summary_card_key_points">Βασικά σημεία</string>
-    <string name="summary_card_provenance">Δημιουργήθηκε από την απομαγνητοφώνηση</string>
-    <string name="summary_card_redo">Σύνταξη ξανά</string>
-    <string name="summary_card_running">Σύνταξη περίληψης… %1$d%%</string>
-    <string name="summary_card_stop">Διακοπή</string>
-    <string name="summary_card_title">Περίληψη</string>
-    <string name="summary_delete_confirm_body">Αυτό ελευθερώνει %1$.1f GB. Οι περιλήψεις που έχετε ήδη γράψει διατηρούνται, αλλά θα χρειαστεί να τον κατεβάσετε ξανά για να γράψετε άλλες.</string>
-    <string name="summary_delete_confirm_confirm">Διαγραφή</string>
-    <string name="summary_delete_confirm_title">Διαγραφή του συντάκτη περιλήψεων;</string>
-    <string name="summary_discard_confirm_body">Αυτό πετά τα %1$.1f GB που έχουν ήδη ληφθεί. Ξεκινώντας ξανά θα τα κατεβάσει όλα από την αρχή.</string>
-    <string name="summary_discard_confirm_confirm">Απόρριψη</string>
-    <string name="summary_discard_confirm_title">Απόρριψη της λήψης;</string>
-    <string name="summary_model_cancel">Ακύρωση της λήψης</string>
-    <string name="summary_model_delete">Διαγραφή του συντάκτη περιλήψεων</string>
-    <string name="summary_model_discard">Απόρριψη αυτών που λήφθηκαν</string>
-    <string name="summary_model_discard_subtitle">Ελευθερώνει %1$.1f GB</string>
-    <string name="summary_model_download">Λήψη του συντάκτη περιλήψεων</string>
-    <string name="summary_model_download_subtitle">%1$.1f GB</string>
-    <string name="summary_model_downloading">Λήψη… %1$d%%</string>
-    <string name="summary_model_failed">Η λήψη δεν ολοκληρώθηκε. Δοκιμάστε ξανά.</string>
-    <string name="summary_model_failed_space">Δεν υπάρχει αρκετός ελεύθερος χώρος. Ελευθερώστε λίγο και δοκιμάστε ξανά.</string>
-    <string name="summary_model_failed_verify">Η λήψη ήταν κατεστραμμένη και απορρίφθηκε. Δοκιμάστε ξανά.</string>
-    <string name="summary_model_installed">Λήφθηκε και είναι έτοιμο</string>
-    <string name="summary_model_licence">Ο συντάκτης περιλήψεων είναι το Gemma 4 της Google, που χρησιμοποιείται υπό την άδεια Apache 2.0. Λαμβάνεται ξεχωριστά αντί να περιλαμβάνεται στο CallVault.</string>
-    <string name="summary_model_resume">Συνέχιση της λήψης</string>
-    <string name="summary_model_resume_subtitle">%1$.1f GB από %2$.1f GB έχουν ήδη ληφθεί</string>
-    <string name="summary_model_waiting">Αναμονή για Wi-Fi</string>
-    <string name="summary_requirements_body">Οι περιλήψεις γράφονται στο τηλέφωνό σας — τίποτα δεν αποστέλλεται πουθενά. Αυτό κοστίζει μια λήψη %1$.1f GB και περίπου %2$.1f GB μνήμης όσο εκτελείται, οπότε χρειάζεται ένα πρόσφατο τηλέφωνο με αρκετό χώρο. Μια σύντομη κλήση διαρκεί ένα ή δύο λεπτά.</string>
-    <string name="summary_requirements_cancel">Όχι τώρα</string>
-    <string name="summary_requirements_continue">Λήψη</string>
-    <string name="summary_requirements_dont_ask">Να μην εμφανιστεί ξανά</string>
-    <string name="summary_requirements_download">%1$.1f GB προς λήψη</string>
-    <string name="summary_requirements_heading">Πριν κατεβάσετε</string>
-    <string name="summary_requirements_memory">Περίπου %1$.1f GB μνήμης όσο εκτελείται</string>
-    <string name="summary_requirements_phone">Χρειάζεται ένα πρόσφατο τηλέφωνο με αρκετό χώρο. Σε ένα παλαιότερο μπορεί να είναι αργό ή να αποτύχει.</string>
-    <string name="summary_requirements_private">Όλα συμβαίνουν στο τηλέφωνό σας. Τίποτα δεν αποστέλλεται πουθενά.</string>
-    <string name="summary_requirements_time">Περίπου ένα ή δύο λεπτά για μια σύντομη κλήση, περισσότερο για μια μεγάλη</string>
-    <string name="summary_requirements_title">Τι χρειάζεται αυτό</string>
-    <string name="summary_requirements_toggle_description">Εμφάνιση του κόστους του συντάκτη περιλήψεων πριν τη λήψη του</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="support_appeal_body">Συντηρώ το CallVault στον ελεύθερο χρόνο μου. Ξεκίνησε ως fork του ShizuCallRecorder του kitsumed και έχει μεγαλώσει πολύ από τότε. Δωρεάν, ανοιχτού κώδικα, χωρίς διαφημίσεις, χωρίς παρακολούθηση. Αν σας είναι χρήσιμο, μια μικρή φιλοδώρηση με βοηθά να συνεχίζω. Ευχαριστώ! 🙏</string>
     <string name="support_appeal_title">Ένα φιλοδώρημα για το CallVault ☕</string>
     <string name="support_not_now">Όχι τώρα</string>
@@ -800,7 +764,7 @@
     <string name="tile_recording_stopped">Διακόπηκε</string>
     <string name="transcribe_confirm_dont_ask">Να μην ερωτηθώ ξανά</string>
     <string name="transcribe_long_call_line">Αυτή η κλήση διαρκεί %1$s. Σε αυτό το τηλέφωνο, η απομαγνητοφώνηση διαρκεί περίπου %2$s φορές τη διάρκειά της — δηλαδή περίπου %3$s.</string>
-    <string name="transcribe_confirm_message">Η απομαγνητοφώνηση του %1$s κρατά το τηλέφωνό σας απασχολημένο και χρησιμοποιεί αισθητή μπαταρία. Μπορείτε να τη σταματήσετε ανά πάσα στιγμή.\n\nΑυτή η ερώτηση μπορεί να ενεργοποιηθεί ξανά στην ενότητα Απομαγνητοφώνηση στις Ρυθμίσεις.</string>
+    
     <string name="transcribe_confirm_title">Αυτό θα διαρκέσει περίπου %1$s</string>
     <string name="transcribe_confirm_title_first_run">Η πρώτη μπορεί να διαρκέσει λίγο</string>
     <string name="transcribe_confirm_title_unknown">Απομαγνητοφώνηση αυτής της κλήσης;</string>
@@ -851,102 +815,102 @@
     <string name="transcript_speakers_swap">Εναλλαγή</string>
     <string name="transcript_speakers_swap_names">Εναλλαγή ονομάτων</string>
     <string name="transcript_speakers_which_is_you">Ποιος είστε εσείς;</string>
-    <string name="transcription_ask_language_subtitle">Επιλέξτε τη γλώσσα ανά εγγραφή αντί να χρησιμοποιείτε πάντα την παραπάνω. Ισχύει μόνο για εκείνη την εγγραφή.</string>
-    <!-- Where to transcribe: on this phone or with the user's own cloud key (issue #48). No prices anywhere. -->
-    <string name="transcription_where_title">Πού γίνεται η απομαγνητοφώνηση</string>
-    <string name="transcription_where_on_device">Σε αυτό το τηλέφωνο</string>
-    <string name="transcription_where_on_device_desc">Ιδιωτικό. Πιο αργό: περίπου 1,5 λεπτό ανά λεπτό κλήσης.</string>
-    <string name="transcription_where_groq_desc">Γρήγορο: συνήθως δευτερόλεπτα ανά κλήση.</string>
-    <string name="transcription_where_openrouter_desc">Ένα κλειδί για πολλές υπηρεσίες. Microsoft MAI-Transcribe.</string>
-    <string name="transcription_where_custom">Προσαρμοσμένο (για προχωρημένους)</string>
-    <string name="transcription_where_custom_desc">Οποιοσδήποτε διακομιστής συμβατός με OpenAI.</string>
-    <string name="transcription_where_custom_service">διακομιστή σας</string>
-    <string name="transcription_where_recommended">Προτείνεται</string>
-    <string name="transcription_cloud_key_label">Το κλειδί σας για %1$s</string>
-    <string name="transcription_cloud_key_label_custom">Το κλειδί του διακομιστή σας</string>
-    <string name="transcription_cloud_key_show">Εμφάνιση κλειδιού</string>
-    <string name="transcription_cloud_key_hide">Απόκρυψη κλειδιού</string>
-    <string name="transcription_cloud_test">Δοκιμή</string>
-    <string name="transcription_cloud_testing">Δοκιμή…</string>
-    <string name="transcription_cloud_get_key">Λήψη κλειδιού για %1$s</string>
-    <string name="transcription_cloud_custom_url">Διεύθυνση διακομιστή</string>
-    <string name="transcription_cloud_custom_url_hint">https://… (το τμήμα πριν από το /audio/transcriptions)</string>
-    <string name="transcription_cloud_custom_url_invalid">Χρησιμοποιήστε διεύθυνση http(s)://.</string>
-    <string name="transcription_cloud_custom_model">Μοντέλο</string>
-    <string name="transcription_cloud_mobile_data">Να επιτρέπονται τα δεδομένα κινητής</string>
-    <string name="transcription_cloud_mobile_data_desc">Όταν είναι ανενεργό, οι κλήσεις περιμένουν Wi-Fi πριν σταλούν.</string>
-    <string name="transcription_cloud_privacy_note">Ο ήχος της κλήσης στέλνεται προς %1$s για απομαγνητοφώνηση. Το κείμενο επιστρέφει σε αυτό το τηλέφωνο· ισχύουν οι όροι απορρήτου του παρόχου. Μόνο μέσω Wi-Fi, εκτός αν επιτρέψετε δεδομένα κινητής.</string>
-    <string name="transcription_cloud_consent_title">Αποστολή ήχου κλήσεων προς %1$s;</string>
-    <string name="transcription_cloud_consent_body">Όταν απομαγνητοφωνείται μια κλήση, ο ήχος της στέλνεται προς %1$s με το κλειδί σας και το κείμενο επιστρέφει σε αυτό το τηλέφωνο. Ισχύουν οι όροι απορρήτου του παρόχου. Οι περιλήψεις μένουν σε αυτό το τηλέφωνο.</string>
-    <string name="transcription_cloud_consent_confirm">Χρήση %1$s</string>
-    <string name="transcription_cloud_test_ok">Το κλειδί λειτουργεί.</string>
-    <string name="transcription_cloud_test_bad_key">Το κλειδί απορρίφθηκε. Ελέγξτε το και δοκιμάστε ξανά.</string>
-    <string name="transcription_cloud_test_no_timings">Η υπηρεσία απάντησε χωρίς χρονικές σημάνσεις, οπότε δεν μπορεί να χρησιμοποιηθεί. Δοκιμάστε άλλο μοντέλο.</string>
-    <string name="transcription_cloud_test_unreachable">Δεν ήταν δυνατή η σύνδεση με την υπηρεσία. Ελέγξτε τη σύνδεση και δοκιμάστε ξανά.</string>
-    <string name="transcription_cloud_test_refused">Η υπηρεσία απέρριψε το αίτημα. Ελέγξτε τη διεύθυνση και το μοντέλο.</string>
-    <string name="transcription_cloud_test_no_key">Επικολλήστε πρώτα ένα κλειδί.</string>
-    <string name="transcription_cloud_test_incomplete">Συμπληρώστε πρώτα τη διεύθυνση διακομιστή και το μοντέλο.</string>
-    <string name="transcription_ask_language_title">Ερώτηση για τη γλώσσα κάθε φορά</string>
-    <string name="transcription_batch_label">Κλήσεις ανά εκτέλεση</string>
-    <string name="transcription_batch_no_limit">Χωρίς όριο</string>
-    <string name="transcription_charging_subtitle">Η απομαγνητοφώνηση χρησιμοποιεί έντονα τον επεξεργαστή και θα εξαντλήσει την μπαταρία.</string>
-    <string name="transcription_charging_title">Μόνο κατά τη φόρτιση</string>
-    <string name="transcription_confirm_subtitle">Δείχνει πόσο θα διαρκέσει και σας επιτρέπει να ακυρώσετε.</string>
-    <string name="transcription_confirm_title">Ερώτηση πριν την απομαγνητοφώνηση</string>
-    <string name="transcription_hour_label">Ώρα</string>
-    <string name="transcription_language_arabic">Αραβικά</string>
-    <string name="transcription_language_auto">Αυτόματη ανίχνευση</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="language_search_placeholder">Αναζήτηση γλωσσών</string>
     <string name="language_search_clear">Εκκαθάριση αναζήτησης</string>
     <string name="language_search_no_match">Καμία γλώσσα δεν ταιριάζει</string>
-    <string name="transcription_language_auto_hint">Η ανίχνευση είναι αναξιόπιστη για γλώσσες που δεν γράφονται με λατινικούς χαρακτήρες — τα Εβραϊκά, τα Αραβικά, τα Ρωσικά και τα Κινεζικά συχνά επιστρέφουν γραμμένα με αγγλικούς χαρακτήρες, ή ως ένα μεγάλο μπλοκ κειμένου. Ονομάστε τη γλώσσα αν μπορείτε.</string>
-    <string name="transcription_language_chinese">Κινεζικά</string>
-    <string name="transcription_language_english">Αγγλικά</string>
-    <string name="transcription_language_french">Γαλλικά</string>
-    <string name="transcription_language_german">Γερμανικά</string>
-    <string name="transcription_language_greek">Ελληνικά</string>
-    <string name="transcription_language_hebrew">Εβραϊκά</string>
-    <string name="transcription_language_hungarian">Ουγγρικά</string>
-    <string name="transcription_language_italian">Ιταλικά</string>
-    <string name="transcription_language_label">Γλώσσα</string>
-    <string name="transcription_language_persian">Περσικά</string>
-    <string name="transcription_language_urdu">Ούρντου</string>
-    <string name="transcription_language_bengali">Βεγγαλικά</string>
-    <string name="transcription_language_polish">Πολωνικά</string>
-    <string name="transcription_language_portuguese">Πορτογαλικά</string>
-    <string name="transcription_language_russian">Ρωσικά</string>
-    <string name="transcription_language_spanish">Ισπανικά</string>
-    <string name="transcription_language_ukrainian">Ουκρανικά</string>
-    <string name="transcription_language_vietnamese">Βιετναμέζικα</string>
-    <string name="transcription_minute_label">Λεπτό</string>
-    <string name="transcription_mode_after_each_call">Μετά από κάθε κλήση</string>
-    <string name="transcription_mode_automatic">Προγραμματισμένα</string>
-    <string name="transcription_mode_label">Απομαγνητοφώνηση</string>
-    <string name="transcription_mode_manual">Χειροκίνητα</string>
-    <string name="transcription_model_best">Βέλτιστη ποιότητα</string>
-    <string name="transcription_model_best_small_download">Βέλτιστη ποιότητα, μικρότερη λήψη</string>
-    <string name="transcription_model_persian">Βελτιστοποιημένο για Περσικά</string>
-    <string name="transcription_model_persian_licence">Καλύτερη ποιότητα, εκπαιδευμένο σε περσική ομιλία. Whisper large-v3-turbo Persian από τον givia, άδεια CC BY 4.0, κβαντισμένο για το whisper.cpp. Λαμβάνεται χωριστά και δεν περιλαμβάνεται στο CallVault.</string>
-    <string name="transcription_model_delete">Διαγραφή μοντέλου</string>
-    <string name="transcription_model_download">Λήψη μοντέλου</string>
-    <string name="transcription_model_download_subtitle">%1$d MB</string>
-    <string name="transcription_model_downloading">Λήψη… %1$d%%</string>
-    <string name="transcription_model_failed">Η λήψη δεν ολοκληρώθηκε. Δοκιμάστε ξανά.</string>
-    <string name="transcription_model_failed_space">Δεν υπάρχει αρκετός ελεύθερος χώρος. Ελευθερώστε λίγο και δοκιμάστε ξανά.</string>
-    <string name="transcription_model_failed_verify">Η λήψη ήταν κατεστραμμένη και απορρίφθηκε. Δοκιμάστε ξανά.</string>
-    <string name="transcription_model_installed">Λήφθηκε και είναι έτοιμο</string>
-    <string name="transcription_model_label">Μοντέλο</string>
-    <string name="transcription_model_resume">Συνέχιση της λήψης</string>
-    <string name="transcription_model_resume_subtitle">%1$d MB από %2$d MB έχουν ήδη ληφθεί</string>
-    <string name="transcription_model_small">Γρήγορο</string>
-    <string name="transcription_model_waiting">Αναμονή για Wi-Fi</string>
-    <string name="transcription_note_after_each_call">Κάθε κλήση απομαγνητοφωνείται μόλις τελειώσει. Οι παλαιότερες κλήσεις μένουν ανέγγιχτες — απομαγνητοφωνήστε τις από το κουμπί σε μια εγγραφή.</string>
-    <string name="transcription_note_automatic">Οι κλήσεις που δεν έχουν απομαγνητοφώνηση ακόμα απομαγνητοφωνούνται την επιλεγμένη ώρα. Μια κλήση 30 λεπτών διαρκεί περίπου 30 λεπτά.</string>
-    <string name="transcription_note_manual">Οι απομαγνητοφωνήσεις δημιουργούνται μόνο όταν τις ζητήσετε, από το κουμπί σε μια εγγραφή.</string>
-    <string name="transcription_time_label">Εκτέλεση στις</string>
-    <string name="transcription_warning_confirm">Ενεργοποίησέ το</string>
-    <string name="transcription_warning_message">Μια κλήση διαρκεί περίπου όσο η ίδια η διάρκειά της για να απομαγνητοφωνηθεί, και χρησιμοποιεί κάθε πυρήνα του τηλεφώνου σας όσο το κάνει. Να περιμένετε ότι θα ζεσταθεί και θα χρησιμοποιήσει αισθητή μπαταρία.\n\nΜπορείτε να σταματήσετε μια εκτέλεση ανά πάσα στιγμή από το σήμα δίπλα στον τίτλο.</string>
-    <string name="transcription_warning_title">Η απομαγνητοφώνηση είναι αργή και βαριά</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="transcripts_search_hint">Αναζήτηση σε όσα ειπώθηκαν</string>
     <string name="update_popup_later">Αργότερα</string>
     <string name="update_popup_text">Μια νέα έκδοση είναι έτοιμη για εγκατάσταση. Η ενημέρωση διατηρεί την εγγραφή αξιόπιστη και φέρνει τις τελευταίες διορθώσεις.</string>
@@ -1032,20 +996,20 @@
     <string name="wizard_storage_subtitle">Επιλέξτε πού αποθηκεύονται οι εγγραφές σας. Μπορείτε να το αλλάξετε αργότερα στις Ρυθμίσεις.</string>
     <string name="wizard_storage_title">Πού θα αποθηκεύονται οι εγγραφές</string>
     <string name="wizard_title">Ρύθμιση CallVault</string>
-    <string name="wizard_transcription_background_note">Και οι δύο λήψεις συνεχίζονται στο παρασκήνιο. Μπορείτε να συνεχίσετε και να ολοκληρώσετε τη ρύθμιση τώρα — οι ρυθμίσεις του CallVault δείχνουν την ίδια πρόοδο αργότερα.</string>
-    <string name="wizard_transcription_language_note">Ορίστε την στη γλώσσα στην οποία είναι ρυθμισμένο αυτό το τηλέφωνο. Το να την ονομάσετε είναι πολύ πιο αξιόπιστο από το να αφήσετε την εφαρμογή να μαντέψει, και μπορείτε ακόμα να επιλέξετε διαφορετική ανά κλήση αργότερα.</string>
-    <string name="wizard_transcription_line">Μετατροπή κλήσεων σε κείμενο σε αυτό το τηλέφωνο.</string>
-    <string name="wizard_transcription_model_note">Η απομαγνητοφώνηση χρειάζεται πρώτα ένα μοντέλο ομιλίας στο τηλέφωνο: το %1$s είναι %2$d MB, το %3$s είναι %4$d MB. Η απομαγνητοφώνηση μιας κλήσης τότε διαρκεί περίπου όσο η διάρκεια της κλήσης και επιβαρύνει έντονα τον επεξεργαστή.</string>
-    <string name="wizard_transcription_model_size">το %1$s είναι %2$d MB</string>
-    <string name="wizard_transcription_model_sizes_note">Η απομαγνητοφώνηση χρειάζεται πρώτα ένα μοντέλο ομιλίας στο τηλέφωνο: %1$s. Η απομαγνητοφώνηση μιας κλήσης τότε διαρκεί περίπου όσο η διάρκεια της κλήσης και επιβαρύνει έντονα τον επεξεργαστή.</string>
-    <string name="wizard_transcription_subtitle">Το CallVault μπορεί να μετατρέψει μια εγγραφή σε κείμενο στο ίδιο το τηλέφωνο, και να γράψει μια σύντομη περίληψη από αυτό — τίποτα δεν αποστέλλεται πουθενά. Επιλέξτε πότε συμβαίνει αυτό, σε ποια γλώσσα είναι οι κλήσεις σας, και κατεβάστε ό,τι χρειάζεται.</string>
-    <string name="wizard_transcription_summary_body">Μόλις μια κλήση έχει απομαγνητοφώνηση, το CallVault μπορεί επίσης να γράψει μια σύντομη περίληψή της — στο τηλέφωνο, όπως όλα τα υπόλοιπα εδώ.</string>
-    <string name="wizard_transcription_summary_heading">Περιλήψεις</string>
-    <string name="wizard_transcription_title">Μετατροπή κλήσεων σε κείμενο</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="wizard_updates_line">Πώς βρίσκει το CallVault νέες εκδόσεις.</string>
     <string name="wizard_updates_subtitle">Το CallVault δεν βρίσκεται σε κατάστημα εφαρμογών, οπότε ελέγχει μόνο του το GitHub για νέες εκδόσεις.</string>
     <string name="wizard_updates_title">Παραμένοντας ενημερωμένοι</string>
-    <!-- Transcribe again (#72) -->
+    
     <string name="transcribe_again_title">Νέα απομαγνητοφώνηση;</string>
     <string name="transcribe_again_message_one">Η κλήση %1$s θα απομαγνητοφωνηθεί ξανά. Αν η νέα εκτέλεση αποτύχει ή διακοπεί, η τρέχουσα απομαγνητοφώνηση διατηρείται.</string>
     <string name="transcribe_again_message_many">Απομαγνητοφωνήσεις για επανάληψη: %1$d. Αν μια εκτέλεση αποτύχει ή διακοπεί, εκείνη η απομαγνητοφώνηση μένει ως έχει.</string>

@@ -160,7 +160,7 @@
     <string name="settings_merge_keep_originals_description">بعد الدمج، اترك المكالمات التي تم إنشاؤها منها على الهاتف أيضًا. معطل افتراضيًا، لذا يترك الدمج تسجيلًا واحدًا. يعمل فصل المكالمة المدمجة بأي طريقة.</string>
     <string name="settings_merge_keep_originals_title">الاحتفاظ بالأصول بعد الدمج</string>
     <string name="unmerge_confirm">إلغاء الدمج</string>
-    <string name="unmerge_message">سيتم تفكيك هذا التسجيل إلى المكالمات الأصلية، محتفظةً بكل تفريغ صوتي وعلامة تمييز كانت عليها:</string>
+    <string name="unmerge_message">It becomes these calls again, each with its recording details and marks it had:</string>
     <string name="unmerge_title">إلغاء دمج هذه المكالمة؟</string>
     <plurals name="merge_row_badge">
         <item quantity="zero">لا مكالمات (%1$d)</item>
@@ -338,43 +338,43 @@
     <string name="offline_failed_needs_usb">قم بتشغيل تصحيح أخطاء USB في إعدادات CallVault أولاً، لا يمكن أن يعمل التسجيل بدون Wi-Fi بدونه.</string>
     <string name="home_hub_library_title">المكتبة</string>
     <string name="home_hub_recordings_body">كل مكالمة سجلها CallVault.</string>
-    <string name="home_hub_transcripts_body">مكالماتك كنصوص؛ وأي صوت تجلبه.</string>
-    <string name="home_hub_summaries_body">ملخصات AI، مكتوبة على هاتفك.</string>
-    <string name="home_transcripts_title">التفريغات الصوتية</string>
-    <string name="home_summaries_title">الملخصات</string>
-    <string name="home_transcripts_count">%1$d مكالمة مفرّغة</string>
-    <string name="home_summaries_count">%1$d ملخص</string>
-    <string name="home_transcripts_empty_title">لا توجد تفريغات صوتية بعد</string>
-    <string name="home_transcripts_empty_hint">اطلب تفريغ المكالمة من قائمة خيارات التسجيل، أو اضغط استيراد لإضافة ملف صوتي. سيظهر التفريغ هنا فور انتهائه.</string>
-    <string name="home_summaries_empty_title">لا توجد ملخصات بعد</string>
-    <string name="home_summaries_empty_hint">افتح أي مكالمة مفرّغة واطلب تلخيصها؛ وسيظهر الملخص هنا فور اكتماله.</string>
-    <string name="transcripts_working_header">جارٍ التفريغ الصوتي…</string>
-    <string name="transcripts_failed_header">لم يكتمل</string>
-    <string name="transcripts_failed_hint">انقر لإعادة المحاولة.</string>
-    <string name="transcripts_waiting_header">في انتظار التفريغ الصوتي</string>
-    <string name="transcripts_waiting_hint">لقد شاركت هذه ليتم قراءتها، وليس للاحتفاظ بها. انقر على واحدة للبدء، أو افتحها للاستماع إليها أو حذفها.</string>
-    <string name="summaries_working_header">جارٍ التلخيص</string>
-    <string name="summaries_failed_header">لم ينتهِ</string>
-    <string name="summaries_failed_hint">افتح واحدًا لطلبه مرة أخرى.</string>
-    <string name="transcripts_import_title">استيراد صوت</string>
-    <string name="transcripts_import_working">جارٍ الاستيراد…</string>
-    <string name="transcripts_import_fab">استيراد</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="import_sheet_keep">الاحتفاظ بالصوت</string>
     <string name="import_sheet_keep_hint">يظهر مع تسجيلاتك</string>
-    <string name="import_sheet_transcript_only">التفريغ النصي فقط</string>
-    <string name="import_sheet_transcript_only_hint">يُحذف الصوت بعد ذلك</string>
+    
+    
     <string name="import_failed_title">تعذر استيراد الملف</string>
     <string name="import_failed_not_audio">لا يمكن لـ CallVault قراءة هذا النوع من الملفات. حاول تسجيل .opus أو .ogg أو .m4a أو .mp3 أو .wav.</string>
-    <string name="import_failed_empty">هذا الملف فارغ، ولا يحتوي على أي صوت لتفريغه.</string>
+    
     <string name="import_failed_no_folder">لا يوجد مجلد لحفظ التسجيلات. حدد مجلدًا من الإعدادات ثم حاول مجددًا.</string>
     <string name="import_failed_copy">تعذر كتابة الملف في مجلد التسجيلاتات الخاص بك. تحقق من وجود مساحة في الهاتف وأن المجلد لا يزال متاحًا.</string>
-    <string name="import_failed_undecodable">لا يمكن للهاتف قراءة الصوت في هذا الملف؛ قد يكون تالفًا أو بتنسيق لا يدعمه نظام أندرويد.</string>
+    
     <string name="home_row_imported">مستورد</string>
     <string name="home_row_text_only">نص فقط</string>
     <string name="share_import_label">استيراد صوت</string>
     <string name="share_import_working_body">جارٍ نسخ الملف والتحقق من إمكانية قراءته على هذا الهاتف.</string>
     <string name="share_import_done_title">تمت الإضافة إلى تسجيلاتك</string>
-    <string name="share_import_done_body">أصبح الملف في CallVault الآن. افتحه للاستماع إليه، أو لطلب تفريغه صوتيًا.</string>
+    
     <string name="share_import_open">فتح</string>
     <string name="share_import_open_app">فتح CallVault</string>
     <string name="share_import_close">إغلاق</string>
@@ -385,14 +385,14 @@
     <string name="share_import_choice_unnamed">الملف الصوتي المُشارَك</string>
     <string name="import_choice_keep">استيراد وتفريغ</string>
     <string name="import_choice_keep_hint">الاحتفاظ بالملف الصوتي ضمن تسجيلاتك مع تفريغه صوتيًا.</string>
-    <string name="import_choice_transcribe_only">تفريغ صوتي فقط</string>
-    <string name="import_choice_transcribe_only_hint">تفريغ المحادثة نصيًا ثم حذف الملف الصوتي؛ ستظهر الكلمات فقط في تبويب التفريغات الصوتية دون أن تشغل مساحة التسجيلات.</string>
-    <string name="share_import_queued_keep_title">تمت الإضافة وقيد الانتظار</string>
-    <string name="share_import_queued_keep_body">تم حفظ الملف في تسجيلاتك، وسيظهر نصه في تبويب التفريغات الصوتية فور اكتماله.</string>
-    <string name="share_import_queued_only_title">في قائمة انتظار التفريغ الصوتي</string>
-    <string name="share_import_queued_only_body">ستجد الكلمات في تبويب التفريغات الصوتية، وسيتم حذف الملف الصوتي فور اكتمال التفريغ.</string>
-    <string name="share_import_kept_title">تم الحفظ بدون تفريغ صوتي</string>
-    <string name="share_import_kept_body">تم حفظ الملف في تسجيلاتك، ويمكنك بدء تفريغه صوتيًا في أي وقت.</string>
-    <string name="share_import_kept_only_body">الملف بانتظارك في تبويب التفريغات الصوتية. يمكنك بدء تفريغه متى شئت، أو حذفه من نفس المكان.</string>
-    <string name="share_import_no_model">لم يتم تثبيت نموذج تفريغ صوتي بعد، لذا لا يمكن لـ CallVault قراءة هذا الملف. تم حفظ الصوت؛ ثبّت نموذجًا من الإعدادات، ثم ابدأ التفريغ من تبويب التفريغات.</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </resources>

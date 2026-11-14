@@ -49,14 +49,14 @@
     <string name="notif_action_turn_usb_on">开启 USB 调试</string>
 
     <!-- Transcription finished / didn't finish -->
-    <string name="transcript_notice_channel">转写文本</string>
-    <string name="transcript_notice_ready_title">转写已完成</string>
-    <string name="transcript_notice_ready_deleted_text">%1$s — 音频已按你的选择删除。</string>
-    <string name="transcript_notice_ready_many_title">已完成的转写：%1$d</string>
-    <string name="transcript_notice_ready_many_text">点按即可阅读。</string>
-    <string name="transcript_notice_failed_title">转写未完成</string>
-    <string name="transcript_notice_failed_text">%1$s。点按可重试。</string>
-    <string name="transcript_notice_failed_many_title">未完成的转写：%1$d</string>
-    <string name="transcript_notice_failed_many_text">点按即可查看。</string>
-    <string name="transcript_notice_failed_kept_text">%1$s。已保留之前的转写。</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </resources>

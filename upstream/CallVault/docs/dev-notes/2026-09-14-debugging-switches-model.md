@@ -154,8 +154,6 @@ a working standalone recorder (seen once; the fix is not yet re-tested on a devi
   where the default is 24.
 - Not re-tested on a device: clearing the Shizuku warning on a mode switch (`81ec6e7`).
 - Nothing pushed; `fix/adb-transport-dead-ends` is unmerged. Samsung and a real call during a switch change are untested.
-- Separate thread still open: the per-channel transcription design (16 kHz two-channel sidecar vs stereo main file) —
-  `docs/dev-notes/2026-09-12-stereo-separation-probe.md`.
 
 
 ## Does built-in mode break Shizuku for OTHER apps? — OP9, 2026-09-18
@@ -365,9 +363,8 @@ Two things the earlier session could not have seen:
   kills the instrumentation and the app with it and the test never reaches its assertion. The first two
   attempts at H12 both died that way and looked like a 150 s hang.
 
-Also green on the OP9 that day: `ShizukuDetectionDeviceTest` (2), `TranscriptMigrationInstrumentedTest`
-(11), `TranscribeOnlyAudioDeviceTest` (4), `MergeRoundTripTest` (6), `CallEvidenceDeviceTest` (1). Unit
-suite 1591/0.
+Also green on the OP9 that day: `ShizukuDetectionDeviceTest` (2), `MergeRoundTripTest` (6),
+`CallEvidenceDeviceTest` (1). Unit suite 1591/0.
 
 ### #39's unanswered question, and the answer 2.4.0 gives (2026-09-19)
 
@@ -380,8 +377,7 @@ He is right on both counts, and the answer is now **yes**.
 
 **Why he wants it.** Shizuku mode cannot record VoIP at all — a Shizuku-hosted process cannot get an
 `AudioRecord` into RECORDING state, so that mode uses scrcpy and loses VoIP, resilient recording,
-off-Wi-Fi recording and speaker attribution. `siongui`'s Android 17 report states it in the header:
-*"Not available in this mode: resilient recording, VoIP, offline recording, speaker attribution."* So a
+off-Wi-Fi recording. `siongui`'s Android 17 report states those limitations in the header. So a
 VoIP user has to be in built-in mode — and until now that cost them Shizuku for every other app.
 
 **What changed.** R10 said *"Nothing restarts Shizuku; its user must start it again."* That is no longer

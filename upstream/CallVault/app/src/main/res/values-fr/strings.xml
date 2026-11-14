@@ -14,25 +14,19 @@
         <item quantity="other">%1$d enregistrements</item>
     </plurals>
 
-    <!-- Call summaries. Numbers are measured on the reference device, not estimated. -->
+    
     <plurals name="settings_voip_apps_some">
         <item quantity="one">%1$d application ne sera pas enregistrée</item>
         <item quantity="other">%1$d applications ne seront pas enregistrées</item>
     </plurals>
-    <plurals name="library_bulk_delete_transcripts_title">
-        <item quantity="one">Supprimer %1$d transcription ?</item>
-        <item quantity="other">Supprimer %1$d transcriptions ?</item>
-    </plurals>
-    <plurals name="library_bulk_delete_summaries_title">
-        <item quantity="one">Supprimer %1$d résumé ?</item>
-        <item quantity="other">Supprimer %1$d résumés ?</item>
-    </plurals>
+    
+    
     <plurals name="library_bulk_delete_text_only_warning">
         <item quantity="one">%1$d d\'entre elles n\'a plus d\'enregistrement : son texte est tout ce qui reste. Cette partie est irréversible.</item>
         <item quantity="other">%1$d d\'entre elles n\'ont plus d\'enregistrement : leur texte est tout ce qui reste. Cette partie est irréversible.</item>
     </plurals>
 
-    <!-- The search line at the head of the Recordings, Transcripts and Summaries pages. %1$s = what was typed. -->
+    
     <!-- Master recording On/Off switch -->
 
     <!-- New Settings screen (settings per page, step 2). -->
@@ -67,7 +61,7 @@
     <string name="disclaimer_introduction">Veuillez lire attentivement l\'avertissement ci-dessous avant de continuer.</string>
     <string name="disclaimer_must_read">Vous devez lire l\'avertissement.</string>
     <string name="disclaimer_title">Bienvenue sur CallVault</string>
-    <string name="export_heading_transcript">Transcription</string>
+    
     <string name="folder_cloud_rejected">Les dossiers cloud (comme Google Drive) ne peuvent pas être utilisés pour l\'enregistrement. Choisissez un stockage sur l\'appareil — utilisez l\'option de sauvegarde Google Drive pour les copies dans le cloud.</string>
     <string name="folder_drive_overlaps_recordings">Le dossier Drive ne peut pas être celui des enregistrements. Choisissez un dossier Google Drive.</string>
     <string name="folder_drive_overlap_warning">C\'est votre dossier d\'enregistrements (ou il le chevauche), donc rien n\'est copié vers Drive. Choisissez un dossier Google Drive.</string>
@@ -93,12 +87,12 @@
     <string name="general_stop">Arrêter</string>
     <string name="general_system_limitation">Limitation Système</string>
     <string name="general_system_limitation_message">CallVault ne fonctionnera pas sur cet appareil car votre application shell ne dispose pas des autorisations requises :\n\n%1$s\n\nVous ne pouvez rien y faire, l’application ne peut pas fonctionner et va se fermer.</string>
-    <string name="heavy_work_backing_up_model">Sauvegarde d\'un modèle</string>
+    
     <string name="heavy_work_channel_name">Traitement en arrière-plan</string>
-    <string name="heavy_work_importing_model">Importation d\'un modèle</string>
+    
     <string name="heavy_work_notification_text">Votre téléphone peut chauffer pendant l\'opération.</string>
-    <string name="heavy_work_summarising">Résumé d\'un enregistrement</string>
-    <string name="heavy_work_transcribing">Transcription d\'un enregistrement</string>
+    
+    
     <string name="drive_copy_title">Copie des enregistrements vers Drive</string>
     <string name="drive_copy_progress">%1$d sur %2$d copiés</string>
     <string name="drive_copy_stop">Arrêter pour l\'instant</string>
@@ -171,12 +165,12 @@
     <string name="honor_dialer_hint">L’appli Téléphone ne peut lire un enregistrement depuis l’historique des appels que s’il est enregistré dans %1$s au format .m4a. Dans CallVault, réglez %2$s sur ce dossier et %3$s sur AAC.</string>
     <string name="honor_dialer_missing">Reste à modifier : %1$s</string>
     <string name="honor_dialer_ready">✓ Prêt : le dossier et le format sont réglés.</string>
-    <string name="library_bulk_delete_summaries_message">Les résumés seront supprimés. Les transcriptions et les enregistrements sont conservés.</string>
-    <string name="library_bulk_delete_transcripts_message">Le texte sera supprimé. Les enregistrements sont conservés et pourront être transcrits à nouveau plus tard.</string>
+    
+    
     <string name="library_nothing_to_share">Il n\'y a plus rien à partager ici.</string>
     <string name="library_row_save">Enregistrer dans un fichier</string>
-    <string name="library_summary_delete_confirm_message">Le résumé de %1$s sera supprimé. La transcription et l\'enregistrement sont conservés, et tu peux en faire écrire un autre.</string>
-    <string name="library_summary_delete_confirm_title">Supprimer ce résumé ?</string>
+    
+    
     <string name="list_separator">", "</string>
     <string name="min_duration_caption">Un faux numéro ou un appel resté sans réponse est supprimé dès qu\'il se termine, avant toute transcription ou tout envoi. Les enregistrements existants ne sont pas touchés.</string>
     <string name="min_duration_label">Ignorer les enregistrements courts</string>
@@ -203,21 +197,21 @@
     <string name="mode_switch_voip_not_armed">Basculé, mais l\'enregistrement des appels d\'applications n\'a pas pu être préparé. Les appels téléphoniques seront enregistrés ; les appels d\'applications peut-être pas avant que vous rouvriez CallVault.</string>
     <string name="mode_switch_working">Arrêt de l\'ancien enregistreur et démarrage du nouveau. Cela prend quelques secondes.</string>
     <string name="model_backing_up">Sauvegarde… %1$d%%</string>
-    <string name="model_backup">Sauvegarder</string>
-    <string name="model_backup_done">Enregistré</string>
-    <string name="model_backup_failed">La sauvegarde n\'a pas abouti. Réessayez.</string>
-    <string name="model_backup_info">Enregistre le fichier du modèle dans un dossier de votre choix. Après une réinstallation ou sur un nouveau téléphone, utilisez Importer avec ce fichier au lieu de le retélécharger.</string>
-    <string name="model_backup_subtitle">Enregistrer une copie à garder après une réinstallation</string>
-    <string name="model_backup_waiting">Préparation de la sauvegarde…</string>
-    <string name="model_import">Importer depuis un fichier</string>
-    <string name="model_import_failed_other_model">C\'est le fichier d\'un autre modèle (%1$s). Choisissez d\'abord ce modèle, puis importez.</string>
-    <string name="model_import_failed_space">Pas assez d\'espace libre pour l\'importer.</string>
-    <string name="model_import_failed_unreadable">Impossible de lire ce fichier. Choisissez-le à nouveau.</string>
-    <string name="model_import_failed_wrong_file">Ce n\'est pas le bon fichier. Choisissez %1$s.</string>
-    <string name="model_import_info">Choisissez le fichier officiel du modèle (%1$s, %2$d Mo). CallVault vérifie qu\'il s\'agit exactement de ce fichier avant de l\'utiliser, et laisse votre copie là où elle est.</string>
-    <string name="model_import_subtitle">Utiliser une copie que vous avez déjà</string>
-    <string name="model_import_waiting">Préparation de l\'importation…</string>
-    <string name="model_importing">Importation… %1$d %%</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="note_saved">Enregistré</string>
     <string name="note_saving">Enregistrement…</string>
     <string name="notif_cut_off_saved_text">Votre téléphone a fermé CallVault pendant un appel. Ce qui avait été enregistré jusque-là a été sauvegardé sous %1$s.</string>
@@ -289,7 +283,7 @@
     <string name="playback_marked_moments">Moments repérés</string>
     <string name="playback_note_hint">De quoi parlait cet appel…</string>
     <string name="playback_note_title">Note</string>
-    <string name="playback_open_transcript">Lire la transcription</string>
+    
     <string name="playback_skip_back">10 secondes en arrière</string>
     <string name="playback_skip_forward">10 secondes en avant</string>
     <string name="playback_speed">%1$s×</string>
@@ -422,7 +416,7 @@
     <string name="settings_group_model_and_language">Modèle et langue</string>
     <string name="settings_group_save_and_sync">Sauvegarde et synchronisation</string>
     <string name="settings_group_sound_and_names">Son et noms de fichiers</string>
-    <string name="settings_group_when_to_transcribe">Quand transcrire</string>
+    
     <string name="settings_handoff_persist_description">Poursuit l\'enregistrement même si le service d\'arrière-plan est arrêté pendant l\'appel (par ex. lorsque vous verrouillez l\'écran).</string>
     <string name="settings_handoff_persist_label">Continuer si le service d\'arrière-plan s\'arrête</string>
     <string name="settings_hide_recordings_desc">Tenir vos enregistrements à l’écart des lecteurs de musique, galeries et autres applis multimédias</string>
@@ -445,7 +439,7 @@
     <string name="settings_info_about">À propos de %1$s</string>
     <string name="settings_info_got_it">Compris</string>
     <string name="settings_language">Langue</string>
-    <string name="settings_language_change_in_transcripts">Modifiable dans les paramètres des transcriptions</string>
+    
     <string name="settings_language_system">Langue du système</string>
     <string name="settings_link_all_settings">Tous les paramètres</string>
     <string name="settings_link_share_debug_report">Partager un rapport de débogage</string>
@@ -458,7 +452,7 @@
         <item quantity="one">%d résultat</item>
         <item quantity="other">%d résultats</item>
     </plurals>
-    <string name="summary_requirements_toggle_label">Afficher les prérequis</string>
+    
     <string name="settings_sim_label_label">Afficher la SIM utilisée pour chaque appel</string>
     <string name="settings_sim_label_desc">Pour les téléphones à deux SIM : affiche le nom que vous avez donné à la SIM, ou SIM 1 / SIM 2</string>
     <string name="sim_label_word">SIM</string>
@@ -486,7 +480,7 @@
     <string name="settings_section_reliability">Fiabilité</string>
     <string name="settings_section_security">Sécurité</string>
     <string name="settings_section_storage">Stockage</string>
-    <string name="settings_section_transcription">Transcription</string>
+    
     <string name="settings_section_updates">Mises à jour</string>
     <string name="settings_select_contacts">Sélectionner les contacts (%1$d)</string>
     <string name="settings_select_contacts_incoming">Sélectionnez les contacts entrants</string>
@@ -529,11 +523,11 @@
     <string name="settings_theme_mode_light">Lumière</string>
     <string name="settings_theme_mode_system">Valeur par défaut du système</string>
     <string name="settings_title_recordings">Paramètres des enregistrements</string>
-    <string name="settings_title_summaries">Paramètres des résumés</string>
-    <string name="settings_title_transcripts">Paramètres des transcriptions</string>
-    <string name="settings_transcript_sidecar_desc">Créer un fichier texte .md à côté de chaque enregistrement</string>
-    <string name="settings_transcript_sidecar_hint">Enregistre la transcription, les notes et le résumé dans un fichier texte portant le même nom que l\'enregistrement, de sorte qu\'en copiant votre dossier sur un PC le texte reste avec l\'audio. L\'activer enregistre aussi ceux que vous avez déjà.</string>
-    <string name="settings_transcript_sidecar_label">Enregistrer la transcription et les notes à côté de l\'enregistrement</string>
+    
+    
+    
+    
+    
     <string name="settings_unavailable_in_shizuku">Indisponible en mode Shizuku : cela nécessite l\'enregistreur de CallVault.</string>
     <string name="settings_update_check_description">Une fois par jour, recherche une nouvelle version sur GitHub.</string>
     <string name="settings_update_check_label">Rechercher des mises à jour</string>
@@ -587,58 +581,58 @@
     <string name="storage_target_both">Appareil + Google Drive</string>
     <string name="storage_target_drive">Google Drive uniquement</string>
     <string name="storage_target_local">Sur cet appareil uniquement</string>
-    <string name="summaries_search_hint">Rechercher dans les résumés</string>
-    <string name="summary_card_actions">À faire</string>
-    <string name="summary_card_blocked_empty">Cette transcription ne contient aucun mot, il n\'y a donc rien à résumer.</string>
-    <string name="summary_card_blocked_model">Téléchargez d\'abord le résumeur dans les Paramètres.</string>
-    <string name="summary_card_blocked_no_transcript">Transcrivez d\'abord cet appel : le résumé est écrit à partir de la transcription.</string>
-    <string name="summary_card_blocked_summarising">Un autre appel est en cours de résumé.</string>
-    <string name="summary_card_blocked_transcribing">En attente de la fin de la transcription — les deux ne peuvent pas partager le téléphone.</string>
-    <string name="summary_card_blocked_unfinished">En attente de la fin de la transcription.</string>
-    <string name="summary_card_create">Résumer cet appel</string>
-    <string name="summary_card_create_subtitle">Écrit sur votre téléphone, une à deux minutes</string>
-    <string name="summary_card_decisions">Décisions</string>
-    <string name="summary_card_facts">À retenir</string>
-    <string name="summary_card_failed">Cela n\'a pas produit de résumé exploitable. Vous pouvez réessayer.</string>
-    <string name="summary_card_key_points">Points clés</string>
-    <string name="summary_card_provenance">Généré à partir de la transcription</string>
-    <string name="summary_card_redo">Réécrire</string>
-    <string name="summary_card_running">Résumé en cours… %1$d %%</string>
-    <string name="summary_card_stop">Arrêter</string>
-    <string name="summary_card_title">Résumé</string>
-    <string name="summary_delete_confirm_body">Cela libère %1$.1f Go. Les résumés déjà écrits sont conservés, mais il faudra le retélécharger pour en écrire d\'autres.</string>
-    <string name="summary_delete_confirm_confirm">Supprimer</string>
-    <string name="summary_delete_confirm_title">Supprimer le résumeur ?</string>
-    <string name="summary_discard_confirm_body">Cela jette les %1$.1f Go déjà téléchargés. Recommencer les reprendrait depuis le début.</string>
-    <string name="summary_discard_confirm_confirm">Abandonner</string>
-    <string name="summary_discard_confirm_title">Abandonner le téléchargement ?</string>
-    <string name="summary_model_cancel">Annuler le téléchargement</string>
-    <string name="summary_model_delete">Supprimer le résumeur</string>
-    <string name="summary_model_discard">Abandonner ce qui a été téléchargé</string>
-    <string name="summary_model_discard_subtitle">Libère %1$.1f Go</string>
-    <string name="summary_model_download">Télécharger le résumeur</string>
-    <string name="summary_model_download_subtitle">%1$.1f Go</string>
-    <string name="summary_model_downloading">Téléchargement… %1$d %%</string>
-    <string name="summary_model_failed">Le téléchargement ne s\'est pas terminé. Réessayez.</string>
-    <string name="summary_model_failed_space">Espace insuffisant. Libérez de la place et réessayez.</string>
-    <string name="summary_model_failed_verify">Le téléchargement était corrompu et a été supprimé. Réessayez.</string>
-    <string name="summary_model_installed">Téléchargé et prêt</string>
-    <string name="summary_model_licence">Le générateur de résumés est Gemma 4 de Google, utilisé sous licence Apache 2.0. Il est téléchargé séparément plutôt qu\'inclus dans CallVault.</string>
-    <string name="summary_model_resume">Reprendre le téléchargement</string>
-    <string name="summary_model_resume_subtitle">%1$.1f Go sur %2$.1f Go déjà téléchargés</string>
-    <string name="summary_model_waiting">En attente du Wi-Fi</string>
-    <string name="summary_requirements_body">Les résumés sont écrits sur votre téléphone — rien n\'est envoyé nulle part. Cela coûte %1$.1f Go de téléchargement et environ %2$.1f Go de mémoire pendant l\'exécution : il faut donc un téléphone récent avec de la marge. Un appel court prend une à deux minutes.</string>
-    <string name="summary_requirements_cancel">Pas maintenant</string>
-    <string name="summary_requirements_continue">Télécharger</string>
-    <string name="summary_requirements_dont_ask">Ne plus afficher</string>
-    <string name="summary_requirements_download">%1$.1f Go à télécharger</string>
-    <string name="summary_requirements_heading">Avant de télécharger</string>
-    <string name="summary_requirements_memory">Environ %1$.1f Go de mémoire pendant l\'exécution</string>
-    <string name="summary_requirements_phone">Il faut un téléphone récent avec de la marge. Sur un plus ancien, cela peut être lent ou échouer.</string>
-    <string name="summary_requirements_private">Tout se passe sur votre téléphone. Rien n\'est envoyé nulle part.</string>
-    <string name="summary_requirements_time">Une à deux minutes pour un appel court, plus pour un appel long</string>
-    <string name="summary_requirements_title">Ce qu\'il faut</string>
-    <string name="summary_requirements_toggle_description">Afficher ce que coûte le résumeur avant de le télécharger</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="support_appeal_body">Je maintiens CallVault sur mon temps libre. L\'appli a commencé comme un fork de ShizuCallRecorder, de kitsumed, et a beaucoup évolué depuis. Gratuite, open source, sans publicité ni pistage. Si elle vous est utile, un petit pourboire m\'aide à continuer. Merci ! 🙏</string>
     <string name="support_appeal_title">Un pourboire pour CallVault ☕</string>
     <string name="support_not_now">Pas maintenant</string>
@@ -646,7 +640,7 @@
     <string name="tile_recording_stopped">Arrêté</string>
     <string name="transcribe_confirm_dont_ask">Ne plus demander</string>
     <string name="transcribe_long_call_line">Cet appel dure %1$s. Sur ce téléphone, la transcription prend environ %2$s fois sa durée — soit environ %3$s.</string>
-    <string name="transcribe_confirm_message">Transcrire %1$s occupe le téléphone et consomme nettement de la batterie. Vous pouvez arrêter à tout moment.\n\nCette question peut être réactivée sous Transcription, dans les paramètres.</string>
+    
     <string name="transcribe_confirm_title">Cela prendra environ %1$s</string>
     <string name="transcribe_confirm_title_first_run">La première fois peut prendre un moment</string>
     <string name="transcribe_confirm_title_unknown">Transcrire cet appel ?</string>
@@ -697,102 +691,102 @@
     <string name="transcript_speakers_swap">Inverser</string>
     <string name="transcript_speakers_swap_names">Inverser les noms</string>
     <string name="transcript_speakers_which_is_you">Lequel est vous ?</string>
-    <string name="transcription_ask_language_subtitle">Choisissez la langue pour chaque enregistrement au lieu d\'utiliser toujours celle ci-dessus. Ne s\'applique qu\'à cet enregistrement.</string>
-    <!-- Where to transcribe: on this phone or with the user's own cloud key (issue #48). No prices anywhere. -->
-    <string name="transcription_where_title">Où transcrire</string>
-    <string name="transcription_where_on_device">Sur ce téléphone</string>
-    <string name="transcription_where_on_device_desc">Privé. Plus lent : environ 1,5 min par minute d\'appel.</string>
-    <string name="transcription_where_groq_desc">Rapide : en général quelques secondes par appel.</string>
-    <string name="transcription_where_openrouter_desc">Une seule clé pour de nombreux services. Microsoft MAI-Transcribe.</string>
-    <string name="transcription_where_custom">Personnalisé (avancé)</string>
-    <string name="transcription_where_custom_desc">Tout serveur compatible OpenAI.</string>
-    <string name="transcription_where_custom_service">votre serveur</string>
-    <string name="transcription_where_recommended">Recommandé</string>
-    <string name="transcription_cloud_key_label">Votre clé pour %1$s</string>
-    <string name="transcription_cloud_key_label_custom">Clé de votre serveur</string>
-    <string name="transcription_cloud_key_show">Afficher la clé</string>
-    <string name="transcription_cloud_key_hide">Masquer la clé</string>
-    <string name="transcription_cloud_test">Tester</string>
-    <string name="transcription_cloud_testing">Test en cours…</string>
-    <string name="transcription_cloud_get_key">Obtenir une clé pour %1$s</string>
-    <string name="transcription_cloud_custom_url">Adresse du serveur</string>
-    <string name="transcription_cloud_custom_url_hint">https://… (la partie avant /audio/transcriptions)</string>
-    <string name="transcription_cloud_custom_url_invalid">Utilisez une adresse en http(s)://.</string>
-    <string name="transcription_cloud_custom_model">Modèle</string>
-    <string name="transcription_cloud_mobile_data">Autoriser les données mobiles</string>
-    <string name="transcription_cloud_mobile_data_desc">Si désactivé, les appels attendent le Wi-Fi avant d\'être envoyés.</string>
-    <string name="transcription_cloud_privacy_note">L\'audio de l\'appel est envoyé à %1$s pour être transcrit. Le texte revient sur ce téléphone ; les règles de confidentialité du fournisseur s\'appliquent. Wi-Fi uniquement, sauf si vous autorisez les données mobiles.</string>
-    <string name="transcription_cloud_consent_title">Envoyer l\'audio des appels à %1$s ?</string>
-    <string name="transcription_cloud_consent_body">Quand un appel est transcrit, son audio est envoyé à %1$s avec votre clé, et le texte revient sur ce téléphone. Les règles de confidentialité du fournisseur s\'appliquent. Les résumés restent sur ce téléphone.</string>
-    <string name="transcription_cloud_consent_confirm">Utiliser %1$s</string>
-    <string name="transcription_cloud_test_ok">La clé fonctionne.</string>
-    <string name="transcription_cloud_test_bad_key">La clé a été refusée. Vérifiez-la et réessayez.</string>
-    <string name="transcription_cloud_test_no_timings">Le service a répondu sans horodatage, il ne peut donc pas être utilisé. Essayez un autre modèle.</string>
-    <string name="transcription_cloud_test_unreachable">Impossible de joindre le service. Vérifiez la connexion et réessayez.</string>
-    <string name="transcription_cloud_test_refused">Le service a refusé la requête. Vérifiez l\'adresse et le modèle.</string>
-    <string name="transcription_cloud_test_no_key">Collez d\'abord une clé.</string>
-    <string name="transcription_cloud_test_incomplete">Renseignez d\'abord l\'adresse du serveur et le modèle.</string>
-    <string name="transcription_ask_language_title">Demander la langue à chaque fois</string>
-    <string name="transcription_batch_label">Appels par exécution</string>
-    <string name="transcription_batch_no_limit">Sans limite</string>
-    <string name="transcription_charging_subtitle">La transcription sollicite fortement le processeur et videra la batterie.</string>
-    <string name="transcription_charging_title">Uniquement en charge</string>
-    <string name="transcription_confirm_subtitle">Indique la durée et vous laisse annuler.</string>
-    <string name="transcription_confirm_title">Demander avant de transcrire</string>
-    <string name="transcription_hour_label">Heure</string>
-    <string name="transcription_language_arabic">Arabe</string>
-    <string name="transcription_language_auto">Détecter automatiquement</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="language_search_placeholder">Rechercher une langue</string>
     <string name="language_search_clear">Effacer la recherche</string>
     <string name="language_search_no_match">Aucune langue ne correspond</string>
-    <string name="transcription_language_auto_hint">La détection n\'est pas fiable pour les langues qui ne s\'écrivent pas en caractères latins : l\'hébreu, l\'arabe, le russe et le chinois reviennent souvent écrits en lettres anglaises, ou en un seul long bloc de texte. Indiquez la langue si vous le pouvez.</string>
-    <string name="transcription_language_chinese">Chinois</string>
-    <string name="transcription_language_english">Anglais</string>
-    <string name="transcription_language_french">Français</string>
-    <string name="transcription_language_german">Allemand</string>
-    <string name="transcription_language_greek">Grec</string>
-    <string name="transcription_language_hebrew">Hébreu</string>
-    <string name="transcription_language_hungarian">Hongrois</string>
-    <string name="transcription_language_italian">Italien</string>
-    <string name="transcription_language_label">Langue</string>
-    <string name="transcription_language_persian">Persan</string>
-    <string name="transcription_language_urdu">Ourdou</string>
-    <string name="transcription_language_bengali">Bengali</string>
-    <string name="transcription_language_polish">Polonais</string>
-    <string name="transcription_language_portuguese">Portugais</string>
-    <string name="transcription_language_russian">Russe</string>
-    <string name="transcription_language_spanish">Espagnol</string>
-    <string name="transcription_language_ukrainian">Ukrainien</string>
-    <string name="transcription_language_vietnamese">Vietnamien</string>
-    <string name="transcription_minute_label">Minute</string>
-    <string name="transcription_mode_after_each_call">Après chaque appel</string>
-    <string name="transcription_mode_automatic">Planifié</string>
-    <string name="transcription_mode_label">Transcrire</string>
-    <string name="transcription_mode_manual">Manuellement</string>
-    <string name="transcription_model_best">Meilleure qualité</string>
-    <string name="transcription_model_best_small_download">Meilleure qualité, téléchargement plus léger</string>
-    <string name="transcription_model_persian">Optimisé pour le persan</string>
-    <string name="transcription_model_persian_licence">Meilleure qualité, entraîné sur de la parole persane. Whisper large-v3-turbo Persian par givia, licence CC BY 4.0, quantifié pour whisper.cpp. Il est téléchargé séparément et n\'est pas inclus dans CallVault.</string>
-    <string name="transcription_model_delete">Supprimer le modèle</string>
-    <string name="transcription_model_download">Télécharger le modèle</string>
-    <string name="transcription_model_download_subtitle">%1$d Mo</string>
-    <string name="transcription_model_downloading">Téléchargement… %1$d %%</string>
-    <string name="transcription_model_failed">Le téléchargement ne s\'est pas terminé. Réessayez.</string>
-    <string name="transcription_model_failed_space">Espace insuffisant. Libérez de la place et réessayez.</string>
-    <string name="transcription_model_failed_verify">Le téléchargement était corrompu et a été supprimé. Réessayez.</string>
-    <string name="transcription_model_installed">Téléchargé et prêt</string>
-    <string name="transcription_model_label">Modèle</string>
-    <string name="transcription_model_resume">Reprendre le téléchargement</string>
-    <string name="transcription_model_resume_subtitle">%1$d Mo sur %2$d Mo déjà téléchargés</string>
-    <string name="transcription_model_small">Rapide</string>
-    <string name="transcription_model_waiting">En attente du Wi-Fi</string>
-    <string name="transcription_note_after_each_call">Chaque appel est transcrit dès qu\'il se termine. Les appels plus anciens ne sont pas touchés : transcrivez-les depuis le bouton d\'un enregistrement.</string>
-    <string name="transcription_note_automatic">Les appels sans transcription sont transcrits à l\'heure choisie. Un appel de 30 minutes prend environ 30 minutes.</string>
-    <string name="transcription_note_manual">Les transcriptions ne sont créées que sur demande, depuis le bouton d\'un enregistrement.</string>
-    <string name="transcription_time_label">Exécuter à</string>
-    <string name="transcription_warning_confirm">Activer</string>
-    <string name="transcription_warning_message">Un appel met environ sa propre durée à être transcrit, en utilisant tous les cœurs du téléphone. Il chauffera et consommera nettement de la batterie.\n\nVous pouvez arrêter une exécution à tout moment depuis le badge à côté du titre.</string>
-    <string name="transcription_warning_title">La transcription est lente et exigeante</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="transcripts_search_hint">Rechercher ce qui a été dit</string>
     <string name="update_popup_later">Plus tard</string>
     <string name="update_popup_text">Une nouvelle version est prête à installer. La mise à jour garde l\'enregistrement fiable et apporte les derniers correctifs.</string>
@@ -878,20 +872,20 @@
     <string name="wizard_storage_subtitle">Choisissez l\'emplacement de stockage de vos enregistrements. Vous pourrez le modifier plus tard dans les Paramètres.</string>
     <string name="wizard_storage_title">Où enregistrer les enregistrements</string>
     <string name="wizard_title">Configurer CallVault</string>
-    <string name="wizard_transcription_background_note">Les deux téléchargements se poursuivent en arrière-plan. Vous pouvez continuer et terminer la configuration maintenant — les paramètres de CallVault affichent ensuite la même progression.</string>
-    <string name="wizard_transcription_language_note">Réglé sur la langue de ce téléphone. L\'indiquer est bien plus fiable que de laisser l\'application deviner, et vous pourrez toujours en choisir une autre appel par appel.</string>
-    <string name="wizard_transcription_line">Transformez les appels en texte sur ce téléphone.</string>
-    <string name="wizard_transcription_model_note">Transcrire demande d\'abord un modèle vocal sur le téléphone : %1$s fait %2$d Mo, %3$s fait %4$d Mo. Transcrire un appel prend ensuite environ la durée de l\'appel et sollicite fortement le processeur.</string>
-    <string name="wizard_transcription_model_size">%1$s fait %2$d Mo</string>
-    <string name="wizard_transcription_model_sizes_note">Transcrire demande d\'abord un modèle vocal sur le téléphone : %1$s. Transcrire un appel prend ensuite environ la durée de l\'appel et sollicite fortement le processeur.</string>
-    <string name="wizard_transcription_subtitle">CallVault peut transcrire un enregistrement sur le téléphone lui-même et en écrire un court résumé : rien n\'est envoyé nulle part. Choisissez quand cela se produit et dans quelle langue se passent vos appels, et téléchargez ce qu\'il faut.</string>
-    <string name="wizard_transcription_summary_body">Une fois qu\'un appel a une transcription, CallVault peut aussi en écrire un court résumé — sur le téléphone, comme tout le reste ici.</string>
-    <string name="wizard_transcription_summary_heading">Résumés</string>
-    <string name="wizard_transcription_title">Transformer les appels en texte</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="wizard_updates_line">Comment CallVault trouve les nouvelles versions.</string>
     <string name="wizard_updates_subtitle">CallVault n\'est sur aucune boutique d\'applications : il cherche donc lui-même les nouvelles versions sur GitHub.</string>
     <string name="wizard_updates_title">Rester à jour</string>
-    <!-- Transcribe again (#72) -->
+    
     <string name="transcribe_again_title">Transcrire à nouveau ?</string>
     <string name="transcribe_again_message_one">%1$s sera transcrit à nouveau. Si la nouvelle exécution échoue ou est arrêtée, la transcription actuelle est conservée.</string>
     <string name="transcribe_again_message_many">Transcriptions à refaire : %1$d. Si une exécution échoue ou est arrêtée, cette transcription reste telle quelle.</string>

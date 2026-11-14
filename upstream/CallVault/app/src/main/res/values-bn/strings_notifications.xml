@@ -49,14 +49,14 @@
     <string name="notif_action_turn_wd_on">ওয়্যারলেস ডিবাগিং চালু করুন</string>
     <string name="notif_action_turn_usb_on">USB ডিবাগিং চালু করুন</string>
 
-    <string name="transcript_notice_channel">ট্রান্সক্রিপ্ট</string>
-    <string name="transcript_notice_ready_title">ট্রান্সক্রিপ্ট তৈরি</string>
-    <string name="transcript_notice_ready_deleted_text">%1$s — আপনার কথামতো অডিও মুছে ফেলা হয়েছে।</string>
-    <string name="transcript_notice_ready_many_title">ট্রান্সক্রিপ্ট তৈরি: %1$d</string>
-    <string name="transcript_notice_ready_many_text">পড়তে ট্যাপ করুন।</string>
-    <string name="transcript_notice_failed_title">ট্রান্সক্রিপশন শেষ হয়নি</string>
-    <string name="transcript_notice_failed_text">%1$s। আবার চেষ্টা করতে ট্যাপ করুন।</string>
-    <string name="transcript_notice_failed_many_title">যে ট্রান্সক্রিপশন শেষ হয়নি: %1$d</string>
-    <string name="transcript_notice_failed_many_text">দেখতে ট্যাপ করুন।</string>
-    <string name="transcript_notice_failed_kept_text">%1$s। আগের ট্রান্সক্রিপ্ট রাখা হয়েছে।</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </resources>

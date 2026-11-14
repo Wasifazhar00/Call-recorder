@@ -36,12 +36,8 @@
         <item quantity="many">%1$d تسجيلًا</item>
         <item quantity="other">%1$d تسجيل</item>
     </plurals>
-    <string name="transcription_warning_message">تستغرق معالجة المكالمة وقتًا مقاربًا لمدتها الفعلية وتستخدم أنوية المعالج بكثافة، مما قد يرفع حرارة الهاتف ويزيد استهلاك البطارية.
-
-يمكنك إيقاف المعالجة في أي وقت عبر النقر على الشارة المجاورة للعنوان.</string>
-    <string name="transcribe_confirm_message">يؤدي تحويل %1$s إلى نص إلى إشغال هاتفك واستهلاك ملحوظ للبطارية. يمكنك إيقافه في أي وقت.
-
-يمكن إعادة تشغيل هذا السؤال ضمن "التفريغ الصوتي" في الإعدادات.</string>
+    
+    
     <plurals name="settings_voip_apps_some">
         <item quantity="zero">%1$d تطبيق لن يتم تسجيله</item>
         <item quantity="one">%1$d تطبيق لن يتم تسجيله</item>
@@ -50,22 +46,8 @@
         <item quantity="many">%1$d تطبيقًا لن يتم تسجيله</item>
         <item quantity="other">%1$d تطبيق لن يتم تسجيله</item>
     </plurals>
-    <plurals name="library_bulk_delete_transcripts_title">
-        <item quantity="zero">حذف %1$d نص؟</item>
-        <item quantity="one">حذف %1$d نص؟</item>
-        <item quantity="two">حذف %1$d نصين؟</item>
-        <item quantity="few">حذف %1$d نصوص؟</item>
-        <item quantity="many">حذف %1$d نصًّا؟</item>
-        <item quantity="other">حذف %1$d نص؟</item>
-    </plurals>
-    <plurals name="library_bulk_delete_summaries_title">
-        <item quantity="zero">حذف %1$d ملخص؟</item>
-        <item quantity="one">حذف %1$d ملخص؟</item>
-        <item quantity="two">حذف %1$d ملخصين؟</item>
-        <item quantity="few">حذف %1$d ملخصات؟</item>
-        <item quantity="many">حذف %1$d ملخصًا؟</item>
-        <item quantity="other">حذف %1$d ملخص؟</item>
-    </plurals>
+    
+    
     <plurals name="library_bulk_delete_text_only_warning">
         <item quantity="zero">%1$d من هذه ليس له تسجيل خلفه، لذا فإن كلماته هي كل ما تبقّى. هذا الجزء لا يمكن التراجع عنه.</item>
         <item quantity="one">%1$d من هذه ليس له تسجيل خلفه، لذا فإن كلماته هي كل ما تبقّى. هذا الجزء لا يمكن التراجع عنه.</item>
@@ -109,7 +91,7 @@
     <string name="disclaimer_introduction">يرجى قراءة إخلاء المسؤولية أدناه بعناية قبل المتابعة.</string>
     <string name="disclaimer_must_read">يجب عليك قراءة إخلاء المسؤولية.</string>
     <string name="disclaimer_title">مرحبًا بك في CallVault</string>
-    <string name="export_heading_transcript">النص المكتوب</string>
+    
     <string name="folder_cloud_rejected">لا يمكن استخدام المجلدات السحابية (مثل Google Drive) للتسجيل. اختر تخزينًا على الجهاز - استخدم خيار النسخ الاحتياطي على Google Drive للحصول على نسخ سحابية.</string>
     <string name="folder_drive_overlaps_recordings">لا يمكن أن يكون مجلد Drive هو مجلد التسجيلات. اختر مجلدًا في Google Drive.</string>
     <string name="folder_drive_overlap_warning">هذا هو مجلد التسجيلات (أو يتداخل معه)، لذلك لا يُنسخ شيء إلى Drive. اختر مجلدًا في Google Drive.</string>
@@ -134,12 +116,12 @@
     <string name="general_settings">الإعدادات</string>
     <string name="general_stop">إيقاف</string>
     <string name="general_system_limitation">قيود النظام</string>
-    <string name="heavy_work_backing_up_model">نسخ نموذج احتياطيًا</string>
+    
     <string name="heavy_work_channel_name">معالجة الخلفية</string>
-    <string name="heavy_work_importing_model">استيراد نموذج</string>
+    
     <string name="heavy_work_notification_text">قد يصبح هاتفك دافئًا أثناء تشغيله.</string>
-    <string name="heavy_work_summarising">تلخيص تسجيل</string>
-    <string name="heavy_work_transcribing">تحويل تسجيل إلى نص</string>
+    
+    
     <string name="drive_copy_title">نسخ التسجيلات إلى Drive</string>
     <string name="drive_copy_progress">تم نسخ %1$d من %2$d</string>
     <string name="drive_copy_stop">إيقاف حاليًا</string>
@@ -212,12 +194,12 @@
     <string name="honor_dialer_hint">يمكن لتطبيق الهاتف تشغيل التسجيل من سجل المكالمات فقط إذا حُفظ في %1$s بصيغة .m4a. في CallVault، اضبط %2$s على هذا المجلد و%3$s على AAC.</string>
     <string name="honor_dialer_missing">ما زال يجب تغيير: %1$s</string>
     <string name="honor_dialer_ready">✓ جاهز: تم ضبط المجلد والصيغة.</string>
-    <string name="library_bulk_delete_summaries_message">سيتم حذف الملخصات. يتم الاحتفاظ بالنصوص والتسجيلات.</string>
-    <string name="library_bulk_delete_transcripts_message">سيتم حذف الكلمات. يتم الاحتفاظ بالتسجيلات، ويمكنك تفريغها صوتيًا مرة أخرى لاحقًا.</string>
+    
+    
     <string name="library_nothing_to_share">لم يعد هناك أي شيء للمشاركة.</string>
     <string name="library_row_save">حفظ كملف</string>
-    <string name="library_summary_delete_confirm_message">سيتم حذف ملخص %1$s. يتم الاحتفاظ بالنص والتسجيل، ويمكنك كتابته مرة أخرى.</string>
-    <string name="library_summary_delete_confirm_title">حذف هذا الملخص؟</string>
+    
+    
     <string name="list_separator">، </string>
     <string name="min_duration_caption">يتم حذف مكالمة خاطئة أو مكالمة لم يتم الرد عليها بمجرد انتهائها، قبل تفريغها صوتيًا أو تحميلها. لا يتأثر أي شيء تم تسجيله بالفعل.</string>
     <string name="min_duration_label">تجاهل التسجيلات القصيرة</string>
@@ -240,21 +222,21 @@
     <string name="mode_switch_voip_not_armed">تم التبديل، ولكن تعذر تفعيل تسجيل مكالمات التطبيق. سيتم تسجيل المكالمات الهاتفية؛ قد لا يتم تسجيل مكالمات التطبيق حتى تعيد فتح CallVault.</string>
     <string name="mode_switch_working">جارٍ إيقاف المسجل القديم وبدء المسجل الجديد. يستغرق هذا بضع ثوانٍ.</string>
     <string name="model_backing_up">جارٍ النسخ الاحتياطي… %1$d%%</string>
-    <string name="model_backup">نسخ احتياطي للنموذج</string>
-    <string name="model_backup_done">تم حفظ النسخة بنجاح</string>
-    <string name="model_backup_failed">تعذر اكتمال النسخ الاحتياطي، يرجى المحاولة مجددًا.</string>
-    <string name="model_backup_info">حفظ ملف النموذج في مجلد تختاره في الذاكرة العامة. بعد إعادة تثبيت التطبيق أو عند الانتقال لهاتف جديد، يمكنك استخدام خيار "الاستيراد" لتجنب إعادة تنزيله.</string>
-    <string name="model_backup_subtitle">حفظ نسخة خارجية للاستعادة بعد إعادة التثبيت</string>
-    <string name="model_backup_waiting">جارٍ التحضير للنسخ الاحتياطي…</string>
-    <string name="model_import">استيراد من ملف محلي</string>
-    <string name="model_import_failed_other_model">هذا الملف يخص نموذجًا آخر (%1$s). اختر ذلك النموذج أولاً ثم أعد الاستيراد.</string>
-    <string name="model_import_failed_space">لا توجد مساحة تخزينية كافية لاستيراد النموذج.</string>
-    <string name="model_import_failed_unreadable">تعذّرت قراءة الملف، يرجى اختياره مجددًا.</string>
-    <string name="model_import_failed_wrong_file">هذا الملف غير صحيح، يرجى اختيار الملف: %1$s.</string>
-    <string name="model_import_info">اختر ملف النموذج الرسمي المتطابق (%1$s، بحجم %2$d ميغابايت). سيتحقق CallVault من سلامة الملف وبصمته بدقة قبل اعتماده، مع الإبقاء على نسختك الأصلية دون تعديل.</string>
-    <string name="model_import_subtitle">استخدام نسخة محفوظة مسبقًا على هاتفك</string>
-    <string name="model_import_waiting">جارٍ التجهيز للاستيراد…</string>
-    <string name="model_importing">جارٍ الاستيراد والتحقق… %1$d%%</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="note_saved">تم الحفظ</string>
     <string name="note_saving">جارٍ الحفظ…</string>
     <string name="notif_cut_off_saved_text">أغلق هاتفك CallVault أثناء مكالمة. تم حفظ ما سُجِّل قبل ذلك باسم %1$s.</string>
@@ -326,7 +308,7 @@
     <string name="playback_marked_moments">لحظات مميزة</string>
     <string name="playback_note_hint">حول ماذا كانت هذه المكالمة…</string>
     <string name="playback_note_title">ملاحظة</string>
-    <string name="playback_open_transcript">قراءة النص المكتوب</string>
+    
     <string name="playback_skip_back">الرجوع 10 ثوانٍ</string>
     <string name="playback_skip_forward">التقديم 10 ثوانٍ</string>
     <string name="playback_speed">%1$s×</string>
@@ -459,7 +441,7 @@
     <string name="settings_group_model_and_language">النموذج واللغة</string>
     <string name="settings_group_save_and_sync">الحفظ والمزامنة</string>
     <string name="settings_group_sound_and_names">الصوت وأسماء الملفات</string>
-    <string name="settings_group_when_to_transcribe">توقيت بدء التفريغ الصوتي</string>
+    
     <string name="settings_handoff_persist_description">استمر في التسجيل حتى لو تم قتل المساعد في الخلفية أثناء المكالمة (على سبيل المثال، عند قفل الشاشة).</string>
     <string name="settings_handoff_persist_label">مواصلة التسجيل إذا توقف المساعد</string>
     <string name="settings_hide_recordings_desc">إبقاء تسجيلاتك خارج مشغلات الموسيقى والمعارض وتطبيقات الوسائط الأخرى</string>
@@ -482,7 +464,7 @@
     <string name="settings_info_about">حول %1$s</string>
     <string name="settings_info_got_it">فهمت</string>
     <string name="settings_language">اللغة</string>
-    <string name="settings_language_change_in_transcripts">تُغيَّر من إعدادات النصوص</string>
+    
     <string name="settings_language_system">افتراضي النظام</string>
     <string name="settings_link_all_settings">كل الإعدادات</string>
     <string name="settings_link_share_debug_report">مشاركة تقرير تصحيح الأخطاء</string>
@@ -499,7 +481,7 @@
         <item quantity="many">%d نتيجة</item>
         <item quantity="other">%d نتيجة</item>
     </plurals>
-    <string name="summary_requirements_toggle_label">إظهار المتطلبات</string>
+    
     <string name="settings_sim_label_label">إظهار شريحة SIM التي استُخدمت في كل مكالمة</string>
     <string name="settings_sim_label_desc">للهواتف ذات شريحتين: يعرض الاسم الذي أعطيته للشريحة، أو SIM 1 / SIM 2</string>
     <string name="sim_label_word">SIM</string>
@@ -527,7 +509,7 @@
     <string name="settings_section_reliability">الموثوقية</string>
     <string name="settings_section_security">الأمان</string>
     <string name="settings_section_storage">التخزين</string>
-    <string name="settings_section_transcription">التفريغ الصوتي</string>
+    
     <string name="settings_section_updates">التحديثات</string>
     <string name="settings_select_contacts">تحديد جهات الاتصال (%1$d)</string>
     <string name="settings_select_contacts_incoming">تحديد جهات الاتصال الواردة</string>
@@ -570,11 +552,11 @@
     <string name="settings_theme_mode_light">فاتح</string>
     <string name="settings_theme_mode_system">افتراضي النظام</string>
     <string name="settings_title_recordings">إعدادات التسجيلات</string>
-    <string name="settings_title_summaries">إعدادات الملخصات</string>
-    <string name="settings_title_transcripts">إعدادات النصوص</string>
-    <string name="settings_transcript_sidecar_desc">إنشاء ملف نصي .md بجانب كل تسجيل</string>
-    <string name="settings_transcript_sidecar_hint">يحفظ النص والملاحظات والملخص كملف نصي بالاسم نفسه الخاص بالتسجيل، بحيث يبقى النص مع الصوت عند نسخ مجلدك إلى حاسوب. تفعيله يحفظ أيضًا ما لديك بالفعل.</string>
-    <string name="settings_transcript_sidecar_label">حفظ النص والملاحظات بجانب التسجيل</string>
+    
+    
+    
+    
+    
     <string name="settings_unavailable_in_shizuku">غير متاح في وضع Shizuku: هذا يحتاج إلى مسجل CallVault الخاص.</string>
     <string name="settings_update_check_description">مرة واحدة يوميًا، ابحث عن إصدار جديد على GitHub.</string>
     <string name="settings_update_check_label">التحقق من وجود تحديثات</string>
@@ -628,58 +610,58 @@
     <string name="storage_target_both">الجهاز + Google Drive</string>
     <string name="storage_target_drive">Google Drive فقط</string>
     <string name="storage_target_local">على هذا الجهاز فقط</string>
-    <string name="summaries_search_hint">البحث في الملخصات</string>
-    <string name="summary_card_actions">للقيام به</string>
-    <string name="summary_card_blocked_empty">لا يحتوي هذا النص على كلمات، لذا لا يوجد شيء لتلخيصه.</string>
-    <string name="summary_card_blocked_model">يرجى تنزيل نموذج التلخيص من الإعدادات أولاً.</string>
-    <string name="summary_card_blocked_no_transcript">قم بتحويل هذه المكالمة إلى نص أولاً؛ يتم كتابة الملخص من النص.</string>
-    <string name="summary_card_blocked_summarising">جارٍ تلخيص مكالمة أخرى.</string>
-    <string name="summary_card_blocked_transcribing">في انتظار انتهاء التفريغ الصوتي، لا يمكنهما مشاركة الهاتف.</string>
-    <string name="summary_card_blocked_unfinished">في انتظار انتهاء النص.</string>
-    <string name="summary_card_create">تلخيص هذه المكالمة</string>
-    <string name="summary_card_create_subtitle">مكتوب على هاتفك، حوالي دقيقة أو دقيقتين</string>
-    <string name="summary_card_decisions">القرارات</string>
-    <string name="summary_card_facts">يستحق الاحتفاظ به</string>
-    <string name="summary_card_failed">لم ينتج عن ذلك ملخص قابل للاستخدام. يمكنك المحاولة مرة أخرى.</string>
-    <string name="summary_card_key_points">النقاط الرئيسية</string>
-    <string name="summary_card_provenance">تم إنشاؤه من النص</string>
-    <string name="summary_card_redo">أعد كتابته</string>
-    <string name="summary_card_running">جارٍ التلخيص… %1$d%%</string>
-    <string name="summary_card_stop">إيقاف</string>
-    <string name="summary_card_title">ملخص</string>
-    <string name="summary_delete_confirm_body">يؤدي هذا إلى تحرير %1$.1f جيجابايت. يتم الاحتفاظ بالملخصات التي كتبتها بالفعل، ولكن ستحتاج إلى تنزيلها مرة أخرى لكتابة المزيد.</string>
-    <string name="summary_delete_confirm_confirm">حذف</string>
-    <string name="summary_delete_confirm_title">حذف نموذج التلخيص؟</string>
-    <string name="summary_discard_confirm_body">يؤدي هذا إلى التخلص من %1$.1f جيجابايت التي تم تنزيلها بالفعل. سيتطلب البدء من جديد جلب كل شيء من البداية.</string>
-    <string name="summary_discard_confirm_confirm">تجاهل</string>
-    <string name="summary_discard_confirm_title">تجاهل التنزيل؟</string>
-    <string name="summary_model_cancel">إلغاء التنزيل</string>
-    <string name="summary_model_delete">حذف نموذج التلخيص</string>
-    <string name="summary_model_discard">حذف الملف غير المكتمل</string>
-    <string name="summary_model_discard_subtitle">يحرر مساحة %1$.1f جيجابايت</string>
-    <string name="summary_model_download">تنزيل نموذج التلخيص</string>
-    <string name="summary_model_download_subtitle">%1$.1f جيجابايت</string>
-    <string name="summary_model_downloading">جارٍ التنزيل… %1$d%%</string>
-    <string name="summary_model_failed">تعذر اكتمال التنزيل، يرجى المحاولة مجددًا.</string>
-    <string name="summary_model_failed_space">لا توجد مساحة كافية على الهاتف. يرجى تحرير بعض المساحة والمحاولة مجددًا.</string>
-    <string name="summary_model_failed_verify">ملف التنزيل تالف وتم حذفه تلقائيًا. يرجى إعادة التنزيل.</string>
-    <string name="summary_model_installed">مُنزَّل وجاهز للاستخدام</string>
-    <string name="summary_model_licence">يعتمد نموذج التلخيص على Gemma 4 من Google، والمتاح بترخيص Apache 2.0 مفتوح المصدر. يتم تنزيله بشكل مستقل ومباشر.</string>
-    <string name="summary_model_resume">استئناف التنزيل</string>
-    <string name="summary_model_resume_subtitle">تم تنزيل %1$.1f جيجابايت من أصل %2$.1f جيجابايت</string>
-    <string name="summary_model_waiting">في انتظار اتصال Wi-Fi</string>
-    <string name="summary_requirements_body">تُكتب الملخصات على هاتفك، لا يتم إرسال أي شيء إلى أي مكان. يتطلب ذلك تنزيل %1$.1f جيجابايت وحوالي %2$.1f جيجابايت من الذاكرة أثناء التشغيل، لذا فهو يحتاج إلى هاتف حديث مع مساحة احتياطية. تستغرق المكالمة القصيرة دقيقة أو دقيقتين.</string>
-    <string name="summary_requirements_cancel">ليس الآن</string>
-    <string name="summary_requirements_continue">تنزيل</string>
-    <string name="summary_requirements_dont_ask">لا تظهر هذا مرة أخرى</string>
-    <string name="summary_requirements_download">%1$.1f جيجابايت للتنزيل</string>
-    <string name="summary_requirements_heading">قبل التنزيل</string>
-    <string name="summary_requirements_memory">حوالي %1$.1f جيجابايت من الذاكرة أثناء التشغيل</string>
-    <string name="summary_requirements_phone">يحتاج إلى هاتف حديث مع مساحة احتياطية. على هاتف أقدم قد يكون بطيئًا أو يفشل.</string>
-    <string name="summary_requirements_private">كل شيء يحدث على هاتفك. لا يتم إرسال أي شيء إلى أي مكان.</string>
-    <string name="summary_requirements_time">حوالي دقيقة أو دقيقتين لمكالمة قصيرة، أطول للمكالمات الطويلة</string>
-    <string name="summary_requirements_title">ماذا يتطلب هذا</string>
-    <string name="summary_requirements_toggle_description">إظهار تكلفة نموذج التلخيص قبل تنزيلها</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="support_appeal_body">أعتني بـ CallVault في وقت فراغي. بدأ كنسخة متفرعة (fork) من ShizuCallRecorder من تطوير kitsumed، وقد نما كثيرًا منذ ذلك الحين. مجاني ومفتوح المصدر وبدون إعلانات وبدون تتبع. إذا كان مفيدًا لك، فإن إكرامية صغيرة تساعدني على الاستمرار. شكرًا! 🙏</string>
     <string name="support_appeal_title">إكرامية لـ CallVault ☕</string>
     <string name="support_not_now">ليس الآن</string>
@@ -737,101 +719,101 @@
     <string name="transcript_speakers_swap">تبديل</string>
     <string name="transcript_speakers_swap_names">تبديل الأسماء</string>
     <string name="transcript_speakers_which_is_you">من هو أنت؟</string>
-    <string name="transcription_ask_language_subtitle">اختر اللغة لكل تسجيل بدلاً من استخدام اللغة المذكورة أعلاه دائمًا. ينطبق ذلك على هذا التسجيل فقط.</string>
-    <!-- Where to transcribe: on this phone or with the user's own cloud key (issue #48). No prices anywhere. -->
-    <string name="transcription_where_title">مكان التفريغ الصوتي</string>
-    <string name="transcription_where_on_device">على هذا الهاتف</string>
-    <string name="transcription_where_on_device_desc">خاص. أبطأ: نحو دقيقة ونصف لكل دقيقة من المكالمة.</string>
-    <string name="transcription_where_groq_desc">سريع: عادةً ثوانٍ لكل مكالمة.</string>
-    <string name="transcription_where_openrouter_desc">مفتاح واحد لخدمات كثيرة. Microsoft MAI-Transcribe.</string>
-    <string name="transcription_where_custom">مخصص (متقدم)</string>
-    <string name="transcription_where_custom_desc">أي خادم متوافق مع OpenAI.</string>
-    <string name="transcription_where_custom_service">خادمك</string>
-    <string name="transcription_where_recommended">مُوصى به</string>
-    <string name="transcription_cloud_key_label">مفتاحك لدى %1$s</string>
-    <string name="transcription_cloud_key_label_custom">مفتاح خادمك</string>
-    <string name="transcription_cloud_key_show">إظهار المفتاح</string>
-    <string name="transcription_cloud_key_hide">إخفاء المفتاح</string>
-    <string name="transcription_cloud_test">اختبار</string>
-    <string name="transcription_cloud_testing">جارٍ الاختبار…</string>
-    <string name="transcription_cloud_get_key">احصل على مفتاح من %1$s</string>
-    <string name="transcription_cloud_custom_url">عنوان الخادم</string>
-    <string name="transcription_cloud_custom_url_hint">https://… (الجزء الذي يسبق /audio/transcriptions)</string>
-    <string name="transcription_cloud_custom_url_invalid">استخدم عنوانًا يبدأ بـ http(s)://.</string>
-    <string name="transcription_cloud_custom_model">النموذج</string>
-    <string name="transcription_cloud_mobile_data">السماح باستخدام بيانات الجوال</string>
-    <string name="transcription_cloud_mobile_data_desc">عند الإيقاف، تنتظر المكالمات شبكة Wi-Fi قبل إرسالها.</string>
-    <string name="transcription_cloud_privacy_note">يُرسَل صوت المكالمة إلى %1$s لتحويله إلى نص. يعود النص إلى هذا الهاتف، وتنطبق شروط الخصوصية لدى %1$s. عبر Wi-Fi فقط ما لم تسمح باستخدام بيانات الجوال.</string>
-    <string name="transcription_cloud_consent_title">هل تريد إرسال صوت المكالمات إلى %1$s؟</string>
-    <string name="transcription_cloud_consent_body">عند تحويل مكالمة إلى نص، يُرسَل صوتها إلى %1$s مع مفتاحك، ويعود النص إلى هذا الهاتف. تنطبق شروط الخصوصية لدى %1$s. تبقى الملخصات على هذا الهاتف.</string>
-    <string name="transcription_cloud_consent_confirm">استخدام %1$s</string>
-    <string name="transcription_cloud_test_ok">المفتاح يعمل.</string>
-    <string name="transcription_cloud_test_bad_key">رُفض المفتاح. تحقق منه وحاول مرة أخرى.</string>
-    <string name="transcription_cloud_test_no_timings">ردّت الخدمة دون توقيتات، لذا لا يمكن استخدامها. جرّب نموذجًا آخر.</string>
-    <string name="transcription_cloud_test_unreachable">تعذّر الوصول إلى الخدمة. تحقق من الاتصال وحاول مرة أخرى.</string>
-    <string name="transcription_cloud_test_refused">رفضت الخدمة الطلب. تحقق من العنوان والنموذج.</string>
-    <string name="transcription_cloud_test_no_key">الصق مفتاحًا أولاً.</string>
-    <string name="transcription_cloud_test_incomplete">أدخل عنوان الخادم والنموذج أولاً.</string>
-    <string name="transcription_ask_language_title">اسأل عن اللغة في كل مرة</string>
-    <string name="transcription_batch_label">المكالمات لكل تشغيل</string>
-    <string name="transcription_batch_no_limit">بلا حدود</string>
-    <string name="transcription_charging_subtitle">تفريغ الصوت يستهلك طاقة المعالج بكثافة وقد يستنزف البطارية.</string>
-    <string name="transcription_charging_title">فقط أثناء الشحن</string>
-    <string name="transcription_confirm_subtitle">يظهر المدة التي سيستغرقها ويسمح لك بالإلغاء.</string>
-    <string name="transcription_confirm_title">اسأل قبل التفريغ الصوتي</string>
-    <string name="transcription_hour_label">ساعة</string>
-    <string name="transcription_language_arabic">العربية</string>
-    <string name="transcription_language_auto">الكشف تلقائياً</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="language_search_placeholder">البحث عن لغة</string>
     <string name="language_search_clear">مسح البحث</string>
     <string name="language_search_no_match">لا توجد لغة مطابقة</string>
-    <string name="transcription_language_auto_hint">الكشف غير موثوق به للغات التي لا تكتب بالحروف اللاتينية؛ غالبًا ما تعود العبرية والعربية والروسية والصينية مكتوبة بأحرف إنجليزية، أو ككتلة نصية طويلة. سمِ اللغة إذا استطعت.</string>
-    <string name="transcription_language_chinese">الصينية</string>
-    <string name="transcription_language_english">الإنجليزية</string>
-    <string name="transcription_language_french">الفرنسية</string>
-    <string name="transcription_language_german">الألمانية</string>
-    <string name="transcription_language_greek">اليونانية</string>
-    <string name="transcription_language_hebrew">العبرية</string>
-    <string name="transcription_language_hungarian">المجرية</string>
-    <string name="transcription_language_italian">الإيطالية</string>
-    <string name="transcription_language_label">اللغة</string>
-    <string name="transcription_language_persian">الفارسية</string>
-    <string name="transcription_language_urdu">الأردية</string>
-    <string name="transcription_language_bengali">البنغالية</string>
-    <string name="transcription_language_polish">البولندية</string>
-    <string name="transcription_language_portuguese">البرتغالية</string>
-    <string name="transcription_language_russian">الروسية</string>
-    <string name="transcription_language_spanish">الإسبانية</string>
-    <string name="transcription_language_ukrainian">الأوكرانية</string>
-    <string name="transcription_language_vietnamese">الفيتنامية</string>
-    <string name="transcription_minute_label">دقيقة</string>
-    <string name="transcription_mode_after_each_call">بعد كل مكالمة</string>
-    <string name="transcription_mode_automatic">مجدول</string>
-    <string name="transcription_mode_label">تفريغ صوتي</string>
-    <string name="transcription_mode_manual">يدويًا</string>
-    <string name="transcription_model_best">أعلى جودة (موصى به)</string>
-    <string name="transcription_model_best_small_download">أعلى جودة بحجم أصغر</string>
-    <string name="transcription_model_persian">مُحسَّن للفارسية</string>
-    <string name="transcription_model_persian_licence">أفضل جودة، مُدرَّب على الكلام الفارسي. نموذج Whisper large-v3-turbo Persian من givia، بترخيص CC BY 4.0، ومضغوط لـ whisper.cpp. يُنزَّل بشكل منفصل ولا يُضمَّن في CallVault.</string>
-    <string name="transcription_model_delete">حذف النموذج</string>
-    <string name="transcription_model_download">تنزيل النموذج</string>
-    <string name="transcription_model_download_subtitle">%1$d ميغابايت</string>
-    <string name="transcription_model_downloading">جارٍ التنزيل… %1$d%%</string>
-    <string name="transcription_model_failed">تعذر اكتمال التنزيل، يرجى المحاولة مجددًا.</string>
-    <string name="transcription_model_failed_space">لا توجد مساحة كافية. يرجى توفير مساحة تخزين ثم المحاولة مجددًا.</string>
-    <string name="transcription_model_failed_verify">ملف التنزيل تالف وتم حذفه. يرجى إعادة المحاولة.</string>
-    <string name="transcription_model_installed">مُنزَّل وجاهز للاستخدام</string>
-    <string name="transcription_model_label">النموذج</string>
-    <string name="transcription_model_resume">استئناف التنزيل</string>
-    <string name="transcription_model_resume_subtitle">تم تنزيل %1$d ميغابايت من أصل %2$d ميغابايت</string>
-    <string name="transcription_model_small">سريع وخفيف (جودة أساسية)</string>
-    <string name="transcription_model_waiting">في انتظار شبكة Wi-Fi</string>
-    <string name="transcription_note_after_each_call">يتم تحويل كل مكالمة إلى نص بمجرد انتهائها. لا يتم المساس بالمكالمات القديمة؛ قم بتفريغها صوتيًا من الزر الموجود على التسجيل.</string>
-    <string name="transcription_note_automatic">يتم تحويل المكالمات التي لا تحتوي على نص بعد إلى نص في الوقت المختار. تستغرق مكالمة مدتها 30 دقيقة حوالي 30 دقيقة.</string>
-    <string name="transcription_note_manual">يتم إنشاء النصوص فقط عندما تطلب ذلك، من الزر الموجود على التسجيل.</string>
-    <string name="transcription_time_label">التشغيل في</string>
-    <string name="transcription_warning_confirm">تشغيله</string>
-    <string name="transcription_warning_title">عملية التفريغ الصوتي تستهلك موارد المعالج</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="transcripts_search_hint">البحث عما قيل</string>
     <string name="update_popup_later">لاحقًا</string>
     <string name="update_popup_text">يتوفر إصدار جديد جاهز للتثبيت. يحافظ التحديث على موثوقية التسجيل ويجلب أحدث الإصلاحات.</string>
@@ -916,20 +898,20 @@
     <string name="wizard_storage_subtitle">اختر مكان تخزين تسجيلاتك. يمكنك تغيير هذا لاحقًا في الإعدادات.</string>
     <string name="wizard_storage_title">مكان حفظ التسجيلات</string>
     <string name="wizard_title">إعداد CallVault</string>
-    <string name="wizard_transcription_background_note">يستمر كلا التنزيلين في الخلفية. يمكنك المتابعة وإنهاء الإعداد الآن. تُظهر إعدادات CallVault نفس التقدم بعد ذلك.</string>
-    <string name="wizard_transcription_language_note">تم التعيين على اللغة التي تم ضبط هذا الهاتف عليها. تسميتها أكثر موثوقية بكثير من ترك التطبيق يخمن، ولا يزال بإمكانك اختيار لغة مختلفة لكل مكالمة لاحقًا.</string>
-    <string name="wizard_transcription_line">حوّل المكالمات إلى نص على هذا الهاتف.</string>
-    <string name="wizard_transcription_model_note">يحتاج التفريغ الصوتي إلى نموذج التعرف الصوتي على الهاتف أولاً: %1$s يبلغ حجمه %2$d ميجابايت، و%3$s يبلغ حجمه %4$d ميجابايت. يستغرق تفريغ مكالمة صوتيًا بعد ذلك تقريبًا مدة المكالمة ويعمل على معالج الجهاز بكثافة.</string>
-    <string name="wizard_transcription_model_size">%1$s بحجم %2$d ميجابايت</string>
-    <string name="wizard_transcription_model_sizes_note">يحتاج التفريغ الصوتي إلى نموذج التعرف الصوتي على الهاتف أولاً: %1$s. يستغرق تفريغ مكالمة صوتيًا بعد ذلك تقريبًا مدة المكالمة ويعمل على معالج الجهاز بكثافة.</string>
-    <string name="wizard_transcription_subtitle">يمكن لـ CallVault تحويل تسجيل إلى نص على الهاتف نفسه، وكتابة ملخص قصير منه، لا يتم إرسال أي شيء إلى أي مكان. اختر متى يحدث ذلك، وما هي لغة مكالماتك، وقم بتنزيل ما يحتاجه.</string>
-    <string name="wizard_transcription_summary_body">بمجرد أن تحتوي المكالمة على نص، يمكن لـ CallVault أيضًا كتابة ملخص قصير لها؛ على الهاتف، مثل أي شيء آخر هنا.</string>
-    <string name="wizard_transcription_summary_heading">الملخصات</string>
-    <string name="wizard_transcription_title">تحويل المكالمات إلى نص</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="wizard_updates_line">كيف يجد CallVault الإصدارات الجديدة.</string>
     <string name="wizard_updates_subtitle">لا يتوفر CallVault في متجر تطبيقات، لذا فإنه يتحقق من GitHub بحثًا عن إصدارات جديدة بنفسه.</string>
     <string name="wizard_updates_title">البقاء على اطلاع</string>
-    <!-- Transcribe again (#72) -->
+    
     <string name="transcribe_again_title">إعادة التفريغ؟</string>
     <string name="transcribe_again_message_one">سيُعاد تفريغ %1$s. إذا فشل التشغيل الجديد أو أُوقف، يُحتفظ بالنص الحالي.</string>
     <string name="transcribe_again_message_many">النصوص المراد إعادتها: %1$d. إذا فشل تشغيل أو أُوقف، يبقى ذلك النص كما هو.</string>

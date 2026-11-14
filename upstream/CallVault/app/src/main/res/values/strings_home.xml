@@ -138,7 +138,7 @@
     <string name="settings_merge_keep_originals_description">After merging, leave the calls it was made from on the phone as well. Off by default, so a merge leaves one recording. Taking a merged call apart works either way.</string>
     <string name="settings_merge_keep_originals_title">Keep originals after merging</string>
     <string name="unmerge_confirm">Un-merge</string>
-    <string name="unmerge_message">It becomes these calls again, each with the transcript and marks it had:</string>
+    <string name="unmerge_message">It becomes these calls again, each with its recording details and marks it had:</string>
     <string name="unmerge_title">Un-merge this call?</string>
     <plurals name="merge_row_badge">
         <item quantity="one">%1$d call</item>
@@ -310,48 +310,48 @@
     <!-- Home: the hub of cards, and the two sections its cards open -->
     <string name="home_hub_library_title">Library</string>
     <string name="home_hub_recordings_body">Every call CallVault has recorded.</string>
-    <string name="home_hub_transcripts_body">Your calls as words — and any audio you bring.</string>
-    <string name="home_hub_summaries_body">AI summaries, written on your phone.</string>
-    <string name="home_transcripts_title">Transcripts</string>
-    <string name="home_summaries_title">Summaries</string>
-    <string name="home_transcripts_count">%1$d transcribed</string>
-    <string name="home_summaries_count">%1$d summarised</string>
-    <string name="home_transcripts_empty_title">Nothing transcribed yet</string>
-    <string name="home_transcripts_empty_hint">Ask for a transcript from a recording\'s menu, or tap Import to bring in an audio file. Either one appears here once it is written.</string>
-    <string name="home_summaries_empty_title">Nothing summarised yet</string>
-    <string name="home_summaries_empty_hint">Open a call that has a transcript and ask for a summary; it appears here once it is written.</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     <!-- Transcripts: the two headings above the finished transcripts -->
-    <string name="transcripts_working_header">Being transcribed</string>
-    <string name="transcripts_failed_header">Didn\'t finish</string>
-    <string name="transcripts_failed_hint">Tap one to try it again.</string>
-    <string name="transcripts_waiting_header">Waiting to be transcribed</string>
-    <string name="transcripts_waiting_hint">You shared these to be read, not to keep. Tap one to start, or open it to listen to it or delete it.</string>
+    
+    
+    
+    
+    
     <!-- Summaries: the two headings above the finished summaries -->
-    <string name="summaries_working_header">Being summarised</string>
-    <string name="summaries_failed_header">Didn\'t finish</string>
-    <string name="summaries_failed_hint">Open one to ask for it again.</string>
+    
+    
+    
     <!-- Transcripts: bringing in audio CallVault did not record -->
-    <string name="transcripts_import_title">Import audio</string>
-    <string name="transcripts_import_working">Importing…</string>
-    <string name="transcripts_import_fab">Import</string>
+    
+    
+    
     <string name="import_sheet_keep">Keep the audio</string>
     <string name="import_sheet_keep_hint">Listed with your recordings</string>
-    <string name="import_sheet_transcript_only">Transcript only</string>
-    <string name="import_sheet_transcript_only_hint">The audio is deleted afterwards</string>
+    
+    
     <string name="import_failed_title">Couldn\'t import that file</string>
     <string name="import_failed_not_audio">CallVault can\'t read that kind of file. Try an .opus, .ogg, .m4a, .mp3 or .wav recording.</string>
-    <string name="import_failed_empty">That file is empty, so there would be nothing to transcribe.</string>
+    
     <string name="import_failed_no_folder">There\'s no recordings folder to keep it in. Choose one in Settings, then try again.</string>
     <string name="import_failed_copy">The file couldn\'t be written into your recordings folder. Check the phone has space and that the folder is still available.</string>
-    <string name="import_failed_undecodable">This phone can\'t read the audio inside that file, so it could never be transcribed. It may be damaged, or in a format Android doesn\'t decode.</string>
+    
     <string name="home_row_imported">Imported</string>
     <string name="home_row_text_only">Text only</string>
     <!-- Share sheet: audio sent to CallVault from another app -->
     <string name="share_import_label">Import audio</string>
     <string name="share_import_working_body">Copying it in and checking this phone can read it.</string>
     <string name="share_import_done_title">Added to your recordings</string>
-    <string name="share_import_done_body">It\'s in CallVault now. Open it to listen, or to ask for a transcript.</string>
+    
     <string name="share_import_open">Open</string>
     <string name="share_import_open_app">Open CallVault</string>
     <string name="share_import_close">Close</string>
@@ -362,14 +362,14 @@
     <string name="share_import_choice_unnamed">The shared audio</string>
     <string name="import_choice_keep">Import &amp; transcribe</string>
     <string name="import_choice_keep_hint">Keeps the audio in your recordings and transcribes it.</string>
-    <string name="import_choice_transcribe_only">Transcribe only</string>
-    <string name="import_choice_transcribe_only_hint">Transcribes it, then deletes the audio. It never appears in your recordings — only the words, under Transcripts.</string>
-    <string name="share_import_queued_keep_title">Added, and queued</string>
-    <string name="share_import_queued_keep_body">It\'s in your recordings. The transcript appears under Transcripts when it\'s done.</string>
-    <string name="share_import_queued_only_title">Queued for transcription</string>
-    <string name="share_import_queued_only_body">You\'ll find the words under Transcripts. The audio is deleted as soon as the transcript is stored.</string>
-    <string name="share_import_kept_title">Saved, but not transcribed</string>
-    <string name="share_import_kept_body">It\'s in your recordings. You can start the transcript from there whenever you like.</string>
-    <string name="share_import_kept_only_body">It\'s waiting under Transcripts. Start it there whenever you like, or delete it from the same place.</string>
-    <string name="share_import_no_model">There\'s no transcription model installed yet, so CallVault can\'t read this. The audio was saved — install a model in Settings, then start it from Transcripts.</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </resources>

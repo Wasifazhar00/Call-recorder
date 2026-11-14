@@ -104,7 +104,7 @@
         <item quantity="one">%1$d فایل ضبط‌شده</item>
         <item quantity="other">%1$d فایل ضبط‌شده</item>
     </plurals>
-    <!-- Transcription (on-device speech to text) -->
+    
 
 
 
@@ -112,20 +112,14 @@
         <item quantity="one">%1$d برنامه ضبط نخواهد شد</item>
         <item quantity="other">%1$d برنامه ضبط نخواهد شد</item>
     </plurals>
-    <plurals name="library_bulk_delete_transcripts_title">
-        <item quantity="one">%1$d رونوشت حذف شود؟</item>
-        <item quantity="other">%1$d رونوشت حذف شود؟</item>
-    </plurals>
-    <plurals name="library_bulk_delete_summaries_title">
-        <item quantity="one">%1$d خلاصه حذف شود؟</item>
-        <item quantity="other">%1$d خلاصه حذف شود؟</item>
-    </plurals>
+    
+    
     <plurals name="library_bulk_delete_text_only_warning">
         <item quantity="one">%1$d مورد از این‌ها هیچ فایل ضبط‌شده‌ای پشتش ندارد، پس کلماتش تنها چیزی است که باقی مانده. آن بخش قابل بازگشت نیست.</item>
         <item quantity="other">%1$d مورد از این‌ها هیچ فایل ضبط‌شده‌ای پشتشان ندارند، پس کلماتشان تنها چیزی است که باقی مانده. آن بخش قابل بازگشت نیست.</item>
     </plurals>
 
-    <!-- The search line at the head of the Recordings, Transcripts and Summaries pages. %1$s = what was typed. -->
+    
     <!-- Master recording On/Off switch -->
 
     <!-- New Settings screen (settings per page, step 2). -->
@@ -160,7 +154,7 @@
     <string name="disclaimer_introduction">لطفاً پیش از ادامه، سلب مسئولیت زیر را با دقت بخوانید.</string>
     <string name="disclaimer_must_read">باید سلب مسئولیت را بخوانید.</string>
     <string name="disclaimer_title">به CallVault خوش آمدید</string>
-    <string name="export_heading_transcript">رونوشت</string>
+    
     <string name="folder_cloud_rejected">پوشه‌های ابری (مانند Google Drive) را نمی‌توان برای ضبط استفاده کرد. فضای ذخیره‌سازی روی دستگاه را انتخاب کنید — برای کپی‌های ابری از گزینه پشتیبان‌گیری Google Drive استفاده کنید.</string>
     <string name="folder_drive_overlaps_recordings">پوشه Drive نمی‌تواند پوشه ضبط‌ها باشد. یک پوشه Google Drive انتخاب کنید.</string>
     <string name="folder_drive_overlap_warning">این پوشه ضبط‌های شماست (یا با آن هم‌پوشانی دارد)، بنابراین چیزی در Drive کپی نمی‌شود. یک پوشه Google Drive انتخاب کنید.</string>
@@ -186,12 +180,12 @@
     <string name="general_stop">توقف</string>
     <string name="general_system_limitation">محدودیت سیستم</string>
     <string name="general_system_limitation_message">CallVault روی این دستگاه کار نمی‌کند چون برنامه شل شما مجوزهای لازم را ندارد:\n\n%1$s\n\nکاری از دست شما برنمی‌آید؛ برنامه نمی‌تواند کار کند و اکنون بسته می‌شود.</string>
-    <string name="heavy_work_backing_up_model">پشتیبان‌گیری از یک مدل</string>
+    
     <string name="heavy_work_channel_name">پردازش پس‌زمینه</string>
-    <string name="heavy_work_importing_model">درون‌ریزی یک مدل</string>
+    
     <string name="heavy_work_notification_text">ممکن است گوشی شما در حین این کار گرم شود.</string>
-    <string name="heavy_work_summarising">در حال خلاصه‌سازی یک فایل ضبط‌شده</string>
-    <string name="heavy_work_transcribing">در حال رونویسی یک فایل ضبط‌شده</string>
+    
+    
     <string name="drive_copy_title">در حال کپی فایل‌های ضبط‌شده در Drive</string>
     <string name="drive_copy_progress">%1$d از %2$d کپی شد</string>
     <string name="drive_copy_stop">فعلاً توقف</string>
@@ -264,12 +258,12 @@
     <string name="honor_dialer_hint">برنامه تلفن فقط وقتی می‌تواند ضبط را از تاریخچه تماس‌ها پخش کند که در %1$s با قالب .m4a ذخیره شده باشد. در CallVault، %2$s را روی همین پوشه و %3$s را روی AAC تنظیم کنید.</string>
     <string name="honor_dialer_missing">هنوز باید تغییر کند: %1$s</string>
     <string name="honor_dialer_ready">✓ آماده: پوشه و قالب تنظیم شده‌اند.</string>
-    <string name="library_bulk_delete_summaries_message">خلاصه‌ها حذف خواهند شد. رونوشت‌ها و فایل‌های ضبط‌شده نگه داشته می‌شوند.</string>
-    <string name="library_bulk_delete_transcripts_message">کلمات حذف خواهند شد. فایل‌های ضبط‌شده نگه داشته می‌شوند و می‌توانید بعداً دوباره آن‌ها را رونویسی کنید.</string>
+    
+    
     <string name="library_nothing_to_share">دیگر چیزی برای اشتراک‌گذاری آنجا نیست.</string>
     <string name="library_row_save">ذخیره به‌صورت فایل</string>
-    <string name="library_summary_delete_confirm_message">خلاصه %1$s حذف خواهد شد. رونوشت و فایل ضبط‌شده نگه داشته می‌شوند و می‌توانید دوباره آن را بنویسانید.</string>
-    <string name="library_summary_delete_confirm_title">این خلاصه حذف شود؟</string>
+    
+    
     <string name="list_separator">"، "</string>
     <string name="min_duration_caption">یک شماره‌گیری اشتباه یا تماسی که بی‌پاسخ زنگ خورده، همان لحظه که تمام شود حذف می‌شود، پیش از آنکه رونویسی یا بارگذاری شود. چیزی که قبلاً ضبط شده تحت تأثیر قرار نمی‌گیرد.</string>
     <string name="min_duration_label">دور انداختن فایل‌های ضبط‌شده کوتاه</string>
@@ -296,21 +290,21 @@
     <string name="mode_switch_voip_not_armed">تغییر انجام شد، اما ضبط تماس درون‌برنامه‌ای آماده نشد. تماس‌های تلفنی ضبط می‌شوند؛ تماس‌های درون‌برنامه‌ای شاید تا زمانی که CallVault را دوباره باز نکنید ضبط نشوند.</string>
     <string name="mode_switch_working">در حال متوقف کردن ضبط‌کننده قبلی و اجرای ضبط‌کننده جدید. این چند ثانیه طول می‌کشد.</string>
     <string name="model_backing_up">در حال پشتیبان‌گیری… %1$d%%</string>
-    <string name="model_backup">پشتیبان‌گیری</string>
-    <string name="model_backup_done">ذخیره شد</string>
-    <string name="model_backup_failed">پشتیبان‌گیری کامل نشد. دوباره امتحان کنید.</string>
-    <string name="model_backup_info">فایل مدل را در پوشه‌ای که انتخاب می‌کنید ذخیره می‌کند. پس از نصب دوباره یا روی گوشی جدید، به جای دانلود دوباره، با همان فایل درون‌ریزی کنید.</string>
-    <string name="model_backup_subtitle">یک نسخه ذخیره کنید که پس از نصب دوباره بماند</string>
-    <string name="model_backup_waiting">در حال آماده‌سازی برای پشتیبان‌گیری…</string>
-    <string name="model_import">درون‌ریزی از فایل</string>
-    <string name="model_import_failed_other_model">این فایل مدل دیگری (%1$s) است. ابتدا آن مدل را انتخاب کنید، سپس درون‌ریزی کنید.</string>
-    <string name="model_import_failed_space">فضای خالی کافی برای درون‌ریزی وجود ندارد.</string>
-    <string name="model_import_failed_unreadable">خواندن این فایل ممکن نشد. دوباره انتخابش کنید.</string>
-    <string name="model_import_failed_wrong_file">این فایل درست نیست. %1$s را انتخاب کنید.</string>
-    <string name="model_import_info">فایل رسمی مدل را انتخاب کنید (%1$s، %2$d مگابایت). CallVault پیش از استفاده بررسی می‌کند که دقیقاً همان فایل باشد و نسخهٔ شما را سر جایش نگه می‌دارد.</string>
-    <string name="model_import_subtitle">از نسخه‌ای که از قبل دارید استفاده کنید</string>
-    <string name="model_import_waiting">در حال آماده‌سازی برای درون‌ریزی…</string>
-    <string name="model_importing">در حال درون‌ریزی… %1$d%%</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="note_saved">ذخیره شد</string>
     <string name="note_saving">در حال ذخیره…</string>
     <string name="notif_cut_off_saved_text">گوشی شما CallVault را در حین یک تماس بست. آنچه پیش از آن ضبط شده بود به‌صورت %1$s ذخیره شد.</string>
@@ -382,7 +376,7 @@
     <string name="playback_marked_moments">لحظه‌های نشان‌گذاری‌شده</string>
     <string name="playback_note_hint">این تماس درباره چه بود…</string>
     <string name="playback_note_title">یادداشت</string>
-    <string name="playback_open_transcript">رونوشت را بخوان</string>
+    
     <string name="playback_skip_back">۱۰ ثانیه به عقب</string>
     <string name="playback_skip_forward">۱۰ ثانیه به جلو</string>
     <string name="playback_speed">%1$s×</string>
@@ -515,7 +509,7 @@
     <string name="settings_group_model_and_language">مدل و زبان</string>
     <string name="settings_group_save_and_sync">ذخیره و همگام‌سازی</string>
     <string name="settings_group_sound_and_names">صدا و نام فایل‌ها</string>
-    <string name="settings_group_when_to_transcribe">زمان رونویسی</string>
+    
     <string name="settings_handoff_persist_description">ضبط را حتی اگر دستیار پس‌زمینه در میانه تماس از کار بیفتد (مثلاً وقتی صفحه را قفل می‌کنید) ادامه می‌دهد.</string>
     <string name="settings_handoff_persist_label">ادامه ضبط اگر دستیار متوقف شود</string>
     <string name="settings_hide_recordings_desc">ضبط‌هایتان را از پخش‌کننده‌های موسیقی، گالری‌ها و دیگر برنامه‌های رسانه دور نگه دارید</string>
@@ -538,7 +532,7 @@
     <string name="settings_info_about">درباره %1$s</string>
     <string name="settings_info_got_it">متوجه شدم</string>
     <string name="settings_language">زبان</string>
-    <string name="settings_language_change_in_transcripts">در تنظیمات رونوشت‌ها تغییر می‌کند</string>
+    
     <string name="settings_language_system">پیش‌فرض سیستم</string>
     <string name="settings_link_all_settings">همه تنظیمات</string>
     <string name="settings_link_share_debug_report">اشتراک‌گذاری گزارش اشکال‌زدایی</string>
@@ -551,7 +545,7 @@
         <item quantity="one">%d مورد</item>
         <item quantity="other">%d مورد</item>
     </plurals>
-    <string name="summary_requirements_toggle_label">نمایش پیش‌نیازها</string>
+    
     <string name="settings_sim_label_label">نمایش سیم‌کارتی که هر تماس از آن استفاده کرد</string>
     <string name="settings_sim_label_desc">برای گوشی‌های دو سیم‌کارته: نامی را که به سیم‌کارت داده‌اید نشان می‌دهد، یا سیم 1 / سیم 2</string>
     <string name="sim_label_word">سیم</string>
@@ -579,7 +573,7 @@
     <string name="settings_section_reliability">قابلیت اطمینان</string>
     <string name="settings_section_security">امنیت</string>
     <string name="settings_section_storage">فضای ذخیره‌سازی</string>
-    <string name="settings_section_transcription">رونویسی</string>
+    
     <string name="settings_section_updates">به‌روزرسانی‌ها</string>
     <string name="settings_select_contacts">انتخاب مخاطبین (%1$d)</string>
     <string name="settings_select_contacts_incoming">انتخاب مخاطبین ورودی</string>
@@ -622,11 +616,11 @@
     <string name="settings_theme_mode_light">روشن</string>
     <string name="settings_theme_mode_system">پیش‌فرض سیستم</string>
     <string name="settings_title_recordings">تنظیمات فایل‌های ضبط‌شده</string>
-    <string name="settings_title_summaries">تنظیمات خلاصه‌ها</string>
-    <string name="settings_title_transcripts">تنظیمات رونوشت‌ها</string>
-    <string name="settings_transcript_sidecar_desc">نوشتن یک فایل متنی .md کنار هر ضبط</string>
-    <string name="settings_transcript_sidecar_hint">رونوشت، یادداشت‌ها و خلاصه را به‌صورت یک فایل متنی هم‌نام با فایل ضبط ذخیره می‌کند، بنابراین هنگام کپی کردن پوشه‌تان روی رایانه، متن همراه صوت باقی می‌ماند. با روشن کردن آن، موارد موجود هم ذخیره می‌شوند.</string>
-    <string name="settings_transcript_sidecar_label">ذخیره رونوشت و یادداشت‌ها در کنار فایل ضبط</string>
+    
+    
+    
+    
+    
     <string name="settings_unavailable_in_shizuku">در حالت Shizuku در دسترس نیست — این به ضبط‌کننده اختصاصی CallVault نیاز دارد.</string>
     <string name="settings_update_check_description">روزی یک‌بار، در GitHub به‌دنبال نسخه جدید بگرد.</string>
     <string name="settings_update_check_label">بررسی به‌روزرسانی‌ها</string>
@@ -680,58 +674,58 @@
     <string name="storage_target_both">دستگاه + Google Drive</string>
     <string name="storage_target_drive">فقط Google Drive</string>
     <string name="storage_target_local">فقط روی این دستگاه</string>
-    <string name="summaries_search_hint">جستجوی خلاصه‌ها</string>
-    <string name="summary_card_actions">کارهای انجام‌شدنی</string>
-    <string name="summary_card_blocked_empty">این رونوشت هیچ کلمه‌ای ندارد، پس چیزی برای خلاصه کردن نیست.</string>
-    <string name="summary_card_blocked_model">ابتدا خلاصه‌ساز را در تنظیمات دانلود کنید.</string>
-    <string name="summary_card_blocked_no_transcript">ابتدا این تماس را رونویسی کنید — خلاصه از روی رونوشت نوشته می‌شود.</string>
-    <string name="summary_card_blocked_summarising">یک تماس دیگر در حال خلاصه‌سازی است.</string>
-    <string name="summary_card_blocked_transcribing">در انتظار پایان رونویسی — این دو نمی‌توانند هم‌زمان از گوشی استفاده کنند.</string>
-    <string name="summary_card_blocked_unfinished">در انتظار پایان رونوشت.</string>
-    <string name="summary_card_create">این تماس را خلاصه کن</string>
-    <string name="summary_card_create_subtitle">روی گوشی شما نوشته می‌شود، حدود یکی دو دقیقه</string>
-    <string name="summary_card_decisions">تصمیم‌ها</string>
-    <string name="summary_card_facts">ارزش نگه‌داری</string>
-    <string name="summary_card_failed">آن یک خلاصه قابل‌استفاده تولید نکرد. می‌توانید دوباره تلاش کنید.</string>
-    <string name="summary_card_key_points">نکات کلیدی</string>
-    <string name="summary_card_provenance">ساخته‌شده از رونوشت</string>
-    <string name="summary_card_redo">دوباره بنویس</string>
-    <string name="summary_card_running">در حال خلاصه‌سازی… %1$d%%</string>
-    <string name="summary_card_stop">توقف</string>
-    <string name="summary_card_title">خلاصه</string>
-    <string name="summary_delete_confirm_body">این کار %1$.1f گیگابایت آزاد می‌کند. خلاصه‌هایی که قبلاً نوشته‌اید نگه داشته می‌شوند، اما برای نوشتن خلاصه‌های بیشتر باید دوباره آن را دانلود کنید.</string>
-    <string name="summary_delete_confirm_confirm">حذف</string>
-    <string name="summary_delete_confirm_title">خلاصه‌ساز حذف شود؟</string>
-    <string name="summary_discard_confirm_body">این کار %1$.1f گیگابایتی را که قبلاً دانلود شده دور می‌اندازد. شروع دوباره، همه آن را از ابتدا دریافت می‌کند.</string>
-    <string name="summary_discard_confirm_confirm">دور انداختن</string>
-    <string name="summary_discard_confirm_title">دانلود دور انداخته شود؟</string>
-    <string name="summary_model_cancel">لغو دانلود</string>
-    <string name="summary_model_delete">حذف خلاصه‌ساز</string>
-    <string name="summary_model_discard">دور انداختن آنچه دانلود شده</string>
-    <string name="summary_model_discard_subtitle">%1$.1f گیگابایت آزاد می‌کند</string>
-    <string name="summary_model_download">دانلود خلاصه‌ساز</string>
-    <string name="summary_model_download_subtitle">%1$.1f گیگابایت</string>
-    <string name="summary_model_downloading">در حال دانلود… %1$d%%</string>
-    <string name="summary_model_failed">دانلود کامل نشد. دوباره تلاش کنید.</string>
-    <string name="summary_model_failed_space">فضای آزاد کافی نیست. کمی فضا آزاد کنید و دوباره تلاش کنید.</string>
-    <string name="summary_model_failed_verify">دانلود آسیب دیده بود و کنار گذاشته شد. دوباره تلاش کنید.</string>
-    <string name="summary_model_installed">دانلود شد و آماده است</string>
-    <string name="summary_model_licence">خلاصه‌ساز، Gemma 4 از Google است که تحت مجوز Apache 2.0 استفاده می‌شود. به‌جای گنجانده شدن در CallVault، جداگانه دانلود می‌شود.</string>
-    <string name="summary_model_resume">ادامه دانلود</string>
-    <string name="summary_model_resume_subtitle">%1$.1f گیگابایت از %2$.1f گیگابایت قبلاً دانلود شده</string>
-    <string name="summary_model_waiting">در انتظار Wi-Fi</string>
-    <string name="summary_requirements_body">خلاصه‌ها روی گوشی شما نوشته می‌شوند — چیزی به جایی فرستاده نمی‌شود. این کار %1$.1f گیگابایت دانلود و حدود %2$.1f گیگابایت حافظه در حین اجرا هزینه دارد، بنابراین به یک گوشی جدید با فضای کافی نیاز دارد. یک تماس کوتاه یکی دو دقیقه طول می‌کشد.</string>
-    <string name="summary_requirements_cancel">حالا نه</string>
-    <string name="summary_requirements_continue">دانلود</string>
-    <string name="summary_requirements_dont_ask">دیگر این را نشان نده</string>
-    <string name="summary_requirements_download">%1$.1f گیگابایت برای دانلود</string>
-    <string name="summary_requirements_heading">پیش از دانلود</string>
-    <string name="summary_requirements_memory">حدود %1$.1f گیگابایت حافظه در حین اجرا</string>
-    <string name="summary_requirements_phone">به یک گوشی جدید با فضای کافی نیاز دارد. روی گوشی قدیمی‌تر ممکن است کند باشد یا ناموفق شود.</string>
-    <string name="summary_requirements_private">همه‌چیز روی گوشی شما اتفاق می‌افتد. چیزی به جایی فرستاده نمی‌شود.</string>
-    <string name="summary_requirements_time">تقریباً یکی دو دقیقه برای یک تماس کوتاه، بیشتر برای تماس طولانی</string>
-    <string name="summary_requirements_title">آنچه این نیاز دارد</string>
-    <string name="summary_requirements_toggle_description">پیش از دانلود خلاصه‌ساز، هزینه‌های آن را نشان بده</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="support_appeal_body">CallVault را در وقت آزادم نگهداری می‌کنم. این برنامه به‌صورت فورکی از ShizuCallRecorder ساخته kitsumed شروع شد و از آن زمان خیلی رشد کرده است. رایگان، متن‌باز، بدون تبلیغ، بدون ردیابی. اگر برایتان مفید است، یک انعام کوچک مرا سرِ پا نگه می‌دارد. ممنون! 🙏</string>
     <string name="support_appeal_title">انعامی برای CallVault ☕</string>
     <string name="support_not_now">حالا نه</string>
@@ -739,7 +733,7 @@
     <string name="tile_recording_stopped">متوقف</string>
     <string name="transcribe_confirm_dont_ask">دیگر نپرس</string>
     <string name="transcribe_long_call_line">این تماس %1$s است. در این گوشی، رونویسی حدود %2$s برابر مدت تماس طول می‌کشد — یعنی حدود %3$s.</string>
-    <string name="transcribe_confirm_message">رونویسی %1$s گوشی شما را مشغول نگه می‌دارد و باتری قابل‌توجهی مصرف می‌کند. می‌توانید هر زمان آن را متوقف کنید.\n\nاین پرسش را می‌توان دوباره در بخش رونویسی در تنظیمات روشن کرد.</string>
+    
     <string name="transcribe_confirm_title">این حدود %1$s طول می‌کشد</string>
     <string name="transcribe_confirm_title_first_run">اولی ممکن است کمی طول بکشد</string>
     <string name="transcribe_confirm_title_unknown">این تماس رونویسی شود؟</string>
@@ -790,102 +784,102 @@
     <string name="transcript_speakers_swap">جابه‌جایی</string>
     <string name="transcript_speakers_swap_names">جابه‌جایی نام‌ها</string>
     <string name="transcript_speakers_which_is_you">کدام‌یک شما هستید؟</string>
-    <string name="transcription_ask_language_subtitle">به‌جای استفاده همیشگی از زبان بالا، برای هر فایل ضبط‌شده زبان را انتخاب کنید. فقط برای همان فایل ضبط‌شده اعمال می‌شود.</string>
-    <!-- Where to transcribe: on this phone or with the user's own cloud key (issue #48). No prices anywhere. -->
-    <string name="transcription_where_title">محل رونویسی</string>
-    <string name="transcription_where_on_device">روی همین گوشی</string>
-    <string name="transcription_where_on_device_desc">خصوصی. کندتر: حدود یک دقیقه و نیم برای هر دقیقه تماس.</string>
-    <string name="transcription_where_groq_desc">سریع: معمولاً چند ثانیه برای هر تماس.</string>
-    <string name="transcription_where_openrouter_desc">یک کلید برای سرویس‌های زیاد. Microsoft MAI-Transcribe.</string>
-    <string name="transcription_where_custom">سفارشی (پیشرفته)</string>
-    <string name="transcription_where_custom_desc">هر سرور سازگار با OpenAI.</string>
-    <string name="transcription_where_custom_service">سرور شما</string>
-    <string name="transcription_where_recommended">پیشنهادی</string>
-    <string name="transcription_cloud_key_label">کلید شما برای %1$s</string>
-    <string name="transcription_cloud_key_label_custom">کلید سرور شما</string>
-    <string name="transcription_cloud_key_show">نمایش کلید</string>
-    <string name="transcription_cloud_key_hide">پنهان کردن کلید</string>
-    <string name="transcription_cloud_test">آزمایش</string>
-    <string name="transcription_cloud_testing">در حال آزمایش…</string>
-    <string name="transcription_cloud_get_key">دریافت کلید از %1$s</string>
-    <string name="transcription_cloud_custom_url">نشانی سرور</string>
-    <string name="transcription_cloud_custom_url_hint">https://… (بخش پیش از /audio/transcriptions)</string>
-    <string name="transcription_cloud_custom_url_invalid">از نشانی http(s):// استفاده کنید.</string>
-    <string name="transcription_cloud_custom_model">مدل</string>
-    <string name="transcription_cloud_mobile_data">اجازه استفاده از داده تلفن همراه</string>
-    <string name="transcription_cloud_mobile_data_desc">وقتی خاموش است، تماس‌ها پیش از ارسال منتظر Wi-Fi می‌مانند.</string>
-    <string name="transcription_cloud_privacy_note">صدای تماس برای رونویسی به %1$s فرستاده می‌شود. متن به همین گوشی برمی‌گردد و شرایط حریم خصوصی %1$s اعمال می‌شود. فقط با Wi-Fi، مگر اینکه داده تلفن همراه را مجاز کنید.</string>
-    <string name="transcription_cloud_consent_title">صدای تماس‌ها به %1$s فرستاده شود؟</string>
-    <string name="transcription_cloud_consent_body">وقتی تماسی رونویسی می‌شود، صدای آن همراه با کلید شما به %1$s فرستاده می‌شود و متن به همین گوشی برمی‌گردد. شرایط حریم خصوصی %1$s اعمال می‌شود. خلاصه‌ها روی همین گوشی می‌مانند.</string>
-    <string name="transcription_cloud_consent_confirm">استفاده از %1$s</string>
-    <string name="transcription_cloud_test_ok">کلید کار می‌کند.</string>
-    <string name="transcription_cloud_test_bad_key">کلید پذیرفته نشد. آن را بررسی کنید و دوباره امتحان کنید.</string>
-    <string name="transcription_cloud_test_no_timings">سرویس بدون زمان‌بندی پاسخ داد، پس قابل استفاده نیست. مدل دیگری را امتحان کنید.</string>
-    <string name="transcription_cloud_test_unreachable">دسترسی به سرویس ممکن نشد. اتصال را بررسی کنید و دوباره امتحان کنید.</string>
-    <string name="transcription_cloud_test_refused">سرویس درخواست را رد کرد. نشانی و مدل را بررسی کنید.</string>
-    <string name="transcription_cloud_test_no_key">اول یک کلید جای‌گذاری کنید.</string>
-    <string name="transcription_cloud_test_incomplete">اول نشانی سرور و مدل را وارد کنید.</string>
-    <string name="transcription_ask_language_title">هر بار زبان را بپرس</string>
-    <string name="transcription_batch_label">تماس در هر اجرا</string>
-    <string name="transcription_batch_no_limit">بدون محدودیت</string>
-    <string name="transcription_charging_subtitle">رونویسی از پردازنده به‌شدت استفاده می‌کند و باتری را تخلیه خواهد کرد.</string>
-    <string name="transcription_charging_title">فقط هنگام شارژ</string>
-    <string name="transcription_confirm_subtitle">نشان می‌دهد چقدر طول می‌کشد و به شما اجازه لغو می‌دهد.</string>
-    <string name="transcription_confirm_title">پیش از رونویسی بپرس</string>
-    <string name="transcription_hour_label">ساعت</string>
-    <string name="transcription_language_arabic">عربی</string>
-    <string name="transcription_language_auto">تشخیص خودکار</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="language_search_placeholder">جستجوی زبان</string>
     <string name="language_search_clear">پاک کردن جستجو</string>
     <string name="language_search_no_match">هیچ زبانی پیدا نشد</string>
-    <string name="transcription_language_auto_hint">تشخیص برای زبان‌هایی که با حروف لاتین نوشته نمی‌شوند قابل اعتماد نیست — عبری، عربی، روسی و چینی اغلب با حروف انگلیسی هجی‌شده برمی‌گردند، یا به‌صورت یک بلوک طولانی متن. اگر می‌توانید زبان را مشخص کنید.</string>
-    <string name="transcription_language_chinese">چینی</string>
-    <string name="transcription_language_english">انگلیسی</string>
-    <string name="transcription_language_french">فرانسوی</string>
-    <string name="transcription_language_german">آلمانی</string>
-    <string name="transcription_language_greek">یونانی</string>
-    <string name="transcription_language_hebrew">عبری</string>
-    <string name="transcription_language_hungarian">مجاری</string>
-    <string name="transcription_language_italian">ایتالیایی</string>
-    <string name="transcription_language_label">زبان</string>
-    <string name="transcription_language_persian">فارسی</string>
-    <string name="transcription_language_urdu">اردو</string>
-    <string name="transcription_language_bengali">بنگالی</string>
-    <string name="transcription_language_polish">لهستانی</string>
-    <string name="transcription_language_portuguese">پرتغالی</string>
-    <string name="transcription_language_russian">روسی</string>
-    <string name="transcription_language_spanish">اسپانیایی</string>
-    <string name="transcription_language_ukrainian">اوکراینی</string>
-    <string name="transcription_language_vietnamese">ویتنامی</string>
-    <string name="transcription_minute_label">دقیقه</string>
-    <string name="transcription_mode_after_each_call">پس از هر تماس</string>
-    <string name="transcription_mode_automatic">زمان‌بندی‌شده</string>
-    <string name="transcription_mode_label">رونویسی</string>
-    <string name="transcription_mode_manual">دستی</string>
-    <string name="transcription_model_best">بهترین کیفیت</string>
-    <string name="transcription_model_best_small_download">بهترین کیفیت، دانلود کوچک‌تر</string>
-    <string name="transcription_model_persian">ویژهٔ فارسی</string>
-    <string name="transcription_model_persian_licence">بهترین کیفیت، آموزش‌دیده با گفتار فارسی. مدل Whisper large-v3-turbo Persian از givia، با مجوز CC BY 4.0، کوانتیزه‌شده برای whisper.cpp. جداگانه دانلود می‌شود و همراه CallVault نیست.</string>
-    <string name="transcription_model_delete">حذف مدل</string>
-    <string name="transcription_model_download">دانلود مدل</string>
-    <string name="transcription_model_download_subtitle">%1$d مگابایت</string>
-    <string name="transcription_model_downloading">در حال دانلود… %1$d%%</string>
-    <string name="transcription_model_failed">دانلود کامل نشد. دوباره تلاش کنید.</string>
-    <string name="transcription_model_failed_space">فضای آزاد کافی نیست. کمی فضا آزاد کنید و دوباره تلاش کنید.</string>
-    <string name="transcription_model_failed_verify">دانلود آسیب دیده بود و کنار گذاشته شد. دوباره تلاش کنید.</string>
-    <string name="transcription_model_installed">دانلود شد و آماده است</string>
-    <string name="transcription_model_label">مدل</string>
-    <string name="transcription_model_resume">ادامه دانلود</string>
-    <string name="transcription_model_resume_subtitle">%1$d مگابایت از %2$d مگابایت قبلاً دانلود شده</string>
-    <string name="transcription_model_small">سریع</string>
-    <string name="transcription_model_waiting">در انتظار Wi-Fi</string>
-    <string name="transcription_note_after_each_call">هر تماس به‌محض پایان رونویسی می‌شود. تماس‌های قدیمی‌تر دست‌نخورده می‌مانند — آن‌ها را از دکمه روی یک فایل ضبط‌شده رونویسی کنید.</string>
-    <string name="transcription_note_automatic">تماس‌هایی که هنوز رونوشت ندارند در زمان انتخاب‌شده رونویسی می‌شوند. یک تماس ۳۰ دقیقه‌ای حدود ۳۰ دقیقه طول می‌کشد.</string>
-    <string name="transcription_note_manual">رونوشت‌ها فقط وقتی درخواست کنید ساخته می‌شوند، از دکمه روی یک فایل ضبط‌شده.</string>
-    <string name="transcription_time_label">اجرا در</string>
-    <string name="transcription_warning_confirm">روشنش کن</string>
-    <string name="transcription_warning_message">یک تماس تقریباً به اندازه طول خودش برای رونویسی زمان می‌برد و در این حین از هر هسته گوشی شما استفاده می‌کند. انتظار داشته باشید گرم شود و باتری قابل‌توجهی مصرف کند.\n\nمی‌توانید هر اجرا را در هر زمان از نشانِ کنار عنوان متوقف کنید.</string>
-    <string name="transcription_warning_title">رونویسی کند و سنگین است</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="transcripts_search_hint">جستجوی آنچه گفته شد</string>
     <string name="update_popup_later">بعداً</string>
     <string name="update_popup_text">نسخه جدیدی برای نصب آماده است. به‌روزرسانی، ضبط را قابل اعتماد نگه می‌دارد و جدیدترین رفع‌اشکال‌ها را می‌آورد.</string>
@@ -971,20 +965,20 @@
     <string name="wizard_storage_subtitle">انتخاب کنید فایل‌های ضبط‌شده شما کجا ذخیره شوند. می‌توانید این را بعداً در تنظیمات تغییر دهید.</string>
     <string name="wizard_storage_title">محل ذخیره فایل‌های ضبط‌شده</string>
     <string name="wizard_title">راه‌اندازی CallVault</string>
-    <string name="wizard_transcription_background_note">هر دو دانلود در پس‌زمینه ادامه می‌یابند. می‌توانید همین حالا ادامه دهید و راه‌اندازی را تمام کنید — تنظیمات CallVault بعداً همان پیشرفت را نشان می‌دهد.</string>
-    <string name="wizard_transcription_language_note">روی زبانی تنظیم کنید که این گوشی روی آن تنظیم شده است. مشخص کردن آن بسیار قابل‌اعتمادتر از این است که بگذارید برنامه حدس بزند، و همچنان می‌توانید بعداً برای هر تماس زبان دیگری انتخاب کنید.</string>
-    <string name="wizard_transcription_line">تماس‌ها را روی همین گوشی به متن تبدیل کنید.</string>
-    <string name="wizard_transcription_model_note">رونویسی ابتدا به یک مدل گفتار روی گوشی نیاز دارد: %1$s برابر %2$d مگابایت است، %3$s برابر %4$d مگابایت. رونویسی یک تماس سپس تقریباً به اندازه طول تماس زمان می‌برد و پردازنده را سخت به کار می‌گیرد.</string>
-    <string name="wizard_transcription_model_size">%1$s برابر %2$d مگابایت است</string>
-    <string name="wizard_transcription_model_sizes_note">رونویسی ابتدا به یک مدل گفتار روی گوشی نیاز دارد: %1$s. رونویسی یک تماس سپس تقریباً به اندازه طول تماس زمان می‌برد و پردازنده را سخت به کار می‌گیرد.</string>
-    <string name="wizard_transcription_subtitle">CallVault می‌تواند یک فایل ضبط‌شده را روی خود گوشی به متن تبدیل کند و از آن یک خلاصه کوتاه بنویسد — چیزی به جایی فرستاده نمی‌شود. انتخاب کنید این کار چه زمانی انجام شود، تماس‌های شما به چه زبانی هستند، و آنچه لازم است دانلود کنید.</string>
-    <string name="wizard_transcription_summary_body">پس از اینکه یک تماس رونوشت داشته باشد، CallVault می‌تواند یک خلاصه کوتاه از آن هم بنویسد — روی گوشی، مثل هر چیز دیگری اینجا.</string>
-    <string name="wizard_transcription_summary_heading">خلاصه‌ها</string>
-    <string name="wizard_transcription_title">تبدیل تماس‌ها به متن</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="wizard_updates_line">CallVault نسخه‌های جدید را چگونه پیدا می‌کند.</string>
     <string name="wizard_updates_subtitle">CallVault در فروشگاه برنامه نیست، بنابراین خودش GitHub را برای نسخه‌های جدید بررسی می‌کند.</string>
     <string name="wizard_updates_title">به‌روز ماندن</string>
-    <!-- Transcribe again (#72) -->
+    
     <string name="transcribe_again_title">دوباره رونویسی شود؟</string>
     <string name="transcribe_again_message_one">%1$s دوباره رونویسی می‌شود. اگر اجرای جدید ناموفق باشد یا متوقف شود، رونوشت فعلی حفظ می‌شود.</string>
     <string name="transcribe_again_message_many">رونوشت‌هایی که دوباره انجام می‌شوند: %1$d. اگر اجرایی ناموفق باشد یا متوقف شود، آن رونوشت همان‌طور که هست می‌ماند.</string>

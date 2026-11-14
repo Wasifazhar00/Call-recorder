@@ -138,7 +138,7 @@
     <string name="settings_merge_keep_originals_description">Μετά τη συγχώνευση, αφήστε και τις κλήσεις από τις οποίες προέκυψε στο τηλέφωνο. Ανενεργό από προεπιλογή, ώστε μια συγχώνευση να αφήνει μία εγγραφή. Ο διαχωρισμός μιας συγχωνευμένης κλήσης λειτουργεί και με τους δύο τρόπους.</string>
     <string name="settings_merge_keep_originals_title">Διατήρηση πρωτοτύπων μετά τη συγχώνευση</string>
     <string name="unmerge_confirm">Διαχωρισμός</string>
-    <string name="unmerge_message">Γίνεται ξανά αυτές οι κλήσεις, η καθεμία με την απομαγνητοφώνηση και τις σημειώσεις που είχε:</string>
+    <string name="unmerge_message">It becomes these calls again, each with its recording details and marks it had:</string>
     <string name="unmerge_title">Διαχωρισμός αυτής της κλήσης;</string>
     <plurals name="merge_row_badge">
         <item quantity="one">%1$d κλήση</item>
@@ -310,48 +310,48 @@
     <!-- Home: the hub of cards, and the two sections its cards open -->
     <string name="home_hub_library_title">Βιβλιοθήκη</string>
     <string name="home_hub_recordings_body">Κάθε κλήση που έχει καταγράψει το CallVault.</string>
-    <string name="home_hub_transcripts_body">Οι κλήσεις σας σε λέξεις — και όποιον ήχο φέρετε.</string>
-    <string name="home_hub_summaries_body">Περιλήψεις AI, γραμμένες στο τηλέφωνό σας.</string>
-    <string name="home_transcripts_title">Απομαγνητοφωνήσεις</string>
-    <string name="home_summaries_title">Περιλήψεις</string>
-    <string name="home_transcripts_count">%1$d απομαγνητοφωνημένες</string>
-    <string name="home_summaries_count">%1$d σε περίληψη</string>
-    <string name="home_transcripts_empty_title">Τίποτα δεν έχει απομαγνητοφωνηθεί ακόμη</string>
-    <string name="home_transcripts_empty_hint">Ζητήστε απομαγνητοφώνηση από το μενού μιας ηχογράφησης ή πατήστε Εισαγωγή για να προσθέσετε ένα αρχείο ήχου. Θα εμφανιστεί εδώ μόλις γραφτεί.</string>
-    <string name="home_summaries_empty_title">Τίποτα δεν έχει μπει σε περίληψη ακόμη</string>
-    <string name="home_summaries_empty_hint">Ανοίξτε μια κλήση που έχει απομαγνητοφώνηση και ζητήστε περίληψη· εμφανίζεται εδώ μόλις γραφτεί.</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     <!-- Transcripts: the two headings above the finished transcripts -->
-    <string name="transcripts_working_header">Σε απομαγνητοφώνηση</string>
-    <string name="transcripts_failed_header">Δεν ολοκληρώθηκε</string>
-    <string name="transcripts_failed_hint">Πατήστε μία για να τη δοκιμάσετε ξανά.</string>
-    <string name="transcripts_waiting_header">Σε αναμονή για απομαγνητοφώνηση</string>
-    <string name="transcripts_waiting_hint">Τις μοιραστήκατε για ανάγνωση, όχι για διατήρηση. Πατήστε μία για να ξεκινήσετε, ή ανοίξτε την για να την ακούσετε ή να τη διαγράψετε.</string>
+    
+    
+    
+    
+    
     <!-- Summaries: the two headings above the finished summaries -->
-    <string name="summaries_working_header">Σε περίληψη</string>
-    <string name="summaries_failed_header">Δεν ολοκληρώθηκε</string>
-    <string name="summaries_failed_hint">Ανοίξτε μία για να τη ζητήσετε ξανά.</string>
+    
+    
+    
     <!-- Transcripts: bringing in audio CallVault did not record -->
-    <string name="transcripts_import_title">Εισαγωγή ήχου</string>
-    <string name="transcripts_import_working">Εισαγωγή…</string>
-    <string name="transcripts_import_fab">Εισαγωγή</string>
+    
+    
+    
     <string name="import_sheet_keep">Διατήρηση ήχου</string>
     <string name="import_sheet_keep_hint">Εμφανίζεται στις ηχογραφήσεις σας</string>
-    <string name="import_sheet_transcript_only">Μόνο απομαγνητοφώνηση</string>
-    <string name="import_sheet_transcript_only_hint">Ο ήχος διαγράφεται μετά</string>
+    
+    
     <string name="import_failed_title">Δεν ήταν δυνατή η εισαγωγή αυτού του αρχείου</string>
     <string name="import_failed_not_audio">Το CallVault δεν μπορεί να διαβάσει αυτού του είδους το αρχείο. Δοκιμάστε μια εγγραφή .opus, .ogg, .m4a, .mp3 ή .wav.</string>
-    <string name="import_failed_empty">Αυτό το αρχείο είναι κενό, οπότε δεν θα υπήρχε τίποτα να απομαγνητοφωνηθεί.</string>
+    
     <string name="import_failed_no_folder">Δεν υπάρχει φάκελος εγγραφών για να το κρατήσει. Επιλέξτε έναν στις Ρυθμίσεις, και δοκιμάστε ξανά.</string>
     <string name="import_failed_copy">Το αρχείο δεν μπόρεσε να εγγραφεί στον φάκελο εγγραφών σας. Βεβαιωθείτε ότι το τηλέφωνο έχει χώρο και ότι ο φάκελος είναι ακόμη διαθέσιμος.</string>
-    <string name="import_failed_undecodable">Αυτό το τηλέφωνο δεν μπορεί να διαβάσει τον ήχο μέσα σε αυτό το αρχείο, οπότε δεν θα μπορούσε ποτέ να απομαγνητοφωνηθεί. Μπορεί να είναι κατεστραμμένο, ή σε μορφή που το Android δεν αποκωδικοποιεί.</string>
+    
     <string name="home_row_imported">Εισαγμένο</string>
     <string name="home_row_text_only">Μόνο κείμενο</string>
     <!-- Share sheet: audio sent to CallVault from another app -->
     <string name="share_import_label">Εισαγωγή ήχου</string>
     <string name="share_import_working_body">Αντιγραφή του και έλεγχος ότι αυτό το τηλέφωνο μπορεί να το διαβάσει.</string>
     <string name="share_import_done_title">Προστέθηκε στις εγγραφές σας</string>
-    <string name="share_import_done_body">Είναι στο CallVault τώρα. Ανοίξτε το για να το ακούσετε, ή για να ζητήσετε απομαγνητοφώνηση.</string>
+    
     <string name="share_import_open">Άνοιγμα</string>
     <string name="share_import_open_app">Άνοιγμα CallVault</string>
     <string name="share_import_close">Κλείσιμο</string>
@@ -362,14 +362,14 @@
     <string name="share_import_choice_unnamed">Ο κοινόχρηστος ήχος</string>
     <string name="import_choice_keep">Εισαγωγή &amp; απομαγνητοφώνηση</string>
     <string name="import_choice_keep_hint">Κρατά τον ήχο στις εγγραφές σας και τον απομαγνητοφωνεί.</string>
-    <string name="import_choice_transcribe_only">Μόνο απομαγνητοφώνηση</string>
-    <string name="import_choice_transcribe_only_hint">Τον απομαγνητοφωνεί, και μετά διαγράφει τον ήχο. Δεν εμφανίζεται ποτέ στις εγγραφές σας — μόνο τα λόγια, στις Απομαγνητοφωνήσεις.</string>
-    <string name="share_import_queued_keep_title">Προστέθηκε, και σε ουρά</string>
-    <string name="share_import_queued_keep_body">Είναι στις εγγραφές σας. Η απομαγνητοφώνηση εμφανίζεται στις Απομαγνητοφωνήσεις όταν ολοκληρωθεί.</string>
-    <string name="share_import_queued_only_title">Σε ουρά για απομαγνητοφώνηση</string>
-    <string name="share_import_queued_only_body">Θα βρείτε τα λόγια στις Απομαγνητοφωνήσεις. Ο ήχος διαγράφεται μόλις αποθηκευτεί η απομαγνητοφώνηση.</string>
-    <string name="share_import_kept_title">Αποθηκεύτηκε, αλλά δεν απομαγνητοφωνήθηκε</string>
-    <string name="share_import_kept_body">Είναι στις εγγραφές σας. Μπορείτε να ξεκινήσετε την απομαγνητοφώνηση από εκεί όποτε θέλετε.</string>
-    <string name="share_import_kept_only_body">Περιμένει στις Απομαγνητοφωνήσεις. Ξεκινήστε την εκεί όποτε θέλετε, ή διαγράψτε την από το ίδιο σημείο.</string>
-    <string name="share_import_no_model">Δεν υπάρχει ακόμη εγκατεστημένο μοντέλο απομαγνητοφώνησης, οπότε το CallVault δεν μπορεί να το διαβάσει. Ο ήχος αποθηκεύτηκε — εγκαταστήστε ένα μοντέλο στις Ρυθμίσεις, και ξεκινήστε το από τις Απομαγνητοφωνήσεις.</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </resources>

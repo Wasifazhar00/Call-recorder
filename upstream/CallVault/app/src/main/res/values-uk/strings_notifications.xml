@@ -46,15 +46,15 @@
     <string name="notif_readiness_offline_paused_text">Запис без Wi-Fi призупинено: потрібне налагодження USB. Через Wi-Fi запис працює.</string>
     <string name="notif_action_turn_wd_on">Увімкнути бездротове налагодження</string>
     <string name="notif_action_turn_usb_on">Увімкнути налагодження через USB</string>
-    <string name="transcript_notice_channel">Транскрипції</string>
-    <string name="transcript_notice_ready_title">Транскрипція готова</string>
-    <string name="transcript_notice_ready_deleted_text">%1$s — аудіо видалено за вашим вибором.</string>
-    <string name="transcript_notice_ready_many_title">Готові транскрипції: %1$d</string>
-    <string name="transcript_notice_ready_many_text">Натисніть, щоб прочитати.</string>
-    <string name="transcript_notice_failed_title">Не вдалося завершити транскрипцію</string>
-    <string name="transcript_notice_failed_text">%1$s. Натисніть, щоб повторити.</string>
-    <string name="transcript_notice_failed_many_title">Невдалі транскрипції: %1$d</string>
-    <string name="transcript_notice_failed_many_text">Натисніть, щоб переглянути.</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="notif_readiness_wd_off_by_user_text">Ви вимкнули бездротове налагодження. Увімкніть його знову або ввімкніть налагодження USB, щоб відновити запис.</string>
-    <string name="transcript_notice_failed_kept_text">%1$s. Попередню розшифровку збережено.</string>
+    
 </resources>

@@ -1303,8 +1303,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     /**
      * Plays [uri] from [positionMs], whether or not it is the track already loaded.
      *
-     * This is what a timestamp is *for* — tapping a transcript line, or a search result, means "play
-     * from there". A plain [seekTo] cannot do it: on any recording that is not already prepared it is
+     * This is what a timestamp is *for* — tapping a timestamp or a search result means "play from there". A plain [seekTo] cannot do it: on any recording that is not already prepared it is
      * clamped to a duration of zero and silently starts from the beginning instead.
      */
     fun playFrom(uri: Uri, positionMs: Int) {

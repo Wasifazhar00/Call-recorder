@@ -49,14 +49,14 @@
     <string name="notif_action_turn_usb_on">Activar la depuración por USB</string>
 
     <!-- Transcription finished / didn't finish -->
-    <string name="transcript_notice_channel">Transcripciones</string>
-    <string name="transcript_notice_ready_title">Transcripción lista</string>
-    <string name="transcript_notice_ready_deleted_text">%1$s: se eliminó el audio, como pediste.</string>
-    <string name="transcript_notice_ready_many_title">Transcripciones listas: %1$d</string>
-    <string name="transcript_notice_ready_many_text">Toca para leerlas.</string>
-    <string name="transcript_notice_failed_title">La transcripción no terminó</string>
-    <string name="transcript_notice_failed_text">%1$s. Toca para intentarlo de nuevo.</string>
-    <string name="transcript_notice_failed_many_title">Transcripciones sin terminar: %1$d</string>
-    <string name="transcript_notice_failed_many_text">Toca para verlas.</string>
-    <string name="transcript_notice_failed_kept_text">%1$s. Se conservó la transcripción anterior.</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </resources>

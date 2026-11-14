@@ -51,10 +51,6 @@ carrier-call recording after the app's disclaimer/onboarding. Either direction c
 the user. Recording activity must remain visible and applicable consent requirements must be respected.
 No announcement suppression or stealth recording is implemented.
 
-## AI project graph
-
-For AI-assisted review and handoff, see the [shareable architecture and knowledge graph](docs/AI_PROJECT_GRAPH.md) and its [machine-readable JSON graph](docs/AI_PROJECT_GRAPH.json). These describe the repository structure, pinned engine, privilege backends, recording/data flow, CI pipeline and target-device validation boundaries.
-
 ## Build
 
 Clone with submodules:
@@ -74,8 +70,7 @@ temporary test key, not a permanent production key.
 
 ## Battery and size
 
-The pinned engine already restricts native packaging to `arm64-v8a`, appropriate for this target.
-Core capture is intended to run only around calls. Whisper/Llama native inference targets and the bundled Silero model are removed from the product build. The recorder-only app profile removes transcription, transcript sharing/actions, AI summaries, model/language settings, and their Home/playback entry points. The underlying legacy AI implementation and stored-data schema are retained internally to avoid destructive source/database changes; they are not exposed as app features. A smaller APK does not by itself prove better battery life.
+The release profile packages only the `arm64-v8a` native components needed by recording. Transcription, translation, AI summarisation, speaker attribution, model downloads/imports/backups, and their runtime integrations are removed from the app. The metadata database keeps its historical filename and schema history only so existing installations can upgrade safely; migrations remove generated-text tables while preserving user-authored notes, tags, favourites, flags and labels. A smaller APK does not by itself prove better battery life.
 
 Do not remove native or service code unless every dependent UI/JNI path is disabled and the call
 recording acceptance tests still pass.

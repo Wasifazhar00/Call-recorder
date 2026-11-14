@@ -328,11 +328,10 @@ kotlin {
 /**
  * Where Room writes its schema JSON.
  *
- * Only [com.baba.callvault.data.transcripts.db.TranscriptDatabase] exports a schema. It must, because
- * it carries real migrations: a transcript costs minutes of device CPU and cannot be regenerated, so
- * that database may never take the destructive fallback the recordings catalog deliberately uses. A
- * migration needs a committed baseline to be written and tested against, and without this argument
- * `exportSchema = true` silently produces nothing.
+ * The recording-metadata database exports a schema because it contains user-authored notes, tags,
+ * favourites, flags and labels that must survive upgrades. Its historical class and database names
+ * are retained for compatibility with installed versions. A migration needs a committed baseline
+ * to be written and tested against, and without this argument `exportSchema = true` silently produces nothing.
  *
  * The exported files are committed on purpose — they are the record of every shipped schema.
  */
@@ -469,10 +468,9 @@ dependencies {
     // does — by tapping Allow in Shizuku's own dialog. Shizuku 13 keeps its grants in its own server,
     // so neither `pm grant` nor UiAutomation.grantRuntimePermission can reach them.
     androidTestImplementation("androidx.test.uiautomator:uiautomator:2.3.0")
-    // Opens a database at an older schema and runs the real migrations against it, on a real
-    // SQLite. The transcripts database has no destructive fallback by design, so a migration that
-    // is subtly wrong is a crash on first launch for every user who has ever transcribed a call —
-    // and the unit-level drift guard compares SQL, which cannot catch a statement that fails to
-    // execute or silently drops rows. Needs the exported schemas, wired into assets below.
+    // Opens an older recording-metadata schema and runs the real migrations against SQLite.
+    // The database has no destructive fallback by design: a faulty migration could lose user-authored
+    // metadata on first launch. The unit-level drift guard compares SQL but cannot catch failed
+    // statements or dropped rows. Needs the exported schemas, wired into assets below.
     androidTestImplementation(libs.androidx.room.testing)
 }
