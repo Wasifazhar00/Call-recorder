@@ -296,7 +296,7 @@
     
     
     <string name="list_separator">", "</string>
-    <string name="min_duration_caption">Μια λάθος κλήση ή μια κλήση που χτύπησε χωρίς απάντηση διαγράφεται τη στιγμή που τελειώνει, πριν απομαγνητοφωνηθεί ή μεταφορτωθεί. Τίποτα από όσα έχουν ήδη καταγραφεί δεν επηρεάζεται.</string>
+    
     <string name="min_duration_label">Απόρριψη σύντομων εγγραφών</string>
     <string name="min_duration_off">Διατήρηση όλων</string>
     <string name="min_duration_one_minute">Μικρότερες από ένα λεπτό</string>
@@ -311,7 +311,7 @@
     <string name="mode_switch_problem_title">Δεν είναι έτοιμο ακόμα</string>
     <string name="mode_switch_ready">Η εγγραφή εκτελείται. Οι κλήσεις θα καταγράφονται.</string>
     <string name="mode_switch_ready_shizuku">Το CallVault ηχογραφεί μέσω Shizuku. Όλα είναι διαθέσιμα εκτός από την εγγραφή χωρίς Wi-Fi, που χρειάζεται τη δική του εγγραφή του CallVault.</string>
-    <string name="mode_switch_ready_standalone">Το CallVault καταγράφει με τη δική του εγγραφή. Όλα είναι διαθέσιμα, συμπεριλαμβανομένων των κλήσεων VoIP και των ονομάτων ομιλητών.</string>
+    
     <string name="mode_switch_recorder_failed">Η εγγραφή δεν ξεκίνησε. Τίποτα δεν θα καταγραφεί μέχρι να ξεκινήσει.</string>
     <string name="mode_switch_shizuku_not_installed">Το Shizuku δεν είναι εγκατεστημένο, οπότε δεν υπάρχει τίποτα για μετάβαση.</string>
     <string name="mode_switch_shizuku_not_permitted">Το Shizuku δεν έχει επιτρέψει ακόμα στο CallVault να το χρησιμοποιήσει. Ανοίξτε το Shizuku και επιτρέψτε το, μετά δοκιμάστε ξανά.</string>
@@ -468,7 +468,7 @@
     <string name="selection_select_all">Επιλογή όλων</string>
     <string name="settings_allow_screenshots_description">Σας επιτρέπει να τραβάτε στιγμιότυπα οθόνης του CallVault. Έτσι εμφανίζεται και το περιεχόμενό του στην εναλλαγή εφαρμογών. Απενεργοποιημένο, όλα παραμένουν κρυφά.</string>
     <string name="settings_allow_screenshots_title">Να επιτρέπονται στιγμιότυπα οθόνης</string>
-    <string name="settings_app_lock_description">Ζητά το κλείδωμα οθόνης σας πριν εμφανίσει εγγραφές και απομαγνητοφωνήσεις. Επίσης τις κρατά εκτός στιγμιότυπων οθόνης και της εναλλαγής εφαρμογών.</string>
+    
     <string name="settings_app_lock_title">Απαίτηση ξεκλειδώματος</string>
     <string name="settings_app_lock_unavailable">Ορίστε ένα κλείδωμα οθόνης στο τηλέφωνό σας για να το χρησιμοποιήσετε.</string>
     <string name="settings_audio_bitrate">Ρυθμός bit ήχου</string>

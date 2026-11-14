@@ -172,7 +172,7 @@
     
     
     <string name="list_separator">", "</string>
-    <string name="min_duration_caption">Un faux numéro ou un appel resté sans réponse est supprimé dès qu\'il se termine, avant toute transcription ou tout envoi. Les enregistrements existants ne sont pas touchés.</string>
+    
     <string name="min_duration_label">Ignorer les enregistrements courts</string>
     <string name="min_duration_off">Tout conserver</string>
     <string name="min_duration_one_minute">Moins d\'une minute</string>
@@ -187,7 +187,7 @@
     <string name="mode_switch_problem_title">Pas encore prêt</string>
     <string name="mode_switch_ready">L\'enregistreur fonctionne. Les appels seront enregistrés.</string>
     <string name="mode_switch_ready_shizuku">CallVault enregistre via Shizuku. Tout est disponible sauf l’enregistrement hors Wi-Fi, qui nécessite l’enregistreur propre de CallVault.</string>
-    <string name="mode_switch_ready_standalone">CallVault enregistre avec son propre enregistreur. Tout est disponible, y compris les appels VoIP et les noms des interlocuteurs.</string>
+    
     <string name="mode_switch_recorder_failed">L\'enregistreur n\'a pas démarré. Rien ne sera enregistré tant que ce n\'est pas le cas.</string>
     <string name="mode_switch_shizuku_not_installed">Shizuku n\'est pas installé, il n\'y a donc rien vers quoi basculer.</string>
     <string name="mode_switch_shizuku_not_permitted">Shizuku n\'a pas encore autorisé CallVault. Ouvrez-le, autorisez-le puis réessayez.</string>
@@ -344,7 +344,7 @@
     <string name="selection_select_all">Tout sélectionner</string>
     <string name="settings_allow_screenshots_description">Vous permet de faire des captures d’écran de CallVault. Son contenu apparaît alors aussi dans le sélecteur d’applications. Désactivé, tout reste masqué.</string>
     <string name="settings_allow_screenshots_title">Autoriser les captures d’écran</string>
-    <string name="settings_app_lock_description">Demander le verrouillage de l\'écran avant d\'afficher les enregistrements et les transcriptions. Les exclut aussi des captures d\'écran et du sélecteur d\'applications.</string>
+    
     <string name="settings_app_lock_title">Exiger le déverrouillage</string>
     <string name="settings_app_lock_unavailable">Configurez un verrouillage d\'écran sur votre téléphone pour utiliser cette option.</string>
     <string name="settings_audio_bitrate">Débit binaire audio</string>

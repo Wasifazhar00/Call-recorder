@@ -178,7 +178,7 @@
     
     
     <string name="list_separator">", "</string>
-    <string name="min_duration_caption">Помилкові набори та надто короткі дзвінки видалятимуться після завершення. Старі записи не змінюються.</string>
+    
     <string name="min_duration_label">Відкидати короткі записи</string>
     <string name="min_duration_off">Зберігати всі</string>
     <string name="min_duration_one_minute">Коротші за хвилину</string>
@@ -193,7 +193,7 @@
     <string name="mode_switch_problem_title">Поки не готово</string>
     <string name="mode_switch_ready">Рекордер запущено. Дзвінки записуватимуться.</string>
     <string name="mode_switch_ready_shizuku">CallVault записує через Shizuku. Доступне все, крім запису без Wi-Fi — для нього потрібен власний рекордер CallVault.</string>
-    <string name="mode_switch_ready_standalone">Працює вбудований рекордер CallVault. Доступні функції VoIP та визначення мовців.</string>
+    
     <string name="mode_switch_recorder_failed">Не вдалося запустити рекордер. Запис поки недоступний.</string>
     <string name="mode_switch_shizuku_not_installed">Shizuku не встановлено.</string>
     <string name="mode_switch_shizuku_not_permitted">Shizuku ще не дозволив CallVault доступ. Відкрийте Shizuku й надайте дозвіл.</string>
@@ -350,7 +350,7 @@
     <string name="selection_select_all">Вибрати все</string>
     <string name="settings_allow_screenshots_description">Дозволяє знімки екрана та показ вмісту в перемикачі застосунків.</string>
     <string name="settings_allow_screenshots_title">Дозволити знімки екрана</string>
-    <string name="settings_app_lock_description">Перед переглядом записів і транскрипцій запитувати системне розблокування. Також приховувати вміст на знімках екрана.</string>
+    
     <string name="settings_app_lock_title">Вимагати розблокування</string>
     <string name="settings_app_lock_unavailable">Налаштуйте блокування екрана телефону.</string>
     <string name="settings_audio_bitrate">Бітрейт звуку</string>

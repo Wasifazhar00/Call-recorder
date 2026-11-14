@@ -182,7 +182,7 @@
     
     
     <string name="list_separator">", "</string>
-    <string name="min_duration_caption">Pomyłkowe lub nieodebrane połączenie jest usuwane zaraz po zakończeniu, przed transkrypcją i wysyłką. Nie dotyczy już zapisanych nagrań.</string>
+    
     <string name="min_duration_label">Odrzucaj krótkie nagrania</string>
     <string name="min_duration_off">Zachowuj wszystkie</string>
     <string name="min_duration_one_minute">Krótsze niż minuta</string>
@@ -197,7 +197,7 @@
     <string name="mode_switch_problem_title">Jeszcze nie gotowy</string>
     <string name="mode_switch_ready">Rejestrator działa. Połączenia będą nagrywane.</string>
     <string name="mode_switch_ready_shizuku">CallVault nagrywa przez Shizuku. Wszystko jest dostępne oprócz nagrywania bez Wi-Fi, które wymaga własnego rejestratora CallVault.</string>
-    <string name="mode_switch_ready_standalone">CallVault nagrywa własnym rejestratorem. Dostępne jest wszystko, w tym połączenia VoIP i nazwy rozmówców.</string>
+    
     <string name="mode_switch_recorder_failed">Rejestrator nie wystartował. Do tego czasu nic nie będzie nagrywane.</string>
     <string name="mode_switch_shizuku_not_installed">Shizuku nie jest zainstalowane, więc nie ma na co przełączać.</string>
     <string name="mode_switch_shizuku_not_permitted">Shizuku nie zezwoliło jeszcze CallVault. Otwórz je, udziel zgody i spróbuj ponownie.</string>
@@ -354,7 +354,7 @@
     <string name="selection_select_all">Zaznacz wszystko</string>
     <string name="settings_allow_screenshots_description">Pozwala robić zrzuty ekranu CallVault. Powoduje też pokazywanie jego zawartości w przełączniku aplikacji. Wyłączone — wszystko pozostaje ukryte.</string>
     <string name="settings_allow_screenshots_title">Zezwól na zrzuty ekranu</string>
-    <string name="settings_app_lock_description">Wymagaj blokady ekranu przed pokazaniem nagrań i transkrypcji. Ukrywa je też na zrzutach ekranu i w przełączniku aplikacji.</string>
+    
     <string name="settings_app_lock_title">Wymagaj odblokowania</string>
     <string name="settings_app_lock_unavailable">Ustaw blokadę ekranu w telefonie, aby z tego skorzystać.</string>
     <string name="settings_audio_bitrate">Audio bit rate</string>

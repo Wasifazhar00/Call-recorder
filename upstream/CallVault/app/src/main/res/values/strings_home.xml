@@ -155,17 +155,15 @@
     <string name="whatsnew_250_title">Keep or delete after a call, and share what you need</string>
     <string-array name="whatsnew_250_items">
         <item>Keep or delete: CallVault can ask after each call whether to keep the recording (Settings ▸ Recording)</item>
-        <item>Share a call\'s recording, transcript and summary together — or just a part of a recording</item>
-        <item>Call history: every call from your phone\'s log, next to its recording</item>
+        <item>Share a recording, or just a selected part of it</item>
+        <item>Call history: every call from your phone's log, next to its recording</item>
         <item>Search in Settings</item>
-        <item>Transcribe again, and pull down on any page to refresh it</item>
         <item>Your own file-name format, and an optional label for which SIM each call used</item>
-        <item>Bengali for the app and for transcription</item>
         <item>Calls placed through Google Voice keep the number you dialled</item>
         <item>Shizuku mode: the microphone no longer stays on after a call, and no crash when the recorder restarts</item>
         <item>Honor phones that pause CallVault during a call record more reliably</item>
         <item>Drive: recordings are no longer lost when the Drive folder is also the recordings folder</item>
-        <item>When a call wasn\'t recorded because CallVault had been force-stopped, the card says so</item>
+        <item>When a call was not recorded because CallVault had been force-stopped, the card says so</item>
     </string-array>
     <string name="whatsnew_249_title">Clearer app calls, and ready right after updates</string>
     
@@ -266,4 +264,6 @@
     <string name="share_import_queued_keep_title">Added to recordings</string>
     <string name="share_import_queued_keep_body">It is in your recordings. Open it to listen.</string>
     <string name="unmerge_message">It becomes these calls again, each with its notes and marks:</string>
+    <string name="import_choice_keep">Keep audio</string>
+    <string name="import_choice_keep_hint">Keeps the audio in your recordings.</string>
 </resources>

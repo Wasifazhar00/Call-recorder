@@ -182,7 +182,7 @@
     
     
     <string name="list_separator">", "</string>
-    <string name="min_duration_caption">Ошибочный или неотвеченный звонок удаляется сразу после завершения — до расшифровки и загрузки. Уже записанное не затрагивается.</string>
+    
     <string name="min_duration_label">Отбрасывать короткие записи</string>
     <string name="min_duration_off">Оставлять все</string>
     <string name="min_duration_one_minute">Короче минуты</string>
@@ -197,7 +197,7 @@
     <string name="mode_switch_problem_title">Пока не готов</string>
     <string name="mode_switch_ready">Рекордер работает. Звонки будут записываться.</string>
     <string name="mode_switch_ready_shizuku">CallVault записывает через Shizuku. Доступно всё, кроме записи без Wi-Fi — для неё нужен собственный рекордер CallVault.</string>
-    <string name="mode_switch_ready_standalone">CallVault записывает собственным рекордером. Доступно всё, включая звонки VoIP и имена говорящих.</string>
+    
     <string name="mode_switch_recorder_failed">Рекордер не запустился. До этого ничего записываться не будет.</string>
     <string name="mode_switch_shizuku_not_installed">Shizuku не установлен, переключаться не на что.</string>
     <string name="mode_switch_shizuku_not_permitted">Shizuku ещё не разрешил CallVault. Откройте его, разрешите и повторите.</string>
@@ -354,7 +354,7 @@
     <string name="selection_select_all">Выбрать все</string>
     <string name="settings_allow_screenshots_description">Позволяет делать скриншоты CallVault. При этом его содержимое также видно в переключателе приложений. Выключено — всё остаётся скрытым.</string>
     <string name="settings_allow_screenshots_title">Разрешить скриншоты</string>
-    <string name="settings_app_lock_description">Запрашивать блокировку экрана перед показом записей и расшифровок. Также скрывает их со скриншотов и из списка недавних приложений.</string>
+    
     <string name="settings_app_lock_title">Требовать разблокировку</string>
     <string name="settings_app_lock_unavailable">Чтобы включить, настройте блокировку экрана на телефоне.</string>
     <string name="settings_audio_bitrate">Аудио битрейт</string>

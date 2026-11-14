@@ -172,7 +172,7 @@
     
     
     <string name="list_separator">", "</string>
-    <string name="min_duration_caption">A téves hívás vagy a kicsengett hívás a befejezés pillanatában törlődik, még az átirat és a feltöltés előtt. A meglévő felvételeket nem érinti.</string>
+    
     <string name="min_duration_label">Rövid felvételek eldobása</string>
     <string name="min_duration_off">Mindet megtartani</string>
     <string name="min_duration_one_minute">Egy percnél rövidebb</string>
@@ -187,7 +187,7 @@
     <string name="mode_switch_problem_title">Még nem áll készen</string>
     <string name="mode_switch_ready">A felvevő fut. A hívások rögzítésre kerülnek.</string>
     <string name="mode_switch_ready_shizuku">A CallVault a Shizukun keresztül rögzít. Minden elérhető, kivéve a Wi-Fi nélküli rögzítést, amelyhez a CallVault saját rögzítője kell.</string>
-    <string name="mode_switch_ready_standalone">A CallVault a saját felvevőjével rögzít. Minden elérhető, a VoIP-hívásokat és a beszélőneveket is beleértve.</string>
+    
     <string name="mode_switch_recorder_failed">A felvevő nem indult el. Addig semmi nem kerül rögzítésre.</string>
     <string name="mode_switch_shizuku_not_installed">A Shizuku nincs telepítve, így nincs mire váltani.</string>
     <string name="mode_switch_shizuku_not_permitted">A Shizuku még nem engedélyezte a CallVaultot. Nyissa meg, engedélyezze, majd próbálja újra.</string>
@@ -344,7 +344,7 @@
     <string name="selection_select_all">Összes kijelölése</string>
     <string name="settings_allow_screenshots_description">Lehetővé teszi a CallVault képernyőképeinek készítését. Ez a tartalmát az alkalmazásváltóban is megjeleníti. Kikapcsolva minden rejtve marad.</string>
     <string name="settings_allow_screenshots_title">Képernyőképek engedélyezése</string>
-    <string name="settings_app_lock_description">A képernyőzár kérése a felvételek és átiratok megjelenítése előtt. A képernyőképekről és az alkalmazásváltóból is kihagyja őket.</string>
+    
     <string name="settings_app_lock_title">Feloldás kérése</string>
     <string name="settings_app_lock_unavailable">Ehhez előbb állíts be képernyőzárat a telefonodon.</string>
     <string name="settings_audio_bitrate">Hang bitráta</string>

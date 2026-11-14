@@ -149,7 +149,7 @@
     <string name="mode_switch_done_shizuku">Ready — using Shizuku</string>
     <string name="mode_switch_done_standalone">Ready — using CallVault</string>
     <string name="mode_switch_ready_shizuku">CallVault is recording through Shizuku. Everything is available except recording away from Wi-Fi, which needs CallVault\'s own recorder.</string>
-    <string name="mode_switch_ready_standalone">CallVault is recording with its own recorder. Everything is available, including VoIP calls and speaker names.</string>
+    <string name="mode_switch_ready_standalone">CallVault is recording with its own recorder. Supported recording features, including VoIP calls, are available.</string>
     <string name="mode_switch_ready">The recorder is running. Calls will be recorded.</string>
     <string name="mode_switch_shizuku_not_installed">Shizuku is not installed, so there is nothing to switch to.</string>
     <string name="mode_switch_shizuku_not_running">Shizuku is not running. Open Shizuku and start it, then try again — it stops whenever the phone restarts.</string>
@@ -854,7 +854,7 @@
     <string name="app_lock_unlock">Unlock</string>
     <string name="settings_section_privacy">Privacy</string>
     <string name="settings_app_lock_title">Require unlock</string>
-    <string name="settings_app_lock_description">Ask for your screen lock before showing recordings and transcripts. Also keeps them out of screenshots and the app switcher.</string>
+    <string name="settings_app_lock_description">Ask for your screen lock before showing recordings. Also keeps them out of screenshots and the app switcher.</string>
     <string name="settings_app_lock_unavailable">Set a screen lock on your phone to use this.</string>
     <string name="settings_allow_screenshots_title">Allow screenshots</string>
     <string name="settings_allow_screenshots_description">Let you take screenshots of CallVault. This also shows its content in the app switcher. Off keeps everything hidden.</string>
@@ -874,7 +874,7 @@
     <string name="min_duration_off">Keep them all</string>
     <string name="min_duration_seconds">Shorter than %1$d seconds</string>
     <string name="min_duration_one_minute">Shorter than a minute</string>
-    <string name="min_duration_caption">A misdial or a call that rang out is deleted the moment it ends, before it is transcribed or uploaded. Nothing already recorded is affected.</string>
+    <string name="min_duration_caption">A misdial or a call that rang out is deleted the moment it ends, before it is uploaded. Nothing already recorded is affected.</string>
     <string name="storage_cap_label">Limit space used</string>
     <string name="storage_cap_off">No limit</string>
     <string name="storage_cap_gigabytes">%1$d GB on this phone</string>
