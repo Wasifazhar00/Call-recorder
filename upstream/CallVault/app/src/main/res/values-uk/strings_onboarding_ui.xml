@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Українська локалізація Zilla Recorder. Незазначені ключі використовують англійську локаль Android. -->
+<resources>
+    <string name="disclaimer_ui_hero_subtitle">Відкритий застосунок для запису дзвінків під вашим контролем. Прочитайте застереження перед початком.</string>
+    <string name="disclaimer_ui_body_header">Застереження</string>
+    <string name="disclaimer_ui_scroll_hint">Прокрутіть до кінця, щоб активувати підтвердження.</string>
+    <string name="permissions_ui_eyebrow">Налаштування</string>
+    <string name="permissions_ui_hero_title">Налаштуймо запис</string>
+    <string name="permissions_ui_hero_subtitle">Для запису дзвінків і визначення контактів потрібні дозволи. Підтвердьте їх нижче.</string>
+    <string name="permissions_ui_hero_line">Кілька дозволів для запису дзвінків.</string>
+    <string name="permissions_ui_section_label">Дозволи</string>
+    <string name="permission_adb_hint">Натисніть «Сполучити» та введіть код сполучення зі сповіщення.</string>
+    <string name="permission_adb_desc_short">Потрібно для запуску рекордера. Необхідний Wi-Fi.</string>
+    <string name="permissions_status_adb_not_connected">Не підключено</string>
+    <string name="permissions_status_adb_connected">Підключено</string>
+    <string name="permission_status_devmode_off_tap_build">Параметри розробника вимкнені — 7 разів натисніть «Номер збірки»</string>
+    <string name="permission_devmode_open_wd">Відкрити бездротове налагодження</string>
+    <string name="permission_devmode_enable_hint">Увімкніть: Налаштування → Про телефон → 7 разів натисніть «Номер збірки».</string>
+    <string name="permission_devmode_open_device_info">Відкрити дані пристрою</string>
+    <string name="permission_status_wd_on_enter_code">Натисніть «Сполучити» й уведіть код сполучення</string>
+    <string name="permission_wd_off">Бездротове налагодження вимкнено</string>
+    <string name="permission_wd_enable_hint">Увімкніть: Параметри розробника → Бездротове налагодження.</string>
+    <string name="permission_adb_hint_wd_on">Натисніть «Сполучити», потім уведіть код зі сторінки бездротового налагодження.</string>
+    <string name="permission_adb_open_device_info">Дані пристрою</string>
+    <string name="permission_adb_open_wd">Бездротове налагодження</string>
+    <string name="permission_adb_pair">Сполучити</string>
+</resources>

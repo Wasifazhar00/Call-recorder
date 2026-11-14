@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Українська локалізація Zilla Recorder. Незазначені ключі використовують англійську локаль Android. -->
+<resources>
+    <string name="home_sort_chip">Сортування: %1$s</string>
+    <string name="home_sort_newest">Найновіші</string>
+    <string name="home_sort_oldest">Найстаріші</string>
+    <string name="home_sort_name">За назвою А–Я</string>
+    <string name="home_sort_longest">Найдовші</string>
+    <string name="home_filter_source_label">Джерело</string>
+    <string name="home_filter_source_chip">Джерело: %1$s</string>
+    <string name="home_filter_source_all">Усі</string>
+    <string name="home_filter_source_local">Лише на телефоні</string>
+    <string name="home_filter_source_drive">Лише Drive</string>
+    <string name="home_filter_direction_label">Напрям</string>
+    <string name="home_filter_direction_chip">Напрям: %1$s</string>
+    <string name="home_filter_direction_all">Усі</string>
+    <string name="home_filter_direction_incoming">Вхідні</string>
+    <string name="home_filter_direction_outgoing">Вихідні</string>
+    <string name="home_filter_date_label">Дата</string>
+    <string name="home_filter_date_chip">Дата: %1$s</string>
+    <string name="home_filter_date_all">Усі дати</string>
+    <string name="home_filter_date_all_short">Усі</string>
+    <string name="home_source_badge_local">Телефон</string>
+    <string name="home_source_badge_drive">Drive</string>
+    <string name="home_source_badge_both">Телефон + Drive</string>
+    <string name="home_copy_device">Телефон</string>
+    <string name="home_copy_drive">Drive</string>
+    <string name="home_delete_confirm_device_message">Видалити копію %1$s із телефону? Копія на Drive залишиться.</string>
+    <string name="home_delete_confirm_drive_message">Видалити копію %1$s із Drive? Копія на телефоні залишиться.</string>
+    <string name="home_delete_copy_device_content_desc">Видалити копію з телефону</string>
+    <string name="home_delete_copy_drive_content_desc">Видалити копію з Drive</string>
+    <string name="home_filter_tag_label">Мітка</string>
+    <string name="home_filter_tag_chip">Мітка: %1$s</string>
+    <string name="home_filter_tag_all">Усі мітки</string>
+    <string name="home_filter_tag_all_short">Усі</string>
+</resources>
