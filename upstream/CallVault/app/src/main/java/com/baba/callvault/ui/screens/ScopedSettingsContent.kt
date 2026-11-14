@@ -88,10 +88,7 @@ fun ScopedSettingsContent(
     }
 
     // The open group, remembered per scope (scope name -> group key), so Recordings does not reopen on
-    // whatever was open under Transcripts. Its own keys, apart from the removed classic screen's section state.
     // A HashMap so it saves into the Bundle as it is.
-    // A page with a single group (Transcripts, Summaries) opens it straight away: a lone folded card is
-    // one tap of nothing. Closing it is remembered as "" so it stays closed.
     var openGroups by rememberSaveable { mutableStateOf(HashMap<String, String>()) }
     val groups = SettingsGroups.forScope(scope).filterNot { it == SettingsGroup.MODEL_AND_LANGUAGE || it == SettingsGroup.WHEN_TO_TRANSCRIBE || it == SettingsGroup.SUMMARIES }
     val openGroup = openGroups[scope.name]
