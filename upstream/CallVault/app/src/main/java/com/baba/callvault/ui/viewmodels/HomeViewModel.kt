@@ -62,7 +62,6 @@ import com.baba.callvault.system.updates.UpdateInstallWorker
 import com.baba.callvault.system.updates.UpdateScheduler
 import androidx.work.WorkManager
 import com.baba.callvault.data.waveform.WaveformDrawWorker
-import com.baba.callvault.transcription.TranscriptionEngine
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ensureActive
