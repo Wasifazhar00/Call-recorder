@@ -9,6 +9,7 @@
 package com.baba.callvault.transcription.model
 
 import android.content.Context
+import android.os.Build
 import androidx.work.Constraints
 import androidx.work.CoroutineWorker
 import androidx.work.Data
@@ -242,7 +243,11 @@ class ModelDownloadWorker(
     }
 
     /** Android's reason for stopping this attempt, readable in a log. The 10-minute limit reads "timeout". */
-    private fun stopReasonName(): String = when (stopReason) {
+    private fun stopReasonName(): String {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+            return "stop reason unavailable before Android 12"
+        }
+        return when (stopReason) {
         WorkInfo.STOP_REASON_TIMEOUT -> "timeout"
         WorkInfo.STOP_REASON_CONSTRAINT_CONNECTIVITY -> "network lost or no longer unmetered"
         WorkInfo.STOP_REASON_CONSTRAINT_STORAGE_NOT_LOW -> "storage low"
@@ -255,6 +260,7 @@ class ModelDownloadWorker(
         WorkInfo.STOP_REASON_PREEMPT -> "preempted"
         WorkInfo.STOP_REASON_SYSTEM_PROCESSING -> "system processing"
         else -> "reason $stopReason"
+        }
     }
 
     companion object {

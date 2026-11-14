@@ -14,10 +14,12 @@ import android.provider.Settings
 import androidx.core.net.toUri
 import androidx.test.core.app.ApplicationProvider
 import com.baba.callvault.data.AppPreferences
+import com.baba.callvault.data.PrivilegedMode
 import com.baba.callvault.server.IRecorderService
 import com.baba.callvault.server.RecorderConnection
 import io.mockk.mockk
 import org.junit.After
+import org.junit.Before
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test
@@ -33,11 +35,20 @@ class SetupPrerequisitesTest {
     private val context: Context = ApplicationProvider.getApplicationContext()
     private val preferences = AppPreferences(context)
 
+    @Before
+    fun selectStandaloneModeForAdbPrerequisiteTests() {
+        preferences.setPrivilegedMode(PrivilegedMode.STANDALONE)
+        // These tests exercise the missing-grant branch, not the alternate live transports.
+        preferences.setOfflineRecordingEnabled(false)
+    }
+
     /**
      * Satisfies every prerequisite EXCEPT the ones a test deliberately breaks, so each test isolates
      * exactly one precedence step instead of accidentally also tripping an earlier one.
      */
     private fun satisfyAllPrerequisites() {
+        Settings.Global.putInt(context.contentResolver, "adb_wifi_enabled", 0)
+        preferences.setOfflineRecordingEnabled(false)
         preferences.setRecordingFolderUri("content://tree/a".toUri())
         preferences.setAdbPaired(true)
         Settings.Global.putString(context.contentResolver, Settings.Global.DEVELOPMENT_SETTINGS_ENABLED, "1")

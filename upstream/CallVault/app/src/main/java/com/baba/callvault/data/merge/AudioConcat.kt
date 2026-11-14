@@ -17,6 +17,22 @@ import com.baba.callvault.utils.AppLogger
 import java.io.FileDescriptor
 import java.nio.ByteBuffer
 
+
+/** Convert MediaExtractor sample flags to the distinct MediaCodec.BufferInfo flag domain. */
+private fun muxerFlagsFromSampleFlags(sampleFlags: Int): Int {
+    check(sampleFlags and MediaExtractor.SAMPLE_FLAG_ENCRYPTED == 0) {
+        "Encrypted samples cannot be copied into an unencrypted MediaMuxer output"
+    }
+    var flags = 0
+    if (sampleFlags and MediaExtractor.SAMPLE_FLAG_SYNC != 0) {
+        flags = flags or MediaCodec.BUFFER_FLAG_KEY_FRAME
+    }
+    if (sampleFlags and MediaExtractor.SAMPLE_FLAG_PARTIAL_FRAME != 0) {
+        flags = flags or MediaCodec.BUFFER_FLAG_PARTIAL_FRAME
+    }
+    return flags
+}
+
 /**
  * Joins several recordings into one by copying their encoded frames, without decoding.
  *
@@ -124,7 +140,7 @@ object AudioConcat {
                 info.offset = 0
                 info.size = size
                 info.presentationTimeUs = startTimeUs + (sampleUs - firstSampleUs)
-                info.flags = extractor.sampleFlags
+                info.flags = muxerFlagsFromSampleFlags(extractor.sampleFlags)
                 muxer.writeSampleData(trackIndex, buffer, info)
 
                 frames++

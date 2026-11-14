@@ -143,8 +143,8 @@ class AppPreferences(context: Context) {
         // when the rules below say so, otherwise offer a Record button. False is the opt-in
         // "app calls only" mode — no recording AND no standby notification for phone calls.
         const val CARRIER_RECORDING_ENABLED = true
-        const val AUTO_RECORD_INCOMING = false
-        const val AUTO_RECORD_OUTGOING = false
+        const val AUTO_RECORD_INCOMING = true
+        const val AUTO_RECORD_OUTGOING = true
         const val RECORD_FROM_ANSWER = false
 
         // --- Keep or delete after the call ---
@@ -219,7 +219,7 @@ class AppPreferences(context: Context) {
 
         // Standalone: one app, no dependency on anything else being installed — the project's whole
         // premise. An install that predates Shizuku support has no stored value and must land here.
-        val PRIVILEGED_MODE: String = PrivilegedMode.STANDALONE.key
+        val PRIVILEGED_MODE: String = PrivilegedMode.SHIZUKU.key
 
         // Off: one language for every call is the right assumption for most phones, and an extra
         // dialog between a tap and its result is a cost worth paying only by people who take calls in

@@ -317,4 +317,7 @@ interface IRecorderService {
      * Allow button does. Returns a [NetworkApproval] name. Appended: ids are positional.
      */
     String approveWirelessDebuggingNetwork(boolean alwaysAllow);
+
+    /** Read-only protected capture permission report. Appended to preserve Binder transaction IDs. */
+    String capturePermissionReport();
 }

@@ -57,6 +57,21 @@ class OnboardingGateTest {
         assertFalse(status(adbConnected = false).isComplete())
     }
 
+    /** Turning Shizuku off after setup must not trap a returning user on onboarding. */
+    @Test
+    fun `completed user can return to home without a transport`() {
+        val returningUser = status(adbConnected = false)
+        assertFalse(returningUser.isComplete())
+        assertTrue(returningUser.canReturnToHome())
+    }
+
+    /** Revoked permissions still require the user to return to setup. */
+    @Test
+    fun `returning user with a revoked permission cannot bypass onboarding`() {
+        val returningUser = status(adbConnected = false, batteryExempted = false)
+        assertFalse(returningUser.canReturnToHome())
+    }
+
     /**
      * Storage deliberately does not gate this — folder choice moved into the wizard. Pinned because it
      * reads like an omission and has been "fixed" by mistake before.

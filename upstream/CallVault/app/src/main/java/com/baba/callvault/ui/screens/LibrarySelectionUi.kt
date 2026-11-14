@@ -94,15 +94,7 @@ fun LibrarySelectionActions(selection: LibrarySelectionUi) {
                 tint = MaterialTheme.colorScheme.onSurfaceVariant,
             )
         }
-        selection.onTranscribeAgain?.let { onTranscribeAgain ->
-            IconButton(onClick = onTranscribeAgain, enabled = hasPicked) {
-                Icon(
-                    imageVector = Icons.Filled.Refresh,
-                    contentDescription = stringResource(R.string.transcript_retranscribe),
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-            }
-        }
+        // Bulk re-transcription is excluded from the recorder-only product profile.
         IconButton(onClick = selection.onDelete, enabled = hasPicked) {
             Icon(
                 imageVector = Icons.Filled.Delete,

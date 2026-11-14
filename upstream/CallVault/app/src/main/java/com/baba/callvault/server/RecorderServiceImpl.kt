@@ -490,6 +490,34 @@ open class RecorderServiceImpl(private val apkPath: String) : IRecorderService.S
         return scrcpy
     }
 
+    override fun capturePermissionReport(): String {
+        val uid = android.os.Process.myUid()
+        val permissions = listOf(
+            "android.permission.CAPTURE_AUDIO_OUTPUT",
+            "android.permission.CAPTURE_VOICE_COMMUNICATION_OUTPUT",
+        )
+        val checks = permissions.joinToString("\n") { permission ->
+            val status = runCatching {
+                val process = ProcessBuilder(
+                    "/system/bin/cmd", "package", "check-permission", permission, "com.android.shell"
+                ).redirectErrorStream(true).start()
+                if (!process.waitFor(3, TimeUnit.SECONDS)) {
+                    process.destroyForcibly()
+                    "unknown (check timed out)"
+                } else {
+                    val output = process.inputStream.bufferedReader().use { it.readText() }.trim()
+                    when {
+                        output.equals("granted", ignoreCase = true) -> "granted"
+                        output.equals("denied", ignoreCase = true) -> "denied"
+                        else -> "unknown ($output)"
+                    }
+                }
+            }.getOrElse { "unknown (" + it.javaClass.simpleName + ")" }
+            "$permission: $status"
+        }
+        return "Recorder host UID: $uid\nPermission checks target com.android.shell (not the CallVault app):\n$checks\nA granted permission is necessary but does not prove live cellular-call capture."
+    }
+
     companion object {
         private const val TAG = "CV:RecorderServer"
 

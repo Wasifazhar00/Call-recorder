@@ -184,15 +184,20 @@ fun SettingsScreen(
     val contactPickerViewModel: ContactPickerViewModel = viewModel()
     val contactPickerState by contactPickerViewModel.contactPickerState.collectAsState()
 
+    val cloudFolderRejectedMessage = stringResource(R.string.folder_cloud_rejected)
+    val driveFolderOverlapMessage = stringResource(R.string.folder_drive_overlaps_recordings)
+    val importDoneFormat = stringResource(R.string.settings_import_done)
+    val importFailedMessage = stringResource(R.string.settings_import_failed)
+
     // Folder picker — PersistentFolderPickerContract keeps access alive after a reboot.
     val folderPickerLauncher = rememberLauncherForActivityResult(PersistentFolderPickerContract()) { uri ->
         if (uri != null) {
             if (SafHelper.isCloudFolder(uri)) {
                 // Cloud folders (Google Drive, …) reject "rw" and report length asynchronously, which
                 // breaks live capture. Refuse it here; the Drive backup option handles cloud copies.
-                Toast.makeText(context, context.getString(R.string.folder_cloud_rejected), Toast.LENGTH_LONG).show()
+                Toast.makeText(context, cloudFolderRejectedMessage, Toast.LENGTH_LONG).show()
             } else if (FolderOverlap.overlaps(uri, viewModel.preferences.getDriveFolderUri())) {
-                Toast.makeText(context, context.getString(R.string.folder_drive_overlaps_recordings), Toast.LENGTH_LONG).show()
+                Toast.makeText(context, driveFolderOverlapMessage, Toast.LENGTH_LONG).show()
             } else {
                 context.takePersistableFolderPermission(uri)
                 viewModel.preferences.setRecordingFolderUri(uri)
@@ -209,7 +214,7 @@ fun SettingsScreen(
         if (uri != null && FolderOverlap.overlaps(viewModel.preferences.getRecordingFolderUri(), uri)) {
             // The recording folder (or one inside/around it) as "Drive": Drive-only would delete every
             // recording right after saving it (2.4.9 Xiaomi report). See [FolderOverlap].
-            Toast.makeText(context, context.getString(R.string.folder_drive_overlaps_recordings), Toast.LENGTH_LONG).show()
+            Toast.makeText(context, driveFolderOverlapMessage, Toast.LENGTH_LONG).show()
         } else if (uri != null) {
             context.takePersistableFolderPermission(uri)
             viewModel.setDriveFolderUri(uri)
@@ -352,8 +357,8 @@ fun SettingsScreen(
                     val applied = viewModel.importSettings(json)
                     Toast.makeText(
                         context,
-                        if (applied >= 0) context.getString(R.string.settings_import_done, applied)
-                        else context.getString(R.string.settings_import_failed),
+                        if (applied >= 0) String.format(java.util.Locale.getDefault(), importDoneFormat, applied)
+                        else importFailedMessage,
                         Toast.LENGTH_LONG,
                     ).show()
                 }) { Text(stringResource(R.string.settings_import_confirm_apply)) }

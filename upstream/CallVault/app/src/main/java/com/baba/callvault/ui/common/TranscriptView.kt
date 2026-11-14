@@ -290,7 +290,7 @@ fun TranscriptView(
                                 bottom = if (subtitle != null) 0.dp else 8.dp,
                             )
                     )
-                    TranscriptPageMenu(summaryState, onSummarise, onTranscribeAgain)
+                    TranscriptPageMenu(summaryState, onSummarise, null)
                     Spacer(Modifier.width(12.dp))
                 }
                 if (subtitle != null) {
@@ -313,7 +313,7 @@ fun TranscriptView(
             title = title,
             subtitle = subtitle,
             onBack = onDismiss,
-            actions = { TranscriptPageMenu(summaryState, onSummarise, onTranscribeAgain) },
+            actions = { TranscriptPageMenu(summaryState, onSummarise, null) },
         ) { innerPadding ->
             // Inset with a Column rather than passed down: the body ends with a transport bar that
             // has to clear the navigation bar, and its list takes weight(1f), so the frame has to be

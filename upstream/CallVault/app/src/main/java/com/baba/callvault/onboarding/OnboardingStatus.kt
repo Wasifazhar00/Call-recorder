@@ -51,6 +51,20 @@ object OnboardingStatus {
         val wizardCompleted: Boolean
     ) {
         /**
+         * A returning user may remain in Home while changing recorder transports.
+         * This deliberately does not make setup complete: it only prevents a transport
+         * switch from trapping the user outside Settings. All actual permissions remain required.
+         */
+        fun canReturnToHome(): Boolean =
+            wizardCompleted &&
+                disclaimerAccepted &&
+                notificationsGranted &&
+                contactsGranted &&
+                phoneStateGranted &&
+                callLogGranted &&
+                batteryExempted
+
+        /**
          * Returns true only when every prerequisite is satisfied, including the disclaimer.
          */
         fun isComplete(): Boolean {

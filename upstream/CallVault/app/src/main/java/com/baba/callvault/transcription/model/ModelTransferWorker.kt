@@ -12,6 +12,7 @@ package com.baba.callvault.transcription.model
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.SystemClock
 import android.provider.DocumentsContract
 import android.provider.OpenableColumns
@@ -257,10 +258,15 @@ class ModelTransferWorker(
      * partial backup document is left for that run to overwrite. A cancel (by the user, or a replacing
      * request) is never re-run. Says nothing about the grant: see [shouldReleaseGrant].
      */
-    private fun willRunAgain(): Boolean = isStopped && stopReason != WorkInfo.STOP_REASON_CANCELLED_BY_APP
+    private fun willRunAgain(): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return false
+        return isStopped && stopReason != WorkInfo.STOP_REASON_CANCELLED_BY_APP
+    }
 
-    private fun stopReasonName(): String =
-        if (stopReason == WorkInfo.STOP_REASON_CANCELLED_BY_APP) "cancelled" else "reason $stopReason"
+    private fun stopReasonName(): String {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return "stop reason unavailable before Android 12"
+        return if (stopReason == WorkInfo.STOP_REASON_CANCELLED_BY_APP) "cancelled" else "reason $stopReason"
+    }
 
     private fun fail(op: String, model: DownloadableModel, error: String, startedAt: Long, cause: Throwable? = null): Result {
         log(op, model, "failed $error${cause?.let { " (${it.javaClass.simpleName})" } ?: ""}", 0L, startedAt)

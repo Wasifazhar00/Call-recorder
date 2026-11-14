@@ -3,15 +3,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <plurals name="home_selected_count">
         <item quantity="one">Wybrano: %1$d</item>
-        <item quantity="other">Wybrano: %1$d</item>
+                <item quantity="few">Wybrano: %1$d</item>
+        <item quantity="many">Wybrano: %1$d</item>
+<item quantity="other">Wybrano: %1$d</item>
     </plurals>
     <plurals name="home_bulk_delete_title">
         <item quantity="one">Usunąć nagrania (%1$d)?</item>
-        <item quantity="other">Usunąć nagrania (%1$d)?</item>
+                <item quantity="few">Usunąć nagrania (%1$d)?</item>
+        <item quantity="many">Usunąć nagrania (%1$d)?</item>
+<item quantity="other">Usunąć nagrania (%1$d)?</item>
     </plurals>
     <plurals name="home_bulk_delete_kept_count">
         <item quantity="one">nagrania: %1$d</item>
-        <item quantity="other">nagrania: %1$d</item>
+                <item quantity="few">nagrania: %1$d</item>
+        <item quantity="many">nagrania: %1$d</item>
+<item quantity="other">nagrania: %1$d</item>
     </plurals>
 
     <!-- Call summaries. Numbers are measured on the reference device, not estimated. -->
@@ -23,15 +29,21 @@
     </plurals>
     <plurals name="library_bulk_delete_transcripts_title">
         <item quantity="one">Usunąć transkrypcje (%1$d)?</item>
-        <item quantity="other">Usunąć transkrypcje (%1$d)?</item>
+                <item quantity="few">Usunąć transkrypcje (%1$d)?</item>
+        <item quantity="many">Usunąć transkrypcje (%1$d)?</item>
+<item quantity="other">Usunąć transkrypcje (%1$d)?</item>
     </plurals>
     <plurals name="library_bulk_delete_summaries_title">
         <item quantity="one">Usunąć podsumowania (%1$d)?</item>
-        <item quantity="other">Usunąć podsumowania (%1$d)?</item>
+                <item quantity="few">Usunąć podsumowania (%1$d)?</item>
+        <item quantity="many">Usunąć podsumowania (%1$d)?</item>
+<item quantity="other">Usunąć podsumowania (%1$d)?</item>
     </plurals>
     <plurals name="library_bulk_delete_text_only_warning">
         <item quantity="one">Za częścią z nich (%1$d) nie ma nagrania — tam tekst to wszystko, co zostało. Tego nie da się cofnąć.</item>
-        <item quantity="other">Za częścią z nich (%1$d) nie ma nagrania — tam tekst to wszystko, co zostało. Tego nie da się cofnąć.</item>
+                <item quantity="few">Za częścią z nich (%1$d) nie ma nagrania — tam tekst to wszystko, co zostało. Tego nie da się cofnąć.</item>
+        <item quantity="many">Za częścią z nich (%1$d) nie ma nagrania — tam tekst to wszystko, co zostało. Tego nie da się cofnąć.</item>
+<item quantity="other">Za częścią z nich (%1$d) nie ma nagrania — tam tekst to wszystko, co zostało. Tego nie da się cofnąć.</item>
     </plurals>
 
     <!-- The search line at the head of the Recordings, Transcripts and Summaries pages. %1$s = what was typed. -->

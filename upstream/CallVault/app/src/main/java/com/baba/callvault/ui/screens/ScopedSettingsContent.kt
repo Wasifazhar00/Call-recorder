@@ -96,7 +96,7 @@ fun ScopedSettingsContent(
     // A page with a single group (Transcripts, Summaries) opens it straight away: a lone folded card is
     // one tap of nothing. Closing it is remembered as "" so it stays closed.
     var openGroups by rememberSaveable { mutableStateOf(HashMap<String, String>()) }
-    val groups = SettingsGroups.forScope(scope)
+    val groups = SettingsGroups.forScope(scope).filterNot { it == SettingsGroup.MODEL_AND_LANGUAGE || it == SettingsGroup.WHEN_TO_TRANSCRIBE || it == SettingsGroup.SUMMARIES }
     val openGroup = openGroups[scope.name]
         ?.let { SettingsGroup.fromKey(it) }
         ?: if (openGroups[scope.name] == null) groups.singleOrNull() else null
@@ -263,7 +263,7 @@ private fun androidx.compose.foundation.lazy.LazyListScope.settingsSearchResults
     actions: SettingsActions,
     callbacks: GroupBodyCallbacks,
 ) {
-    val all = SettingsGroups.forScope(SettingsScope.ALL)
+    val all = SettingsGroups.forScope(SettingsScope.ALL).filterNot { it == SettingsGroup.MODEL_AND_LANGUAGE || it == SettingsGroup.WHEN_TO_TRANSCRIBE || it == SettingsGroup.SUMMARIES }
     val (hits, misses) = all.partition { g -> SettingsGroups.rowsOf(g).any { it in rows } }
     if (hits.isEmpty()) {
         item(key = "search-none") {

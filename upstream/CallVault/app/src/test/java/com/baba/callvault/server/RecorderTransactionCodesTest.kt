@@ -60,6 +60,7 @@ class RecorderTransactionCodesTest {
         assertEquals(first + 26, IRecorderService.Stub.TRANSACTION_captureSelfTest)
         // Appended for approving a new Wi-Fi network without the prompt.
         assertEquals(first + 27, IRecorderService.Stub.TRANSACTION_approveWirelessDebuggingNetwork)
+        assertEquals(first + 28, IRecorderService.Stub.TRANSACTION_capturePermissionReport)
     }
 
     @Test

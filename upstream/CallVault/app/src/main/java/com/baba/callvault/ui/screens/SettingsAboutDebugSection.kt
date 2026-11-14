@@ -41,9 +41,11 @@ import com.baba.callvault.system.openOriginalProjectRepo
 import com.baba.callvault.ui.common.formatByteSize
 import com.baba.callvault.ui.common.SupportDialog
 import com.baba.callvault.server.RecorderBackend
+import com.baba.callvault.server.RecorderConnection
 import com.baba.callvault.utils.AppLogger
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.first
 import com.baba.callvault.data.AppPreferences
 import com.baba.callvault.integrations.scrcpy.ScrcpyConfig
@@ -102,6 +104,8 @@ internal fun BugReportSection(
     var confirmClearLog by remember { mutableStateOf(false) }
 
     SettingsSection(title = stringResource(R.string.settings_section_debug), expanded = expanded, onToggle = onToggle) {
+        CapturePermissionDiagnostics()
+        SettingsDivider()
         SettingsToggleRow(
             icon            = Icons.Filled.BugReport,
             label           = stringResource(R.string.settings_debug_logging_enabled),
@@ -223,6 +227,65 @@ internal fun BugReportSection(
                     Text(stringResource(R.string.general_cancel))
                 }
             },
+        )
+    }
+}
+
+/**
+ * Reads the live recorder host instead of inferring its privileges from the app UI.
+ * A permission result is diagnostic only; it does not guarantee cellular-call capture.
+ */
+@Composable
+private fun CapturePermissionDiagnostics() {
+    var report by remember { mutableStateOf<String?>(null) }
+    var checking by remember { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
+
+    Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp)) {
+        Text("Capture capability diagnostics", style = MaterialTheme.typography.titleSmall)
+        Text(
+            "Reads the active recorder UID and checks Android protected audio permissions for the shell host. This is read-only and does not record a call.",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        Spacer(Modifier.height(8.dp))
+        CvSecondaryButton(
+            text = if (checking) "Checking…" else "Check recorder permissions",
+            onClick = {
+                if (!checking) {
+                    checking = true
+                    scope.launch {
+                        report = withContext(Dispatchers.IO) {
+                            val service = RecorderConnection.service
+                                ?: return@withContext "Recorder service is not connected. Start the selected backend and check again."
+                            runCatching { service.capturePermissionReport() }
+                                .getOrElse { "Could not query recorder: " + it.javaClass.simpleName + ": " + (it.message ?: "no details") }
+                        }
+                        checking = false
+                    }
+                }
+            },
+            modifier = Modifier.fillMaxWidth(),
+        )
+        if (checking) {
+            Spacer(Modifier.height(8.dp))
+            LinearProgressIndicator(Modifier.fillMaxWidth())
+        }
+        report?.let {
+            Spacer(Modifier.height(8.dp))
+            Surface(
+                modifier = Modifier.fillMaxWidth(),
+                color = MaterialTheme.colorScheme.surfaceVariant,
+                shape = MaterialTheme.shapes.medium,
+            ) {
+                Text(it, modifier = Modifier.padding(12.dp), style = MaterialTheme.typography.bodySmall)
+            }
+        }
+        Spacer(Modifier.height(4.dp))
+        Text(
+            "Denied or unknown means Android/OEM firmware is not exposing that capability to the shell host. Granted does not prove successful two-sided cellular recording; that still requires incoming and outgoing call tests on this phone.",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
     }
 }

@@ -8,6 +8,7 @@
 
 package com.baba.callvault.services.recording
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.telecom.TelecomManager
 import android.telephony.TelephonyManager
@@ -75,6 +76,7 @@ object VoipTelephonyGate {
      * question should lose the guard, not lose app-call recording altogether. Needs
      * `READ_PHONE_STATE`, which the app already holds for call detection.
      */
+    @SuppressLint("MissingPermission") // runCatching below explicitly handles a revoked READ_PHONE_STATE grant.
     fun managedCallInProgress(context: Context): Boolean = runCatching {
         context.getSystemService(TelecomManager::class.java)?.isInManagedCall ?: false
     }.onFailure {

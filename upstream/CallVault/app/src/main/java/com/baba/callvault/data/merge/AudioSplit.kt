@@ -9,12 +9,29 @@
 package com.baba.callvault.data.merge
 
 import android.media.MediaCodec
+import android.media.MediaExtractor
 import android.media.MediaFormat
 import android.media.MediaMuxer
 import com.baba.callvault.data.merge.MergeFormat.optInt
 import com.baba.callvault.utils.AppLogger
 import java.io.FileDescriptor
 import java.nio.ByteBuffer
+
+
+/** Convert MediaExtractor sample flags to the distinct MediaCodec.BufferInfo flag domain. */
+private fun muxerFlagsFromSampleFlags(sampleFlags: Int): Int {
+    check(sampleFlags and MediaExtractor.SAMPLE_FLAG_ENCRYPTED == 0) {
+        "Encrypted samples cannot be copied into an unencrypted MediaMuxer output"
+    }
+    var flags = 0
+    if (sampleFlags and MediaExtractor.SAMPLE_FLAG_SYNC != 0) {
+        flags = flags or MediaCodec.BUFFER_FLAG_KEY_FRAME
+    }
+    if (sampleFlags and MediaExtractor.SAMPLE_FLAG_PARTIAL_FRAME != 0) {
+        flags = flags or MediaCodec.BUFFER_FLAG_PARTIAL_FRAME
+    }
+    return flags
+}
 
 /**
  * Cuts a merged recording back into the calls it was made from — the inverse of [AudioConcat].
@@ -119,7 +136,7 @@ object AudioSplit {
                         info.offset = 0
                         info.size = size
                         info.presentationTimeUs = sampleUs - baseUs
-                        info.flags = extractor.sampleFlags
+                        info.flags = muxerFlagsFromSampleFlags(extractor.sampleFlags)
                         muxer.writeSampleData(trackIndex, buffer, info)
                         written++
                     }

@@ -89,14 +89,16 @@ fun WizardScreen(
 ) {
     val context = LocalContext.current
     val updateTrigger by viewModel.updateTrigger.collectAsState()
+    val cloudFolderRejectedMessage = stringResource(R.string.folder_cloud_rejected)
+    val driveFolderOverlapMessage = stringResource(R.string.folder_drive_overlaps_recordings)
 
     // Device/recording folder picker — persists access across reboots.
     val recordingFolderPicker = rememberLauncherForActivityResult(PersistentFolderPickerContract()) { uri ->
         if (uri != null) {
             if (SafHelper.isCloudFolder(uri)) {
-                Toast.makeText(context, context.getString(R.string.folder_cloud_rejected), Toast.LENGTH_LONG).show()
+                Toast.makeText(context, cloudFolderRejectedMessage, Toast.LENGTH_LONG).show()
             } else if (FolderOverlap.overlaps(uri, viewModel.preferences.getDriveFolderUri())) {
-                Toast.makeText(context, context.getString(R.string.folder_drive_overlaps_recordings), Toast.LENGTH_LONG).show()
+                Toast.makeText(context, driveFolderOverlapMessage, Toast.LENGTH_LONG).show()
             } else {
                 context.takePersistableFolderPermission(uri)
                 viewModel.setRecordingFolderUri(uri)
@@ -108,7 +110,7 @@ fun WizardScreen(
     val driveFolderPicker = rememberLauncherForActivityResult(PersistentFolderPickerContract()) { uri ->
         if (uri != null && FolderOverlap.overlaps(viewModel.preferences.getRecordingFolderUri(), uri)) {
             // Same rule as Settings: the recording folder can never be the Drive folder. See [FolderOverlap].
-            Toast.makeText(context, context.getString(R.string.folder_drive_overlaps_recordings), Toast.LENGTH_LONG).show()
+            Toast.makeText(context, driveFolderOverlapMessage, Toast.LENGTH_LONG).show()
         } else if (uri != null) {
             context.takePersistableFolderPermission(uri)
             viewModel.setDriveFolderUri(uri)

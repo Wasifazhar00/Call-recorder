@@ -40,6 +40,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.selected
@@ -182,7 +183,8 @@ internal fun EmptyCalls(hasPermission: Boolean) {
 /** "Today 14:30", "Yesterday 09:15", or "29/07/26 14:30" — the same wording as the recordings list. */
 @Composable
 internal fun callTimeLabel(millis: Long): String {
-    val time = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date(millis))
+    val locale = LocalConfiguration.current.locales[0]
+    val time = SimpleDateFormat("HH:mm", locale).format(Date(millis))
     val day = Calendar.getInstance().apply { timeInMillis = millis }
     val today = Calendar.getInstance()
     val yesterday = Calendar.getInstance().apply { add(Calendar.DAY_OF_YEAR, -1) }
@@ -191,7 +193,7 @@ internal fun callTimeLabel(millis: Long): String {
     return when {
         sameDay(day, today) -> "${stringResource(R.string.home_date_today)} $time"
         sameDay(day, yesterday) -> "${stringResource(R.string.home_date_yesterday)} $time"
-        else -> SimpleDateFormat("dd/MM/yy HH:mm", Locale.getDefault()).format(Date(millis))
+        else -> SimpleDateFormat("dd/MM/yy HH:mm", locale).format(Date(millis))
     }
 }
 

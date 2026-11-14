@@ -232,20 +232,7 @@ fun PlaybackScreen(
                     onRemove = onRemoveFlag
                 )
             }
-            // Above the transcript row and the note, because it answers the question the transcript
-            // answers more slowly — and because a stamp in it is a jump into the player above.
-            SummaryCard(
-                state = summaryState,
-                onCreate = onSummarise,
-                onRedo = onSummarise,
-                onStop = onStopSummary,
-                // Seek, then play. A jump point that silently moved the cursor without starting
-                // would look like nothing happened.
-                onSeek = { millis ->
-                    onSeek(millis.toInt())
-                    if (!isPlaying) onPlay()
-                }
-            )
+            // Summary UI is excluded from the CallVault recorder-only product profile.
             // Between the summary and the note: a tag is the shortest thing on the screen and the
             // one most often applied right after listening, so it sits where the thumb already is
             // rather than below a text field that opens the keyboard.
@@ -448,21 +435,7 @@ private fun CallHeaderCard(
                 )
             }
 
-            // The same one-slot control the list rows use — transcribe / in progress / read / retry
-            // — rather than a second thing that means the same. Retry is transcribe: on this screen
-            // there is one recording and one thing a failed run can do next.
-            TranscriptActionButton(
-                status = transcriptStatus,
-                onTranscribe = onTranscribe,
-                onOpen = onOpenTranscript,
-                onRetry = onTranscribe,
-                modifier = Modifier.size(ACTION_TARGET),
-                // Was left at its default of 0, so this one spun without ever filling while the
-                // identical control in the list showed a figure. A ring that turns for minutes and
-                // never moves is indistinguishable from a hang — which is the whole reason the
-                // percentage was added to that control in the first place.
-                percent = transcriptPercent
-            )
+            // Transcription controls are excluded from the CallVault recorder-only product profile.
 
             // On the card rather than at the foot of the screen. It lived in a row below the note,
             // which meant scrolling to reach a control most people look for first — and briefly

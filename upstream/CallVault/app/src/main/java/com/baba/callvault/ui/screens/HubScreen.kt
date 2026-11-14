@@ -131,26 +131,7 @@ fun HubScreen(
                         onClick = { onOpenSection(HomeSection.Recordings) },
                     )
                 }
-                item {
-                    HubCard(
-                        icon = Icons.AutoMirrored.Filled.Article,
-                        accent = brand.info,
-                        count = stringResource(R.string.home_transcripts_count, transcriptsCount),
-                        title = stringResource(R.string.home_transcripts_title),
-                        body = stringResource(R.string.home_hub_transcripts_body),
-                        onClick = { onOpenSection(HomeSection.Transcripts) },
-                    )
-                }
-                item {
-                    HubCard(
-                        icon = Icons.Filled.AutoAwesome,
-                        accent = brand.success,
-                        count = stringResource(R.string.home_summaries_count, summariesCount),
-                        title = stringResource(R.string.home_summaries_title),
-                        body = stringResource(R.string.home_hub_summaries_body),
-                        onClick = { onOpenSection(HomeSection.Summaries) },
-                    )
-                }
+                // AI transcript and summary cards are excluded from this product profile.
                 // Last, and only while the user has not tucked it away: an invitation is worth one cell of a
                 // screen they open every day, and worth none at all once they have taken it up. Long-press
                 // moves it to the pill beside Support rather than hiding it, so it is still one tap away.

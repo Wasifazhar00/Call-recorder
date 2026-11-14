@@ -156,7 +156,11 @@ fun AppNavigationScreen(
     // land without a frame of the hub first: an effect that resolved it after the first composition
     // would show the hub and then swap.
     var chosenSection by rememberSaveable { mutableStateOf<HomeSection?>(null) }
-    val section = chosenSection ?: HomeSection.opening(resolvedScreen, storedSectionKey) ?: HomeSection.Hub
+    val restoredSection = HomeSection.opening(resolvedScreen, storedSectionKey)
+    val requestedSection = chosenSection ?: restoredSection
+    val section = requestedSection
+        .takeUnless { it == HomeSection.Transcripts || it == HomeSection.Summaries }
+        ?: HomeSection.Hub
 
     // Every navigation between sections goes through here, so persisting it cannot be forgotten in
     // one of the places that navigates.
@@ -176,7 +180,10 @@ fun AppNavigationScreen(
     // tap?" is a question a debug report otherwise cannot answer.
     LaunchedEffect(notificationDestination, screenState) {
         if (notificationDestination == NotificationDestination.None) return@LaunchedEffect
-        val target = HomeSection.forNotification(resolvedScreen, notificationDestination)
+        val requestedTarget = HomeSection.forNotification(resolvedScreen, notificationDestination)
+        val target = if (requestedTarget == HomeSection.Transcripts || requestedTarget == HomeSection.Summaries) {
+            HomeSection.Hub
+        } else requestedTarget
         if (target != null) goToSection(target)
         AppLogger.d(
             "CV:Nav",
@@ -350,7 +357,7 @@ fun AppNavigationScreen(
 private fun resolveScreen(status: OnboardingStatus.Status): AppScreen {
     return when {
         !status.disclaimerAccepted -> AppScreen.Disclaimer
-        !status.isComplete()       -> AppScreen.Permissions
+        !status.isComplete() && !status.canReturnToHome() -> AppScreen.Permissions
         !status.wizardCompleted    -> AppScreen.Wizard
         else                       -> AppScreen.Home
     }

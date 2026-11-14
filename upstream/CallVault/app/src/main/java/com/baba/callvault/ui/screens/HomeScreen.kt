@@ -219,6 +219,7 @@ import com.baba.callvault.data.transcripts.TagRepository
 import com.baba.callvault.data.transcripts.export.TranscriptExportFile
 import com.baba.callvault.data.transcripts.export.TranscriptExport
 import com.baba.callvault.data.AppPreferences
+import com.baba.callvault.data.TranscriptionMode
 import com.baba.callvault.data.PrivilegedMode
 import com.baba.callvault.data.RecordingState
 import com.baba.callvault.data.health.FailureReason
@@ -690,6 +691,14 @@ fun HomeScreen(
             viewModel.importShown()
         }
     }
+    // Recorder-only product profile: cancel old transcription/summarisation work and prevent
+    // the old automatic sweep from being re-created by the saved preference.
+    LaunchedEffect(Unit) {
+        AppPreferences(context).setTranscriptionMode(TranscriptionMode.MANUAL)
+        TranscriptionScheduler.stopNow(context)
+        SummaryScheduler.stopNow(context)
+    }
+
     // A recording named from outside the app — the share target's Open button — joins the same
     // queue, rather than setting playbackFor directly. A cold start arrives here before the first
     // list pass has finished, so the row is not there yet and opening it would find nothing and
@@ -702,22 +711,12 @@ fun HomeScreen(
         onOpenRecordingHandled()
     }
 
-    // A transcript named from outside the app — the "transcript ready" notification. Straight to the
-    // reading view rather than through a list: the page reads from the transcripts database and needs
-    // no catalog row, so unlike a recording there is nothing to wait for — and for the case this
-    // exists for, a finished "Transcribe only" import, there will never BE a catalog row to wait for.
-    //
-    // playbackFor is cleared because the reading view is only drawn when no recording is open (see
-    // readingPresentation): without this, a tap arriving while the user had left a recording open
-    // would draw the transcript as a sheet over that other recording's screen.
+    // Acknowledge legacy transcript notifications without navigating into removed product features.
     LaunchedEffect(openTranscript) {
-        val requested = openTranscript ?: return@LaunchedEffect
-        onSelectSection(HomeSection.Transcripts)
-        playbackFor = null
-        readingFromSummary = false
-        readingOrder = ArrayList()
-        readingFor = requested
-        onOpenTranscriptHandled()
+        if (openTranscript != null) {
+            AppLogger.i("CV:Profile", "Ignored legacy transcript notification in recorder-only build")
+            onOpenTranscriptHandled()
+        }
     }
 
     LaunchedEffect(openWhenListed, libraryRecordings) {

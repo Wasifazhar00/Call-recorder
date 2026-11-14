@@ -123,6 +123,8 @@ fun PermissionsScreen(
 
     val activityContext = LocalContext.current
 
+    val cloudFolderRejectedMessage = stringResource(R.string.folder_cloud_rejected)
+
     // Permission launchers must live inside a composable - the system dialog can only be
     // triggered from a composable context.  We pass these into the ViewModel as lambdas so
     // the ViewModel never needs to import Compose or hold a UI reference.
@@ -138,7 +140,7 @@ fun PermissionsScreen(
         if (uri != null && SafHelper.isCloudFolder(uri)) {
             // Reject a cloud folder (Google Drive, …) as the capture destination — it breaks live
             // recording. Don't advance onboarding, so the user picks on-device storage instead.
-            Toast.makeText(activityContext, activityContext.getString(R.string.folder_cloud_rejected), Toast.LENGTH_LONG).show()
+            Toast.makeText(activityContext, cloudFolderRejectedMessage, Toast.LENGTH_LONG).show()
             return@rememberLauncherForActivityResult
         }
         if (uri != null) {

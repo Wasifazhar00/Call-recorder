@@ -18,6 +18,22 @@ import android.provider.OpenableColumns
 import java.io.File
 import java.nio.ByteBuffer
 
+
+/** Convert MediaExtractor sample flags to the distinct MediaCodec.BufferInfo flag domain. */
+private fun muxerFlagsFromSampleFlags(sampleFlags: Int): Int {
+    check(sampleFlags and MediaExtractor.SAMPLE_FLAG_ENCRYPTED == 0) {
+        "Encrypted samples cannot be copied into an unencrypted MediaMuxer output"
+    }
+    var flags = 0
+    if (sampleFlags and MediaExtractor.SAMPLE_FLAG_SYNC != 0) {
+        flags = flags or MediaCodec.BUFFER_FLAG_KEY_FRAME
+    }
+    if (sampleFlags and MediaExtractor.SAMPLE_FLAG_PARTIAL_FRAME != 0) {
+        flags = flags or MediaCodec.BUFFER_FLAG_PARTIAL_FRAME
+    }
+    return flags
+}
+
 /**
  * Reads a recording for the cloud path without decoding it: what it is, its bytes, and a pass of it
  * remuxed — packets copied into a new container, never re-encoded (issue #48).
@@ -101,7 +117,7 @@ object CloudAudioSource {
                     if (size < 0 || timeUs < 0 || (toMs != Long.MAX_VALUE && timeUs > toMs * US_PER_MS)) break
                     if (firstUs < 0) firstUs = timeUs
                     // Times start at zero in the new file, so the service's timestamps are pass-relative.
-                    info.set(0, size, timeUs - firstUs, extractor.sampleFlags)
+                    info.set(0, size, timeUs - firstUs, muxerFlagsFromSampleFlags(extractor.sampleFlags))
                     muxer.writeSampleData(target, buffer, info)
                     extractor.advance()
                 }

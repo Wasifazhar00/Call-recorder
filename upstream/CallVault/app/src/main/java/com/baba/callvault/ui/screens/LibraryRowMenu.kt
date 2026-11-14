@@ -115,16 +115,7 @@ internal fun LibraryRowMenu(
                     onClick = { showingFormats = true },
                 )
             }
-            if (menu.transcribeAgain) {
-                DropdownMenuItem(
-                    text = { Text(stringResource(R.string.transcript_retranscribe)) },
-                    leadingIcon = { Icon(Icons.Filled.Refresh, contentDescription = null) },
-                    onClick = {
-                        close()
-                        onTranscribeAgain()
-                    },
-                )
-            }
+            // Re-transcription is excluded from the recorder-only product profile.
             if (menu.delete != null) {
                 DropdownMenuItem(
                     text = { Text(stringResource(R.string.home_delete)) },

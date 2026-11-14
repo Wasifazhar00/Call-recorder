@@ -107,11 +107,15 @@
     <string name="whatsnew_211_title">Lepsze transkrypcje, lepsze podsumowania</string>
     <plurals name="merge_row_badge">
         <item quantity="one">%1$d rozmowa</item>
-        <item quantity="other">%1$d rozmowy</item>
+                <item quantity="few">%1$d rozmowy</item>
+        <item quantity="many">%1$d rozmowy</item>
+<item quantity="other">%1$d rozmowy</item>
     </plurals>
     <plurals name="merge_summary">
         <item quantity="one">%1$d rozmowa · %2$s</item>
-        <item quantity="other">%1$d rozmowy · %2$s</item>
+                <item quantity="few">%1$d rozmowy · %2$s</item>
+        <item quantity="many">%1$d rozmowy · %2$s</item>
+<item quantity="other">%1$d rozmowy · %2$s</item>
     </plurals>
     <string name="merge_confirm">Połącz</string>
     <string name="merge_menu_action">Połącz z innym połączeniem</string>

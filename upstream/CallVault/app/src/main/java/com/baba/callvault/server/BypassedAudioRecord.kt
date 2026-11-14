@@ -120,7 +120,12 @@ internal object BypassedAudioRecord {
                 IntArray::class.java, String::class.java, l).apply { isAccessible = true }
                 .invoke(record, WeakReference(record), attributes, rates, channelMask, 0, format, bufferBytes, session, opPackage, 0L) as Int
         }
-        var source = AttributionSource.myAttributionSource()
+        val callingUid = Binder.getCallingUid()
+        var source = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            AttributionSource.myAttributionSource()
+        } else {
+            AttributionSource.Builder(callingUid).setPackageName("uid:$callingUid").build()
+        }
         if (source.packageName == null) {
             // What the public constructor does for a command-line caller (Android 13 and later).
             source = runCatching {
