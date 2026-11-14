@@ -10,8 +10,6 @@
 package com.baba.callvault.ui.viewmodels
 
 import android.app.Application
-import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.viewModelScope
@@ -23,17 +21,6 @@ import com.baba.callvault.server.RecorderBackend
 import com.baba.callvault.data.StorageTarget
 import com.baba.callvault.integrations.scrcpy.ScrcpyAudioCodec
 import com.baba.callvault.data.SyncScheduleMode
-import com.baba.callvault.data.TranscriptionMode
-import com.baba.callvault.transcription.TranscriptionScheduler
-import com.baba.callvault.transcription.cloud.TranscriptionService
-import com.baba.callvault.summary.SummaryModel
-import com.baba.callvault.transcription.model.DownloadNetwork
-import com.baba.callvault.transcription.model.DownloadableModel
-import com.baba.callvault.transcription.model.ModelDownloadWorker
-import com.baba.callvault.transcription.model.ModelTransferWorker
-import com.baba.callvault.transcription.model.ModelRepository
-import com.baba.callvault.transcription.model.TranscriptionModel
-import com.baba.callvault.system.interop.TranscriptSidecarBackfillWorker
 import com.baba.callvault.system.storage.RetentionScheduler
 import com.baba.callvault.system.storage.SyncScheduler
 import com.baba.callvault.system.updates.UpdateScheduler
@@ -43,7 +30,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.update
 import com.baba.callvault.system.diagnostics.SystemLogCollector
-import com.baba.callvault.utils.AppLogger
 
 // -------- Screen state & action types owned by this ViewModel
 
@@ -87,7 +73,6 @@ interface SettingsActions {
     fun setWriteMetadataFileEnabled(enabled: Boolean)
     fun setShowSimLabelEnabled(enabled: Boolean)
     fun setHideRecordingsEnabled(enabled: Boolean)
-    fun setWriteTranscriptSidecarEnabled(enabled: Boolean)
     fun exportSettingsJson(): String
     fun importSettings(json: String): Int
 
@@ -101,49 +86,6 @@ interface SettingsActions {
     fun setSyncTimeHour(hour: Int)
     fun setSyncTimeMinute(minute: Int)
 
-    fun setTranscriptionMode(mode: TranscriptionMode)
-    fun setTranscriptionHour(hour: Int)
-    fun setTranscriptionMinute(minute: Int)
-    fun setTranscriptionRequiresCharging(required: Boolean)
-
-    /** Whether tapping Transcribe asks first, with an estimate. */
-    fun setTranscriptionConfirmBeforeRun(confirm: Boolean)
-    fun setTranscriptionBatchLimit(limit: Int)
-    fun setTranscriptionModelId(id: String)
-    fun setTranscriptionLanguage(language: String?)
-
-    /** Whether tapping Transcribe asks which language, for phones that take calls in several. */
-    fun setTranscriptionAskLanguage(ask: Boolean)
-
-    /** On this phone or a cloud service (#48). The consent dialog has already been answered. */
-    fun setTranscriptionService(service: TranscriptionService)
-
-    /** Whether cloud transcription may upload over mobile data. */
-    fun setTranscriptionCloudMobileData(allowed: Boolean)
-    fun downloadTranscriptionModel(model: TranscriptionModel, network: DownloadNetwork)
-
-    /** Stops a download in progress. The partial file is kept, so resuming does not re-fetch it. */
-    fun cancelTranscriptionModelDownload(model: TranscriptionModel)
-    fun deleteTranscriptionModel(model: TranscriptionModel)
-
-    /** The summarisation model, which uses the same download machinery at six times the size. */
-    fun downloadSummaryModel(model: SummaryModel, network: DownloadNetwork)
-
-    /** Stops a download in progress. The partial file is kept, so resuming does not re-fetch it. */
-    fun cancelSummaryModelDownload(model: SummaryModel)
-    fun deleteSummaryModel(model: SummaryModel)
-
-    /** Imports either model from a file the user picked (GitHub #58). */
-    fun importModel(model: DownloadableModel, source: Uri)
-
-    /** Stops an import; the worker releases the file's grant once the job has let go of it. */
-    fun cancelModelImport(model: DownloadableModel)
-
-    /** Saves an installed model to a file the user created, to import after a reinstall. */
-    fun backUpModel(model: DownloadableModel, target: Uri)
-
-    /** Stops a backup; the worker deletes the partial file and releases the grant. */
-    fun cancelModelBackup(model: DownloadableModel)
     fun setSyncDayOfWeek(day: Int)
     fun setUpdateCheckEnabled(enabled: Boolean)
 }
@@ -403,13 +345,6 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
         refresh()
     }
 
-    override fun setWriteTranscriptSidecarEnabled(enabled: Boolean) {
-        preferences.setWriteTranscriptSidecarEnabled(enabled)
-        refresh()
-        // Turning it on backs up transcripts/notes that already exist, in the background.
-        if (enabled) TranscriptSidecarBackfillWorker.enqueue(getApplication())
-    }
-
     override fun exportSettingsJson(): String = preferences.exportToJson()
 
     override fun importSettings(json: String): Int {
@@ -491,171 +426,6 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
         refresh()
     }
 
-    // -------- Transcription --------
-    //
-    // Every setter re-applies the scheduler for the same reason the sync ones do: saving a preference
-    // without reconciling WorkManager leaves the two disagreeing, and the user would be looking at a
-    // schedule that nothing is actually running to.
-
-    /** Saves Manual/Automatic and schedules or cancels the periodic run accordingly. */
-    override fun setTranscriptionMode(mode: TranscriptionMode) {
-        preferences.setTranscriptionMode(mode)
-        TranscriptionScheduler.apply(appContext)
-        refresh()
-    }
-
-    /** Saves the automatic-run hour (0-23, local) and re-anchors the periodic run. */
-    override fun setTranscriptionHour(hour: Int) {
-        preferences.setTranscriptionHour(hour)
-        TranscriptionScheduler.apply(appContext)
-        refresh()
-    }
-
-    /** Saves the automatic-run minute and re-anchors the periodic run. */
-    override fun setTranscriptionMinute(minute: Int) {
-        preferences.setTranscriptionMinute(minute)
-        TranscriptionScheduler.apply(appContext)
-        refresh()
-    }
-
-    /** Saves whether the automatic run waits for a charger, and re-applies the constraint. */
-    override fun setTranscriptionRequiresCharging(required: Boolean) {
-        preferences.setTranscriptionRequiresCharging(required)
-        TranscriptionScheduler.apply(appContext)
-        refresh()
-    }
-
-    /**
-     * Saves whether tapping Transcribe asks first.
-     *
-     * No scheduler work: this only governs a dialog. It lives in Settings so the "don't ask again"
-     * checkbox in that dialog can be undone.
-     */
-    override fun setTranscriptionConfirmBeforeRun(confirm: Boolean) {
-        preferences.setTranscriptionConfirmBeforeRun(confirm)
-        refresh()
-    }
-
-    /** Saves how many recordings one automatic run takes on. */
-    override fun setTranscriptionBatchLimit(limit: Int) {
-        preferences.setTranscriptionBatchLimit(limit)
-        refresh()
-    }
-
-    /** Saves the chosen model tier. */
-    override fun setTranscriptionModelId(id: String) {
-        preferences.setTranscriptionModelId(id)
-        refresh()
-    }
-
-    /** Saves the language passed to whisper, or null to auto-detect. */
-    override fun setTranscriptionLanguage(language: String?) {
-        preferences.setTranscriptionLanguage(language)
-        refresh()
-    }
-
-    /** Saves whether tapping Transcribe asks which language first. */
-    override fun setTranscriptionAskLanguage(ask: Boolean) {
-        preferences.setTranscriptionAskLanguage(ask)
-        refresh()
-    }
-
-    /** Saves where calls are transcribed, and re-applies the sweep: a cloud run needs a network. */
-    override fun setTranscriptionService(service: TranscriptionService) {
-        preferences.setTranscriptionService(service)
-        TranscriptionScheduler.apply(appContext)
-        refresh()
-    }
-
-    /** Saves the mobile-data choice and re-applies the sweep's network constraint. */
-    override fun setTranscriptionCloudMobileData(allowed: Boolean) {
-        preferences.setTranscriptionCloudMobileData(allowed)
-        TranscriptionScheduler.apply(appContext)
-        refresh()
-    }
-
-    /** Queues a model download over [network]: Wi-Fi only unless the user chose mobile data. */
-    override fun downloadTranscriptionModel(model: TranscriptionModel, network: DownloadNetwork) {
-        ModelDownloadWorker.enqueue(appContext, model, network)
-        refresh()
-    }
-
-    /**
-     * Stops a speech-model download without discarding it.
-     *
-     * Kept, exactly as the summariser's is: 574 MB is smaller but a resumed download still starts
-     * from the banked offset, and re-fetching it because someone needed the Wi-Fi is pure waste.
-     */
-    override fun cancelTranscriptionModelDownload(model: TranscriptionModel) {
-        ModelDownloadWorker.cancel(appContext, model)
-        refresh()
-    }
-
-    /** Queues the summariser for download over [network]: Wi-Fi only unless the user chose mobile data. */
-    override fun downloadSummaryModel(model: SummaryModel, network: DownloadNetwork) {
-        ModelDownloadWorker.enqueue(appContext, model, network)
-        refresh()
-    }
-
-    /**
-     * Stops a download without discarding it.
-     *
-     * The partial file is deliberately kept: at 3.46 GB, throwing away what has already arrived
-     * because someone needed the Wi-Fi for ten minutes would be its own small cruelty.
-     */
-    override fun cancelSummaryModelDownload(model: SummaryModel) {
-        ModelDownloadWorker.cancel(appContext, model)
-        refresh()
-    }
-
-    /** Removes the summariser and any partial download of it, reclaiming about 3.5 GB. */
-    override fun deleteSummaryModel(model: SummaryModel) {
-        ModelDownloadWorker.cancel(appContext, model)
-        ModelRepository.delete(appContext, model)
-        refresh()
-    }
-
-    /**
-     * Queues the import of [source]. The grant is made persistable first, so a job that WorkManager
-     * stops and re-runs later — after the picker's temporary grant has gone — can still read the file.
-     * Some providers offer no persistable grant; the job then runs on the temporary one, and reports
-     * the file unreadable if that lapses rather than failing here.
-     */
-    override fun importModel(model: DownloadableModel, source: Uri) {
-        runCatching {
-            appContext.contentResolver.takePersistableUriPermission(source, Intent.FLAG_GRANT_READ_URI_PERMISSION)
-        }.onFailure { AppLogger.w("CV:Settings", "No persistable read grant for the import of ${model.id}: ${it.javaClass.simpleName}") }
-        ModelTransferWorker.enqueueImport(appContext, model, source)
-        refresh()
-    }
-
-    override fun cancelModelImport(model: DownloadableModel) {
-        ModelTransferWorker.cancelImport(appContext, model)
-        refresh()
-    }
-
-    /** Queues the backup to [target], holding a persistable write grant for the reason [importModel] gives. */
-    override fun backUpModel(model: DownloadableModel, target: Uri) {
-        runCatching {
-            appContext.contentResolver.takePersistableUriPermission(target, Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
-        }.onFailure { AppLogger.w("CV:Settings", "No persistable write grant for the backup of ${model.id}: ${it.javaClass.simpleName}") }
-        ModelTransferWorker.enqueueBackup(appContext, model, target)
-        refresh()
-    }
-
-    override fun cancelModelBackup(model: DownloadableModel) {
-        ModelTransferWorker.cancelBackup(appContext, model)
-        refresh()
-    }
-
-    /** Removes a downloaded model and any partial download of it. */
-    override fun deleteTranscriptionModel(model: TranscriptionModel) {
-        ModelDownloadWorker.cancel(appContext, model)
-        ModelRepository.delete(appContext, model)
-        refresh()
-    }
-
-    /** Saves the weekly upload day (Calendar.SUNDAY=1 .. SATURDAY=7) and re-anchors the periodic sweep. */
     override fun setSyncDayOfWeek(day: Int) {
         preferences.setSyncDayOfWeek(day)
         SyncScheduler.apply(appContext)
