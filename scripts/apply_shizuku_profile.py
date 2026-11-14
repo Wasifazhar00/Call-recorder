@@ -423,78 +423,7 @@ import kotlinx.coroutines.launch
 # transcription/summarisation and cancel any old queued AI work on first Home entry.
 # Keep the upstream data/schema classes intact so existing installations upgrade
 # without destructive database migrations or loss of recordings/history.
-patch_file("app/src/main/java/com/baba/callvault/ui/screens/HubScreen.kt", [
-("""                item {
-                    HubCard(
-                        icon = Icons.AutoMirrored.Filled.Article,
-                        accent = brand.info,
-                        count = stringResource(R.string.home_transcripts_count, transcriptsCount),
-                        title = stringResource(R.string.home_transcripts_title),
-                        body = stringResource(R.string.home_hub_transcripts_body),
-                        onClick = { onOpenSection(HomeSection.Transcripts) },
-                    )
-                }
-                item {
-                    HubCard(
-                        icon = Icons.Filled.AutoAwesome,
-                        accent = brand.success,
-                        count = stringResource(R.string.home_summaries_count, summariesCount),
-                        title = stringResource(R.string.home_summaries_title),
-                        body = stringResource(R.string.home_hub_summaries_body),
-                        onClick = { onOpenSection(HomeSection.Summaries) },
-                    )
-                }
-""", """                // AI transcript and summary cards are excluded from this product profile.
-""", "remove transcript and summary hub cards")
-])
-patch_file("app/src/main/java/com/baba/callvault/ui/screens/ScopedSettingsContent.kt", [
-("val groups = SettingsGroups.forScope(scope)",
- "val groups = SettingsGroups.forScope(scope).filterNot { it == SettingsGroup.MODEL_AND_LANGUAGE || it == SettingsGroup.WHEN_TO_TRANSCRIBE || it == SettingsGroup.SUMMARIES }",
- "remove transcription and summary settings groups"),
-("val all = SettingsGroups.forScope(SettingsScope.ALL)",
- "val all = SettingsGroups.forScope(SettingsScope.ALL).filterNot { it == SettingsGroup.MODEL_AND_LANGUAGE || it == SettingsGroup.WHEN_TO_TRANSCRIBE || it == SettingsGroup.SUMMARIES }",
- "remove transcription and summary settings search results")
-])
-# ShareClipScreen is already recorder-only; no transcription patch is needed.
-patch_file("app/src/main/java/com/baba/callvault/ui/screens/PlaybackScreen.kt", [
-("""            // Above the transcript row and the note, because it answers the question the transcript
-            // answers more slowly — and because a stamp in it is a jump into the player above.
-            SummaryCard(
-                state = summaryState,
-                onCreate = onSummarise,
-                onRedo = onSummarise,
-                onStop = onStopSummary,
-                // Seek, then play. A jump point that silently moved the cursor without starting
-                // would look like nothing happened.
-                onSeek = { millis ->
-                    onSeek(millis.toInt())
-                    if (!isPlaying) onPlay()
-                }
-            )
-""", """            // Summary UI is excluded from the CallVault recorder-only product profile.
-""", "remove summary card from recording playback")
-])
-
-patch_file("app/src/main/java/com/baba/callvault/ui/screens/PlaybackScreen.kt", [
-("""            // The same one-slot control the list rows use — transcribe / in progress / read / retry
-            // — rather than a second thing that means the same. Retry is transcribe: on this screen
-            // there is one recording and one thing a failed run can do next.
-            TranscriptActionButton(
-                status = transcriptStatus,
-                onTranscribe = onTranscribe,
-                onOpen = onOpenTranscript,
-                onRetry = onTranscribe,
-                modifier = Modifier.size(ACTION_TARGET),
-                // Was left at its default of 0, so this one spun without ever filling while the
-                // identical control in the list showed a figure. A ring that turns for minutes and
-                // never moves is indistinguishable from a hang — which is the whole reason the
-                // percentage was added to that control in the first place.
-                percent = transcriptPercent
-            )
-""", """            // Transcription controls are excluded from the CallVault recorder-only product profile.
-""", "remove playback transcription action")
-])
-# Transcript navigation is removed in the recorder-only source itself.
+# Home, Settings and Playback screens are already recorder-only in source.
 
 # AI scheduling is removed; no runtime transcription or summary jobs are scheduled.
 
