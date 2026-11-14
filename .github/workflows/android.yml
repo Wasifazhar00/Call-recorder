@@ -76,6 +76,22 @@ jobs:
                       print(f"  {i}: {line[:240]}")
           PY
 
+      # Persist the recorder-only source pruning before validation. A failed build must
+      # not discard the requested feature removals from the branch.
+      - name: Commit recorder-only source cleanup
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add upstream/CallVault
+          if ! git diff --cached --quiet; then
+            git commit -m "Persist recorder-only feature removals"
+            git push origin HEAD:feature/recorder-only-prune
+          else
+            echo "No source cleanup changes to persist."
+          fi
+
       - name: Run release unit tests
         working-directory: upstream/CallVault
         run: env -u GITHUB_ACTIONS ./gradlew --no-daemon --stacktrace :app:testDebugUnitTest
