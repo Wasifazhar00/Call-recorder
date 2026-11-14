@@ -66,9 +66,6 @@ internal fun GroupBody(
         SettingsGroup.SAVE_AND_SYNC -> SaveAndSyncBody(preferences, updateTrigger, actions, callbacks)
         SettingsGroup.CLEANING_UP -> CleaningUpBody(preferences, updateTrigger, actions)
         SettingsGroup.CONNECTION -> ConnectionBody()
-        SettingsGroup.MODEL_AND_LANGUAGE -> ModelAndLanguageBody(preferences, updateTrigger, actions)
-        SettingsGroup.WHEN_TO_TRANSCRIBE -> WhenToTranscribeBody(preferences, updateTrigger, actions)
-        SettingsGroup.SUMMARIES -> SummariesBody(preferences, updateTrigger, actions, callbacks)
         SettingsGroup.APP -> AppBody(preferences, updateTrigger, actions, callbacks)
         SettingsGroup.HELP_AND_ABOUT -> HelpAndAboutBody(preferences, updateTrigger, actions, callbacks)
     }
@@ -176,7 +173,6 @@ private fun SaveAndSyncBody(
                 SearchFiltered("HideRecordingsRow") { HideRecordingsRow(preferences, updateTrigger, actions) }
             }
             SaveAndSyncRow.METADATA_FILE -> SearchFiltered("MetadataFileRow") { MetadataFileRow(preferences, updateTrigger, actions) }
-            SaveAndSyncRow.TRANSCRIPT_SIDECAR -> SearchFiltered("TranscriptSidecarRow") { TranscriptSidecarRow(preferences, updateTrigger, actions) }
         }
     }
 }
@@ -191,47 +187,6 @@ private fun CleaningUpBody(preferences: AppPreferences, updateTrigger: Int, acti
 @Composable
 private fun ConnectionBody() {
     SearchFiltered("ConnectionRows") { ConnectionRows() }
-}
-
-@Composable
-private fun ModelAndLanguageBody(preferences: AppPreferences, updateTrigger: Int, actions: SettingsActions) {
-    SearchFiltered("TranscriptionServiceRows") { TranscriptionServiceRows(preferences, updateTrigger, actions) }
-    // The speech model only matters on this phone; a cloud service (#48) brings its own.
-    val onDevice = remember(updateTrigger) { !preferences.getTranscriptionService().isCloud }
-    if (onDevice) {
-        SettingsDivider()
-        SearchFiltered("TranscriptionModelChoiceRow") { TranscriptionModelChoiceRow(preferences, updateTrigger, actions) }
-        SearchFiltered("TranscriptionModelDownloadRows") { TranscriptionModelDownloadRows(preferences, updateTrigger, actions) }
-    }
-    SettingsDivider()
-    SearchFiltered("TranscriptionLanguageRows") { TranscriptionLanguageRows(preferences, updateTrigger, actions) }
-}
-
-@Composable
-private fun WhenToTranscribeBody(preferences: AppPreferences, updateTrigger: Int, actions: SettingsActions) {
-    SearchFiltered("TranscriptionScheduleRows") { TranscriptionScheduleRows(preferences, updateTrigger, actions) }
-    SearchFiltered("TranscriptionConfirmRow") { TranscriptionConfirmRow(preferences, updateTrigger, actions) }
-    SearchFiltered("TranscriptionModeNote") { TranscriptionModeNote(preferences, updateTrigger) }
-}
-
-/** Transcripts and summaries share ONE language on purpose; here it is read-only, with a link to it. */
-@Composable
-private fun SummariesBody(
-    preferences: AppPreferences,
-    updateTrigger: Int,
-    actions: SettingsActions,
-    callbacks: GroupBodyCallbacks,
-) {
-    NavigationRow(
-        icon = Icons.Filled.Translate,
-        label = stringResource(R.string.transcription_language_label),
-        value = sharedLanguageLabel(preferences, updateTrigger),
-        supporting = stringResource(R.string.settings_language_change_in_transcripts),
-        onClick = callbacks.onChangeLanguage,
-        keepSupportingInline = true,
-    )
-    SettingsDivider()
-    SearchFiltered("SummarySettingsRows") { SummarySettingsRows(preferences, updateTrigger, actions) }
 }
 
 @Composable
