@@ -10,7 +10,6 @@ package com.baba.callvault.ui.screens
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import com.baba.callvault.R
 import com.baba.callvault.data.AppPreferences
@@ -19,14 +18,9 @@ import com.baba.callvault.data.RetentionPeriod
 import com.baba.callvault.data.StorageTarget
 import com.baba.callvault.data.SyncScheduleMode
 import com.baba.callvault.ui.common.SyncScheduleLabels
-import com.baba.callvault.transcription.model.TranscriptionModel
 import com.baba.callvault.integrations.adb.AdbShell
 import com.baba.callvault.integrations.scrcpy.ScrcpyAudioCodec
-import com.baba.callvault.summary.SummaryModel
-import com.baba.callvault.transcription.model.ModelRepository
-import com.baba.callvault.ui.common.TranscriptionLabels
 import com.baba.callvault.ui.viewmodels.SettingsActions
-import com.baba.callvault.transcription.cloud.TranscriptionService
 
 /**
  * The one-line summary under a group card's title, read from the same preferences as the group's rows.
@@ -68,38 +62,7 @@ internal fun groupSummaryText(
         )
     }
     SettingsGroup.CONNECTION -> connectionSummaryText(preferences, updateTrigger, expanded)
-    SettingsGroup.MODEL_AND_LANGUAGE -> {
-        val modelId = remember(updateTrigger) { preferences.getTranscriptionModelId() }
-        val model = TranscriptionModel.fromId(modelId) ?: TranscriptionModel.DEFAULT
-        val service = remember(updateTrigger) { preferences.getTranscriptionService() }
-        joinSummary(
-            listOf(
-                // A cloud service (#48) names itself; on this phone, the model does.
-                when (service) {
-                    TranscriptionService.ON_DEVICE -> stringResource(TranscriptionLabels.titleOf(model))
-                    TranscriptionService.CUSTOM -> stringResource(R.string.transcription_where_custom)
-                    else -> service.preset?.displayName.orEmpty()
-                },
-                sharedLanguageLabel(preferences, updateTrigger),
-            )
-        )
-    }
-    SettingsGroup.WHEN_TO_TRANSCRIBE -> {
-        val mode = remember(updateTrigger) { preferences.getTranscriptionMode() }
-        stringResource(TranscriptionLabels.titleOf(mode))
-    }
-    SettingsGroup.SUMMARIES -> {
-        val context = LocalContext.current
-        val installed = remember(updateTrigger, expanded) {
-            ModelRepository.isInstalled(context, SummaryModel.DEFAULT)
-        }
-        joinSummary(
-            listOf(
-                stringResource(if (installed) R.string.summary_model_installed else R.string.settings_summary_not_downloaded),
-                sharedLanguageLabel(preferences, updateTrigger),
-            )
-        )
-    }
+    SettingsGroup.MODEL_AND_LANGUAGE, SettingsGroup.WHEN_TO_TRANSCRIBE, SettingsGroup.SUMMARIES -> ""
     SettingsGroup.APP -> {
         val theme = remember(updateTrigger) { preferences.getThemeMode() }
         stringResource(
@@ -143,13 +106,6 @@ private fun saveAndSyncSummaryText(preferences: AppPreferences, updateTrigger: I
 
 /** kbps from a stored bit rate in bits per second. */
 private const val BITS_PER_KILOBIT = 1000
-
-/** The one language transcripts and summaries share, as the user sees it in the picker. */
-@Composable
-internal fun sharedLanguageLabel(preferences: AppPreferences, updateTrigger: Int): String {
-    val language = remember(updateTrigger) { preferences.getTranscriptionLanguage() }
-    return stringResource(TranscriptionLabels.languageOf(language))
-}
 
 @Composable
 private fun directionText(direction: RecordingSummary): String? = when (direction) {
@@ -241,11 +197,6 @@ private fun connectionSummaryText(preferences: AppPreferences, updateTrigger: In
 internal fun groupExplanationText(group: SettingsGroup, preferences: AppPreferences, updateTrigger: Int): String? =
     when (group) {
         SettingsGroup.CLEANING_UP -> stringResource(R.string.retention_description)
-        SettingsGroup.WHEN_TO_TRANSCRIBE -> {
-            val mode = remember(updateTrigger) { preferences.getTranscriptionMode() }
-            stringResource(transcriptionModeNoteRes(mode))
-        }
-        SettingsGroup.SUMMARIES -> summaryModelExplanation()
         SettingsGroup.HELP_AND_ABOUT -> stringResource(R.string.settings_bugreport_share_hint)
         else -> null
     }
