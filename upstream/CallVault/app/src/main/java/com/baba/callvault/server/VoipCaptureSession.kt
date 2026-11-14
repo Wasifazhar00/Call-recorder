@@ -18,8 +18,6 @@ import android.media.MediaRecorder
 import android.os.ParcelFileDescriptor
 import com.baba.callvault.integrations.scrcpy.ScrcpyAudioCodec
 import com.baba.callvault.server.echo.SafeFarAligner
-import com.baba.callvault.server.speakers.SpeakerTurnCodec
-import com.baba.callvault.server.speakers.SpeakerTurnDetector
 import com.baba.callvault.utils.AppLogger
 import com.baba.callvault.utils.PcmDownmix
 import java.util.concurrent.ArrayBlockingQueue
@@ -75,11 +73,6 @@ internal class VoipCaptureSession(
      */
     @Volatile var farPartyHeard: Boolean = false
         private set
-
-    /** Speaker turns for this capture, encoded; empty until the loop finishes. */
-    @Volatile private var speakerTurnsEncoded: String = ""
-
-    override fun speakerTurns(): String = speakerTurnsEncoded
 
     /** The sync summary of the finished capture, for the app's log; empty until the loop ends. */
     @Volatile private var syncSummary: String = ""
@@ -274,11 +267,6 @@ internal class VoipCaptureSession(
 
         val silence = ByteArray(CHUNK_BYTES)
         val stereo = ByteArray(CHUNK_BYTES * 2)
-        // Speaker turns, from the same interleaved buffer the encoder's downmix is about to flatten.
-        // This path built L=near/R=far all along and then threw the separation away — so app calls
-        // arrived with no speaker labels at all, while carrier calls had them, for no reason anyone
-        // had decided. Here the two sides are known exactly rather than inferred: near is the user.
-        val speakers = SpeakerTurnDetector(SAMPLE_RATE)
         // Lines the far side up with its copy leaking back into the mic, so the mix has one far voice
         // instead of two 60-76 ms apart (the echo report, OnePlus A17). No leak = far side untouched.
         val farAligner = SafeFarAligner(CHUNK_BYTES) { AppLogger.i(TAG, it) }
@@ -313,11 +301,7 @@ internal class VoipCaptureSession(
                 val n = nearChunk?.bytes ?: silence.also { substituted++ }
                 val f = farChunk?.bytes ?: silence
                 ledger.paired(nearChunk?.contentNanos, farChunk?.contentNanos)
-                // Paused: the chunks were read above and are now dropped. The AudioRecords and the
-                // feeder threads are untouched — capture itself does not change shape when a user
-                // pauses — but nothing reaches the encoder, the speaker detector or the frame count,
-                // so the paused stretch is simply absent from the file. Same result as the carrier
-                // path, reached without going anywhere near the microphone.
+                // Paused chunks are discarded before encoding; captured routes remain untouched.
                 if (pauseRequested.get() || suspended.get()) continue
                 val fMix = farAligner.align(n, f)
                 var o = 0
@@ -389,9 +373,6 @@ internal class VoipCaptureSession(
             }
         } finally {
             readers.forEach { it.interrupt() }
-            // In the finally, so a capture that ends by exception still yields whatever turns it saw.
-            runCatching { speakerTurnsEncoded = SpeakerTurnCodec.encode(speakers.finish()) }
-                .onFailure { AppLogger.w(TAG, "Could not encode VoIP speaker turns: ${it.message}") }
         }
     }
 

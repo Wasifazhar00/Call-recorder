@@ -814,7 +814,7 @@ object VoipRecordingCoordinator {
                         }
                     }
                     // Keep or delete after the call: decided once, here, before the catalog row, so no
-                    // sweep can copy or transcribe it in between. A hold that cannot be stored falls back
+                    // sweep can copy or copy it in between. A hold that cannot be stored falls back
                     // to keeping, as on the carrier path.
                     val isHeld = AfterCallDecision.tryHold(context, name, safUri, codecMime, isVoip = true)
                     try {
@@ -822,19 +822,6 @@ object VoipRecordingCoordinator {
                         // Marks collected during the call, keyed to the final name — the same rule the
                         // carrier path follows and for the same reason.
                         FlagRepository.save(context, name, PendingFlags.drain())
-                        // Collect the speaker turns the capture just measured, before transcription is
-                        // queued and before the details file below — the runner reads them from the
-                        // database when it labels segments, and the details file now carries them too
-                        // (issue #50), so both must run after this or they would see no turns.
-                        //
-                        // The capture interleaves L=near, R=far and had that separation all along; it was
-                        // simply thrown away at the downmix, so app calls came out with no speaker labels
-                        // while carrier calls had them. `outgoing = false`: an app call has no reliable
-                        // direction here, and guessing wrong would teach the You/Them mapping the wrong
-                        // side, which is worse than leaving the sides neutral.
-                        runCatching {
-                            SpeakerTurnsRepository.collectAfterCall(context, name, outgoing = false)
-                        }.onFailure { AppLogger.w(TAG, "Could not collect VoIP speaker turns: ${it.message}") }
                         // Same details file as the carrier path, derived the same way from the same
                         // final name. `direction` comes out null here and that is correct rather than
                         // lazy: an app call has no reliable direction, and BCR's format already has a
@@ -852,9 +839,6 @@ object VoipRecordingCoordinator {
                                 phoneNumber = parsed.number,
                                 contactName = parsed.contactName,
                                 durationSecsEncoded = null,
-                                // The app call's own stereo puts the near party on the left (channel A) by
-                                // construction, so unlike a carrier call this never has to be learned.
-                                nearChannel = "A"
                             )
                         }
                         // Same order as the carrier path: catalog first, then queue. Not while a keep-or-delete
