@@ -9,23 +9,25 @@
 package com.baba.callvault.data.recordings
 
 import android.content.Context
+import android.media.MediaCodecList
+import android.media.MediaExtractor
+import android.media.MediaMetadataRetriever
 import android.net.Uri
 import android.provider.OpenableColumns
 import androidx.documentfile.provider.DocumentFile
 import com.baba.callvault.data.AppPreferences
 import com.baba.callvault.system.storage.SafHelper
-import com.baba.callvault.transcription.AudioDecoder
 import com.baba.callvault.utils.AppLogger
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 /**
- * Brings a file the user already owns into CallVault, so it can be transcribed.
+ * Brings an audio file the user already owns into the CallVault recordings library.
  *
  * An import is **not a call**. There is no number, no direction, no contact and no second speaker
  * channel, and nothing here invents any of them — the name carries a timestamp and the import
  * marker, and everything downstream reads the absences as absences. What it does have is the one
- * thing transcription needs: a catalogued file in the recordings folder with a name of its own.
+ * thing speech recognition needs: a catalogued file in the recordings folder with a name of its own.
  *
  * ## The order of the steps is the design
  *
@@ -36,7 +38,7 @@ import kotlinx.coroutines.withContext
  *    files picked from local storage and fails on exactly the ones this feature exists for.
  * 3. **Decode the copy, then keep it.** The probe asks the device whether it can really read this
  *    file — see [decodes] — and a file that fails is deleted again rather than catalogued. The
- *    alternative is a row that looks like every other row and silently cannot be transcribed.
+ *    alternative is a row that looks like every other row and silently cannot be stored.
  * 4. **Catalogue with the import time.** Never the source's own date: retention measures age from
  *    the catalog's `lastModified`, so a two-year-old voice note stamped with when it was recorded
  *    would arrive already expired and be deleted by the nightly sweep the same night.
@@ -44,16 +46,6 @@ import kotlinx.coroutines.withContext
 object AudioImport {
 
     private const val TAG = "CV:AudioImport"
-
-    /**
-     * How much audio the decode probe reads before it is satisfied.
-     *
-     * Enough that the codec has been created, configured, run and has reported its output format —
-     * which is where the 16-bit check lives — and short enough that importing a ninety-minute
-     * recording costs the same as importing a voice note. Decoding the whole file to find out would
-     * be the memory cost transcription is limited by, paid twice.
-     */
-    private const val PROBE_MS = 2_000L
 
     /** What the user gets back from an import attempt. */
     sealed interface Outcome {
@@ -65,7 +57,7 @@ object AudioImport {
          *   keys on — the transcript, the summary, the tags and the delete cascade alike.
          * @param durationMs how long the audio is, or 0 when the container would not say. Handed back
          *   rather than left to be read again: it was measured here anyway, and the caller needs it to
-         *   quote an estimate and to refuse a file over the transcription length limit. Reading it a
+         *   quote an estimate and to refuse a file over the speech recognition length limit. Reading it a
          *   second time would be a second SAF open and a second MediaExtractor for an answer already
          *   in hand.
          */
@@ -93,7 +85,7 @@ object AudioImport {
         COPY_FAILED,
 
         /**
-         * The file was copied and this device could not decode it, so it could never be transcribed.
+         * The file was copied and this device could not decode it, so it could not be played.
          * A 32-bit-float WAV lands here, and so does anything corrupt or DRM-protected.
          */
         UNDECODABLE,
@@ -192,7 +184,7 @@ object AudioImport {
 
         if (!decodes(context, copyUri)) {
             // Deleted rather than kept: a file in the user's recordings folder that cannot be
-            // transcribed is the exact outcome the probe exists to prevent, and leaving it there
+            // stored is the exact outcome the probe exists to prevent, and leaving it there
             // would also leave it to the sweeps to reason about.
             SafHelper.deleteDocument(
                 DocumentFile.fromSingleUri(context, copyUri),
@@ -213,7 +205,7 @@ object AudioImport {
         )
         // Read once and remembered, exactly as a recording's is, so the list never has to open the
         // file for it — the cost that made the library slower the more of it there was.
-        val durationMs = runCatching { AudioDecoder.durationMs(context, copyUri) }.getOrDefault(0L)
+        val durationMs = durationMs(context, copyUri)
         val durationSeconds = durationMs.takeIf { it > 0L }?.let { (it + 500) / 1000 }
         if (durationSeconds != null) RecordingCatalog.setDuration(context, displayName, durationSeconds)
 
@@ -221,19 +213,35 @@ object AudioImport {
         Outcome.Imported(displayName, durationMs)
     }
 
-    /**
-     * Whether this device can actually decode [uri], asked by decoding the first [PROBE_MS] of it.
-     *
-     * The app's own decoder, deliberately, not a second opinion: what has to be true is that
-     * *transcription* will work, and transcription is [AudioDecoder]. That includes its refusal to
-     * read anything but 16-bit PCM, which is what turns a 32-bit-float WAV down here rather than at
-     * the end of a run the user waited for.
-     */
+    /** Checks for a readable audio track and an advertised decoder for its codec. */
     private fun decodes(context: Context, uri: Uri): Boolean = runCatching {
-        AudioDecoder.decodeRange(context, uri, fromMs = 0L, toMs = PROBE_MS).audio.isNotEmpty()
+        val extractor = MediaExtractor()
+        try {
+            extractor.setDataSource(context, uri, null)
+            val audioMime = (0 until extractor.trackCount)
+                .mapNotNull { index -> extractor.getTrackFormat(index).getString(android.media.MediaFormat.KEY_MIME) }
+                .firstOrNull { it.startsWith("audio/") } ?: return@runCatching false
+            MediaCodecList(MediaCodecList.REGULAR_CODECS).codecInfos.any { info ->
+                !info.isEncoder && info.supportedTypes.any { it.equals(audioMime, ignoreCase = true) }
+            }
+        } finally {
+            extractor.release()
+        }
     }.getOrElse { e ->
-        AppLogger.w(TAG, "Decode probe of $uri failed: ${e.javaClass.simpleName}: ${e.message}")
+        AppLogger.w(TAG, "Audio probe of $uri failed: ${e.javaClass.simpleName}: ${e.message}")
         false
+    }
+
+    private fun durationMs(context: Context, uri: Uri): Long {
+        val retriever = MediaMetadataRetriever()
+        return try {
+            retriever.setDataSource(context, uri)
+            retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)?.toLongOrNull() ?: 0L
+        } catch (_: Exception) {
+            0L
+        } finally {
+            runCatching { retriever.release() }
+        }
     }
 
     private fun refuse(reason: Reason, detail: String): Outcome {
