@@ -38,7 +38,6 @@ import com.baba.callvault.R
 import com.baba.callvault.system.PersistentFolderPickerContract
 import com.baba.callvault.system.diagnostics.SystemLogCollector
 import com.baba.callvault.system.shareLogFiles
-import com.baba.callvault.transcription.model.DownloadNetwork
 import com.baba.callvault.utils.AppLogger
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -50,10 +49,6 @@ import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.coroutines.flow.first
 import com.baba.callvault.data.AppPreferences
 import com.baba.callvault.data.SyncScheduleMode
-import com.baba.callvault.data.TranscriptionMode
-import com.baba.callvault.summary.SummaryModel
-import com.baba.callvault.transcription.model.DownloadableModel
-import com.baba.callvault.transcription.model.TranscriptionModel
 import com.baba.callvault.data.StorageTarget
 import com.baba.callvault.system.storage.FolderOverlap
 import com.baba.callvault.system.storage.SafHelper
@@ -73,7 +68,6 @@ import com.mikepenz.aboutlibraries.ui.compose.m3.LibrariesContainer
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.mikepenz.aboutlibraries.ui.compose.android.produceLibraries
-import android.net.Uri
 import androidx.compose.material.icons.filled.Folder
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Save
@@ -416,7 +410,6 @@ private fun SettingsScreenPreview() {
             override fun setWriteMetadataFileEnabled(enabled: Boolean) {}
             override fun setShowSimLabelEnabled(enabled: Boolean) {}
             override fun setHideRecordingsEnabled(enabled: Boolean) {}
-            override fun setWriteTranscriptSidecarEnabled(enabled: Boolean) {}
             override fun exportSettingsJson(): String = "{}"
             override fun importSettings(json: String): Int = 0
             override fun setStorageCapBytes(bytes: Long) {}
@@ -425,27 +418,6 @@ private fun SettingsScreenPreview() {
             override fun setRetentionTimeHour(hour: Int) {}
             override fun setRetentionTimeMinute(minute: Int) {}
             override fun setSyncScheduleMode(mode: SyncScheduleMode) {}
-            override fun setTranscriptionMode(mode: TranscriptionMode) {}
-            override fun setTranscriptionHour(hour: Int) {}
-            override fun setTranscriptionMinute(minute: Int) {}
-            override fun setTranscriptionRequiresCharging(required: Boolean) {}
-        override fun setTranscriptionConfirmBeforeRun(confirm: Boolean) {}
-            override fun setTranscriptionBatchLimit(limit: Int) {}
-            override fun setTranscriptionModelId(id: String) {}
-            override fun setTranscriptionLanguage(language: String?) {}
-            override fun setTranscriptionAskLanguage(ask: Boolean) {}
-            override fun setTranscriptionService(service: com.baba.callvault.transcription.cloud.TranscriptionService) {}
-            override fun setTranscriptionCloudMobileData(allowed: Boolean) {}
-            override fun downloadTranscriptionModel(model: TranscriptionModel, network: DownloadNetwork) {}
-            override fun cancelTranscriptionModelDownload(model: TranscriptionModel) {}
-            override fun deleteTranscriptionModel(model: TranscriptionModel) {}
-            override fun downloadSummaryModel(model: SummaryModel, network: DownloadNetwork) {}
-            override fun cancelSummaryModelDownload(model: SummaryModel) {}
-            override fun deleteSummaryModel(model: SummaryModel) {}
-            override fun importModel(model: DownloadableModel, source: Uri) {}
-            override fun cancelModelImport(model: DownloadableModel) {}
-            override fun backUpModel(model: DownloadableModel, target: Uri) {}
-            override fun cancelModelBackup(model: DownloadableModel) {}
             override fun setSyncTimeHour(hour: Int) {}
             override fun setSyncTimeMinute(minute: Int) {}
             override fun setSyncDayOfWeek(day: Int) {}
