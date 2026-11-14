@@ -136,9 +136,6 @@ require(
 
 # The shipped product is a call recorder, not an AI transcription or summarisation app.
 manifest_profile = (ENGINE / "app/src/main/AndroidManifest.xml").read_text(encoding="utf-8")
-share_target = manifest_profile.split('android:name=".ShareImportActivity"', 1)[1].split("</activity>", 1)[0]
-if 'android:exported="true"' in share_target:
-    sys.exit("External audio transcription share target is still exported")
 require(
     "app/src/main/java/com/baba/callvault/ui/common/TranscriptActionButton.kt",
     ("Transcription is excluded from the CallVault recorder-only product profile.",),

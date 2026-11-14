@@ -606,14 +606,6 @@ patch_file("app/src/main/java/com/baba/callvault/ui/screens/ScopedSettingsConten
  "val all = SettingsGroups.forScope(SettingsScope.ALL).filterNot { it == SettingsGroup.MODEL_AND_LANGUAGE || it == SettingsGroup.WHEN_TO_TRANSCRIBE || it == SettingsGroup.SUMMARIES }",
  "remove transcription and summary settings search results")
 ])
-patch_file("app/src/main/AndroidManifest.xml", [
-("""            android:name=".ShareImportActivity"
-            android:exported="true"
-""",
-"""            android:name=".ShareImportActivity"
-            android:exported="false"
-""", "remove external audio-to-transcription share target")
-])
 patch_file("app/src/main/java/com/baba/callvault/ui/common/TranscriptActionButton.kt", [
 ("""    val action = TranscriptRowAction.forStatus(status)
     val description = stringResource(action.contentDescriptionRes)
