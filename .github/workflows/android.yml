@@ -2,7 +2,7 @@ name: Shizuku-first optimized APK
 
 on:
   push:
-    branches: [ "main", "feature/shizuku-first-lean-build" ]
+    branches: [ "main", "feature/shizuku-first-lean-build", "feature/recorder-only-prune" ]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
