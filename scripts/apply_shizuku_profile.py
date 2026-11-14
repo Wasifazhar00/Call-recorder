@@ -13,8 +13,6 @@ TARGET = ENGINE / "app/src/main/java/com/baba/callvault/data/AppPreferences.kt"
 TEST = ENGINE / "app/src/test/java/com/baba/callvault/data/health/SetupPrerequisitesTest.kt"
 VOIP_GATE = ENGINE / "app/src/main/java/com/baba/callvault/services/recording/VoipTelephonyGate.kt"
 BYPASSED_AUDIO = ENGINE / "app/src/main/java/com/baba/callvault/server/BypassedAudioRecord.kt"
-MODEL_WORKER = ENGINE / "app/src/main/java/com/baba/callvault/transcription/model/ModelDownloadWorker.kt"
-
 source = TARGET.read_text(encoding="utf-8")
 replacements = {
     "val PRIVILEGED_MODE: String = PrivilegedMode.STANDALONE.key":
@@ -71,179 +69,12 @@ if new_attribution not in audio_source:
     audio_source = audio_source.replace(old_attribution, new_attribution, 1)
 BYPASSED_AUDIO.write_text(audio_source, encoding="utf-8")
 
-# WorkInfo.getStopReason() was added in API 31. The app supports API 30,
-# where WorkManager still exposes isStopped but not a stop reason.
-worker_source = MODEL_WORKER.read_text(encoding="utf-8")
-worker_import = "import android.content.Context" + chr(10)
-worker_imported = worker_import + "import android.os.Build" + chr(10)
-if "import android.os.Build" + chr(10) not in worker_source:
-    if worker_source.count(worker_import) != 1:
-        sys.exit("ModelDownloadWorker Build import anchor changed; refusing unsafe patch")
-    worker_source = worker_source.replace(worker_import, worker_imported, 1)
-old_stop_reason = """    private fun stopReasonName(): String = when (stopReason) {
-"""
-new_stop_reason = """    private fun stopReasonName(): String {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
-            return "stop reason unavailable before Android 12"
-        }
-        return when (stopReason) {
-"""
-if new_stop_reason not in worker_source:
-    if worker_source.count(old_stop_reason) != 1:
-        sys.exit("ModelDownloadWorker stop-reason API anchor changed; refusing unsafe patch")
-    worker_source = worker_source.replace(old_stop_reason, new_stop_reason, 1)
-    closing = """        else -> "reason $stopReason"
-    }
-
-    companion object {
-"""
-    replacement = """        else -> "reason $stopReason"
-        }
-    }
-
-    companion object {
-"""
-    if worker_source.count(closing) != 1:
-        sys.exit("ModelDownloadWorker stop-reason closing anchor changed; refusing unsafe patch")
-    worker_source = worker_source.replace(closing, replacement, 1)
-MODEL_WORKER.write_text(worker_source, encoding="utf-8")
-
-
-# CallVault product profile: keep only the native audio-handoff library required by
-# resilient call recording. Whisper/llama inference engines are excluded from this product.
-native_cmake = ENGINE / "app/src/main/cpp/CMakeLists.txt"
-native_cmake.write_text("""# Native component required for resilient call-recording audio handoff.
-cmake_minimum_required(VERSION 3.22.1)
-project(audiohandoff)
-add_link_options($<$<NOT:$<CONFIG:Debug>>:-Wl,--strip-all>)
-add_link_options("LINKER:--build-id=none")
-get_filename_component(CALLVAULT_REPO_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/../../../.. ABSOLUTE)
-add_compile_options("-ffile-prefix-map=${CALLVAULT_REPO_ROOT}=.")
-add_library(audiohandoff SHARED audiohandoff.cpp)
-find_library(log-lib log)
-target_link_libraries(audiohandoff ${log-lib})
-""", encoding="utf-8")
-for obsolete in (
-    ENGINE / "app/src/main/cpp/whispercv.cpp",
-    ENGINE / "app/src/main/cpp/llamacv.cpp",
-    ENGINE / "app/src/main/assets/ggml-silero-v5.1.2.bin",
-):
-    if obsolete.exists():
-        obsolete.unlink()
-
-# Carrier recording must remain globally enabled; the two direction switches control automation.
-for required in (
-    "const val CARRIER_RECORDING_ENABLED = true",
-    "const val AUTO_RECORD_INCOMING = true",
-    "const val AUTO_RECORD_OUTGOING = true",
-    "val PRIVILEGED_MODE: String = PrivilegedMode.SHIZUKU.key",
-):
-    if source.count(required) != 1:
-        sys.exit(f"Shizuku-first profile contract not satisfied: {required!r}")
-
-# These tests exercise the built-in ADB prerequisite path. Make that fixture explicit:
-# the production build's Shizuku default must not silently change what the tests are testing.
-test_source = TEST.read_text(encoding="utf-8")
-# Keep alternate live transports disabled so Robolectric state from another test cannot
-# change the missing-grant assertion.
-old_satisfy = """    private fun satisfyAllPrerequisites() {
-        preferences.setRecordingFolderUri("content://tree/a".toUri())
-"""
-new_satisfy = """    private fun satisfyAllPrerequisites() {
-        Settings.Global.putInt(context.contentResolver, "adb_wifi_enabled", 0)
-        preferences.setOfflineRecordingEnabled(false)
-        preferences.setRecordingFolderUri("content://tree/a".toUri())
-"""
-if new_satisfy not in test_source:
-    if test_source.count(old_satisfy) != 1:
-        sys.exit("SetupPrerequisitesTest prerequisite fixture anchor changed; refusing unsafe patch")
-    test_source = test_source.replace(old_satisfy, new_satisfy, 1)
-
-old_import = "import com.baba.callvault.data.AppPreferences\n"
-new_import = old_import + "import com.baba.callvault.data.PrivilegedMode\n"
-old_fixture = "    private val preferences = AppPreferences(context)\n"
-new_fixture = old_fixture + """
-    @Before
-    fun selectStandaloneModeForAdbPrerequisiteTests() {
-        preferences.setPrivilegedMode(PrivilegedMode.STANDALONE)
-        // These tests exercise the missing-grant branch, not the alternate live transports.
-        preferences.setOfflineRecordingEnabled(false)
-    }
-"""
-if new_import not in test_source:
-    if test_source.count(old_import) != 1:
-        sys.exit("SetupPrerequisitesTest import anchor changed; refusing unsafe patch")
-    test_source = test_source.replace(old_import, new_import, 1)
-if "selectStandaloneModeForAdbPrerequisiteTests" not in test_source:
-    if test_source.count(old_fixture) != 1:
-        sys.exit("SetupPrerequisitesTest fixture anchor changed; refusing unsafe patch")
-    test_source = test_source.replace(old_fixture, new_fixture, 1)
-if "import org.junit.Before" not in test_source:
-    anchor = "import org.junit.After\n"
-    if test_source.count(anchor) != 1:
-        sys.exit("SetupPrerequisitesTest JUnit import anchor changed; refusing unsafe patch")
-    test_source = test_source.replace(anchor, anchor + "import org.junit.Before\n", 1)
-TEST.write_text(test_source, encoding="utf-8")
-
-
-
-# Release-lint remediation for the pinned upstream revision. These edits are applied
-# deterministically to the submodule at build time; every anchor is checked so upstream
-# drift fails closed rather than silently producing a partial profile.
-def patch_file(relative_path, edits):
-    path = ENGINE / relative_path
-    text = path.read_text(encoding="utf-8")
-    for old, new, description in edits:
-        # Insertions retain their anchor comment inside the replacement block.
-        # Skip those on the second profile pass, but still apply string substitutions
-        # when the replacement already exists elsewhere in the file.
-        if old in new and new in text:
-            continue
-        count = text.count(old)
-        if count:
-            text = text.replace(old, new)
-        elif new not in text:
-            sys.exit(f"{relative_path}: neither original nor patched code found for {description}")
-    path.write_text(text, encoding="utf-8")
-
-# API 31 WorkManager stopReason access: API 30 has no stop reason. On API 30 we
-# conservatively retain URI grants because we cannot distinguish retry from cancel.
-transfer = ENGINE / "app/src/main/java/com/baba/callvault/transcription/model/ModelTransferWorker.kt"
-transfer_source = transfer.read_text(encoding="utf-8")
-if "import android.os.Build\n" not in transfer_source:
-    anchor = "import android.net.Uri\n"
-    if transfer_source.count(anchor) != 1:
-        sys.exit("ModelTransferWorker Build import anchor changed")
-    transfer_source = transfer_source.replace(anchor, anchor + "import android.os.Build\n", 1)
-transfer_edits = [
-("""    private fun willRunAgain(): Boolean = isStopped && stopReason != WorkInfo.STOP_REASON_CANCELLED_BY_APP
-
-    private fun stopReasonName(): String =
-        if (stopReason == WorkInfo.STOP_REASON_CANCELLED_BY_APP) "cancelled" else "reason $stopReason"
-""",
-"""    private fun willRunAgain(): Boolean {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return false
-        return isStopped && stopReason != WorkInfo.STOP_REASON_CANCELLED_BY_APP
-    }
-
-    private fun stopReasonName(): String {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return "stop reason unavailable before Android 12"
-        return if (stopReason == WorkInfo.STOP_REASON_CANCELLED_BY_APP) "cancelled" else "reason $stopReason"
-    }
-""", "API-guarded WorkManager stopReason")]
-for old, new, desc in transfer_edits:
-    if new not in transfer_source:
-        if transfer_source.count(old) != 1: sys.exit("ModelTransferWorker stop-reason anchor changed")
-        transfer_source = transfer_source.replace(old, new, 1)
-transfer.write_text(transfer_source, encoding="utf-8")
-
 # MediaExtractor and MediaCodec flag domains are different. Translate supported flags;
 # encrypted samples cannot be safely remuxed by MediaMuxer and are rejected explicitly.
 mux_files = [
 ("app/src/main/java/com/baba/callvault/data/merge/AudioConcat.kt", "info.flags = extractor.sampleFlags"),
 ("app/src/main/java/com/baba/callvault/data/merge/AudioSplit.kt", "info.flags = extractor.sampleFlags"),
 ("app/src/main/java/com/baba/callvault/data/clips/ClipCutter.kt", "info.flags = extractor.sampleFlags"),
-("app/src/main/java/com/baba/callvault/transcription/cloud/CloudAudioSource.kt", "info.set(0, size, timeUs - firstUs, extractor.sampleFlags)"),
 ]
 for relative, flag_line in mux_files:
     path = ENGINE / relative
