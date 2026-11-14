@@ -16,17 +16,12 @@ import androidx.room.Upsert
 import kotlinx.coroutines.flow.Flow
 
 /**
- * What a recording was last called — the name the row is titled with and the date under it — kept
- * so the Transcripts and Summaries pages can name a row before the recordings list has loaded.
+ * What a recording was last called — its display title and date line — cached while the recordings list loads.
  *
- * Those pages read the transcripts database, which knows a recording only by file name; the name
- * and date come from the recordings list, a scan of the files with a contact lookup each, which
- * takes seconds on a cold start. Until it lands a row was titled by its file name, which reads as a
- * date and time. This table is the last answer the scan gave, written each time it completes, and
- * read only as the fallback while it is running: the list, once loaded, wins.
+ * The catalog knows a recording by file name; its contact-resolved title and date come from the recordings scan.
+ * This table caches the last result until that scan completes.
  *
- * Its own table rather than columns on `transcripts`, because that row is replaced whole on every
- * state change and the label would have to be carried through each of those writes.
+ * It lives beside other user-authored metadata, not in the rebuildable recording catalog.
  *
  * @param label    the row's title, un-isolated: contact name, else the number, else the file name.
  * @param subtitle the date line under it, or null for a recording with no parsable date.
@@ -49,4 +44,7 @@ interface RecordingLabelDao {
 
     @Upsert
     suspend fun upsertAll(entries: List<RecordingLabelEntry>)
+
+    @Query("DELETE FROM recording_labels WHERE displayName = :displayName")
+    suspend fun deleteFor(displayName: String)
 }
