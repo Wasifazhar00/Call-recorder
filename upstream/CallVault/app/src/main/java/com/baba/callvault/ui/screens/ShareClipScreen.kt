@@ -8,6 +8,8 @@
 
 package com.baba.callvault.ui.screens
 
+import android.media.MediaMetadataRetriever
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -53,13 +55,13 @@ import com.baba.callvault.data.clips.ClipNaming
 import com.baba.callvault.data.clips.ClipRange
 import com.baba.callvault.data.recordings.RecordingsRepository.RecordingItem
 import com.baba.callvault.system.shareClip
-import com.baba.callvault.transcription.AudioDecoder
 import com.baba.callvault.ui.common.CvCard
 import com.baba.callvault.ui.common.RecordingLabel
 import com.baba.callvault.ui.common.CvScaffold
 import com.baba.callvault.ui.viewmodels.RecordingPlaybackController
 import com.baba.callvault.utils.AppLogger
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -90,7 +92,7 @@ internal fun ShareClipScreen(
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val durationMs by produceState(item.durationSeconds?.times(1000) ?: 0L, item.uri) {
-        val read = withContext(Dispatchers.IO) { runCatching { AudioDecoder.durationMs(context, item.uri) }.getOrDefault(0L) }
+        val read = withContext(Dispatchers.IO) { readDurationMs(context, item.uri) }
         if (read > 0) value = read
     }
     // Null while it is being read; "" when the recording cannot be read at all.
@@ -104,6 +106,8 @@ internal fun ShareClipScreen(
     val range = chosen?.let { ClipRange.of(it.startMs, it.endMs, durationMs) }
         ?: initialPositionMs?.let { ClipRange.fromPosition(it, durationMs) }
         ?: ClipRange.whole(durationMs)
+    var work by remember { mutableStateOf<ClipWork>(ClipWork.Idle) }
+    var job by remember { mutableStateOf<Job?>(null) }
 
     val playbackNow by rememberUpdatedState(playback)
     val isThis = playback.activeUri == item.uri
@@ -139,7 +143,7 @@ internal fun ShareClipScreen(
         work = ClipWork.Cutting
         // The part as it was when Share was tapped. Audio, name and text all use this one, even if a handle moves.
         val cutRange = range
-        scope.launch {
+        job = scope.launch {
             // Named after who the call was with, as the list shows it, not the recording's raw file name.
             val name = ClipNaming.fileName(item.contactName ?: item.number ?: item.displayName.substringBeforeLast('.'), cutRange, ClipCutter.extensionFor(clipMime))
             val clip = withContext(Dispatchers.IO) {
@@ -279,6 +283,18 @@ private fun ShareBar(
                 }
             }
         }
+    }
+}
+
+private fun readDurationMs(context: android.content.Context, uri: android.net.Uri): Long {
+    val retriever = MediaMetadataRetriever()
+    return try {
+        retriever.setDataSource(context, uri)
+        retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)?.toLongOrNull() ?: 0L
+    } catch (_: Exception) {
+        0L
+    } finally {
+        runCatching { retriever.release() }
     }
 }
 
