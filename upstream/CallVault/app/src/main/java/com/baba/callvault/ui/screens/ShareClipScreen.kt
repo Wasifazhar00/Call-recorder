@@ -19,9 +19,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.selection.selectable
-import androidx.compose.foundation.selection.selectableGroup
-import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Pause
@@ -33,13 +30,10 @@ import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.RadioButton
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
@@ -47,26 +41,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import com.baba.callvault.R
-import com.baba.callvault.data.SpeakerNames
 import com.baba.callvault.data.clips.ClipCutter
 import com.baba.callvault.data.clips.ClipFiles
-import com.baba.callvault.data.clips.ClipLine
 import com.baba.callvault.data.clips.ClipNaming
 import com.baba.callvault.data.clips.ClipRange
-import com.baba.callvault.data.clips.ClipTranscriber
-import com.baba.callvault.data.clips.ClipTranscript
 import com.baba.callvault.data.recordings.RecordingsRepository.RecordingItem
-import com.baba.callvault.data.transcripts.SpeakerTurnsRepository
-import com.baba.callvault.data.transcripts.TranscriptRepository
-import com.baba.callvault.data.transcripts.TranscriptStatus
 import com.baba.callvault.system.shareClip
 import com.baba.callvault.transcription.AudioDecoder
 import com.baba.callvault.ui.common.CvCard
@@ -75,36 +60,19 @@ import com.baba.callvault.ui.common.CvScaffold
 import com.baba.callvault.ui.viewmodels.RecordingPlaybackController
 import com.baba.callvault.utils.AppLogger
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.coroutines.withTimeoutOrNull
-
-/** How an untranscribed call gets the text that goes with its clip. */
-private enum class TextSource { PART, WHOLE_CALL }
 
 /** What the Share button is doing. */
 private sealed interface ClipWork {
     data object Idle : ClipWork
     data object Cutting : ClipWork
-    data object TranscribingPart : ClipWork
-    data object WaitingForCall : ClipWork
-
-    /** Stopped on a problem; the clip itself is ready and can still go without text. */
-    data class TextProblem(val message: Int) : ClipWork
     data object CutFailed : ClipWork
 }
 
 /**
- * "Share a part": choose a part of a recording on its waveform, listen to it, and share it as a new file — with the
- * transcript of just that part if the user wants it. Option A of the 2026-11-04 design; a clip is never saved as a
- * recording.
- *
- * @param initialPositionMs where the user was listening, to open with [ClipRange.FROM_POSITION_MS] from there; null to
- *   open with the whole call selected (from the list).
- * @param onTranscribeWholeCall the app's normal "transcribe this call", with its own confirmations.
+ * "Share a part": choose and share an audio range without modifying the original recording.
  */
 @Composable
 internal fun ShareClipScreen(
@@ -113,18 +81,14 @@ internal fun ShareClipScreen(
     playback: RecordingPlaybackController.PlaybackState,
     peaks: FloatArray,
     flags: List<Long>,
-    transcriptStatus: TranscriptStatus,
     onPlayFrom: (Long) -> Unit,
     onPause: () -> Unit,
     onSyncPosition: () -> Unit,
-    onTranscribeWholeCall: () -> Unit,
     onBack: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
-    val labels = rememberLibrarySpeakerLabels()
-
     val durationMs by produceState(item.durationSeconds?.times(1000) ?: 0L, item.uri) {
         val read = withContext(Dispatchers.IO) { runCatching { AudioDecoder.durationMs(context, item.uri) }.getOrDefault(0L) }
         if (read > 0) value = read
@@ -140,33 +104,6 @@ internal fun ShareClipScreen(
     val range = chosen?.let { ClipRange.of(it.startMs, it.endMs, durationMs) }
         ?: initialPositionMs?.let { ClipRange.fromPosition(it, durationMs) }
         ?: ClipRange.whole(durationMs)
-
-    // The call's own transcript, with who-is-who resolved the way exports do it.
-    val transcript by remember(item.displayName) {
-        TranscriptRepository.transcript(context, item.displayName)
-    }.collectAsState(initial = TranscriptRepository.TranscriptRead.Unread)
-    val callLines by produceState(emptyList<ClipLine>(), transcript) {
-        val read = transcript as? TranscriptRepository.TranscriptRead.Read
-        val segments = read?.transcript?.segments.orEmpty()
-        val names = SpeakerNames(
-            map = SpeakerTurnsRepository.trustedMap(context),
-            you = labels.you,
-            contact = RecordingLabel.of(item) ?: item.displayName,
-            sideA = labels.sideA,
-            sideB = labels.sideB,
-        )
-        value = segments.map { ClipLine(it.startMs, it.endMs, it.text, names.of(it.speaker)) }
-    }
-
-    val transcribed = transcriptStatus == TranscriptStatus.DONE
-    val callInProgress = transcriptStatus == TranscriptStatus.QUEUED || transcriptStatus == TranscriptStatus.RUNNING
-    var includeText by remember(transcribed) { mutableStateOf(transcribed) }
-    var source by remember { mutableStateOf(TextSource.PART) }
-    var work by remember { mutableStateOf<ClipWork>(ClipWork.Idle) }
-    var readyClip by remember { mutableStateOf<ClipCutter.Result?>(null) }
-    var job by remember { mutableStateOf<Job?>(null) }
-    val statusNow by rememberUpdatedState(transcriptStatus)
-    val linesNow by rememberUpdatedState(callLines)
 
     val playbackNow by rememberUpdatedState(playback)
     val isThis = playback.activeUri == item.uri
@@ -188,22 +125,21 @@ internal fun ShareClipScreen(
     }
     LaunchedEffect(playing) { if (!playing) previewing = false }
 
-    fun share(clip: ClipCutter.Result, text: String?) {
-        context.shareClip(clip.file, ClipCutter.shareMimeFor(clip.mime), text?.takeIf { it.isNotBlank() })
+    fun share(clip: ClipCutter.Result) {
+        context.shareClip(clip.file, ClipCutter.shareMimeFor(clip.mime), null)
         work = ClipWork.Idle
     }
 
-    val busy = work == ClipWork.Cutting || work == ClipWork.TranscribingPart || work == ClipWork.WaitingForCall
+    val busy = work == ClipWork.Cutting
 
     fun start() {
         val clipMime = mime ?: return
         // Set before launching, so a second tap in the same frame cannot start a second job.
         if (busy) return
-        job?.cancel()
         work = ClipWork.Cutting
         // The part as it was when Share was tapped. Audio, name and text all use this one, even if a handle moves.
         val cutRange = range
-        job = scope.launch {
+        scope.launch {
             // Named after who the call was with, as the list shows it, not the recording's raw file name.
             val name = ClipNaming.fileName(item.contactName ?: item.number ?: item.displayName.substringBeforeLast('.'), cutRange, ClipCutter.extensionFor(clipMime))
             val clip = withContext(Dispatchers.IO) {
@@ -215,9 +151,7 @@ internal fun ShareClipScreen(
                 work = ClipWork.CutFailed
                 return@launch
             }
-            readyClip = clip
-            // Recorder-only product profile: clips are shared as audio only.
-            share(clip, null)
+            share(clip)
         }
     }
 
@@ -232,16 +166,10 @@ internal fun ShareClipScreen(
                 work = work,
                 enabled = !mime.isNullOrEmpty() && ClipCutter.canClip(mime) && durationMs > 0,
                 onShare = { start() },
-                onShareWithoutText = {
-                    // Stops a transcription still running, so the clip is not shared a second time when it ends.
-                    job?.cancel()
-                    readyClip?.let { share(it, null) }
-                },
                 onCancel = {
                     job?.cancel()
                     work = ClipWork.Idle
                 },
-                progress = { ClipTranscriber.progressPercent() },
             )
         },
     ) { innerPadding ->
@@ -318,76 +246,12 @@ private fun TimeLabel(label: Int, ms: Long) {
 }
 
 @Composable
-private fun TranscriptChoice(
-    include: Boolean,
-    onInclude: (Boolean) -> Unit,
-    transcribed: Boolean,
-    callInProgress: Boolean,
-    /** Lines of the call's transcript inside the part, or -1 when the call has none. */
-    linesInPart: Int,
-    source: TextSource,
-    onSource: (TextSource) -> Unit,
-) {
-    CvCard {
-        Row(
-            Modifier.fillMaxWidth().toggleable(value = include, role = Role.Switch, onValueChange = onInclude),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Text(stringResource(R.string.share_clip_include_text), style = MaterialTheme.typography.titleSmall, modifier = Modifier.weight(1f))
-            Switch(checked = include, onCheckedChange = null)
-        }
-        if (!include) return@CvCard
-        val note = when {
-            transcribed && linesInPart == 0 -> R.string.share_clip_text_none_in_part
-            transcribed -> R.string.share_clip_text_ready
-            callInProgress -> R.string.share_clip_text_call_running
-            else -> null
-        }
-        if (note != null) {
-            Text(stringResource(note), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            return@CvCard
-        }
-        Column(Modifier.selectableGroup()) {
-            SourceOption(
-                selected = source == TextSource.PART,
-                title = R.string.share_clip_transcribe_part,
-                detail = R.string.share_clip_transcribe_part_detail,
-                onClick = { onSource(TextSource.PART) },
-            )
-            SourceOption(
-                selected = source == TextSource.WHOLE_CALL,
-                title = R.string.share_clip_transcribe_whole,
-                detail = R.string.share_clip_transcribe_whole_detail,
-                onClick = { onSource(TextSource.WHOLE_CALL) },
-            )
-        }
-    }
-}
-
-@Composable
-private fun SourceOption(selected: Boolean, title: Int, detail: Int, onClick: () -> Unit) {
-    Row(
-        Modifier.fillMaxWidth().selectable(selected = selected, role = Role.RadioButton, onClick = onClick).padding(vertical = 6.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        RadioButton(selected = selected, onClick = null)
-        Spacer(Modifier.width(8.dp))
-        Column {
-            Text(stringResource(title), style = MaterialTheme.typography.bodyMedium)
-            Text(stringResource(detail), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        }
-    }
-}
-
-@Composable
 private fun ShareBar(
     lengthMs: Long,
     work: ClipWork,
     enabled: Boolean,
     onShare: () -> Unit,
-    onShareWithoutText: () -> Unit,
     onCancel: () -> Unit,
-    progress: () -> Int,
 ) {
     Column(
         Modifier.fillMaxWidth().navigationBarsPadding().padding(horizontal = 16.dp, vertical = 12.dp),
@@ -404,43 +268,14 @@ private fun ShareBar(
                     Text(stringResource(R.string.share_clip_share, ClipRange.clock(lengthMs)))
                 }
             }
-            ClipWork.Cutting, ClipWork.TranscribingPart, ClipWork.WaitingForCall -> {
-                // Leaving the screen also stops the work: the scope is the screen's.
-                var percent by remember { mutableStateOf(0) }
-                LaunchedEffect(work) {
-                    while (work == ClipWork.TranscribingPart) {
-                        percent = progress()
-                        delay(PREVIEW_POLL_MS * 5)
-                    }
-                }
+            ClipWork.Cutting -> {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     CircularProgressIndicator(Modifier.size(20.dp), strokeWidth = 2.dp)
                     Spacer(Modifier.width(12.dp))
-                    Text(
-                        when (work) {
-                            ClipWork.Cutting -> stringResource(R.string.share_clip_working_cut)
-                            ClipWork.TranscribingPart -> stringResource(R.string.share_clip_working_part, percent)
-                            else -> stringResource(R.string.share_clip_working_call)
-                        },
-                        style = MaterialTheme.typography.bodyMedium,
-                        modifier = Modifier.weight(1f),
-                    )
+                    Text(stringResource(R.string.share_clip_working_cut), style = MaterialTheme.typography.bodyMedium)
                 }
-                if (work != ClipWork.Cutting) {
-                    TextButton(onClick = onShareWithoutText, modifier = Modifier.fillMaxWidth()) {
-                        Text(stringResource(R.string.share_clip_share_without_text))
-                    }
-                }
-            }
-            is ClipWork.TextProblem -> {
-                Text(stringResource(work.message), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    OutlinedButton(onClick = onCancel, modifier = Modifier.weight(1f)) {
-                        Text(stringResource(R.string.share_clip_back))
-                    }
-                    Button(onClick = onShareWithoutText, modifier = Modifier.weight(1f)) {
-                        Text(stringResource(R.string.share_clip_share_without_text))
-                    }
+                TextButton(onClick = onCancel, modifier = Modifier.fillMaxWidth()) {
+                    Text(stringResource(R.string.share_clip_back))
                 }
             }
         }
@@ -450,8 +285,3 @@ private fun ShareBar(
 private const val TAG = "CV:ShareClip"
 private const val PREVIEW_POLL_MS = 100L
 
-/** How long to wait for the call's transcript lines to be read once it is done. */
-private const val LINES_WAIT_MS = 5_000L
-
-/** How long the whole-call transcription has to start (after any confirmation) before giving up. */
-private const val START_WAIT_MS = 120_000L
