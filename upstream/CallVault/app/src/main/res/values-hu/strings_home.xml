@@ -146,6 +146,17 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="merge_progress_title">Egyesítés</string>
     <string name="unmerge_progress_title">Szétbontás</string>
     <string name="merge_progress_step">%2$d/%1$d. hívás</string>
@@ -221,7 +232,7 @@
     
     
     
-    
+    <string name="share_import_queued_keep_title">Hozzáadva, és sorba állítva</string>
     
     
     

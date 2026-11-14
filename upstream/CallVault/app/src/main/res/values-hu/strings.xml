@@ -87,9 +87,9 @@
     <string name="general_stop">Leállítás</string>
     <string name="general_system_limitation">Rendszerkorlát</string>
     <string name="general_system_limitation_message">CallVault nem tud működni ezen a készüléken mivel a shell alkalmazás nem rendelkezik a megfelelő jogosultságokkal.\n\n%1$s\n\nA helyzettel nem lehet mit csinálni, az alkalmazás nem tud működni és most bezáródik.</string>
-    
+    <string name="heavy_work_backing_up_model">Modell biztonsági mentése</string>
     <string name="heavy_work_channel_name">Háttérfeldolgozás</string>
-    
+    <string name="heavy_work_importing_model">Modell importálása</string>
     <string name="heavy_work_notification_text">A telefon felmelegedhet a művelet alatt.</string>
     
     
@@ -172,7 +172,7 @@
     
     
     <string name="list_separator">", "</string>
-    
+    <string name="min_duration_caption">A téves hívás vagy a kicsengett hívás a befejezés pillanatában törlődik, még az átirat és a feltöltés előtt. A meglévő felvételeket nem érinti.</string>
     <string name="min_duration_label">Rövid felvételek eldobása</string>
     <string name="min_duration_off">Mindet megtartani</string>
     <string name="min_duration_one_minute">Egy percnél rövidebb</string>
@@ -187,7 +187,7 @@
     <string name="mode_switch_problem_title">Még nem áll készen</string>
     <string name="mode_switch_ready">A felvevő fut. A hívások rögzítésre kerülnek.</string>
     <string name="mode_switch_ready_shizuku">A CallVault a Shizukun keresztül rögzít. Minden elérhető, kivéve a Wi-Fi nélküli rögzítést, amelyhez a CallVault saját rögzítője kell.</string>
-    
+    <string name="mode_switch_ready_standalone">A CallVault a saját felvevőjével rögzít. Minden elérhető, a VoIP-hívásokat és a beszélőneveket is beleértve.</string>
     <string name="mode_switch_recorder_failed">A felvevő nem indult el. Addig semmi nem kerül rögzítésre.</string>
     <string name="mode_switch_shizuku_not_installed">A Shizuku nincs telepítve, így nincs mire váltani.</string>
     <string name="mode_switch_shizuku_not_permitted">A Shizuku még nem engedélyezte a CallVaultot. Nyissa meg, engedélyezze, majd próbálja újra.</string>
@@ -196,22 +196,22 @@
     <string name="mode_switch_to_standalone">Váltás CallVaultra…</string>
     <string name="mode_switch_voip_not_armed">Átváltva, de az alkalmazáshívások rögzítését nem sikerült előkészíteni. A telefonhívások rögzülnek; az alkalmazáshívások lehet, hogy csak a CallVault újranyitása után.</string>
     <string name="mode_switch_working">A régi felvevő leállítása és az új indítása. Ez néhány másodpercig tart.</string>
-    <string name="model_backing_up">Mentés… %1$d%%</string>
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <string name="model_backup">Biztonsági mentés</string>
+    <string name="model_backup_done">Mentve</string>
+    <string name="model_backup_failed">A biztonsági mentés nem fejeződött be. Próbáld újra.</string>
+    <string name="model_backup_info">A modellfájlt egy általad választott mappába menti. Újratelepítés után vagy új telefonon importáld ezt a fájlt az újbóli letöltés helyett.</string>
+    <string name="model_backup_subtitle">Ments egy másolatot, ami újratelepítés után is megmarad</string>
+    <string name="model_backup_waiting">Felkészülés a biztonsági mentésre…</string>
+    <string name="model_import">Importálás fájlból</string>
+    <string name="model_import_failed_other_model">Ez egy másik modell (%1$s) fájlja. Előbb válaszd ki azt a modellt, aztán importáld.</string>
+    <string name="model_import_failed_space">Nincs elég szabad hely az importáláshoz.</string>
+    <string name="model_import_failed_unreadable">Nem sikerült beolvasni a fájlt. Válaszd ki újra.</string>
+    <string name="model_import_failed_wrong_file">Ez nem a megfelelő fájl. Válaszd ezt: %1$s.</string>
+    <string name="model_import_info">Válaszd ki a hivatalos modellfájlt (%1$s, %2$d MB). A CallVault használat előtt ellenőrzi, hogy pontosan ez a fájl-e, és a másolatodat a helyén hagyja.</string>
+    <string name="model_import_subtitle">Használj egy meglévő másolatot</string>
+    <string name="model_import_waiting">Felkészülés az importálásra…</string>
+    <string name="model_importing">Importálás… %1$d%%</string>
     <string name="note_saved">Mentve</string>
     <string name="note_saving">Mentés…</string>
     <string name="notif_cut_off_saved_text">A telefon hívás közben bezárta a CallVaultot. Az addig rögzített részt %1$s néven mentettük.</string>
@@ -344,7 +344,7 @@
     <string name="selection_select_all">Összes kijelölése</string>
     <string name="settings_allow_screenshots_description">Lehetővé teszi a CallVault képernyőképeinek készítését. Ez a tartalmát az alkalmazásváltóban is megjeleníti. Kikapcsolva minden rejtve marad.</string>
     <string name="settings_allow_screenshots_title">Képernyőképek engedélyezése</string>
-    
+    <string name="settings_app_lock_description">A képernyőzár kérése a felvételek és átiratok megjelenítése előtt. A képernyőképekről és az alkalmazásváltóból is kihagyja őket.</string>
     <string name="settings_app_lock_title">Feloldás kérése</string>
     <string name="settings_app_lock_unavailable">Ehhez előbb állíts be képernyőzárat a telefonodon.</string>
     <string name="settings_audio_bitrate">Hang bitráta</string>
@@ -413,7 +413,7 @@
     <string name="settings_group_cleaning_up">Takarítás</string>
     <string name="settings_group_connection">Kapcsolat</string>
     <string name="settings_group_help_and_about">Súgó és névjegy</string>
-    <string name="settings_group_model_and_language">Modell és nyelv</string>
+    
     <string name="settings_group_save_and_sync">Mentés és szinkronizálás</string>
     <string name="settings_group_sound_and_names">Hang és fájlnevek</string>
     
@@ -505,7 +505,7 @@
     <string name="settings_summary_calls_phone_and_app">Telefon- és alkalmazáshívások</string>
     <string name="settings_summary_calls_phone_only">Csak telefonhívások</string>
     <string name="settings_summary_count_on">%1$d / %2$d bekapcsolva</string>
-    <string name="settings_summary_not_downloaded">Nincs letöltve</string>
+    
     <string name="settings_summary_nothing_skipped">Semmi sincs kihagyva</string>
     <string name="settings_summary_off">Ki</string>
     <string name="settings_summary_recording_both">mindkét irány</string>

@@ -158,6 +158,17 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="merge_progress_title">جارٍ الدمج</string>
     <string name="unmerge_progress_title">جارٍ إلغاء الدمج</string>
     <string name="merge_progress_step">المكالمة %1$d من %2$d</string>
@@ -222,7 +233,7 @@
     
     
     
-    
+    <string name="share_import_queued_keep_title">تمت الإضافة وقيد الانتظار</string>
     
     
     

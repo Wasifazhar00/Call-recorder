@@ -97,9 +97,9 @@
     <string name="general_stop">Остановить</string>
     <string name="general_system_limitation">Системное ограничение</string>
     <string name="general_system_limitation_message">Приложение CallVault не будет работать на этом устройстве, так как у вашей системной оболочки (shell) нет необходимых разрешений:\n\n%1$s\n\nВы ничего не можете с этим поделать – приложение не может функционировать и сейчас закроется.</string>
-    
+    <string name="heavy_work_backing_up_model">Резервное копирование модели</string>
     <string name="heavy_work_channel_name">Фоновая обработка</string>
-    
+    <string name="heavy_work_importing_model">Импорт модели</string>
     <string name="heavy_work_notification_text">Телефон может нагреваться во время работы.</string>
     
     
@@ -182,7 +182,7 @@
     
     
     <string name="list_separator">", "</string>
-    
+    <string name="min_duration_caption">Ошибочный или неотвеченный звонок удаляется сразу после завершения — до расшифровки и загрузки. Уже записанное не затрагивается.</string>
     <string name="min_duration_label">Отбрасывать короткие записи</string>
     <string name="min_duration_off">Оставлять все</string>
     <string name="min_duration_one_minute">Короче минуты</string>
@@ -197,7 +197,7 @@
     <string name="mode_switch_problem_title">Пока не готов</string>
     <string name="mode_switch_ready">Рекордер работает. Звонки будут записываться.</string>
     <string name="mode_switch_ready_shizuku">CallVault записывает через Shizuku. Доступно всё, кроме записи без Wi-Fi — для неё нужен собственный рекордер CallVault.</string>
-    
+    <string name="mode_switch_ready_standalone">CallVault записывает собственным рекордером. Доступно всё, включая звонки VoIP и имена говорящих.</string>
     <string name="mode_switch_recorder_failed">Рекордер не запустился. До этого ничего записываться не будет.</string>
     <string name="mode_switch_shizuku_not_installed">Shizuku не установлен, переключаться не на что.</string>
     <string name="mode_switch_shizuku_not_permitted">Shizuku ещё не разрешил CallVault. Откройте его, разрешите и повторите.</string>
@@ -206,22 +206,22 @@
     <string name="mode_switch_to_standalone">Переключение на CallVault…</string>
     <string name="mode_switch_voip_not_armed">Переключено, но подготовить запись звонков в приложениях не удалось. Телефонные звонки будут записываться; звонки в приложениях — возможно, только после повторного открытия CallVault.</string>
     <string name="mode_switch_working">Останавливается старый рекордер и запускается новый. Это займёт несколько секунд.</string>
-    <string name="model_backing_up">Резервное копирование… %1$d%%</string>
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <string name="model_backup">Резервная копия</string>
+    <string name="model_backup_done">Сохранено</string>
+    <string name="model_backup_failed">Резервное копирование не завершилось. Попробуйте ещё раз.</string>
+    <string name="model_backup_info">Сохраняет файл модели в выбранную вами папку. После переустановки или на новом телефоне используйте импорт этого файла вместо повторной загрузки.</string>
+    <string name="model_backup_subtitle">Сохраните копию на случай переустановки</string>
+    <string name="model_backup_waiting">Подготовка к резервному копированию…</string>
+    <string name="model_import">Импорт из файла</string>
+    <string name="model_import_failed_other_model">Это файл другой модели (%1$s). Сначала выберите эту модель, затем импортируйте.</string>
+    <string name="model_import_failed_space">Недостаточно свободного места для импорта.</string>
+    <string name="model_import_failed_unreadable">Не удалось прочитать файл. Выберите его ещё раз.</string>
+    <string name="model_import_failed_wrong_file">Это не тот файл. Выберите %1$s.</string>
+    <string name="model_import_info">Выберите официальный файл модели (%1$s, %2$d МБ). Перед использованием CallVault проверяет, что это именно этот файл, и оставляет вашу копию на месте.</string>
+    <string name="model_import_subtitle">Используйте уже имеющуюся копию</string>
+    <string name="model_import_waiting">Подготовка к импорту…</string>
+    <string name="model_importing">Импорт… %1$d%%</string>
     <string name="note_saved">Сохранено</string>
     <string name="note_saving">Сохранение…</string>
     <string name="notif_cut_off_saved_text">Телефон закрыл CallVault во время звонка. Записанное до этого момента сохранено как %1$s.</string>
@@ -354,7 +354,7 @@
     <string name="selection_select_all">Выбрать все</string>
     <string name="settings_allow_screenshots_description">Позволяет делать скриншоты CallVault. При этом его содержимое также видно в переключателе приложений. Выключено — всё остаётся скрытым.</string>
     <string name="settings_allow_screenshots_title">Разрешить скриншоты</string>
-    
+    <string name="settings_app_lock_description">Запрашивать блокировку экрана перед показом записей и расшифровок. Также скрывает их со скриншотов и из списка недавних приложений.</string>
     <string name="settings_app_lock_title">Требовать разблокировку</string>
     <string name="settings_app_lock_unavailable">Чтобы включить, настройте блокировку экрана на телефоне.</string>
     <string name="settings_audio_bitrate">Аудио битрейт</string>
@@ -423,7 +423,7 @@
     <string name="settings_group_cleaning_up">Очистка</string>
     <string name="settings_group_connection">Подключение</string>
     <string name="settings_group_help_and_about">Помощь и о приложении</string>
-    <string name="settings_group_model_and_language">Модель и язык</string>
+    
     <string name="settings_group_save_and_sync">Сохранение и синхронизация</string>
     <string name="settings_group_sound_and_names">Звук и имена файлов</string>
     
@@ -517,7 +517,7 @@
     <string name="settings_summary_calls_phone_and_app">Обычные звонки и звонки в приложениях</string>
     <string name="settings_summary_calls_phone_only">Только обычные звонки</string>
     <string name="settings_summary_count_on">Включено: %1$d из %2$d</string>
-    <string name="settings_summary_not_downloaded">Не скачано</string>
+    
     <string name="settings_summary_nothing_skipped">Ничего не пропускается</string>
     <string name="settings_summary_off">Выкл.</string>
     <string name="settings_summary_recording_both">оба направления</string>

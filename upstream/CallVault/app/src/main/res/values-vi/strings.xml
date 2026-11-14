@@ -86,9 +86,9 @@
     <string name="general_stop">Dừng</string>
     <string name="general_system_limitation">Giới hạn hệ thống</string>
     <string name="general_system_limitation_message">CallVault sẽ không hoạt động trên thiết bị này vì ứng dụng shell của bạn không có các quyền cần thiết:\n\n%1$s\n\nBạn không thể làm gì được nữa, ứng dụng không thể hoạt động và sẽ tự động đóng.</string>
-    
+    <string name="heavy_work_backing_up_model">Đang sao lưu mô hình</string>
     <string name="heavy_work_channel_name">Xử lý nền</string>
-    
+    <string name="heavy_work_importing_model">Đang nhập mô hình</string>
     <string name="heavy_work_notification_text">Điện thoại có thể nóng lên trong lúc này.</string>
     
     
@@ -171,7 +171,7 @@
     
     
     <string name="list_separator">", "</string>
-    
+    <string name="min_duration_caption">Cuộc gọi nhầm hoặc đổ chuông không nghe sẽ bị xóa ngay khi kết thúc, trước khi chép lời hay tải lên. Không ảnh hưởng đến bản ghi đã có.</string>
     <string name="min_duration_label">Bỏ bản ghi ngắn</string>
     <string name="min_duration_off">Giữ tất cả</string>
     <string name="min_duration_one_minute">Ngắn hơn một phút</string>
@@ -186,7 +186,7 @@
     <string name="mode_switch_problem_title">Chưa sẵn sàng</string>
     <string name="mode_switch_ready">Trình ghi đang chạy. Các cuộc gọi sẽ được ghi âm.</string>
     <string name="mode_switch_ready_shizuku">CallVault đang ghi âm qua Shizuku. Mọi tính năng đều dùng được, trừ ghi âm khi không có Wi-Fi, vốn cần trình ghi riêng của CallVault.</string>
-    
+    <string name="mode_switch_ready_standalone">CallVault ghi âm bằng trình ghi riêng. Mọi thứ đều khả dụng, gồm cả cuộc gọi VoIP và tên người nói.</string>
     <string name="mode_switch_recorder_failed">Trình ghi không khởi động được. Sẽ không ghi được gì cho đến khi nó chạy.</string>
     <string name="mode_switch_shizuku_not_installed">Shizuku chưa được cài đặt nên không có gì để chuyển sang.</string>
     <string name="mode_switch_shizuku_not_permitted">Shizuku chưa cho phép CallVault. Mở Shizuku, cho phép rồi thử lại.</string>
@@ -195,22 +195,22 @@
     <string name="mode_switch_to_standalone">Đang chuyển sang CallVault…</string>
     <string name="mode_switch_voip_not_armed">Đã chuyển, nhưng không thể chuẩn bị ghi âm cuộc gọi trong ứng dụng. Cuộc gọi điện thoại sẽ được ghi; cuộc gọi trong ứng dụng có thể không, cho đến khi bạn mở lại CallVault.</string>
     <string name="mode_switch_working">Đang dừng trình ghi cũ và khởi động trình ghi mới. Mất vài giây.</string>
-    <string name="model_backing_up">Đang sao lưu… %1$d%%</string>
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <string name="model_backup">Sao lưu</string>
+    <string name="model_backup_done">Đã lưu</string>
+    <string name="model_backup_failed">Sao lưu chưa hoàn tất. Hãy thử lại.</string>
+    <string name="model_backup_info">Lưu tệp mô hình vào thư mục bạn chọn. Sau khi cài lại hoặc trên điện thoại mới, hãy dùng Nhập với tệp đó thay vì tải lại.</string>
+    <string name="model_backup_subtitle">Lưu một bản sao để giữ lại sau khi cài lại</string>
+    <string name="model_backup_waiting">Đang chuẩn bị sao lưu…</string>
+    <string name="model_import">Nhập từ tệp</string>
+    <string name="model_import_failed_other_model">Đó là tệp của mô hình khác (%1$s). Hãy chọn mô hình đó trước rồi nhập.</string>
+    <string name="model_import_failed_space">Không đủ dung lượng trống để nhập.</string>
+    <string name="model_import_failed_unreadable">Không đọc được tệp đó. Hãy chọn lại.</string>
+    <string name="model_import_failed_wrong_file">Đó không phải tệp đúng. Hãy chọn %1$s.</string>
+    <string name="model_import_info">Chọn tệp mô hình chính thức (%1$s, %2$d MB). CallVault kiểm tra đúng là tệp đó trước khi dùng và để nguyên bản sao của bạn.</string>
+    <string name="model_import_subtitle">Dùng bản sao bạn đã có</string>
+    <string name="model_import_waiting">Đang chuẩn bị nhập…</string>
+    <string name="model_importing">Đang nhập… %1$d%%</string>
     <string name="note_saved">Đã lưu</string>
     <string name="note_saving">Đang lưu…</string>
     <string name="notif_cut_off_saved_text">Điện thoại đã đóng CallVault trong khi gọi. Phần đã ghi trước đó được lưu thành %1$s.</string>
@@ -343,7 +343,7 @@
     <string name="selection_select_all">Chọn tất cả</string>
     <string name="settings_allow_screenshots_description">Cho phép bạn chụp màn hình CallVault. Điều này cũng hiển thị nội dung của ứng dụng trong trình chuyển đổi ứng dụng. Tắt sẽ giữ mọi thứ ẩn.</string>
     <string name="settings_allow_screenshots_title">Cho phép chụp màn hình</string>
-    
+    <string name="settings_app_lock_description">Yêu cầu khóa màn hình trước khi hiện bản ghi và bản chép lời. Đồng thời ẩn chúng khỏi ảnh chụp màn hình và trình chuyển ứng dụng.</string>
     <string name="settings_app_lock_title">Yêu cầu mở khóa</string>
     <string name="settings_app_lock_unavailable">Hãy đặt khóa màn hình trên điện thoại để dùng tính năng này.</string>
     <string name="settings_audio_bitrate">Tốc độ bit âm thanh</string>
@@ -412,7 +412,7 @@
     <string name="settings_group_cleaning_up">Dọn dẹp</string>
     <string name="settings_group_connection">Kết nối</string>
     <string name="settings_group_help_and_about">Trợ giúp và giới thiệu</string>
-    <string name="settings_group_model_and_language">Mô hình và ngôn ngữ</string>
+    
     <string name="settings_group_save_and_sync">Lưu và đồng bộ</string>
     <string name="settings_group_sound_and_names">Âm thanh và tên tệp</string>
     
@@ -503,7 +503,7 @@
     <string name="settings_summary_calls_phone_and_app">Cuộc gọi điện thoại và qua ứng dụng</string>
     <string name="settings_summary_calls_phone_only">Chỉ cuộc gọi điện thoại</string>
     <string name="settings_summary_count_on">Bật %1$d/%2$d</string>
-    <string name="settings_summary_not_downloaded">Chưa tải xuống</string>
+    
     <string name="settings_summary_nothing_skipped">Không bỏ qua gì</string>
     <string name="settings_summary_off">Tắt</string>
     <string name="settings_summary_recording_both">cả hai chiều</string>

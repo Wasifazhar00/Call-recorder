@@ -146,6 +146,17 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="merge_progress_title">正在合并</string>
     <string name="unmerge_progress_title">正在拆开</string>
     <string name="merge_progress_step">第 %1$d 通，共 %2$d 通</string>
@@ -221,7 +232,7 @@
     
     
     
-    
+    <string name="share_import_queued_keep_title">已添加并排入队列</string>
     
     
     

@@ -146,6 +146,17 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="merge_progress_title">Đang gộp</string>
     <string name="unmerge_progress_title">Đang tách</string>
     <string name="merge_progress_step">Cuộc gọi %1$d trên %2$d</string>
@@ -221,7 +232,7 @@
     
     
     
-    
+    <string name="share_import_queued_keep_title">Đã thêm và đưa vào hàng đợi</string>
     
     
     

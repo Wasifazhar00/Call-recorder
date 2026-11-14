@@ -155,6 +155,17 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="merge_progress_title">একত্র করা হচ্ছে</string>
     <string name="unmerge_progress_title">আলাদা করা হচ্ছে</string>
     <string name="merge_progress_step">%2$d টির মধ্যে %1$d নম্বর কল</string>
@@ -221,7 +232,7 @@
     
     
     
-    
+    <string name="share_import_queued_keep_title">যোগ হয়েছে, এবং সারিতে আছে</string>
     
     
     

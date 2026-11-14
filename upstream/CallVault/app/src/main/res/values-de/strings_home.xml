@@ -146,6 +146,17 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="merge_progress_title">Wird zusammengeführt</string>
     <string name="unmerge_progress_title">Wird getrennt</string>
     <string name="merge_progress_step">Anruf %1$d von %2$d</string>
@@ -221,7 +232,7 @@
     
     
     
-    
+    <string name="share_import_queued_keep_title">Hinzugefügt und eingereiht</string>
     
     
     

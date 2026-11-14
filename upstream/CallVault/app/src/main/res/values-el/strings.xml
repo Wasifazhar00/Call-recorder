@@ -211,9 +211,9 @@
     <string name="general_stop">Διακοπή</string>
     <string name="general_system_limitation">Περιορισμός συστήματος</string>
     <string name="general_system_limitation_message">Το CallVault δεν θα λειτουργήσει σε αυτή τη συσκευή, καθώς η εφαρμογή κελύφους σας δεν έχει τα απαιτούμενα δικαιώματα:\n\n%1$s\n\nΔεν μπορείτε να κάνετε τίποτα γι\' αυτό· η εφαρμογή δεν μπορεί να λειτουργήσει και θα κλείσει τώρα.</string>
-    
+    <string name="heavy_work_backing_up_model">Δημιουργία αντιγράφου ασφαλείας μοντέλου</string>
     <string name="heavy_work_channel_name">Επεξεργασία στο παρασκήνιο</string>
-    
+    <string name="heavy_work_importing_model">Εισαγωγή μοντέλου</string>
     <string name="heavy_work_notification_text">Το τηλέφωνό σας μπορεί να ζεσταθεί όσο εκτελείται αυτό.</string>
     
     
@@ -296,7 +296,7 @@
     
     
     <string name="list_separator">", "</string>
-    
+    <string name="min_duration_caption">Μια λάθος κλήση ή μια κλήση που χτύπησε χωρίς απάντηση διαγράφεται τη στιγμή που τελειώνει, πριν απομαγνητοφωνηθεί ή μεταφορτωθεί. Τίποτα από όσα έχουν ήδη καταγραφεί δεν επηρεάζεται.</string>
     <string name="min_duration_label">Απόρριψη σύντομων εγγραφών</string>
     <string name="min_duration_off">Διατήρηση όλων</string>
     <string name="min_duration_one_minute">Μικρότερες από ένα λεπτό</string>
@@ -311,7 +311,7 @@
     <string name="mode_switch_problem_title">Δεν είναι έτοιμο ακόμα</string>
     <string name="mode_switch_ready">Η εγγραφή εκτελείται. Οι κλήσεις θα καταγράφονται.</string>
     <string name="mode_switch_ready_shizuku">Το CallVault ηχογραφεί μέσω Shizuku. Όλα είναι διαθέσιμα εκτός από την εγγραφή χωρίς Wi-Fi, που χρειάζεται τη δική του εγγραφή του CallVault.</string>
-    
+    <string name="mode_switch_ready_standalone">Το CallVault καταγράφει με τη δική του εγγραφή. Όλα είναι διαθέσιμα, συμπεριλαμβανομένων των κλήσεων VoIP και των ονομάτων ομιλητών.</string>
     <string name="mode_switch_recorder_failed">Η εγγραφή δεν ξεκίνησε. Τίποτα δεν θα καταγραφεί μέχρι να ξεκινήσει.</string>
     <string name="mode_switch_shizuku_not_installed">Το Shizuku δεν είναι εγκατεστημένο, οπότε δεν υπάρχει τίποτα για μετάβαση.</string>
     <string name="mode_switch_shizuku_not_permitted">Το Shizuku δεν έχει επιτρέψει ακόμα στο CallVault να το χρησιμοποιήσει. Ανοίξτε το Shizuku και επιτρέψτε το, μετά δοκιμάστε ξανά.</string>
@@ -320,22 +320,22 @@
     <string name="mode_switch_to_standalone">Μετάβαση στο CallVault…</string>
     <string name="mode_switch_voip_not_armed">Έγινε μετάβαση, αλλά η εγγραφή κλήσεων εφαρμογών δεν μπόρεσε να ενεργοποιηθεί. Οι τηλεφωνικές κλήσεις θα καταγράφονται· οι κλήσεις εφαρμογών ίσως όχι μέχρι να ξανανοίξετε το CallVault.</string>
     <string name="mode_switch_working">Διακοπή της παλιάς εγγραφής και εκκίνηση της νέας. Αυτό διαρκεί λίγα δευτερόλεπτα.</string>
-    <string name="model_backing_up">Δημιουργία αντιγράφου… %1$d%%</string>
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <string name="model_backup">Αντίγραφο ασφαλείας</string>
+    <string name="model_backup_done">Αποθηκεύτηκε</string>
+    <string name="model_backup_failed">Το αντίγραφο ασφαλείας δεν ολοκληρώθηκε. Δοκιμάστε ξανά.</string>
+    <string name="model_backup_info">Αποθηκεύει το αρχείο μοντέλου σε φάκελο της επιλογής σας. Μετά από επανεγκατάσταση ή σε νέο τηλέφωνο, χρησιμοποιήστε την Εισαγωγή με αυτό το αρχείο αντί να το κατεβάσετε ξανά.</string>
+    <string name="model_backup_subtitle">Αποθηκεύστε ένα αντίγραφο που μένει μετά από επανεγκατάσταση</string>
+    <string name="model_backup_waiting">Προετοιμασία αντιγράφου ασφαλείας…</string>
+    <string name="model_import">Εισαγωγή από αρχείο</string>
+    <string name="model_import_failed_other_model">Αυτό είναι το αρχείο άλλου μοντέλου (%1$s). Επιλέξτε πρώτα εκείνο το μοντέλο και μετά κάντε εισαγωγή.</string>
+    <string name="model_import_failed_space">Δεν υπάρχει αρκετός ελεύθερος χώρος για την εισαγωγή.</string>
+    <string name="model_import_failed_unreadable">Δεν ήταν δυνατή η ανάγνωση του αρχείου. Επιλέξτε το ξανά.</string>
+    <string name="model_import_failed_wrong_file">Δεν είναι το σωστό αρχείο. Επιλέξτε %1$s.</string>
+    <string name="model_import_info">Επιλέξτε το επίσημο αρχείο μοντέλου (%1$s, %2$d MB). Το CallVault ελέγχει ότι είναι ακριβώς αυτό το αρχείο πριν το χρησιμοποιήσει και αφήνει το αντίγραφό σας εκεί που είναι.</string>
+    <string name="model_import_subtitle">Χρησιμοποιήστε ένα αντίγραφο που ήδη έχετε</string>
+    <string name="model_import_waiting">Προετοιμασία εισαγωγής…</string>
+    <string name="model_importing">Εισαγωγή… %1$d%%</string>
     <string name="note_saved">Αποθηκεύτηκε</string>
     <string name="note_saving">Αποθήκευση…</string>
     <string name="notif_cut_off_saved_text">Το τηλέφωνό σας έκλεισε το CallVault κατά τη διάρκεια μιας κλήσης. Ό,τι καταγράφηκε πριν από αυτό αποθηκεύτηκε ως %1$s.</string>
@@ -468,7 +468,7 @@
     <string name="selection_select_all">Επιλογή όλων</string>
     <string name="settings_allow_screenshots_description">Σας επιτρέπει να τραβάτε στιγμιότυπα οθόνης του CallVault. Έτσι εμφανίζεται και το περιεχόμενό του στην εναλλαγή εφαρμογών. Απενεργοποιημένο, όλα παραμένουν κρυφά.</string>
     <string name="settings_allow_screenshots_title">Να επιτρέπονται στιγμιότυπα οθόνης</string>
-    
+    <string name="settings_app_lock_description">Ζητά το κλείδωμα οθόνης σας πριν εμφανίσει εγγραφές και απομαγνητοφωνήσεις. Επίσης τις κρατά εκτός στιγμιότυπων οθόνης και της εναλλαγής εφαρμογών.</string>
     <string name="settings_app_lock_title">Απαίτηση ξεκλειδώματος</string>
     <string name="settings_app_lock_unavailable">Ορίστε ένα κλείδωμα οθόνης στο τηλέφωνό σας για να το χρησιμοποιήσετε.</string>
     <string name="settings_audio_bitrate">Ρυθμός bit ήχου</string>
@@ -537,7 +537,7 @@
     <string name="settings_group_cleaning_up">Καθαρισμός</string>
     <string name="settings_group_connection">Σύνδεση</string>
     <string name="settings_group_help_and_about">Βοήθεια και πληροφορίες</string>
-    <string name="settings_group_model_and_language">Μοντέλο και γλώσσα</string>
+    
     <string name="settings_group_save_and_sync">Αποθήκευση και συγχρονισμός</string>
     <string name="settings_group_sound_and_names">Ήχος και ονόματα αρχείων</string>
     
@@ -629,7 +629,7 @@
     <string name="settings_summary_calls_phone_and_app">Τηλεφωνικές κλήσεις και κλήσεις εφαρμογών</string>
     <string name="settings_summary_calls_phone_only">Μόνο τηλεφωνικές κλήσεις</string>
     <string name="settings_summary_count_on">%1$d από %2$d ενεργά</string>
-    <string name="settings_summary_not_downloaded">Δεν έχει ληφθεί</string>
+    
     <string name="settings_summary_nothing_skipped">Δεν παραλείπεται τίποτα</string>
     <string name="settings_summary_off">Ανενεργό</string>
     <string name="settings_summary_recording_both">και οι δύο κατευθύνσεις</string>

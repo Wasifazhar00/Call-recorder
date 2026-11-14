@@ -609,8 +609,8 @@
     <string name="heavy_work_notification_text">Your phone may get warm while this runs.</string>
     
     
-    
-    
+    <string name="heavy_work_importing_model">Importing a model</string>
+    <string name="heavy_work_backing_up_model">Backing up a model</string>
     <string name="drive_copy_title">Copying recordings to Drive</string>
     <string name="drive_copy_progress">%1$d of %2$d copied</string>
     <string name="drive_copy_stop">Stop for now</string>
@@ -634,22 +634,22 @@
     
     
     
+    <string name="model_importing">Importing… %1$d%%</string>
+    <string name="model_import_waiting">Getting ready to import…</string>
+    <string name="model_import">Import from a file</string>
+    <string name="model_import_subtitle">Use a copy you already have</string>
+    <string name="model_import_info">Pick the official model file (%1$s, %2$d MB). CallVault checks it is exactly that file before using it, and leaves your copy where it is.</string>
+    <string name="model_import_failed_wrong_file">That isn\'t the right file. Pick %1$s.</string>
+    <string name="model_import_failed_other_model">That\'s the file for another model (%1$s). Choose that model first, then import.</string>
+    <string name="model_import_failed_unreadable">Couldn\'t read that file. Pick it again.</string>
+    <string name="model_import_failed_space">Not enough free space to import it.</string>
+    <string name="model_backup">Back up</string>
+    <string name="model_backup_subtitle">Save a copy to keep after a reinstall</string>
+    <string name="model_backup_info">Saves the model file to a folder you choose. After a reinstall or on a new phone, use Import with that file instead of downloading again.</string>
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <string name="model_backing_up">Backing up… %1$d%%</string>
-    
-    
-    
+    <string name="model_backup_waiting">Getting ready to back up…</string>
+    <string name="model_backup_done">Saved</string>
+    <string name="model_backup_failed">The backup didn\'t finish. Try again.</string>
     
     
     
@@ -1039,7 +1039,7 @@
     <string name="settings_summary_recording_incoming">incoming only</string>
     <string name="settings_summary_recording_outgoing">outgoing only</string>
     <string name="settings_summary_recording_manual">manual only</string>
-    <string name="settings_summary_not_downloaded">Not downloaded</string>
+    
 
     <!-- New Settings screen: the ⓘ button that explains a row. -->
     <string name="settings_info_about">About %1$s</string>
@@ -1052,7 +1052,7 @@
     <string name="settings_group_save_and_sync">Save and sync</string>
     <string name="settings_group_cleaning_up">Cleaning up</string>
     <string name="settings_group_connection">Connection</string>
-    <string name="settings_group_model_and_language">Model and language</string>
+    
     
     <string name="settings_group_app">App</string>
     <string name="settings_group_help_and_about">Help and about</string>

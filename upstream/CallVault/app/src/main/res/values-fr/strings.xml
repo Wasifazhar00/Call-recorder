@@ -87,9 +87,9 @@
     <string name="general_stop">Arrêter</string>
     <string name="general_system_limitation">Limitation Système</string>
     <string name="general_system_limitation_message">CallVault ne fonctionnera pas sur cet appareil car votre application shell ne dispose pas des autorisations requises :\n\n%1$s\n\nVous ne pouvez rien y faire, l’application ne peut pas fonctionner et va se fermer.</string>
-    
+    <string name="heavy_work_backing_up_model">Sauvegarde d\'un modèle</string>
     <string name="heavy_work_channel_name">Traitement en arrière-plan</string>
-    
+    <string name="heavy_work_importing_model">Importation d\'un modèle</string>
     <string name="heavy_work_notification_text">Votre téléphone peut chauffer pendant l\'opération.</string>
     
     
@@ -172,7 +172,7 @@
     
     
     <string name="list_separator">", "</string>
-    
+    <string name="min_duration_caption">Un faux numéro ou un appel resté sans réponse est supprimé dès qu\'il se termine, avant toute transcription ou tout envoi. Les enregistrements existants ne sont pas touchés.</string>
     <string name="min_duration_label">Ignorer les enregistrements courts</string>
     <string name="min_duration_off">Tout conserver</string>
     <string name="min_duration_one_minute">Moins d\'une minute</string>
@@ -187,7 +187,7 @@
     <string name="mode_switch_problem_title">Pas encore prêt</string>
     <string name="mode_switch_ready">L\'enregistreur fonctionne. Les appels seront enregistrés.</string>
     <string name="mode_switch_ready_shizuku">CallVault enregistre via Shizuku. Tout est disponible sauf l’enregistrement hors Wi-Fi, qui nécessite l’enregistreur propre de CallVault.</string>
-    
+    <string name="mode_switch_ready_standalone">CallVault enregistre avec son propre enregistreur. Tout est disponible, y compris les appels VoIP et les noms des interlocuteurs.</string>
     <string name="mode_switch_recorder_failed">L\'enregistreur n\'a pas démarré. Rien ne sera enregistré tant que ce n\'est pas le cas.</string>
     <string name="mode_switch_shizuku_not_installed">Shizuku n\'est pas installé, il n\'y a donc rien vers quoi basculer.</string>
     <string name="mode_switch_shizuku_not_permitted">Shizuku n\'a pas encore autorisé CallVault. Ouvrez-le, autorisez-le puis réessayez.</string>
@@ -196,22 +196,22 @@
     <string name="mode_switch_to_standalone">Passage à CallVault…</string>
     <string name="mode_switch_voip_not_armed">Basculé, mais l\'enregistrement des appels d\'applications n\'a pas pu être préparé. Les appels téléphoniques seront enregistrés ; les appels d\'applications peut-être pas avant que vous rouvriez CallVault.</string>
     <string name="mode_switch_working">Arrêt de l\'ancien enregistreur et démarrage du nouveau. Cela prend quelques secondes.</string>
-    <string name="model_backing_up">Sauvegarde… %1$d%%</string>
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <string name="model_backup">Sauvegarder</string>
+    <string name="model_backup_done">Enregistré</string>
+    <string name="model_backup_failed">La sauvegarde n\'a pas abouti. Réessayez.</string>
+    <string name="model_backup_info">Enregistre le fichier du modèle dans un dossier de votre choix. Après une réinstallation ou sur un nouveau téléphone, utilisez Importer avec ce fichier au lieu de le retélécharger.</string>
+    <string name="model_backup_subtitle">Enregistrer une copie à garder après une réinstallation</string>
+    <string name="model_backup_waiting">Préparation de la sauvegarde…</string>
+    <string name="model_import">Importer depuis un fichier</string>
+    <string name="model_import_failed_other_model">C\'est le fichier d\'un autre modèle (%1$s). Choisissez d\'abord ce modèle, puis importez.</string>
+    <string name="model_import_failed_space">Pas assez d\'espace libre pour l\'importer.</string>
+    <string name="model_import_failed_unreadable">Impossible de lire ce fichier. Choisissez-le à nouveau.</string>
+    <string name="model_import_failed_wrong_file">Ce n\'est pas le bon fichier. Choisissez %1$s.</string>
+    <string name="model_import_info">Choisissez le fichier officiel du modèle (%1$s, %2$d Mo). CallVault vérifie qu\'il s\'agit exactement de ce fichier avant de l\'utiliser, et laisse votre copie là où elle est.</string>
+    <string name="model_import_subtitle">Utiliser une copie que vous avez déjà</string>
+    <string name="model_import_waiting">Préparation de l\'importation…</string>
+    <string name="model_importing">Importation… %1$d %%</string>
     <string name="note_saved">Enregistré</string>
     <string name="note_saving">Enregistrement…</string>
     <string name="notif_cut_off_saved_text">Votre téléphone a fermé CallVault pendant un appel. Ce qui avait été enregistré jusque-là a été sauvegardé sous %1$s.</string>
@@ -344,7 +344,7 @@
     <string name="selection_select_all">Tout sélectionner</string>
     <string name="settings_allow_screenshots_description">Vous permet de faire des captures d’écran de CallVault. Son contenu apparaît alors aussi dans le sélecteur d’applications. Désactivé, tout reste masqué.</string>
     <string name="settings_allow_screenshots_title">Autoriser les captures d’écran</string>
-    
+    <string name="settings_app_lock_description">Demander le verrouillage de l\'écran avant d\'afficher les enregistrements et les transcriptions. Les exclut aussi des captures d\'écran et du sélecteur d\'applications.</string>
     <string name="settings_app_lock_title">Exiger le déverrouillage</string>
     <string name="settings_app_lock_unavailable">Configurez un verrouillage d\'écran sur votre téléphone pour utiliser cette option.</string>
     <string name="settings_audio_bitrate">Débit binaire audio</string>
@@ -413,7 +413,7 @@
     <string name="settings_group_cleaning_up">Nettoyage</string>
     <string name="settings_group_connection">Connexion</string>
     <string name="settings_group_help_and_about">Aide et à propos</string>
-    <string name="settings_group_model_and_language">Modèle et langue</string>
+    
     <string name="settings_group_save_and_sync">Sauvegarde et synchronisation</string>
     <string name="settings_group_sound_and_names">Son et noms de fichiers</string>
     
@@ -505,7 +505,7 @@
     <string name="settings_summary_calls_phone_and_app">Appels téléphoniques et d\'applis</string>
     <string name="settings_summary_calls_phone_only">Appels téléphoniques uniquement</string>
     <string name="settings_summary_count_on">%1$d sur %2$d activés</string>
-    <string name="settings_summary_not_downloaded">Non téléchargé</string>
+    
     <string name="settings_summary_nothing_skipped">Rien n\'est ignoré</string>
     <string name="settings_summary_off">Désactivé</string>
     <string name="settings_summary_recording_both">les deux sens</string>

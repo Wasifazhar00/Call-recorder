@@ -90,9 +90,9 @@
     <string name="general_stop">Parar</string>
     <string name="general_system_limitation">Limitação do sistema</string>
     <string name="general_system_limitation_message">O CallVault não vai funcionar neste dispositivo porque o aplicativo de shell não tem as permissões necessárias:\n\n%1$s\n\nNão há nada que você possa fazer a respeito; o app não tem como funcionar e será fechado agora.</string>
-    
+    <string name="heavy_work_backing_up_model">Fazendo backup de um modelo</string>
     <string name="heavy_work_channel_name">Processamento em segundo plano</string>
-    
+    <string name="heavy_work_importing_model">Importando um modelo</string>
     <string name="heavy_work_notification_text">O celular pode esquentar enquanto isso.</string>
     
     
@@ -175,7 +175,7 @@
     
     
     <string name="list_separator">", "</string>
-    
+    <string name="min_duration_caption">Uma ligação errada ou que só chamou é excluída assim que termina, antes de ser transcrita ou enviada. Não afeta o que já foi gravado.</string>
     <string name="min_duration_label">Descartar gravações curtas</string>
     <string name="min_duration_off">Manter todas</string>
     <string name="min_duration_one_minute">Menos de um minuto</string>
@@ -190,7 +190,7 @@
     <string name="mode_switch_problem_title">Ainda não está pronto</string>
     <string name="mode_switch_ready">O gravador está em execução. As chamadas serão gravadas.</string>
     <string name="mode_switch_ready_shizuku">O CallVault grava pelo Shizuku. Tudo está disponível, exceto gravar sem Wi-Fi, que precisa do gravador próprio do CallVault.</string>
-    
+    <string name="mode_switch_ready_standalone">O CallVault grava com o próprio gravador. Tudo está disponível, inclusive chamadas VoIP e nomes de interlocutores.</string>
     <string name="mode_switch_recorder_failed">O gravador não iniciou. Nada será gravado até que inicie.</string>
     <string name="mode_switch_shizuku_not_installed">O Shizuku não está instalado, então não há para onde mudar.</string>
     <string name="mode_switch_shizuku_not_permitted">O Shizuku ainda não permitiu o CallVault. Abra-o, permita e tente de novo.</string>
@@ -199,22 +199,22 @@
     <string name="mode_switch_to_standalone">Mudando para o CallVault…</string>
     <string name="mode_switch_voip_not_armed">Alternado, mas não foi possível preparar a gravação de chamadas de aplicativos. Chamadas telefônicas serão gravadas; as de aplicativos podem não ser até você reabrir o CallVault.</string>
     <string name="mode_switch_working">Parando o gravador antigo e iniciando o novo. Leva alguns segundos.</string>
-    <string name="model_backing_up">Fazendo backup… %1$d%%</string>
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <string name="model_backup">Fazer backup</string>
+    <string name="model_backup_done">Salvo</string>
+    <string name="model_backup_failed">O backup não terminou. Tente novamente.</string>
+    <string name="model_backup_info">Salva o arquivo do modelo em uma pasta que você escolher. Depois de reinstalar ou em um celular novo, use Importar com esse arquivo em vez de baixar de novo.</string>
+    <string name="model_backup_subtitle">Salve uma cópia para manter após reinstalar</string>
+    <string name="model_backup_waiting">Preparando o backup…</string>
+    <string name="model_import">Importar de um arquivo</string>
+    <string name="model_import_failed_other_model">Esse é o arquivo de outro modelo (%1$s). Escolha esse modelo primeiro e depois importe.</string>
+    <string name="model_import_failed_space">Não há espaço livre suficiente para importá-lo.</string>
+    <string name="model_import_failed_unreadable">Não foi possível ler esse arquivo. Escolha-o novamente.</string>
+    <string name="model_import_failed_wrong_file">Esse não é o arquivo certo. Escolha %1$s.</string>
+    <string name="model_import_info">Escolha o arquivo oficial do modelo (%1$s, %2$d MB). O CallVault verifica se é exatamente esse arquivo antes de usá-lo e deixa sua cópia onde está.</string>
+    <string name="model_import_subtitle">Use uma cópia que você já tem</string>
+    <string name="model_import_waiting">Preparando a importação…</string>
+    <string name="model_importing">Importando… %1$d%%</string>
     <string name="note_saved">Salvo</string>
     <string name="note_saving">Salvando…</string>
     <string name="notif_cut_off_saved_text">Seu telefone fechou o CallVault durante uma chamada. O que foi gravado até ali foi salvo como %1$s.</string>
@@ -347,7 +347,7 @@
     <string name="selection_select_all">Selecionar tudo</string>
     <string name="settings_allow_screenshots_description">Permite fazer capturas de tela do CallVault. Isso também mostra o conteúdo no alternador de apps. Desativado, tudo fica oculto.</string>
     <string name="settings_allow_screenshots_title">Permitir capturas de tela</string>
-    
+    <string name="settings_app_lock_description">Pedir o bloqueio de tela antes de mostrar gravações e transcrições. Também as mantém fora de capturas de tela e do alternador de apps.</string>
     <string name="settings_app_lock_title">Exigir desbloqueio</string>
     <string name="settings_app_lock_unavailable">Configure um bloqueio de tela no seu telefone para usar isso.</string>
     <string name="settings_audio_bitrate">Taxa de bits do áudio</string>
@@ -416,7 +416,7 @@
     <string name="settings_group_cleaning_up">Limpeza</string>
     <string name="settings_group_connection">Conexão</string>
     <string name="settings_group_help_and_about">Ajuda e sobre</string>
-    <string name="settings_group_model_and_language">Modelo e idioma</string>
+    
     <string name="settings_group_save_and_sync">Salvar e sincronizar</string>
     <string name="settings_group_sound_and_names">Som e nomes de arquivo</string>
     
@@ -508,7 +508,7 @@
     <string name="settings_summary_calls_phone_and_app">Chamadas telefônicas e de apps</string>
     <string name="settings_summary_calls_phone_only">Só chamadas telefônicas</string>
     <string name="settings_summary_count_on">%1$d de %2$d ativados</string>
-    <string name="settings_summary_not_downloaded">Não baixado</string>
+    
     <string name="settings_summary_nothing_skipped">Nada é ignorado</string>
     <string name="settings_summary_off">Desativado</string>
     <string name="settings_summary_recording_both">ambas as direções</string>

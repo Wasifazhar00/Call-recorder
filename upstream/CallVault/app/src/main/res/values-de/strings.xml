@@ -87,9 +87,9 @@
     <string name="general_stop">Stopp</string>
     <string name="general_system_limitation">Systemeinschränkung</string>
     <string name="general_system_limitation_message">CallVault wird nicht an diesem Gerät funktionieren, da Ihre Shell-Anwendung nicht die erforderlichen Berechtigungen hat:\n\n%1$s\n\nDieses Problem kann von Ihnen nicht behoben werden. Die App kann auf Ihrem Gerät nicht funktionieren und wird jetzt geschlossen.</string>
-    
+    <string name="heavy_work_backing_up_model">Modell wird gesichert</string>
     <string name="heavy_work_channel_name">Hintergrundverarbeitung</string>
-    
+    <string name="heavy_work_importing_model">Modell wird importiert</string>
     <string name="heavy_work_notification_text">Ihr Telefon kann dabei warm werden.</string>
     
     
@@ -172,7 +172,7 @@
     
     
     <string name="list_separator">", "</string>
-    
+    <string name="min_duration_caption">Ein Fehlanruf oder ein Anruf, der nur klingelte, wird sofort nach Ende gelöscht — vor Transkription und Upload. Bereits vorhandene Aufnahmen bleiben unberührt.</string>
     <string name="min_duration_label">Kurze Aufnahmen verwerfen</string>
     <string name="min_duration_off">Alle behalten</string>
     <string name="min_duration_one_minute">Kürzer als eine Minute</string>
@@ -187,7 +187,7 @@
     <string name="mode_switch_problem_title">Noch nicht bereit</string>
     <string name="mode_switch_ready">Der Recorder läuft. Anrufe werden aufgezeichnet.</string>
     <string name="mode_switch_ready_shizuku">CallVault nimmt über Shizuku auf. Alles ist verfügbar außer der Aufnahme ohne WLAN, die CallVaults eigenen Rekorder braucht.</string>
-    
+    <string name="mode_switch_ready_standalone">CallVault zeichnet mit dem eigenen Recorder auf. Alles ist verfügbar, auch VoIP-Anrufe und Sprechernamen.</string>
     <string name="mode_switch_recorder_failed">Der Recorder wurde nicht gestartet. Bis dahin wird nichts aufgezeichnet.</string>
     <string name="mode_switch_shizuku_not_installed">Shizuku ist nicht installiert, es gibt nichts, wohin gewechselt werden könnte.</string>
     <string name="mode_switch_shizuku_not_permitted">Shizuku hat CallVault noch nicht erlaubt. Öffnen Sie Shizuku, erlauben Sie es und versuchen Sie es erneut.</string>
@@ -196,22 +196,22 @@
     <string name="mode_switch_to_standalone">Wechsel zu CallVault…</string>
     <string name="mode_switch_voip_not_armed">Umgeschaltet, aber die App-Anrufaufzeichnung konnte nicht vorbereitet werden. Telefonanrufe werden aufgezeichnet; App-Anrufe möglicherweise erst, wenn du CallVault erneut öffnest.</string>
     <string name="mode_switch_working">Der alte Recorder wird gestoppt und der neue gestartet. Das dauert ein paar Sekunden.</string>
-    <string name="model_backing_up">Wird gesichert… %1$d%%</string>
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <string name="model_backup">Sichern</string>
+    <string name="model_backup_done">Gespeichert</string>
+    <string name="model_backup_failed">Die Sicherung wurde nicht abgeschlossen. Versuche es erneut.</string>
+    <string name="model_backup_info">Speichert die Modelldatei in einem Ordner deiner Wahl. Nach einer Neuinstallation oder auf einem neuen Handy importierst du diese Datei, statt erneut herunterzuladen.</string>
+    <string name="model_backup_subtitle">Eine Kopie speichern, die eine Neuinstallation übersteht</string>
+    <string name="model_backup_waiting">Sicherung wird vorbereitet…</string>
+    <string name="model_import">Aus einer Datei importieren</string>
+    <string name="model_import_failed_other_model">Das ist die Datei eines anderen Modells (%1$s). Wähle zuerst dieses Modell und importiere dann.</string>
+    <string name="model_import_failed_space">Nicht genug freier Speicher für den Import.</string>
+    <string name="model_import_failed_unreadable">Die Datei konnte nicht gelesen werden. Wähle sie erneut.</string>
+    <string name="model_import_failed_wrong_file">Das ist nicht die richtige Datei. Wähle %1$s.</string>
+    <string name="model_import_info">Wähle die offizielle Modelldatei (%1$s, %2$d MB). CallVault prüft vor der Verwendung, dass es genau diese Datei ist, und lässt deine Kopie, wo sie ist.</string>
+    <string name="model_import_subtitle">Eine vorhandene Kopie verwenden</string>
+    <string name="model_import_waiting">Import wird vorbereitet…</string>
+    <string name="model_importing">Importiere… %1$d%%</string>
     <string name="note_saved">Gespeichert</string>
     <string name="note_saving">Wird gespeichert…</string>
     <string name="notif_cut_off_saved_text">Dein Handy hat CallVault während eines Anrufs geschlossen. Was bis dahin aufgenommen wurde, ist als %1$s gespeichert.</string>
@@ -344,7 +344,7 @@
     <string name="selection_select_all">Alle auswählen</string>
     <string name="settings_allow_screenshots_description">Ermöglicht Screenshots von CallVault. Dadurch wird der Inhalt auch im App-Umschalter angezeigt. Aus hält alles verborgen.</string>
     <string name="settings_allow_screenshots_title">Screenshots erlauben</string>
-    
+    <string name="settings_app_lock_description">Vor dem Anzeigen von Aufnahmen und Transkripten die Bildschirmsperre verlangen. Hält sie außerdem aus Screenshots und der App-Übersicht heraus.</string>
     <string name="settings_app_lock_title">Entsperren verlangen</string>
     <string name="settings_app_lock_unavailable">Richte dafür zuerst eine Bildschirmsperre auf deinem Telefon ein.</string>
     <string name="settings_audio_bitrate">Audio-Bitrate</string>
@@ -413,7 +413,7 @@
     <string name="settings_group_cleaning_up">Aufräumen</string>
     <string name="settings_group_connection">Verbindung</string>
     <string name="settings_group_help_and_about">Hilfe und Info</string>
-    <string name="settings_group_model_and_language">Modell und Sprache</string>
+    
     <string name="settings_group_save_and_sync">Speichern und synchronisieren</string>
     <string name="settings_group_sound_and_names">Ton und Dateinamen</string>
     
@@ -505,7 +505,7 @@
     <string name="settings_summary_calls_phone_and_app">Telefon- und App-Anrufe</string>
     <string name="settings_summary_calls_phone_only">Nur Telefonanrufe</string>
     <string name="settings_summary_count_on">%1$d von %2$d an</string>
-    <string name="settings_summary_not_downloaded">Nicht heruntergeladen</string>
+    
     <string name="settings_summary_nothing_skipped">Nichts übersprungen</string>
     <string name="settings_summary_off">Aus</string>
     <string name="settings_summary_recording_both">beide Richtungen</string>

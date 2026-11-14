@@ -93,9 +93,9 @@
     <string name="general_stop">Зупинити</string>
     <string name="general_system_limitation">Системне обмеження</string>
     <string name="general_system_limitation_message">CallVault не працюватиме на цьому пристрої, оскільки системній службі бракує дозволів:\n\n%1$s\n\nЦе обмеження прошивки Android.</string>
-    
+    <string name="heavy_work_backing_up_model">Резервне копіювання моделі</string>
     <string name="heavy_work_channel_name">Фонова обробка</string>
-    
+    <string name="heavy_work_importing_model">Імпорт моделі</string>
     <string name="heavy_work_notification_text">Під час роботи телефон може нагріватися.</string>
     
     
@@ -178,7 +178,7 @@
     
     
     <string name="list_separator">", "</string>
-    
+    <string name="min_duration_caption">Помилкові набори та надто короткі дзвінки видалятимуться після завершення. Старі записи не змінюються.</string>
     <string name="min_duration_label">Відкидати короткі записи</string>
     <string name="min_duration_off">Зберігати всі</string>
     <string name="min_duration_one_minute">Коротші за хвилину</string>
@@ -193,7 +193,7 @@
     <string name="mode_switch_problem_title">Поки не готово</string>
     <string name="mode_switch_ready">Рекордер запущено. Дзвінки записуватимуться.</string>
     <string name="mode_switch_ready_shizuku">CallVault записує через Shizuku. Доступне все, крім запису без Wi-Fi — для нього потрібен власний рекордер CallVault.</string>
-    
+    <string name="mode_switch_ready_standalone">Працює вбудований рекордер CallVault. Доступні функції VoIP та визначення мовців.</string>
     <string name="mode_switch_recorder_failed">Не вдалося запустити рекордер. Запис поки недоступний.</string>
     <string name="mode_switch_shizuku_not_installed">Shizuku не встановлено.</string>
     <string name="mode_switch_shizuku_not_permitted">Shizuku ще не дозволив CallVault доступ. Відкрийте Shizuku й надайте дозвіл.</string>
@@ -202,22 +202,22 @@
     <string name="mode_switch_to_standalone">Перехід до CallVault…</string>
     <string name="mode_switch_voip_not_armed">Режим змінено, але запис VoIP не вдалося підготувати. Звичайні дзвінки записуватимуться.</string>
     <string name="mode_switch_working">Зупиняємо попередній рекордер і запускаємо новий.</string>
-    <string name="model_backing_up">Резервне копіювання… %1$d%%</string>
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <string name="model_backup">Резервна копія</string>
+    <string name="model_backup_done">Збережено</string>
+    <string name="model_backup_failed">Резервне копіювання не завершилося. Спробуйте ще раз.</string>
+    <string name="model_backup_info">Зберігає файл моделі в обрану вами теку. Після перевстановлення або на новому телефоні імпортуйте цей файл замість повторного завантаження.</string>
+    <string name="model_backup_subtitle">Збережіть копію на випадок перевстановлення</string>
+    <string name="model_backup_waiting">Підготовка до резервного копіювання…</string>
+    <string name="model_import">Імпорт із файлу</string>
+    <string name="model_import_failed_other_model">Це файл іншої моделі (%1$s). Спершу виберіть ту модель, потім імпортуйте.</string>
+    <string name="model_import_failed_space">Недостатньо вільного місця для імпорту.</string>
+    <string name="model_import_failed_unreadable">Не вдалося прочитати файл. Виберіть його ще раз.</string>
+    <string name="model_import_failed_wrong_file">Це не той файл. Виберіть %1$s.</string>
+    <string name="model_import_info">Виберіть офіційний файл моделі (%1$s, %2$d МБ). Перед використанням CallVault перевіряє, що це саме цей файл, і залишає вашу копію на місці.</string>
+    <string name="model_import_subtitle">Використайте копію, яка у вас уже є</string>
+    <string name="model_import_waiting">Підготовка до імпорту…</string>
+    <string name="model_importing">Імпорт… %1$d%%</string>
     <string name="note_saved">Збережено</string>
     <string name="note_saving">Збереження…</string>
     <string name="notif_cut_off_saved_text">Android закрив CallVault під час дзвінка. Збережено записаний фрагмент: %1$s.</string>
@@ -350,7 +350,7 @@
     <string name="selection_select_all">Вибрати все</string>
     <string name="settings_allow_screenshots_description">Дозволяє знімки екрана та показ вмісту в перемикачі застосунків.</string>
     <string name="settings_allow_screenshots_title">Дозволити знімки екрана</string>
-    
+    <string name="settings_app_lock_description">Перед переглядом записів і транскрипцій запитувати системне розблокування. Також приховувати вміст на знімках екрана.</string>
     <string name="settings_app_lock_title">Вимагати розблокування</string>
     <string name="settings_app_lock_unavailable">Налаштуйте блокування екрана телефону.</string>
     <string name="settings_audio_bitrate">Бітрейт звуку</string>
@@ -419,7 +419,7 @@
     <string name="settings_group_cleaning_up">Очищення</string>
     <string name="settings_group_connection">Підключення</string>
     <string name="settings_group_help_and_about">Довідка й про застосунок</string>
-    <string name="settings_group_model_and_language">Модель і мова</string>
+    
     <string name="settings_group_save_and_sync">Збереження й синхронізація</string>
     <string name="settings_group_sound_and_names">Звук і назви файлів</string>
     
@@ -513,7 +513,7 @@
     <string name="settings_summary_calls_phone_and_app">Звичайні дзвінки й дзвінки в застосунках</string>
     <string name="settings_summary_calls_phone_only">Лише звичайні дзвінки</string>
     <string name="settings_summary_count_on">Увімкнено: %1$d з %2$d</string>
-    <string name="settings_summary_not_downloaded">Не завантажено</string>
+    
     <string name="settings_summary_nothing_skipped">Нічого не пропускається</string>
     <string name="settings_summary_off">Вимк.</string>
     <string name="settings_summary_recording_both">обидва напрямки</string>

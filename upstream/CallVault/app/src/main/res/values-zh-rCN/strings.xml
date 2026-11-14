@@ -86,9 +86,9 @@
     <string name="general_stop">停止</string>
     <string name="general_system_limitation">系统限制</string>
     <string name="general_system_limitation_message">很抱歉，CallVault无法在您的设备上运行，因为您设备的shell权限不足。\n\n%1$s\n\n对于您厂商添加的限制，我们无能为力。CallVault现在将退出。</string>
-    
+    <string name="heavy_work_backing_up_model">正在备份模型</string>
     <string name="heavy_work_channel_name">后台处理</string>
-    
+    <string name="heavy_work_importing_model">正在导入模型</string>
     <string name="heavy_work_notification_text">处理期间手机可能会发热。</string>
     
     
@@ -171,7 +171,7 @@
     
     
     <string name="list_separator">、</string>
-    
+    <string name="min_duration_caption">拨错或响铃未接的通话在结束时立即删除，不会被转录或上传。已有录音不受影响。</string>
     <string name="min_duration_label">丢弃过短的录音</string>
     <string name="min_duration_off">全部保留</string>
     <string name="min_duration_one_minute">短于一分钟</string>
@@ -186,7 +186,7 @@
     <string name="mode_switch_problem_title">尚未就绪</string>
     <string name="mode_switch_ready">录音器正在运行，通话将被录制。</string>
     <string name="mode_switch_ready_shizuku">CallVault 正在通过 Shizuku 录音。除离开 Wi-Fi 时录音（需要 CallVault 自己的录音器）外，其余功能均可使用。</string>
-    
+    <string name="mode_switch_ready_standalone">CallVault 正使用自带录音器录音。所有功能均可用，包括 VoIP 通话和说话人姓名。</string>
     <string name="mode_switch_recorder_failed">录音器未能启动。在启动之前不会录制任何内容。</string>
     <string name="mode_switch_shizuku_not_installed">未安装 Shizuku，没有可切换的对象。</string>
     <string name="mode_switch_shizuku_not_permitted">Shizuku 尚未允许 CallVault。请打开 Shizuku 授权后重试。</string>
@@ -195,22 +195,22 @@
     <string name="mode_switch_to_standalone">正在切换到 CallVault…</string>
     <string name="mode_switch_voip_not_armed">已切换，但无法准备应用通话录音。电话通话会被录制；应用通话可能要等到你重新打开 CallVault 才能录制。</string>
     <string name="mode_switch_working">正在停止旧的录音器并启动新的，需要几秒钟。</string>
-    <string name="model_backing_up">正在备份… %1$d%%</string>
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <string name="model_backup">备份</string>
+    <string name="model_backup_done">已保存</string>
+    <string name="model_backup_failed">备份未完成。请重试。</string>
+    <string name="model_backup_info">将模型文件保存到您选择的文件夹。重新安装或换新手机后，用该文件导入，无需重新下载。</string>
+    <string name="model_backup_subtitle">保存一份副本，重新安装后仍可使用</string>
+    <string name="model_backup_waiting">正在准备备份…</string>
+    <string name="model_import">从文件导入</string>
+    <string name="model_import_failed_other_model">这是另一个模型（%1$s）的文件。请先选择该模型，再导入。</string>
+    <string name="model_import_failed_space">可用空间不足，无法导入。</string>
+    <string name="model_import_failed_unreadable">无法读取该文件。请重新选择。</string>
+    <string name="model_import_failed_wrong_file">这不是正确的文件。请选择 %1$s。</string>
+    <string name="model_import_info">请选择官方模型文件（%1$s，%2$d MB）。CallVault 会在使用前确认它正是该文件，并且不会移动您的副本。</string>
+    <string name="model_import_subtitle">使用您已有的副本</string>
+    <string name="model_import_waiting">正在准备导入…</string>
+    <string name="model_importing">正在导入… %1$d%%</string>
     <string name="note_saved">已保存</string>
     <string name="note_saving">正在保存…</string>
     <string name="notif_cut_off_saved_text">手机在通话过程中关闭了 CallVault。此前录下的内容已保存为 %1$s。</string>
@@ -343,7 +343,7 @@
     <string name="selection_select_all">全选</string>
     <string name="settings_allow_screenshots_description">允许你对 CallVault 截屏。这也会在应用切换器中显示其内容。关闭则将所有内容隐藏。</string>
     <string name="settings_allow_screenshots_title">允许截屏</string>
-    
+    <string name="settings_app_lock_description">在显示录音和转录文本前要求屏幕锁。同时使其不出现在截图和应用切换器中。</string>
     <string name="settings_app_lock_title">需要解锁</string>
     <string name="settings_app_lock_unavailable">请先在手机上设置屏幕锁以使用此功能。</string>
     <string name="settings_audio_bitrate">码率</string>
@@ -412,7 +412,7 @@
     <string name="settings_group_cleaning_up">清理</string>
     <string name="settings_group_connection">连接</string>
     <string name="settings_group_help_and_about">帮助和关于</string>
-    <string name="settings_group_model_and_language">模型和语言</string>
+    
     <string name="settings_group_save_and_sync">保存和同步</string>
     <string name="settings_group_sound_and_names">声音和文件名</string>
     
@@ -503,7 +503,7 @@
     <string name="settings_summary_calls_phone_and_app">电话和应用通话</string>
     <string name="settings_summary_calls_phone_only">仅电话</string>
     <string name="settings_summary_count_on">已开启 %1$d/%2$d 项</string>
-    <string name="settings_summary_not_downloaded">未下载</string>
+    
     <string name="settings_summary_nothing_skipped">不跳过任何通话</string>
     <string name="settings_summary_off">关闭</string>
     <string name="settings_summary_recording_both">双向</string>

@@ -147,6 +147,17 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="merge_progress_title">Fusion</string>
     <string name="unmerge_progress_title">Séparation</string>
     <string name="merge_progress_step">Appel %1$d sur %2$d</string>
@@ -222,7 +233,7 @@
     
     
     
-    
+    <string name="share_import_queued_keep_title">Ajouté et mis en file</string>
     
     
     

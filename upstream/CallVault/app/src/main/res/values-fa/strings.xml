@@ -180,9 +180,9 @@
     <string name="general_stop">توقف</string>
     <string name="general_system_limitation">محدودیت سیستم</string>
     <string name="general_system_limitation_message">CallVault روی این دستگاه کار نمی‌کند چون برنامه شل شما مجوزهای لازم را ندارد:\n\n%1$s\n\nکاری از دست شما برنمی‌آید؛ برنامه نمی‌تواند کار کند و اکنون بسته می‌شود.</string>
-    
+    <string name="heavy_work_backing_up_model">پشتیبان‌گیری از یک مدل</string>
     <string name="heavy_work_channel_name">پردازش پس‌زمینه</string>
-    
+    <string name="heavy_work_importing_model">درون‌ریزی یک مدل</string>
     <string name="heavy_work_notification_text">ممکن است گوشی شما در حین این کار گرم شود.</string>
     
     
@@ -265,7 +265,7 @@
     
     
     <string name="list_separator">"، "</string>
-    
+    <string name="min_duration_caption">یک شماره‌گیری اشتباه یا تماسی که بی‌پاسخ زنگ خورده، همان لحظه که تمام شود حذف می‌شود، پیش از آنکه رونویسی یا بارگذاری شود. چیزی که قبلاً ضبط شده تحت تأثیر قرار نمی‌گیرد.</string>
     <string name="min_duration_label">دور انداختن فایل‌های ضبط‌شده کوتاه</string>
     <string name="min_duration_off">نگه‌داری همه</string>
     <string name="min_duration_one_minute">کوتاه‌تر از یک دقیقه</string>
@@ -280,7 +280,7 @@
     <string name="mode_switch_problem_title">هنوز آماده نیست</string>
     <string name="mode_switch_ready">ضبط‌کننده در حال اجراست. تماس‌ها ضبط خواهند شد.</string>
     <string name="mode_switch_ready_shizuku">CallVault از طریق Shizuku ضبط می‌کند. همه‌چیز در دسترس است به‌جز ضبط بدون Wi-Fi که به ضبط‌کنندهٔ خود CallVault نیاز دارد.</string>
-    
+    <string name="mode_switch_ready_standalone">CallVault با ضبط‌کننده اختصاصی خودش ضبط می‌کند. همه‌چیز در دسترس است، از جمله تماس‌های VoIP و نام گویندگان.</string>
     <string name="mode_switch_recorder_failed">ضبط‌کننده اجرا نشد. تا زمانی که اجرا نشود چیزی ضبط نخواهد شد.</string>
     <string name="mode_switch_shizuku_not_installed">Shizuku نصب نیست، پس چیزی برای تغییر به آن وجود ندارد.</string>
     <string name="mode_switch_shizuku_not_permitted">Shizuku هنوز به CallVault اجازه استفاده نداده است. Shizuku را باز کنید و اجازه دهید، سپس دوباره تلاش کنید.</string>
@@ -289,22 +289,22 @@
     <string name="mode_switch_to_standalone">در حال تغییر به CallVault…</string>
     <string name="mode_switch_voip_not_armed">تغییر انجام شد، اما ضبط تماس درون‌برنامه‌ای آماده نشد. تماس‌های تلفنی ضبط می‌شوند؛ تماس‌های درون‌برنامه‌ای شاید تا زمانی که CallVault را دوباره باز نکنید ضبط نشوند.</string>
     <string name="mode_switch_working">در حال متوقف کردن ضبط‌کننده قبلی و اجرای ضبط‌کننده جدید. این چند ثانیه طول می‌کشد.</string>
-    <string name="model_backing_up">در حال پشتیبان‌گیری… %1$d%%</string>
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <string name="model_backup">پشتیبان‌گیری</string>
+    <string name="model_backup_done">ذخیره شد</string>
+    <string name="model_backup_failed">پشتیبان‌گیری کامل نشد. دوباره امتحان کنید.</string>
+    <string name="model_backup_info">فایل مدل را در پوشه‌ای که انتخاب می‌کنید ذخیره می‌کند. پس از نصب دوباره یا روی گوشی جدید، به جای دانلود دوباره، با همان فایل درون‌ریزی کنید.</string>
+    <string name="model_backup_subtitle">یک نسخه ذخیره کنید که پس از نصب دوباره بماند</string>
+    <string name="model_backup_waiting">در حال آماده‌سازی برای پشتیبان‌گیری…</string>
+    <string name="model_import">درون‌ریزی از فایل</string>
+    <string name="model_import_failed_other_model">این فایل مدل دیگری (%1$s) است. ابتدا آن مدل را انتخاب کنید، سپس درون‌ریزی کنید.</string>
+    <string name="model_import_failed_space">فضای خالی کافی برای درون‌ریزی وجود ندارد.</string>
+    <string name="model_import_failed_unreadable">خواندن این فایل ممکن نشد. دوباره انتخابش کنید.</string>
+    <string name="model_import_failed_wrong_file">این فایل درست نیست. %1$s را انتخاب کنید.</string>
+    <string name="model_import_info">فایل رسمی مدل را انتخاب کنید (%1$s، %2$d مگابایت). CallVault پیش از استفاده بررسی می‌کند که دقیقاً همان فایل باشد و نسخهٔ شما را سر جایش نگه می‌دارد.</string>
+    <string name="model_import_subtitle">از نسخه‌ای که از قبل دارید استفاده کنید</string>
+    <string name="model_import_waiting">در حال آماده‌سازی برای درون‌ریزی…</string>
+    <string name="model_importing">در حال درون‌ریزی… %1$d%%</string>
     <string name="note_saved">ذخیره شد</string>
     <string name="note_saving">در حال ذخیره…</string>
     <string name="notif_cut_off_saved_text">گوشی شما CallVault را در حین یک تماس بست. آنچه پیش از آن ضبط شده بود به‌صورت %1$s ذخیره شد.</string>
@@ -437,7 +437,7 @@
     <string name="selection_select_all">انتخاب همه</string>
     <string name="settings_allow_screenshots_description">به شما اجازه می‌دهد از CallVault اسکرین‌شات بگیرید. این کار محتوای آن را در جابه‌جاگر برنامه‌ها نیز نشان می‌دهد. خاموش‌بودن همه‌چیز را پنهان نگه می‌دارد.</string>
     <string name="settings_allow_screenshots_title">اجازه گرفتن اسکرین‌شات</string>
-    
+    <string name="settings_app_lock_description">پیش از نمایش فایل‌های ضبط‌شده و رونوشت‌ها، قفل صفحه شما را می‌خواهد. همچنین آن‌ها را از تصاویر صفحه و جابه‌جاگر برنامه‌ها دور نگه می‌دارد.</string>
     <string name="settings_app_lock_title">نیاز به باز کردن قفل</string>
     <string name="settings_app_lock_unavailable">برای استفاده از این، روی گوشی خود یک قفل صفحه تنظیم کنید.</string>
     <string name="settings_audio_bitrate">نرخ بیت صدا</string>
@@ -506,7 +506,7 @@
     <string name="settings_group_cleaning_up">پاک‌سازی</string>
     <string name="settings_group_connection">اتصال</string>
     <string name="settings_group_help_and_about">راهنما و درباره</string>
-    <string name="settings_group_model_and_language">مدل و زبان</string>
+    
     <string name="settings_group_save_and_sync">ذخیره و همگام‌سازی</string>
     <string name="settings_group_sound_and_names">صدا و نام فایل‌ها</string>
     
@@ -598,7 +598,7 @@
     <string name="settings_summary_calls_phone_and_app">تماس‌های تلفنی و تماس‌های برنامه‌ها</string>
     <string name="settings_summary_calls_phone_only">فقط تماس‌های تلفنی</string>
     <string name="settings_summary_count_on">%1$d از %2$d روشن</string>
-    <string name="settings_summary_not_downloaded">دانلود نشده</string>
+    
     <string name="settings_summary_nothing_skipped">چیزی رد نمی‌شود</string>
     <string name="settings_summary_off">خاموش</string>
     <string name="settings_summary_recording_both">هر دو جهت</string>

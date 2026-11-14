@@ -121,7 +121,7 @@
     
     
     
-    
+    <string name="share_import_queued_keep_title">Додано до черги</string>
     
     
     
@@ -196,6 +196,10 @@
     
     
     
+    
+    
+    
+    
     <string name="offline_failed_no_wifi">Не вдалося ввімкнути: немає Wi-Fi. Один раз підключіться до будь-якої мережі й повторіть.</string>
     <string name="offline_failed_wd_refused">Android заборонив бездротове налагодження в цій мережі. Увімкніть його в параметрах розробника та підтвердьте.</string>
     <string name="offline_failed_needs_usb">Спочатку ввімкніть налагодження USB у налаштуваннях CallVault. Воно потрібне для запису без Wi-Fi.</string>
@@ -209,6 +213,25 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    <plurals name="merge_row_badge">
+        <item quantity="one">%1$d дзвінок</item>
+        <item quantity="few">%1$d дзвінки</item>
+        <item quantity="many">%1$d дзвінків</item>
+        <item quantity="other">%1$d дзвінка</item>
+    </plurals>
+    <plurals name="merge_summary">
+        <item quantity="one">%1$d дзвінок · %2$s</item>
+        <item quantity="few">%1$d дзвінки · %2$s</item>
+        <item quantity="many">%1$d дзвінків · %2$s</item>
+        <item quantity="other">%1$d дзвінка · %2$s</item>
+    </plurals>
     
     
     

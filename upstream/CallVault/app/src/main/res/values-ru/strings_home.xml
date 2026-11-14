@@ -150,6 +150,17 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="merge_progress_title">Объединение</string>
     <string name="unmerge_progress_title">Разделение</string>
     <string name="merge_progress_step">Звонок %1$d из %2$d</string>
@@ -225,7 +236,7 @@
     
     
     
-    
+    <string name="share_import_queued_keep_title">Добавлено и поставлено в очередь</string>
     
     
     

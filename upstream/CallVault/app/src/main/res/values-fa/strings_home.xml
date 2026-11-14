@@ -168,6 +168,17 @@
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="merge_progress_title">در حال ادغام</string>
     <string name="unmerge_progress_title">در حال لغو ادغام</string>
     <string name="merge_progress_step">تماس %1$d از %2$d</string>
@@ -239,7 +250,7 @@
     
     
     
-    
+    <string name="share_import_queued_keep_title">افزوده و در صف قرار گرفت</string>
     
     
     
