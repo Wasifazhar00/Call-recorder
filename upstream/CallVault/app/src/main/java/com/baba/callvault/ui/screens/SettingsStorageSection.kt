@@ -356,7 +356,7 @@ internal fun RetentionPolicyRows(preferences: AppPreferences, updateTrigger: Int
 
     // Device only. A Drive copy costs nothing on this phone and has its own quota, so deleting
     // one to free space here would be indefensible — and because only the device copy goes, a
-    // recording that is also in Drive keeps its transcript and its place in the list.
+    // recording that is also in Drive keeps its metadata and its place in the list.
     WithInfo(stringResource(R.string.storage_cap_label), stringResource(R.string.storage_cap_caption)) {
     DropdownRow {
         M3DropdownField(

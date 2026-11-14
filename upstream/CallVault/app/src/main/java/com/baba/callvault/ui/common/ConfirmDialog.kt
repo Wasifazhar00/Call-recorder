@@ -19,7 +19,7 @@ import com.baba.callvault.R
 /**
  * A question before something that cannot be undone.
  *
- * Written after a single tap on a row labelled "Delete the summariser" destroyed a completed 3.46 GB
+ * Written after a destructive settings action showed how important a clear confirmation is for irreversible changes.
  * download, twenty minutes of fetching, with nothing between the tap and the loss. The row was
  * accurate; accuracy is not the same as a chance to change your mind.
  *

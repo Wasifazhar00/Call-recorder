@@ -636,59 +636,59 @@
     <string name="support_not_now">Để sau</string>
     <string name="tile_recording_on">Đang ghi âm</string>
     <string name="tile_recording_stopped">Đã dừng</string>
-    <string name="transcribe_confirm_dont_ask">Đừng hỏi lại</string>
-    <string name="transcribe_long_call_line">Cuộc gọi này dài %1$s. Trên điện thoại này, chép lời mất khoảng %2$s lần thời lượng cuộc gọi — khoảng %3$s.</string>
     
-    <string name="transcribe_confirm_title">Việc này mất khoảng %1$s</string>
-    <string name="transcribe_confirm_title_first_run">Lần đầu tiên có thể mất một lúc</string>
-    <string name="transcribe_confirm_title_unknown">Chép lời cuộc gọi này?</string>
-    <string name="transcribe_estimate_hours">%1$d giờ %2$d phút</string>
-    <string name="transcribe_estimate_minutes">%1$d phút</string>
-    <string name="transcribe_estimate_under_minute">một phút</string>
-    <string name="transcribe_language_confirm">Chép lời</string>
-    <string name="transcribe_language_message">Chép lời %1$s bằng:</string>
-    <string name="transcribe_language_title">Ngôn ngữ nào?</string>
-    <string name="transcribing_pill_percent">%1$d%%</string>
-    <string name="transcribing_pill_progress">%1$d/%2$d</string>
-    <string name="transcribing_pill_progress_percent">%1$d/%2$d · %3$d%%</string>
-    <string name="transcribing_pill_working">Đang chép lời</string>
-    <string name="transcribing_sheet_remaining">Còn lại: %1$d</string>
-    <string name="transcribing_sheet_starting">Đang bắt đầu…</string>
-    <string name="transcribing_sheet_stop">Dừng</string>
-    <string name="transcribing_sheet_title">Đang chép lời</string>
-    <string name="transcript_action_busy">Đang chuyển…</string>
-    <string name="transcript_action_open">Đọc bản ghi lời</string>
-    <string name="transcript_action_retry">Chuyển thất bại — thử lại</string>
-    <string name="transcript_action_transcribe">Chuyển cuộc gọi này thành văn bản</string>
-    <string name="transcript_action_transcribe_short">Chép lời</string>
-    <string name="transcript_delete">Xoá văn bản</string>
-    <string name="transcript_delete_confirm_message">Bản chép lời của %1$s sẽ bị xoá. Bản ghi âm vẫn được giữ lại và bạn có thể chép lời lại sau.</string>
-    <string name="transcript_delete_confirm_message_text_only">Không còn bản ghi nào phía sau những chữ này: xoá bản chép lời của %1$s là xoá toàn bộ, và không lấy lại được.</string>
-    <string name="transcript_delete_confirm_title">Xoá bản chép lời này?</string>
-    <string name="transcript_export_chooser">Chia sẻ bản ghi</string>
-    <string name="transcript_export_failed">Không thể xuất bản ghi</string>
-    <string name="transcript_loading">Đang tải bản ghi lời…</string>
-    <string name="transcript_no_model_message">Việc chép lời diễn ra ngay trên điện thoại này, nên cần tải một mô hình giọng nói trước. Bạn có thể chọn và tải trong Cài đặt.</string>
-    <string name="transcript_no_model_open_settings">Mở cài đặt</string>
-    <string name="transcript_no_model_title">Chưa có mô hình giọng nói</string>
-    <string name="transcript_no_speech">Không nhận ra giọng nói nào trong bản ghi âm này.</string>
-    <string name="transcript_none">Cuộc gọi này không có bản ghi lời. Nó chưa từng được chép lời, hoặc văn bản đã bị xoá.</string>
-    <string name="transcript_note_add">Thêm ghi chú</string>
-    <string name="transcript_note_hint">Nội dung là gì, hoặc cần làm gì tiếp…</string>
-    <string name="transcript_retranscribe">Chuyển lại</string>
-    <string name="transcript_share">Chia sẻ</string>
-    <string name="transcript_previous_call">Trước</string>
-    <string name="transcript_next_call">Tiếp</string>
-    <string name="transcript_follow_playback">Theo dõi khi phát</string>
-    <string name="transcript_share_text">Văn bản</string>
-    <string name="transcript_speaker_a">Người nói A</string>
-    <string name="transcript_speaker_b">Người nói B</string>
-    <string name="transcript_speaker_you">Tôi</string>
-    <string name="transcript_speakers_correct">Đúng</string>
-    <string name="transcript_speakers_guessed">Tên được xác định tự động</string>
-    <string name="transcript_speakers_swap">Đổi</string>
-    <string name="transcript_speakers_swap_names">Đổi tên hai bên</string>
-    <string name="transcript_speakers_which_is_you">Bên nào là bạn?</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -785,7 +785,7 @@
     
     
     
-    <string name="transcripts_search_hint">Tìm những gì đã nói</string>
+    
     <string name="update_popup_later">Để sau</string>
     <string name="update_popup_text">Phiên bản mới đã sẵn sàng để cài đặt. Cập nhật giúp ghi âm ổn định và mang đến các bản sửa lỗi mới nhất.</string>
     <string name="update_popup_title">Đã có CallVault %1$s</string>
@@ -884,13 +884,13 @@
     <string name="wizard_updates_subtitle">CallVault không có trên kho ứng dụng nào, nên tự tìm phiên bản mới trên GitHub.</string>
     <string name="wizard_updates_title">Luôn được cập nhật</string>
     
-    <string name="transcribe_again_title">Chép lời lại?</string>
-    <string name="transcribe_again_message_one">%1$s sẽ được chép lời lại. Nếu lần chạy mới thất bại hoặc bị dừng, bản chép lời hiện tại được giữ nguyên.</string>
-    <string name="transcribe_again_message_many">Số bản chép lời cần làm lại: %1$d. Nếu một lần chạy thất bại hoặc bị dừng, bản chép lời đó được giữ nguyên.</string>
-    <string name="transcribe_again_run_on">Chạy trên</string>
-    <string name="transcribe_again_estimate">Khoảng %1$s.</string>
-    <string name="transcribe_again_delete_summary">Xóa cả bản tóm tắt. Nó được viết từ văn bản cũ.</string>
-    <string name="transcribe_again_running">Đang chép lời lại… %1$d%%</string>
-    <string name="transcribe_again_running_plain">Đang chép lời lại…</string>
-    <string name="transcribe_again_waiting">Đang chờ chép lời lại…</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </resources>

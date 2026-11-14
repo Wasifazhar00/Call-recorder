@@ -41,7 +41,7 @@ import java.util.Locale
  * A thin, thumbless progress bar — cleaner than a Slider but still tap- and drag-seekable: tapping
  * or dragging anywhere along it scrubs to that position.
  *
- * Shared rather than copied. It began as the inline player's bar, and when the transcript sheet
+ * Shared rather than copied. It began as the inline player's bar, and when the playback screen
  * needed a scrubber the choice was between a second bar that merely resembles this one and one bar
  * used twice. A Material [androidx.compose.material3.Slider] was rejected for both: its thumb is far
  * heavier than this, which is what made an early playback card look like a different app.
@@ -129,7 +129,7 @@ fun SeekBar(
     }
 }
 
-/** Playback time label; independent of the removed transcript timestamp UI. */
+/** Playback time label, independent of the seek control. */
 private fun playbackClock(milliseconds: Long): String {
     val seconds = milliseconds.coerceAtLeast(0L) / 1000L
     val hours = seconds / 3600L

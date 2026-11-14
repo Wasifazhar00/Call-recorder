@@ -89,8 +89,8 @@ object CloudCopyPolicy {
     /**
      * Whether a file sitting in the recordings folder may be copied to the cloud folder at all.
      *
-     * A file the user imported may not. It is their own audio, handed to CallVault to transcribe and
-     * nothing else, so uploading it puts it in their Drive on a decision they never made — and under
+     * A file the user imported may not. It is their own audio, handed to CallVault to keep in the local
+     * library, so uploading it puts it in their Drive on a decision they never made — and under
      * [com.baba.callvault.data.StorageTarget.DRIVE] the upload is what deletes the local original, so
      * the file they imported would leave the phone.
      *

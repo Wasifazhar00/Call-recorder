@@ -287,8 +287,7 @@ internal fun wizardSteps(usesDrive: Boolean, usesEmbeddedAdb: Boolean): List<Wiz
  * Whether Next (or Finish, on the last step) is enabled on [step].
  *
  * Storage is the only step that can withhold it, and only because a recording with nowhere to go is
- * not a setup that works. Everything else is a preference, an opt-in or — since the transcription
- * step started offering them — a download, and **a download must never gate setup**: the summariser
+ * not a setup that works. Everything else is a preference, an opt-in or — as optional setup preferences, and **an optional step must never gate setup**
  * is 3.46 GB over an unmetered network, so a user on mobile data would be held on step seven of nine
  * until they got home. The work continues on its own; the wizard has no reason to wait for it.
  *

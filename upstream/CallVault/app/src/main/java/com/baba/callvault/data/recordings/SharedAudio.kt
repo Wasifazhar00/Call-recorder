@@ -17,7 +17,7 @@ import android.content.Intent
  * willing to enumerate, and the file this feature exists for — a WhatsApp voice note — lives in
  * WhatsApp's own private storage, where no picker can see it. Sharing is the only route to it. So
  * the picker and the share sheet are not two ways to do the same thing: one of them is the only way
- * to reach the files people actually want transcribed.
+ * to reach the files people actually want to import.
  *
  * **Everything here is a decision, and nothing here touches a file.** The verdict is taken from the
  * Intent's shape alone so it can be tested without an Android runtime, and so the hazards each guard

@@ -139,7 +139,7 @@ internal fun HintExplanation(text: String) {
 }
 
 /**
- * An explanatory paragraph that belongs to a whole group (retention, the transcription mode, the summariser's
+ * An explanatory paragraph that belongs to a whole group (retention and recording behaviour
  * costs). Drawn on the classic screen; in ⓘ mode the group card's own ⓘ carries it instead.
  */
 @Composable

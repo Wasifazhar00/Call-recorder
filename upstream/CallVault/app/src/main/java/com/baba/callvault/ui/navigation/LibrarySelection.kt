@@ -11,11 +11,9 @@ package com.baba.callvault.ui.navigation
 /**
  * Which rows are picked on a library page, and which page they were picked on.
  *
- * **The section travels with the names, and that is the whole design.** Transcripts and Summaries
- * are two lists of display names with a large overlap: most summarised calls are transcribed ones,
- * so a bare `Set<String>` carried from one page to the other would arrive looking like a perfectly
- * valid selection of *different* things — and the next tap after a selection is a delete. Asking
- * [on] rather than reading the set directly makes that impossible rather than merely unlikely.
+ * **The section travels with the names.** A bare `Set<String>` carried from the Hub to the Recordings
+ * list could look like a valid selection of unrelated rows — and the next tap after a selection is a
+ * delete. Asking [on] rather than reading the set directly makes that impossible rather than merely unlikely.
  *
  * The alternative considered and rejected was clearing the set in an effect keyed on the section.
  * That effect also runs on first composition, which would throw the selection away every time the

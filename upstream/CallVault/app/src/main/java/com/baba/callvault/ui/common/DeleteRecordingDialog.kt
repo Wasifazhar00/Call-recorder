@@ -28,7 +28,7 @@ import com.baba.callvault.data.recordings.RecordingsRepository.RecordingItem
 import com.baba.callvault.data.recordings.RecordingsRepository.RecordingSource
 
 /**
- * Confirmation shown before permanently deleting a recording, one copy of it, or its transcript.
+ * Confirmation shown before permanently deleting a recording, one copy of it, or its associated metadata.
  *
  * @param message The pre-resolved confirmation message. Defaults to the delete-all-copies wording;
  *                callers deleting a single Device/Drive copy pass a copy-specific message instead.

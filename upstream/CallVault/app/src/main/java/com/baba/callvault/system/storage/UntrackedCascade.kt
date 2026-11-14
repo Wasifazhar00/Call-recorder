@@ -9,22 +9,8 @@
 package com.baba.callvault.system.storage
 
 /**
- * Which recordings the sweep's *untracked* pass has just deleted the last copy of, and whose transcript,
- * note and summary must therefore go with them.
- *
- * **Why this exists.** [com.baba.callvault.data.transcripts.TranscriptCascade] is called wherever a
- * catalog row is dropped, which covers every delete the user makes and the catalogued half of the sweep.
- * The untracked half deletes *files* the catalog has no row for, so nothing was ever dropped and nothing
- * ever cascaded — the transcript outlived the recording, searchable. That is reachable rather than
- * theoretical: [com.baba.callvault.data.recordings.db.RecordingDatabase] uses a destructive migration, so
- * one catalog schema bump turns every existing recording untracked while the transcripts database (which
- * migrates properly) keeps every word of them.
- *
- * **Why it is not simply "delete the transcript of whatever we deleted".** Untracked-ness is per folder:
- * a name can be untracked on the device and catalogued on Drive, or untracked in both folders with only
- * one copy old enough to expire. A recording that still has a copy somewhere is not deleted, and taking
- * its transcript would destroy the user's data rather than protect it. So a name is orphaned only when
- * *no* copy of it is left anywhere.
+ * Finds recording names whose final copy has been removed by the untracked retention pass.
+ * The caller uses this set to clean up user-authored recording metadata.
  */
 object UntrackedCascade {
 

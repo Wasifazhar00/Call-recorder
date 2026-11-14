@@ -74,12 +74,9 @@ object StorageRouter {
     }
 
     /**
-     * Routes a recording's sidecar (the `.json` details file or the `.md` transcript) to Drive the same
-     * way [route] does the audio — but ONLY in [SyncScheduleMode.IMMEDIATE]. DAILY/WEEKLY already copy the
-     * whole folder in the scheduled sweep, so the sidecars ride along there; it is only IMMEDIATE that
-     * uploads the audio alone and would otherwise leave the sidecars behind (issue #49). Cloud-only
-     * deletes the local sidecar after upload, matching the audio, so a DRIVE user is not left with an
-     * orphan `.json`/`.md` next to a recording that is gone.
+     * Routes a recording's `.json` metadata sidecar to Drive in IMMEDIATE mode. DAILY/WEEKLY already copy
+     * the whole folder in the scheduled sweep. Cloud-only removes the local metadata sidecar after upload,
+     * matching the audio, so a DRIVE user is not left with an orphan details file.
      *
      * [recordingName] is the audio's display name, used only for the import gate (a sidecar name is
      * derived from it); [sidecarName] is the actual file to copy.

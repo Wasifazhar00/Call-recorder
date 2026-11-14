@@ -667,58 +667,58 @@
     <string name="support_not_now">ليس الآن</string>
     <string name="tile_recording_on">التسجيل مُفعّل</string>
     <string name="tile_recording_stopped">متوقّف</string>
-    <string name="transcribe_confirm_dont_ask">لا تسأل مرة أخرى</string>
-    <string name="transcribe_long_call_line">مدة هذه المكالمة %1$s. على هذا الهاتف، يستغرق تحويلها إلى نص نحو %2$s× مدتها — أي نحو %3$s.</string>
-    <string name="transcribe_confirm_title">سيستغرق هذا حوالي %1$s</string>
-    <string name="transcribe_confirm_title_first_run">قد يستغرق الأول بعض الوقت</string>
-    <string name="transcribe_confirm_title_unknown">تحويل هذه المكالمة إلى نص؟</string>
-    <string name="transcribe_estimate_hours">%1$d ساعة %2$d دقيقة</string>
-    <string name="transcribe_estimate_minutes">%1$d دقيقة</string>
-    <string name="transcribe_estimate_under_minute">دقيقة</string>
-    <string name="transcribe_language_confirm">تفريغ صوتي</string>
-    <string name="transcribe_language_message">تحويل %1$s إلى نص في:</string>
-    <string name="transcribe_language_title">أي لغة؟</string>
-    <string name="transcribing_pill_percent">%1$d%%</string>
-    <string name="transcribing_pill_progress">%1$d/%2$d</string>
-    <string name="transcribing_pill_progress_percent">%1$d/%2$d · %3$d%%</string>
-    <string name="transcribing_pill_working">جارٍ التفريغ الصوتي…</string>
-    <string name="transcribing_sheet_remaining">المتبقي: %1$d</string>
-    <string name="transcribing_sheet_starting">جارٍ البدء…</string>
-    <string name="transcribing_sheet_stop">إيقاف</string>
-    <string name="transcribing_sheet_title">جارٍ التفريغ الصوتي</string>
-    <string name="transcript_action_busy">جارٍ التفريغ الصوتي…</string>
-    <string name="transcript_action_open">قراءة النص المكتوب</string>
-    <string name="transcript_action_retry">فشل التفريغ الصوتي؛ حاول مرة أخرى</string>
-    <string name="transcript_action_transcribe">تحويل هذه المكالمة إلى نص</string>
-    <string name="transcript_action_transcribe_short">تفريغ صوتي</string>
-    <string name="transcript_delete">حذف النص</string>
-    <string name="transcript_delete_confirm_message">سيتم حذف نص %1$s. يتم الاحتفاظ بالتسجيل نفسه، ويمكنك تفريغه صوتيًا مرة أخرى لاحقًا.</string>
-    <string name="transcript_delete_confirm_message_text_only">لا يوجد تسجيل خلف هذه الكلمات: حذف نص %1$s يحذف كل شيء، ولا يمكن استعادته.</string>
-    <string name="transcript_delete_confirm_title">حذف هذا النص؟</string>
-    <string name="transcript_export_chooser">مشاركة النص</string>
-    <string name="transcript_export_failed">تعذر تصدير النص</string>
-    <string name="transcript_loading">جارٍ تحميل النص…</string>
-    <string name="transcript_no_model_message">تتم معالجة التفريغ الصوتي محليًا على هذا الهاتف لحماية خصوصيتك، لذا يلزم توفر نموذج التعرف الصوتي أولاً. يمكنك تنزيل النموذج أو استيراده من الإعدادات.</string>
-    <string name="transcript_no_model_open_settings">فتح الإعدادات</string>
-    <string name="transcript_no_model_title">لا يتوفر نموذج تفريغ صوتي بعد</string>
-    <string name="transcript_no_speech">لم يتم رصد أي صوت بشري واضح في هذا التسجيل.</string>
-    <string name="transcript_none">لا يوجد نص لهذه المكالمة. لم يتم تفريغها صوتيًا أبدًا، أو تم حذف النص.</string>
-    <string name="transcript_note_add">إضافة ملاحظة</string>
-    <string name="transcript_note_hint">عن ماذا كانت، أو ماذا تفعل حيالها…</string>
-    <string name="transcript_retranscribe">إعادة التفريغ الصوتي</string>
-    <string name="transcript_share">مشاركة</string>
-    <string name="transcript_previous_call">السابقة</string>
-    <string name="transcript_next_call">التالية</string>
-    <string name="transcript_follow_playback">متابعة التشغيل</string>
-    <string name="transcript_share_text">نص</string>
-    <string name="transcript_speaker_a">المتحدث أ</string>
-    <string name="transcript_speaker_b">المتحدث ب</string>
-    <string name="transcript_speaker_you">أنت</string>
-    <string name="transcript_speakers_correct">تصحيح</string>
-    <string name="transcript_speakers_guessed">أسماء تم استنتاجها تلقائيًا</string>
-    <string name="transcript_speakers_swap">تبديل</string>
-    <string name="transcript_speakers_swap_names">تبديل الأسماء</string>
-    <string name="transcript_speakers_which_is_you">من هو أنت؟</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -814,7 +814,7 @@
     
     
     
-    <string name="transcripts_search_hint">البحث عما قيل</string>
+    
     <string name="update_popup_later">لاحقًا</string>
     <string name="update_popup_text">يتوفر إصدار جديد جاهز للتثبيت. يحافظ التحديث على موثوقية التسجيل ويجلب أحدث الإصلاحات.</string>
     <string name="update_popup_title">يتوفر CallVault %1$s</string>
@@ -912,13 +912,13 @@
     <string name="wizard_updates_subtitle">لا يتوفر CallVault في متجر تطبيقات، لذا فإنه يتحقق من GitHub بحثًا عن إصدارات جديدة بنفسه.</string>
     <string name="wizard_updates_title">البقاء على اطلاع</string>
     
-    <string name="transcribe_again_title">إعادة التفريغ؟</string>
-    <string name="transcribe_again_message_one">سيُعاد تفريغ %1$s. إذا فشل التشغيل الجديد أو أُوقف، يُحتفظ بالنص الحالي.</string>
-    <string name="transcribe_again_message_many">النصوص المراد إعادتها: %1$d. إذا فشل تشغيل أو أُوقف، يبقى ذلك النص كما هو.</string>
-    <string name="transcribe_again_run_on">التشغيل على</string>
-    <string name="transcribe_again_estimate">حوالي %1$s.</string>
-    <string name="transcribe_again_delete_summary">احذف الملخص أيضًا. لقد كُتب من النص القديم.</string>
-    <string name="transcribe_again_running">جارٍ إعادة التفريغ… %1$d%%</string>
-    <string name="transcribe_again_running_plain">جارٍ إعادة التفريغ…</string>
-    <string name="transcribe_again_waiting">في انتظار إعادة التفريغ…</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </resources>

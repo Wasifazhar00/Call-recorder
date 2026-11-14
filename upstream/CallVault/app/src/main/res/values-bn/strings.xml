@@ -605,20 +605,6 @@
     
     <string name="playback_note_title">নোট</string>
     <string name="playback_note_hint">কলটি কী নিয়ে ছিল…</string>
-    <string name="transcript_action_transcribe">এই কলটি ট্রান্সক্রাইব করুন</string>
-    <string name="transcript_action_transcribe_short">ট্রান্সক্রাইব</string>
-    <string name="transcribe_estimate_under_minute">এক মিনিট</string>
-    <string name="transcribe_estimate_minutes">%1$d মিনিট</string>
-    <string name="transcribe_estimate_hours">%1$d ঘ %2$d মিনিট</string>
-    <string name="transcribe_confirm_title">এতে প্রায় %1$s লাগবে</string>
-    <string name="transcribe_confirm_title_unknown">এই কলটি ট্রান্সক্রাইব করবেন?</string>
-    <string name="transcribe_confirm_title_first_run">প্রথমটিতে কিছুটা সময় লাগতে পারে</string>
-    
-    <string name="transcribe_confirm_dont_ask">আর জিজ্ঞেস করবেন না</string>
-    <string name="transcribe_long_call_line">এই কলটি %1$s। এই ফোনে ট্রান্সক্রাইব করতে প্রায় %2$s× সময় লাগে — প্রায় %3$s।</string>
-    <string name="transcribe_language_title">কোন ভাষা?</string>
-    <string name="transcribe_language_message">%1$s ট্রান্সক্রাইব করুন এই ভাষায়:</string>
-    <string name="transcribe_language_confirm">ট্রান্সক্রাইব</string>
     
     
     
@@ -656,43 +642,57 @@
     
     
     
-    <string name="transcript_action_busy">ট্রান্সক্রাইব হচ্ছে…</string>
-    <string name="transcript_action_open">ট্রান্সক্রিপ্ট পড়ুন</string>
-    <string name="transcript_action_retry">ট্রান্সক্রিপশন ব্যর্থ — আবার চেষ্টা করুন</string>
-    <string name="transcript_loading">ট্রান্সক্রিপ্ট লোড হচ্ছে…</string>
-    <string name="transcript_none">এই কলের কোনো ট্রান্সক্রিপ্ট নেই। এটি কখনো ট্রান্সক্রাইব হয়নি, অথবা লেখা মুছে ফেলা হয়েছে।</string>
-    <string name="transcript_no_speech">এই রেকর্ডিংয়ে কোনো কথা শনাক্ত হয়নি।</string>
-    <string name="transcript_speakers_which_is_you">এর মধ্যে আপনি কোনটি?</string>
-    <string name="transcript_speakers_guessed">নামগুলো স্বয়ংক্রিয়ভাবে ঠিক করা হয়েছে</string>
-    <string name="transcript_speakers_swap_names">নাম অদলবদল করুন</string>
-    <string name="transcript_speakers_swap">অদলবদল</string>
-    <string name="transcript_speakers_correct">ঠিক আছে</string>
-    <string name="transcript_speaker_you">আপনি</string>
-    <string name="transcript_speaker_a">বক্তা A</string>
-    <string name="transcript_speaker_b">বক্তা B</string>
-    <string name="transcript_share">শেয়ার</string>
-    <string name="transcript_previous_call">আগেরটি</string>
-    <string name="transcript_next_call">পরেরটি</string>
-    <string name="transcript_follow_playback">প্লেব্যাকের সাথে চলুন</string>
-    <string name="transcript_export_chooser">ট্রান্সক্রিপ্ট শেয়ার করুন</string>
-    <string name="transcript_export_failed">ট্রান্সক্রিপ্ট এক্সপোর্ট করা যায়নি</string>
-    <string name="transcript_retranscribe">আবার ট্রান্সক্রাইব করুন</string>
-    <string name="transcript_note_add">নোট যোগ করুন</string>
-    <string name="transcript_note_hint">কী নিয়ে ছিল, বা এ নিয়ে কী করতে হবে…</string>
-    <string name="transcript_no_model_title">এখনও কোনো স্পিচ মডেল নেই</string>
-    <string name="transcript_no_model_message">ট্রান্সক্রাইব এই ফোনেই হয়, তাই আগে একটি স্পিচ মডেল ডাউনলোড করতে হবে। সেটিংসে গিয়ে একটি বেছে নিয়ে ডাউনলোড করতে পারেন।</string>
-    <string name="transcript_no_model_open_settings">সেটিংস খুলুন</string>
-    <string name="transcribing_pill_working">ট্রান্সক্রাইব হচ্ছে</string>
-    <string name="transcribing_pill_progress">%1$d/%2$d</string>
-    <string name="transcribing_pill_percent">%1$d%%</string>
-    <string name="transcribing_pill_progress_percent">%1$d/%2$d · %3$d%%</string>
-    <string name="transcribing_sheet_title">ট্রান্সক্রাইব হচ্ছে</string>
-    <string name="transcribing_sheet_starting">শুরু হচ্ছে…</string>
-    <string name="transcribing_sheet_remaining">বাকি: %1$d</string>
-    <string name="transcribing_sheet_stop">থামান</string>
-    <string name="transcript_delete">লেখা মুছুন</string>
-    <string name="transcript_delete_confirm_title">এই ট্রান্সক্রিপ্ট মুছবেন?</string>
-    <string name="transcript_delete_confirm_message">%1$s-এর ট্রান্সক্রিপ্ট মুছে যাবে। রেকর্ডিংটি থাকবে, আর পরে আবার ট্রান্সক্রাইব করতে পারবেন।</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="home_status_recovery_stuck_title">রেকর্ডিং বন্ধ আছে</string>
     <string name="home_status_recovery_stuck_suggestion">CallVault বারবার তার রেকর্ডার আবার চালু করতে ব্যর্থ হচ্ছে, তাই কল রেকর্ড হচ্ছে না। অ্যাপটি আবার খুললে সাধারণত ঠিক হয়ে যায়।</string>
     <string name="home_hero_pill_recovery_stuck">রেকর্ড হচ্ছে না</string>
@@ -713,7 +713,7 @@
     <string name="playback_tags_manage_explain">নাম বদলালে যেসব রেকর্ডিংয়ে এই ট্যাগ আছে সবগুলোতে বদলে যায়। আগে থেকে থাকা কোনো ট্যাগের নাম দিলে দুটি এক হয়ে যায়।</string>
     <string name="playback_tags_rename">নাম বদলান</string>
     <string name="playback_tags_delete_everywhere">সব জায়গা থেকে মুছুন</string>
-    <string name="transcript_share_text">টেক্সট</string>
+    
     <string name="playback_star">এই রেকর্ডিংয়ে তারা দিন</string>
     <string name="playback_unstar">তারা সরান</string>
     <string name="home_filter_favourites_chip">তারা দেওয়া</string>
@@ -834,7 +834,7 @@
     <string name="home_community_restored_hint">হোম স্ক্রিনে ফিরে এসেছে।</string>
     <string name="library_row_save">ফাইল হিসেবে সেভ করুন</string>
     <string name="library_nothing_to_share">সেখানে শেয়ার করার মতো আর কিছু নেই।</string>
-    <string name="transcript_delete_confirm_message_text_only">এই লেখার পিছনে কোনো রেকর্ডিং নেই: %1$s-এর ট্রান্সক্রিপ্ট মুছলে পুরোটাই মুছে যাবে, আর ফেরানো যাবে না।</string>
+    
     
     
     
@@ -846,7 +846,7 @@
         <item quantity="other">এর মধ্যে %1$dটির পিছনে কোনো রেকর্ডিং নেই, তাই সেগুলোর লেখাটুকুই শুধু বাকি। ওই অংশটি ফেরানো যাবে না।</item>
     </plurals>
     <string name="home_search_contacts_hint">কন্টাক্ট দিয়ে খুঁজুন</string>
-    <string name="transcripts_search_hint">যা বলা হয়েছে তা খুঁজুন</string>
+    
     
     <string name="search_clear">মুছুন</string>
     <string name="search_no_matches_title">কিছু মেলেনি</string>
@@ -905,13 +905,13 @@
     <string name="settings_voip_auto_start_record_label">অ্যাপ কল স্বয়ংক্রিয়ভাবে রেকর্ড করুন</string>
     
     
-    <string name="transcribe_again_title">আবার ট্রান্সক্রাইব করবেন?</string>
-    <string name="transcribe_again_message_one">%1$s আবার ট্রান্সক্রাইব করা হবে। নতুন চালনা ব্যর্থ হলে বা থামানো হলে বর্তমান ট্রান্সক্রিপ্ট রাখা হবে।</string>
-    <string name="transcribe_again_message_many">আবার করার ট্রান্সক্রিপ্ট: %1$d। কোনো চালনা ব্যর্থ হলে বা থামানো হলে সেই ট্রান্সক্রিপ্ট যেমন আছে তেমনই থাকবে।</string>
-    <string name="transcribe_again_run_on">কোথায় চলবে</string>
-    <string name="transcribe_again_estimate">প্রায় %1$s।</string>
-    <string name="transcribe_again_delete_summary">সারাংশটিও মুছুন। এটি পুরোনো লেখা থেকে লেখা হয়েছিল।</string>
-    <string name="transcribe_again_running">আবার ট্রান্সক্রাইব হচ্ছে… %1$d%%</string>
-    <string name="transcribe_again_running_plain">আবার ট্রান্সক্রাইব হচ্ছে…</string>
-    <string name="transcribe_again_waiting">আবার ট্রান্সক্রাইবের অপেক্ষায়…</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </resources>

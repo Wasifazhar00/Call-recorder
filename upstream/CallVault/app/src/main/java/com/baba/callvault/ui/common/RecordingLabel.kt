@@ -14,7 +14,7 @@ import com.baba.callvault.data.recordings.RecordingsRepository.RecordingItem
 /**
  * How a recording is named to the user: contact, else number, else the file name.
  *
- * One rule in one place. It was written out by hand at each call site, and the transcribing sheet got
+ * One rule in one place. It was written out by hand at each call site, and the recording list got
  * it wrong — showing `20260819_201239.877+0300_in_<name>.ogg` where every other surface said who the
  * call was with.
  *
@@ -32,7 +32,7 @@ object RecordingLabel {
     /**
      * The best available name for [displayName], looked up in [recordings].
      *
-     * Falls back to [forName] when the recording is not there: the transcribing sheet learns the name
+     * Falls back to [forName] when the recording is not there: the list resolves the recording name
      * from WorkManager progress, which can outlive the recording, and a raw file name is still better
      * than a blank sheet.
      */
@@ -41,7 +41,7 @@ object RecordingLabel {
 
     /**
      * The best name derivable from the file name alone, for a row whose recording is gone or was
-     * never in the list — an orphaned transcript, an orphaned summary, a transcribe-only import.
+     * never in the list — a recording that no longer has a catalog row.
      *
      * An import carries the source file's own name as its label, so that is what is shown: otherwise
      * the row reads `20260916_101010.123+0300_import_voice note.opus`, which is our bookkeeping

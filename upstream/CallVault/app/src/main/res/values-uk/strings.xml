@@ -646,59 +646,59 @@
     <string name="support_not_now">Не зараз</string>
     <string name="tile_recording_on">Запис увімкнений</string>
     <string name="tile_recording_stopped">Зупинено</string>
-    <string name="transcribe_confirm_dont_ask">Більше не запитувати</string>
-    <string name="transcribe_long_call_line">Цей дзвінок триває %1$s. На цьому телефоні розпізнавання займає приблизно в %2$s раза більше часу — близько %3$s.</string>
     
-    <string name="transcribe_confirm_title">Це займе приблизно %1$s</string>
-    <string name="transcribe_confirm_title_first_run">Перший запуск може тривати довше</string>
-    <string name="transcribe_confirm_title_unknown">Розпізнати дзвінок?</string>
-    <string name="transcribe_estimate_hours">%1$d год %2$d хв</string>
-    <string name="transcribe_estimate_minutes">%1$d хв</string>
-    <string name="transcribe_estimate_under_minute">хвилину</string>
-    <string name="transcribe_language_confirm">Розпізнати</string>
-    <string name="transcribe_language_message">Розпізнати %1$s мовою:</string>
-    <string name="transcribe_language_title">Якою мовою?</string>
-    <string name="transcribing_pill_percent">%1$d%%</string>
-    <string name="transcribing_pill_progress">%1$d/%2$d</string>
-    <string name="transcribing_pill_progress_percent">%1$d/%2$d · %3$d%%</string>
-    <string name="transcribing_pill_working">Розпізнавання</string>
-    <string name="transcribing_sheet_remaining">Залишилося: %1$d</string>
-    <string name="transcribing_sheet_starting">Запуск…</string>
-    <string name="transcribing_sheet_stop">Зупинити</string>
-    <string name="transcribing_sheet_title">Розпізнавання</string>
-    <string name="transcript_action_busy">Розпізнавання…</string>
-    <string name="transcript_action_open">Читати транскрипцію</string>
-    <string name="transcript_action_retry">Помилка транскрипції — повторити</string>
-    <string name="transcript_action_transcribe">Розпізнати цю розмову</string>
-    <string name="transcript_action_transcribe_short">Розпізнати</string>
-    <string name="transcript_delete">Видалити текст</string>
-    <string name="transcript_delete_confirm_message">Транскрипцію %1$s буде видалено. Аудіозапис залишиться, його можна буде розпізнати ще раз.</string>
-    <string name="transcript_delete_confirm_message_text_only">Для %1$s немає аудіозапису. Видалення транскрипції знищить усі дані без можливості відновлення.</string>
-    <string name="transcript_delete_confirm_title">Видалити транскрипцію?</string>
-    <string name="transcript_export_chooser">Поділитися транскрипцією</string>
-    <string name="transcript_export_failed">Не вдалося експортувати транскрипцію</string>
-    <string name="transcript_loading">Завантаження транскрипції…</string>
-    <string name="transcript_no_model_message">Транскрипція створюється на телефоні. Спочатку завантажте мовну модель у налаштуваннях.</string>
-    <string name="transcript_no_model_open_settings">Відкрити налаштування</string>
-    <string name="transcript_no_model_title">Не завантажено модель мовлення</string>
-    <string name="transcript_no_speech">У записі не знайдено мовлення.</string>
-    <string name="transcript_none">Для цього дзвінка немає транскрипції. Його ще не транскрибували, або текст було видалено.</string>
-    <string name="transcript_note_add">Додати нотатку</string>
-    <string name="transcript_note_hint">Про що домовилися чи що потрібно зробити…</string>
-    <string name="transcript_retranscribe">Розпізнати ще раз</string>
-    <string name="transcript_share">Поділитися</string>
-    <string name="transcript_previous_call">Попередній</string>
-    <string name="transcript_next_call">Наступний</string>
-    <string name="transcript_follow_playback">Стежити за відтворенням</string>
-    <string name="transcript_share_text">Текст</string>
-    <string name="transcript_speaker_a">Мовець A</string>
-    <string name="transcript_speaker_b">Мовець B</string>
-    <string name="transcript_speaker_you">Ви</string>
-    <string name="transcript_speakers_correct">Правильно</string>
-    <string name="transcript_speakers_guessed">Імена визначено автоматично</string>
-    <string name="transcript_speakers_swap">Поміняти</string>
-    <string name="transcript_speakers_swap_names">Поміняти імена</string>
-    <string name="transcript_speakers_which_is_you">Хто з них ви?</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -795,7 +795,7 @@
     
     
     
-    <string name="transcripts_search_hint">Пошук у розмовах</string>
+    
     <string name="update_popup_later">Пізніше</string>
     <string name="update_popup_text">Нова версія готова до встановлення. Оновлення містить виправлення й покращення.</string>
     <string name="update_popup_title">Доступний CallVault %1$s</string>
@@ -894,13 +894,13 @@
     <string name="wizard_updates_subtitle">CallVault перевіряє оновлення через GitHub.</string>
     <string name="wizard_updates_title">Оновлення</string>
     
-    <string name="transcribe_again_title">Розшифрувати знову?</string>
-    <string name="transcribe_again_message_one">%1$s буде розшифровано знову. Якщо новий запуск не вдасться або його зупинять, поточна розшифровка збережеться.</string>
-    <string name="transcribe_again_message_many">Розшифровок до повтору: %1$d. Якщо запуск не вдасться або його зупинять, ця розшифровка залишиться як є.</string>
-    <string name="transcribe_again_run_on">Де виконувати</string>
-    <string name="transcribe_again_estimate">Близько %1$s.</string>
-    <string name="transcribe_again_delete_summary">Видалити й підсумок. Його написано за старим текстом.</string>
-    <string name="transcribe_again_running">Повторне розшифрування… %1$d%%</string>
-    <string name="transcribe_again_running_plain">Повторне розшифрування…</string>
-    <string name="transcribe_again_waiting">Очікування повторного розшифрування…</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </resources>

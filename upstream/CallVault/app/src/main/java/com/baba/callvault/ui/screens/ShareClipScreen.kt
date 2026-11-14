@@ -130,7 +130,7 @@ internal fun ShareClipScreen(
     LaunchedEffect(playing) { if (!playing) previewing = false }
 
     fun share(clip: ClipCutter.Result) {
-        context.shareClip(clip.file, ClipCutter.shareMimeFor(clip.mime), null)
+        context.shareClip(clip.file, ClipCutter.shareMimeFor(clip.mime))
         work = ClipWork.Idle
     }
 

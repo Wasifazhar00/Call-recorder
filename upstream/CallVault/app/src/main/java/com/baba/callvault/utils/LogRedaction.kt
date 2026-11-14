@@ -22,7 +22,7 @@ import java.security.MessageDigest
  * 2. **Contact names**, which arrive constantly and were not redacted at all until now, because a
  *    recording's `displayName` *is* its filename and the filename carries the contact:
  *    `20260825_130207.420+0300_out_Some Person.ogg`. Dozens of log sites interpolate that name
- *    ("Transcribed $displayName", "Could not draw $displayName", …), so redacting at the call sites
+ *    ("Recorded $displayName", "Could not draw $displayName", …), so redacting at the call sites
  *    was never going to hold — the next person to log a display name would reintroduce the leak.
  *    They are **pseudonymised** rather than removed: the name becomes a short stable token, so the
  *    same contact reads as the same token on every line, in every recording, and across separate
@@ -102,7 +102,7 @@ object LogRedaction {
      * The grammar is the one both `RecordingFileNameFormatter` and `VoipRecordingCoordinator` emit
      * and `RecordingsRepository.parseName` reads back:
      *
-     *   `{date}[_in|_out|_voip[-App]|_import[_transcribeonly]][_{contact or number}].{ext}`
+     *   `{date}[_in|_out|_voip[-App]|_import][_{contact or number}].{ext}`
      *
      * with `{date}` = `yyyyMMdd_HHmmss.SSSZ` and `{ext}` any of [NAME_EXTENSIONS]: an import keeps its
      * own format and part of its source name ("…_import_Mom.mp3"). Since 2.5.0 the user may type the
@@ -127,7 +127,7 @@ object LogRedaction {
      */
     private val RECORDING_NAME_REGEX = Regex(
         "(\\d{8}_\\d{6}\\.\\d{3}(?:[+-]|%2[BbDd])\\d{4})" +             // 1: {date}, raw or URI-encoded
-            "((?:_(?:in|out|import(?:_transcribeonly)?|voip(?:-[^_\\s.]+)?)" +
+            "((?:_(?:in|out|import|voip(?:-[^_\\s.]+)?)" +
             "(?=[_.\\s-]|%20))?)" +                                     // 2: direction / voip[-App] / import
             "(?:((?:[_\\s-]|%20)+)([^/\\\\\\n]{1,$MAX_NAME_RUN}?))?" +      // 3: joiner, 4: contact or number
             "($EXTENSION_PATTERN)"                                      // 5: file extension
@@ -164,7 +164,7 @@ object LogRedaction {
      * @param salt this install's random salt, from `AppPreferences.getLogPseudonymSalt`.
      * @param namesAroundDate the user's file-name template puts text both before and after `{date}`
      *   ([namesAroundDate] of the template). Then nothing in the line tells "Mom Cohen {date} in.ogg"
-     *   from "Transcribed {date}_in_….ogg", so any text in front of a date is hidden, prose included.
+     *   from "Recorded {date}_in_….ogg", so any text in front of a date is hidden, prose included.
      */
     fun redact(message: String, salt: String, namesAroundDate: Boolean = false): String =
         redactPeople(redactApiKeys(message), salt, namesAroundDate)
@@ -182,8 +182,7 @@ object LogRedaction {
     private const val DATE_TAG = "{date}"
 
     /**
-     * API keys for cloud transcription (issue #48), in case one ever reaches a line: Groq's `gsk_…`,
-     * OpenRouter's and OpenAI's `sk-…`, and anything after `Bearer `. Nothing logs a key on purpose —
+     * Credential-like strings and anything after `Bearer ` are redacted defensively. Nothing logs a key on purpose —
      * this is the net under that rule, so a mistake costs a placeholder rather than someone's account.
      *
      * First, so the phone rule never sees a key's digits. Idempotent: the placeholder matches nothing.
@@ -261,11 +260,11 @@ object LogRedaction {
      * - the joiner holds a `_` or `-`, which our prose never puts in front of a date;
      * - the run is enclosed by a quote or a path separator, so it is part of the same filename;
      * - the user's template puts text on both sides of the date ([namesAroundDate]).
-     * Otherwise a bare "Transcribed {date}_in_…" passes none of them and keeps its word.
+     * Otherwise a bare "Recorded {date}_in_…" passes none of them and keeps its word.
      *
      * A name may hold spaces, so nothing inside the line says where it begins. We walk back to the
      * nearest character a log line puts around a name — a quote, a path or URI separator, `:` `=` `(`
-     * — or to the start of the line. A bare `Transcribed John Doe_…` therefore takes "Transcribed"
+     * — or to the start of the line. A bare `Recorded John Doe_…` therefore takes "Recorded"
      * with it: losing a word of our own prose is the price; printing a name is not an option.
      * Tokens this class already wrote (`[C:…]`, `[PHONE_REDACTED]`) are stepped over whole, so a
      * second pass finds the same span and leaves it alone.

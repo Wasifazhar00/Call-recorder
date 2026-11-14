@@ -650,59 +650,59 @@
     <string name="support_not_now">Не сейчас</string>
     <string name="tile_recording_on">Запись включена</string>
     <string name="tile_recording_stopped">Остановлено</string>
-    <string name="transcribe_confirm_dont_ask">Больше не спрашивать</string>
-    <string name="transcribe_long_call_line">Этот звонок длится %1$s. На этом телефоне расшифровка занимает примерно в %2$s раза больше времени — около %3$s.</string>
     
-    <string name="transcribe_confirm_title">Это займёт около %1$s</string>
-    <string name="transcribe_confirm_title_first_run">Первая расшифровка может занять некоторое время</string>
-    <string name="transcribe_confirm_title_unknown">Расшифровать этот звонок?</string>
-    <string name="transcribe_estimate_hours">%1$d ч %2$d мин</string>
-    <string name="transcribe_estimate_minutes">%1$d мин</string>
-    <string name="transcribe_estimate_under_minute">минуту</string>
-    <string name="transcribe_language_confirm">Расшифровать</string>
-    <string name="transcribe_language_message">Расшифровать %1$s на языке:</string>
-    <string name="transcribe_language_title">Какой язык?</string>
-    <string name="transcribing_pill_percent">%1$d%%</string>
-    <string name="transcribing_pill_progress">%1$d/%2$d</string>
-    <string name="transcribing_pill_progress_percent">%1$d/%2$d · %3$d%%</string>
-    <string name="transcribing_pill_working">Расшифровка</string>
-    <string name="transcribing_sheet_remaining">Осталось: %1$d</string>
-    <string name="transcribing_sheet_starting">Запуск…</string>
-    <string name="transcribing_sheet_stop">Остановить</string>
-    <string name="transcribing_sheet_title">Расшифровка</string>
-    <string name="transcript_action_busy">Расшифровка…</string>
-    <string name="transcript_action_open">Прочитать расшифровку</string>
-    <string name="transcript_action_retry">Расшифровка не удалась — повторить</string>
-    <string name="transcript_action_transcribe">Расшифровать этот звонок</string>
-    <string name="transcript_action_transcribe_short">Расшифровать</string>
-    <string name="transcript_delete">Удалить текст</string>
-    <string name="transcript_delete_confirm_message">Расшифровка %1$s будет удалена. Сама запись сохранится, и позже её можно расшифровать снова.</string>
-    <string name="transcript_delete_confirm_message_text_only">За этими словами нет записи: удаление расшифровки «%1$s» удалит всё целиком, и вернуть это будет нельзя.</string>
-    <string name="transcript_delete_confirm_title">Удалить эту расшифровку?</string>
-    <string name="transcript_export_chooser">Поделиться расшифровкой</string>
-    <string name="transcript_export_failed">Не удалось экспортировать расшифровку</string>
-    <string name="transcript_loading">Загрузка расшифровки…</string>
-    <string name="transcript_no_model_message">Расшифровка выполняется на этом телефоне, поэтому сначала нужно загрузить речевую модель. Выбрать и загрузить её можно в настройках.</string>
-    <string name="transcript_no_model_open_settings">Открыть настройки</string>
-    <string name="transcript_no_model_title">Речевая модель ещё не загружена</string>
-    <string name="transcript_no_speech">В этой записи речь не распознана.</string>
-    <string name="transcript_none">Для этого звонка нет расшифровки. Её не делали или текст удалили.</string>
-    <string name="transcript_note_add">Добавить заметку</string>
-    <string name="transcript_note_hint">О чём это было или что с этим делать…</string>
-    <string name="transcript_retranscribe">Расшифровать заново</string>
-    <string name="transcript_share">Поделиться</string>
-    <string name="transcript_previous_call">Предыдущий</string>
-    <string name="transcript_next_call">Следующий</string>
-    <string name="transcript_follow_playback">Следить за воспроизведением</string>
-    <string name="transcript_share_text">Текст</string>
-    <string name="transcript_speaker_a">Говорящий A</string>
-    <string name="transcript_speaker_b">Говорящий B</string>
-    <string name="transcript_speaker_you">Я</string>
-    <string name="transcript_speakers_correct">Верно</string>
-    <string name="transcript_speakers_guessed">Имена определены автоматически</string>
-    <string name="transcript_speakers_swap">Поменять</string>
-    <string name="transcript_speakers_swap_names">Поменять имена</string>
-    <string name="transcript_speakers_which_is_you">Кто из них вы?</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -799,7 +799,7 @@
     
     
     
-    <string name="transcripts_search_hint">Поиск по сказанному</string>
+    
     <string name="update_popup_later">Позже</string>
     <string name="update_popup_text">Новая версия готова к установке. Обновление сохраняет надёжность записи и приносит последние исправления.</string>
     <string name="update_popup_title">Доступен CallVault %1$s</string>
@@ -898,13 +898,13 @@
     <string name="wizard_updates_subtitle">CallVault не публикуется в магазинах приложений, поэтому сам проверяет новые версии на GitHub.</string>
     <string name="wizard_updates_title">Быть в курсе обновлений</string>
     
-    <string name="transcribe_again_title">Расшифровать заново?</string>
-    <string name="transcribe_again_message_one">%1$s будет расшифрован заново. Если новый запуск не удастся или будет остановлен, текущая расшифровка сохранится.</string>
-    <string name="transcribe_again_message_many">Расшифровок к повтору: %1$d. Если запуск не удастся или будет остановлен, эта расшифровка останется как есть.</string>
-    <string name="transcribe_again_run_on">Где выполнять</string>
-    <string name="transcribe_again_estimate">Около %1$s.</string>
-    <string name="transcribe_again_delete_summary">Удалить и сводку. Она написана по старому тексту.</string>
-    <string name="transcribe_again_running">Повторная расшифровка… %1$d%%</string>
-    <string name="transcribe_again_running_plain">Повторная расшифровка…</string>
-    <string name="transcribe_again_waiting">Ожидание повторной расшифровки…</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </resources>

@@ -56,11 +56,11 @@ object StorageCapPolicy {
      *    disagree the explicit instruction about a specific recording wins over the general one, and
      *    the sweep goes over its cap rather than destroying something the user protected.
      * 3. **An imported file is never selected either.** For a call, evicting the device copy is a
-     *    reasonable thing to do: the Drive copy survives, the row keeps its transcript, and nothing
+     *    reasonable thing to do: the Drive copy survives, the row keeps its metadata, and nothing
      *    is destroyed — which is what makes the cap a safe setting to offer at all. An import has no
      *    Drive copy and never will (`CloudCopyPolicy` refuses it by design), so evicting one is not
      *    freeing space, it is destroying the only copy of something the user handed us, and taking
-     *    its transcript with it. The star cannot be relied on to cover this: it protects what
+     *    its metadata with it. The star cannot be relied on to cover this: it protects what
      *    somebody remembered to protect, and nobody stars a file on the assumption that the app
      *    would otherwise delete the original.
      * 4. **Protected recordings still count toward the total.** They occupy the phone, and

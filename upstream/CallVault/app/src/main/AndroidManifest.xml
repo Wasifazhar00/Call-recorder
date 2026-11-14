@@ -145,7 +145,7 @@
             download on the phone, where the entry would be wrong far more often than right. If a
             real WhatsApp share turns out not to offer CallVault at all, that is the measurement
             that changes this decision and the change is this one line. Meanwhile such a file is
-            still reachable through Transcripts → Import audio, whose picker filters on the
+            still reachable through the audio import action, whose picker filters on the
             wildcard for exactly this reason.
 
             ## The label

@@ -762,59 +762,59 @@
     <string name="support_not_now">Όχι τώρα</string>
     <string name="tile_recording_on">Εγγραφή ενεργή</string>
     <string name="tile_recording_stopped">Διακόπηκε</string>
-    <string name="transcribe_confirm_dont_ask">Να μην ερωτηθώ ξανά</string>
-    <string name="transcribe_long_call_line">Αυτή η κλήση διαρκεί %1$s. Σε αυτό το τηλέφωνο, η απομαγνητοφώνηση διαρκεί περίπου %2$s φορές τη διάρκειά της — δηλαδή περίπου %3$s.</string>
     
-    <string name="transcribe_confirm_title">Αυτό θα διαρκέσει περίπου %1$s</string>
-    <string name="transcribe_confirm_title_first_run">Η πρώτη μπορεί να διαρκέσει λίγο</string>
-    <string name="transcribe_confirm_title_unknown">Απομαγνητοφώνηση αυτής της κλήσης;</string>
-    <string name="transcribe_estimate_hours">%1$d ώ %2$d λεπτά</string>
-    <string name="transcribe_estimate_minutes">%1$d λεπτά</string>
-    <string name="transcribe_estimate_under_minute">ένα λεπτό</string>
-    <string name="transcribe_language_confirm">Απομαγνητοφώνηση</string>
-    <string name="transcribe_language_message">Απομαγνητοφώνηση του %1$s σε:</string>
-    <string name="transcribe_language_title">Ποια γλώσσα;</string>
-    <string name="transcribing_pill_percent">%1$d%%</string>
-    <string name="transcribing_pill_progress">%1$d/%2$d</string>
-    <string name="transcribing_pill_progress_percent">%1$d/%2$d · %3$d%%</string>
-    <string name="transcribing_pill_working">Απομαγνητοφώνηση</string>
-    <string name="transcribing_sheet_remaining">Απομένουν: %1$d</string>
-    <string name="transcribing_sheet_starting">Έναρξη…</string>
-    <string name="transcribing_sheet_stop">Διακοπή</string>
-    <string name="transcribing_sheet_title">Απομαγνητοφώνηση</string>
-    <string name="transcript_action_busy">Απομαγνητοφώνηση…</string>
-    <string name="transcript_action_open">Διαβάστε την απομαγνητοφώνηση</string>
-    <string name="transcript_action_retry">Η απομαγνητοφώνηση απέτυχε — δοκιμάστε ξανά</string>
-    <string name="transcript_action_transcribe">Απομαγνητοφώνηση αυτής της κλήσης</string>
-    <string name="transcript_action_transcribe_short">Απομαγνητοφώνηση</string>
-    <string name="transcript_delete">Διαγραφή κειμένου</string>
-    <string name="transcript_delete_confirm_message">Η απομαγνητοφώνηση του %1$s θα διαγραφεί. Η ίδια η εγγραφή διατηρείται, και μπορείτε να την απομαγνητοφωνήσετε ξανά αργότερα.</string>
-    <string name="transcript_delete_confirm_message_text_only">Δεν υπάρχει εγγραφή πίσω από αυτές τις λέξεις: η διαγραφή της απομαγνητοφώνησης του %1$s διαγράφει το σύνολο, και δεν μπορεί να ανακτηθεί.</string>
-    <string name="transcript_delete_confirm_title">Διαγραφή αυτής της απομαγνητοφώνησης;</string>
-    <string name="transcript_export_chooser">Κοινοποίηση απομαγνητοφώνησης</string>
-    <string name="transcript_export_failed">Δεν ήταν δυνατή η εξαγωγή της απομαγνητοφώνησης</string>
-    <string name="transcript_loading">Φόρτωση της απομαγνητοφώνησης…</string>
-    <string name="transcript_no_model_message">Η απομαγνητοφώνηση γίνεται σε αυτό το τηλέφωνο, οπότε χρειάζεται πρώτα να ληφθεί ένα μοντέλο ομιλίας. Μπορείτε να επιλέξετε και να κατεβάσετε ένα στις Ρυθμίσεις.</string>
-    <string name="transcript_no_model_open_settings">Άνοιγμα ρυθμίσεων</string>
-    <string name="transcript_no_model_title">Δεν υπάρχει μοντέλο ομιλίας ακόμα</string>
-    <string name="transcript_no_speech">Δεν αναγνωρίστηκε ομιλία σε αυτή την εγγραφή.</string>
-    <string name="transcript_none">Δεν υπάρχει απομαγνητοφώνηση για αυτή την κλήση. Είτε δεν απομαγνητοφωνήθηκε ποτέ, είτε το κείμενο διαγράφηκε.</string>
-    <string name="transcript_note_add">Προσθήκη σημείωσης</string>
-    <string name="transcript_note_hint">Για ποιο θέμα ήταν, ή τι πρέπει να γίνει γι\' αυτό…</string>
-    <string name="transcript_retranscribe">Απομαγνητοφώνηση ξανά</string>
-    <string name="transcript_share">Κοινοποίηση</string>
-    <string name="transcript_previous_call">Προηγούμενη</string>
-    <string name="transcript_next_call">Επόμενη</string>
-    <string name="transcript_follow_playback">Ακολούθηση αναπαραγωγής</string>
-    <string name="transcript_share_text">Κείμενο</string>
-    <string name="transcript_speaker_a">Ομιλητής Α</string>
-    <string name="transcript_speaker_b">Ομιλητής Β</string>
-    <string name="transcript_speaker_you">Εσείς</string>
-    <string name="transcript_speakers_correct">Σωστό</string>
-    <string name="transcript_speakers_guessed">Τα ονόματα εντοπίστηκαν αυτόματα</string>
-    <string name="transcript_speakers_swap">Εναλλαγή</string>
-    <string name="transcript_speakers_swap_names">Εναλλαγή ονομάτων</string>
-    <string name="transcript_speakers_which_is_you">Ποιος είστε εσείς;</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -911,7 +911,7 @@
     
     
     
-    <string name="transcripts_search_hint">Αναζήτηση σε όσα ειπώθηκαν</string>
+    
     <string name="update_popup_later">Αργότερα</string>
     <string name="update_popup_text">Μια νέα έκδοση είναι έτοιμη για εγκατάσταση. Η ενημέρωση διατηρεί την εγγραφή αξιόπιστη και φέρνει τις τελευταίες διορθώσεις.</string>
     <string name="update_popup_title">Το CallVault %1$s είναι διαθέσιμο</string>
@@ -1010,13 +1010,13 @@
     <string name="wizard_updates_subtitle">Το CallVault δεν βρίσκεται σε κατάστημα εφαρμογών, οπότε ελέγχει μόνο του το GitHub για νέες εκδόσεις.</string>
     <string name="wizard_updates_title">Παραμένοντας ενημερωμένοι</string>
     
-    <string name="transcribe_again_title">Νέα απομαγνητοφώνηση;</string>
-    <string name="transcribe_again_message_one">Η κλήση %1$s θα απομαγνητοφωνηθεί ξανά. Αν η νέα εκτέλεση αποτύχει ή διακοπεί, η τρέχουσα απομαγνητοφώνηση διατηρείται.</string>
-    <string name="transcribe_again_message_many">Απομαγνητοφωνήσεις για επανάληψη: %1$d. Αν μια εκτέλεση αποτύχει ή διακοπεί, εκείνη η απομαγνητοφώνηση μένει ως έχει.</string>
-    <string name="transcribe_again_run_on">Εκτέλεση σε</string>
-    <string name="transcribe_again_estimate">Περίπου %1$s.</string>
-    <string name="transcribe_again_delete_summary">Διαγραφή και της περίληψης. Γράφτηκε από το παλιό κείμενο.</string>
-    <string name="transcribe_again_running">Νέα απομαγνητοφώνηση… %1$d%%</string>
-    <string name="transcribe_again_running_plain">Νέα απομαγνητοφώνηση…</string>
-    <string name="transcribe_again_waiting">Αναμονή για νέα απομαγνητοφώνηση…</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </resources>

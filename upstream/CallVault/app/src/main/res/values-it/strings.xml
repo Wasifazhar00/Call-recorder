@@ -638,59 +638,59 @@
     <string name="support_not_now">Non ora</string>
     <string name="tile_recording_on">Registrazione attiva</string>
     <string name="tile_recording_stopped">Interrotto</string>
-    <string name="transcribe_confirm_dont_ask">Non chiedere più</string>
-    <string name="transcribe_long_call_line">Questa chiamata dura %1$s. Su questo telefono la trascrizione richiede circa %2$s volte la sua durata — circa %3$s.</string>
     
-    <string name="transcribe_confirm_title">Ci vorranno circa %1$s</string>
-    <string name="transcribe_confirm_title_first_run">La prima volta può richiedere un po\' di tempo</string>
-    <string name="transcribe_confirm_title_unknown">Trascrivere questa chiamata?</string>
-    <string name="transcribe_estimate_hours">%1$d h %2$d min</string>
-    <string name="transcribe_estimate_minutes">%1$d min</string>
-    <string name="transcribe_estimate_under_minute">un minuto</string>
-    <string name="transcribe_language_confirm">Trascrivi</string>
-    <string name="transcribe_language_message">Trascrivi %1$s in:</string>
-    <string name="transcribe_language_title">Quale lingua?</string>
-    <string name="transcribing_pill_percent">%1$d%%</string>
-    <string name="transcribing_pill_progress">%1$d/%2$d</string>
-    <string name="transcribing_pill_progress_percent">%1$d/%2$d · %3$d%%</string>
-    <string name="transcribing_pill_working">Trascrizione</string>
-    <string name="transcribing_sheet_remaining">Rimanenti: %1$d</string>
-    <string name="transcribing_sheet_starting">Avvio…</string>
-    <string name="transcribing_sheet_stop">Interrompi</string>
-    <string name="transcribing_sheet_title">Trascrizione</string>
-    <string name="transcript_action_busy">Trascrizione in corso…</string>
-    <string name="transcript_action_open">Leggi la trascrizione</string>
-    <string name="transcript_action_retry">Trascrizione non riuscita — riprova</string>
-    <string name="transcript_action_transcribe">Trascrivi questa chiamata</string>
-    <string name="transcript_action_transcribe_short">Trascrivi</string>
-    <string name="transcript_delete">Elimina testo</string>
-    <string name="transcript_delete_confirm_message">La trascrizione di %1$s verrà eliminata. La registrazione viene conservata e potrai trascriverla di nuovo in seguito.</string>
-    <string name="transcript_delete_confirm_message_text_only">Dietro queste parole non c\'è nessuna registrazione: eliminare la trascrizione di %1$s elimina tutto, e non si può recuperare.</string>
-    <string name="transcript_delete_confirm_title">Eliminare questa trascrizione?</string>
-    <string name="transcript_export_chooser">Condividi trascrizione</string>
-    <string name="transcript_export_failed">Impossibile esportare la trascrizione</string>
-    <string name="transcript_loading">Caricamento della trascrizione…</string>
-    <string name="transcript_no_model_message">La trascrizione avviene su questo telefono, quindi serve prima scaricare un modello vocale. Puoi sceglierne e scaricarne uno nelle Impostazioni.</string>
-    <string name="transcript_no_model_open_settings">Apri impostazioni</string>
-    <string name="transcript_no_model_title">Nessun modello vocale</string>
-    <string name="transcript_no_speech">Nessun parlato riconosciuto in questa registrazione.</string>
-    <string name="transcript_none">Non c\'è una trascrizione di questa chiamata. Non è mai stata trascritta, oppure il testo è stato eliminato.</string>
-    <string name="transcript_note_add">Aggiungi una nota</string>
-    <string name="transcript_note_hint">Di cosa si trattava, o cosa c\'è da fare…</string>
-    <string name="transcript_retranscribe">Trascrivi di nuovo</string>
-    <string name="transcript_share">Condividi</string>
-    <string name="transcript_previous_call">Precedente</string>
-    <string name="transcript_next_call">Successiva</string>
-    <string name="transcript_follow_playback">Segui la riproduzione</string>
-    <string name="transcript_share_text">Testo</string>
-    <string name="transcript_speaker_a">Interlocutore A</string>
-    <string name="transcript_speaker_b">Interlocutore B</string>
-    <string name="transcript_speaker_you">Io</string>
-    <string name="transcript_speakers_correct">Corretto</string>
-    <string name="transcript_speakers_guessed">Nomi dedotti automaticamente</string>
-    <string name="transcript_speakers_swap">Inverti</string>
-    <string name="transcript_speakers_swap_names">Scambia i nomi</string>
-    <string name="transcript_speakers_which_is_you">Quale sei tu?</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -787,7 +787,7 @@
     
     
     
-    <string name="transcripts_search_hint">Cerca ciò che è stato detto</string>
+    
     <string name="update_popup_later">Più tardi</string>
     <string name="update_popup_text">Una nuova versione è pronta per l\'installazione. L\'aggiornamento mantiene affidabile la registrazione e porta le ultime correzioni.</string>
     <string name="update_popup_title">CallVault %1$s è disponibile</string>
@@ -886,13 +886,13 @@
     <string name="wizard_updates_subtitle">CallVault non è su nessuno store, quindi cerca da sé le nuove versioni su GitHub.</string>
     <string name="wizard_updates_title">Restare aggiornati</string>
     
-    <string name="transcribe_again_title">Trascrivere di nuovo?</string>
-    <string name="transcribe_again_message_one">%1$s verrà trascritto di nuovo. Se la nuova esecuzione non riesce o viene interrotta, la trascrizione attuale viene mantenuta.</string>
-    <string name="transcribe_again_message_many">Trascrizioni da rifare: %1$d. Se un\'esecuzione non riesce o viene interrotta, quella trascrizione resta com\'è.</string>
-    <string name="transcribe_again_run_on">Esegui su</string>
-    <string name="transcribe_again_estimate">Circa %1$s.</string>
-    <string name="transcribe_again_delete_summary">Elimina anche il riassunto. È stato scritto dal testo precedente.</string>
-    <string name="transcribe_again_running">Nuova trascrizione… %1$d%%</string>
-    <string name="transcribe_again_running_plain">Nuova trascrizione…</string>
-    <string name="transcribe_again_waiting">In attesa della nuova trascrizione…</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </resources>

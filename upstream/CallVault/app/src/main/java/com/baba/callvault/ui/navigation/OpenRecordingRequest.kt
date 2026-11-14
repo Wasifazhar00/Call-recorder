@@ -13,7 +13,7 @@ package com.baba.callvault.ui.navigation
  *
  * There is exactly one sender today: the share target, whose Open button has to reach the file the
  * user just shared. Without it, Open lands on whichever section they were last in — which, on the
- * emulator, was a page of summaries with no sign of the voice note that had just arrived. That is
+ * emulator, was a different section with no sign of the audio file that had just arrived. That is
  * the app telling somebody a thing happened somewhere else, which is the failure the picker path
  * was built to avoid by opening the recording's own screen.
  *

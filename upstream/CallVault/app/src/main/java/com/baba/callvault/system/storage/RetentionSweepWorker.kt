@@ -80,7 +80,7 @@ class RetentionSweepWorker(ctx: Context, params: WorkerParameters) : CoroutineWo
         for (entry in RecordingCatalog.all(applicationContext)) {
             // And the right stamp is only half of it. Once the retention period elapses this pass
             // would delete an import like anything else — except that for a call the Drive copy
-            // survives and the row keeps its transcript, while an imported file has no Drive copy by design.
+            // survives and the row keeps its metadata, while an imported file has no Drive copy by design.
             // The same delete would therefore destroy the only copy of something the user handed us.
             if (!RetentionPolicy.mayAgeOut(entry.displayName, starred)) continue
             val ts = entry.lastModified

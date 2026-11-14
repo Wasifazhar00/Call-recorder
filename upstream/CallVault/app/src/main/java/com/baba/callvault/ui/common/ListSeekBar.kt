@@ -54,7 +54,7 @@ import kotlin.math.roundToInt
  * the dot and through [onPreview], while the audio carries on; the jump happens on release, so
  * scrubbing does not stutter through every second in between.
  *
- * Not [SeekBar]: that one seeks on every move of the finger, which suits the transcript sheet's
+ * Not [SeekBar]: that one seeks on every move of the finger, which suits the playback screen's
  * scrubber but makes a drag across a long call audibly choppy.
  *
  * @param onPreview the position being dragged to, or null when no drag is in progress.

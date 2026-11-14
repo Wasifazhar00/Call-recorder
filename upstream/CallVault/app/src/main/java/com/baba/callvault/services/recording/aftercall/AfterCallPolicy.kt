@@ -61,7 +61,7 @@ object AfterCallPolicy {
         val stillPending: Boolean,
         val inCatalog: Boolean,
         val deleteRequested: Boolean,
-        /** Starred, flagged, tagged, noted or transcribed: the user did something with this call. */
+        /** Starred, flagged, tagged or noted: the user engaged with this recording. */
         val engaged: Boolean,
     )
 
@@ -70,7 +70,7 @@ object AfterCallPolicy {
 
     /**
      * Whether the question can actually reach the user. A hold whose question can never be seen is a recording
-     * that silently gets no Drive copy and no transcript for a day, or is deleted unasked — so when this is
+     * that silently gets no Drive copy for a day, or is deleted unasked — so when this is
      * false the call is treated exactly as in Keep mode.
      *
      * @param channelImportance the question channel's importance, or null when it has not been created yet
@@ -142,7 +142,7 @@ object AfterCallPolicy {
      * who switches "If I don't answer" to Keep in the meantime must not lose a recording to the old choice.
      *
      * A tapped Delete is always honoured. An unanswered question under "Delete after 24 hours" is still kept
-     * when the user engaged with the recording: starring, marking, tagging, noting or transcribing a call is
+     * when the user engaged with the recording: starring, marking, tagging or noting a call is
      * an answer of its own, and deleting it would destroy exactly what they had just added.
      */
     fun unansweredAction(setting: AfterCallUnanswered, facts: HeldFacts): UnansweredAction = when {
@@ -155,12 +155,13 @@ object AfterCallPolicy {
 
     /**
      * Whether [fileName] in the recordings folder belongs to a recording still waiting for its answer — the
-     * audio itself or a sidecar beside it (.json details, .md transcript), matched by base name, so a sweep
-     * copies none of them to Drive before the user has said keep.
+     * audio itself or its `.json` metadata sidecar, matched by base name, so a sweep does not
+     * copy either to Drive before the user has said keep.
      */
     fun isHeldFile(fileName: String, heldNames: Set<String>): Boolean {
         if (heldNames.isEmpty()) return false
         if (fileName in heldNames) return true
+        if (!fileName.endsWith(".json", ignoreCase = true)) return false
         val base = fileName.substringBeforeLast('.', fileName)
         return heldNames.any { it.substringBeforeLast('.', it) == base }
     }

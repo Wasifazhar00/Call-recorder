@@ -731,59 +731,59 @@
     <string name="support_not_now">حالا نه</string>
     <string name="tile_recording_on">ضبط فعال</string>
     <string name="tile_recording_stopped">متوقف</string>
-    <string name="transcribe_confirm_dont_ask">دیگر نپرس</string>
-    <string name="transcribe_long_call_line">این تماس %1$s است. در این گوشی، رونویسی حدود %2$s برابر مدت تماس طول می‌کشد — یعنی حدود %3$s.</string>
     
-    <string name="transcribe_confirm_title">این حدود %1$s طول می‌کشد</string>
-    <string name="transcribe_confirm_title_first_run">اولی ممکن است کمی طول بکشد</string>
-    <string name="transcribe_confirm_title_unknown">این تماس رونویسی شود؟</string>
-    <string name="transcribe_estimate_hours">%1$d ساعت و %2$d دقیقه</string>
-    <string name="transcribe_estimate_minutes">%1$d دقیقه</string>
-    <string name="transcribe_estimate_under_minute">یک دقیقه</string>
-    <string name="transcribe_language_confirm">رونویسی</string>
-    <string name="transcribe_language_message">رونویسی %1$s به زبان:</string>
-    <string name="transcribe_language_title">کدام زبان؟</string>
-    <string name="transcribing_pill_percent">%1$d%%</string>
-    <string name="transcribing_pill_progress">%1$d/%2$d</string>
-    <string name="transcribing_pill_progress_percent">%1$d/%2$d · %3$d%%</string>
-    <string name="transcribing_pill_working">در حال رونویسی</string>
-    <string name="transcribing_sheet_remaining">باقی‌مانده: %1$d</string>
-    <string name="transcribing_sheet_starting">در حال شروع…</string>
-    <string name="transcribing_sheet_stop">توقف</string>
-    <string name="transcribing_sheet_title">در حال رونویسی</string>
-    <string name="transcript_action_busy">در حال رونویسی…</string>
-    <string name="transcript_action_open">رونوشت را بخوان</string>
-    <string name="transcript_action_retry">رونویسی ناموفق بود — دوباره تلاش کنید</string>
-    <string name="transcript_action_transcribe">این تماس را رونویسی کن</string>
-    <string name="transcript_action_transcribe_short">رونویسی</string>
-    <string name="transcript_delete">حذف متن</string>
-    <string name="transcript_delete_confirm_message">رونوشت %1$s حذف خواهد شد. خود فایل ضبط‌شده نگه داشته می‌شود و می‌توانید بعداً دوباره آن را رونویسی کنید.</string>
-    <string name="transcript_delete_confirm_message_text_only">هیچ فایل ضبط‌شده‌ای پشت این کلمات نیست: حذف رونوشت %1$s کل آن را حذف می‌کند و قابل بازگرداندن نیست.</string>
-    <string name="transcript_delete_confirm_title">این رونوشت حذف شود؟</string>
-    <string name="transcript_export_chooser">اشتراک‌گذاری رونوشت</string>
-    <string name="transcript_export_failed">نشد رونوشت را صادر کرد</string>
-    <string name="transcript_loading">در حال بارگذاری رونوشت…</string>
-    <string name="transcript_no_model_message">رونویسی روی این گوشی انجام می‌شود، بنابراین ابتدا به یک مدل گفتار دانلودشده نیاز دارد. می‌توانید یکی را در تنظیمات انتخاب و دانلود کنید.</string>
-    <string name="transcript_no_model_open_settings">باز کردن تنظیمات</string>
-    <string name="transcript_no_model_title">هنوز مدل گفتاری نیست</string>
-    <string name="transcript_no_speech">هیچ گفتاری در این فایل ضبط‌شده شناسایی نشد.</string>
-    <string name="transcript_none">برای این تماس رونوشتی وجود ندارد. یا هرگز رونویسی نشده، یا متن حذف شده است.</string>
-    <string name="transcript_note_add">افزودن یادداشت</string>
-    <string name="transcript_note_hint">درباره چه بود، یا چه باید درباره‌اش کرد…</string>
-    <string name="transcript_retranscribe">دوباره رونویسی کن</string>
-    <string name="transcript_share">اشتراک‌گذاری</string>
-    <string name="transcript_previous_call">قبلی</string>
-    <string name="transcript_next_call">بعدی</string>
-    <string name="transcript_follow_playback">دنبال کردن پخش</string>
-    <string name="transcript_share_text">متن</string>
-    <string name="transcript_speaker_a">گوینده الف</string>
-    <string name="transcript_speaker_b">گوینده ب</string>
-    <string name="transcript_speaker_you">شما</string>
-    <string name="transcript_speakers_correct">درست است</string>
-    <string name="transcript_speakers_guessed">نام‌هایی که به‌طور خودکار مشخص شدند</string>
-    <string name="transcript_speakers_swap">جابه‌جایی</string>
-    <string name="transcript_speakers_swap_names">جابه‌جایی نام‌ها</string>
-    <string name="transcript_speakers_which_is_you">کدام‌یک شما هستید؟</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -880,7 +880,7 @@
     
     
     
-    <string name="transcripts_search_hint">جستجوی آنچه گفته شد</string>
+    
     <string name="update_popup_later">بعداً</string>
     <string name="update_popup_text">نسخه جدیدی برای نصب آماده است. به‌روزرسانی، ضبط را قابل اعتماد نگه می‌دارد و جدیدترین رفع‌اشکال‌ها را می‌آورد.</string>
     <string name="update_popup_title">CallVault %1$s در دسترس است</string>
@@ -979,13 +979,13 @@
     <string name="wizard_updates_subtitle">CallVault در فروشگاه برنامه نیست، بنابراین خودش GitHub را برای نسخه‌های جدید بررسی می‌کند.</string>
     <string name="wizard_updates_title">به‌روز ماندن</string>
     
-    <string name="transcribe_again_title">دوباره رونویسی شود؟</string>
-    <string name="transcribe_again_message_one">%1$s دوباره رونویسی می‌شود. اگر اجرای جدید ناموفق باشد یا متوقف شود، رونوشت فعلی حفظ می‌شود.</string>
-    <string name="transcribe_again_message_many">رونوشت‌هایی که دوباره انجام می‌شوند: %1$d. اگر اجرایی ناموفق باشد یا متوقف شود، آن رونوشت همان‌طور که هست می‌ماند.</string>
-    <string name="transcribe_again_run_on">اجرا روی</string>
-    <string name="transcribe_again_estimate">حدود %1$s.</string>
-    <string name="transcribe_again_delete_summary">خلاصه را هم حذف کن. از متن قبلی نوشته شده بود.</string>
-    <string name="transcribe_again_running">در حال رونویسی دوباره… %1$d%%</string>
-    <string name="transcribe_again_running_plain">در حال رونویسی دوباره…</string>
-    <string name="transcribe_again_waiting">در انتظار رونویسی دوباره…</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </resources>

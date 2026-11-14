@@ -72,39 +72,39 @@
     <string name="home_whatsnew_title">Novedades</string>
     <string name="offline_recording_disabling">Desactivando la grabación sin Wi-Fi…</string>
     <string name="offline_recording_on">La grabación sin Wi-Fi está activada.</string>
-    <string name="whatsnew_145_body">En muchos teléfonos, bloquear la pantalla durante una llamada detenía la grabación a mitad de la conversación. Eso está corregido, y ahora CallVault te avisa si el ajuste USB de tu teléfono es la causa.</string>
-    <string name="whatsnew_145_title">Sigue grabando cuando se bloquea la pantalla</string>
-    <string name="whatsnew_146_body">Android puede detener el servicio auxiliar de CallVault en cualquier momento, lo que antes cortaba la grabación y te dejaba con media llamada. Con esto activado, una grabación ya en curso continúa hasta el final de todos modos.</string>
-    <string name="whatsnew_146_title">Grabación resistente</string>
-    <string name="whatsnew_146_where">Ajustes ▸ Experimental ▸ Resistencia</string>
-    <string name="whatsnew_147_body">CallVault ya puede grabar llamadas hechas dentro de apps como WhatsApp, Signal y Telegram: ambos lados de la conversación, no solo tu voz. Las grabaciones indican en qué app se hizo la llamada, y el nombre del contacto cuando la app lo proporciona.\n\nExperimental: funciona con unas apps y con otras no, y una app puede bloquear la grabación en cualquier momento con una actualización.</string>
-    <string name="whatsnew_147_title">Graba llamadas de apps (VoIP)</string>
-    <string name="whatsnew_147_where">Ajustes ▸ Experimental ▸ Llamadas VoIP</string>
-    <string name="whatsnew_148_body">En algunos teléfonos, CallVault activaba y desactivaba la depuración inalámbrica una y otra vez sin llegar nunca a estar listo para grabar. Eso está corregido. Donde la depuración inalámbrica es la única vía de acceso, CallVault ahora la deja activada y te indica qué ajuste permitiría volver a desactivarla.\n\nTambién corregido: una llamada de app podía informar de un fallo aunque se hubiera grabado bien, y podía atribuirse a la app equivocada.</string>
-    <string name="whatsnew_148_title">Un arranque más fiable</string>
-    <string name="whatsnew_150_body">Activar la depuración por USB permite que CallVault desactive la depuración inalámbrica y la mantenga desactivada. No hace falta cable y, a diferencia de la depuración inalámbrica, no abre ningún puerto de red, así que es la más segura de las dos para dejar activada. Opcional: la grabación funciona de cualquier manera.\n\nTambién corregido: desactivar la depuración por USB podía dejar a CallVault sin poder grabar, sin avisar.</string>
-    <string name="whatsnew_150_title">Desactiva la depuración inalámbrica</string>
-    <string name="whatsnew_150_where">Ajustes ▸ Experimental ▸ Depuración por USB</string>
-    <string name="whatsnew_153_body">La tarjeta de estado ahora te dice si la grabación funcionó de verdad, según tus llamadas reales y no según una luz verde que solo significa que la app se inició. Si una llamada no se grabó, lo dice y explica por qué: una carpeta que nunca se configuró, las opciones de desarrollador desactivadas, un permiso perdido en una actualización.\n\nAdemás: CallVault ya habla portugués de Brasil, y el resto de idiomas se han puesto al día.</string>
-    <string name="whatsnew_153_title">Tu configuración, comprobada por tus propias llamadas</string>
-    <string name="whatsnew_154_body">Un fallo poco frecuente en la conexión con el grabador podía dejar la grabación desactivada en silencio hasta reiniciar la aplicación, sin ningún aviso en pantalla. Ahora se agota el tiempo de espera y se recupera por sí sola.\n\nTambién puedes elegir cuándo se suben las grabaciones a Drive: al momento, a diario o cada semana. Está en Ajustes ▸ Almacenamiento, junto con la Retención, que se ha trasladado a la misma sección.</string>
-    <string name="whatsnew_154_title">Grabación que se recupera sola</string>
-    <string name="whatsnew_155_body">Los ajustes ahora se deslizan sobre la aplicación en lugar de sustituirla, y están agrupados para que cada pantalla sea una lista breve. Las grabaciones muestran cuándo fue la llamada y cuánto duró.\n\nPor debajo: se han corregido varias formas en que una grabación podía perderse o estropearse, incluido el audio con chasquidos en la grabación resistente y la falta de un lado en las llamadas VoIP en teléfonos Samsung.</string>
-    <string name="whatsnew_155_title">Ajustes en un panel y grabaciones más fiables</string>
-    <string name="whatsnew_156_body">Las llamadas telefónicas y las de apps pueden grabarse automáticamente, preguntar primero o ignorarse por completo, así que «solo llamadas de apps» ya es un ajuste real y no una combinación que había que deducir.\n\nLas grabaciones se pueden compartir, y manteniéndolas pulsadas puedes seleccionar varias para compartir o eliminar. Al eliminar una grabación guardada en el dispositivo y en Drive se te pregunta qué copias quitar.</string>
-    <string name="whatsnew_156_title">Decide qué se graba y ordena tus grabaciones</string>
-    <string name="whatsnew_156_where">Ajustes ▸ Grabación ▸ Llamadas telefónicas</string>
-    <string name="whatsnew_157_body">Si configuraste el borrado automático, algunas grabaciones se conservaban para siempre sin avisar: la comprobación solo veía las grabaciones de las que CallVault seguía teniendo registro, y las demás no se eliminaban por antiguas que fueran. En un teléfono configurado para conservar una semana, 131 archivos habían superado ese plazo.\n\nLa comprobación diaria ahora también lee tus carpetas de grabación, así que decide solo la antigüedad. Únicamente se tocan los archivos nombrados por CallVault, y los que no se pueden fechar se dejan intactos.\n\nCambiar la hora de la comprobación también surte efecto de inmediato en lugar de esperar un día.</string>
-    <string name="whatsnew_157_title">El borrado automático ya elimina todo lo que debe</string>
-    <string name="whatsnew_157_where">Ajustes ▸ Almacenamiento ▸ Retención</string>
-    <string name="whatsnew_200_body">Dos grandes añadidos, ambos funcionando por completo en tu teléfono. No se sube nada y los dos funcionan sin red alguna.\n\nLa transcripción convierte una grabación en texto que puedes leer y buscar, en catorce idiomas. Toca una línea para saltar a ese momento de la llamada.\n\nLos resúmenes van más allá: de qué trató la llamada, qué se decidió y qué dijo cada uno que haría, con la hora junto a los puntos que la tienen, de modo que al tocarla saltas justo ahí.\n\nCada uno necesita descargar antes un modelo por Wi-Fi; la app te dice lo que cuesta cada uno antes de empezar.</string>
-    <string name="whatsnew_200_title">Tus llamadas, escritas y resumidas</string>
-    <string name="whatsnew_200_where">Ajustes ▸ Transcripción y Ajustes ▸ Resúmenes de llamadas</string>
-    <string name="whatsnew_210_body">Las llamadas grabadas a partir de ahora se transcriben con el hablante junto a cada línea.\n\nSe obtiene de la propia llamada mientras se graba — tu teléfono mantiene separados los dos lados antes de mezclarlos — así que no cuesta tiempo adicional, ni ninguna descarga, ni conjeturas. No puede hacerse con llamadas que ya están en el teléfono, porque esa información solo existe mientras se graba.\n\nLos dos lados empiezan como Hablante A y Hablante B. Cuando dos llamadas salientes coinciden en cuál es cuál, pasan a ser tú y la persona con la que hablabas: en la transcripción, en lo que copias o compartes y en el resumen.</string>
-    <string name="whatsnew_210_title">Las transcripciones muestran quién hablaba</string>
-    <string name="whatsnew_210_where">Cualquier llamada grabada a partir de ahora, en su transcripción</string>
-    <string name="whatsnew_211_body">La transcripción ahora se salta los silencios antes de que el modelo lea la llamada, y sopesa varias transcripciones posibles en lugar de quedarse con la primera palabra que le viene a la cabeza. Aun haciendo más, ha salido algo más rápida que antes, y en una llamada de prueba recuperó una frase entera que la versión anterior se había dejado.\n\nLos resúmenes ya no se repiten, algo que pasaba porque la lista de puntos no tenía un límite real. También pueden decir más: los puntos estaban limitados a cinco y a cada uno se le pedía una sola línea corta, y el modelo cumplía ambas cosas a costa del contenido. Un resumen largo en un idioma que necesita más palabras — el español es uno de ellos — ya no se descarta por quedarse sin sitio.\n\nAdemás, las grabaciones se degradaban en silencio nada más entrar: reducirlas a la frecuencia de muestreo que espera el modelo añadía ruido al habla en vez de filtrarlo. Las llamadas salientes eran las más afectadas, porque son las que más llevan tu propia voz.</string>
-    <string name="whatsnew_211_title">Mejores transcripciones, mejores resúmenes</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <plurals name="merge_row_badge">
         <item quantity="one">%1$d llamada</item>
         <item quantity="other">%1$d llamadas</item>
@@ -124,7 +124,7 @@
     <string name="settings_merge_keep_originals_description">Después de combinar, dejar también en el teléfono las llamadas de las que se formó. Desactivado de forma predeterminada, así una combinación deja una sola grabación. Separar una llamada combinada funciona igual en ambos casos.</string>
     <string name="settings_merge_keep_originals_title">Conservar los originales tras combinar</string>
     <string name="unmerge_confirm">Separar</string>
-    <string name="unmerge_message">It becomes these calls again, each with its recording details and marks it had:</string>
+    
     <string name="unmerge_title">¿Separar esta llamada?</string>
     <string name="merge_note_will_delete">Las demás llamadas se eliminan. Separarla más adelante las recupera.</string>
     <string name="merge_note_will_keep">Las demás llamadas también se conservan en el teléfono.</string>
@@ -146,131 +146,20 @@
         <item>Si una llamada no se grabó porque CallVault se había forzado a detener, la tarjeta lo indica</item>
     </string-array>
     <string name="whatsnew_249_title">Llamadas de apps más claras y listo justo después de actualizar</string>
-    <string-array name="whatsnew_249_items">
-        <item>Menos eco en las llamadas de apps en teléfonos cuyo micrófono capta el auricular</item>
-        <item>Las llamadas de Telegram se graban hasta el final, con el nombre y el icono de Telegram</item>
-        <item>Las llamadas de apps que terminan antes de empezar a grabar ya no dejan un archivo vacío</item>
-        <item>La grabación está lista segundos después de una actualización</item>
-        <item>Se pueden transcribir llamadas de cualquier duración; las largas indican cuánto tardarán</item>
-        <item>Escribe para buscar un idioma en la lista de idiomas, y Urdu para transcribir</item>
-        <item>No desactivar nunca la depuración inalámbrica — un nuevo interruptor en Ajustes ▸ Conexión</item>
-        <item>Tu propio servidor de transcripción puede usar http:// en tu propia red</item>
-        <item>Ajustes siempre abre el diseño por páginas; la vista clásica ya no existe</item>
-    </string-array>
-    <string name="whatsnew_248_title">Tu propia clave de transcripción y lectura más fácil</string>
-    <string-array name="whatsnew_248_items">
-        <item>Transcribe con tu propia clave — Groq, OpenRouter o tu servidor, en segundos en lugar de minutos (Ajustes ▸ Dónde transcribir)</item>
-        <item>Reproduce directamente desde la lista de grabaciones, con una barra para saltar a cualquier punto</item>
-        <item>Anterior y Siguiente mientras lees una transcripción, y un interruptor «Seguir la reproducción»</item>
-        <item>Importar en la página de transcripciones es ahora un botón: conserva el audio o solo la transcripción</item>
-        <item>Las llamadas largas de 45 minutos o más vuelven a transcribirse, importarse y mostrar su forma de onda</item>
-        <item>Las descargas de modelos con datos móviles preguntan antes, en lugar de esperar al Wi-Fi</item>
-        <item>Un modelo de voz ajustado al persa y mejor compatibilidad con TalkBack</item>
-        <item>Se conecta en teléfonos que ocultan la dirección de la depuración inalámbrica</item>
-    </string-array>
-    <string name="whatsnew_247_title">Nuevos ajustes, Shizuku se pone al día y ucraniano</string>
-    <string-array name="whatsnew_247_items">
-        <item>Nuevo diseño de ajustes — cada página muestra solo sus propios ajustes, con los detalles tras ⓘ; la vista clásica está a un toque</item>
-        <item>Configuración más sencilla — una línea por paso, como los nuevos ajustes</item>
-        <item>El modo Shizuku se pone al día — las llamadas de apps, la grabación resistente y los nombres de los hablantes también funcionan allí, y las llamadas telefónicas empiezan a grabarse antes</item>
-        <item>Ucraniano — nuevo idioma de la app y de transcripción; el persa también se puede fijar para transcribir</item>
-        <item>Ocultar grabaciones — mantén tus grabaciones fuera de reproductores de música y galerías</item>
-        <item>Importar y respaldar modelos — usa un archivo de modelo que ya tengas y guarda una copia antes de reinstalar</item>
-        <item>Aprobar redes Wi-Fi nuevas automáticamente — opcional: la grabación ya no espera a que toques «Permitir»</item>
-        <item>Omitir también los contactos ignorados en llamadas de apps</item>
-        <item>Nombres de archivo Honor / Huawei — la app Teléfono de Honor puede reproducir las grabaciones desde su historial de llamadas</item>
-        <item>Las llamadas de apps se graban en los teléfonos Honor con MagicOS 11</item>
-        <item>Correcciones — CallVault ya no choca con el watchdog de Shizuku, la grabadora de Shizuku vuelve cuando Android la detiene, los nombres de archivo que empiezan por contacto o número vuelven a fusionarse y encontrarse, los resúmenes en griego y persa salen en el idioma correcto, y una corrección de seguridad de la grabadora</item>
-    </string-array>
-    <string name="whatsnew_246_title">Un interruptor general, griego y correcciones</string>
-    <string-array name="whatsnew_246_items">
-        <item>Interruptor general de activación/desactivación — activa o desactiva toda la grabación, llamadas de red y de apps, desde la tarjeta de inicio o los Ajustes rápidos (sobrevive a un reinicio)</item>
-        <item>Transcripción en griego</item>
-        <item>Seleccionar todo / borrar selección en todas las páginas de la biblioteca</item>
-        <item>Ordena la lista de llamadas; el número, la fecha y la hora aparecen ahora sobre cada transcripción</item>
-        <item>Los nombres de contacto aparecen en cuanto guardas el contacto — sin volver a grabar</item>
-        <item>Las transcripciones y los archivos de detalles ahora también llegan a Drive con la sincronización “Inmediata”, y puedes combinar llamadas que solo están en Drive</item>
-        <item>El archivo de detalles puede incluir los turnos de habla, para las herramientas que lo leen</item>
-        <item>Correcciones — las llamadas largas vuelven a poder desplazarse, ya no aparece el aviso erróneo “Pulsa para empezar a grabar” durante las llamadas de apps, y “Eliminar ambas copias” borra todas las copias</item>
-    </string-array>
-    <string name="whatsnew_245_title">Nuevos idiomas, copias de seguridad y más</string>
-    <string-array name="whatsnew_245_items">
-        <item>Persa y árabe — dos nuevos idiomas de la app, de derecha a izquierda</item>
-        <item>Llamadas por app en teléfonos vivo — para grabar a la otra persona, activa la Grabadora de vivo → Grabación de llamadas en apps</item>
-        <item>Copias de transcripciones — guarda transcripciones y notas como texto junto a cada grabación</item>
-        <item>Plantillas de nombre de archivo — nuevos órdenes empezando por contacto o número</item>
-        <item>Exportar e importar — haz una copia de seguridad de tus ajustes en un archivo</item>
-        <item>Corregido — no más falso «Una llamada se cortó»</item>
-    </string-array>
-    <string name="whatsnew_244_title">Grabación más fiable, reemparejamiento fácil y avisos de actualización</string>
-    <string name="whatsnew_244_where">Ajustes ▸ Fiabilidad ▸ Volver a emparejar</string>
-    <string-array name="whatsnew_244_items">
-        <item>Nuevo — Si tu teléfono cierra CallVault durante una llamada, se guarda la parte grabada hasta entonces y se te avisa</item>
-        <item>Nuevo — Vuelve a emparejar desde Ajustes si se pierde la conexión con la grabadora, sin reinstalar</item>
-        <item>Nuevo — Un aviso emergente y comprobaciones más frecuentes te avisan en cuanto hay una versión nueva</item>
-        <item>Cambiado — Los ajustes que tu versión de Android no admite aparecen atenuados, con el motivo</item>
-    </string-array>
-    <string name="whatsnew_243_title">Llamadas por app sincronizadas, notas que se guardan al escribir y grabar solo a quien elijas</string>
-    <string name="whatsnew_243_where">Ajustes ▸ Grabación ▸ Llamadas entrantes ▸ Grabar solo los contactos seleccionados</string>
-    <string-array name="whatsnew_243_items">
-        <item>Nuevo — Graba solo los contactos que elijas, en llamadas entrantes o salientes</item>
-        <item>Corregido — En las llamadas por app, la otra persona ya no se desfasa respecto a ti</item>
-        <item>Corregido — Al escribir una nota no se pierde ninguna letra, y muestra Guardado</item>
-        <item>Corregido — Ya no queda una notificación de llamada después de colgar</item>
-        <item>Corregido — Si instalaste una versión de prueba, se te ofrece la actualización definitiva</item>
-        <item>Corregido — Una descarga de modelo que salió mal se limpia y se descarga de nuevo, en lugar de fallar como dañada</item>
-        <item>Corregido — Con la Grabación resistente activada, algunos teléfonos perdían una de cada dos llamadas</item>
-        <item>Corregido — Las llamadas por app se graban en teléfonos vivo e iQOO</item>
-    </string-array>
-    <string name="whatsnew_241_title">Búsqueda en cada página, y grabar cuando contesten</string>
-    <string-array name="whatsnew_241_items">
-        <item>Nuevo — Una línea de búsqueda en Grabaciones, Transcripciones y Resúmenes: un contacto o una palabra dicha</item>
-        <item>Nuevo — Grabar una llamada saliente solo cuando la otra persona contesta (desactivado por defecto)</item>
-        <item>Nuevo — Las grabaciones con Shizuku tienen etiquetas de hablante</item>
-        <item>Corregido — Las llamadas de apps en Android 14 y anteriores llevan el nombre del contacto</item>
-        <item>Corregido — Una actualización en modo Shizuku ya no cuesta la siguiente llamada</item>
-        <item>Corregido — Una línea compartida por ambos hablantes se separa donde cambia el hablante</item>
-        <item>Corregido — Una transcripción en el alfabeto equivocado se decodifica de nuevo</item>
-        <item>Corregido — Una línea en la que solo habló una persona ya no queda sin nombre</item>
-    </string-array>
-    <string name="whatsnew_241_where">Ajustes ▸ Grabación ▸ Llamadas salientes ▸ Empezar cuando contesten</string>
-    <string name="whatsnew_240_title">Las grabaciones, transcripciones y resúmenes tienen cada uno su sitio</string>
-    <string-array name="whatsnew_240_items">
-        <item>Nuevo — Una pantalla de inicio con Grabaciones, Transcripciones y Resúmenes, que abre donde lo dejaste</item>
-        <item>Nuevo — Importa un archivo de audio o compártelo con CallVault desde otra aplicación</item>
-        <item>Nuevo — Importa solo por el texto: el audio se borra cuando la transcripción está lista</item>
-        <item>Nuevo — Lee una transcripción en su propia página y añádele una nota</item>
-        <item>Nuevo — Elige varias transcripciones o resúmenes a la vez para borrar, compartir o guardar</item>
-        <item>Nuevo — Un aviso cuando termina una transcripción</item>
-        <item>Corregido — Reiniciar el teléfono ya no lo deja sin grabar</item>
-        <item>Corregido — Shizuku se vuelve a iniciar cuando CallVault tiene que detenerlo</item>
-        <item>Corregido — La configuración inicial funciona en Android 17</item>
-    </string-array>
-    <string name="whatsnew_240_where">Inicio ▸ Transcripciones ▸ Importar audio</string>
-    <string name="whatsnew_230_title">Las llamadas que fueron una conversación pueden ser una grabación</string>
-    <string-array name="whatsnew_230_items">
-        <item>Nuevo — Combina en una grabación las llamadas de una misma conversación</item>
-        <item>Nuevo — Guarda el informe de errores en la carpeta que elijas</item>
-        <item>Corregido — Girar el teléfono mantiene tu posición</item>
-        <item>Corregido — Se acabó el chisporroteo en las grabaciones</item>
-        <item>Corregido — Una grabación que no arranca ahora lo dice</item>
-        <item>Corregido — Cambiar a AAC mantiene la llamada siguiente</item>
-        <item>Corregido — El buzón de voz ya no se registra como llamada fallida</item>
-        <item>Corregido — Marcas de tiempo correctas tras una pausa larga</item>
-        <item>Corregido — Actualizar mantiene la grabación de la llamada siguiente</item>
-        <item>Corregido — Compatible con el modo oculto de Shizuku</item>
-        <item>Corregido — La depuración inalámbrica que activas tú se queda activada</item>
-        <item>Corregido — La grabación sin Wi-Fi dice qué falló realmente</item>
-        <item>Corregido — El punto del micrófono ya no se queda encendido tras la llamada</item>
-        <item>Corregido — El progreso de la transcripción ya no se reinicia al girar</item>
-        <item>Corregido — Borrar una llamada detiene su transcripción</item>
-        <item>Corregido — Sin aviso de calentamiento en una transcripción que tú iniciaste</item>
-        <item>Corregido — Las llamadas grabadas automáticamente ya no muestran un botón Grabar</item>
-        <item>Corregido — El progreso de la transcripción ya no se detiene en tres cuartos</item>
-        <item>Corregido — Una llamada grabada muestra una notificación, no dos</item>
-        <item>Corregido — El visor de registros ocupa la pantalla y ajusta las líneas largas</item>
-    </string-array>
-    <string name="whatsnew_230_where">El menú ⋮ de cualquier grabación ▸ Combinar con otra llamada</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="merge_progress_title">Combinando</string>
     <string name="unmerge_progress_title">Separando</string>
     <string name="merge_progress_step">Llamada %1$d de %2$d</string>
@@ -281,11 +170,11 @@
     <string name="unmerge_progress_working">Separando las llamadas</string>
     <string name="merge_progress_downloading">Descargando de Drive</string>
     <string name="merge_progress_cleaning_up">Limpiando</string>
-    <string name="whatsnew_220_body">Marca un momento mientras aún hablas. Un botón en la notificación de llamada deja un marcador justo donde lo pulsas, y la grabación los muestra como fichas que reproducen desde ahí, tanto en llamadas telefónicas como de aplicaciones. Las llamadas de aplicaciones ya tienen controles: pausar, reanudar, detener y marcar, cuando antes solo podían empezar y terminar.\n\nEncontrar una llamada es más fácil: destaca las que merece la pena guardar, etiquétalas con tus propias palabras y busca también en los resúmenes y en tus notas, no solo en lo que se dijo. Las transcripciones se exportan como texto, Markdown, SRT, VTT o JSON.\n\nCallVault también avisa cuando ha dejado de funcionar en silencio: si la grabación no arranca tras reiniciar, o si las grabaciones dejan de llegar a Drive. Antes ambas cosas pasaban desapercibidas. La nueva limpieza puede limitar el espacio que ocupan las grabaciones o descartar las muy cortas. Todo está desactivado por defecto, y una grabación destacada nunca se borra automáticamente.</string>
-    <string name="whatsnew_220_title">Encuentra una llamada de nuevo y contrólala mientras ocurre</string>
-    <string name="whatsnew_220_where">Ajustes ▸ Almacenamiento ▸ Retención para las opciones de limpieza</string>
-    <string name="whatsnew_221_body">CallVault vuelve a abrirse rápido, y sigue siendo rápida por muchas llamadas que guarde. La versión 2.2.0 releía la duración de cada grabación cada vez que se dibujaba la lista, de modo que con unas pocas docenas de llamadas la lista tardaba lo suficiente como para que una llamada grabada minutos antes pareciera no haberse grabado nunca.\n\nEl aviso de que las grabaciones habían dejado de llegar a Google Drive ya no aparece cuando no es cierto. A dos personas se les dijo que su copia de seguridad había fallado mientras todas sus grabaciones llegaban perfectamente.\n\nLos encabezados dentro de una transcripción exportada, el número de aplicaciones seleccionadas y el botón de volver siguen ahora el idioma que haya elegido, en lugar de quedarse en inglés. El informe de depuración también puede decir qué aplicación está ocupando el micrófono, para un problema que está resultando difícil de capturar.</string>
-    <string name="whatsnew_221_title">Más rápida al abrirse, y más callada ante problemas que no existen</string>
+    
+    
+    
+    
+    
     <string name="offline_failed_no_wifi">No se pudo activar: no estás conectado a Wi-Fi. Conéctate una vez a cualquier red Wi-Fi y vuelve a intentarlo.</string>
     <string name="offline_failed_wd_refused">No se pudo activar: Android no permitió la depuración inalámbrica en esta red. Actívala una vez en Opciones de desarrollador, acepta el aviso y vuelve a intentarlo.</string>
     <string name="offline_failed_needs_usb">Activa primero la depuración USB en los ajustes de CallVault: la grabación sin Wi-Fi no funciona sin ella.</string>
@@ -304,7 +193,6 @@
     
     
 
-    <!-- Transcripts: the two headings above the finished transcripts -->
     
     
     
@@ -313,7 +201,8 @@
     
     
     
-    <!-- Transcripts: bringing in audio CallVault did not record -->
+    
+    
     
     
     
@@ -328,7 +217,7 @@
     <string name="import_failed_copy">No se pudo escribir el archivo en tu carpeta de grabaciones. Comprueba que haya espacio en el teléfono y que la carpeta siga disponible.</string>
     
     <string name="home_row_imported">Importado</string>
-    <string name="home_row_text_only">Solo texto</string>
+    
     <!-- Menú de compartir: audio enviado a CallVault desde otra app -->
     <string name="share_import_label">Importar audio</string>
     <string name="share_import_working_body">Copiándolo y comprobando que este teléfono puede leerlo.</string>
@@ -342,8 +231,8 @@
     <string name="share_import_not_set_up_body">CallVault aún no ha terminado su configuración inicial, así que todavía no hay dónde guardar este archivo. Ábrelo, termina la configuración y vuelve a compartirlo.</string>
     <string name="share_import_choice_title">¿Qué debe hacer CallVault con esto?</string>
     <string name="share_import_choice_unnamed">El audio compartido</string>
-    <string name="import_choice_keep">Importar y transcribir</string>
-    <string name="import_choice_keep_hint">Guarda el audio en tus grabaciones y lo transcribe.</string>
+    
+    
     
     
     

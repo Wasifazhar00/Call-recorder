@@ -24,7 +24,7 @@ import kotlinx.coroutines.runBlocking
  * What each keep-or-delete answer does. Plain functions on an object, so a receiver, a worker and (later) the
  * pop-up can all call them without a ViewModel.
  *
- * While a recording is held it is catalogued and playable but has no Drive copy and no automatic transcript:
+ * While a recording is held it is catalogued and playable but has no Drive copy:
  * [keep] is what finally runs those hand-offs, exactly as the call-end path would have. Answers are made
  * idempotent by [AfterCallDecisions.release], which hands the held entry to one caller only — a second answer
  * (from the pop-up, or the 24-hour check) finds nothing and only tidies up.
@@ -98,7 +98,7 @@ object AfterCallDecision {
         keyguardLocked = context.getSystemService(KeyguardManager::class.java)?.isKeyguardLocked ?: true,
     )
 
-    /** Keep: end the wait and run the held Drive copy, details-file copy and transcription. */
+    /** Keep: end the wait and run the held Drive copy and metadata-file copy. */
     fun keep(context: Context, displayName: String): Boolean = keep(context, displayName, fromUnansweredCheck = false)
 
     internal fun keep(context: Context, displayName: String, fromUnansweredCheck: Boolean): Boolean {
@@ -118,7 +118,7 @@ object AfterCallDecision {
 
     /**
      * Keeps every held recording. For when "When a call ends" goes back to Keep: questions the user is no
-     * longer being asked must not leave their recordings without a Drive copy or a transcript. Not one whose
+     * longer being asked must not leave their recordings without a Drive copy. Not one whose
      * Delete was tapped: that was an answer, and its delete is left to finish.
      */
     fun keepAll(context: Context): Int =
@@ -126,7 +126,7 @@ object AfterCallDecision {
 
     /**
      * Delete: show "Recording deleted · Undo" and delete for real after the Undo window. The entry stays held
-     * meanwhile, so no sweep copies or transcribes a recording that is on its way out; it is marked, so the
+     * meanwhile, so no sweep copies a recording that is on its way out; it is marked, so the
      * 24-hour check deletes rather than keeps it if the delete work is ever lost. If the delete cannot be
      * scheduled at all it happens now, with no Undo — never left held.
      */
@@ -156,7 +156,7 @@ object AfterCallDecision {
     }
 
     /**
-     * Deletes a held recording everywhere — file, sidecars in both folders, catalog row and everything that
+     * Deletes a held recording everywhere — file, metadata sidecars in both folders, catalog row and everything that
      * cascades from it — and ends the wait. Called from the delete worker and the 24-hour check.
      */
     internal suspend fun deleteNow(context: Context, displayName: String, fromUnansweredCheck: Boolean): Boolean {

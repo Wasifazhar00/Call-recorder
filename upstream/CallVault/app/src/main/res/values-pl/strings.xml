@@ -650,59 +650,59 @@
     <string name="support_not_now">Nie teraz</string>
     <string name="tile_recording_on">Nagrywanie włączone</string>
     <string name="tile_recording_stopped">Zatrzymane</string>
-    <string name="transcribe_confirm_dont_ask">Nie pytaj ponownie</string>
-    <string name="transcribe_long_call_line">To połączenie trwa %1$s. Na tym telefonie transkrypcja trwa około %2$s× tyle co rozmowa — czyli około %3$s.</string>
     
-    <string name="transcribe_confirm_title">Zajmie to około %1$s</string>
-    <string name="transcribe_confirm_title_first_run">Pierwsze przetwarzanie może chwilę potrwać</string>
-    <string name="transcribe_confirm_title_unknown">Przepisać tę rozmowę?</string>
-    <string name="transcribe_estimate_hours">%1$d godz. %2$d min</string>
-    <string name="transcribe_estimate_minutes">%1$d min</string>
-    <string name="transcribe_estimate_under_minute">minutę</string>
-    <string name="transcribe_language_confirm">Transkrybuj</string>
-    <string name="transcribe_language_message">Transkrybuj %1$s w języku:</string>
-    <string name="transcribe_language_title">Jaki język?</string>
-    <string name="transcribing_pill_percent">%1$d%%</string>
-    <string name="transcribing_pill_progress">%1$d/%2$d</string>
-    <string name="transcribing_pill_progress_percent">%1$d/%2$d · %3$d%%</string>
-    <string name="transcribing_pill_working">Transkrypcja</string>
-    <string name="transcribing_sheet_remaining">Pozostało: %1$d</string>
-    <string name="transcribing_sheet_starting">Uruchamianie…</string>
-    <string name="transcribing_sheet_stop">Zatrzymaj</string>
-    <string name="transcribing_sheet_title">Transkrypcja</string>
-    <string name="transcript_action_busy">Transkrypcja…</string>
-    <string name="transcript_action_open">Przeczytaj transkrypcję</string>
-    <string name="transcript_action_retry">Transkrypcja nie powiodła się — spróbuj ponownie</string>
-    <string name="transcript_action_transcribe">Transkrybuj tę rozmowę</string>
-    <string name="transcript_action_transcribe_short">Transkrybuj</string>
-    <string name="transcript_delete">Usuń tekst</string>
-    <string name="transcript_delete_confirm_message">Transkrypcja %1$s zostanie usunięta. Samo nagranie pozostanie i możesz je ponownie przepisać później.</string>
-    <string name="transcript_delete_confirm_message_text_only">Za tymi słowami nie ma nagrania: usunięcie transkrypcji %1$s usuwa całość i nie da się jej przywrócić.</string>
-    <string name="transcript_delete_confirm_title">Usunąć tę transkrypcję?</string>
-    <string name="transcript_export_chooser">Udostępnij transkrypcję</string>
-    <string name="transcript_export_failed">Nie udało się wyeksportować transkrypcji</string>
-    <string name="transcript_loading">Wczytywanie transkrypcji…</string>
-    <string name="transcript_no_model_message">Transkrypcja odbywa się na tym telefonie, więc najpierw trzeba pobrać model mowy. Możesz go wybrać i pobrać w Ustawieniach.</string>
-    <string name="transcript_no_model_open_settings">Otwórz ustawienia</string>
-    <string name="transcript_no_model_title">Brak modelu mowy</string>
-    <string name="transcript_no_speech">W tym nagraniu nie rozpoznano mowy.</string>
-    <string name="transcript_none">Ta rozmowa nie ma transkrypcji. Nigdy jej nie utworzono albo tekst został usunięty.</string>
-    <string name="transcript_note_add">Dodaj notatkę</string>
-    <string name="transcript_note_hint">O czym to było albo co trzeba zrobić…</string>
-    <string name="transcript_retranscribe">Transkrybuj ponownie</string>
-    <string name="transcript_share">Udostępnij</string>
-    <string name="transcript_previous_call">Poprzednia</string>
-    <string name="transcript_next_call">Następna</string>
-    <string name="transcript_follow_playback">Śledź odtwarzanie</string>
-    <string name="transcript_share_text">Tekst</string>
-    <string name="transcript_speaker_a">Rozmówca A</string>
-    <string name="transcript_speaker_b">Rozmówca B</string>
-    <string name="transcript_speaker_you">Ja</string>
-    <string name="transcript_speakers_correct">Poprawnie</string>
-    <string name="transcript_speakers_guessed">Imiona ustalone automatycznie</string>
-    <string name="transcript_speakers_swap">Zamień</string>
-    <string name="transcript_speakers_swap_names">Zamień imiona</string>
-    <string name="transcript_speakers_which_is_you">Który to ty?</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -799,7 +799,7 @@
     
     
     
-    <string name="transcripts_search_hint">Szukaj w wypowiedziach</string>
+    
     <string name="update_popup_later">Później</string>
     <string name="update_popup_text">Nowa wersja jest gotowa do instalacji. Aktualizacja utrzymuje niezawodność nagrywania i wprowadza najnowsze poprawki.</string>
     <string name="update_popup_title">CallVault %1$s jest dostępny</string>
@@ -898,13 +898,13 @@
     <string name="wizard_updates_subtitle">CallVault nie jest w żadnym sklepie z aplikacjami, więc sam sprawdza nowe wersje na GitHubie.</string>
     <string name="wizard_updates_title">Bądź na bieżąco</string>
     
-    <string name="transcribe_again_title">Transkrybować ponownie?</string>
-    <string name="transcribe_again_message_one">%1$s zostanie przetranskrybowane ponownie. Jeśli nowe uruchomienie się nie powiedzie lub zostanie zatrzymane, obecna transkrypcja zostanie zachowana.</string>
-    <string name="transcribe_again_message_many">Transkrypcje do ponowienia: %1$d. Jeśli uruchomienie się nie powiedzie lub zostanie zatrzymane, ta transkrypcja pozostanie bez zmian.</string>
-    <string name="transcribe_again_run_on">Uruchom na</string>
-    <string name="transcribe_again_estimate">Około %1$s.</string>
-    <string name="transcribe_again_delete_summary">Usuń też podsumowanie. Zostało napisane na podstawie starego tekstu.</string>
-    <string name="transcribe_again_running">Ponowna transkrypcja… %1$d%%</string>
-    <string name="transcribe_again_running_plain">Ponowna transkrypcja…</string>
-    <string name="transcribe_again_waiting">Oczekiwanie na ponowną transkrypcję…</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </resources>

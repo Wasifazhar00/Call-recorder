@@ -636,59 +636,59 @@
     <string name="support_not_now">以后再说</string>
     <string name="tile_recording_on">录音已开启</string>
     <string name="tile_recording_stopped">已停止</string>
-    <string name="transcribe_confirm_dont_ask">不再询问</string>
-    <string name="transcribe_long_call_line">这通电话时长 %1$s。在此手机上，转写大约需要通话时长的 %2$s 倍——约 %3$s。</string>
     
-    <string name="transcribe_confirm_title">大约需要 %1$s</string>
-    <string name="transcribe_confirm_title_first_run">第一次可能需要一些时间</string>
-    <string name="transcribe_confirm_title_unknown">要转写这通电话吗？</string>
-    <string name="transcribe_estimate_hours">%1$d 小时 %2$d 分</string>
-    <string name="transcribe_estimate_minutes">%1$d 分钟</string>
-    <string name="transcribe_estimate_under_minute">一分钟</string>
-    <string name="transcribe_language_confirm">转写</string>
-    <string name="transcribe_language_message">将 %1$s 转写为：</string>
-    <string name="transcribe_language_title">使用哪种语言？</string>
-    <string name="transcribing_pill_percent">%1$d%%</string>
-    <string name="transcribing_pill_progress">%1$d/%2$d</string>
-    <string name="transcribing_pill_progress_percent">%1$d/%2$d · %3$d%%</string>
-    <string name="transcribing_pill_working">转写中</string>
-    <string name="transcribing_sheet_remaining">剩余：%1$d</string>
-    <string name="transcribing_sheet_starting">正在开始…</string>
-    <string name="transcribing_sheet_stop">停止</string>
-    <string name="transcribing_sheet_title">转写中</string>
-    <string name="transcript_action_busy">正在转写…</string>
-    <string name="transcript_action_open">阅读转写</string>
-    <string name="transcript_action_retry">转写失败 — 重试</string>
-    <string name="transcript_action_transcribe">转写这通通话</string>
-    <string name="transcript_action_transcribe_short">转写</string>
-    <string name="transcript_delete">删除文字</string>
-    <string name="transcript_delete_confirm_message">%1$s 的文字记录将被删除。录音本身会保留，稍后可以重新转写。</string>
-    <string name="transcript_delete_confirm_message_text_only">这些文字背后已经没有录音：删除 %1$s 的转写就是把整条都删掉，而且无法恢复。</string>
-    <string name="transcript_delete_confirm_title">删除这份文字记录？</string>
-    <string name="transcript_export_chooser">分享转录文本</string>
-    <string name="transcript_export_failed">无法导出转录文本</string>
-    <string name="transcript_loading">正在加载转写…</string>
-    <string name="transcript_no_model_message">转写在本机进行，因此需要先下载语音模型。你可以在设置中选择并下载。</string>
-    <string name="transcript_no_model_open_settings">打开设置</string>
-    <string name="transcript_no_model_title">尚无语音模型</string>
-    <string name="transcript_no_speech">这段录音中未识别到语音。</string>
-    <string name="transcript_none">这通电话没有转写文本。它从未转写过，或者文本已被删除。</string>
-    <string name="transcript_note_add">添加备注</string>
-    <string name="transcript_note_hint">内容是什么，或接下来要做什么…</string>
-    <string name="transcript_retranscribe">重新转写</string>
-    <string name="transcript_share">分享</string>
-    <string name="transcript_previous_call">上一个</string>
-    <string name="transcript_next_call">下一个</string>
-    <string name="transcript_follow_playback">跟随播放</string>
-    <string name="transcript_share_text">文本</string>
-    <string name="transcript_speaker_a">说话人 A</string>
-    <string name="transcript_speaker_b">说话人 B</string>
-    <string name="transcript_speaker_you">我</string>
-    <string name="transcript_speakers_correct">正确</string>
-    <string name="transcript_speakers_guessed">姓名为自动判断</string>
-    <string name="transcript_speakers_swap">对调</string>
-    <string name="transcript_speakers_swap_names">对调姓名</string>
-    <string name="transcript_speakers_which_is_you">哪一位是你？</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -785,7 +785,7 @@
     
     
     
-    <string name="transcripts_search_hint">搜索通话内容</string>
+    
     <string name="update_popup_later">稍后</string>
     <string name="update_popup_text">新版本已可安装。更新可保持录音稳定并带来最新修复。</string>
     <string name="update_popup_title">CallVault %1$s 可用</string>
@@ -884,13 +884,13 @@
     <string name="wizard_updates_subtitle">CallVault 不在任何应用商店上架，因此会自行到 GitHub 查看新版本。</string>
     <string name="wizard_updates_title">保持最新</string>
     
-    <string name="transcribe_again_title">重新转写？</string>
-    <string name="transcribe_again_message_one">将重新转写 %1$s。如果新的转写失败或被停止，会保留当前的转写。</string>
-    <string name="transcribe_again_message_many">要重新转写的数量：%1$d。如果某次转写失败或被停止，该转写保持不变。</string>
-    <string name="transcribe_again_run_on">运行于</string>
-    <string name="transcribe_again_estimate">约 %1$s。</string>
-    <string name="transcribe_again_delete_summary">同时删除摘要。它是根据旧文本写的。</string>
-    <string name="transcribe_again_running">正在重新转写… %1$d%%</string>
-    <string name="transcribe_again_running_plain">正在重新转写…</string>
-    <string name="transcribe_again_waiting">等待重新转写…</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </resources>

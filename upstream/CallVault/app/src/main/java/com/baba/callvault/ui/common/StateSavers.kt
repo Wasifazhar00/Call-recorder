@@ -96,39 +96,6 @@ val LibrarySelectionStateSaver: Saver<LibrarySelection, Any> = listSaver(
     restore = { decodeLibrarySelection(it) },
 )
 
-// ---- pending transcribe confirmation ----
-
-internal fun encodeTranscribeRequest(request: TranscribeRequest): List<String> = listOf(
-    request.displayName,
-    request.estimateMs?.toString() ?: ABSENT,
-    request.language ?: ABSENT,
-    request.audioMs.toString(),
-)
-
-internal fun decodeTranscribeRequest(stored: List<String>): TranscribeRequest = TranscribeRequest(
-    stored[0],
-    // Deliberately not `?: 0`. A null estimate means "we do not know"; zero would be quoted back
-    // to the user as "this will take about 0 seconds".
-    stored.getOrNull(1)?.takeIf { it != ABSENT }?.toLongOrNull(),
-    // Null means "use the configured language", which is not the same as any particular language.
-    stored.getOrNull(2)?.takeIf { it != ABSENT },
-    // Absent in a state saved before the field existed; unknown length means no long-call line.
-    stored.getOrNull(3)?.toLongOrNull() ?: 0L,
-)
-
-/**
- * Nullable state, so this is a raw [Saver] rather than a `listSaver`: Compose only calls `restore`
- * for a value that was saved as non-null, and asserts the result is non-null. Returning a marker
- * list for "nothing pending" would therefore crash on restore; returning null does not.
- */
-val TranscribeRequestStateSaver: Saver<TranscribeRequest?, Any> = Saver(
-    save = { request -> request?.let { ArrayList(encodeTranscribeRequest(it)) } },
-    restore = { raw ->
-        @Suppress("UNCHECKED_CAST")
-        (raw as? List<String>)?.takeIf { it.isNotEmpty() }?.let(::decodeTranscribeRequest)
-    },
-)
-
 // ---- bulk delete scope ----
 
 internal fun encodeDeleteScope(scope: DeleteScope): String = scope.name

@@ -156,7 +156,6 @@ import androidx.compose.ui.layout.layout
 import com.baba.callvault.ui.common.DeleteRecordingDialog
 import com.baba.callvault.ui.common.SeekBar
 import com.baba.callvault.system.copyToClipboard
-import com.baba.callvault.system.sharePlainText
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip

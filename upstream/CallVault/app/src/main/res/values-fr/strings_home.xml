@@ -73,39 +73,39 @@
     <string name="home_whatsnew_title">Nouveautés</string>
     <string name="offline_recording_disabling">Désactivation de l\'enregistrement sans Wi-Fi…</string>
     <string name="offline_recording_on">L\'enregistrement sans Wi-Fi est activé.</string>
-    <string name="whatsnew_145_body">Sur de nombreux téléphones, verrouiller l\'écran pendant un appel arrêtait l\'enregistrement en cours de route. C\'est corrigé, et CallVault vous avertit désormais si le réglage USB de votre téléphone en est la cause.</string>
-    <string name="whatsnew_145_title">L\'enregistrement continue au verrouillage de l\'écran</string>
-    <string name="whatsnew_146_body">Android peut arrêter le service auxiliaire de CallVault à tout moment, ce qui coupait auparavant l\'enregistrement et vous laissait la moitié d\'un appel. Avec cette option activée, un enregistrement déjà en cours va malgré tout jusqu\'au bout.</string>
-    <string name="whatsnew_146_title">Enregistrement résilient</string>
-    <string name="whatsnew_146_where">Paramètres ▸ Expérimental ▸ Résilience</string>
-    <string name="whatsnew_147_body">CallVault peut désormais enregistrer les appels passés dans des applications comme WhatsApp, Signal et Telegram — les deux côtés de la conversation, pas seulement votre voix. Les enregistrements indiquent dans quelle application l\'appel a eu lieu, ainsi que le nom du contact lorsque l\'application le fournit.\n\nExpérimental : cela fonctionne avec certaines applications et pas avec d\'autres, et une application peut bloquer l\'enregistrement à tout moment lors d\'une mise à jour.</string>
-    <string name="whatsnew_147_title">Enregistrer les appels des applications (VoIP)</string>
-    <string name="whatsnew_147_where">Paramètres ▸ Expérimental ▸ Appels VoIP</string>
-    <string name="whatsnew_148_body">Sur certains téléphones, CallVault activait et désactivait sans cesse le débogage sans fil sans jamais être prêt à enregistrer. C\'est corrigé. Là où le débogage sans fil est le seul moyen d\'accès, CallVault le laisse désormais activé et vous indique quel réglage permettrait de le désactiver à nouveau.\n\nAussi corrigé : un appel d\'application pouvait signaler un échec alors qu\'il s\'était bien enregistré, et pouvait être attribué à la mauvaise application.</string>
-    <string name="whatsnew_148_title">Un démarrage plus fiable</string>
-    <string name="whatsnew_150_body">Activer le débogage USB permet à CallVault de désactiver le débogage sans fil et de le laisser désactivé. Aucun câble n\'est nécessaire et, contrairement au débogage sans fil, il n\'ouvre aucun port réseau — c\'est donc le plus sûr des deux à laisser activé. Facultatif : l\'enregistrement fonctionne dans les deux cas.\n\nAussi corrigé : désactiver le débogage USB pouvait empêcher CallVault d\'enregistrer, sans le dire.</string>
-    <string name="whatsnew_150_title">Désactiver le débogage sans fil</string>
-    <string name="whatsnew_150_where">Paramètres ▸ Expérimental ▸ Débogage USB</string>
-    <string name="whatsnew_153_body">La carte d\'état vous indique désormais si l\'enregistrement a réellement fonctionné, d\'après vos appels réels et non d\'après un voyant vert qui signifie seulement que l\'application a démarré. Si un appel n\'a pas été enregistré, elle le dit et en donne la raison : un dossier jamais défini, les options pour les développeurs désactivées, une autorisation perdue lors d\'une mise à jour.\n\nEn outre : CallVault parle maintenant le portugais du Brésil, et toutes les autres langues ont été mises à jour.</string>
-    <string name="whatsnew_153_title">Votre configuration, vérifiée par vos propres appels</string>
-    <string name="whatsnew_154_body">Un blocage rare de la connexion à l\'enregistreur pouvait désactiver l\'enregistrement en silence jusqu\'au redémarrage de l\'application, sans rien afficher à l\'écran. Le délai expire désormais et tout se rétablit tout seul.\n\nVous pouvez aussi choisir quand les enregistrements sont envoyés vers Drive : immédiatement, chaque jour ou chaque semaine. C\'est dans Paramètres ▸ Stockage, avec la Conservation, qui a rejoint la même section.</string>
-    <string name="whatsnew_154_title">Un enregistrement qui se rétablit seul</string>
-    <string name="whatsnew_155_body">Les réglages glissent désormais par-dessus l\'application au lieu de la remplacer, et sont regroupés pour que chaque écran soit une liste courte. Les enregistrements indiquent quand l\'appel a eu lieu et combien de temps il a duré.\n\nEn dessous : plusieurs façons de perdre ou d\'abîmer un enregistrement ont été corrigées, dont un son grésillant avec l\'enregistrement résilient et un côté manquant dans les appels VoIP sur les téléphones Samsung.</string>
-    <string name="whatsnew_155_title">Les réglages en panneau, et des enregistrements plus fiables</string>
-    <string name="whatsnew_156_body">Les appels téléphoniques et les appels dans les applis peuvent chacun s\'enregistrer automatiquement, demander d\'abord, ou être totalement ignorés : « appels dans les applis uniquement » est donc un vrai réglage, et non une combinaison à deviner.\n\nUn enregistrement peut être partagé, et un appui long permet d\'en sélectionner plusieurs à partager ou supprimer. Supprimer un enregistrement présent à la fois sur l\'appareil et dans Drive demande désormais quelles copies retirer.</string>
-    <string name="whatsnew_156_title">Choisir ce qui est enregistré, et faire le ménage</string>
-    <string name="whatsnew_156_where">Paramètres ▸ Enregistrement ▸ Appels téléphoniques</string>
-    <string name="whatsnew_157_body">Si vous aviez activé la suppression automatique, certains enregistrements étaient conservés indéfiniment sans le dire : la vérification ne voyait que les enregistrements dont CallVault gardait la trace, et les autres n\'étaient jamais supprimés, quel que soit leur âge. Sur un téléphone réglé sur une semaine, 131 fichiers avaient dépassé ce délai.\n\nLa vérification quotidienne lit désormais aussi vos dossiers d\'enregistrement : seul l\'âge décide. Seuls les fichiers nommés par CallVault sont concernés, et ceux dont la date est inconnue sont laissés tels quels.\n\nModifier l\'heure de la vérification prend également effet immédiatement, sans attendre un jour.</string>
-    <string name="whatsnew_157_title">La suppression automatique retire enfin tout ce qu\'elle doit</string>
-    <string name="whatsnew_157_where">Paramètres ▸ Stockage ▸ Conservation</string>
-    <string name="whatsnew_200_body">Deux grandes nouveautés, toutes deux entièrement sur votre téléphone. Rien n\'est envoyé, et les deux fonctionnent sans aucun réseau.\n\nLa transcription transforme un enregistrement en texte lisible et consultable, en quatorze langues. Appuyez sur une ligne pour aller à ce moment de l\'appel.\n\nLes résumés vont plus loin : de quoi il s\'agissait, ce qui a été décidé et ce que chacun s\'est engagé à faire — avec l\'heure à côté des points qui en ont une, un appui vous y emmène directement.\n\nChacun nécessite d\'abord le téléchargement d\'un modèle en Wi-Fi ; l\'application vous en indique le coût avant de commencer.</string>
-    <string name="whatsnew_200_title">Vos appels, transcrits — et résumés</string>
-    <string name="whatsnew_200_where">Paramètres ▸ Transcription et Paramètres ▸ Résumés d\'appel</string>
-    <string name="whatsnew_210_body">Les appels enregistrés à partir de maintenant sont transcrits avec l\'interlocuteur en regard de chaque ligne.\n\nCela se lit dans l\'appel pendant son enregistrement — votre téléphone garde les deux côtés séparés avant de les mélanger — sans temps supplémentaire, sans téléchargement et sans supposition. C\'est impossible pour les appels déjà enregistrés : cette information n\'existe que pendant l\'enregistrement.\n\nLes deux côtés commencent comme Interlocuteur A et Interlocuteur B. Dès que deux appels sortants s\'accordent sur qui est qui, ils deviennent vous et la personne à qui vous parliez — dans la transcription, dans ce que vous copiez ou partagez, et dans le résumé.</string>
-    <string name="whatsnew_210_title">Les transcriptions indiquent qui parlait</string>
-    <string name="whatsnew_210_where">Tout appel enregistré à partir de maintenant, dans sa transcription</string>
-    <string name="whatsnew_211_body">La transcription passe désormais les silences avant que le modèle ne lise l\'appel, et pèse plusieurs transcriptions possibles au lieu de retenir le premier mot venu. Malgré ce travail supplémentaire, elle est un peu plus rapide qu\'avant, et sur un appel de test elle a récupéré une phrase entière que la version précédente avait laissée tomber.\n\nLes résumés ne se répètent plus : cela venait de la liste de points, qui n\'avait pas de véritable limite. Ils peuvent aussi en dire davantage : les points étaient plafonnés à cinq et chacun devait tenir en une seule ligne courte, et ces deux consignes étaient suivies au détriment du contenu. Un résumé long dans une langue qui a besoin de plus de mots — le français en fait partie — n\'est plus jeté faute de place.\n\nLes enregistrements étaient par ailleurs dégradés en silence dès l\'entrée : les ramener à la fréquence d\'échantillonnage attendue par le modèle ajoutait du bruit à la parole au lieu de le filtrer. Les appels sortants étaient les plus touchés, car ce sont eux qui portent le plus votre propre voix.</string>
-    <string name="whatsnew_211_title">De meilleures transcriptions, de meilleurs résumés</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <plurals name="merge_row_badge">
         <item quantity="one">%1$d appel</item>
         <item quantity="other">%1$d appels</item>
@@ -125,7 +125,7 @@
     <string name="settings_merge_keep_originals_description">Après une fusion, laisser également sur le téléphone les appels dont elle est issue. Désactivé par défaut, afin qu’une fusion ne laisse qu’un seul enregistrement. Séparer un appel fusionné fonctionne dans les deux cas.</string>
     <string name="settings_merge_keep_originals_title">Conserver les originaux après la fusion</string>
     <string name="unmerge_confirm">Séparer</string>
-    <string name="unmerge_message">It becomes these calls again, each with its recording details and marks it had:</string>
+    
     <string name="unmerge_title">Séparer cet appel ?</string>
     <string name="merge_note_will_delete">Les autres appels sont supprimés. Les séparer plus tard les fait revenir.</string>
     <string name="merge_note_will_keep">Les autres appels sont également conservés sur le téléphone.</string>
@@ -147,131 +147,20 @@
         <item>Quand un appel n’a pas été enregistré parce que CallVault avait été arrêté de force, la carte le dit</item>
     </string-array>
     <string name="whatsnew_249_title">Appels d\'applis plus clairs, et prêt juste après les mises à jour</string>
-    <string-array name="whatsnew_249_items">
-        <item>Moins d\'écho sur les appels d\'applis avec les téléphones dont le micro capte l\'écouteur</item>
-        <item>Les appels Telegram s\'enregistrent jusqu\'au bout, avec le nom et l\'icône de Telegram</item>
-        <item>Les appels d\'applis qui se terminent avant le début de l\'enregistrement ne laissent plus de fichier vide</item>
-        <item>L\'enregistrement est prêt quelques secondes après une mise à jour</item>
-        <item>Les appels de toute durée peuvent être transcrits ; pour les longs, la durée prévue s\'affiche</item>
-        <item>Tapez pour trouver une langue dans la liste des langues, et l\'ourdou pour la transcription</item>
-        <item>Ne jamais désactiver le débogage sans fil — un nouveau bouton dans Paramètres ▸ Connexion</item>
-        <item>Votre propre serveur de transcription peut utiliser http:// sur votre propre réseau</item>
-        <item>Les Paramètres s\'ouvrent toujours en pages séparées ; la vue classique a disparu</item>
-    </string-array>
-    <string name="whatsnew_248_title">Votre propre clé de transcription, et une lecture plus simple</string>
-    <string-array name="whatsnew_248_items">
-        <item>Transcrire avec votre propre clé — Groq, OpenRouter ou votre serveur, en secondes plutôt qu\'en minutes (Paramètres ▸ Où transcrire)</item>
-        <item>Lecture directe depuis la liste des enregistrements, avec une barre pour aller n\'importe où</item>
-        <item>Précédent et Suivant pendant la lecture d\'une transcription, et un bouton « Suivre la lecture »</item>
-        <item>L\'import sur la page Transcriptions tient en un bouton : garder l\'audio ou seulement la transcription</item>
-        <item>Les longs appels de 45 minutes ou plus se transcrivent, s\'importent et affichent à nouveau leur forme d\'onde</item>
-        <item>Les téléchargements de modèles sur données mobiles demandent d\'abord, au lieu d\'attendre le Wi-Fi</item>
-        <item>Un modèle vocal adapté au persan et une meilleure prise en charge de TalkBack</item>
-        <item>Se connecte sur les téléphones qui masquent l\'adresse du débogage sans fil</item>
-    </string-array>
-    <string name="whatsnew_247_title">Nouveaux réglages, Shizuku rattrape son retard, et l’ukrainien</string>
-    <string-array name="whatsnew_247_items">
-        <item>Nouvelle présentation des réglages — chaque page n’affiche que ses propres réglages, avec les détails derrière ⓘ ; la vue classique est à un toucher</item>
-        <item>Configuration simplifiée — une ligne par étape, comme les nouveaux réglages</item>
-        <item>Le mode Shizuku rattrape son retard — appels d’applis, enregistrement résilient et noms des interlocuteurs y fonctionnent aussi, et les appels téléphoniques démarrent plus vite</item>
-        <item>Ukrainien — nouvelle langue de l’appli et de transcription ; le persan peut aussi être fixé pour la transcription</item>
-        <item>Masquer les enregistrements — gardez vos enregistrements hors des lecteurs de musique et des galeries</item>
-        <item>Importer et sauvegarder les modèles — utilisez un fichier de modèle que vous avez déjà, et gardez une copie avant une réinstallation</item>
-        <item>Approuver automatiquement les nouveaux réseaux Wi-Fi — facultatif : l’enregistrement n’attend plus votre « Autoriser »</item>
-        <item>Ignorer aussi les contacts exclus lors des appels d’applis</item>
-        <item>Noms de fichiers Honor / Huawei — l’appli Téléphone d’Honor peut lire les enregistrements depuis son historique d’appels</item>
-        <item>Les appels d’applis s’enregistrent sur les téléphones Honor sous MagicOS 11</item>
-        <item>Corrections — CallVault ne se bat plus avec le watchdog de Shizuku, l’enregistreur Shizuku revient après qu’Android l’a arrêté, les noms de fichiers commençant par le contact ou le numéro fusionnent et se retrouvent à nouveau, les résumés grecs et persans sont dans la bonne langue, et un correctif de sécurité pour l’enregistreur</item>
-    </string-array>
-    <string name="whatsnew_246_title">Un interrupteur général, le grec et des corrections</string>
-    <string-array name="whatsnew_246_items">
-        <item>Interrupteur général marche/arrêt — activez ou désactivez tout l’enregistrement, appels réseau et appels d’applis, depuis la carte d’accueil ou les Réglages rapides (résiste à un redémarrage)</item>
-        <item>Transcription en grec</item>
-        <item>Tout sélectionner / tout effacer sur chaque page de la bibliothèque</item>
-        <item>Triez la liste des appels ; le numéro, la date et l’heure apparaissent maintenant au-dessus de chaque transcription</item>
-        <item>Les noms de contact s’affichent dès que vous enregistrez le contact — sans réenregistrer</item>
-        <item>Les transcriptions et les fichiers de détails arrivent désormais aussi sur Drive avec la synchro “Immédiate”, et vous pouvez fusionner les appels présents uniquement sur Drive</item>
-        <item>Le fichier de détails peut contenir les tours de parole, pour les outils qui le lisent</item>
-        <item>Corrections — les longs appels se parcourent à nouveau, plus de fausse notification “Appuyez pour démarrer l’enregistrement” pendant les appels d’applis, et “Supprimer les deux copies” efface chaque copie</item>
-    </string-array>
-    <string name="whatsnew_245_title">Nouvelles langues, sauvegardes et plus encore</string>
-    <string-array name="whatsnew_245_items">
-        <item>Persan et arabe — deux nouvelles langues de l\'appli, de droite à gauche</item>
-        <item>Appels d\'applis sur vivo — pour enregistrer l\'autre personne, activez l\'Enregistreur de vivo → Enregistrement des appels dans les applications</item>
-        <item>Sauvegardes de transcriptions — enregistrez les transcriptions et les notes en texte à côté de chaque enregistrement</item>
-        <item>Modèles de nom de fichier — nouveaux ordres commençant par le contact ou le numéro</item>
-        <item>Export et import — sauvegardez vos paramètres dans un fichier</item>
-        <item>Corrigé — fini le faux « Un appel a été interrompu »</item>
-    </string-array>
-    <string name="whatsnew_244_title">Enregistrement plus fiable, réassociation facile et alertes de mise à jour</string>
-    <string name="whatsnew_244_where">Réglages ▸ Fiabilité ▸ Réassocier</string>
-    <string-array name="whatsnew_244_items">
-        <item>Nouveau — Si votre téléphone ferme CallVault pendant un appel, la partie déjà enregistrée est sauvegardée et vous êtes prévenu</item>
-        <item>Nouveau — Réassociez depuis les Réglages si la connexion à l\'enregistreur est perdue, sans réinstaller</item>
-        <item>Nouveau — Une fenêtre et des vérifications plus fréquentes vous préviennent dès qu\'une nouvelle version est disponible</item>
-        <item>Modifié — Les réglages que votre version d\'Android ne prend pas en charge sont grisés, avec la raison</item>
-    </string-array>
-    <string name="whatsnew_243_title">Appels d\'applis synchronisés, notes enregistrées pendant la saisie, et n\'enregistrer que qui vous voulez</string>
-    <string name="whatsnew_243_where">Paramètres ▸ Enregistrement ▸ Appels entrants ▸ N\'enregistrer que les contacts sélectionnés</string>
-    <string-array name="whatsnew_243_items">
-        <item>Nouveau — N\'enregistrer que les contacts choisis, pour les appels entrants ou sortants</item>
-        <item>Corrigé — Dans les appels d\'applis, l\'autre personne ne se décale plus par rapport à vous</item>
-        <item>Corrigé — Saisir une note garde chaque lettre, et affiche Enregistré</item>
-        <item>Corrigé — Plus de notification d\'appel qui reste affichée après l\'appel</item>
-        <item>Corrigé — Si vous avez installé une version de test, la mise à jour finale vous est proposée</item>
-        <item>Corrigé — Un téléchargement de modèle raté est nettoyé et relancé, au lieu d\'échouer comme endommagé</item>
-        <item>Corrigé — Avec l\'enregistrement résilient activé, certains téléphones perdaient un appel sur deux</item>
-        <item>Corrigé — Les appels d\'applis s\'enregistrent sur les téléphones vivo et iQOO</item>
-    </string-array>
-    <string name="whatsnew_241_title">La recherche sur chaque page, et l\'enregistrement au décroché</string>
-    <string-array name="whatsnew_241_items">
-        <item>Nouveau — Une ligne de recherche dans Enregistrements, Transcriptions et Résumés : un contact ou un mot prononcé</item>
-        <item>Nouveau — N\'enregistrer un appel sortant qu\'une fois décroché (désactivé par défaut)</item>
-        <item>Nouveau — Les enregistrements Shizuku ont des étiquettes de locuteur</item>
-        <item>Corrigé — Les appels d\'applications sur Android 14 et antérieur portent le nom du contact</item>
-        <item>Corrigé — Une mise à jour en mode Shizuku ne coûte plus l\'appel suivant</item>
-        <item>Corrigé — Une ligne partagée par les deux locuteurs est coupée au changement de locuteur</item>
-        <item>Corrigé — Une transcription dans le mauvais alphabet est décodée à nouveau</item>
-        <item>Corrigé — Une ligne où une seule personne a parlé n\'est plus laissée sans nom</item>
-    </string-array>
-    <string name="whatsnew_241_where">Paramètres ▸ Enregistrement ▸ Appels sortants ▸ Démarrer quand on décroche</string>
-    <string name="whatsnew_240_title">Enregistrements, transcriptions et résumés ont chacun leur place</string>
-    <string-array name="whatsnew_240_items">
-        <item>Nouveau — Un écran d\'accueil avec Enregistrements, Transcriptions et Résumés, qui rouvre là où vous étiez</item>
-        <item>Nouveau — Importez un fichier audio, ou partagez-en un vers CallVault depuis une autre application</item>
-        <item>Nouveau — Importez seulement pour le texte : l\'audio est supprimé une fois la transcription prête</item>
-        <item>Nouveau — Lisez une transcription sur sa propre page et ajoutez-y une note</item>
-        <item>Nouveau — Sélectionnez plusieurs transcriptions ou résumés à la fois pour les supprimer, partager ou enregistrer</item>
-        <item>Nouveau — Une notification quand une transcription est terminée</item>
-        <item>Corrigé — Redémarrer le téléphone ne le laisse plus sans enregistrement</item>
-        <item>Corrigé — Shizuku est relancé quand CallVault doit l\'arrêter</item>
-        <item>Corrigé — La configuration fonctionne sous Android 17</item>
-    </string-array>
-    <string name="whatsnew_240_where">Accueil ▸ Transcriptions ▸ Importer un audio</string>
-    <string name="whatsnew_230_title">Des appels qui étaient une seule conversation peuvent être un seul enregistrement</string>
-    <string-array name="whatsnew_230_items">
-        <item>Nouveau — Fusionner en un enregistrement les appels d\'une même conversation</item>
-        <item>Nouveau — Enregistrer le rapport de bug dans le dossier de votre choix</item>
-        <item>Corrigé — Tourner le téléphone conserve votre place</item>
-        <item>Corrigé — Plus de grésillement dans les enregistrements</item>
-        <item>Corrigé — Un enregistrement qui ne démarre pas le signale</item>
-        <item>Corrigé — Passer en AAC conserve l\'appel suivant</item>
-        <item>Corrigé — Le répondeur n\'est plus consigné comme appel manqué</item>
-        <item>Corrigé — Horodatages corrects après une longue pause</item>
-        <item>Corrigé — La mise à jour conserve l\'enregistrement suivant</item>
-        <item>Corrigé — Mode masqué de Shizuku pris en charge</item>
-        <item>Corrigé — Le débogage sans fil que vous activez reste activé</item>
-        <item>Corrigé — L\'enregistrement hors Wi-Fi indique la vraie cause de l\'échec</item>
-        <item>Corrigé — Le point du micro ne reste plus allumé après l\'appel</item>
-        <item>Corrigé — La progression de la transcription ne repart plus de zéro en tournant l\'écran</item>
-        <item>Corrigé — Supprimer un appel arrête sa transcription</item>
-        <item>Corrigé — Plus de notification de chauffe pour une transcription lancée par vous</item>
-        <item>Corrigé — Les appels enregistrés automatiquement n\'affichent plus un bouton Enregistrer</item>
-        <item>Corrigé — La progression de la transcription ne bloque plus aux trois quarts</item>
-        <item>Corrigé — Un appel enregistré affiche une seule notification, pas deux</item>
-        <item>Corrigé — Le journal s\'affiche en plein écran et revient à la ligne</item>
-    </string-array>
-    <string name="whatsnew_230_where">Le menu ⋮ d’un enregistrement ▸ Fusionner avec un autre appel</string>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <string name="merge_progress_title">Fusion</string>
     <string name="unmerge_progress_title">Séparation</string>
     <string name="merge_progress_step">Appel %1$d sur %2$d</string>
@@ -282,11 +171,11 @@
     <string name="unmerge_progress_working">Séparation des appels</string>
     <string name="merge_progress_downloading">Téléchargement depuis Drive</string>
     <string name="merge_progress_cleaning_up">Nettoyage</string>
-    <string name="whatsnew_220_body">Marquez un moment pendant que vous parlez encore. Un bouton sur la notification d’appel pose un signet là où vous appuyez, et l’enregistrement les affiche sous forme de puces qui lisent à partir de ce point — pour les appels téléphoniques comme pour ceux des applications. Les appels d’applications ont enfin des commandes : pause, reprise, arrêt et marquage, là où l’on ne pouvait que démarrer et terminer.\n\nRetrouver un appel est plus simple : mettez une étoile sur ceux qui comptent, étiquetez-les avec vos propres mots, et cherchez aussi dans les résumés et vos notes, pas seulement dans les paroles. Les transcriptions s’exportent en texte, Markdown, SRT, VTT ou JSON.\n\nCallVault signale aussi lorsqu’il a cessé de fonctionner sans le dire — si l’enregistrement ne démarre pas après un redémarrage, ou si les enregistrements n’arrivent plus sur Drive. Les deux étaient silencieux jusqu’ici. Le nouveau rangement peut plafonner l’espace occupé ou écarter les enregistrements très courts. Tout est désactivé par défaut, et un enregistrement étoilé n’est jamais supprimé automatiquement.</string>
-    <string name="whatsnew_220_title">Retrouver un appel, et le piloter pendant qu’il a lieu</string>
-    <string name="whatsnew_220_where">Paramètres ▸ Stockage ▸ Conservation pour les options de rangement</string>
-    <string name="whatsnew_221_body">CallVault s’ouvre de nouveau rapidement, et le reste quel que soit le nombre d’appels conservés. La version 2.2.0 relisait la durée de chaque enregistrement à chaque affichage de la liste : avec quelques dizaines d’appels, la liste devenait assez lente pour qu’un appel enregistré quelques minutes plus tôt semble ne jamais avoir été enregistré.\n\nL’avertissement indiquant que les enregistrements n’arrivaient plus sur Google Drive n’apparaît plus lorsque ce n’est pas le cas. Deux personnes ont été averties d’un échec de sauvegarde alors que chaque enregistrement arrivait parfaitement.\n\nLes titres à l’intérieur d’une transcription exportée, le nombre d’applications sélectionnées et le bouton de retour suivent désormais la langue que vous avez choisie au lieu de rester en anglais. Le rapport de débogage peut également indiquer quelle application occupe le microphone, pour un problème qui se laisse difficilement saisir.</string>
-    <string name="whatsnew_221_title">Plus rapide à ouvrir, et plus discrète sur les problèmes qui n’existent pas</string>
+    
+    
+    
+    
+    
     <string name="offline_failed_no_wifi">Activation impossible — vous n\'êtes pas connecté au Wi-Fi. Connectez-vous une fois à n\'importe quel réseau Wi-Fi, puis réessayez.</string>
     <string name="offline_failed_wd_refused">Activation impossible — Android n\'a pas autorisé le débogage sans fil sur ce réseau. Activez-le une fois dans les Options pour les développeurs, acceptez la demande, puis réessayez.</string>
     <string name="offline_failed_needs_usb">Activez d\'abord le débogage USB dans les paramètres de CallVault — l\'enregistrement hors Wi-Fi ne peut pas fonctionner sans lui.</string>
@@ -305,7 +194,6 @@
     
     
 
-    <!-- Transcripts: the two headings above the finished transcripts -->
     
     
     
@@ -314,7 +202,8 @@
     
     
     
-    <!-- Transcripts: bringing in audio CallVault did not record -->
+    
+    
     
     
     
@@ -329,7 +218,7 @@
     <string name="import_failed_copy">Le fichier n\'a pas pu être écrit dans votre dossier d\'enregistrements. Vérifiez qu\'il reste de la place sur le téléphone et que le dossier est toujours accessible.</string>
     
     <string name="home_row_imported">Importé</string>
-    <string name="home_row_text_only">Texte seul</string>
+    
     <!-- Menu de partage : audio envoyé à CallVault depuis une autre application -->
     <string name="share_import_label">Importer un audio</string>
     <string name="share_import_working_body">Copie en cours, et vérification que ce téléphone sait le lire.</string>
@@ -343,8 +232,8 @@
     <string name="share_import_not_set_up_body">CallVault n\'a pas fini sa configuration initiale : il n\'y a donc pas encore où ranger ce fichier. Ouvrez l\'application, terminez la configuration, puis repartagez le fichier.</string>
     <string name="share_import_choice_title">Que doit faire CallVault de ce fichier ?</string>
     <string name="share_import_choice_unnamed">L\'audio partagé</string>
-    <string name="import_choice_keep">Importer et transcrire</string>
-    <string name="import_choice_keep_hint">Garde l\'audio dans vos enregistrements et le transcrit.</string>
+    
+    
     
     
     

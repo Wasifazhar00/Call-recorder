@@ -21,18 +21,13 @@ private const val TAG = "CV:Share"
 /** Used when the provider cannot say what the file is — every recording is audio regardless. */
 private const val FALLBACK_MIME = "audio/*"
 
-/**
- * Shares a clip ("Share a part") with, optionally, what was said in it as the message text.
- *
- * The clip is a temporary file in the cache's `clips/` folder, exposed through the FileProvider for the share only.
- */
-fun Context.shareClip(file: java.io.File, mime: String, text: String?) {
+/** Shares an audio clip through the Android share sheet. */
+fun Context.shareClip(file: java.io.File, mime: String) {
     val uri = androidx.core.content.FileProvider.getUriForFile(this, "$packageName.fileprovider", file)
     val intent = Intent(Intent.ACTION_SEND).apply {
         type = mime
         putExtra(Intent.EXTRA_STREAM, uri)
         putExtra(Intent.EXTRA_SUBJECT, file.nameWithoutExtension)
-        if (text != null) putExtra(Intent.EXTRA_TEXT, text)
         addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         // The flag alone covers only what the extras name, so the URI has to be in the clip data too.
         clipData = ClipData.newRawUri(file.name, uri)
@@ -41,13 +36,13 @@ fun Context.shareClip(file: java.io.File, mime: String, text: String?) {
         if (this@shareClip !is Activity) addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     }
     // Length only, never the words: this log can end up in a report.
-    AppLogger.i(TAG, "Sharing a clip (${file.length()} bytes) with ${text?.length ?: 0} characters of transcript text")
+    AppLogger.i(TAG, "Sharing audio clip (${file.length()} bytes)")
     runCatching { startActivity(chooser) }
         .onFailure { AppLogger.w(TAG, "Could not open the share sheet for the clip '${file.name}': ${it.message}") }
 }
 
 /**
- * Sends a call's files together — its recording and the transcript and summary written beside it — in one share.
+ * Sends one or more call recordings together in one Android share action.
  *
  * The recording's URI belongs to the documents provider and the text files to our FileProvider; both can extend a
  * read grant, and every URI goes into the [ClipData] so the grant reaches all of them. The type is the files' own

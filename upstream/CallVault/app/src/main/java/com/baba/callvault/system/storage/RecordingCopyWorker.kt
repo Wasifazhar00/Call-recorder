@@ -96,7 +96,7 @@ class RecordingCopyWorker(ctx: Context, params: WorkerParameters) : CoroutineWor
         } else null
         val deletedLocally = deleteLocal && localDocument != null &&
             SafHelper.deleteDocument(localDocument, "the device copy of '$name'")
-        // A sidecar (.json/.md) has no catalog row of its own — it belongs to its recording, which was
+        // A metadata sidecar (.json) has no catalog row of its own — it belongs to its recording, which was
         // stamped when the audio uploaded — so there is nothing to mark. Only the audio copy updates the
         // catalog, so the Home list reflects where the file now lives without re-scanning the Drive folder.
         if (!isSidecar) {

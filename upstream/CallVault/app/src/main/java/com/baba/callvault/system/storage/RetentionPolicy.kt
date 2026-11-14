@@ -49,7 +49,7 @@ object RetentionPolicy {
      *
      * The second gate is imports, and it exists because the first one stops covering them. A file the user
      * imported is written by us and carries our timestamp, so the template alone would start letting the
-     * sweep delete it — a voice note someone brought in to transcribe, destroyed overnight by a retention
+     * sweep delete it — a voice note someone brought in, destroyed overnight by a retention
      * period they set for their calls. Retention is a promise about how long a *call* is kept; an import
      * was never a call, and the user still has nowhere else to have put it.
      */

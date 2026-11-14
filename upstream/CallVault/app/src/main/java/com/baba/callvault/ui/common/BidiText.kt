@@ -14,7 +14,7 @@ package com.baba.callvault.ui.common
  * Most of the calls this app records are Hebrew, and most of its UI is English, so nearly every place
  * a contact name appears is a mixed-direction paragraph. Without isolation the whole paragraph resolves
  * one way and the name is just characters inside it: a name of Hebrew followed by a digit rendered as
- * *"Transcribing 2 גבריאלb keeps your phone busy"*, with the digit and the Latin letter thrown to the
+ * *"Recording 2 גבריאלb keeps your phone busy"*, with the digit and the Latin letter thrown to the
  * wrong side.
  *
  * Unicode's isolate characters are the fix the standard provides for exactly this, and they work
@@ -50,11 +50,11 @@ object BidiText {
      * rather than on punctuation that has no direction of its own.
      *
      * Taken from the text and never from the language setting. That is what makes it right for all 99
-     * languages whisper supports rather than the handful in the dropdown, and right for a call that
+     * Unicode scripts supported by Android rather than a small hand-picked set, and right for a call that
      * changes language halfway through — each line simply reads the way it is written.
      *
      * Text with no strong character at all (digits, punctuation) is treated as left-to-right. Either
-     * answer would be defensible, but it must be a fixed one: choosing per line would make a transcript
+     * answer would be defensible, but it must be a fixed one: choosing per line would make a mixed-direction label
      * jump about as it scrolled.
      */
     fun isRtl(text: String): Boolean {

@@ -11,26 +11,24 @@ package com.baba.callvault.data.recordings
 /**
  * Which audio files CallVault will take in, and what it stores each of them as.
  *
- * The only reason to import a file is to transcribe it, so the only files worth accepting are the
- * ones this phone can decode. That is not a matter of taste: [com.baba.callvault.transcription.AudioDecoder]
- * hands the container to `MediaCodec.createDecoderByType` and then requires 16-bit PCM back, so a
- * format with no system decoder — or one whose decoder emits float — fails at transcription time,
- * long after the file was copied in, catalogued and listed.
+ * Imported audio must be decodable for playback and waveform generation. [com.baba.callvault.data.audio.AudioDecoder]
+ * uses `MediaCodec.createDecoderByType` and requires 16-bit PCM, so a format with no system decoder —
+ * or one whose decoder emits float — would fail later, after the file was copied and catalogued.
  *
  * **This list is half the gate, and the cheaper half.** It answers "is this a shape CallVault knows
  * how to store and name", which is all that can be known before any bytes have been read. The other
  * half is [AudioImport]'s decode probe, which asks the device itself whether it can actually read
  * *this* file — because the list cannot. Two files with the same extension are not equally
  * decodable: a 32-bit-float WAV and a 16-bit one are both `.wav`, and only one of them survives
- * [com.baba.callvault.transcription.AudioDecoder]'s 16-bit requirement.
+ * [com.baba.callvault.data.audio.AudioDecoder]'s 16-bit requirement.
  *
  * Accepting anything and discovering later produces the worst outcome available: a row in the user's
  * library that looks like every other row, plays (ExoPlayer and MediaCodec do not agree on what they
- * support), and silently cannot be transcribed. Turning the file down in the moment, with a reason,
+ * support), and silently cannot be decoded reliably. Turning the file down in the moment, with a reason,
  * is strictly better.
  *
  * The list was not guessed. Every entry is decoded on a device by
- * `com.baba.callvault.transcription.AudioImportFormatProbe`, which fails the build if reality and
+ * `AudioImport`'s device decode probe, which fails the build if reality and
  * this object part company.
  *
  * Nothing here grants a permission. The picker is SAF (`OpenDocument`), which returns a URI for the

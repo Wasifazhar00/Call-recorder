@@ -13,7 +13,7 @@ package com.baba.callvault.system.storage
  *
  * A misdial, a call that rang out, a wrong number answered and hung up — each leaves a file the user
  * has to delete by hand, and enough of them bury the calls that matter. This drops them at the moment
- * they finish, before anything is catalogued, transcribed or uploaded.
+ * they finish, before anything is catalogued or uploaded.
  *
  * A pure function with no Android dependency, because it is applied on **both** capture paths — the
  * carrier one through `RecordingForegroundService` and the app-call one through

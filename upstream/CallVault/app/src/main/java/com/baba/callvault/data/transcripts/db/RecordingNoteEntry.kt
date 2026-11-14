@@ -14,13 +14,11 @@ import androidx.room.PrimaryKey
 /**
  * What the user wrote about a call, in their own words.
  *
- * Not a transcript, which is why it exists alongside one: a transcript records what was said, a note
- * records what it meant — the price agreed, the thing to chase, the reason to ring back.
+ * A note records context the audio cannot preserve as structured data — the price agreed, the thing
+ * to chase, or the reason to ring back.
  *
- * It lives in this database and **not** in the recordings catalog for a reason that matters more here
- * than it does for transcripts: the catalog is a rebuildable cache with a destructive fallback, and a
- * transcript can at least be regenerated from the audio at the cost of CPU. A note cannot be
- * regenerated from anything. Losing one loses it for good.
+ * It lives outside the recordings catalog because that catalog is a rebuildable cache with a
+ * destructive fallback. A note cannot be regenerated from the audio. Losing one loses it for good.
  */
 @Entity(tableName = "recording_notes")
 data class RecordingNoteEntry(

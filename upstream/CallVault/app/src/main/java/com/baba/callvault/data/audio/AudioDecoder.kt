@@ -115,8 +115,8 @@ object AudioDecoder {
      * 48 kHz that is 4 bytes per sample where the source had 2, so fifteen minutes costs 86.4 MB of
      * `ShortArray` plus 172.8 MB of `FloatArray` — **259 MB against a 256 MB heap**.
      *
-     * That is where the old transcription length limit (since removed) came from. The limit was set empirically at
-     * the point transcription started failing, and this allocation is what it was measuring; nobody
+     * That is where the old long-recording decode limit (since removed) came from. The limit was set empirically at
+     * the point long recordings started failing, and this allocation is what it was measuring; nobody
      * realised the number had a cause. Reading the shorts directly and only ever materialising the
      * 16 kHz output takes the peak to roughly 144 MB, because the resampled array is a third the
      * length and the wide intermediate never exists.
@@ -202,7 +202,7 @@ object AudioDecoder {
     /**
      * Transition-band width in Hz, which is what actually sets the cost: a Hamming-windowed sinc needs
      * about `3.3 * inputRate / width` taps. 3 kHz buys 53 taps at 48 kHz — roughly one extra second of
-     * CPU on a 15-minute call, against whisper's minutes.
+     * CPU on a 15-minute call, against a CPU-bound pipeline.
      */
     private const val ANTI_ALIAS_TRANSITION_HZ = 3_000.0
 
@@ -220,14 +220,14 @@ object AudioDecoder {
      *
      * This used to be defended on the grounds that telephony carries nothing above ~3.4 kHz. That is
      * true of the *carrier downlink*, and it was measured on the PCM before encoding — but it is not
-     * true of the files the transcriber actually opens. Every capture path mixes in a local microphone
+     * true of the files the decoder receives. Every capture path mixes in a local microphone
      * that the network never band-limits: `VOICE_CALL` carries the uplink alongside the downlink, and
      * the VoIP path adds a plain full-band `MIC`. Measured across 13 real recordings from this device,
      * the energy that folds into 0–4 kHz sat at −26 dB relative to the signal there on average and
      * −17.5 dB at worst, outgoing carrier calls being the dirtiest. Filtering drops that to −94 dB on
      * average and −85 dB at worst.
      *
-     * For calibration: upstream whisper.cpp resamples through miniaudio, whose default 4th-order
+     * For calibration: a reference resampler uses miniaudio, whose default 4th-order
      * low-pass would reach −45 dB on the same material. A short windowed sinc is both cheaper to reason
      * about and better than the reference we are matching.
      *
@@ -310,7 +310,7 @@ object AudioDecoder {
      * Whether [frames] at [sampleRate] is a believable decode of a file declaring [expectedDurationUs].
      *
      * This check prevents an over-long or malformed decoded buffer from
-     * throw — it simply runs for as long as the buffer implies. A 45-second clip once transcribed for
+     * throw — it simply runs for as long as the buffer implies. A 45-second clip once decoded for
      * over eleven minutes before anyone could tell anything was wrong. Checking the arithmetic costs
      * nothing and converts that into an immediate, legible error.
      *
@@ -331,7 +331,7 @@ object AudioDecoder {
      * The recording's length in milliseconds, read from the container without decoding it.
      *
      * Milliseconds of work, because it only reads the track format — which is what makes an estimate
-     * possible the instant Transcribe is tapped, with nothing to wait for. Returns 0 when the container
+     * possible the instant decoding is requested, with nothing to wait for. Returns 0 when the container
      * declares no duration; callers must treat that as "unknown", not "empty".
      */
     fun durationMs(context: Context, uri: Uri): Long {
@@ -439,7 +439,7 @@ object AudioDecoder {
             check(!wholeFile || isPlausibleDuration(frames, decoded.sampleRate, expectedDurationUs)) {
                 "Decoded $frames frames at ${decoded.sampleRate} Hz " +
                     "(${frames * 1000L / decoded.sampleRate.coerceAtLeast(1)} ms) but the container " +
-                    "declares ${expectedDurationUs / 1000} ms — refusing to transcribe a malformed decode"
+                    "declares ${expectedDurationUs / 1000} ms — refusing a malformed decode"
             }
 
             AppLogger.i(
@@ -485,7 +485,7 @@ object AudioDecoder {
         // than trimming to the exact request — which would mean tracking a sample offset through every
         // later stage — the decoder REPORTS where its audio really starts, and the caller stitches
         // from that. Exact timestamps, no offset arithmetic, and a few extra frames of run-up that
-        // whisper is glad of anyway.
+        // the decoder benefits from anyway.
         if (fromUs > 0L) extractor.seekTo(fromUs, MediaExtractor.SEEK_TO_PREVIOUS_SYNC)
         var firstOutUs = -1L
 
