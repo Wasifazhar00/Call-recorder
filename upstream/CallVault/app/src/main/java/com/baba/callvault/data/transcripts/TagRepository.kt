@@ -9,7 +9,7 @@
 package com.baba.callvault.data.transcripts
 
 import android.content.Context
-import com.baba.callvault.data.transcripts.db.RecordingTagEntry
+import com.baba.callvault.data.recording metadata database.RecordingTagEntry
 import com.baba.callvault.data.transcripts.db.TagCount
 import com.baba.callvault.data.transcripts.db.TranscriptDatabase
 import com.baba.callvault.utils.AppLogger
@@ -25,7 +25,7 @@ import kotlinx.coroutines.flow.map
  * again. It is the best-evidenced gap in the whole product survey.
  *
  * Every read is guarded on the database existing, like the rest of this package: an install that has
- * never transcribed anything must not have a database created just to draw an empty chip row.
+ * never saved recording metadata must not have a database created just to draw an empty chip row.
  */
 object TagRepository {
 

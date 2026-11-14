@@ -9,7 +9,7 @@
 package com.baba.callvault.data.transcripts
 
 import android.content.Context
-import com.baba.callvault.data.transcripts.db.TranscriptDatabase
+import com.baba.callvault.data.recording metadata database.TranscriptDatabase
 import com.baba.callvault.utils.AppLogger
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
@@ -19,7 +19,7 @@ import kotlinx.coroutines.flow.flowOf
  * automatic deletes honour.
  *
  * Shaped like [TagRepository], including its rule that a *read* never creates the database: a device
- * that has never transcribed anything should not grow a `transcripts.db` merely because Home asked
+ * that has never saved recording metadata should not grow a `transcripts.db` merely because Home asked
  * whether anything is starred.
  */
 object FavouriteRepository {

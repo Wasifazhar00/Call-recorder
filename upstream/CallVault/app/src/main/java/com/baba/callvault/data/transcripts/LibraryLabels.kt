@@ -10,7 +10,7 @@ package com.baba.callvault.data.transcripts
 
 import android.content.Context
 import com.baba.callvault.data.recordings.RecordingsRepository.RecordingItem
-import com.baba.callvault.data.transcripts.db.RecordingLabelEntry
+import com.baba.callvault.data.recording metadata database.RecordingLabelEntry
 import com.baba.callvault.data.transcripts.db.TranscriptDatabase
 import com.baba.callvault.utils.AppLogger
 import kotlinx.coroutines.flow.Flow
@@ -38,7 +38,7 @@ object LibraryLabels {
 
     /**
      * The labels that [loaded] gives differently from [stored] — new recordings and renamed
-     * contacts — and nothing else. A recording that is gone keeps its label: an orphaned transcript
+     * contacts — and nothing else. A recording that is gone keeps its label: an orphaned recording label
      * is the very row that has nothing else to be named by.
      */
     fun changed(stored: List<RecordingLabelEntry>, loaded: List<RecordingItem>): List<RecordingLabelEntry> {
@@ -47,9 +47,9 @@ object LibraryLabels {
     }
 
     /**
-     * Records what [loaded] calls each recording. Only when the transcripts database already exists:
+     * Records what [loaded] calls each recording. Only when the metadata database already exists:
      * creating it here would make the library pages believe there is one, and there is nothing to
-     * label in a library that has never transcribed anything.
+     * label in a library that has never saved recording metadata.
      */
     suspend fun refresh(context: Context, loaded: List<RecordingItem>) {
         if (!TranscriptDatabase.exists(context)) return
@@ -62,7 +62,7 @@ object LibraryLabels {
 
     /** Every cached label by display name; empty for a library with no transcripts database. */
     fun observe(context: Context): Flow<Map<String, RecordingLabelEntry>> {
-        return onceTranscriptsExist(context, emptyMap()) { db ->
+        return onceMetadataDatabaseExists(context, emptyMap()) { db ->
             db.labelDao().observeAll().map { all -> all.associateBy { it.displayName } }
         }
     }
