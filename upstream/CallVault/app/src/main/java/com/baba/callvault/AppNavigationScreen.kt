@@ -286,10 +286,10 @@ fun AppNavigationScreen(
                     },
                 ) {
                     HomeScreen(
-                        section = section,
+                        section = section ?: HomeSection.Hub,
                         onSelectSection = goToSection,
                         onOpenSettings = {
-                            settingsScope = SettingsGroups.scopeFor(section)
+                            settingsScope = SettingsGroups.scopeFor(section ?: HomeSection.Hub)
                             scope.launch { drawerState.open() }
                         },
                         openRecording = openRecording,
