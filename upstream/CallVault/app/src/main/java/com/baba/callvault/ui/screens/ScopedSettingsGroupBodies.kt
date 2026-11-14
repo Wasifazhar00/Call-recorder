@@ -68,6 +68,7 @@ internal fun GroupBody(
         SettingsGroup.CONNECTION -> ConnectionBody()
         SettingsGroup.APP -> AppBody(preferences, updateTrigger, actions, callbacks)
         SettingsGroup.HELP_AND_ABOUT -> HelpAndAboutBody(preferences, updateTrigger, actions, callbacks)
+        else -> Unit // AI settings groups are excluded from the recorder-only build.
     }
 }
 
@@ -173,6 +174,7 @@ private fun SaveAndSyncBody(
                 SearchFiltered("HideRecordingsRow") { HideRecordingsRow(preferences, updateTrigger, actions) }
             }
             SaveAndSyncRow.METADATA_FILE -> SearchFiltered("MetadataFileRow") { MetadataFileRow(preferences, updateTrigger, actions) }
+            else -> Unit // Transcript sidecar export is removed with transcription.
         }
     }
 }
