@@ -133,5 +133,7 @@ jobs:
             echo "Recorder-only source profile is already committed."
           else
             git commit -m "Apply recorder-only profile and remove AI native runtimes"
+            git fetch origin feature/recorder-only-prune
+            git rebase origin/feature/recorder-only-prune
             git push origin HEAD:feature/recorder-only-prune
           fi
