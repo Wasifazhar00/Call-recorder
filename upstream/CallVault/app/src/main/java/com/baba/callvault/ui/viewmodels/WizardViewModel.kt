@@ -9,20 +9,12 @@
 package com.baba.callvault.ui.viewmodels
 
 import android.app.Application
-import android.content.Intent
-import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import com.baba.callvault.data.AppPreferences
 import com.baba.callvault.data.StorageTarget
 import com.baba.callvault.data.SyncScheduleMode
 import com.baba.callvault.services.recording.aftercall.AfterCallSettings
 import com.baba.callvault.system.storage.SyncScheduler
-import com.baba.callvault.transcription.model.DownloadNetwork
-import com.baba.callvault.transcription.model.DownloadableModel
-import com.baba.callvault.transcription.model.ModelDownloadWorker
-import com.baba.callvault.transcription.model.ModelRepository
-import com.baba.callvault.transcription.model.ModelTransferWorker
-import com.baba.callvault.utils.AppLogger
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -146,65 +138,6 @@ class WizardViewModel(application: Application) : AndroidViewModel(application) 
     /** Persists the recording file-name template (one of the shared presets). */
     fun setFileNameTemplate(template: String) {
         preferences.setFileNameTemplate(template)
-        bump()
-    }
-
-    // ------ Step 6: transcription + summaries
-
-    /** Persists the chosen speech-model tier, which is the one the download row then fetches. */
-    fun setTranscriptionModelId(id: String) {
-        preferences.setTranscriptionModelId(id)
-        bump()
-    }
-
-    /**
-     * Queues a model for download and leaves it running.
-     *
-     * **Deliberately not tied to this screen.** [ModelDownloadWorker] is unique WorkManager work
-     * enqueued against the application context (Wi-Fi only unless the user chose mobile data), so it
-     * outlives the wizard, the Activity and — with a foreground download in flight — a good deal
-     * else. That is the whole point: the summariser is 3.46 GB, the wizard has four steps left, and
-     * making either wait for the other would be absurd. Nothing here cancels on navigation, and
-     * [finish] does not touch it.
-     *
-     * The same call Settings makes, so a download started here shows its progress there and vice
-     * versa: both screens read it back through `rememberModelDownloadState`, which observes the
-     * work rather than the calendar.
-     */
-    fun downloadModel(model: DownloadableModel, network: DownloadNetwork) {
-        ModelDownloadWorker.enqueue(appContext, model, network)
-        bump()
-    }
-
-    /** Stops a download in progress. The partial file is kept, so resuming does not re-fetch it. */
-    fun cancelModelDownload(model: DownloadableModel) {
-        ModelDownloadWorker.cancel(appContext, model)
-        bump()
-    }
-
-    /**
-     * Imports a model from a file the user picked (GitHub #58) — the same call Settings makes, so
-     * either screen shows its progress. The grant is made persistable first, so a job WorkManager
-     * re-runs after the picker's temporary grant has gone can still read the file.
-     */
-    fun importModel(model: DownloadableModel, source: Uri) {
-        runCatching {
-            appContext.contentResolver.takePersistableUriPermission(source, Intent.FLAG_GRANT_READ_URI_PERMISSION)
-        }.onFailure { AppLogger.w("CV:Wizard", "No persistable read grant for the import of ${model.id}: ${it.javaClass.simpleName}") }
-        ModelTransferWorker.enqueueImport(appContext, model, source)
-        bump()
-    }
-
-    /** Stops an import; the worker releases the file's grant once the job has let go of it. */
-    fun cancelModelImport(model: DownloadableModel) {
-        ModelTransferWorker.cancelImport(appContext, model)
-        bump()
-    }
-
-    /** Removes a downloaded model and any partial download of it. */
-    fun deleteModel(model: DownloadableModel) {
-        ModelDownloadWorker.cancel(appContext, model)
-        ModelRepository.delete(appContext, model)
         bump()
     }
 
