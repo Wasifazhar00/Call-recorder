@@ -103,8 +103,6 @@
             </intent-filter>
         </activity>
 
-tivity>
-
         <!-- Foreground service that drives ADB wireless pairing via a notification -->
         <service
             android:name=".integrations.adb.AdbPairingService"
