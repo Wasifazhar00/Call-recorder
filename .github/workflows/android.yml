@@ -45,6 +45,18 @@ jobs:
           python3 scripts/apply_shizuku_profile.py
           python3 scripts/apply_shizuku_profile.py
           python3 scripts/verify_shizuku_profile.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          root = Path("upstream/CallVault/app/src/main/java/com/baba/callvault")
+          pattern = re.compile(r"transcri|summar|Transcript|Summary|Whisper|Llama|ModelRepository|ClipTranscriber|TranscriptSidecar|CallSummary|SpeakerTurnsRepository", re.I)
+          for path in sorted(root.rglob("*.kt")):
+              matches = [(i, line.strip()) for i, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1) if pattern.search(line)]
+              if matches:
+                  print(f"AIREF {path.relative_to(root)}")
+                  for i, line in matches:
+                      print(f"  {i}: {line[:240]}")
+          PY
 
       - name: Run release unit tests
         working-directory: upstream/CallVault
