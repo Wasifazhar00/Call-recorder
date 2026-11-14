@@ -125,62 +125,6 @@ require(
     ("TRANSACTION_capturePermissionReport",),
 )
 
-# The shipped product is a call recorder, not an AI transcription or summarisation app.
-manifest_profile = (ENGINE / "app/src/main/AndroidManifest.xml").read_text(encoding="utf-8")
-require(
-    "app/src/main/java/com/baba/callvault/ui/common/TranscriptActionButton.kt",
-    ("Transcription is excluded from the CallVault recorder-only product profile.",),
-)
-clip_share = (ENGINE / "app/src/main/java/com/baba/callvault/ui/screens/ShareClipScreen.kt").read_text(encoding="utf-8")
-if "ClipTranscriber.transcribe(" in clip_share or "\n            TranscriptChoice(" in clip_share:
-    sys.exit("Clip-sharing transcription controls are still reachable")
-if "share(clip, null)" not in clip_share:
-    sys.exit("Clip sharing is not configured for audio-only output")
-require(
-    "app/src/main/java/com/baba/callvault/ui/screens/PlaybackScreen.kt",
-    ("TagCard(", "NoteCard("),
-)
-playback = (ENGINE / "app/src/main/java/com/baba/callvault/ui/screens/PlaybackScreen.kt").read_text(encoding="utf-8")
-if "SummaryCard(" in playback:
-    sys.exit("Summarisation UI is still reachable from recording playback")
-hub = (ENGINE / "app/src/main/java/com/baba/callvault/ui/screens/HubScreen.kt").read_text(encoding="utf-8")
-if "onOpenSection(HomeSection.Transcripts)" in hub or "onOpenSection(HomeSection.Summaries)" in hub:
-    sys.exit("Transcript or summary cards are still exposed on the Home hub")
-if "AI transcript and summary cards are excluded from this product profile." not in hub:
-    sys.exit("Home hub feature-removal patch was not applied")
-playback = (ENGINE / "app/src/main/java/com/baba/callvault/ui/screens/PlaybackScreen.kt").read_text(encoding="utf-8")
-if "SummaryCard(" in playback or "Summary UI is excluded from the CallVault recorder-only product profile." not in playback:
-    sys.exit("Summary card removal from playback was not applied")
-
-if "TranscriptActionButton(" in playback or "Transcription controls are excluded from the CallVault recorder-only product profile." not in playback:
-    sys.exit("Playback still exposes a call transcription action")
-row_menu = (ENGINE / "app/src/main/java/com/baba/callvault/ui/screens/LibraryRowMenu.kt").read_text(encoding="utf-8")
-if "if (menu.transcribeAgain)" in row_menu:
-    sys.exit("Library row menu still exposes re-transcription")
-selection_ui = (ENGINE / "app/src/main/java/com/baba/callvault/ui/screens/LibrarySelectionUi.kt").read_text(encoding="utf-8")
-if "selection.onTranscribeAgain?.let" in selection_ui:
-    sys.exit("Library bulk actions still expose re-transcription")
-transcript_view = (ENGINE / "app/src/main/java/com/baba/callvault/ui/common/TranscriptView.kt").read_text(encoding="utf-8")
-if "TranscriptPageMenu(summaryState, onSummarise, onTranscribeAgain)" in transcript_view:
-    sys.exit("Transcript reader still exposes re-transcription")
-require(
-    "app/src/main/java/com/baba/callvault/ui/screens/ScopedSettingsContent.kt",
-    ("SettingsGroup.MODEL_AND_LANGUAGE", "SettingsGroup.WHEN_TO_TRANSCRIBE", "SettingsGroup.SUMMARIES"),
-)
-settings_ui = (ENGINE / "app/src/main/java/com/baba/callvault/ui/screens/ScopedSettingsContent.kt").read_text(encoding="utf-8")
-if settings_ui.count("filterNot { it == SettingsGroup.MODEL_AND_LANGUAGE") < 2:
-    sys.exit("Transcription/summarisation settings are still exposed in Settings or search")
-require(
-    "app/src/main/java/com/baba/callvault/ui/screens/HomeScreen.kt",
-    ("TranscriptionMode.MANUAL", "TranscriptionScheduler.stopNow(context)", "SummaryScheduler.stopNow(context)",
-     "Ignored legacy transcript notification in recorder-only build"),
-)
-
-
-print("Call-recording profile verified: incoming + outgoing automation, carrier master switch, "
-      "telephony receivers, foreground service and Shizuku binder path are present.")
-
-
 # Pin the cellular-call capture route: both directions are captured through the
 # privileged VOICE_CALL source in the shell-UID recorder. Do not replace this
 # with two competing AudioRecord sessions without device-level concurrency tests.

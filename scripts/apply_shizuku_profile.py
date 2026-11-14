@@ -455,50 +455,6 @@ patch_file("app/src/main/java/com/baba/callvault/ui/screens/ScopedSettingsConten
  "val all = SettingsGroups.forScope(SettingsScope.ALL).filterNot { it == SettingsGroup.MODEL_AND_LANGUAGE || it == SettingsGroup.WHEN_TO_TRANSCRIBE || it == SettingsGroup.SUMMARIES }",
  "remove transcription and summary settings search results")
 ])
-patch_file("app/src/main/java/com/baba/callvault/ui/common/TranscriptActionButton.kt", [
-("""    val action = TranscriptRowAction.forStatus(status)
-    val description = stringResource(action.contentDescriptionRes)
-
-    // Work in flight is shown, never re-triggerable: a second tap would only queue the same call
-    // again, and the first tap already committed the phone to minutes of CPU.
-    //
-    // The ring itself is shared with the Summaries page — see [WorkProgressRing], which holds the
-    // two traps (a spinner that reads as a hang, and M3's coral track) in one place.
-    if (!action.isTappable) {
-        WorkProgressRing(percent = percent, modifier = modifier)
-        return
-    }
-
-    IconButton(
-        onClick = when (action) {
-            TranscriptRowAction.TRANSCRIBE -> onTranscribe
-            TranscriptRowAction.OPEN -> onOpen
-            TranscriptRowAction.RETRY -> onRetry
-            TranscriptRowAction.BUSY -> return // unreachable: handled above
-        },
-        modifier = modifier
-    ) {
-        Icon(
-            imageVector = when (action) {
-                TranscriptRowAction.TRANSCRIBE -> Icons.Outlined.Subtitles
-                TranscriptRowAction.OPEN -> Icons.AutoMirrored.Filled.Article
-                TranscriptRowAction.RETRY -> Icons.Filled.ErrorOutline
-                TranscriptRowAction.BUSY -> Icons.Outlined.Subtitles // unreachable
-            },
-            contentDescription = description,
-            // A finished transcript is worth drawing attention to; a failure more so.
-            tint = when (action) {
-                TranscriptRowAction.OPEN -> MaterialTheme.colorScheme.primary
-                TranscriptRowAction.RETRY -> MaterialTheme.colorScheme.error
-                else -> MaterialTheme.colorScheme.onSurfaceVariant
-            }
-        )
-    }
-""",
-"""    // Transcription is excluded from the CallVault recorder-only product profile.
-    // Keep the stable composable signature for upstream call sites and upgrade compatibility.
-""", "remove transcription action from recording rows")
-])
 patch_file("app/src/main/java/com/baba/callvault/ui/screens/ShareClipScreen.kt", [
 ("""            when {
                 !includeText -> share(clip, null)
