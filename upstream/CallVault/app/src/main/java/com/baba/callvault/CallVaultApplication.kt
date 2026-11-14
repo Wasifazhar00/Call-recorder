@@ -19,10 +19,6 @@ import com.baba.callvault.services.recording.DaemonKeepAliveService
 import com.baba.callvault.services.debug.DebugNotificationHelper
 import com.baba.callvault.system.storage.RetentionScheduler
 import com.baba.callvault.system.storage.SyncScheduler
-import com.baba.callvault.summary.SummaryModel
-import com.baba.callvault.transcription.TranscriptionQueue
-import com.baba.callvault.transcription.model.ModelRepository
-import com.baba.callvault.transcription.model.TranscriptionModel
 import com.baba.callvault.system.updates.UpdateScheduler
 import com.baba.callvault.server.RecorderConnection
 import com.baba.callvault.services.recording.VoipCaptureController
@@ -31,7 +27,6 @@ import com.baba.callvault.system.health.SilentFailureNotifier
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.runBlocking
 
 /**
  * CallVaultApplication is run when the app process is created. Can be seen as the very first entry point of the app.
@@ -57,25 +52,6 @@ class CallVaultApplication : Application() {
 
         // Shizuku mode has no keep-alive, so nothing else would notice Shizuku dying while the app runs.
         com.baba.callvault.server.ShizukuLifecycleWatcher.install(applicationContext)
-
-        // Reclaim model files no version of the app will ever use again.
-        //
-        // Model entries name the exact file they fetch, and `ModelRepository.delete` only removes a
-        // file some *current* entry claims. So changing a model's filename — a better quantisation, a
-        // newer build — leaves the old one behind, invisible to the app and impossible to remove from
-        // inside it. Swapping the summariser on 2026-08-27 stranded 3.46 GB on a real phone this way.
-        //
-        // The whitelist is built here rather than inside the repository because this is the only place
-        // that can see BOTH model families; the two share a directory, and a sweep that knew about only
-        // one would delete the other. Off the main thread: this touches the filesystem.
-        Thread {
-            runCatching {
-                val keep = TranscriptionModel.entries.map { it.fileName }.toSet() +
-                    SummaryModel.entries.map { it.fileName }.toSet()
-                val freed = ModelRepository.pruneOrphans(ModelRepository.modelsDir(applicationContext), keep)
-                if (freed > 0L) AppLogger.i(TAG, "Reclaimed $freed bytes of superseded model files")
-            }.onFailure { AppLogger.w(TAG, "Could not prune orphaned model files: ${it.message}") }
-        }.apply { isDaemon = true; start() }
 
         // Keep or delete after the call: a reboot clears every notification and a killed process can lose
         // the steps after a hold, so each held recording gets its 24-hour check and its question back here.
@@ -145,17 +121,6 @@ class CallVaultApplication : Application() {
         // longer uses, batch-uploading alongside the per-recording copy.
         runCatching { SyncScheduler.apply(applicationContext) }
             .onFailure { AppLogger.w(TAG, "Sync scheduler apply failed: ${it.message}") }
-
-        // Release any transcript row left RUNNING by a run that no longer exists. A cancelled or
-        // killed worker cannot tidy up after itself — whisper sits inside a blocking native call, so
-        // the interruption may never reach the Kotlin that would reset the row. Left alone the row
-        // shows an untappable spinner for ever, and the queue skips RUNNING so no automatic sweep
-        // would rescue it either. A fresh process means nothing from before is still transcribing.
-        Thread {
-            runCatching { runBlocking { TranscriptionQueue.releaseStaleWork(applicationContext) } }
-                .onSuccess { if (it > 0) AppLogger.i(TAG, "Released $it stale transcription row(s)") }
-                .onFailure { AppLogger.w(TAG, "Releasing stale transcription rows failed: ${it.message}") }
-        }.start()
 
         // If ADB was already paired, proactively bring up the persistent recorder daemon in the
         // background: this (transiently) enables Wireless debugging if needed, launches the daemon,
