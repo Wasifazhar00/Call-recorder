@@ -38,15 +38,7 @@ import com.baba.callvault.data.share.CallSharePlan
 import com.baba.callvault.data.share.ShareableCall
 import com.baba.callvault.data.share.SharePart
 
-/**
- * The one Share sheet, opened by Share on every page (except "Share a part", which keeps its own screen).
- *
- * It lists the call's recording, transcript and summary with the page's own already ticked, so sharing what the
- * page is about is still Share → Share, and anything else the call has is one tick away. See [CallSharePlan].
- *
- * @param calls what each call has, or null while that is still being looked up.
- * @param start the page's own part.
- */
+/** Shares one or more call recordings as audio files. */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CallShareSheet(
@@ -66,29 +58,20 @@ fun CallShareSheet(
             val available = remember(calls) { CallSharePlan.available(calls) }
             var ticks by remember(calls) { mutableStateOf(CallSharePlan.initialTicks(start, available)) }
             val single = calls.singleOrNull()
-
             Text(
                 text = if (single != null) stringResource(R.string.share_sheet_title_one, single.title)
                        else stringResource(R.string.share_sheet_title_many, calls.size),
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.padding(bottom = 8.dp),
             )
-            val asFiles = CallSharePlan.asFiles(ticks)
-            available.forEach { part ->
-                val isAvailable = part in available
+            if (SharePart.RECORDING in available) {
                 ShareTick(
-                    label = stringResource(labelOf(part)),
-                    hint = when {
-                        !isAvailable -> stringResource(
-                            if (single != null) R.string.share_part_missing_one else R.string.share_part_missing_many,
-                        )
-                        part == SharePart.RECORDING -> stringResource(R.string.share_part_recording_hint)
-                        asFiles -> stringResource(R.string.share_part_text_file_hint)
-                        else -> stringResource(R.string.share_part_text_message_hint)
+                    label = stringResource(R.string.share_part_recording),
+                    hint = stringResource(R.string.share_part_recording_hint),
+                    checked = SharePart.RECORDING in ticks,
+                    onChange = { checked ->
+                        ticks = if (checked) setOf(SharePart.RECORDING) else emptySet()
                     },
-                    checked = part in ticks,
-                    enabled = isAvailable,
-                    onChange = { on -> ticks = if (on) ticks + part else ticks - part },
                 )
             }
             Button(
@@ -99,42 +82,33 @@ fun CallShareSheet(
                     contentColor = MaterialTheme.colorScheme.onPrimary,
                 ),
                 modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
-            ) {
-                Text(stringResource(R.string.share_sheet_button))
-            }
+            ) { Text(stringResource(R.string.share_sheet_button)) }
         }
     }
 }
 
-private fun labelOf(part: SharePart): Int = when (part) {
-    SharePart.RECORDING -> R.string.share_part_recording
-    SharePart.TRANSCRIPT -> R.string.share_part_transcript
-    SharePart.SUMMARY -> R.string.share_part_summary
-}
-
 @Composable
-private fun ShareTick(label: String, hint: String, checked: Boolean, enabled: Boolean, onChange: (Boolean) -> Unit) {
+private fun ShareTick(
+    label: String,
+    hint: String,
+    checked: Boolean,
+    onChange: (Boolean) -> Unit,
+) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
-            .toggleable(value = checked, enabled = enabled, role = Role.Checkbox, onValueChange = onChange)
+            .toggleable(value = checked, role = Role.Checkbox, onValueChange = onChange)
             .padding(vertical = 6.dp),
     ) {
-        // Stated, not left to Material's default, which renders coral in this theme.
         Checkbox(
             checked = checked,
             onCheckedChange = null,
-            enabled = enabled,
-            colors = CheckboxDefaults.colors(
-                checkedColor = MaterialTheme.colorScheme.primary,
-                checkmarkColor = MaterialTheme.colorScheme.onPrimary,
-            ),
+            colors = CheckboxDefaults.colors(checkedColor = MaterialTheme.colorScheme.primary),
         )
         Column(modifier = Modifier.padding(start = 12.dp)) {
-            val alpha = if (enabled) 1f else 0.45f
-            Text(label, style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurface.copy(alpha = alpha))
-            Text(hint, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = alpha))
+            Text(label, style = MaterialTheme.typography.bodyLarge)
+            Text(hint, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
     }
 }

@@ -128,6 +128,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import com.baba.callvault.utils.AppLogger
+import com.baba.callvault.data.transcripts.FavouriteRepository
+import com.baba.callvault.data.transcripts.FlagRepository
+import com.baba.callvault.data.transcripts.TagRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.launch
@@ -141,8 +144,6 @@ import com.baba.callvault.data.waveform.WaveformDrawWorker
 import com.baba.callvault.ui.common.ImportedBadge
 import com.baba.callvault.ui.common.RecordingLabel
 import androidx.work.WorkManager
-import com.baba.callvault.ui.common.formatEstimate
-import com.baba.callvault.ui.common.longCallLine
 import com.baba.callvault.ui.common.SearchLine
 import com.baba.callvault.ui.common.MergeCallsDialog
 import com.baba.callvault.ui.common.UnMergeDialog
@@ -429,7 +430,7 @@ fun HomeScreen(
 
     LaunchedEffect(openWhenListed, libraryRecordings) {
         val pending = openWhenListed ?: return@LaunchedEffect
- { it.displayName == pending }) {
+        if (libraryRecordings.any { it.displayName == pending }) {
             // Its playback screen is where the newly imported recording can be reviewed.
             // A toast saying "imported" would be the app telling the user something happened
             // somewhere else; this shows them the thing itself.
@@ -480,7 +481,7 @@ fun HomeScreen(
 
     // Hidden, not closed, while "Share a part" opened from it is showing: back from the clip returns to it.
     playbackFor?.takeIf { clipFor == null }?.let { displayName ->
- { it.displayName == displayName }
+        val openItem = libraryRecordings.firstOrNull { it.displayName == displayName }
         if (openItem == null) {
             // The recording went away underneath us — a retention sweep, or a delete from elsewhere.
             playbackFor = null
@@ -624,8 +625,24 @@ fun HomeScreen(
         }
     }
 
-    // One section at a time, and none of them while a recording is open over the lot — or while a
-    // sitting over it. Both are drawn below, as the only other full-screen things this shell emits.
+    val titleTrailing: @Composable () -> Unit = {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            SupportPill(onClick = { showSupport = true })
+            if (communityTucked && section == HomeSection.Hub) {
+                Spacer(Modifier.width(8.dp))
+                CommunityPill(
+                    onClick = { context.openTelegramGroup() },
+                    onLongClick = {
+                        preferences.setCommunityTucked(false)
+                        communityTucked = false
+                        Toast.makeText(context, R.string.home_community_restored_hint, Toast.LENGTH_SHORT).show()
+                    },
+                )
+            }
+        }
+    }
+
+    // One section at a time, hidden while a recording or clip is open.
     //
     // The switch is here, below every piece of state above it, and that placement is the point: see
     // the function's KDoc. Nothing in a section branch may remember anything it would mind losing.
