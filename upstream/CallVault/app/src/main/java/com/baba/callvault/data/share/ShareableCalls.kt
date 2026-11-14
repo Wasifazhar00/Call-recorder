@@ -10,8 +10,6 @@ package com.baba.callvault.data.share
 
 import android.content.Context
 import android.net.Uri
-import com.baba.callvault.data.transcripts.db.TranscriptDatabase
-import com.baba.callvault.data.transcripts.db.TranscriptState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -29,16 +27,13 @@ object ShareableCalls {
         titleOf: (String) -> String,
         audioOf: (String) -> Uri?,
     ): List<ShareableCall> = withContext(Dispatchers.IO) {
-        val db = if (TranscriptDatabase.exists(context)) TranscriptDatabase.get(context) else null
         displayNames.distinct().map { name ->
             ShareableCall(
                 displayName = name,
                 title = titleOf(name),
                 audioUri = audioOf(name)?.toString(),
-                hasTranscript = db != null &&
-                    runCatching { db.transcriptDao().findTranscript(name)?.state == TranscriptState.DONE }.getOrDefault(false),
-                hasSummary = db != null &&
-                    runCatching { db.summaryDao().summary(name) != null }.getOrDefault(false),
+                hasTranscript = false,
+                hasSummary = false,
             )
         }
     }
