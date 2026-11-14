@@ -17,11 +17,6 @@ import com.baba.callvault.integrations.scrcpy.ScrcpyAudioCodec
 import com.baba.callvault.integrations.scrcpy.ScrcpyAudioSource
 import com.baba.callvault.data.StorageTarget
 import com.baba.callvault.data.SyncScheduleMode
-import com.baba.callvault.transcription.TranscriptionEstimate
-import com.baba.callvault.transcription.TranscriptionLanguageChoice
-import com.baba.callvault.transcription.cloud.CloudEndpoint
-import com.baba.callvault.transcription.cloud.TranscriptionService
-import com.baba.callvault.transcription.model.TranscriptionModel
 import com.baba.callvault.ui.navigation.HomeSection
 import com.baba.callvault.utils.AppLogger
 import org.json.JSONArray
@@ -40,7 +35,7 @@ class AppPreferences(context: Context) {
          * The settings that may be exported and imported — an explicit ALLOW-list, device-independent
          * user preferences only. It is a positive list on purpose: anything not named here (ADB pairing
          * and transport state, SAF folder grants, per-device calibration, the log salt, install/update/
-         * wizard state, debug toggles, the dynamically-suffixed transcription calibration keys which are
+         * wizard state and debug toggles) is left out, so a new setting is NOT exported until someone decides it is
          * not in [Key] at all) is left out, so a new setting is NOT exported until someone decides it is
          * safe to carry to another device. A unit test checks every id here is a real [Key] id.
          */
@@ -60,14 +55,9 @@ class AppPreferences(context: Context) {
             // Retention / storage policy (not the folder URIs, which are per-device)
             "retention_linked", "retention_local_days", "retention_drive_days",
             "retention_time_hour", "retention_time_minute", "storage_cap_bytes", "min_duration_seconds",
-            "write_metadata_file", "write_transcript_sidecar", "hide_recordings", "keep_originals_after_merge",
+            "write_metadata_file", "hide_recordings", "keep_originals_after_merge",
             // Sync schedule
             "sync_schedule_mode", "sync_time_hour", "sync_time_minute", "sync_day_of_week",
-            // Transcription + summary policy
-            "transcription_mode", "transcription_hour", "transcription_minute", "transcription_requires_charging",
-            "transcription_batch_limit", "transcription_confirm_before_run", "transcription_model_id",
-            "transcription_language", "transcription_ask_language",
-            "summary_confirm_requirements", "summary_language",
             // App (VoIP) calls policy
             "voip_recording_enabled", "voip_auto_start", "voip_excluded_packages",
             // Updates
@@ -93,34 +83,6 @@ class AppPreferences(context: Context) {
         private const val LOOPBACK_PORT_MIN = 47000
         private const val LOOPBACK_PORT_MAX = 59999
 
-        /**
-         * Marker for the configuration the stored transcription speeds describe
-         * ([getRtfCalibrationThreads]).
-         *
-         * Versioned, because the thread count is not the only part of "this machine" that can move:
-         * so can the arithmetic. `_v2` marks ggml being built with per-CPU kernel variants
-         * (dotprod/i8mm) instead of the plain ARMv8 baseline, which made transcription about 1.2x
-         * faster on the phones that have them. Bump the suffix on any change of that kind. Leaving
-         * it alone would keep every factor measured under the old kernels and quote a pessimistic
-         * estimate on every phone that had ever transcribed anything.
-         *
-         * An old marker needs no migration: it starts with the same prefix as the speeds, so the
-         * sweep in [setRtfCalibrationThreads] removes it along with them.
-         */
-        private const val RTF_CALIBRATION_KEY = "transcription_rtf_threads_v2"
-
-        /**
-         * Deliberately NOT the old "transcription_rtf_" prefix.
-         *
-         * What is stored under it changed meaning: it is now work time over *billable* audio, with
-         * the model load charged separately, where it used to be whole-run time over raw audio
-         * length. Reading an old value as a new one would be wrong — and on the phones that hit
-         * issue #26 the old value is an absurd number that would take a dozen runs to average away.
-         * A new prefix retires those quietly, and the first run after updating measures afresh.
-         */
-        private const val RATE_PREFIX = "transcription_rate_v2_"
-        private const val LOAD_PREFIX = "transcription_load_v2_"
-        private const val LEGACY_RATE_PREFIX = "transcription_rtf_"
     }
 
     /**
@@ -186,46 +148,6 @@ class AppPreferences(context: Context) {
         val RECORDING_STATE = RecordingState.ACTIVE.key
         const val SYNC_DAY_OF_WEEK = 2        // java.util.Calendar: SUNDAY=1..SATURDAY=7 (2 = Monday)
 
-        // --- Transcription (on-device speech to text) ---
-        // MANUAL (default) transcribes only what the user taps. AUTOMATIC sweeps everything not yet
-        // transcribed at TRANSCRIPTION_HOUR:TRANSCRIPTION_MINUTE. Manual is the default because a
-        // transcription costs roughly the call's own duration in CPU, which is not something to start
-        // doing to someone's phone unasked. Charging is required by default for the same reason.
-        val TRANSCRIPTION_MODE = TranscriptionMode.MANUAL.key
-        const val TRANSCRIPTION_HOUR = 2       // 0-23, device local time
-        const val TRANSCRIPTION_MINUTE = 0     // 0-59
-        const val TRANSCRIPTION_REQUIRES_CHARGING = true
-        // How many recordings one automatic run takes on. 0 means no limit. Configurable because the
-        // right answer depends entirely on call length: 25 short calls is a quick sweep, 25 long ones
-        // is most of a night.
-        const val TRANSCRIPTION_BATCH_LIMIT = 25
-        const val TRANSCRIPTION_CONFIRM_BEFORE_RUN = true
-        // Whether the summariser's requirements are shown before the download. On by default: it is
-        // 3.5 GB and about the same again in memory, and someone should be told before they start.
-        const val SUMMARY_CONFIRM_REQUIREMENTS = true
-        val TRANSCRIPTION_MODEL_ID = TranscriptionModel.DEFAULT.id
-        // The phone's own language, and auto-detect (null) only when the app does not offer it.
-        //
-        // Not a constant, because the right default is the one this phone is set to. It used to be a
-        // flat null, which meant every install transcribed on auto-detect until someone went looking
-        // for the setting — and auto-detect does not fail loudly, it returns Hebrew spelled out in
-        // Latin letters, with the whole call as one segment. Naming the language outright is more
-        // reliable, so the app names it rather than leaving it blank.
-        //
-        // Null still means genuine detection where it survives: our JNI sets whisper's
-        // detect_language whenever no language is given, rather than falling back to English the way
-        // upstream's JNI does.
-        val TRANSCRIPTION_LANGUAGE: String? get() = TranscriptionLanguageChoice.defaultLanguage()
-
-        // Standalone: one app, no dependency on anything else being installed — the project's whole
-        // premise. An install that predates Shizuku support has no stored value and must land here.
-        val PRIVILEGED_MODE: String = PrivilegedMode.SHIZUKU.key
-
-        // Off: one language for every call is the right assumption for most phones, and an extra
-        // dialog between a tap and its result is a cost worth paying only by people who take calls in
-        // more than one language.
-        const val TRANSCRIPTION_ASK_LANGUAGE = false
-
         // --- Retention (auto-delete old recordings) ---
         // Delete recordings older than N days. 0 = keep forever (OFF). Applied per copy: device copies
         // use RETENTION_LOCAL_DAYS, Drive copies use RETENTION_DRIVE_DAYS. When RETENTION_LINKED is true
@@ -238,7 +160,6 @@ class AppPreferences(context: Context) {
         // something they look at — and it only earns its keep for someone using a tool that reads it.
         const val WRITE_METADATA_FILE = false
         const val SHOW_SIM_LABEL = false
-        const val WRITE_TRANSCRIPT_SIDECAR = false
         // Off. Hiding recordings from every media app is a privacy choice for the user to make.
         const val HIDE_RECORDINGS = false
         // Off. Issue #51 asked for it off by default: matching app calls by a notification's name is
@@ -339,30 +260,9 @@ class AppPreferences(context: Context) {
         SYNC_TIME_MINUTE("sync_time_minute"),
         SYNC_DAY_OF_WEEK("sync_day_of_week"),
 
-        // --- Transcription ---
-        TRANSCRIPTION_MODE("transcription_mode"),
-        TRANSCRIPTION_HOUR("transcription_hour"),
-        TRANSCRIPTION_MINUTE("transcription_minute"),
-        TRANSCRIPTION_REQUIRES_CHARGING("transcription_requires_charging"),
-        TRANSCRIPTION_BATCH_LIMIT("transcription_batch_limit"),
-        TRANSCRIPTION_CONFIRM_BEFORE_RUN("transcription_confirm_before_run"),
-        SUMMARY_CONFIRM_REQUIREMENTS("summary_confirm_requirements"),
-        SUMMARY_LANGUAGE("summary_language"),
-        TRANSCRIPTION_MODEL_ID("transcription_model_id"),
-        TRANSCRIPTION_LANGUAGE("transcription_language"),
-        TRANSCRIPTION_ASK_LANGUAGE("transcription_ask_language"),
-        // Where calls are written out (#48). Device-only, deliberately NOT in EXPORTABLE_KEYS: the key
-        // they need is not exported, and agreeing to send call audio is this phone owner's decision.
-        TRANSCRIPTION_SERVICE("transcription_service"),
-        TRANSCRIPTION_CLOUD_MOBILE_DATA("transcription_cloud_mobile_data"),
-        TRANSCRIPTION_CLOUD_CONSENT("transcription_cloud_consent"),
-        TRANSCRIPTION_CUSTOM_BASE_URL("transcription_custom_base_url"),
-        TRANSCRIPTION_CUSTOM_MODEL("transcription_custom_model"),
         PRIVILEGED_MODE("privileged_mode"),
         /** Which switches *CallVault* turned off for the current mode, so a round trip can undo it. */
         MODE_AUTO_DISABLED("mode_auto_disabled"),
-        SPEAKER_MAP_OVERRIDE("speaker_map_override"),
-        SPEAKER_MAP_CONFIRMED("speaker_map_confirmed"),
         APP_LOCK_ENABLED("app_lock_enabled"),
         ALLOW_SCREENSHOTS("allow_screenshots"),
 
@@ -370,7 +270,6 @@ class AppPreferences(context: Context) {
         RETENTION_LINKED("retention_linked"),
         WRITE_METADATA_FILE("write_metadata_file"),
         SHOW_SIM_LABEL("show_sim_label"),
-        WRITE_TRANSCRIPT_SIDECAR("write_transcript_sidecar"),
         HIDE_RECORDINGS("hide_recordings"),
         NOMEDIA_CREATED_BY_US("nomedia_created_by_us"),
         VOIP_EXCLUDED_PACKAGES("voip_excluded_packages"),
@@ -467,9 +366,6 @@ class AppPreferences(context: Context) {
         // kept so a revert of the classic-screen removal restores users' choice. Device-only (not in EXPORTABLE_KEYS).
         CLASSIC_SETTINGS_SCREEN("classic_settings_screen"),
 
-        // The transcript reader's "Follow playback" switch (#27). A remembered view choice, like a sort
-        // order: device-only and not a Settings row.
-        TRANSCRIPT_FOLLOW_PLAYBACK("transcript_follow_playback");
     }
 
     // -------- Nested enums
@@ -826,224 +722,6 @@ class AppPreferences(context: Context) {
     /** Sets the user-selected Google Drive SAF folder URI for routing copies. */
     fun setDriveFolderUri(uri: Uri?) = setString(Key.DRIVE_FOLDER_URI, uri?.toString())
 
-    // -------- Transcription --------
-
-    /** Gets when calls are transcribed (Manual / Automatic). */
-    fun getTranscriptionMode(): TranscriptionMode =
-        TranscriptionMode.fromKey(getString(Key.TRANSCRIPTION_MODE, DefaultsValue.TRANSCRIPTION_MODE))
-
-    /** Sets when calls are transcribed. */
-    fun setTranscriptionMode(mode: TranscriptionMode) = setString(Key.TRANSCRIPTION_MODE, mode.key)
-
-    /** Gets the hour (0-23, device local time) of the automatic transcription run. */
-    fun getTranscriptionHour() = getInt(Key.TRANSCRIPTION_HOUR, DefaultsValue.TRANSCRIPTION_HOUR)
-
-    /** Sets the hour (0-23) of the automatic transcription run. */
-    fun setTranscriptionHour(hour: Int) = setInt(Key.TRANSCRIPTION_HOUR, hour)
-
-    /** Gets the minute (0-59) of the automatic transcription run. */
-    fun getTranscriptionMinute() = getInt(Key.TRANSCRIPTION_MINUTE, DefaultsValue.TRANSCRIPTION_MINUTE)
-
-    /** Sets the minute (0-59) of the automatic transcription run. */
-    fun setTranscriptionMinute(minute: Int) = setInt(Key.TRANSCRIPTION_MINUTE, minute)
-
-    /** Whether the automatic run waits for the phone to be charging. On by default. */
-    fun getTranscriptionRequiresCharging() =
-        getBoolean(Key.TRANSCRIPTION_REQUIRES_CHARGING, DefaultsValue.TRANSCRIPTION_REQUIRES_CHARGING)
-
-    /** Sets whether the automatic run waits for the phone to be charging. */
-    fun setTranscriptionRequiresCharging(required: Boolean) =
-        setBoolean(Key.TRANSCRIPTION_REQUIRES_CHARGING, required)
-
-    /** How many recordings one automatic run takes on; 0 means no limit. */
-    fun getTranscriptionBatchLimit() =
-        getInt(Key.TRANSCRIPTION_BATCH_LIMIT, DefaultsValue.TRANSCRIPTION_BATCH_LIMIT)
-
-    /** Sets how many recordings one automatic run takes on; 0 means no limit. */
-    fun setTranscriptionBatchLimit(limit: Int) = setInt(Key.TRANSCRIPTION_BATCH_LIMIT, limit)
-
-    /** Whether tapping Transcribe asks first, showing how long it will take. On by default. */
-    fun getTranscriptionConfirmBeforeRun() =
-        getBoolean(Key.TRANSCRIPTION_CONFIRM_BEFORE_RUN, DefaultsValue.TRANSCRIPTION_CONFIRM_BEFORE_RUN)
-
-    /** Sets whether tapping Transcribe asks first. Reachable from Settings, so it can be undone. */
-    fun setTranscriptionConfirmBeforeRun(confirm: Boolean) =
-        setBoolean(Key.TRANSCRIPTION_CONFIRM_BEFORE_RUN, confirm)
-
-    /**
-     * Whether the summariser's requirements are shown before the download starts. On by default.
-     *
-     * The dialog can turn itself off, so this has to be reachable from Settings as well — a dialog
-     * that can permanently remove itself with no way back is a trap, which is the same reason
-     * [getTranscriptionConfirmBeforeRun] lives beside its switch.
-     */
-    fun getSummaryConfirmRequirements() =
-        getBoolean(Key.SUMMARY_CONFIRM_REQUIREMENTS, DefaultsValue.SUMMARY_CONFIRM_REQUIREMENTS)
-
-    fun setSummaryConfirmRequirements(confirm: Boolean) =
-        setBoolean(Key.SUMMARY_CONFIRM_REQUIREMENTS, confirm)
-
-    /**
-     * The language summaries are written in, or null to work it out per recording.
-     *
-     * Separate from the transcription language on purpose. Whisper's setting says what language to
-     * *listen* for; this says what language to *write*, and a user who transcribes with auto-detect
-     * still wants their summaries in one predictable language. Null does not mean "let the model
-     * decide" — see [com.baba.callvault.summary.SummaryLanguage], which always resolves it to a
-     * concrete language before the prompt is built.
-     */
-    fun getSummaryLanguage(): String? = getString(Key.SUMMARY_LANGUAGE, null)
-
-    fun setSummaryLanguage(language: String?) = setString(Key.SUMMARY_LANGUAGE, language)
-
-    /**
-     * This phone's measured real-time factor for [modelId], or null before it has ever run.
-     *
-     * Keyed by model because they differ by roughly 3x, and stored per device because the published
-     * figures were measured on one phone. Held as a string: SharedPreferences has no double, and a
-     * float would round a figure used to multiply hour-long recordings.
-     */
-    fun getTranscriptionRtf(modelId: String): Double? =
-        prefs.getString(RATE_PREFIX + modelId, null)?.toDoubleOrNull()
-
-    /** Records this phone's measured real-time factor for [modelId]. */
-    fun setTranscriptionRtf(modelId: String, rtf: Double) =
-        prefs.edit { putString(RATE_PREFIX + modelId, rtf.toString()) }
-
-    /**
-     * This phone's measured fixed cost per run for [modelId], or null before it has ever run.
-     *
-     * Separate from the rate because it behaves differently: loading an 874 MB model costs the same
-     * whether the call is ten seconds or ten minutes. Folding it into the rate is what made short
-     * clips measure as an impossibly slow phone in issue #26.
-     */
-    fun getTranscriptionLoadMs(modelId: String): Long? =
-        prefs.getString(LOAD_PREFIX + modelId, null)?.toLongOrNull()
-
-    /** Records this phone's measured fixed cost per run for [modelId]. */
-    fun setTranscriptionLoadMs(modelId: String, loadMs: Long) =
-        prefs.edit { putString(LOAD_PREFIX + modelId, loadMs.toString()) }
-
-    /** Whether this phone has ever timed a real run of [modelId], as opposed to inheriting a seed. */
-    fun hasMeasuredRun(modelId: String): Boolean = getTranscriptionRtf(modelId) != null
-
-    /**
-     * What a run of [model] costs on this phone: measured where it has been measured, seeded from
-     * the model's published figures where it has not.
-     *
-     * One accessor rather than two lookups at each call site. The confirmation dialog and the
-     * progress pill both need this, they must agree — a dialog promising two minutes over a bar
-     * pacing itself to five is worse than either alone — and the previous shape had each of them
-     * assembling it themselves from the same two preferences.
-     */
-    fun getRunCost(model: TranscriptionModel): TranscriptionEstimate.RunCost =
-        TranscriptionEstimate.RunCost(
-            loadMs = getTranscriptionLoadMs(model.id) ?: model.seedLoadMs,
-            rtf = getTranscriptionRtf(model.id) ?: model.realTimeFactor,
-        )
-
-    /**
-     * The thread policy the stored speeds were measured under.
-     *
-     * A measured factor only describes the machine that produced it, and the number of threads
-     * whisper runs on is part of that machine. When the policy changes, every stored speed becomes a
-     * confident description of a configuration that no longer exists — so it is discarded rather than
-     * slowly averaged away over the next several runs, each of which would quote a wrong estimate.
-     */
-    fun getRtfCalibrationThreads(): Int = prefs.getInt(RTF_CALIBRATION_KEY, 0)
-
-    /** Records the policy and forgets speeds measured under a different one. */
-    fun setRtfCalibrationThreads(threads: Int) {
-        if (getRtfCalibrationThreads() == threads) return
-        prefs.edit {
-            prefs.all.keys
-                .filter { key ->
-                    // LEGACY_RATE_PREFIX is swept too. Values under it were measured against raw
-                    // audio length including the model load, which is a different quantity from what
-                    // is stored now, so they must never be read back as if they meant the same thing.
-                    (key.startsWith(RATE_PREFIX) || key.startsWith(LOAD_PREFIX) ||
-                        key.startsWith(LEGACY_RATE_PREFIX)) && key != RTF_CALIBRATION_KEY
-                }
-                .forEach { remove(it) }
-            putInt(RTF_CALIBRATION_KEY, threads)
-        }
-    }
-
-    /** Gets the chosen model tier. */
-    fun getTranscriptionModelId(): String =
-        getString(Key.TRANSCRIPTION_MODEL_ID, DefaultsValue.TRANSCRIPTION_MODEL_ID)
-            ?: DefaultsValue.TRANSCRIPTION_MODEL_ID
-
-    /** Sets the chosen model tier. */
-    fun setTranscriptionModelId(id: String) = setString(Key.TRANSCRIPTION_MODEL_ID, id)
-
-    /**
-     * Gets the language passed to whisper, or null to auto-detect.
-     *
-     * Not a soft setting: a call transcribed under the wrong language comes back as fluent nonsense
-     * rather than as an error, so an unanswered question here is worse than most.
-     *
-     * Which is why "nobody has chosen" resolves to [DefaultsValue.TRANSCRIPTION_LANGUAGE] — the phone's
-     * own language — and an explicit auto-detect is stored as [TranscriptionLanguageChoice.AUTO] rather
-     * than as an absent key. Writing null for auto-detect would make the two indistinguishable and the
-     * default would silently override the user, exactly as it does in work input data.
-     */
-    fun getTranscriptionLanguage(): String? =
-        when (val stored = getString(Key.TRANSCRIPTION_LANGUAGE)) {
-            null -> DefaultsValue.TRANSCRIPTION_LANGUAGE
-            TranscriptionLanguageChoice.AUTO -> null
-            else -> stored
-        }
-
-    /** Sets the language passed to whisper, or null to auto-detect. */
-    fun setTranscriptionLanguage(language: String?) =
-        setString(Key.TRANSCRIPTION_LANGUAGE, TranscriptionLanguageChoice.encode(language))
-
-    /**
-     * Whether tapping Transcribe asks which language, instead of always using the setting above.
-     *
-     * For phones that take calls in more than one language, where a single pin is wrong about half the
-     * time. The answer applies to that recording only — see
-     * [com.baba.callvault.transcription.TranscriptionLanguageChoice].
-     */
-    fun getTranscriptionAskLanguage() =
-        getBoolean(Key.TRANSCRIPTION_ASK_LANGUAGE, DefaultsValue.TRANSCRIPTION_ASK_LANGUAGE)
-
-    /** Sets whether tapping Transcribe asks which language. */
-    fun setTranscriptionAskLanguage(ask: Boolean) = setBoolean(Key.TRANSCRIPTION_ASK_LANGUAGE, ask)
-
-    // -------- Where to transcribe (issue #48) --------
-
-    /** On this phone, or a cloud service with the user's own key. Unknown values read as on this phone. */
-    fun getTranscriptionService(): TranscriptionService =
-        TranscriptionService.fromKey(getString(Key.TRANSCRIPTION_SERVICE))
-
-    fun setTranscriptionService(service: TranscriptionService) = setString(Key.TRANSCRIPTION_SERVICE, service.key)
-
-    /** Whether cloud transcription may upload over mobile data. Off: Wi-Fi (unmetered) only. */
-    fun getTranscriptionCloudMobileData() = getBoolean(Key.TRANSCRIPTION_CLOUD_MOBILE_DATA, false)
-
-    fun setTranscriptionCloudMobileData(allowed: Boolean) = setBoolean(Key.TRANSCRIPTION_CLOUD_MOBILE_DATA, allowed)
-
-    /** Whether the user has agreed, in the consent dialog, to send call audio to [service]. */
-    fun hasCloudConsent(service: TranscriptionService): Boolean =
-        service.key in getStringSet(Key.TRANSCRIPTION_CLOUD_CONSENT)
-
-    fun recordCloudConsent(service: TranscriptionService) =
-        setStringSet(Key.TRANSCRIPTION_CLOUD_CONSENT, getStringSet(Key.TRANSCRIPTION_CLOUD_CONSENT) + service.key)
-
-    fun getTranscriptionCustomBaseUrl(): String = getString(Key.TRANSCRIPTION_CUSTOM_BASE_URL).orEmpty()
-
-    fun setTranscriptionCustomBaseUrl(url: String) = setString(Key.TRANSCRIPTION_CUSTOM_BASE_URL, url.trim())
-
-    fun getTranscriptionCustomModel(): String = getString(Key.TRANSCRIPTION_CUSTOM_MODEL).orEmpty()
-
-    fun setTranscriptionCustomModel(model: String) = setString(Key.TRANSCRIPTION_CUSTOM_MODEL, model.trim())
-
-    /** The endpoint for the chosen service, or null when on this phone or Custom is incomplete. */
-    fun getCloudEndpoint(service: TranscriptionService = getTranscriptionService()): CloudEndpoint? =
-        CloudEndpoint.resolve(service, getTranscriptionCustomBaseUrl(), getTranscriptionCustomModel())
-
     // -------- Where privileges come from --------
 
     /**
@@ -1201,28 +879,6 @@ class AppPreferences(context: Context) {
         PrivilegedMode.SHIZUKU -> true
     }
 
-    // -------- Who is who on a transcript --------
-
-    /**
-     * The user's own answer to which channel is the far party, as a `ChannelMap` key.
-     *
-     * Outranks everything the app works out for itself. Null means nothing has been said, and the
-     * guess stands.
-     */
-    fun getSpeakerMapOverride(): String? = getString(Key.SPEAKER_MAP_OVERRIDE, null)
-
-    fun setSpeakerMapOverride(key: String?) = setString(Key.SPEAKER_MAP_OVERRIDE, key)
-
-    /**
-     * Whether the user has ever answered the "is this right?" offer.
-     *
-     * Confirming and correcting both count: either way they have looked, and the transcript stops
-     * asking. Kept apart from the override so that agreeing with the guess is also an answer.
-     */
-    fun getSpeakerMapConfirmed(): Boolean = getBoolean(Key.SPEAKER_MAP_CONFIRMED, false)
-
-    fun setSpeakerMapConfirmed(confirmed: Boolean) = setBoolean(Key.SPEAKER_MAP_CONFIRMED, confirmed)
-
     // -------- App lock --------
 
     /**
@@ -1330,12 +986,6 @@ class AppPreferences(context: Context) {
 
     /** Sets whether each phone call shows which SIM it used. */
     fun setShowSimLabelEnabled(enabled: Boolean) = setBoolean(Key.SHOW_SIM_LABEL, enabled)
-
-    /** Whether to write a `.md` transcript + notes file beside each recording (for PC backup). */
-    fun isWriteTranscriptSidecarEnabled() = getBoolean(Key.WRITE_TRANSCRIPT_SIDECAR, DefaultsValue.WRITE_TRANSCRIPT_SIDECAR)
-
-    /** Sets whether a transcript + notes sidecar is written beside each recording. */
-    fun setWriteTranscriptSidecarEnabled(enabled: Boolean) = setBoolean(Key.WRITE_TRANSCRIPT_SIDECAR, enabled)
 
     /** Discard finished recordings shorter than this many seconds (0 = keep every recording). */
     fun getMinDurationSeconds() = getInt(Key.MIN_DURATION_SECONDS, DefaultsValue.MIN_DURATION_SECONDS)
@@ -1669,13 +1319,6 @@ class AppPreferences(context: Context) {
     /** Sets whether dynamic color is enabled. */
     fun setDynamicColorEnabled(enabled: Boolean) = setBoolean(Key.DYNAMIC_COLOR, enabled)
 
-    /**
-     * Whether the transcript reader follows playback (#27): on lights the playing line and keeps it in
-     * view; off lights nothing and never scrolls on its own. On by default, which is how it always behaved.
-     */
-    fun isTranscriptFollowPlayback() = getBoolean(Key.TRANSCRIPT_FOLLOW_PLAYBACK, true)
-
-    fun setTranscriptFollowPlayback(follow: Boolean) = setBoolean(Key.TRANSCRIPT_FOLLOW_PLAYBACK, follow)
 
     /**
      * The raw key of the section of Home the user was last in, or null if they have never been
