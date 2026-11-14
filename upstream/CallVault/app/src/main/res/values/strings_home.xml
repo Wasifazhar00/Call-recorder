@@ -156,7 +156,7 @@
     <string-array name="whatsnew_250_items">
         <item>Keep or delete: CallVault can ask after each call whether to keep the recording (Settings ▸ Recording)</item>
         <item>Share a recording, or just a selected part of it</item>
-        <item>Call history: every call from your phone's log, next to its recording</item>
+        <item>Call history: every call from your phone\\'s log, next to its recording</item>
         <item>Search in Settings</item>
         <item>Your own file-name format, and an optional label for which SIM each call used</item>
         <item>Calls placed through Google Voice keep the number you dialled</item>
