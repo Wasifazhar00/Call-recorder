@@ -67,8 +67,6 @@ import com.baba.callvault.ui.theme.LocalCvBrand
 @Composable
 fun HubScreen(
     recordingsCount: Int,
-    transcriptsCount: Int,
-    summariesCount: Int,
     listState: LazyGridState,
     onOpenSection: (HomeSection) -> Unit,
     onOpenSettings: () -> Unit,

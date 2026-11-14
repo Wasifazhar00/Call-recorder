@@ -1032,21 +1032,9 @@ fun HomeScreen(
     if (playbackFor == null && readingFor == null && clipFor == null) when (section) {
 
     HomeSection.Hub -> {
-        // Re-read on arrival rather than once for the life of the shell. The guard inside
-        // LibraryCounts answers "is there a transcripts database?" at the moment it is called, and a
-        // flow remembered before the user's first transcription would keep answering zero until the
-        // app was restarted. Keyed on the section, so every visit to the hub asks again — and the
-        // hub is the only thing that asks at all.
-        val transcriptsCount by remember(section) { LibraryCounts.transcribed(context) }
-            .collectAsState(initial = 0)
-        val summariesCount by remember(section) { LibraryCounts.summarised(context) }
-            .collectAsState(initial = 0)
-
         HubScreen(
             modifier = modifier,
             recordingsCount = uiState.recordings.size,
-            transcriptsCount = transcriptsCount,
-            summariesCount = summariesCount,
             listState = hubGridState,
             isRefreshing = isPullRefreshing,
             onRefresh = { viewModel.pullToRefresh() },
