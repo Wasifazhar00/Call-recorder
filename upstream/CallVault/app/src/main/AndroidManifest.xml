@@ -11,8 +11,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-feature android:name="android.hardware.telephony" android:required="false" />
-
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <!-- Optional: only meaningful when the user has chosen Shizuku mode. Absent Shizuku, this
@@ -165,7 +163,7 @@
         -->
         <activity
             android:name=".ShareImportActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/share_import_label"
             android:taskAffinity=""
             android:excludeFromRecents="true"

@@ -32,11 +32,9 @@ class WaveformDrawTest {
     private val name = "20261028_100000.000+0200_in_Long call.ogg"
 
     @Test
-    fun draws_only_when_no_call_and_no_transcription_is_running() {
-        assertEquals(WaveformDrawPolicy.Decision.DRAW, WaveformDrawPolicy.decide(callInProgress = false, transcribing = false))
-        assertEquals(WaveformDrawPolicy.Decision.WAIT, WaveformDrawPolicy.decide(callInProgress = true, transcribing = false))
-        assertEquals(WaveformDrawPolicy.Decision.WAIT, WaveformDrawPolicy.decide(callInProgress = false, transcribing = true))
-        assertEquals(WaveformDrawPolicy.Decision.WAIT, WaveformDrawPolicy.decide(callInProgress = true, transcribing = true))
+    fun draws_only_when_no_call_is_running() {
+        assertEquals(WaveformDrawPolicy.Decision.DRAW, WaveformDrawPolicy.decide(callInProgress = false))
+        assertEquals(WaveformDrawPolicy.Decision.WAIT, WaveformDrawPolicy.decide(callInProgress = true))
     }
 
     @Test

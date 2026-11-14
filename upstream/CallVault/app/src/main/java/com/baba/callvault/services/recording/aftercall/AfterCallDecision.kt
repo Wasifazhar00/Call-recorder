@@ -16,7 +16,6 @@ import com.baba.callvault.data.AppPreferences
 import com.baba.callvault.data.recordings.RecordingsRepository
 import com.baba.callvault.system.interop.MetadataSidecar
 import com.baba.callvault.system.storage.StorageRouter
-import com.baba.callvault.transcription.TranscriptionScheduler
 import com.baba.callvault.ui.screens.AfterCallOverlay
 import com.baba.callvault.utils.AppLogger
 import kotlinx.coroutines.runBlocking
@@ -227,8 +226,6 @@ object AfterCallDecision {
      * them. Each on its own so one failing (Drive folder gone, say) does not cost the others.
      */
     internal fun runHeldHandOffs(context: Context, displayName: String, uri: Uri, mimeType: String) {
-        runCatching { TranscriptionScheduler.transcribeAfterCallIfEnabled(context, displayName) }
-            .onFailure { AppLogger.w(TAG, "Could not queue transcription for a kept recording: ${it.message}") }
         runCatching { StorageRouter.route(context, uri, displayName, mimeType) }
             .onFailure { AppLogger.w(TAG, "Could not route a kept recording: ${it.message}") }
         runCatching {

@@ -74,7 +74,7 @@ fun CallShareSheet(
                 modifier = Modifier.padding(bottom = 8.dp),
             )
             val asFiles = CallSharePlan.asFiles(ticks)
-            SharePart.entries.forEach { part ->
+            available.forEach { part ->
                 val isAvailable = part in available
                 ShareTick(
                     label = stringResource(labelOf(part)),

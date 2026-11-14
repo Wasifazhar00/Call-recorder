@@ -45,7 +45,7 @@ object CallSharePlan {
 
     /** The parts at least one of [calls] has. */
     fun available(calls: List<ShareableCall>): Set<SharePart> =
-        SharePart.entries.filter { part -> calls.any { it.has(part) } }.toSet()
+        if (calls.any { it.has(SharePart.RECORDING) }) setOf(SharePart.RECORDING) else emptySet()
 
     /** What starts ticked: the page's own part, or the first one there is when the page's own is missing. */
     fun initialTicks(start: SharePart, available: Set<SharePart>): Set<SharePart> = when {

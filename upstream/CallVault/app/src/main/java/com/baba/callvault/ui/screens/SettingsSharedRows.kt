@@ -14,8 +14,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
@@ -23,7 +21,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -31,11 +28,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.baba.callvault.R
-import com.baba.callvault.data.AppPreferences
 import com.baba.callvault.ui.common.ContactSelectionDialog
 import com.baba.callvault.ui.viewmodels.ContactPickerState
 import com.baba.callvault.ui.viewmodels.ContactPickerType
-import com.baba.callvault.ui.viewmodels.SettingsActions
 import com.mikepenz.aboutlibraries.ui.compose.android.produceLibraries
 import com.mikepenz.aboutlibraries.ui.compose.m3.LibrariesContainer
 
@@ -65,45 +60,6 @@ internal fun ExportImportRow(onExport: () -> Unit, onImport: () -> Unit) {
                 Text(stringResource(R.string.settings_import))
             }
         }
-    }
-}
-
-/**
- * The summariser's rows with the Settings-only "ask me first" switch. Shared by the classic screen's
- * Transcription & summaries section and the new screen's Summaries group.
- */
-@Composable
-internal fun SummarySettingsRows(preferences: AppPreferences, updateTrigger: Int, actions: SettingsActions) {
-    SummaryRows(
-        updateTrigger = updateTrigger,
-        onDownload = { model, network -> actions.downloadSummaryModel(model, network) },
-        onCancel = { actions.cancelSummaryModelDownload(it) },
-        onDelete = { actions.deleteSummaryModel(it) },
-        onImport = { model, uri -> actions.importModel(model, uri) },
-        onCancelImport = { actions.cancelModelImport(it) },
-        onBackup = { model, uri -> actions.backUpModel(model, uri) },
-        onCancelBackup = { actions.cancelModelBackup(it) }
-    ) {
-        // Settings-only, and passed in rather than living in SummaryRows because
-        // the wizard renders those same rows and has no business offering a
-        // preference about a dialog it is showing for the first time.
-        //
-        // Its home is here so the dialog's "don't show this again" can be undone
-        // — a dialog that can permanently remove itself with no way back would be
-        // a trap. Same reasoning as the transcription confirmation switch above.
-        val askFirst = remember(updateTrigger) {
-            preferences.getSummaryConfirmRequirements()
-        }
-        SettingsToggleRow(
-            icon = Icons.Filled.Info,
-            label = stringResource(R.string.summary_requirements_toggle_label),
-            description = stringResource(R.string.summary_requirements_toggle_description),
-            checked = askFirst,
-            onCheckedChange = {
-                preferences.setSummaryConfirmRequirements(it)
-                actions.refreshSettings()
-            }
-        )
     }
 }
 

@@ -73,19 +73,6 @@ internal fun MetadataFileRow(preferences: AppPreferences, updateTrigger: Int, ac
     SettingsExplanation(stringResource(R.string.settings_metadata_file_hint))
 }
 
-/** A text copy of the transcript and notes beside each recording, for PC backup. */
-@Composable
-internal fun TranscriptSidecarRow(preferences: AppPreferences, updateTrigger: Int, actions: SettingsActions) {
-    SettingsToggleRow(
-        label = stringResource(R.string.settings_transcript_sidecar_label),
-        description = stringResource(R.string.settings_transcript_sidecar_desc),
-        checked = remember(updateTrigger) { preferences.isWriteTranscriptSidecarEnabled() },
-        onCheckedChange = { actions.setWriteTranscriptSidecarEnabled(it) },
-        infoExtra = stringResource(R.string.settings_transcript_sidecar_hint),
-    )
-    SettingsExplanation(stringResource(R.string.settings_transcript_sidecar_hint))
-}
-
 /** What other apps get to see of the recordings folder. */
 @Composable
 internal fun HideRecordingsRow(preferences: AppPreferences, updateTrigger: Int, actions: SettingsActions) {

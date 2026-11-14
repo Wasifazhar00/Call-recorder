@@ -246,14 +246,7 @@ fun WizardScreen(
                         settingsVersion = updateTrigger,
                         onSelectTemplate = viewModel::setFileNameTemplate
                     )
-                    WizardStep.TRANSCRIPTION -> ModelsStep(
-                        updateTrigger = updateTrigger,
-                        onDownloadModel = viewModel::downloadModel,
-                        onCancelModelDownload = viewModel::cancelModelDownload,
-                        onDeleteModel = viewModel::deleteModel,
-                        onImportModel = viewModel::importModel,
-                        onCancelModelImport = viewModel::cancelModelImport
-                    )
+                    // AI model setup is not part of the recorder-only wizard.
                 }
                 }
             }
@@ -262,7 +255,7 @@ fun WizardScreen(
 }
 
 /** The logical steps of the wizard (two of them are conditionally included — see [wizardSteps]). */
-internal enum class WizardStep { STORAGE, SCHEDULE, AUTO_RECORD, RELIABILITY, EXPERIMENTAL, AUDIO, FILE_NAME, TRANSCRIPTION, UPDATES }
+internal enum class WizardStep { STORAGE, SCHEDULE, AUTO_RECORD, RELIABILITY, EXPERIMENTAL, AUDIO, FILE_NAME, UPDATES }
 
 /**
  * The visible step list, in order. Kept a pure function so the two exclusions are testable and stay
@@ -286,10 +279,7 @@ internal fun wizardSteps(usesDrive: Boolean, usesEmbeddedAdb: Boolean): List<Wiz
     add(WizardStep.EXPERIMENTAL)
     add(WizardStep.AUDIO)
     add(WizardStep.FILE_NAME)
-    // Follows the recording's own life: captured, encoded, named, and then read. It is unconditional
-    // because transcription needs nothing from ADB — it is the one flagship feature a fresh install
-    // would otherwise never hear about, since the What's New dialog only fires after an *update*.
-    add(WizardStep.TRANSCRIPTION)
+    // AI model setup is omitted from the recorder-only wizard.
     add(WizardStep.UPDATES)
 }
 
@@ -372,11 +362,7 @@ private fun stepInfo(step: WizardStep): String? {
     return when (step) {
         WizardStep.STORAGE -> joinExplanations(subtitle, stringResource(R.string.wizard_storage_drive_note))
         WizardStep.SCHEDULE -> joinExplanations(subtitle, stringResource(R.string.wizard_schedule_immediate_note))
-        // Language and model-size notes live on their own rows' (i) in the step.
-        WizardStep.TRANSCRIPTION -> joinExplanations(
-            subtitle,
-            stringResource(R.string.wizard_transcription_background_note)
-        )
+        // Language/model guidance is not part of this recorder-only wizard.
         else -> subtitle
     }
 }
@@ -451,7 +437,6 @@ private fun stepTitleRes(step: WizardStep): Int = when (step) {
     WizardStep.UPDATES -> R.string.wizard_updates_title
     WizardStep.AUDIO -> R.string.wizard_audio_title
     WizardStep.FILE_NAME -> R.string.wizard_filename_title
-    WizardStep.TRANSCRIPTION -> R.string.wizard_transcription_title
 }
 
 private fun stepSubtitleRes(step: WizardStep): Int = when (step) {
@@ -463,7 +448,6 @@ private fun stepSubtitleRes(step: WizardStep): Int = when (step) {
     WizardStep.UPDATES -> R.string.wizard_updates_subtitle
     WizardStep.AUDIO -> R.string.wizard_audio_subtitle
     WizardStep.FILE_NAME -> R.string.wizard_filename_subtitle
-    WizardStep.TRANSCRIPTION -> R.string.wizard_transcription_subtitle
 }
 
 private fun stepLineRes(step: WizardStep): Int = when (step) {
@@ -475,5 +459,4 @@ private fun stepLineRes(step: WizardStep): Int = when (step) {
     WizardStep.UPDATES -> R.string.wizard_updates_line
     WizardStep.AUDIO -> R.string.wizard_audio_line
     WizardStep.FILE_NAME -> R.string.wizard_filename_line
-    WizardStep.TRANSCRIPTION -> R.string.wizard_transcription_line
 }

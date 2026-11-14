@@ -18,7 +18,6 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
-import com.baba.callvault.transcription.TranscriptionEngine
 import com.baba.callvault.utils.AppLogger
 import java.util.concurrent.TimeUnit
 
@@ -33,7 +32,7 @@ import java.util.concurrent.TimeUnit
  * and the open page shows the bars the moment they are saved ([RecordingExtrasRepository.observeWaveform]).
  *
  * All draws share ONE queue and run one at a time: this is background work behind whatever the user
- * is doing, and several decodes at once would compete with playback and transcription for the cores.
+ * is doing, and several decodes at once would compete with playback for the cores.
  */
 class WaveformDrawWorker(ctx: Context, params: WorkerParameters) : CoroutineWorker(ctx, params) {
 
@@ -44,10 +43,9 @@ class WaveformDrawWorker(ctx: Context, params: WorkerParameters) : CoroutineWork
         val audio = applicationContext.getSystemService(AudioManager::class.java)
         val decision = WaveformDrawPolicy.decide(
             callInProgress = audio != null && audio.mode != AudioManager.MODE_NORMAL,
-            transcribing = TranscriptionEngine.isRunning,
         )
         if (decision == WaveformDrawPolicy.Decision.WAIT) {
-            AppLogger.i(TAG, "Waiting to draw '$name': a call or a transcription is running")
+            AppLogger.i(TAG, "Waiting to draw '$name': a call is running")
             return Result.retry()
         }
 
@@ -86,11 +84,7 @@ internal object WaveformDrawPolicy {
 
     enum class Decision { DRAW, WAIT }
 
-    /**
-     * Never during a call: the one job this app must not disturb is the recording happening now.
-     * Never during a transcription: it owns the CPU, and drawing alongside it inflates the time its
-     * estimate learns from.
-     */
-    fun decide(callInProgress: Boolean, transcribing: Boolean): Decision =
-        if (callInProgress || transcribing) Decision.WAIT else Decision.DRAW
+    /** Never during a call: the one job this app must not disturb is the recording happening now. */
+    fun decide(callInProgress: Boolean): Decision =
+        if (callInProgress) Decision.WAIT else Decision.DRAW
 }
