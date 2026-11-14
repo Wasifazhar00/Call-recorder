@@ -60,7 +60,7 @@ object LibraryLabels {
         }.onFailure { AppLogger.w(TAG, "Could not record the recordings' labels: ${it.message}") }
     }
 
-    /** Every cached label by display name; empty for a library with no transcripts database. */
+    /** Every cached label by display name; empty for a library with no metadata database. */
     fun observe(context: Context): Flow<Map<String, RecordingLabelEntry>> {
         return onceMetadataDatabaseExists(context, emptyMap()) { db ->
             db.labelDao().observeAll().map { all -> all.associateBy { it.displayName } }

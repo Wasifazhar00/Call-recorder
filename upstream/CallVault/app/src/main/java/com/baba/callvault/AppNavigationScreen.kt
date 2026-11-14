@@ -166,7 +166,7 @@ fun AppNavigationScreen(
 
     // A notification tap says what it was about, and now it decides where it lands: all four go to
     // the hub, because the status card, the update offer and the banners are all there. Without
-    // this, "recording is broken" could open onto a transcript list with no sign of the problem —
+    // this, "recording is broken" could open onto the recordings list with no sign of the problem —
     // silently, since nothing crashes.
     //
     // Acknowledged whatever the router decided, including when it decided onboarding: a notification

@@ -22,7 +22,7 @@ object FlagRepository {
 
     private fun dao(context: Context) = TranscriptDatabase.get(context).flagDao()
 
-    /** The marks on one recording, earliest first. */
+    /** The playback marks on one recording, earliest first. */
     fun flagsFor(context: Context, displayName: String): Flow<List<Long>> {
         if (!TranscriptDatabase.exists(context)) return flowOf(emptyList())
         return dao(context).observeFor(displayName)

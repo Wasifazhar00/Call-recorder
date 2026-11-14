@@ -125,7 +125,7 @@ fun PlaybackScreen(
     peaks: FloatArray,
     note: String,
     onNoteChange: (String) -> Unit,
-    /** The user's own labels for this call — see [com.baba.callvault.data.transcripts.TagRepository]. */
+    /** The user's own labels for this call. */
     tags: List<String> = emptyList(),
     /** Every tag already in use anywhere, offered as suggestions so near-duplicates do not accrue. */
     knownTags: List<String> = emptyList(),
@@ -139,7 +139,7 @@ fun PlaybackScreen(
      */
     onPlayFromFlag: (Long) -> Unit = {},
     onRemoveFlag: (Long) -> Unit = {},
-    /** Whether this recording is starred — see [com.baba.callvault.data.transcripts.FavouriteRepository]. */
+    /** Whether this recording is starred. */
     isFavourite: Boolean = false,
     onToggleFavourite: () -> Unit = {},
     onAddTag: (String) -> Unit = {},
@@ -215,7 +215,7 @@ fun PlaybackScreen(
                     onRemove = onRemoveFlag
                 )
             }
-            // Between the summary and the note: a tag is the shortest thing on the screen and the
+            // Between the player and the note: a tag is the shortest thing on the screen and the
             // one most often applied right after listening, so it sits where the thumb already is
             // rather than below a text field that opens the keyboard.
             TagCard(
@@ -1028,7 +1028,7 @@ private fun formatSpeed(speed: Float): String =
     else String.format(Locale.US, "%.2f", speed).trimEnd('0').trimEnd('.')
 
 
-/** Formats a playback position; independent of the removed transcript subsystem. */
+/** Formats a playback position for the recording player. */
 private fun formatPlaybackTime(milliseconds: Long): String {
     val totalSeconds = (milliseconds.coerceAtLeast(0L) / 1000L)
     val hours = totalSeconds / 3600L

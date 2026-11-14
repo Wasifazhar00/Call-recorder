@@ -24,7 +24,7 @@ import kotlinx.coroutines.withContext
 /**
  * Brings an audio file the user already owns into the CallVault recordings library.
  *
- * An import is **not a call**. There is no number, no direction, no contact and no second speaker
+ * An import is **not a call**. It has no associated number, direction or contact
  * channel, and nothing here invents any of them — the name carries a timestamp and the import
  * marker, and everything downstream reads the absences as absences. What it does have is the one
  * thing speech recognition needs: a catalogued file in the recordings folder with a name of its own.

@@ -241,7 +241,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Keeps the window's content out of screenshots and the recents thumbnail.
      *
-     * Part of the same setting rather than a second one: a lock that still shows the last transcript
+     * Part of the same setting rather than a second one: a lock that still shows the last screen
      * as a thumbnail in the app switcher is not a lock, and nobody who wanted the first would decline
      * the second.
      */
