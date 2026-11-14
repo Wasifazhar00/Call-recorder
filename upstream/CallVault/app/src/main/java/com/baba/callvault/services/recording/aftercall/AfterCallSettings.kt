@@ -16,7 +16,7 @@ import com.baba.callvault.utils.AppLogger
 /**
  * Writes "When a call ends" for the Settings row and the wizard alike, so both apply the same rule: going
  * back to Keep keeps every recording still waiting for an answer. A question the user is no longer being
- * asked must not leave its recording with no Drive copy and no transcript.
+ * asked must not leave its recording without the expected Drive copy.
  */
 object AfterCallSettings {
 

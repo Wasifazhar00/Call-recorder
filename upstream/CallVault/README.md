@@ -27,7 +27,7 @@ Open `upstream/CallVault` in Android Studio or build with Gradle from that direc
 
 ## Privacy
 
-Recordings and user-authored recording metadata are stored locally unless the user configures a cloud-copy destination. Drive access is mediated by Android's document picker; CallVault does not collect or upload call audio to an AI transcription or summarisation service.
+Recordings and user-authored recording metadata are stored locally unless the user explicitly configures a cloud-copy destination. Drive access is mediated by Android's document picker.
 
 ## License
 

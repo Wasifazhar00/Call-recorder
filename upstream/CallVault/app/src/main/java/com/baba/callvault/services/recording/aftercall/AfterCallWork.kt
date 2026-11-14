@@ -52,7 +52,7 @@ internal object AfterCallWork {
     /**
      * Scheduled for every held recording, whatever "If I don't answer" says now. The worker reads the setting
      * when it runs, so Keep there means the held hand-offs do eventually run: without the check, a question
-     * swiped away would leave its recording with no Drive copy and no transcript for good.
+     * swiped away would leave its recording without the expected Drive copy.
      */
     fun scheduleUnansweredCheck(context: Context, displayName: String, delayMs: Long, replace: Boolean): Boolean =
         enqueue<AfterCallUnansweredWorker>(context, UNANSWERED_PREFIX + displayName, workDataOf(KEY_NAME to displayName), delayMs, replace)

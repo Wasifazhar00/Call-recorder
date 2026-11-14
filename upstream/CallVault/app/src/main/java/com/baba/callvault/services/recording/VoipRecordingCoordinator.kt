@@ -875,8 +875,7 @@ object VoipRecordingCoordinator {
                         StorageRouter.route(context, safUri, name, codecMime)
                         // Route the .json details to Drive too (issue #49). The sidecar was written
                         // earlier in this block, so it exists by now. IMMEDIATE only; the sweep handles
-                        // DAILY/WEEKLY; no-op if the user did not ask for a details file. The .md transcript
-                        // is routed later, from the transcription-complete hook, since it does not exist yet.
+                        // DAILY/WEEKLY; no-op if the user did not ask for a details file.
                         StorageRouter.routeSidecar(context, name, MetadataSidecar.sidecarNameFor(name), "application/json")
                     } finally {
                             // Asked last, once the catalog row exists, and in a finally so a step above that

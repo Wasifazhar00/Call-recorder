@@ -867,7 +867,7 @@ class RecordingForegroundService : Service() {
             return
         }
         // Too short to be worth keeping, if the user asked for that. Before the catalog, the
-        // transcription queue and StorageRouter — a recording discarded after any of those has
+        // Drive-copy queue and StorageRouter — a recording discarded after any of those has
         // already cost a cloud upload, and would flicker through the Home list on
         // its way out. The duration comes from the container rather than the call log because the
         // call log has nothing to say about an app call, and this check must mean the same thing on
