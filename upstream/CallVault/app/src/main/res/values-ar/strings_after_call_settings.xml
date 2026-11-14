@@ -5,7 +5,6 @@
     <string name="settings_after_call_mode_keep">الاحتفاظ بالتسجيل</string>
     <string name="settings_after_call_mode_ask">اسألني: احتفاظ أم حذف</string>
     <string name="settings_after_call_mode_keep_desc">يُحتفظ بكل تسجيل، كما هو الحال دائمًا.</string>
-    <string name="settings_after_call_mode_ask_desc">بعد كل مكالمة مسجَّلة، يسألك إشعار هل تحتفظ بها. وإلى أن تجيب، لا تُنسخ إلى Drive ولا تُفرَّغ تلقائيًا.</string>
     <string name="settings_after_call_needs_notifications">يحتاج السؤال إلى إشعارات CallVault. اسمح بها وسيُفعَّل خيار السؤال.</string>
     <string name="settings_after_call_style_label">طريقة السؤال</string>
     <string name="settings_after_call_style_notification">إشعار</string>
@@ -16,9 +15,7 @@
     <string name="settings_after_call_unanswered_label">إذا لم أُجب</string>
     <string name="settings_after_call_unanswered_keep">الاحتفاظ به</string>
     <string name="settings_after_call_unanswered_delete">حذفه بعد 24 ساعة</string>
-    <string name="settings_after_call_unanswered_keep_desc">بعد 24 ساعة يُحتفظ بالتسجيل ويُنسخ ويُفرَّغ كالمعتاد.</string>
     <string name="settings_after_call_unanswered_delete_desc">بعد 24 ساعة من المكالمة يُحذف التسجيل.</string>
-    <string name="settings_after_call_unanswered_engaged">التسجيل الذي ميّزته بنجمة أو علامة أو وسم أو ملاحظة أو فرّغته يُحتفظ به دائمًا.</string>
     <string name="wizard_after_call_ask_label">اسألني هل أحتفظ بكل تسجيل</string>
     <string name="wizard_after_call_ask_desc">عند انتهاء المكالمة، احتفظ بتسجيلها أو احذفه بلمسة واحدة. عند الإيقاف يُحتفظ بكل تسجيل.</string>
 </resources>

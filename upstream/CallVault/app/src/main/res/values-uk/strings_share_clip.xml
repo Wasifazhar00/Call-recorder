@@ -22,24 +22,10 @@
     <string name="share_clip_handle_end">Кінець фрагмента, %1$s</string>
     <string name="share_clip_nudge_earlier">на секунду раніше</string>
     <string name="share_clip_nudge_later">на секунду пізніше</string>
-    <string name="share_clip_include_text">Додати сказане</string>
-    <string name="share_clip_text_ready">Рядки транскрипції з цього фрагмента буде надіслано разом із ним.</string>
-    <string name="share_clip_text_none_in_part">У цьому фрагменті нічого не сказано, тому текст не додається.</string>
-    <string name="share_clip_text_call_running">Ця розмова зараз розпізнається. Її рядки з цього фрагмента буде надіслано, коли розпізнавання завершиться.</string>
-    <string name="share_clip_transcribe_part">Розпізнати лише цей фрагмент</string>
-    <string name="share_clip_transcribe_part_detail">Швидше. Лише для цього надсилання; розмова залишиться без транскрипції.</string>
-    <string name="share_clip_transcribe_whole">Розпізнати всю розмову</string>
-    <string name="share_clip_transcribe_whole_detail">Зберігається з розмовою. Надсилаються лише рядки цього фрагмента.</string>
     <string name="share_clip_share">Надіслати %1$s</string>
     <string name="share_clip_working_cut">Підготовка фрагмента…</string>
-    <string name="share_clip_working_part">Розпізнавання фрагмента… %1$d%%</string>
-    <string name="share_clip_working_call">Очікування транскрипції розмови…</string>
-    <string name="share_clip_share_without_text">Надіслати без тексту</string>
     <string name="share_clip_back">Назад</string>
     <string name="share_clip_failed">Не вдалося створити фрагмент. Спробуйте ще раз або поділіться всім записом.</string>
-    <string name="share_clip_busy">Розпізнавання зайняте іншою розмовою. Надішліть без тексту або спробуйте знову, коли воно завершиться.</string>
-    <string name="share_clip_not_set_up">Розпізнавання ще не налаштоване. Завантажте модель або додайте свій сервіс у налаштуваннях.</string>
-    <string name="share_clip_transcribe_failed">Цього разу розпізнати не вдалося. Надіслати без тексту?</string>
     <string name="share_clip_unsupported">Фрагментом можна поділитися лише із власних записів CallVault, а не з цього імпортованого файлу.</string>
     <string name="share_clip_chooser">Поділитися частиною запису</string>
 </resources>

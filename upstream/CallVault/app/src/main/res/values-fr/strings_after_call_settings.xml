@@ -5,7 +5,6 @@
     <string name="settings_after_call_mode_keep">Garder l’enregistrement</string>
     <string name="settings_after_call_mode_ask">Me demander : garder ou supprimer</string>
     <string name="settings_after_call_mode_keep_desc">Chaque enregistrement est gardé, comme toujours.</string>
-    <string name="settings_after_call_mode_ask_desc">Après chaque appel enregistré, une notification vous demande s’il faut le garder. Tant que vous n’avez pas répondu, il n’est ni copié sur Drive ni transcrit automatiquement.</string>
     <string name="settings_after_call_needs_notifications">Pour demander, CallVault a besoin des notifications. Autorisez-les et Demander s’active.</string>
     <string name="settings_after_call_style_label">Comment demander</string>
     <string name="settings_after_call_style_notification">Notification</string>
@@ -16,9 +15,7 @@
     <string name="settings_after_call_unanswered_label">Si je ne réponds pas</string>
     <string name="settings_after_call_unanswered_keep">Le garder</string>
     <string name="settings_after_call_unanswered_delete">Le supprimer après 24 heures</string>
-    <string name="settings_after_call_unanswered_keep_desc">Après 24 heures, l’enregistrement est gardé, copié et transcrit comme d’habitude.</string>
     <string name="settings_after_call_unanswered_delete_desc">24 heures après l’appel, l’enregistrement est supprimé.</string>
-    <string name="settings_after_call_unanswered_engaged">Un enregistrement que vous avez mis en favori, marqué, étiqueté, annoté ou transcrit est toujours gardé.</string>
     <string name="wizard_after_call_ask_label">Me demander si je garde chaque enregistrement</string>
     <string name="wizard_after_call_ask_desc">À la fin d’un appel, gardez ou supprimez son enregistrement d’un geste. Désactivé : tout est gardé.</string>
 </resources>

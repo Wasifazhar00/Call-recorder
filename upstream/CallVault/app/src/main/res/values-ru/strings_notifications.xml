@@ -48,15 +48,4 @@
     <string name="notif_action_turn_wd_on">Включить отладку по Wi-Fi</string>
     <string name="notif_action_turn_usb_on">Включить отладку по USB</string>
 
-    <!-- Transcription finished / didn't finish -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</resources>
+    </resources>
