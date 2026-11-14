@@ -79,7 +79,6 @@ import androidx.compose.ui.semantics.Role
 import com.baba.callvault.R
 import com.baba.callvault.data.recordings.RecordingDirection
 import com.baba.callvault.data.recordings.RecordingsRepository.RecordingItem
-import com.baba.callvault.data.transcripts.TranscriptStatus
 import androidx.compose.foundation.border
 import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -103,11 +102,7 @@ import com.baba.callvault.ui.common.rememberNoteDraft
 import com.baba.callvault.ui.common.rememberSpokenPositionMs
 import com.baba.callvault.ui.common.CvScaffold
 import com.baba.callvault.ui.common.RecordingLabel
-import com.baba.callvault.ui.common.SummaryCard
-import com.baba.callvault.ui.common.SummaryCardState
-import com.baba.callvault.ui.common.TranscriptActionButton
 import com.baba.callvault.ui.common.WaveformBar
-import com.baba.callvault.ui.common.TranscriptTimestamp
 import com.baba.callvault.ui.viewmodels.PlaybackControls
 import com.baba.callvault.ui.viewmodels.RecordingPlaybackController
 import java.util.Locale
@@ -127,10 +122,6 @@ import java.util.Locale
 fun PlaybackScreen(
     item: RecordingItem,
     playback: RecordingPlaybackController.PlaybackState,
-    transcriptStatus: TranscriptStatus,
-    /** How far into this recording's transcription, 0-100. Zero means not known, and spins. */
-    transcriptPercent: Int,
-    summaryState: SummaryCardState,
     peaks: FloatArray,
     note: String,
     onNoteChange: (String) -> Unit,
@@ -156,8 +147,6 @@ fun PlaybackScreen(
     /** Renames a tag on every recording carrying it — the only way to fix a typo already applied. */
     onRenameTag: (String, String) -> Unit = { _, _ -> },
     onDeleteTagEverywhere: (String) -> Unit = {},
-    onSummarise: () -> Unit,
-    onStopSummary: () -> Unit,
     onBack: () -> Unit,
     onPlay: () -> Unit,
     onPause: () -> Unit,
@@ -165,8 +154,6 @@ fun PlaybackScreen(
     onSeek: (Int) -> Unit,
     onSkip: (Int) -> Unit,
     onCycleSpeed: () -> Unit,
-    onOpenTranscript: () -> Unit,
-    onTranscribe: () -> Unit,
     onDelete: () -> Unit,
     /** Shares the whole recording. */
     onShare: () -> Unit = {},
@@ -198,10 +185,6 @@ fun PlaybackScreen(
         ) {
             CallHeaderCard(
                 item = item,
-                transcriptStatus = transcriptStatus,
-                transcriptPercent = transcriptPercent,
-                onOpenTranscript = onOpenTranscript,
-                onTranscribe = onTranscribe,
                 isFavourite = isFavourite,
                 onToggleFavourite = onToggleFavourite,
                 onDelete = onDelete,
@@ -326,10 +309,6 @@ private fun formatMarkTime(atMs: Long): String {
 @Composable
 private fun CallHeaderCard(
     item: RecordingItem,
-    transcriptStatus: TranscriptStatus,
-    transcriptPercent: Int,
-    onOpenTranscript: () -> Unit,
-    onTranscribe: () -> Unit,
     isFavourite: Boolean,
     onToggleFavourite: () -> Unit,
     onDelete: () -> Unit,
@@ -597,8 +576,8 @@ private fun PlayerCard(
                         onSeekTo = { fraction -> onSeek((fraction * duration).toInt()) },
                         stateText = stringResource(
                             R.string.home_player_position_of,
-                            TranscriptTimestamp.format(spokenPosition.toLong()),
-                            TranscriptTimestamp.format(duration.toLong()),
+                            formatPlaybackTime(spokenPosition.toLong()),
+                            formatPlaybackTime(duration.toLong()),
                         ),
                     )
                     Spacer(Modifier.height(2.dp))
@@ -607,12 +586,12 @@ private fun PlayerCard(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
-                            text = TranscriptTimestamp.format(position.toLong()),
+                            text = formatPlaybackTime(position.toLong()),
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                         Text(
-                            text = TranscriptTimestamp.format(duration.toLong()),
+                            text = formatPlaybackTime(duration.toLong()),
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -1049,3 +1028,14 @@ private fun NoteCard(note: String, recordingKey: String, onNoteChange: (String) 
 private fun formatSpeed(speed: Float): String =
     if (speed == speed.toInt().toFloat()) speed.toInt().toString()
     else String.format(Locale.US, "%.2f", speed).trimEnd('0').trimEnd('.')
+
+
+/** Formats a playback position; independent of the removed transcript subsystem. */
+private fun formatPlaybackTime(milliseconds: Long): String {
+    val totalSeconds = (milliseconds.coerceAtLeast(0L) / 1000L)
+    val hours = totalSeconds / 3600L
+    val minutes = (totalSeconds % 3600L) / 60L
+    val seconds = totalSeconds % 60L
+    return if (hours > 0L) String.format(Locale.US, "%d:%02d:%02d", hours, minutes, seconds)
+    else String.format(Locale.US, "%d:%02d", minutes, seconds)
+}
