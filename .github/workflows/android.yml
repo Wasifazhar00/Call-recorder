@@ -18,6 +18,7 @@ jobs:
       - name: Checkout repository and imported source
         uses: actions/checkout@v4
         with:
+          persist-credentials: false
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -61,7 +62,7 @@ jobs:
           retention-days: 14
 
       - name: Run Android lint
-        working-directory: vendor/CallVault
+        working-directory: upstream/CallVault
         run: env -u GITHUB_ACTIONS ./gradlew --no-daemon --stacktrace :app:lintRelease
 
       - name: Upload Android lint reports
@@ -70,7 +71,7 @@ jobs:
         with:
           name: call-recorder-lint-reports
           path: |
-            vendor/CallVault/app/build/intermediates/lint_intermediate_text_report/release/lintReportRelease/
+            upstream/CallVault/app/build/intermediates/lint_intermediate_text_report/release/lintReportRelease/
             vendor/CallVault/app/build/reports/lint-results-release.*
           if-no-files-found: ignore
           retention-days: 14
@@ -85,9 +86,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          unsigned="vendor/CallVault/app/build/outputs/apk/release/app-release-unsigned.apk"
-          aligned="vendor/CallVault/app/build/outputs/apk/release/app-release-aligned.apk"
-          output="vendor/CallVault/app/build/outputs/apk/release/CallRecorder-shizuku-test.apk"
+          unsigned="upstream/CallVault/app/build/outputs/apk/release/app-release-unsigned.apk"
+          aligned="upstream/CallVault/app/build/outputs/apk/release/app-release-aligned.apk"
+          output="upstream/CallVault/app/build/outputs/apk/release/CallRecorder-shizuku-test.apk"
           mkdir -p "$HOME/.android"
           if [ ! -f "$HOME/.android/debug.keystore" ]; then
             keytool -genkeypair -v -keystore "$HOME/.android/debug.keystore" \
