@@ -152,7 +152,6 @@ android {
         // depends on) is arm64, and shipping one ABI keeps the APK small.
         ndk { abiFilters += "arm64-v8a" }
 
-        // Instrumented tests. Added with on-device transcription: the JNI bridge to whisper.cpp
         // cannot be verified by a JVM unit test, and a wrong language parameter or a mismatched
         // native symbol fails only at runtime — silently producing confident nonsense rather than
         // crashing. See app/src/androidTest.
@@ -166,7 +165,6 @@ android {
         // 16 KB page sizes (Android 15+ devices that run with 16 KB pages). NDK 27 still links with
         // 4 KB LOAD-segment alignment by default, and a 4 KB-aligned .so fails to load on such a phone.
         // This flag makes the NDK toolchain add -Wl,-z,max-page-size=16384 to every library we build
-        // (whisper, llama, ggml and its CPU variants, audiohandoff). NDK 28+ does this by default.
         externalNativeBuild {
             cmake { arguments += "-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON" }
         }
@@ -254,7 +252,6 @@ android {
                 // Two installs cannot share a ContentProvider authority. Only the isolated build
                 // moves; every normal build keeps the authority RecorderBinderProvider.AUTHORITY
                 // expects. The isolated build never uses that provider — the instrumented tests
-                // exercise the whisper.cpp JNI bridge, which needs no provider and no daemon.
                 manifestPlaceholders["recorderAuthority"] = "com.baba.callvault.instrtest.recorder"
             }
         }
@@ -465,7 +462,6 @@ dependencies {
     // sleeping through it. Same version as the runtime coroutines.
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
 
-    // Instrumented tests — the only way to exercise the whisper.cpp JNI bridge, which a JVM unit
     // test cannot load. Deliberately minimal: runner + JUnit extensions, no UI-testing stack.
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test:runner:1.6.2")
