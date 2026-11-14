@@ -41,9 +41,6 @@ object BcrMetadata {
      *                           call, the messenger's package for an app call.
      * @param direction          "in", "out" or "conference", per BCR. Null when unknown.
      * @param parameterType      "bitrate", "compression_level" or "none".
-     * @param speakerTurns       The `SpeakerTurnCodec` string CallVault measured, or null when there
-     *                           are none. Goes in the namespaced `callvault` block, never a BCR field.
-     * @param nearChannel        Which channel carries the user ("A"/"B"), or null when not known.
      */
     data class Input(
         val timestampUnixMs: Long,
@@ -59,14 +56,9 @@ object BcrMetadata {
         val sampleRate: Int?,
         val channelCount: Int?,
         val durationSecsEncoded: Double?,
-        val speakerTurns: String? = null,
-        val nearChannel: String? = null,
         /** 1-based SIM slot the call used, when the opt-in SIM label is on and the call log says; else null. */
         val simSlot: Int? = null,
     )
-
-    /** The `callvault` block's schema version, so a reader can tell what to expect of it. */
-    private const val CALLVAULT_BLOCK_VERSION = 1
 
     /** ISO8601 with a numeric offset, matching BCR's `2023-07-19T21:53:08.931-04:00`. */
     private const val ISO_8601 = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
@@ -118,23 +110,6 @@ object BcrMetadata {
         recording.put("was_ever_holding", JSONObject.NULL)
 
         root.put("output", JSONObject().put("format", format).put("recording", recording))
-
-        // CallVault's own measurements, under a namespaced key so a BCR reader ignores the whole block
-        // rather than tripping over an unfamiliar top-level field. The speaker turns were separated
-        // from the two capture channels before the mono downmix averaged them away (issue #50): a
-        // server transcribing the mono Drive copy cannot recover who spoke when, but the app measured
-        // it at capture time and hands it over here, matching the labels the app shows.
-        val callvault = JSONObject()
-        callvault.put("version", CALLVAULT_BLOCK_VERSION)
-        // A null, not a missing key: "we did not work out which channel is yours" is a statement the
-        // reader can act on (fall back to neutral sides), where an absent field is merely ambiguous.
-        callvault.put("near_channel", input.nearChannel ?: JSONObject.NULL)
-        // Absent, not null, when there are none (Shizuku, an older capture, a mono recording): the
-        // key's presence is itself the signal that turns were measured at all.
-        if (!input.speakerTurns.isNullOrBlank()) {
-            callvault.put("speaker_turns", input.speakerTurns)
-        }
-        root.put("callvault", callvault)
 
         return root.toString(4)
     }

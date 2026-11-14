@@ -822,11 +822,7 @@ object VoipRecordingCoordinator {
                         // Marks collected during the call, keyed to the final name — the same rule the
                         // carrier path follows and for the same reason.
                         FlagRepository.save(context, name, PendingFlags.drain())
-                        // Same details file as the carrier path, derived the same way from the same
-                        // final name. `direction` comes out null here and that is correct rather than
-                        // lazy: an app call has no reliable direction, and BCR's format already has a
-                        // null for a field that cannot be determined. Written after the turns above so
-                        // the `callvault` block can carry them (issue #50).
+                        // The same optional call-details sidecar is written for VoIP and carrier calls.
                         run {
                             val parsed = RecordingsRepository.parseName(name)
                             MetadataSidecar.writeIfEnabled(

@@ -925,9 +925,8 @@ class RecordingForegroundService : Service() {
                 // off a call, and they have not asked to wait for anything yet.
                 WaveformDrawWorker.enqueue(applicationContext, name, uri)
             } finally {
-                // Last, once the catalog row exists: Keep runs the transcription, which resolves the audio
-                // through the catalog and would otherwise race it. In a finally, so a step above that throws
-                // can never leave a held recording with no question (its 24-hour check is already scheduled).
+                // Ask last, once the catalog row exists. A finally ensures a failed step cannot leave
+                // a held recording without its question.
                 if (isHeld) AfterCallDecision.ask(applicationContext, name)
             }
         }
