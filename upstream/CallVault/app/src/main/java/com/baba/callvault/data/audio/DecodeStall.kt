@@ -13,8 +13,7 @@ package com.baba.callvault.data.audio
  *
  * [AudioDecoder]'s loop waits at most 10 ms per call into the codec, but loops for as long as the
  * decoder has not said end-of-stream. A decoder that never says it — a broken or odd file — kept
- * a transcription "working" or a waveform undrawn until the user tapped Stop. Idea from the
- * slman890 fork (`8534f237`).
+ * an audio-processing job or a waveform draw until the user tapped Stop. This prevents a malformed file from holding background work indefinitely.
  *
  * **On progress, never on total time.** A long call is decoded in five-minute windows and a slow phone
  * may take a while over each; none of that is a stall. Only a stretch of [LIMIT_MS] with no output at

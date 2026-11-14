@@ -192,7 +192,7 @@ object RecordingsRepository {
                 // Fall back to the recording's own container duration. It is not a guess: it is the
                 // length of the audio actually captured, which is the more direct answer for a list of
                 // recordings. Without it every WhatsApp row showed a blank where its length should be,
-                // and the transcription length limit had nothing to judge an app call by.
+                // and the old decoder limit had nothing to judge an app call by.
                 //
                 // Read ONCE and remembered in the catalog. The original version called this on every
                 // list load for every recording the call log could not answer for — every app call

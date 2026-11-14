@@ -155,8 +155,7 @@ object RecordingExtrasRepository {
     /**
      * Removes both when a recording goes.
      *
-     * The note matters here for the same reason the transcript does: it is about a private call, and
-     * leaving it behind would keep a written record of a conversation the user deleted.
+     * Notes are private user-authored data and are removed with their recording.
      */
     suspend fun deleteFor(context: Context, displayName: String) {
         if (!TranscriptDatabase.exists(context)) return

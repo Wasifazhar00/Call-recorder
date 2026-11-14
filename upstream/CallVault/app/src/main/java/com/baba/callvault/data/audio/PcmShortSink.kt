@@ -89,8 +89,8 @@ internal class PcmShortSink(initialCapacity: Int) {
          *
          * A range, not the whole file. Sizing a five-minute window from the call's declared length
          * reserved the WHOLE call for every window — 264 MB per window of a 45-minute call — so the
-         * windowed waveform and transcription paths could run a 256 MB heap out on exactly the long
-         * calls they exist for (issue #63). [SEEK_RUN_UP_US] covers a seek that lands early, on the
+         * windowed waveform processing could run a 256 MB heap out on long
+         * recordings (issue #63). [SEEK_RUN_UP_US] covers a seek that lands early, on the
          * sync point before [fromUs]. 0 when nothing is known, which [capacityFor] treats as "small".
          */
         fun spanUs(declaredUs: Long, fromUs: Long = 0L, toUs: Long = Long.MAX_VALUE): Long {

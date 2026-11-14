@@ -21,7 +21,7 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 /**
- * Turns a stored recording into the audio whisper.cpp requires: 16 kHz mono float in [-1, 1].
+ * Decodes stored recordings into 16 kHz mono float audio.
  *
  * CallVault writes 48 kHz mono Opus, but stereo is handled too — recordings made before the mandatory
  * mono downmix (v1.4.4) are stereo and the back-catalogue still contains them.
@@ -30,13 +30,11 @@ import kotlin.math.sin
  * remains proportional to call length — but it is now one buffer of PCM plus the 16 kHz output, rather
  * than the four overlapping full-length buffers this used to build. For fifteen minutes at 48 kHz that
  * is roughly 144 MB where it was about 259 MB, which is what
- * the old transcription length limit (removed) was really measuring. See [pcm16ToMono16k] and [PcmShortSink]
+ * the old whole-file decoding limit was really measuring. See [pcm16ToMono16k] and [PcmShortSink]
  * for the two allocations that were removed.
  *
  * The remaining fix is chunked, VAD-segmented decoding, which the pipeline wants anyway for
- * resumability. Note that whisper's own `offset_ms`/`duration_ms` are **not** a route to it: the mel is
- * built for the whole file before those parameters are read, so looping over them costs full memory
- * every pass and recomputes the mel each time.
+ * resumability. Each range is decoded independently so memory use stays bounded.
  */
 object AudioDecoder {
 
@@ -127,7 +125,7 @@ object AudioDecoder {
      * thirteen real recordings from this device and must not shift, so this reproduces the same
      * arithmetic in the same order rather than reimplementing it — see the equivalence tests. The
      * per-tap cost of converting a sample on demand instead of once up front is real but small against
-     * whisper's own runtime, and it buys back a hundred megabytes.
+     * audio decoding, and it buys back a hundred megabytes.
      */
     fun pcm16ToMono16k(
         pcm: ShortArray,
@@ -164,7 +162,7 @@ object AudioDecoder {
     /**
      * One frame of [pcm] as a mono sample, with exactly the arithmetic [pcm16ToMonoFloat] uses.
      *
-     * The `coerceIn` is not redundant: `-32768 / 32767f` is `-1.00003`, and whisper is handed a range
+     * The `coerceIn` is not redundant: `-32768 / 32767f` is `-1.00003`, and the caller receives a range
      * it is entitled to assume.
      */
     private fun monoAt(pcm: ShortArray, channels: Int, frame: Int): Float {
@@ -213,13 +211,12 @@ object AudioDecoder {
     private const val MAX_ANTI_ALIAS_TAPS = 129
 
     /**
-     * Resample to [TARGET_SAMPLE_RATE], low-passing first so nothing folds back into the band whisper
-     * reads.
+     * Resample to [TARGET_SAMPLE_RATE], low-passing first so nothing folds back into the target audio band.
      *
      * The filter is not optional garnish. CallVault records at 48 kHz and 48000/16000 is exactly 3, so
      * the interpolation fraction below is identically zero on the production path: without a filter
      * this is keep-one-discard-two, and every component from 8–24 kHz lands back in 0–8 kHz at full
-     * amplitude — precisely the range whisper's mel filterbank reads.
+     * amplitude — precisely the target audio band.
      *
      * This used to be defended on the grounds that telephony carries nothing above ~3.4 kHz. That is
      * true of the *carrier downlink*, and it was measured on the PCM before encoding — but it is not
@@ -261,7 +258,7 @@ object AudioDecoder {
      *
      * Edges clamp to the first and last sample rather than zero-padding: zero-padding rings audibly
      * over the first and last few milliseconds, and a call's opening word is exactly where that would
-     * cost a transcript something.
+     * shift the decoded audio timeline.
      */
     private fun filteredSampleAt(input: FloatArray, center: Int, taps: FloatArray?): Float {
         if (taps == null) return input[center.coerceIn(0, input.size - 1)]
@@ -304,7 +301,7 @@ object AudioDecoder {
             sum += tap
         }
         // Normalise to unity DC gain: without this the filter quietly rescales the whole recording,
-        // and whisper's front end is sensitive to level.
+        // and downstream audio processing is sensitive to level.
         for (k in 0 until length) taps[k] = (taps[k] / sum).toFloat()
         return taps
     }
@@ -312,7 +309,7 @@ object AudioDecoder {
     /**
      * Whether [frames] at [sampleRate] is a believable decode of a file declaring [expectedDurationUs].
      *
-     * This exists because of a real failure: handing whisper an over-long or malformed buffer does not
+     * This check prevents an over-long or malformed decoded buffer from
      * throw — it simply runs for as long as the buffer implies. A 45-second clip once transcribed for
      * over eleven minutes before anyone could tell anything was wrong. Checking the arithmetic costs
      * nothing and converts that into an immediate, legible error.
@@ -358,14 +355,13 @@ object AudioDecoder {
     }
 
     /**
-     * Decodes [uri] to 16 kHz mono float. Blocking and CPU-bound — [TranscriptionEngine] is what moves
-     * it off the main thread; do not call it directly from UI code.
+     * Decodes [uri] to 16 kHz mono float. Blocking and CPU-bound; call it from a background dispatcher.
      *
      * @param shouldStop consulted while decoding so a stop is honoured here too. Decoding a long
      *   recording is otherwise uninterruptible — a 1.5-hour call kept burning CPU for ~12 seconds
-     *   after Stop was tapped, because it had not reached whisper yet.
+     *   after Stop was tapped, because decoding had not finished.
      * @throws IllegalStateException if the decode produces an implausible amount of audio, rather than
-     *   letting a malformed buffer reach whisper where it costs minutes of silent CPU burn.
+     *   letting malformed audio consume excessive processing time.
      * @throws InterruptedException if [shouldStop] becomes true while decoding.
      * @throws DecodeStalledException if the decoder produces nothing for [DecodeStall.LIMIT_MS].
      */
@@ -380,8 +376,7 @@ object AudioDecoder {
      *
      * The point of the range: peak memory stops depending on call length. Decoding a five-minute slice
      * costs the same whether the call is five minutes or two hours, which is what let the old
-     * transcription length limit go. See
-     * [ChunkPlan] for how the slices are chosen.
+     * memory use independent of total recording length.
      *
      * **[DecodedRange.startMs] is the honest answer, not the request.** Seeking lands on the container's
      * previous sync point, at or before what was asked for, so the audio returned may begin slightly
