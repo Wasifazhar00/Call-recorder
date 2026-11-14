@@ -16,7 +16,6 @@ import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Translate
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -43,7 +42,6 @@ internal class GroupBodyCallbacks(
     val onExportSettings: () -> Unit,
     val onImportSettings: () -> Unit,
     val onShowLicenses: () -> Unit,
-    val onChangeLanguage: () -> Unit,
 )
 
 /**
@@ -174,7 +172,6 @@ private fun SaveAndSyncBody(
                 SearchFiltered("HideRecordingsRow") { HideRecordingsRow(preferences, updateTrigger, actions) }
             }
             SaveAndSyncRow.METADATA_FILE -> SearchFiltered("MetadataFileRow") { MetadataFileRow(preferences, updateTrigger, actions) }
-            else -> Unit // Transcript sidecar export is removed with transcription.
         }
     }
 }

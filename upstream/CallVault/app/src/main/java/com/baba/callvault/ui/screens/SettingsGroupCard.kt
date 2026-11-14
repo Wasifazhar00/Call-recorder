@@ -66,7 +66,7 @@ internal fun SettingsGroupCard(
     summary: String,
     expanded: Boolean,
     onToggle: () -> Unit,
-    // Text about the whole group (retention, the transcription mode, the summariser's costs), behind an ⓘ
+    // Text about the whole group (for example retention policy), behind an ⓘ
     // on the header. Null for none.
     explanation: String? = null,
     content: @Composable ColumnScope.() -> Unit,
