@@ -16,7 +16,7 @@ import org.junit.Test
  * Keeping a Hebrew name from being torn apart by the English sentence around it.
  *
  * The failure this prevents is real and was on screen: a contact whose name is Hebrew followed by a
- * digit rendered as "Transcribing 2 גבריאלb keeps your phone busy" — the digit and the Latin letter
+ * digit rendered as "Recording 2 גבריאלb keeps your phone busy" — the digit and the Latin letter
  * had migrated to the wrong side, because the whole paragraph was resolved left-to-right and the name
  * was just characters inside it.
  */
@@ -73,7 +73,7 @@ class BidiTextTest {
     fun leading_digits_and_punctuation_do_not_decide_the_direction() {
         // A Hebrew line often opens with a quote or a number. Neutral characters carry no direction of
         // their own, so the first *strong* character is what counts — deciding on the first character
-        // outright would flip a good share of the lines in a transcript.
+        // outright would flip a good share of the lines in a mixed-direction label.
         assertTrue(BidiText.isRtl("\"שלום\""))
         assertTrue(BidiText.isRtl("123 שלום"))
         assertTrue(!BidiText.isRtl("123 hello"))
@@ -97,7 +97,7 @@ class BidiTextTest {
     @Test
     fun every_offered_language_gets_the_direction_its_script_needs() {
         // The direction comes from the text, not from the language setting — which is what makes this
-        // right for all 99 languages whisper supports, not just the 13 in the dropdown, and right for a
+        // right for all 99 languages Android supports, not just the 13 in the dropdown, and right for a
         // call that switches language halfway through. A sample of each offered script:
         val rightToLeft = mapOf(
             "Hebrew" to "שלום, מה נשמע?",

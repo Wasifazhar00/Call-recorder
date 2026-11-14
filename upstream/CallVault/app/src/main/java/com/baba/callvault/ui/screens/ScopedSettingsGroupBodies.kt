@@ -66,7 +66,7 @@ internal fun GroupBody(
         SettingsGroup.CONNECTION -> ConnectionBody()
         SettingsGroup.APP -> AppBody(preferences, updateTrigger, actions, callbacks)
         SettingsGroup.HELP_AND_ABOUT -> HelpAndAboutBody(preferences, updateTrigger, actions, callbacks)
-        else -> Unit // AI settings groups are excluded from the recorder-only build.
+        else -> Unit // No other group has a body here.
     }
 }
 

@@ -33,17 +33,6 @@ import com.baba.callvault.ui.navigation.LibrarySelection
  * is a bug waiting for the right filename.
  */
 
-/**
- * A recording awaiting its "this will take about N" confirmation: name, estimate, chosen language,
- * and the call's own length (0 when unknown) for the long-call line.
- */
-data class TranscribeRequest(
-    val displayName: String,
-    val estimateMs: Long?,
-    val language: String?,
-    val audioMs: Long = 0L,
-)
-
 /** Marks an absent [Long] or [String] field. No recording name or language tag is ever empty. */
 private const val ABSENT = ""
 

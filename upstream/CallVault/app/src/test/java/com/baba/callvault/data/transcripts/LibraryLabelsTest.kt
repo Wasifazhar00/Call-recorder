@@ -64,7 +64,7 @@ class LibraryLabelsTest {
 
     @Test
     fun `a recording that is gone keeps its label`() {
-        // The label outlives the audio on purpose: an orphaned transcript is the very row that has
+        // The label outlives the audio on purpose: an orphaned metadata label is the very row that has
         // nothing else to be named by.
         val stored = listOf(RecordingLabelEntry("gone.m4a", "Dana", null))
 

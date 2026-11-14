@@ -23,7 +23,7 @@ import org.robolectric.annotation.Config
  * these names sit inside English sentences and must keep their own direction.
  *
  * One rule, in one place: contact, else number, else the file name. It was written out by hand at four
- * call sites, and the fourth got it wrong — the transcribing sheet showed
+ * call sites, and the fourth got it wrong — the recording list showed
  * `20260819_201239.877+0300_in_2<name>.ogg` where every other surface said who the call was with.
  */
 @RunWith(RobolectricTestRunner::class)
@@ -71,7 +71,7 @@ class RecordingLabelTest {
 
     @Test
     fun returns_the_display_name_when_the_recording_is_not_in_the_library() {
-        // The transcribing sheet learns the name from WorkManager progress, which can outlive the
+        // The recording list resolves the name from the catalog, which can outlive the
         // recording. Showing the raw name is right here; showing nothing would leave a blank sheet.
         assertEquals(BidiText.isolate("gone.ogg"), RecordingLabel.forDisplayName(emptyList(), "gone.ogg"))
     }

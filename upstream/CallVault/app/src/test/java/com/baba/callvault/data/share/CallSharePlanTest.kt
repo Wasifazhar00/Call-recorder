@@ -12,35 +12,26 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-/** Recorder-only sharing exposes the audio file and nothing generated from it. */
+/** Sharing exposes the audio recording only. */
 class CallSharePlanTest {
 
-    private fun call(audio: Boolean = true, transcript: Boolean = false, summary: Boolean = false) =
-        ShareableCall("Mom_20261106_150812.ogg", "Mom", if (audio) "content://a" else null, transcript, summary)
+    private fun call(audio: Boolean = true) =
+        ShareableCall("Mom_20261106_150812.ogg", "Mom", if (audio) "content://a" else null)
 
     @Test
-    fun `only the recording is offered even if legacy text rows exist`() {
-        assertEquals(
-            setOf(SharePart.RECORDING),
-            CallSharePlan.available(listOf(call(transcript = true, summary = true))),
-        )
+    fun `only the recording is offered`() {
+        assertEquals(setOf(SharePart.RECORDING), CallSharePlan.available(listOf(call())))
     }
 
     @Test
     fun `no shareable audio means no available parts`() {
-        assertTrue(CallSharePlan.available(listOf(call(audio = false, transcript = true, summary = true))).isEmpty())
+        assertTrue(CallSharePlan.available(listOf(call(audio = false))).isEmpty())
     }
 
     @Test
     fun `the recording starts ticked when available`() {
         val available = CallSharePlan.available(listOf(call()))
         assertEquals(setOf(SharePart.RECORDING), CallSharePlan.initialTicks(SharePart.RECORDING, available))
-    }
-
-    @Test
-    fun `a legacy transcript page falls back to recording sharing`() {
-        val available = CallSharePlan.available(listOf(call()))
-        assertEquals(setOf(SharePart.RECORDING), CallSharePlan.initialTicks(SharePart.TRANSCRIPT, available))
     }
 
     @Test

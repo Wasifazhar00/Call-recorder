@@ -55,7 +55,7 @@ class SettingsSearchTest {
         val rows = SettingsGroup.entries.flatMap { SettingsGroups.rowsOf(it) }.toSet()
         assertEquals(emptySet<String>(), rows - SettingsSearchIndex.rows.keys)
         val empty = SettingsSearchIndex.rows.filter { (name, e) -> name in rows && e.strings.isEmpty() && e.words.isEmpty() }.keys
-        assertEquals("rows with nothing to find them by", setOf("TranscriptionModeNote"), empty)
+        assertEquals("rows with nothing to find them by", emptySet<String>(), empty)
     }
 
     @Test

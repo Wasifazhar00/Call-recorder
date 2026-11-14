@@ -16,7 +16,7 @@ import org.junit.Test
  * What the picker will and will not take, decided at a desk.
  *
  * The device half of this — whether the format really decodes — is
- * `com.baba.callvault.transcription.AudioImportFormatProbe`. These are the cases that need no
+ * `com.baba.callvault.data.audio.AudioDecoder`. These are the cases that need no
  * device: what an extension resolves to, what happens when there is none, and the spellings a
  * provider may use for the same type.
  */

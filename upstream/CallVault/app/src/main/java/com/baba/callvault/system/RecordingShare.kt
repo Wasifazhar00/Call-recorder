@@ -44,9 +44,9 @@ fun Context.shareClip(file: java.io.File, mime: String) {
 /**
  * Sends one or more call recordings together in one Android share action.
  *
- * The recording's URI belongs to the documents provider and the text files to our FileProvider; both can extend a
- * read grant, and every URI goes into the [ClipData] so the grant reaches all of them. The type is the files' own
- * when they agree (several recordings), audio when they are all audio, and any type otherwise.
+ * The recording URIs come from the documents provider, while temporary clips use our FileProvider. Every URI
+ * goes into [ClipData] so the read grant reaches all shared audio files. The type follows the files when they
+ * agree (several recordings), audio when they are all audio, and any type otherwise.
  */
 fun Context.shareCallFiles(uris: List<Uri>, subject: String) {
     if (uris.isEmpty()) return
