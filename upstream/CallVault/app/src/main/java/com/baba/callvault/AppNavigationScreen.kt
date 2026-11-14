@@ -72,8 +72,6 @@ fun AppNavigationScreen(
     onNotificationDestinationHandled: () -> Unit = {},
     openRecording: String? = null,
     onOpenRecordingHandled: () -> Unit = {},
-    openTranscript: String? = null,
-    onOpenTranscriptHandled: () -> Unit = {}
 ) {
 
     val activityContext = LocalContext.current
@@ -157,10 +155,7 @@ fun AppNavigationScreen(
     // would show the hub and then swap.
     var chosenSection by rememberSaveable { mutableStateOf<HomeSection?>(null) }
     val restoredSection = HomeSection.opening(resolvedScreen, storedSectionKey)
-    val requestedSection = chosenSection ?: restoredSection
-    val section = requestedSection
-        .takeUnless { it == HomeSection.Transcripts || it == HomeSection.Summaries }
-        ?: HomeSection.Hub
+    val section = chosenSection ?: restoredSection
 
     // Every navigation between sections goes through here, so persisting it cannot be forgotten in
     // one of the places that navigates.
@@ -180,10 +175,7 @@ fun AppNavigationScreen(
     // tap?" is a question a debug report otherwise cannot answer.
     LaunchedEffect(notificationDestination, screenState) {
         if (notificationDestination == NotificationDestination.None) return@LaunchedEffect
-        val requestedTarget = HomeSection.forNotification(resolvedScreen, notificationDestination)
-        val target = if (requestedTarget == HomeSection.Transcripts || requestedTarget == HomeSection.Summaries) {
-            HomeSection.Hub
-        } else requestedTarget
+        val target = HomeSection.forNotification(resolvedScreen, notificationDestination)
         if (target != null) goToSection(target)
         AppLogger.d(
             "CV:Nav",
@@ -201,15 +193,6 @@ fun AppNavigationScreen(
         if (openRecording == null || screenState == AppScreen.Home) return@LaunchedEffect
         AppLogger.d("CV:Nav", "Asked to open a recording during $screenState; dropping the request")
         onOpenRecordingHandled()
-    }
-
-    // The same guard for a transcript asked for by name, and for the same reason: a request held
-    // unacknowledged would fire whenever onboarding finally resolved to Home, which could be days
-    // and several screens later. Home acknowledges it itself once it has somewhere to put it.
-    LaunchedEffect(openTranscript, screenState) {
-        if (openTranscript == null || screenState == AppScreen.Home) return@LaunchedEffect
-        AppLogger.d("CV:Nav", "Asked to open a transcript during $screenState; dropping the request")
-        onOpenTranscriptHandled()
     }
 
     // Derive the active theme from AppPreferences so a theme change triggers a refresh (recompose)
@@ -311,8 +294,6 @@ fun AppNavigationScreen(
                         },
                         openRecording = openRecording,
                         onOpenRecordingHandled = onOpenRecordingHandled,
-                        openTranscript = openTranscript,
-                        onOpenTranscriptHandled = onOpenTranscriptHandled,
                         viewModel = homeViewModel
                     )
                 }

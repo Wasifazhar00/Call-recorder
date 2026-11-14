@@ -29,7 +29,6 @@ import com.baba.callvault.system.AppLock
 import com.baba.callvault.system.permissions.PermissionChecks
 import com.baba.callvault.ui.navigation.NotificationDestination
 import com.baba.callvault.ui.navigation.OpenRecordingRequest
-import com.baba.callvault.ui.navigation.OpenTranscriptRequest
 import com.baba.callvault.ui.screens.AppLockScreen
 import com.baba.callvault.ui.screens.AppLockUi
 import com.baba.callvault.ui.screens.appLockUi
@@ -89,15 +88,6 @@ class MainActivity : AppCompatActivity() {
      */
     private var openRecording by mutableStateOf<String?>(null)
 
-    /**
-     * A transcript this visit was asked to open, or null. Sent by the "transcript ready" notification.
-     *
-     * Beside [openRecording] rather than folded into it: the two open different screens — that one a
-     * recording's own screen, this one the reading view — and a single extra read two ways would need
-     * the destination threaded all the way down to Home to decide which.
-     */
-    private var openTranscript by mutableStateOf<String?>(null)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Cold start. Both of the PendingIntents that use FLAG_ACTIVITY_CLEAR_TOP arrive this way
@@ -106,7 +96,6 @@ class MainActivity : AppCompatActivity() {
         // builds a new one with the new Intent. Both paths are handled; neither can be assumed.
         notificationDestination = destinationOf(intent)
         openRecording = recordingOf(intent)
-        openTranscript = transcriptOf(intent)
         // Carry an unlock across an Activity recreation — see [onSaveInstanceState] for why this is
         // only ever set for a configuration change. Read before setContent so the first composition
         // draws the app rather than the lock screen and then swaps.
@@ -121,8 +110,6 @@ class MainActivity : AppCompatActivity() {
                     },
                     openRecording = openRecording,
                     onOpenRecordingHandled = { openRecording = null },
-                    openTranscript = openTranscript,
-                    onOpenTranscriptHandled = { openTranscript = null }
                 )
                 // Background only. The prompt is coming or already up, so there is nothing to act on
                 // — drawing the door here is what flashed an "Unlock" card on every open.
@@ -148,7 +135,6 @@ class MainActivity : AppCompatActivity() {
         setIntent(intent)
         notificationDestination = destinationOf(intent)
         openRecording = recordingOf(intent)
-        openTranscript = transcriptOf(intent)
     }
 
     /**
@@ -174,19 +160,6 @@ class MainActivity : AppCompatActivity() {
     private fun recordingOf(intent: Intent?): String? =
         OpenRecordingRequest.fromIntentExtra(
             name = intent?.getStringExtra(OpenRecordingRequest.EXTRA),
-            relaunchedFromHistory =
-                (intent?.flags ?: 0) and Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY != 0
-        )
-
-    /**
-     * Reads a "land on this transcript" request off an incoming Intent.
-     *
-     * The history flag matters here exactly as it does above: without it, one tap on "Transcript
-     * ready" would re-open that transcript on every later return from the recents list.
-     */
-    private fun transcriptOf(intent: Intent?): String? =
-        OpenTranscriptRequest.fromIntentExtra(
-            name = intent?.getStringExtra(OpenTranscriptRequest.EXTRA),
             relaunchedFromHistory =
                 (intent?.flags ?: 0) and Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY != 0
         )
