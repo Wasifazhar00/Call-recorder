@@ -142,7 +142,6 @@ object AudioImport {
     suspend fun import(
         context: Context,
         source: Uri,
-        kind: ImportedRecording.Kind = ImportedRecording.Kind.KEEP,
         importedAtMillis: Long = System.currentTimeMillis(),
     ): Outcome = withContext(Dispatchers.IO) {
         val meta = readMetadata(context, source)
@@ -164,7 +163,6 @@ object AudioImport {
             importedAtMillis = importedAtMillis,
             label = meta.displayName,
             extension = storedAs.extension,
-            kind = kind,
         )
         val copied = SafHelper.copyFileToFolder(
             context = context,

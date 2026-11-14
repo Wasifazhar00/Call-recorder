@@ -25,7 +25,6 @@ import com.baba.callvault.data.calls.PhoneCallReader
 import com.baba.callvault.data.calls.SimLabels
 import com.baba.callvault.integrations.adb.PairingLoss
 import com.baba.callvault.data.transcripts.FavouriteRepository
-import com.baba.callvault.data.transcripts.LibraryLabels
 import com.baba.callvault.data.transcripts.TagRepository
 import com.baba.callvault.data.PrivilegedMode
 import com.baba.callvault.data.health.CallGapDetector
@@ -41,7 +40,6 @@ import com.baba.callvault.services.recording.RecordingPolicy
 import com.baba.callvault.data.health.Prerequisite
 import com.baba.callvault.data.health.SetupPrerequisites
 import com.baba.callvault.data.recordings.AudioImport
-import com.baba.callvault.data.recordings.ImportedRecording
 import com.baba.callvault.data.recordings.RecordingDirection
 import androidx.documentfile.provider.DocumentFile
 import com.baba.callvault.data.recordings.RecordingCatalog
@@ -190,19 +188,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     data class HomeUiState(
         val status: HomeStatus = HomeStatus.READY,
         val recordings: List<RecordingItem> = emptyList(),
-        /**
-         * The transcribe-only imports on the device, newest-first, kept OUT of [recordings].
-         *
-         * A file shared with "Transcribe only" is not a recording and the user said so: it is audio
-         * borrowed until its words exist. Splitting it off here, once, is what keeps it out of the
-         * list, the facets, the selection, the merge candidates and the hub's count without any of
-         * them having to remember — each of those reads [recordings] and [recordings] no longer has
-         * it. What still needs it — the Transcripts page's join, the transcription dialogs' length
-         * and estimate, the player — asks for both lists explicitly.
-         *
-         * Almost always empty: one exists only between a share and the end of its transcription.
-         */
-        val transcribeOnly: List<RecordingItem> = emptyList(),
         val isLoading: Boolean = false,
         val hasLoaded: Boolean = false,
         val sourceFilter: SourceFilter = SourceFilter.ALL,
@@ -691,23 +676,14 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     /**
-     * Brings the audio file at [source] into the library as [kind]. See [AudioImport] for what that
-     * involves, and [ImportedRecording] for what the kind decides.
-     *
-     * Runs in the ViewModel's scope, deliberately, not the screen's. Copying a long recording and
-     * checking that it decodes takes a moment, and a rotation half way through a job scoped to the
-     * composition would cancel it between the copy and the catalogue — leaving a file sitting in the
-     * user's recordings folder that the app has no record of and no sweep will ever reconcile.
-     *
-     * The list is refreshed immediately on success rather than left to the catalog observer's
-     * debounce: the user is standing in front of the screen that has to show what they just
-     * imported, and a second of nothing reads as the import having failed.
+     * Imports a user-selected audio file into the recordings library.
+     * The ViewModel owns the copy so a rotation cannot interrupt it halfway through.
      */
-    fun importAudio(source: Uri, kind: ImportedRecording.Kind) {
+    fun importAudio(source: Uri) {
         if (_uiState.value.isImporting) return
         _uiState.update { it.copy(isImporting = true, importRefusal = null) }
         viewModelScope.launch {
-            val outcome = AudioImport.import(appContext, source, kind)
+            val outcome = AudioImport.import(appContext, source)
             when (outcome) {
                 is AudioImport.Outcome.Imported -> {
                     refresh()
@@ -847,30 +823,21 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             // A recording deleted in Drive itself stays listed until something notices; this does, every few hours.
             withContext(Dispatchers.IO) { DriveCatalogRepair.forgetDeletedIfDue(appContext) }
             val listed = withContext(Dispatchers.IO) { RecordingsRepository.listRecordings(appContext) }
-            // Split once, here, from the name alone. The name is the only place the kind lives, so a
-            // catalog re-seed cannot lose it and no row anywhere has to carry a flag that could be
-            // stale. See HomeUiState.transcribeOnly for why the split belongs here and not at each
-            // of the dozen places that read the list.
-            val (recordings, transcribeOnly) =
-                listed.partition { !ImportedRecording.isTranscribeOnly(it.displayName) }
-            _uiState.update { state ->
+                        _uiState.update { state ->
                 // Drop a date selection that no longer exists in the reloaded set so the user can
                 // never get stuck on an empty, un-clearable filter. The contact query is typed text
                 // and clears with its own × button, so it stays.
-                val days = recordings.map { RecordingsRepository.dayKey(it) }.toSet()
+                val days = listed.map { RecordingsRepository.dayKey(it) }.toSet()
                 state.copy(
-                    recordings = recordings,
-                    transcribeOnly = transcribeOnly,
+                    recordings = listed,
                     isLoading = false,
                     hasLoaded = true,
                     dateFilter = state.dateFilter?.takeIf { it in days }
                 )
             }
             if (_uiState.value.callsView) loadCalls()
-            precomputeWaveforms(recordings)
-            // What each recording is called, for the library pages to title a row before this list
-            // is loaded next time. Off the UI path: the list is already on screen.
-            LibraryLabels.refresh(appContext, recordings)
+            precomputeWaveforms(listed)
+
             // Exactly one catch-up pass, whatever number of refreshes arrived while this one ran.
             if (listReloadPending) {
                 listReloadPending = false
@@ -895,7 +862,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private fun precomputeWaveforms(recordings: List<RecordingItem>) {
         // Queued, not run here. A draw owned by this screen died with it, and a long call takes
         // minutes to draw (issue #63). The queue runs one at a time, waits out calls and
-        // transcriptions, and skips anything already drawn, so queueing again on every resume is
+        // playback, and skips anything already drawn, so queueing again on every resume is
         // cheap. Long calls are no longer skipped: the queue is what makes drawing them affordable.
         recordings
             .take(WAVEFORM_PRECOMPUTE_LIMIT)

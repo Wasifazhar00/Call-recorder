@@ -186,7 +186,6 @@ import com.baba.callvault.data.health.FailureReason
 import com.baba.callvault.data.health.Prerequisite
 import com.baba.callvault.data.health.SetupHealth
 import com.baba.callvault.data.health.isProblem
-import com.baba.callvault.data.recordings.ImportedRecording
 import com.baba.callvault.data.recordings.RecordingDirection
 import com.baba.callvault.data.recordings.RecordingsRepository.RecordingItem
 import com.baba.callvault.data.recordings.RecordingsRepository.RecordingSource
@@ -401,7 +400,7 @@ fun HomeScreen(
     ) { uri ->
         uri?.let {
             // Recorder-only imports are retained as ordinary recordings.
-            viewModel.importAudio(it, ImportedRecording.Kind.KEEP)
+            viewModel.importAudio(it)
         }
     }
 
