@@ -1,0 +1,48 @@
+name: Import CallVault source
+
+on:
+  push:
+    branches:
+      - feature/recorder-only-prune
+    paths:
+      - .github/workflows/import-callvault-source.yml
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out destination repository
+        uses: actions/checkout@v4
+        with:
+          ref: feature/recorder-only-prune
+          path: destination
+          persist-credentials: true
+
+      - name: Check out exact upstream source revision
+        uses: actions/checkout@v4
+        with:
+          repository: madkongo/CallVault
+          ref: 00a77594085d61aee2c8513c649911704fd970c6
+          path: source
+          persist-credentials: false
+
+      - name: Copy complete source tree into destination
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p destination/upstream/CallVault
+          cp -a source/. destination/upstream/CallVault/
+          rm -rf destination/upstream/CallVault/.git
+          cd destination
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add upstream/CallVault
+          if git diff --cached --quiet; then
+            echo "No source changes to commit."
+          else
+            git commit -m "Import complete upstream CallVault source tree"
+            git push origin HEAD:feature/recorder-only-prune
+          fi
