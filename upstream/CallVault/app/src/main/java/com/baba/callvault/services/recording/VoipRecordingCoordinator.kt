@@ -31,7 +31,6 @@ import com.baba.callvault.server.RecorderServiceImpl
 import com.baba.callvault.system.storage.SafHelper
 import com.baba.callvault.data.recordings.RecordingCatalog
 import com.baba.callvault.data.waveform.WaveformDrawWorker
-import com.baba.callvault.transcription.TranscriptionScheduler
 import com.baba.callvault.system.storage.StorageRouter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -861,7 +860,6 @@ object VoipRecordingCoordinator {
                         }
                         // Same order as the carrier path: catalog first, then queue. Not while a keep-or-delete
                         // answer is pending: AfterCallDecision.keep queues it then.
-                        if (!isHeld) TranscriptionScheduler.transcribeAfterCallIfEnabled(context, name)
                         // Draw it now rather than when the user opens it: this phone has just come
                         // off a call, and they have not asked to wait for anything yet.
                         WaveformDrawWorker.enqueue(context, name, safUri)
