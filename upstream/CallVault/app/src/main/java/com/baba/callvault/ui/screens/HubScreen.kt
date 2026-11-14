@@ -129,7 +129,6 @@ fun HubScreen(
                         onClick = { onOpenSection(HomeSection.Recordings) },
                     )
                 }
-                // AI transcript and summary cards are excluded from this product profile.
                 // Last, and only while the user has not tucked it away: an invitation is worth one cell of a
                 // screen they open every day, and worth none at all once they have taken it up. Long-press
                 // moves it to the pill beside Support rather than hiding it, so it is still one tap away.

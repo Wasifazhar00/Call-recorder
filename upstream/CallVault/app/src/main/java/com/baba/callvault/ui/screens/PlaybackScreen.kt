@@ -134,7 +134,7 @@ fun PlaybackScreen(
     /**
      * Play from a mark. NOT a seek: [onSeek] only moves a track that is already prepared, so on a
      * recording that has not been played yet it clamps to a duration of zero and silently starts
-     * from the beginning. Same reason the transcript lines and summary timestamps use their own
+     * from the beginning. The player position uses its own
      * play-from rather than seeking.
      */
     onPlayFromFlag: (Long) -> Unit = {},
@@ -215,7 +215,6 @@ fun PlaybackScreen(
                     onRemove = onRemoveFlag
                 )
             }
-            // Summary UI is excluded from the CallVault recorder-only product profile.
             // Between the summary and the note: a tag is the shortest thing on the screen and the
             // one most often applied right after listening, so it sits where the thumb already is
             // rather than below a text field that opens the keyboard.
@@ -303,7 +302,7 @@ private fun formatMarkTime(atMs: Long): String {
  * Who the call was with, which way it went, when — and what can be done to it.
  *
  * The two actions live here rather than in cards of their own further down. Both were a full-width
- * row apiece below the player, which put the transcript a scroll away and the delete off the bottom
+ * row apiece below the player, which put the note a scroll away and the delete off the bottom
  * of the screen entirely; as icons beside the name they are visible the moment the screen opens.
  */
 @Composable
@@ -414,7 +413,6 @@ private fun CallHeaderCard(
                 )
             }
 
-            // Transcription controls are excluded from the CallVault recorder-only product profile.
 
             // On the card rather than at the foot of the screen. It lived in a row below the note,
             // which meant scrolling to reach a control most people look for first — and briefly
@@ -720,7 +718,7 @@ private fun playbackDate(item: RecordingItem): String? {
 /**
  * What the user made of the call, in their own words.
  *
- * Not a duplicate of the transcript: a transcript records what was said, a note records what it meant
+ * A note records what the user wants to remember about the call
  * — the price agreed, the thing to chase. Saved as it is typed, because a note behind a Save button is
  * a note somebody loses.
  */

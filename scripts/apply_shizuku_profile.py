@@ -494,33 +494,6 @@ patch_file("app/src/main/java/com/baba/callvault/ui/screens/PlaybackScreen.kt", 
 """, """            // Transcription controls are excluded from the CallVault recorder-only product profile.
 """, "remove playback transcription action")
 ])
-patch_file("app/src/main/java/com/baba/callvault/ui/screens/LibraryRowMenu.kt", [
-("""            if (menu.transcribeAgain) {
-                DropdownMenuItem(
-                    text = { Text(stringResource(R.string.transcript_retranscribe)) },
-                    leadingIcon = { Icon(Icons.Filled.Refresh, contentDescription = null) },
-                    onClick = {
-                        close()
-                        onTranscribeAgain()
-                    },
-                )
-            }
-""", """            // Re-transcription is excluded from the recorder-only product profile.
-""", "remove transcript retry from library row menu")
-])
-patch_file("app/src/main/java/com/baba/callvault/ui/screens/LibrarySelectionUi.kt", [
-("""        selection.onTranscribeAgain?.let { onTranscribeAgain ->
-            IconButton(onClick = onTranscribeAgain, enabled = hasPicked) {
-                Icon(
-                    imageVector = Icons.Filled.Refresh,
-                    contentDescription = stringResource(R.string.transcript_retranscribe),
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-            }
-        }
-""", """        // Bulk re-transcription is excluded from the recorder-only product profile.
-""", "remove bulk transcript retry action")
-])
 # Transcript navigation is removed in the recorder-only source itself.
 
 # AI scheduling is removed; no runtime transcription or summary jobs are scheduled.

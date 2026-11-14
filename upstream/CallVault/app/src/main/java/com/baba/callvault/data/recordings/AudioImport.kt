@@ -54,7 +54,7 @@ object AudioImport {
          * The file is in the recordings folder and in the catalog.
          *
          * @param displayName the name it was stored under, which is what every other part of the app
-         *   keys on — the transcript, the summary, the tags and the delete cascade alike.
+         *   keys on — notes, tags, favourites, flags and labels alike.
          * @param durationMs how long the audio is, or 0 when the container would not say. Handed back
          *   rather than left to be read again: it was measured here anyway, and the caller needs it to
          *   quote an estimate and to refuse a file over the speech recognition length limit. Reading it a
