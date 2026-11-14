@@ -120,7 +120,7 @@ object SettingsGroups {
         SettingsGroup.SOUND_AND_NAMES -> listOf("AudioSection", "FileNameTemplateRow", "SimLabelRow")
         SettingsGroup.SAVE_AND_SYNC -> listOf(
             "StorageTargetRow", "RecordingFolderRow", "DriveFolderRow", "UploadScheduleSubSection",
-            "HideRecordingsRow", "MetadataFileRow", "TranscriptSidecarRow",
+            "HideRecordingsRow", "MetadataFileRow",
         )
         SettingsGroup.CLEANING_UP -> listOf("RetentionPolicyRows", "MergeSubSection")
         SettingsGroup.CONNECTION -> listOf("ConnectionRows")
