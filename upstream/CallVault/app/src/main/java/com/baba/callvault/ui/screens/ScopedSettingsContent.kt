@@ -54,7 +54,7 @@ import com.baba.callvault.ui.viewmodels.SettingsActions
  * `docs/dev-notes/2026-10-20-settings-per-page-plan.md`.
  *
  * Takes the screen's callbacks plus the scope and a way to change it (the "All settings" link, and the
- * Summaries language row's link to Transcripts).
+ * the All Settings link).
  */
 @Composable
 fun ScopedSettingsContent(
@@ -90,7 +90,7 @@ fun ScopedSettingsContent(
     // The open group, remembered per scope (scope name -> group key), so Recordings does not reopen on
     // A HashMap so it saves into the Bundle as it is.
     var openGroups by rememberSaveable { mutableStateOf(HashMap<String, String>()) }
-    val groups = SettingsGroups.forScope(scope).filterNot { it == SettingsGroup.MODEL_AND_LANGUAGE || it == SettingsGroup.WHEN_TO_TRANSCRIBE || it == SettingsGroup.SUMMARIES }
+    val groups = SettingsGroups.forScope(scope)
     val openGroup = openGroups[scope.name]
         ?.let { SettingsGroup.fromKey(it) }
         ?: if (openGroups[scope.name] == null) groups.singleOrNull() else null
@@ -244,7 +244,7 @@ private fun androidx.compose.foundation.lazy.LazyListScope.settingsSearchResults
     actions: SettingsActions,
     callbacks: GroupBodyCallbacks,
 ) {
-    val all = SettingsGroups.forScope(SettingsScope.ALL).filterNot { it == SettingsGroup.MODEL_AND_LANGUAGE || it == SettingsGroup.WHEN_TO_TRANSCRIBE || it == SettingsGroup.SUMMARIES }
+    val all = SettingsGroups.forScope(SettingsScope.ALL)
     val (hits, misses) = all.partition { g -> SettingsGroups.rowsOf(g).any { it in rows } }
     if (hits.isEmpty()) {
         item(key = "search-none") {
