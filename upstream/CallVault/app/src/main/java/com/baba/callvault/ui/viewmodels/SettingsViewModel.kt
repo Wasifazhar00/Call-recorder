@@ -30,6 +30,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.update
 import com.baba.callvault.system.diagnostics.SystemLogCollector
+import com.baba.callvault.utils.AppLogger
 
 // -------- Screen state & action types owned by this ViewModel
 
