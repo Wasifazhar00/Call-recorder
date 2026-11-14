@@ -305,7 +305,6 @@ internal fun ShareClipScreen(
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
-            // Transcript and transcription controls are excluded from the recorder-only product profile.
         }
     }
 }
