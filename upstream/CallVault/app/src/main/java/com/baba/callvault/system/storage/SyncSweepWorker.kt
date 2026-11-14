@@ -13,7 +13,7 @@ import com.baba.callvault.services.recording.aftercall.AfterCallPolicy
 import android.content.Context
 import androidx.documentfile.provider.DocumentFile
 import androidx.work.CoroutineWorker
-import com.baba.callvault.transcription.HeavyWorkNotification
+import com.baba.callvault.system.notification.DriveCopyNotification
 import androidx.work.WorkerParameters
 import com.baba.callvault.data.AppPreferences
 import com.baba.callvault.data.StorageTarget
@@ -191,7 +191,7 @@ class SyncSweepWorker(ctx: Context, params: WorkerParameters) : CoroutineWorker(
     private suspend fun showProgress(done: Int, total: Int) {
         runCatching {
             setForeground(
-                HeavyWorkNotification.forDriveCopy(applicationContext, done, total, DriveCopyStop.pendingIntent(applicationContext))
+                DriveCopyNotification.forDriveCopy(applicationContext, done, total, DriveCopyStop.pendingIntent(applicationContext))
             )
         }.onFailure { if (done == 0) AppLogger.w(TAG, "Could not show the Drive copy notification: ${it.message}") }
     }

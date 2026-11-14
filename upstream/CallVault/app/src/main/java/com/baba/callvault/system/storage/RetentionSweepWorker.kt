@@ -20,7 +20,7 @@ import com.baba.callvault.data.recordings.RecordingCatalog
 import com.baba.callvault.data.recordings.RecordingsRepository
 import com.baba.callvault.data.recordings.RecordingsRepository.RecordingItem
 import com.baba.callvault.data.recordings.UntrackedRecordings
-import com.baba.callvault.data.transcripts.TranscriptCascade
+import com.baba.callvault.data.recordings.RecordingMetadataCascade
 import com.baba.callvault.utils.AppLogger
 import com.baba.callvault.data.transcripts.FavouriteRepository
 
@@ -119,10 +119,9 @@ class RetentionSweepWorker(ctx: Context, params: WorkerParameters) : CoroutineWo
     /**
      * Deletes the oldest device copies until the on-device library is back under [capBytes].
      *
-     * Device copies only, and only the device copy: a recording that is also in Drive keeps its row,
-     * its transcript and its place in the list — the cap frees this phone, it does not destroy the
-     * recording. The transcript cascade therefore runs only for the ones whose last copy this takes,
-     * which `RecordingCatalog.removeCopyByUri` already handles.
+     * Device copies only: when a Drive copy survives, the catalog row and its user metadata remain.
+     * The metadata cascade runs only when this delete removes the last copy, which
+     * `RecordingCatalog.removeCopyByUri` already handles.
      *
      * @return how many device copies were deleted.
      */
@@ -154,7 +153,7 @@ class RetentionSweepWorker(ctx: Context, params: WorkerParameters) : CoroutineWo
                 isFavourite = entry.displayName in favourites,
                 // For a call the cap deletes the device copy and the Drive copy survives. An import
                 // has no Drive copy by design, so the same delete would destroy the only copy of
-                // something the user handed us, plus its transcript.
+                // something the user handed us, plus its saved metadata.
                 isImported = ImportedRecording.isImported(entry.displayName)
             )
         }
@@ -205,14 +204,7 @@ class RetentionSweepWorker(ctx: Context, params: WorkerParameters) : CoroutineWo
         return deleted
     }
 
-    /**
-     * Takes the transcript, note and summary of every untracked recording this sweep deleted the LAST copy
-     * of — the cascade the catalogued half gets for free from [RecordingCatalog], and this half never had.
-     *
-     * Only names nothing is left of: an untracked copy that survived in the other folder, or a catalog row
-     * that still holds a copy, means the recording still exists and its transcript must stay. See
-     * [UntrackedCascade] for why that distinction is the whole point.
-     */
+    /** Removes user metadata only when an untracked recording's last copy was deleted. */
     private suspend fun cascadeForUntracked(untracked: UntrackedRecordings.Found, deleted: List<RecordingItem>) {
         if (deleted.isEmpty()) return
         // By URI, not by name: a name with a copy in each folder appears twice, and only the copy that was
@@ -232,7 +224,7 @@ class RetentionSweepWorker(ctx: Context, params: WorkerParameters) : CoroutineWo
         )
         if (orphaned.isEmpty()) return
         AppLogger.i(TAG, "Removing what ${orphaned.size} deleted untracked recording(s) left behind")
-        TranscriptCascade.deleteFor(applicationContext, orphaned)
+        RecordingMetadataCascade.deleteFor(applicationContext, orphaned)
     }
 
     companion object {

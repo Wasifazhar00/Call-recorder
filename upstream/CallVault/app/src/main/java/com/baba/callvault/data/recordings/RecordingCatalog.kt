@@ -12,7 +12,7 @@ import android.content.Context
 import android.net.Uri
 import com.baba.callvault.data.recordings.db.RecordingDatabase
 import com.baba.callvault.data.recordings.db.RecordingEntry
-import com.baba.callvault.data.transcripts.TranscriptCascade
+import com.baba.callvault.data.recordings.RecordingMetadataCascade
 import com.baba.callvault.utils.AppLogger
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.withContext
@@ -121,33 +121,15 @@ object RecordingCatalog {
         }
 
     /**
-     * Removes the recording (all copies) from the catalog, and with it any transcript.
+     * Removes a recording (all copies) from the catalog and its user-authored metadata.
      *
-     * The transcript cascade is explicit because transcripts live in a separate database (see
-     * [TranscriptCascade]); SQLite cannot do it for us.
+     * Metadata cleanup is explicit because these entries live in a separate database; SQLite cannot
+     * cascade across the catalog and metadata stores.
      */
     suspend fun removeName(context: Context, displayName: String) {
         runCatching { dao(context).deleteByName(displayName) }
             .onFailure { AppLogger.w(TAG, "removeName('$displayName') failed: ${it.message}") }
-        TranscriptCascade.deleteFor(context, listOf(displayName))
-    }
-
-    /**
-     * Drops the catalog row for [displayName] and **nothing else** — no transcript, no summary, no
-     * note, no tag.
-     *
-     * The one caller is [TranscribeOnlyAudio], where the whole point is that the text survives the
-     * audio: the user asked for a file to be transcribed and not kept, so the words are the thing
-     * that must still be there afterwards. [removeName] would delete them, which is precisely the
-     * cascade it exists to run.
-     *
-     * **Never use this for a user's delete.** A recording removed this way leaves a searchable
-     * transcript of a private call behind it, which is more exposing than the audio it replaced —
-     * the defect [TranscriptCascade] was written to prevent.
-     */
-    suspend fun forgetName(context: Context, displayName: String) {
-        runCatching { dao(context).deleteByName(displayName) }
-            .onFailure { AppLogger.w(TAG, "forgetName('$displayName') failed: ${it.message}") }
+        RecordingMetadataCascade.deleteFor(context, listOf(displayName))
     }
 
     /**
@@ -155,8 +137,7 @@ object RecordingCatalog {
      * row if no copy remains. Mirrors a per-copy delete of a BOTH recording.
      */
     suspend fun removeCopyByUri(context: Context, uri: Uri) {
-        // Names whose last copy this call removes. Captured before deleteEmpty(), which is a bulk
-        // delete and so cannot report what it dropped — and the transcript cascade needs to know.
+        // Name whose last copy this call removes, captured before deleteEmpty() bulk-deletes rows.
         // This is the path the retention sweep takes (it deletes per copy, not by name).
         var orphaned = emptyList<String>()
 
@@ -166,14 +147,13 @@ object RecordingCatalog {
             val row = dao.getAll().firstOrNull { it.localUri == s || it.driveUri == s } ?: return@runCatching
             if (row.localUri == s) dao.clearLocal(row.displayName)
             if (row.driveUri == s) dao.clearDrive(row.displayName)
-            // Only the row this call emptied. Counting every copy-less row would also delete the transcript of
-            // any other row that happened to be empty, which this call was never asked about.
+            // Only the row this call emptied: do not remove metadata for unrelated empty rows.
             val after = dao.findByName(row.displayName)
             if (after != null && after.localUri == null && after.driveUri == null) orphaned = listOf(row.displayName)
             dao.deleteEmpty()
         }.onFailure { AppLogger.w(TAG, "removeCopyByUri($uri) failed: ${it.message}") }
 
-        TranscriptCascade.deleteFor(context, orphaned)
+        RecordingMetadataCascade.deleteFor(context, orphaned)
     }
 
     /**
