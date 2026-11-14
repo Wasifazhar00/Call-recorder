@@ -49,11 +49,6 @@ open class RecorderServiceImpl(private val apkPath: String) : IRecorderService.S
     /** The active session, owned by the worker thread; null between recordings. */
     @Volatile private var session: RecordingSession? = null
 
-    /**
-     * Speaker turns from the last finished recording, retained because the app asks for them after
-     * [stopRecording] has already discarded the session.
-     */
-    @Volatile private var lastSpeakerTurns: String = ""
     @Volatile private var lastCaptureDiagnostics: String = ""
 
     /** Last VoIP session, kept only so the app can ask afterwards whether the far party was audible. */
@@ -153,12 +148,6 @@ open class RecorderServiceImpl(private val apkPath: String) : IRecorderService.S
         workerHandler.post {
             runCatching { session?.stop() }
                 .onFailure { AppLogger.w(TAG, "stopRecording teardown error: ${it.message}") }
-            // Collect the speaker turns before dropping the session — the app queries them after
-            // this call returns, by which point there is nothing left to ask.
-            lastSpeakerTurns = runCatching { session?.speakerTurns().orEmpty() }.getOrElse {
-                AppLogger.w(TAG, "Could not read speaker turns: ${it.message}")
-                ""
-            }
             lastCaptureDiagnostics = runCatching { session?.captureDiagnostics().orEmpty() }.getOrElse { "" }
             session = null
             done.countDown()
@@ -245,12 +234,8 @@ open class RecorderServiceImpl(private val apkPath: String) : IRecorderService.S
 
     override fun voipFarPartyHeard(): Boolean = lastVoipSession?.farPartyHeard ?: false
 
-    /**
-     * Speaker turns from the recording that just stopped; "" when the capture could not produce
-     * any (a mono route, or the scrcpy fallback). Read after [stopRecording], which is why the
-     * value is kept rather than asked of a session that no longer exists.
-     */
-    override fun speakerTurns(): String = lastSpeakerTurns
+    /** Legacy Binder transaction retained for older clients; recorder-only capture has no speaker analysis. */
+    override fun speakerTurns(): String = ""
 
     override fun captureDiagnostics(): String = lastCaptureDiagnostics
 

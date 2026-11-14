@@ -26,16 +26,6 @@ internal interface RecordingSession {
     fun stop()
 
     /**
-     * Speaker turns observed during this recording, encoded by
-     * [com.baba.callvault.server.speakers.SpeakerTurnCodec], or `""` when there are none.
-     *
-     * Read after [stop]. Empty is the normal answer, not an error: a mono capture carries no direction
-     * information at all, and the scrcpy fallback never sees the raw channels. Defaulted here so a
-     * session that cannot produce turns needs no code to say so.
-     */
-    fun speakerTurns(): String = ""
-
-    /**
      * A one-line summary of anything the capture lost or nearly lost, or `""` when it was clean.
      *
      * Read after [stop]. Empty is the normal answer; a path that cannot measure itself says so by

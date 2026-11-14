@@ -69,7 +69,7 @@ class RetentionSweepWorker(ctx: Context, params: WorkerParameters) : CoroutineWo
         var deletedDrive = 0
         // Age here is the catalog's `lastModified`, and nothing about an entry says how it got there.
         // So whatever catalogues an import MUST stamp it with the time it was imported, never with the
-        // date the audio was originally recorded: a two-year-old voice note brought in to transcribe
+        // date the audio was originally recorded: a two-year-old voice note imported into Recordings
         // would arrive already expired and be deleted by this pass the same night.
         // Starred recordings are never deleted by age either. A failed read must protect everything, as for the
         // size cap below: the age pass sits this run out rather than delete what the user starred to keep.
@@ -80,7 +80,7 @@ class RetentionSweepWorker(ctx: Context, params: WorkerParameters) : CoroutineWo
         for (entry in RecordingCatalog.all(applicationContext)) {
             // And the right stamp is only half of it. Once the retention period elapses this pass
             // would delete an import like anything else — except that for a call the Drive copy
-            // survives and the row keeps its transcript, while an import has no Drive copy by design.
+            // survives and the row keeps its transcript, while an imported file has no Drive copy by design.
             // The same delete would therefore destroy the only copy of something the user handed us.
             if (!RetentionPolicy.mayAgeOut(entry.displayName, starred)) continue
             val ts = entry.lastModified
