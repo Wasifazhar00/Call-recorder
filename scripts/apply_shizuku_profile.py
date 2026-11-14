@@ -582,11 +582,7 @@ patch_file("app/src/main/java/com/baba/callvault/ui/screens/LibrarySelectionUi.k
 """, """        // Bulk re-transcription is excluded from the recorder-only product profile.
 """, "remove bulk transcript retry action")
 ])
-patch_file("app/src/main/java/com/baba/callvault/ui/common/TranscriptView.kt", [
-("TranscriptPageMenu(summaryState, onSummarise, onTranscribeAgain)",
- "TranscriptPageMenu(summaryState, onSummarise, null)",
- "remove re-transcription action from transcript reader"),
-])
+# Transcript reader source was removed with the transcription feature.
 patch_file("app/src/main/java/com/baba/callvault/AppNavigationScreen.kt", [
 ("""    val section = chosenSection ?: HomeSection.opening(resolvedScreen, storedSectionKey) ?: HomeSection.Hub
 """,
