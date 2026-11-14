@@ -521,26 +521,8 @@ patch_file("app/src/main/java/com/baba/callvault/ui/screens/LibrarySelectionUi.k
 """, """        // Bulk re-transcription is excluded from the recorder-only product profile.
 """, "remove bulk transcript retry action")
 ])
-# Transcript reader source was removed with the transcription feature.
-patch_file("app/src/main/java/com/baba/callvault/AppNavigationScreen.kt", [
-("""    val section = chosenSection ?: HomeSection.opening(resolvedScreen, storedSectionKey) ?: HomeSection.Hub
-""",
-"""    val restoredSection = HomeSection.opening(resolvedScreen, storedSectionKey)
-    val requestedSection = chosenSection ?: restoredSection
-    val section = requestedSection
-        .takeUnless { it == HomeSection.Transcripts || it == HomeSection.Summaries }
-        ?: HomeSection.Hub
-""", "route legacy AI sections to the hub"),
-("""        val target = HomeSection.forNotification(resolvedScreen, notificationDestination)
-        if (target != null) goToSection(target)
-""",
-"""        val requestedTarget = HomeSection.forNotification(resolvedScreen, notificationDestination)
-        val target = if (requestedTarget == HomeSection.Transcripts || requestedTarget == HomeSection.Summaries) {
-            HomeSection.Hub
-        } else requestedTarget
-        if (target != null) goToSection(target)
-""", "route legacy transcript notifications to the hub")
-])
+# Transcript navigation is removed in the recorder-only source itself.
+
 # AI scheduling is removed; no runtime transcription or summary jobs are scheduled.
 
 
