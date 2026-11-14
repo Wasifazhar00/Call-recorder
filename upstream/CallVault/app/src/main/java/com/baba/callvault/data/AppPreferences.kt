@@ -97,6 +97,7 @@ class AppPreferences(context: Context) {
         const val WIZARD_COMPLETED = false
 
         // --- Storage & General ---
+        val PRIVILEGED_MODE: String = PrivilegedMode.STANDALONE.key
         val RECORDING_FOLDER_URI: String? = null
         const val VIBRATION_ENABLED = true
         
