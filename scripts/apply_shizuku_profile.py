@@ -112,6 +112,24 @@ private fun muxerFlagsFromSampleFlags(sampleFlags: Int): Int {
     path.write_text(src, encoding="utf-8")
 
 # Compose locale reads must be observable so configuration changes recompose the label.
+
+
+# Apply revision-checked source edits idempotently. Fail closed if upstream drifted.
+def patch_file(relative_path, edits):
+    path = ENGINE / relative_path
+    if not path.is_file():
+        sys.exit(f"{relative_path}: required patch target is missing")
+    source_text = path.read_text(encoding="utf-8")
+    for old, new, description in edits:
+        if old in new and new in source_text:
+            continue
+        count = source_text.count(old)
+        if count:
+            source_text = source_text.replace(old, new)
+        elif new not in source_text:
+            sys.exit(f"{relative_path}: neither original nor patched code found for {description}")
+    path.write_text(source_text, encoding="utf-8")
+
 patch_file("app/src/main/java/com/baba/callvault/ui/screens/CallHistoryUi.kt", [
 ("import androidx.compose.ui.res.stringResource\n", "import androidx.compose.ui.res.stringResource\nimport androidx.compose.ui.platform.LocalConfiguration\n", "configuration import"),
 ("""internal fun callTimeLabel(millis: Long): String {
