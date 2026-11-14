@@ -22,7 +22,6 @@ import com.baba.callvault.data.health.CallOutcomes
 import com.baba.callvault.data.health.Prerequisite
 import com.baba.callvault.data.health.SetupFingerprint
 import com.baba.callvault.data.health.SetupHealthStore
-import com.baba.callvault.data.transcripts.SpeakerTurnsRepository
 import com.baba.callvault.data.health.record
 import com.baba.callvault.integrations.scrcpy.ScrcpyAudioCodec
 import com.baba.callvault.server.IRecorderService
@@ -39,7 +38,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import com.baba.callvault.utils.AppLogger
 import com.baba.callvault.utils.DeviceInfo
-import com.baba.callvault.transcription.AudioDecoder
+import com.baba.callvault.data.recordings.AudioDuration
 import com.baba.callvault.system.storage.MinDurationPolicy
 import com.baba.callvault.system.interop.MetadataSidecar
 import com.baba.callvault.data.recordings.RecordingsRepository
@@ -801,7 +800,7 @@ object VoipRecordingCoordinator {
                     // for anyone who had turned the setting on.
                     val minSeconds = AppPreferences(context).getMinDurationSeconds()
                     if (minSeconds > 0) {
-                        val durationMs = AudioDecoder.durationMs(context, safUri)
+                        val durationMs = AudioDuration.milliseconds(context, safUri)
                         if (MinDurationPolicy.shouldDiscard(durationMs, minSeconds)) {
                             AppLogger.i(
                                 TAG,

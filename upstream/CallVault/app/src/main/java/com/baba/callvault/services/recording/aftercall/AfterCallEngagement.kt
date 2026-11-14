@@ -13,8 +13,7 @@ import com.baba.callvault.data.transcripts.db.TranscriptDatabase
 import com.baba.callvault.utils.AppLogger
 
 /**
- * Whether the user did something with a held recording — a star, a mark, a tag, a note, or a transcript row
- * (they tapped Transcribe). Any of these is read as "keep", so "Delete after 24 hours" never destroys what
+ * Whether the user did something with a held recording — a star, a mark, a tag or a note. Any of these is read as "keep", so "Delete after 24 hours" never destroys what
  * they had just added. See [AfterCallPolicy.unansweredAction].
  */
 internal object AfterCallEngagement {
@@ -22,7 +21,7 @@ internal object AfterCallEngagement {
     private const val TAG = "CV:AfterCall"
 
     /**
-     * True when engaged. Never creates the database: before the first transcript, star or tag none of these
+     * True when engaged. Never creates the database: before the first star or tag none of these
      * can exist. A lookup that fails reads as engaged — the failure must fall towards keeping.
      */
     suspend fun isEngaged(context: Context, displayName: String): Boolean {
@@ -32,8 +31,7 @@ internal object AfterCallEngagement {
             db.favouriteDao().isFavourite(displayName) ||
                 db.flagDao().flagsFor(displayName).isNotEmpty() ||
                 db.tagDao().tagsFor(displayName).isNotEmpty() ||
-                db.noteDao().note(displayName) != null ||
-                db.transcriptDao().findTranscript(displayName) != null
+                db.noteDao().note(displayName) != null
         }.getOrElse {
             AppLogger.w(TAG, "Could not read how a held recording was used; keeping it: ${it.message}")
             true

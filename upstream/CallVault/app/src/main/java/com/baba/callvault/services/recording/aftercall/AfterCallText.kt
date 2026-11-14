@@ -11,7 +11,7 @@ package com.baba.callvault.services.recording.aftercall
 import android.content.Context
 import com.baba.callvault.R
 import com.baba.callvault.data.recordings.RecordingsRepository
-import com.baba.callvault.transcription.AudioDecoder
+import com.baba.callvault.data.recordings.AudioDuration
 
 /**
  * How a held recording is named to the user, shared by the notification and the pop-up so the two always
@@ -49,7 +49,7 @@ internal object AfterCallText {
 
     /** The recording's length from its container; 0 (unknown, omitted) when it cannot be read. Blocking. */
     fun durationOf(context: Context, held: AfterCallDecisions.Held): Long =
-        runCatching { AudioDecoder.durationMs(context, held.uri) }.getOrDefault(0L)
+        AudioDuration.milliseconds(context, held.uri)
 
     private fun whoOf(displayName: String): Pair<String?, String?> {
         val parsed = runCatching { RecordingsRepository.parseName(displayName) }.getOrNull()

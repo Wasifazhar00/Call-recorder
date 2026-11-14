@@ -35,6 +35,7 @@ import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.MaterialTheme
 import com.baba.callvault.R
+import java.util.Locale
 
 /**
  * A thin, thumbless progress bar — cleaner than a Slider but still tap- and drag-seekable: tapping
@@ -68,8 +69,8 @@ fun SeekBar(
     val spokenMs = rememberSpokenPositionMs(positionMs)
     val stateText = stringResource(
         R.string.home_player_position_of,
-        TranscriptTimestamp.format(spokenMs.toLong()),
-        TranscriptTimestamp.format(durationMs.toLong()),
+        playbackClock(spokenMs.toLong()),
+        playbackClock(durationMs.toLong()),
     )
     Box(
         modifier = modifier
@@ -126,4 +127,14 @@ fun SeekBar(
                 ),
         )
     }
+}
+
+/** Playback time label; independent of the removed transcript timestamp UI. */
+private fun playbackClock(milliseconds: Long): String {
+    val seconds = milliseconds.coerceAtLeast(0L) / 1000L
+    val hours = seconds / 3600L
+    val minutes = (seconds % 3600L) / 60L
+    val remainder = seconds % 60L
+    return if (hours > 0L) String.format(Locale.US, "%d:%02d:%02d", hours, minutes, remainder)
+    else String.format(Locale.US, "%d:%02d", minutes, remainder)
 }

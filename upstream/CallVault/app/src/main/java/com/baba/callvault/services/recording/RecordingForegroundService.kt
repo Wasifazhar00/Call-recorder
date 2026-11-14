@@ -38,7 +38,6 @@ import com.baba.callvault.R
 import com.baba.callvault.data.recordings.RecordingCatalog
 import com.baba.callvault.data.waveform.WaveformDrawWorker
 import com.baba.callvault.data.recordings.RecordingDirection
-import com.baba.callvault.data.transcripts.SpeakerTurnsRepository
 import com.baba.callvault.data.recordings.RecordingMetadata
 import com.baba.callvault.system.storage.SafHelper
 import com.baba.callvault.system.storage.StorageRouter
@@ -49,7 +48,7 @@ import com.baba.callvault.utils.PhoneNumberManager
 import com.baba.callvault.utils.RedirectedCall
 import com.baba.callvault.system.permissions.PermissionChecks
 import com.baba.callvault.utils.RecordingFileNameFormatter
-import com.baba.callvault.transcription.AudioDecoder
+import com.baba.callvault.data.recordings.AudioDuration
 import com.baba.callvault.system.storage.MinDurationPolicy
 import com.baba.callvault.system.interop.MetadataSidecar
 import com.baba.callvault.data.recordings.RecordingsRepository
@@ -810,9 +809,6 @@ class RecordingForegroundService : Service() {
             phoneNumber = parsed.number,
             contactName = parsed.contactName,
             durationSecsEncoded = null,
-            // Carrier capture mixes the two directions onto channels whose order is an OEM detail, so
-            // name the near side only when the learned mapping is trusted; null otherwise (issue #50).
-            nearChannel = SpeakerTurnsRepository.trustedMap(applicationContext).nearChannelKey(),
             simSlot = simSlotFor(parsed.startedAtMillis ?: lastModified),
         )
     }
@@ -872,13 +868,13 @@ class RecordingForegroundService : Service() {
         }
         // Too short to be worth keeping, if the user asked for that. Before the catalog, the
         // transcription queue and StorageRouter — a recording discarded after any of those has
-        // already cost a whisper run or a cloud upload, and would flicker through the Home list on
+        // already cost a cloud upload, and would flicker through the Home list on
         // its way out. The duration comes from the container rather than the call log because the
         // call log has nothing to say about an app call, and this check must mean the same thing on
         // both capture paths.
         val minSeconds = AppPreferences(this).getMinDurationSeconds()
         if (minSeconds > 0) {
-            val durationMs = AudioDecoder.durationMs(applicationContext, uri)
+            val durationMs = AudioDuration.milliseconds(applicationContext, uri)
             if (MinDurationPolicy.shouldDiscard(durationMs, minSeconds)) {
                 AppLogger.i(
                     TAG,
@@ -893,7 +889,7 @@ class RecordingForegroundService : Service() {
         }
 
         // Keep or delete after the call: decided ONCE, here, and both halves below follow it — the catalog
-        // coroutine (details-file copy, transcription) and the synchronous Drive route after it. Held
+        // coroutine (details-file copy) and the synchronous Drive route after it. Held
         // before either starts, so no sweep can copy it in between. Not held — kept as in Keep mode — when
         // the question could not be shown or the hold could not be stored; see AfterCallDecision.tryHold.
         val isHeld = AfterCallDecision.tryHold(applicationContext, name, uri, mimeType, isVoip = false)
@@ -910,21 +906,6 @@ class RecordingForegroundService : Service() {
                 // number gets renamed from the call log after the call, and rows written mid-call would
                 // point at a recording that no longer exists.
                 FlagRepository.save(applicationContext, name, PendingFlags.drain())
-                // Collect the speaker turns BEFORE the details file and before transcription is queued,
-                // never after. A transcript labels its segments from these turns, so they have to be on
-                // disk by the time whisper starts; and the details file now carries them too (issue #50),
-                // so it has to run after this or it would write a file with no turns in it.
-                //
-                // The daemon gathered them during the call, from the two capture channels before the
-                // mono downmix averaged them away. They cannot be recovered from the finished file —
-                // it is mono — so this is the only moment they can be collected at all.
-                SpeakerTurnsRepository.collectAfterCall(
-                    applicationContext, name, outgoing = direction == RecordingDirection.OUTGOING
-                )
-                // The BCR-compatible details file, when the user asked for one. Driven off the FINAL
-                // name, after any call-log rename: a sidecar written against the pre-rename name would
-                // sit beside nothing and be invisible to every tool that looks for it. After the turns
-                // above, so the `callvault` block can carry them.
                 writeMetadataSidecar(name, lastModified, "com.android.phone")
                 // While a keep-or-delete answer is pending, neither hand-off runs: AfterCallDecision.keep
                 // runs both (and the Drive route below) once the user says keep.
@@ -937,7 +918,7 @@ class RecordingForegroundService : Service() {
                     StorageRouter.routeSidecar(
                         applicationContext, name, MetadataSidecar.sidecarNameFor(name), "application/json"
                     )
-                    // After the catalog entry exists, never before: the transcription runner resolves the
+                    // After the catalog entry exists, never before: the recording route resolves the
                     // audio through the catalog, so queueing first would race it to "no longer in the catalog".
                 }
                 // Draw it now rather than when the user opens it: this phone has just come
