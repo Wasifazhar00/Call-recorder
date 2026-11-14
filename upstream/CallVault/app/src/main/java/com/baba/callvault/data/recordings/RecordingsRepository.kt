@@ -22,11 +22,10 @@ import com.baba.callvault.data.StorageTarget
 import com.baba.callvault.data.recordings.db.RecordingDatabase
 import com.baba.callvault.data.recordings.db.RecordingEntry
 import com.baba.callvault.system.interop.MetadataSidecar
-import com.baba.callvault.system.interop.TranscriptSidecar
 import com.baba.callvault.system.permissions.PermissionChecks
 import com.baba.callvault.utils.AppLogger
 import com.baba.callvault.utils.VoicemailLabel
-import com.baba.callvault.transcription.AudioDecoder
+import com.baba.callvault.data.audio.AudioDecoder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
@@ -390,13 +389,10 @@ object RecordingsRepository {
         for (folderUri in folders) {
             runCatching {
                 val tree = DocumentFile.fromTreeUri(context, folderUri) ?: return@runCatching
-                val transcriptSidecar = TranscriptSidecar.sidecarNameFor(item.displayName)
                 val detailsSidecar = MetadataSidecar.sidecarNameFor(item.displayName)
                 for (doc in tree.listFiles()) {
-                    // The audio copy, the transcript/notes sidecar, AND the .json details file beside it,
-                    // so neither the text nor the details outlive the recording they belong to. The .json
-                    // used to be missed here, orphaning it on delete (issue #49).
-                    if (doc.isFile && (doc.name == item.displayName || doc.name == transcriptSidecar || doc.name == detailsSidecar)) {
+                    // Remove the audio copy and its optional BCR details file.
+                    if (doc.isFile && (doc.name == item.displayName || doc.name == detailsSidecar)) {
                         if (doc.delete()) deletedAny = true
                     }
                 }
@@ -412,7 +408,7 @@ object RecordingsRepository {
 
     /**
      * Deletes a whole set of recordings as thoroughly as [deleteRecording] does one — every copy in
-     * every configured folder, matched by **name**, plus each file's sidecar — but walking each folder
+     * every configured folder, matched by **name**, plus its optional BCR details file — but walking each folder
      * **once** for the whole set rather than once per recording.
      *
      * This is what a bulk "delete (both copies)" runs, and it exists because the per-URI
@@ -433,18 +429,15 @@ object RecordingsRepository {
                     .onFailure { e -> AppLogger.w(TAG, "Failed to delete ${item.uri}: ${e.message}") }
             }
 
-            // One pass over each folder for the WHOLE set, deleting any audio copy whose name is one
-            // of the selected recordings and the transcript/notes sidecar beside it — so the text does
-            // not outlive the recording. One listing per folder, not one per recording.
+            // One pass over each folder for the WHOLE set, deleting each audio copy and its optional BCR details file.
             val names = items.mapTo(HashSet()) { it.displayName }
-            val sidecars = items.mapTo(HashSet()) { TranscriptSidecar.sidecarNameFor(it.displayName) }
             val prefs = AppPreferences(context)
             val folders = listOfNotNull(prefs.getRecordingFolderUri(), prefs.getDriveFolderUri())
             for (folderUri in folders) {
                 runCatching {
                     val tree = DocumentFile.fromTreeUri(context, folderUri) ?: return@runCatching
                     for (doc in tree.listFiles()) {
-                        if (doc.isFile && (doc.name in names || doc.name in sidecars)) doc.delete()
+                        if (doc.isFile && (doc.name in names || doc.name in names.map { MetadataSidecar.sidecarNameFor(it) })) doc.delete()
                     }
                 }.onFailure { e ->
                     AppLogger.w(TAG, "Failed to delete copies in $folderUri: ${e.message}")

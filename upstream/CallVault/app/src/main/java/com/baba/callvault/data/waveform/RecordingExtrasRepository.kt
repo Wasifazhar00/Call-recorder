@@ -13,9 +13,7 @@ import android.net.Uri
 import com.baba.callvault.data.transcripts.db.RecordingNoteEntry
 import com.baba.callvault.data.transcripts.db.RecordingWaveformEntry
 import com.baba.callvault.data.transcripts.db.TranscriptDatabase
-import com.baba.callvault.system.interop.TranscriptSidecar
-import com.baba.callvault.transcription.AudioDecoder
-import com.baba.callvault.transcription.ChunkPlan
+import com.baba.callvault.data.audio.AudioDecoder
 import com.baba.callvault.utils.AppLogger
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -24,8 +22,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
 /**
- * The two things attached to a recording that are neither the audio nor its transcript: what the user
- * wrote about it, and the shape used to draw it.
+ * The user-authored note and cached waveform attached to a recording.
  */
 object RecordingExtrasRepository {
 
@@ -54,9 +51,6 @@ object RecordingExtrasRepository {
                 )
             )
         }
-        // Keep the beside-the-audio transcript/notes file in step with the edited note (no-op when the
-        // sidecar setting is off; never throws).
-        TranscriptSidecar.writeOrClear(context, displayName)
     }
 
     /**
@@ -116,7 +110,7 @@ object RecordingExtrasRepository {
      *
      * A whole-file decode costs memory proportional to length, so a long call ran the heap out and left
      * no waveform — and, because the waveform is the scrubber, nothing to seek with (issue #52). Instead
-     * the file is decoded in the same bounded time-windows transcription already uses ([ChunkPlan]), and
+     * the file is decoded in bounded time windows, and
      * each window is folded straight into a [Waveform.PeakAccumulator] by its position in time, so peak
      * memory rests on one window (~6 min) whatever the call length.
      *
@@ -131,11 +125,11 @@ object RecordingExtrasRepository {
         }
 
         val accumulator = Waveform.PeakAccumulator(Waveform.BUCKETS, totalMs)
-        // No run-up: the waveform needs no whisper-style continuity, only full coverage. overlapMs = 0
+        // No run-up is needed; the waveform needs only full coverage. overlapMs = 0
         // keeps the windows contiguous (a seek-to-sync may still start a shade early, which the
         // time-indexed accumulator folds in harmlessly).
-        ChunkPlan.plan(totalMs, overlapMs = 0L).forEach { chunk ->
-            val range = AudioDecoder.decodeRange(context, uri, chunk.decodeFromMs, chunk.endMs)
+        AudioChunkPlan.plan(totalMs).forEach { chunk ->
+            val range = AudioDecoder.decodeRange(context, uri, chunk.startMs, chunk.endMs)
             accumulator.add(range.audio, range.audio.size, range.startMs, AudioDecoder.TARGET_SAMPLE_RATE)
         }
         return accumulator.peaks()

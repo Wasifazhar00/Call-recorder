@@ -322,12 +322,6 @@ internal class VoipCaptureSession(
                 if (!farPartyHeard && farPeak > FAR_SILENCE_THRESHOLD) farPartyHeard = true
                 // Mono for the encoder, so the whole bitrate goes to one channel — the same reasoning
                 // as the carrier path, where encoding stereo starved the far party.
-                // Before the downmix, which is the only moment the two directions still exist
-                // separately. Never allowed to break the recording: a diagnostic that costs a call
-                // would be a bad trade.
-                runCatching { speakers.accept(stereo, stereo.size) }
-                    .onFailure { AppLogger.w(TAG, "Speaker turn detection failed: ${it.message}") }
-
                 val len = PcmDownmix.stereoToMono(stereo, stereo.size, mono)
 
                 var inIdx = enc.dequeueInputBuffer(DEQUEUE_TIMEOUT_US)
