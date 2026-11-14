@@ -37,7 +37,6 @@ import com.baba.callvault.server.RecorderBackend
 import com.baba.callvault.R
 import com.baba.callvault.data.recordings.RecordingCatalog
 import com.baba.callvault.data.waveform.WaveformDrawWorker
-import com.baba.callvault.transcription.TranscriptionScheduler
 import com.baba.callvault.data.recordings.RecordingDirection
 import com.baba.callvault.data.transcripts.SpeakerTurnsRepository
 import com.baba.callvault.data.recordings.RecordingMetadata
@@ -940,7 +939,6 @@ class RecordingForegroundService : Service() {
                     )
                     // After the catalog entry exists, never before: the transcription runner resolves the
                     // audio through the catalog, so queueing first would race it to "no longer in the catalog".
-                    TranscriptionScheduler.transcribeAfterCallIfEnabled(applicationContext, name)
                 }
                 // Draw it now rather than when the user opens it: this phone has just come
                 // off a call, and they have not asked to wait for anything yet.
