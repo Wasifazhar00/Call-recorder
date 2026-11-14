@@ -18,7 +18,7 @@ jobs:
       - name: Checkout repository and imported source
         uses: actions/checkout@v4
         with:
-          persist-credentials: false
+          persist-credentials: true
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -72,14 +72,14 @@ jobs:
           name: call-recorder-lint-reports
           path: |
             upstream/CallVault/app/build/intermediates/lint_intermediate_text_report/release/lintReportRelease/
-            vendor/CallVault/app/build/reports/lint-results-release.*
+            upstream/CallVault/app/build/reports/lint-results-release.*
           if-no-files-found: ignore
           retention-days: 14
 
       # Upstream release signing requires the maintainer's private production key.
       # CI deliberately builds unsigned, then signs with a disposable test key for device trials.
       - name: Build optimized release APK
-        working-directory: vendor/CallVault
+        working-directory: upstream/CallVault
         run: env -u GITHUB_ACTIONS ./gradlew --no-daemon --stacktrace :app:assembleRelease
 
       - name: Align, sign and verify test APK
@@ -117,7 +117,7 @@ jobs:
         with:
           name: call-recorder-shizuku-release-test
           path: |
-            vendor/CallVault/app/build/outputs/apk/release/CallRecorder-shizuku-test.apk
+            upstream/CallVault/app/build/outputs/apk/release/CallRecorder-shizuku-test.apk
             apk-metrics.txt
           if-no-files-found: error
           retention-days: 30
