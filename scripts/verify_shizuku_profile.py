@@ -4,7 +4,7 @@ from pathlib import Path
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-ENGINE = ROOT / "vendor" / "CallVault"
+ENGINE = ROOT / "upstream" / "CallVault"
 
 def require(path: str, needles: tuple[str, ...]) -> None:
     file = ENGINE / path

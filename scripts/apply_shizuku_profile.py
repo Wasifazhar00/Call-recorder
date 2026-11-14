@@ -1,27 +1,19 @@
 #!/usr/bin/env python3
-"""Apply reproducible Shizuku-first defaults and test fixtures to the exact pinned CallVault source.
+"""Apply reproducible Shizuku-first defaults and test fixtures to the imported standalone CallVault source.
 
 Safe to run repeatedly: already-applied values are accepted, while unexpected source drift fails closed.
-The checked-out submodule is modified only during the build; upstream Git history is untouched.
+The imported source tree is the build source of truth; changes are committed only after CI passes.
 """
 from pathlib import Path
-import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-ENGINE = ROOT / "vendor" / "CallVault"
-PIN = "00a77594085d61aee2c8513c649911704fd970c6"
+ENGINE = ROOT / "upstream" / "CallVault"
 TARGET = ENGINE / "app/src/main/java/com/baba/callvault/data/AppPreferences.kt"
 TEST = ENGINE / "app/src/test/java/com/baba/callvault/data/health/SetupPrerequisitesTest.kt"
 VOIP_GATE = ENGINE / "app/src/main/java/com/baba/callvault/services/recording/VoipTelephonyGate.kt"
 BYPASSED_AUDIO = ENGINE / "app/src/main/java/com/baba/callvault/server/BypassedAudioRecord.kt"
 MODEL_WORKER = ENGINE / "app/src/main/java/com/baba/callvault/transcription/model/ModelDownloadWorker.kt"
-
-actual = subprocess.check_output(
-    ["git", "-C", str(ENGINE), "rev-parse", "HEAD"], text=True
-).strip()
-if actual != PIN:
-    sys.exit(f"Refusing to patch unexpected CallVault revision: {actual} (expected {PIN})")
 
 source = TARGET.read_text(encoding="utf-8")
 replacements = {

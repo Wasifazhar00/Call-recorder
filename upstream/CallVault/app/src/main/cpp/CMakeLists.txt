@@ -1,0 +1,10 @@
+# Native component required for resilient call-recording audio handoff.
+cmake_minimum_required(VERSION 3.22.1)
+project(audiohandoff)
+add_link_options($<$<NOT:$<CONFIG:Debug>>:-Wl,--strip-all>)
+add_link_options("LINKER:--build-id=none")
+get_filename_component(CALLVAULT_REPO_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/../../../.. ABSOLUTE)
+add_compile_options("-ffile-prefix-map=${CALLVAULT_REPO_ROOT}=.")
+add_library(audiohandoff SHARED audiohandoff.cpp)
+find_library(log-lib log)
+target_link_libraries(audiohandoff ${log-lib})

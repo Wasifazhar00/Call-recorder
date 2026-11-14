@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Українська локалізація Zilla Recorder. Незазначені ключі використовують англійську локаль Android. -->
+<resources>
+    <string name="home_hero_status_label">Стан</string>
+    <string name="home_hero_pill_ready">Активний</string>
+    <string name="home_hero_pill_not_paired">Потрібна дія</string>
+    <string name="home_hero_pill_no_folder">Потрібна дія</string>
+    <string name="home_hero_pill_dev_options_off">Запис не працює</string>
+    <string name="home_hero_pill_update_regrant">Потрібна дія</string>
+    <string name="home_support_pill">Підтримка</string>
+    <string name="home_usb_advisory_title">Запис може зупинитися після блокування екрана</string>
+    <string name="home_usb_advisory_text">USB працює в режимі передавання даних. Натисніть, щоб перемкнути на «Лише заряджання».</string>
+    <string name="home_usb_advisory_fix">Виправити</string>
+    <string name="home_view_recordings">Записи</string>
+    <string name="home_view_all_calls">Історія викликів</string>
+    <string name="home_calls_filter_all">Усі</string>
+    <string name="home_calls_filter_recorded">Записані</string>
+    <string name="home_calls_filter_not_recorded">Не записані</string>
+    <string name="home_calls_filter_missed">Пропущені</string>
+    <string name="home_call_origin_phone">Телефонний дзвінок</string>
+    <string name="home_call_not_recorded">Не записано</string>
+    <string name="home_call_missed">Пропущений</string>
+    <string name="home_call_declined">Відхилений</string>
+    <string name="home_call_unknown_number">Невідомий номер</string>
+    <string name="home_calls_empty">У журналі викликів телефона ще немає викликів.</string>
+    <string name="home_calls_no_permission">CallVault не може прочитати журнал викликів. Дозвольте \"Журнали викликів\" для CallVault у налаштуваннях застосунків Android, щоб бачити тут усі виклики.</string>
+    <string name="home_recordings_count">Збережено: %1$d</string>
+    <string name="home_recordings_empty_title">Записів поки немає</string>
+    <string name="home_recordings_empty_hint">Після запису дзвінка він зʼявиться тут. Зробіть або прийміть дзвінок для перевірки.</string>
+    <string name="home_play_recording">Відтворити запис</string>
+    <string name="home_update_banner_title">Доступне оновлення: %1$s</string>
+    <string name="home_update_banner_text">Нова версія готова до завантаження з GitHub.</string>
+    <string name="home_update_banner_button">Оновити</string>
+    <string name="home_update_banner_downloading">Завантаження… %1$d%%</string>
+    <string name="home_update_banner_installing">Встановлення…</string>
+    <string name="home_updated_banner_text">CallVault оновлено до %1$s</string>
+    <string name="home_whatsnew_title">Що нового</string>
+    <string name="home_whatsnew_offline_cta">Увімкнути запис без Wi-Fi</string>
+    <string name="home_whatsnew_offline_enabled">«Записувати без Wi-Fi» увімкнено.</string>
+    <string name="home_whatsnew_offline_enabling">Увімкнення запису без Wi-Fi…</string>
+    <string name="home_whatsnew_resilient_title">Нове: продовжувати запис, якщо фонова служба зупиниться</string>
+    <string name="home_whatsnew_resilient_cta">Увімкнути</string>
+    <string name="home_whatsnew_settings_cta">Відкрити налаштування</string>
+    <string name="home_health_verified">Остання перевірка: %1$s.</string>
+    <string name="home_health_verified_just_now">Перевірено щойно.</string>
+    <string name="home_health_unverified">Наступний дзвінок підтвердить, що запис працює.</string>
+    <string name="home_health_setup_changed">Налаштування змінено — наступний дзвінок перевірить запис.</string>
+    <string name="home_health_failed_empty">Останній дзвінок дав порожній файл (0 байтів).</string>
+    <string name="home_health_failed_no_audio">Останній запис збережено, але в ньому немає звуку.</string>
+    <string name="home_health_failed_daemon">Служба запису зупинилася під час останнього дзвінка.</string>
+    <string name="home_health_failed_one_sided">Під час останнього VoIP-дзвінка записано лише ваш голос.</string>
+    <string name="home_date_today">Сьогодні</string>
+    <string name="home_date_yesterday">Учора</string>
+    <string name="merge_confirm">Обʼєднати</string>
+    <string name="merge_menu_action">Обʼєднати з іншим дзвінком</string>
+    <string name="merge_menu_take_apart">Розділити</string>
+    <string name="merge_no_candidates">На телефоні немає інших дзвінків із цим номером.</string>
+    <string name="merge_only_in_drive">Лише на Drive</string>
+    <string name="merge_pick_hint">Позначте дзвінки для обʼєднання у потрібному порядку.</string>
+    <string name="merge_primary_hint">Початок обʼєднаного дзвінка</string>
+    <string name="merge_title">Обʼєднати дзвінки з %1$s</string>
+    <string name="settings_merge_keep_originals_title">Залишати оригінали після обʼєднання</string>
+    <string name="unmerge_confirm">Розділити</string>
+    <string name="unmerge_title">Розділити цей дзвінок?</string>
+    <string name="merge_note_will_delete">Інші дзвінки буде видалено. Пізніше їх можна відновити розділенням.</string>
+    <string name="merge_note_will_keep">Інші записи також залишаться на телефоні.</string>
+    <string name="home_scroll_to_top">Угору</string>
+    <string name="home_whatsnew_full_notes">Повний список змін</string>
+    <string name="merge_progress_title">Обʼєднання</string>
+    <string name="unmerge_progress_title">Розділення</string>
+    <string name="merge_progress_step">Дзвінок %1$d із %2$d</string>
+    <string name="merge_progress_done">Успішно обʼєднано</string>
+    <string name="unmerge_progress_done">Успішно розділено</string>
+    <string name="progress_closing_in">Закриття через %1$d с</string>
+    <string name="merge_progress_working">Обʼєднання дзвінків</string>
+    <string name="unmerge_progress_working">Розділення дзвінків</string>
+    <string name="merge_progress_downloading">Завантаження з Drive</string>
+    <string name="merge_progress_cleaning_up">Очищення</string>
+    <string name="home_hub_library_title">Бібліотека</string>
+    <string name="home_hub_recordings_body">Усі записані дзвінки.</string>
+    <string name="home_hub_transcripts_body">Розмови у текстовому вигляді та імпортоване аудіо.</string>
+    <string name="home_hub_summaries_body">AI-підсумки, створені на телефоні.</string>
+    <string name="home_transcripts_title">Транскрипції</string>
+    <string name="home_summaries_title">Підсумки</string>
+    <string name="home_transcripts_count">Розпізнано: %1$d</string>
+    <string name="home_summaries_count">Підсумків: %1$d</string>
+    <string name="home_transcripts_empty_title">Транскрипцій поки немає</string>
+    <string name="home_summaries_empty_title">Підсумків поки немає</string>
+    <string name="transcripts_working_header">Виконується розпізнавання</string>
+    <string name="transcripts_failed_header">Не вдалося завершити</string>
+    <string name="transcripts_failed_hint">Натисніть, щоб повторити.</string>
+    <string name="transcripts_waiting_header">Очікують на розпізнавання</string>
+    <string name="summaries_working_header">Створюються підсумки</string>
+    <string name="summaries_failed_header">Не вдалося завершити</string>
+    <string name="summaries_failed_hint">Відкрийте, щоб повторити.</string>
+    <string name="transcripts_import_title">Імпортувати аудіо</string>
+    <string name="transcripts_import_working">Імпортування…</string>
+    <string name="transcripts_import_fab">Імпорт</string>
+    <string name="import_sheet_keep">Зберегти аудіо</string>
+    <string name="import_sheet_keep_hint">З\'явиться серед ваших записів</string>
+    <string name="import_sheet_transcript_only">Лише розшифровка</string>
+    <string name="import_sheet_transcript_only_hint">Аудіо потім видаляється</string>
+    <string name="import_failed_title">Не вдалося імпортувати файл</string>
+    <string name="import_failed_not_audio">Непідтримуваний формат. Спробуйте .opus, .ogg, .m4a, .mp3 або .wav.</string>
+    <string name="import_failed_empty">Файл порожній — немає звуку для розпізнавання.</string>
+    <string name="import_failed_no_folder">Папку записів не вибрано. Налаштуйте її та повторіть.</string>
+    <string name="import_failed_copy">Не вдалося записати файл у папку із записами. Перевірте, чи є на телефоні вільне місце і чи папка досі доступна.</string>
+    <string name="home_row_imported">Імпортовано</string>
+    <string name="home_row_text_only">Лише текст</string>
+    <string name="share_import_label">Імпорт аудіо</string>
+    <string name="share_import_working_body">Копіювання та перевірка аудіофайлу.</string>
+    <string name="share_import_done_title">Додано до записів</string>
+    <string name="share_import_done_body">Аудіофайл уже в CallVault. Можна прослухати чи створити транскрипцію.</string>
+    <string name="share_import_open">Відкрити</string>
+    <string name="share_import_open_app">Відкрити CallVault</string>
+    <string name="share_import_close">Закрити</string>
+    <string name="share_import_not_set_up_title">Спочатку завершіть налаштування CallVault</string>
+    <string name="share_import_choice_title">Що зробити з аудіо?</string>
+    <string name="share_import_choice_unnamed">Надісланий аудіофайл</string>
+    <string name="import_choice_keep">Імпортувати й розпізнати</string>
+    <string name="import_choice_keep_hint">Зберігає аудіо та створює транскрипцію.</string>
+    <string name="import_choice_transcribe_only">Лише розпізнати</string>
+    <string name="import_choice_transcribe_only_hint">Створює транскрипцію, а потім видаляє аудіо. Файл ніколи не зʼявиться серед ваших записів — лише текст, у розділі «Транскрипції».</string>
+    <string name="share_import_queued_keep_title">Додано до черги</string>
+    <string name="share_import_queued_only_title">Очікує на розпізнавання</string>
+    <string name="share_import_kept_title">Збережено без транскрипції</string>
+    <string name="share_import_no_model">Модель розпізнавання не встановлена. Аудіофайл збережено — завантажте модель у налаштуваннях.</string>
+
+    <string name="home_whatsnew_body">• Запис автоматично відновлюється після збоїв\n• Головний екран повідомляє про проблеми із записом\n• Телефонний дзвінок більше не плутається з VoIP</string>
+    <string name="offline_failed_needs_wd">Не вдалося ввімкнути: бездротове налагодження вимкнено. Увімкніть його в параметрах розробника та повторіть.</string>
+    <string name="offline_failed_no_service">Не вдалося підключитися до служби налагодження. Перевірте Wi-Fi та бездротове налагодження.</string>
+    <string name="offline_failed_port">Не вдалося відновити локальний порт. Повторіть трохи пізніше.</string>
+    <string name="home_whatsnew_resilient_body">Підвищує стійкість запису до переривань.\n\nAndroid може зупинити фонову службу CallVault, але поточний запис продовжиться.\n\nФункція вимкнена за замовчуванням і доступна в розділі Налаштування ▸ Підключення.</string>
+    <string name="home_whatsnew_resilient_enabled">«Продовжувати запис, якщо фонова служба зупиниться» увімкнено. Якщо Android зупинить фонову службу, поточний запис продовжиться.</string>
+    <string name="whatsnew_153_title">Перевірка налаштувань за реальними дзвінками</string>
+    <string name="whatsnew_155_title">Зручніші налаштування та надійніший запис</string>
+    <string name="whatsnew_155_body">Налаштування відкриваються панеллю, а не окремим екраном. Розділи стали коротшими та зрозумілішими, у записах видно час і тривалість.\n\nВиправлено проблеми з перериванням запису, тріском звуку та втратою однієї зі сторін VoIP-дзвінків.</string>
+    <string name="whatsnew_154_title">Автоматичне відновлення запису</string>
+    <string name="whatsnew_154_body">Якщо звʼязок зі службою запису зависав, програма могла мовчки припинити запис. Тепер вона виявляє проблему й відновлює роботу.\n\nТакож зʼявився розклад завантажень у Drive та налаштування терміну зберігання.</string>
+    <string name="whatsnew_153_body">Картка стану показує не просто запуск програми, а підтверджує роботу за реальними дзвінками. Якщо запис не відбувся, вона пояснює причину: відсутня папка, вимкнені параметри розробника або втрачений дозвіл.\n\nОновлено переклади та локалізації.</string>
+    <string name="whatsnew_150_title">Вимикання бездротового налагодження</string>
+    <string name="whatsnew_150_body">Якщо ввімкнути налагодження USB, CallVault може вимикати бездротове налагодження між дзвінками. Кабель не потрібен, а ризик відкритого мережевого порту менший.\n\nВиправлено втрату запису після вимкнення налагодження USB.</string>
+    <string name="whatsnew_150_where">Налаштування ▸ Експериментальні ▸ Налагодження USB</string>
+    <string name="whatsnew_148_title">Стабільніший запуск</string>
+    <string name="whatsnew_148_body">Виправлено випадки, коли програма безкінечно перемикала бездротове налагодження, але не ставала готовою до запису. Тепер вона показує причину та підказує потрібні дії.</string>
+    <string name="whatsnew_147_title">Запис дзвінків у месенджерах (VoIP)</string>
+    <string name="whatsnew_147_body">CallVault отримав експериментальний запис дзвінків WhatsApp, Signal і Telegram із можливістю записувати обидва голоси. Джерело дзвінка відображається в архіві.\n\nДеякі програми або прошивки можуть блокувати запис.</string>
+    <string name="whatsnew_147_where">Налаштування ▸ Експериментальні ▸ Дзвінки VoIP</string>
+    <string name="whatsnew_146_title">Стійкий запис</string>
+    <string name="whatsnew_146_body">Android може зупиняти фонову службу під час дзвінка. Завдяки стійкому режиму вже розпочатий запис може продовжитися після такого зупинення.</string>
+    <string name="whatsnew_146_where">Налаштування ▸ Експериментальні ▸ Стійкість</string>
+    <string name="whatsnew_145_title">Запис із заблокованим екраном</string>
+    <string name="whatsnew_145_body">Виправлено зупинення запису під час блокування екрана на деяких телефонах. CallVault попереджає, якщо причиною може бути вибраний режим USB.</string>
+    <string name="offline_recording_on">Запис без Wi-Fi увімкнено.</string>
+    <string name="offline_recording_disabling">Вимкнення запису без Wi-Fi…</string>
+    <string name="home_health_call_not_recorded">Дзвінок не записано — %1$s, %2$s.</string>
+    <string name="home_health_call_not_recorded_unnamed">Дзвінок не записано — %1$s.</string>
+    <string name="home_health_call_not_recorded_force_stopped">CallVault було примусово зупинено — телефоном або іншим застосунком, — тому він не зміг помітити дзвінок. Перевірте, що налаштування батареї телефона не переводять CallVault у режим сну.</string>
+    <string name="home_health_missed_recording_folder">Дзвінок не записано: папку не було вибрано, %1$s.</string>
+    <string name="home_health_missed_recording_folder_unnamed">Дзвінок не записано: папку записів не було вибрано.</string>
+    <string name="home_health_missed_adb_pairing">Дзвінок не записано: налаштування ще не було завершено, %1$s.</string>
+    <string name="home_health_missed_adb_pairing_unnamed">Дзвінок не записано: налаштування ще не завершено.</string>
+    <string name="home_health_missed_developer_options">Дзвінок не записано: параметри розробника були вимкнені, %1$s.</string>
+    <string name="home_health_missed_developer_options_unnamed">Дзвінок не записано: параметри розробника були вимкнені.</string>
+    <string name="home_health_missed_secure_settings">Дзвінок не записано: CallVault утратив дозвіл на запуск рекордера, %1$s.</string>
+    <string name="home_health_missed_secure_settings_unnamed">Дзвінок не записано: втрачено дозвіл на запуск рекордера.</string>
+    <string name="home_health_failed_one_sided_vivo">Записано лише ваш голос. На vivo перевірте параметр запису дзвінків із застосунків у системному диктофоні.</string>
+    <string name="home_health_failed_one_sided_vivo_overseas">Записано лише ваш голос. Цей телефон vivo не дозволяє застосункам записувати співрозмовника в дзвінках через застосунки, і дозволити це неможливо. Звичайні телефонні дзвінки записуються з обох сторін.</string>
+    <string name="whatsnew_221_title">Швидший запуск і менше хибних попереджень</string>
+    <string name="whatsnew_221_body">CallVault швидко відкривається навіть із великим архівом: програма більше не перечитує тривалість усіх записів щоразу під час показу списку.\n\nТакож покращено діагностику резервного копіювання в Google Drive.</string>
+    <string name="whatsnew_220_title">Швидкий пошук та керування під час дзвінка</string>
+    <string name="whatsnew_220_body">Під час розмови можна ставити мітки важливих моментів безпосередньо зі сповіщення. Записи мають кнопки переходу до цих моментів. Для VoIP зʼявилися пауза, продовження, зупинка й мітки.\n\nШукати записи та додавати їх до обраного стало простіше.</string>
+    <string name="whatsnew_220_where">Налаштування ▸ Сховище ▸ Термін зберігання</string>
+    <string name="whatsnew_211_title">Точніші транскрипції та підсумки</string>
+    <string name="whatsnew_211_body">Розпізнавання пропускає тишу та аналізує кілька варіантів тексту, що покращує точність і швидкість. Підсумки стали коротшими та менш повторюваними.</string>
+    <string name="whatsnew_210_title">Транскрипції показують мовців</string>
+    <string name="whatsnew_210_body">Для нових дзвінків кожен фрагмент тексту може позначатися відповідним мовцем. Відомості про сторони отримуються під час запису, тому не потрібне додаткове розпізнавання. Для старих записів ці дані недоступні.</string>
+    <string name="whatsnew_210_where">У транскрипції будь-якого нового запису</string>
+    <string name="whatsnew_200_title">Розмови у вигляді тексту та підсумків</string>
+    <string name="whatsnew_200_body">Дві нові можливості працюють локально, без надсилання аудіо на сервер.\n\nТранскрипція перетворює запис на текст із пошуком і переходом до конкретного моменту.\n\nПідсумки допомагають виділити тему, рішення та завдання з розмови.</string>
+    <string name="whatsnew_200_where">Налаштування ▸ Транскрипція та підсумки</string>
+    <string name="whatsnew_157_title">Виправлене автовидалення старих записів</string>
+    <string name="whatsnew_157_body">Раніше очищення могло не видаляти файли, які зникли з каталогу CallVault. Тепер щоденна перевірка сканує самі папки записів, щоб термін зберігання застосовувався послідовно.</string>
+    <string name="whatsnew_157_where">Налаштування ▸ Сховище ▸ Термін зберігання</string>
+    <string name="whatsnew_156_title">Контроль запису та впорядкування архіву</string>
+    <string name="whatsnew_156_body">Для звичайних і VoIP-дзвінків тепер можна незалежно вибирати автоматичний запис, запит дозволу чи вимкнення.\n\nДодано масове видалення й надсилання записів, а також вибір, яку копію видаляти — локальну чи на Drive.</string>
+    <string name="whatsnew_156_where">Налаштування ▸ Запис ▸ Телефонні дзвінки</string>
+    <string name="settings_merge_keep_originals_description">Після обʼєднання залишати початкові записи на телефоні. За замовчуванням вимкнено. Обʼєднану розмову можна розділити.</string>
+    <string name="unmerge_message">Знову зʼявляться ці дзвінки з їхніми транскрипціями та мітками:</string>
+    <string name="whatsnew_250_title">Зберегти чи видалити після дзвінка, і ділитися тим, що потрібно</string>
+    <string-array name="whatsnew_250_items">
+        <item>Зберегти чи видалити: після кожного дзвінка CallVault може спитати, чи залишити запис (Налаштування ▸ Запис)</item>
+        <item>Діліться записом, розшифровкою і підсумком дзвінка разом — або лише частиною запису</item>
+        <item>Історія дзвінків: кожен дзвінок із журналу телефона поруч зі своїм записом</item>
+        <item>Пошук: Налаштування</item>
+        <item>Повторна розшифровка, і потягніть будь-яку сторінку вниз, щоб оновити її</item>
+        <item>Власний формат назви файлу і необов’язкова позначка, з якої SIM-картки був дзвінок</item>
+        <item>Бенгальська мова для застосунку і розшифровки</item>
+        <item>Дзвінки через Google Voice зберігають номер, який ви набрали</item>
+        <item>Режим Shizuku: мікрофон більше не лишається увімкненим після дзвінка, і немає збою при перезапуску записувача</item>
+        <item>Телефони Honor, які призупиняють CallVault під час дзвінка, записують надійніше</item>
+        <item>Drive: записи більше не губляться, коли тека Drive збігається з текою записів</item>
+        <item>Якщо дзвінок не записано, бо CallVault було примусово зупинено, картка про це скаже</item>
+    </string-array>
+    <string name="whatsnew_249_title">Чистіші дзвінки в застосунках і готовність одразу після оновлення</string>
+    <string-array name="whatsnew_249_items">
+        <item>Менше луни в дзвінках у застосунках на телефонах, де мікрофон ловить звук розмовного динаміка</item>
+        <item>Дзвінки в Telegram записуються до кінця, з назвою та значком Telegram</item>
+        <item>Дзвінки в застосунках, що завершилися до початку запису, більше не залишають порожній файл</item>
+        <item>Запис готовий за кілька секунд після оновлення</item>
+        <item>Розшифрувати можна дзвінок будь-якої довжини; для довгих видно, скільки це триватиме</item>
+        <item>Пошук мови у списку мов за введенням і урду для розшифровки</item>
+        <item>Ніколи не вимикати бездротове налагодження — новий перемикач у Налаштування ▸ Підключення</item>
+        <item>Власний сервер розшифровки може працювати через http:// у власній мережі</item>
+        <item>Налаштування завжди відкриваються посторінково; класичний вигляд прибрано</item>
+    </string-array>
+    <string name="whatsnew_248_title">Власний ключ для розшифровки та зручніше читання</string>
+    <string-array name="whatsnew_248_items">
+        <item>Розшифровка з власним ключем — Groq, OpenRouter або власний сервер, за секунди замість хвилин (Налаштування ▸ Де розпізнавати)</item>
+        <item>Відтворення просто зі списку записів, зі смугою для переходу в будь-яке місце</item>
+        <item>«Попередній» і «Наступний» під час читання розшифровки та перемикач «Стежити за відтворенням»</item>
+        <item>Імпорт на сторінці розшифровок тепер одна кнопка: зберегти аудіо або лише розшифровку</item>
+        <item>Довгі дзвінки від 45 хвилин знову розшифровуються, імпортуються й показують хвилю</item>
+        <item>Завантаження моделей мобільним інтернетом спершу питає, а не чекає на Wi-Fi</item>
+        <item>Мовна модель, навчена на перській, і краща підтримка TalkBack</item>
+        <item>Під\'єднується на телефонах, які приховують адресу налагодження через Wi-Fi</item>
+    </string-array>
+    <string name="whatsnew_247_title">Нові налаштування, Shizuku надолужує, і українська</string>
+    <string-array name="whatsnew_247_items">
+        <item>Новий вигляд налаштувань — кожна сторінка показує лише свої налаштування, подробиці за ⓘ; класичний вигляд за один дотик</item>
+        <item>Простіше налаштування — один рядок на крок, як у нових налаштуваннях</item>
+        <item>Режим Shizuku надолужує — дзвінки в застосунках, надійний запис та імена співрозмовників працюють і там, а звичайні дзвінки починають записуватися швидше</item>
+        <item>Українська — нова мова застосунку й транскрипції; перську також можна закріпити для транскрипції</item>
+        <item>Приховати записи — записи не з’являються в музичних плеєрах і галереях</item>
+        <item>Імпорт і резервна копія моделей — використайте файл моделі, який уже маєте, і збережіть копію перед перевстановленням</item>
+        <item>Автоматично дозволяти нові мережі Wi-Fi — за бажанням: запис більше не чекає, поки ви натиснете «Дозволити»</item>
+        <item>Пропускати ігноровані контакти й у дзвінках застосунків</item>
+        <item>Назви файлів Honor / Huawei — застосунок «Телефон» на Honor може відтворювати записи з журналу дзвінків</item>
+        <item>Дзвінки в застосунках записуються на телефонах Honor з MagicOS 11</item>
+        <item>Виправлення — CallVault більше не конфліктує зі сторожем Shizuku, рекордер Shizuku повертається після зупинки Android, файли з контактом або номером на початку назви знову об’єднуються й знаходяться пошуком, грецькі та перські підсумки пишуться потрібною мовою, і виправлення безпеки рекордера</item>
+    </string-array>
+    <string name="whatsnew_246_title">Головний перемикач, грецька мова та виправлення</string>
+    <string name="whatsnew_244_where">Налаштування ▸ Надійність ▸ Повторити сполучення</string>
+    <string name="whatsnew_243_where">Налаштування ▸ Запис ▸ Вхідні дзвінки ▸ Лише вибрані контакти</string>
+    <string name="whatsnew_240_title">Окремі розділи для записів, текстів і підсумків</string>
+    <string name="whatsnew_230_title">Обʼєднання кількох дзвінків в один запис</string>
+    <string name="offline_failed_no_wifi">Не вдалося ввімкнути: немає Wi-Fi. Один раз підключіться до будь-якої мережі й повторіть.</string>
+    <string name="offline_failed_wd_refused">Android заборонив бездротове налагодження в цій мережі. Увімкніть його в параметрах розробника та підтвердьте.</string>
+    <string name="offline_failed_needs_usb">Спочатку ввімкніть налагодження USB у налаштуваннях CallVault. Воно потрібне для запису без Wi-Fi.</string>
+    <string name="home_transcripts_empty_hint">Попросіть розшифровку в меню запису або натисніть «Імпорт», щоб додати аудіофайл. Вона з\'явиться тут, щойно буде готова.</string>
+    <string name="home_summaries_empty_hint">Відкрийте розмову з транскрипцією та створіть підсумок. Він зʼявиться тут.</string>
+    <string name="transcripts_waiting_hint">Ці файли додані для розпізнавання. Натисніть, щоб розпочати, або відкрийте для прослуховування чи видалення.</string>
+    <string name="import_failed_undecodable">Телефон не може прочитати аудіо в цьому файлі. Він може бути пошкоджений або мати непідтримуваний формат.</string>
+    <string name="share_import_nothing">У надісланих даних немає аудіо. Спробуйте поділитися самим файлом.</string>
+    <string name="share_import_not_set_up_body">Початкове налаштування CallVault ще не завершено. Відкрийте програму, налаштуйте папку записів і повторіть надсилання.</string>
+    <string name="share_import_queued_keep_body">Файл є у записах. Після завершення текст зʼявиться в розділі «Транскрипції».</string>
+    <string name="share_import_queued_only_body">Текст зʼявиться в розділі «Транскрипції». Аудіофайл видалиться після успішного збереження тексту.</string>
+    <string name="share_import_kept_body">Файл збережено серед записів. Транскрипцію можна створити пізніше.</string>
+    <string name="share_import_kept_only_body">Файл очікує в розділі «Транскрипції». Можна почати обробку або видалити його.</string>
+    <string-array name="whatsnew_246_items">
+        <item>Головний перемикач запису всіх телефонних і VoIP-дзвінків на головному екрані та у швидких налаштуваннях</item>
+        <item>Грецька мова транскрипції</item>
+        <item>Вибрати все або зняти вибір у кожному розділі бібліотеки</item>
+        <item>Сортування дзвінків; номер, дата й час угорі транскрипції</item>
+        <item>Імена контактів оновлюються після збереження контакту без повторного запису</item>
+        <item>Тексти й метадані синхронізуються з Drive навіть у миттєвому режимі</item>
+        <item>Файл метаданих може містити часові відрізки мовців</item>
+        <item>Виправлено перемотування довгих дзвінків, зайві сповіщення та видалення обох копій</item>
+    </string-array>
+    <string-array name="whatsnew_245_items">
+        <item>Перська й арабська мови інтерфейсу з підтримкою письма справа наліво</item>
+        <item>Запис дзвінків vivo: для другої сторони увімкніть запис дзвінків із застосунків у диктофоні</item>
+        <item>Резервне копіювання транскрипцій та нотаток поряд з аудіозаписом</item>
+        <item>Нові шаблони назв файлів із контактом або номером на початку</item>
+        <item>Експорт та імпорт налаштувань із файлу</item>
+        <item>Виправлено помилкові повідомлення про перервані дзвінки</item>
+    </string-array>
+    <string-array name="whatsnew_244_items">
+        <item>Якщо Android закриє CallVault під час дзвінка, уже записаний фрагмент буде збережено</item>
+        <item>Можна повторити сполучення в налаштуваннях без перевстановлення застосунку</item>
+        <item>Про нову версію повідомляє спливне вікно та швидша перевірка оновлень</item>
+        <item>Несумісні з версією Android налаштування стають недоступними з поясненням</item>
+    </string-array>
+    <string-array name="whatsnew_243_items">
+        <item>Можна записувати лише вибрані контакти для вхідних або вихідних дзвінків</item>
+        <item>Виправлено розсинхронізацію голосів під час VoIP</item>
+        <item>Нотатки зберігаються без втрати символів і показують стан збереження</item>
+        <item>Після дзвінка не залишаються зайві сповіщення</item>
+        <item>Тестовим збіркам доступне коректне оновлення</item>
+        <item>Пошкоджене завантаження моделі очищується та запускається повторно</item>
+        <item>Виправлено втрату кожного другого дзвінка у стійкому режимі</item>
+        <item>Покращено запис VoIP на vivo та iQOO</item>
+    </string-array>
+    <string-array name="whatsnew_241_items">
+        <item>Пошук за контактом і змістом у записах, транскрипціях та підсумках</item>
+        <item>Початок запису вихідного дзвінка після відповіді співрозмовника</item>
+        <item>Позначення мовців у записах через Shizuku</item>
+        <item>Виправлено імена контактів у VoIP на Android 14 і старіших</item>
+        <item>Оновлення в режимі Shizuku не заважає наступному дзвінку</item>
+        <item>Спільна фраза мовців розділяється в місці зміни голосу</item>
+        <item>Транскрипція з неправильною абеткою розпізнається повторно</item>
+        <item>Фрагменти одного мовця більше не залишаються без імені</item>
+    </string-array>
+    <string-array name="whatsnew_240_items">
+        <item>Головний екран із записами, транскрипціями та підсумками</item>
+        <item>Імпорт аудіофайлів і отримання їх через системне меню «Поділитися»</item>
+        <item>Розпізнавання без збереження аудіо після створення тексту</item>
+        <item>Окремий екран транскрипції з можливістю додавати нотатки</item>
+        <item>Масовий вибір текстів і підсумків для видалення або надсилання</item>
+        <item>Сповіщення після завершення транскрипції</item>
+        <item>Виправлено запуск запису після перезавантаження телефону</item>
+        <item>Автоматичний перезапуск Shizuku за необхідності</item>
+        <item>Виправлено початкове налаштування на Android 17</item>
+    </string-array>
+    <string-array name="whatsnew_230_items">
+        <item>Обʼєднання кількох дзвінків однієї розмови</item>
+        <item>Збереження звіту про помилку до вибраної папки</item>
+        <item>Поворот екрана не скидає поточне місце</item>
+        <item>Виправлено тріск в аудіозаписах</item>
+        <item>Помилки початку запису тепер показуються</item>
+        <item>Перехід на AAC не порушує наступний дзвінок</item>
+        <item>Голосова пошта більше не вважається невдалим дзвінком</item>
+        <item>Виправлено часові позначки після тривалої паузи</item>
+        <item>Оновлення не заважає запису наступного дзвінка</item>
+        <item>Підтримано прихований режим Shizuku</item>
+        <item>Увімкнене користувачем бездротове налагодження не вимикається</item>
+        <item>Запис без Wi-Fi показує реальну причину помилки</item>
+        <item>Індикатор мікрофона не залишається після дзвінка</item>
+        <item>Поворот екрана не скидає поступ транскрипції</item>
+        <item>Видалення запису зупиняє його розпізнавання</item>
+        <item>Не показується зайве сповіщення про нагрівання телефону</item>
+        <item>Автоматичний запис більше не блимає кнопкою початку</item>
+        <item>Поступ транскрипції не зависає на трьох чвертях</item>
+        <item>Для записаного дзвінка показується одне сповіщення</item>
+        <item>Переглядач журналу розгортається на весь екран</item>
+    </string-array>
+    <plurals name="merge_row_badge">
+        <item quantity="one">%1$d дзвінок</item>
+        <item quantity="few">%1$d дзвінки</item>
+        <item quantity="many">%1$d дзвінків</item>
+        <item quantity="other">%1$d дзвінка</item>
+    </plurals>
+    <plurals name="merge_summary">
+        <item quantity="one">%1$d дзвінок · %2$s</item>
+        <item quantity="few">%1$d дзвінки · %2$s</item>
+        <item quantity="many">%1$d дзвінків · %2$s</item>
+        <item quantity="other">%1$d дзвінка · %2$s</item>
+    </plurals>
+    <string name="whatsnew_245_title">Нові мови, резервні копії та інші можливості</string>
+    <string name="whatsnew_244_title">Надійніший запис, повторне сполучення та сповіщення про оновлення</string>
+    <string name="whatsnew_243_title">Синхронізація VoIP, збереження нотаток і вибір контактів</string>
+    <string name="whatsnew_241_title">Пошук у кожному розділі та запис після відповіді</string>
+    <string name="whatsnew_241_where">Налаштування ▸ Запис ▸ Вихідні дзвінки ▸ Починати після відповіді</string>
+    <string name="whatsnew_240_where">Головна ▸ Транскрипції ▸ Імпорт аудіо</string>
+    <string name="whatsnew_230_where">Меню ⋮ запису ▸ Обʼєднати з іншим дзвінком</string>
+</resources>
