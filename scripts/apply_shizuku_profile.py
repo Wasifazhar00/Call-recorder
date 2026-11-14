@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Apply reproducible Shizuku-first defaults and test fixtures to the exact pinned CallVault source.
+"""Apply reproducible Shizuku-first defaults and test fixtures to the imported standalone CallVault source.
 
 Safe to run repeatedly: already-applied values are accepted, while unexpected source drift fails closed.
-The checked-out submodule is modified only during the build; upstream Git history is untouched.
+The imported source tree is the build source of truth; changes are committed only after CI passes.
 """
 from pathlib import Path
 import sys
