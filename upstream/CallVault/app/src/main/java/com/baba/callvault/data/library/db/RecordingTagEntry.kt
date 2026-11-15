@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.Flow
 /**
  * One label the user has put on one recording.
  *
- * **In the transcripts database, not the recordings catalog**, for the same reason notes are: the
+ * **In the recording metadata database, not the recordings catalog**, for the same reason notes are: the
  * catalog has a destructive fallback because it can be rebuilt from the storage folders, and a tag
  * cannot be rebuilt from anything. It is a judgement the user made — *this call was about the flat* —
  * and nothing on disk records it.

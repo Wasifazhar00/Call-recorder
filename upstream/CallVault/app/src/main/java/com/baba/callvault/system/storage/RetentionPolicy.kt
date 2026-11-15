@@ -67,7 +67,7 @@ object RetentionPolicy {
      * the retention period elapses, the catalogued pass would delete it like anything else, and for
      * an import that is not the routine loss of a device copy. There is no Drive copy to survive it,
      * because CallVault refuses to make one, so the delete destroys the only copy of something the
-     * user handed us, plus its transcript. Retention is a promise about how long a *call* is kept;
+     * user handed us, plus its metadata. Retention is a promise about how long a *call* is kept;
      * an import was never a call.
      */
     fun agesOut(displayName: String): Boolean = !ImportedRecording.isImported(displayName)

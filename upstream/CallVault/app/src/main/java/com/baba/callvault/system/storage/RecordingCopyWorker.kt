@@ -117,7 +117,7 @@ class RecordingCopyWorker(ctx: Context, params: WorkerParameters) : CoroutineWor
         }
         AppLogger.e(TAG, "Giving up on copying '$name' to Drive after ${runAttemptCount + 1} attempts ($reason). The device copy is kept.")
         // Only the audio copy is worth interrupting the user over. A sidecar that misses Drive is a
-        // details/transcript file whose recording is already backed up; log it and stay quiet.
+        // details metadata file whose recording is already backed up; log it and stay quiet.
         if (!isSidecar) {
             runCatching {
                 RecordingNotificationHelper(applicationContext)

@@ -16,7 +16,7 @@ package com.baba.callvault.utils
  * first launch, asked for logs, and by then the moment was gone. This journal fills that gap, and
  * because nobody opted into it, the rules are deliberately narrow.
  *
- * **Setup and transport only.** Not calls, not audio, not transcripts, not numbers — a tag joins the
+ * **Setup and transport only.** Not calls, not audio, not call content, not numbers — a tag joins the
  * list below by being named, never by default.
  *
  * **Bounded, and it stops rather than rotates.** Keeping the FIRST run is the whole point; a rotation

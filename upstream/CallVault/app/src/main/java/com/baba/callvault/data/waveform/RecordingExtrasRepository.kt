@@ -10,9 +10,9 @@ package com.baba.callvault.data.waveform
 
 import android.content.Context
 import android.net.Uri
-import com.baba.callvault.data.transcripts.db.RecordingNoteEntry
-import com.baba.callvault.data.transcripts.db.RecordingWaveformEntry
-import com.baba.callvault.data.transcripts.db.TranscriptDatabase
+import com.baba.callvault.data.library.db.RecordingNoteEntry
+import com.baba.callvault.data.library.db.RecordingWaveformEntry
+import com.baba.callvault.data.library.db.LibraryDatabase
 import com.baba.callvault.data.audio.AudioChunkPlan
 import com.baba.callvault.data.audio.AudioDecoder
 import com.baba.callvault.utils.AppLogger
@@ -29,12 +29,12 @@ object RecordingExtrasRepository {
 
     private const val TAG = "CV:RecordingExtras"
 
-    private fun dao(context: Context) = TranscriptDatabase.get(context).noteDao()
+    private fun dao(context: Context) = LibraryDatabase.get(context).noteDao()
 
     /** The note for [displayName], empty when there is none. */
     fun note(context: Context, displayName: String): Flow<String> {
         // Do not materialise a database just to find out a recording has no note — most never will.
-        if (!TranscriptDatabase.exists(context)) return flowOf("")
+        if (!LibraryDatabase.exists(context)) return flowOf("")
         return dao(context).observeNote(displayName).map { it?.text.orEmpty() }
     }
 
@@ -159,7 +159,7 @@ object RecordingExtrasRepository {
      * Notes are private user-authored data and are removed with their recording.
      */
     suspend fun deleteFor(context: Context, displayName: String) {
-        if (!TranscriptDatabase.exists(context)) return
+        if (!LibraryDatabase.exists(context)) return
         val dao = dao(context)
         runCatching {
             dao.deleteNote(displayName)

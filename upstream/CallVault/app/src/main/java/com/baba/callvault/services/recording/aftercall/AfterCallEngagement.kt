@@ -9,7 +9,7 @@
 package com.baba.callvault.services.recording.aftercall
 
 import android.content.Context
-import com.baba.callvault.data.transcripts.db.TranscriptDatabase
+import com.baba.callvault.data.library.db.LibraryDatabase
 import com.baba.callvault.utils.AppLogger
 
 /**
@@ -25,9 +25,9 @@ internal object AfterCallEngagement {
      * can exist. A lookup that fails reads as engaged — the failure must fall towards keeping.
      */
     suspend fun isEngaged(context: Context, displayName: String): Boolean {
-        if (!TranscriptDatabase.exists(context)) return false
+        if (!LibraryDatabase.exists(context)) return false
         return runCatching {
-            val db = TranscriptDatabase.get(context)
+            val db = LibraryDatabase.get(context)
             db.favouriteDao().isFavourite(displayName) ||
                 db.flagDao().flagsFor(displayName).isNotEmpty() ||
                 db.tagDao().tagsFor(displayName).isNotEmpty() ||

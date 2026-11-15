@@ -19,7 +19,7 @@ import kotlinx.coroutines.flow.flowOf
  * automatic deletes honour.
  *
  * Shaped like [TagRepository], including its rule that a *read* never creates the database: a device
- * that has never saved recording metadata should not grow a `transcripts.db` merely because Home asked
+ * that has never saved recording metadata should not create the legacy metadata database merely because Home asked
  * whether anything is starred.
  */
 object FavouriteRepository {

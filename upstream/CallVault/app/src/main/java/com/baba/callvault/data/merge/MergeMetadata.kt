@@ -10,10 +10,10 @@ package com.baba.callvault.data.merge
 
 import android.content.Context
 import com.baba.callvault.data.recordings.db.MergePartEntry
-import com.baba.callvault.data.transcripts.db.RecordingFlagEntry
-import com.baba.callvault.data.transcripts.db.RecordingNoteEntry
-import com.baba.callvault.data.transcripts.db.RecordingTagEntry
-import com.baba.callvault.data.transcripts.db.TranscriptDatabase
+import com.baba.callvault.data.library.db.RecordingFlagEntry
+import com.baba.callvault.data.library.db.RecordingNoteEntry
+import com.baba.callvault.data.library.db.RecordingTagEntry
+import com.baba.callvault.data.library.db.LibraryDatabase
 import com.baba.callvault.utils.AppLogger
 
 /**
@@ -39,7 +39,7 @@ object MergeMetadata {
      * Marks are shifted by each part's position on the merged timeline.
      */
     suspend fun onMerge(context: Context, mergedName: String, parts: List<MergePartEntry>) {
-        val db = TranscriptDatabase.get(context)
+        val db = LibraryDatabase.get(context)
 
         // --- marks, plus one at each seam ------------------------------------------------------
         val marks = parts.flatMap { part ->
@@ -86,7 +86,7 @@ object MergeMetadata {
      * That is the whole of un-merging the metadata, and it is why [onMerge] copies rather than moves.
      */
     suspend fun onUnMerge(context: Context, mergedName: String) {
-        val db = TranscriptDatabase.get(context)
+        val db = LibraryDatabase.get(context)
         db.flagDao().deleteFor(mergedName)
         db.tagDao().deleteFor(mergedName)
         db.favouriteDao().deleteFor(mergedName)

@@ -42,7 +42,7 @@ import com.baba.callvault.data.recordings.AudioDuration
 import com.baba.callvault.system.storage.MinDurationPolicy
 import com.baba.callvault.system.interop.MetadataSidecar
 import com.baba.callvault.data.recordings.RecordingsRepository
-import com.baba.callvault.data.transcripts.FlagRepository
+import com.baba.callvault.data.library.FlagRepository
 import com.baba.callvault.data.voip.VoipAppPolicy
 import java.text.SimpleDateFormat
 import java.util.Date

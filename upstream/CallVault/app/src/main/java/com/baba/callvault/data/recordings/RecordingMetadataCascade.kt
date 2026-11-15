@@ -2,13 +2,13 @@ package com.baba.callvault.data.recordings
 
 import android.content.Context
 import androidx.room.withTransaction
-import com.baba.callvault.data.transcripts.db.TranscriptDatabase
+import com.baba.callvault.data.library.db.LibraryDatabase
 
 /** Removes only user-authored metadata attached to recordings whose last audio copy was deleted. */
 object RecordingMetadataCascade {
     suspend fun deleteFor(context: Context, displayNames: Collection<String>) {
         if (displayNames.isEmpty()) return
-        val db = TranscriptDatabase.get(context)
+        val db = LibraryDatabase.get(context)
         db.withTransaction {
             displayNames.distinct().forEach { name ->
                 db.noteDao().deleteNote(name)

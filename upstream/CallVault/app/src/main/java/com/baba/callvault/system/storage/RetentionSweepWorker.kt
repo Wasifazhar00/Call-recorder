@@ -22,7 +22,7 @@ import com.baba.callvault.data.recordings.RecordingsRepository.RecordingItem
 import com.baba.callvault.data.recordings.UntrackedRecordings
 import com.baba.callvault.data.recordings.RecordingMetadataCascade
 import com.baba.callvault.utils.AppLogger
-import com.baba.callvault.data.transcripts.FavouriteRepository
+import com.baba.callvault.data.library.FavouriteRepository
 
 /**
  * Daily sweep that permanently deletes recordings older than the configured retention period. Reads the

@@ -52,7 +52,7 @@ import com.baba.callvault.data.recordings.AudioDuration
 import com.baba.callvault.system.storage.MinDurationPolicy
 import com.baba.callvault.system.interop.MetadataSidecar
 import com.baba.callvault.data.recordings.RecordingsRepository
-import com.baba.callvault.data.transcripts.FlagRepository
+import com.baba.callvault.data.library.FlagRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
