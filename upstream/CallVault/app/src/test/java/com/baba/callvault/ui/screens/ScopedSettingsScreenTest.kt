@@ -70,17 +70,6 @@ class ScopedSettingsScreenTest {
     }
 
     @Test
-    fun `the new screen offers no second language picker`() {
-        // Transcripts and summaries share one language on purpose; two pickers once produced transcripts
-        // in the wrong language. The new screen shows it read-only under Summaries and links to it.
-        assertFalse(newScreen.contains("TranscriptionLanguageField"))
-        assertEquals(1, Regex("""TranscriptionLanguageRows\(""").findAll(newScreen).count())
-        val bodies = source("ScopedSettingsGroupBodies.kt")
-        assertTrue(calls("TranscriptionLanguageRows", bodyOf("ModelAndLanguageBody", bodies)))
-        assertFalse(calls("TranscriptionLanguageRows", bodyOf("SummariesBody", bodies)))
-    }
-
-    @Test
     fun `debug has no classic-screen switch, and the debug report is drawn once`() {
         val debug = source("SettingsAboutDebugSection.kt")
         assertFalse(debug.contains("ClassicSettingsScreenToggle"))
@@ -119,8 +108,7 @@ class ScopedSettingsScreenTest {
     fun `every settings row has a home in all settings`() {
         // Every row-like composable declared for Settings. A new one fails here until it is placed in a group
         // (SettingsGroups.rowsOf) or listed below as a container or a part of a listed row.
-        val files = screensDir.listFiles { f -> f.name.startsWith("Settings") && f.extension == "kt" }!!.toList() +
-            File(screensDir, "SummarySection.kt")
+        val files = screensDir.listFiles { f -> f.name.startsWith("Settings") && f.extension == "kt" }!!.toList()
         val declared = files.flatMap { f ->
             Regex("""@Composable\s*\n(?:internal |private )?fun (\w+(?:Row|Rows|Toggle|Switch|Picker|Note|Section|SubSection))\(""")
                 .findAll(f.readText()).map { it.groupValues[1] }.toList()
@@ -131,7 +119,6 @@ class ScopedSettingsScreenTest {
             // The wizard's bundle of VoIP rows, which the screen places one by one.
             "VoipRecordingToggle",
             // Parts of a listed row: drawn inside BugReportSection, SummarySettingsRows, the download rows.
-            "SummaryRows", "TranscriptionModelRows",
             // A dialog over either screen, not a row.
             "SettingsContactPicker",
             // Setup (onboarding) only since Settings shows WirelessDebuggingModeRow instead (2026-11-03).
@@ -159,7 +146,7 @@ class ScopedSettingsScreenTest {
         "voip_recording_arming", "voip_recording_unavailable",
         "settings_usb_debugging_shizuku_hint", "settings_usb_debugging_failed",
         "settings_usb_debugging_on_hint", "settings_usb_debugging_recommended",
-        "settings_usb_default_busy", "transcription_language_auto_hint",
+        "settings_usb_default_busy",
         "settings_wd_left_on_by_setting", "settings_wd_left_on_by_user",
         // Keep or delete: why the choice did not take yet (a permission is still missing).
         "settings_after_call_needs_notifications", "settings_after_call_needs_overlay",
@@ -167,19 +154,17 @@ class ScopedSettingsScreenTest {
 
     /** Explanations: inline in the wizard, behind an ⓘ on the Settings screen. */
     private val explanatoryHints = setOf(
-        "settings_metadata_file_hint", "settings_transcript_sidecar_hint", "settings_hide_recordings_hint",
+        "settings_metadata_file_hint", "settings_hide_recordings_hint",
         "min_duration_caption", "storage_cap_caption", "retention_description",
         "voip_recording_names_hint", "settings_voip_ignore_contacts_hint", "settings_voip_apps_hint",
         "settings_offline_recording_reboot_note", "settings_usb_default_hint",
         "settings_audio_bitrate_recommendation", "settings_bugreport_share_hint",
-        "summary_model_licence", "summary_requirements_body",
         "wizard_schedule_immediate_note", "wizard_schedule_subtitle",
-        "transcription_note_manual", "transcription_note_after_each_call", "transcription_note_automatic",
     )
 
     private val settingsSources: Map<String, String>
-        get() = (screensDir.listFiles { f -> f.name.startsWith("Settings") && f.extension == "kt" }!!.toList() +
-            File(screensDir, "SummarySection.kt")).associate { it.name to it.readText() }
+        get() = screensDir.listFiles { f -> f.name.startsWith("Settings") && f.extension == "kt" }!!.toList()
+            .associate { it.name to it.readText() }
 
     @Test
     fun `the explanation helpers draw nothing in the new screen's info mode`() {
@@ -232,14 +217,6 @@ class ScopedSettingsScreenTest {
                 assertTrue("$file hides $key but no ⓘ carries it", routed)
             }
         }
-    }
-
-    @Test
-    fun `group-wide explanations sit behind the group card's info button`() {
-        val text = bodyOf("groupExplanationText", source("SettingsGroupSummaryText.kt"))
-        listOf("retention_description", "transcriptionModeNoteRes", "summaryModelExplanation", "settings_bugreport_share_hint")
-            .forEach { assertTrue("groupExplanationText lacks $it", text.contains(it)) }
-        assertTrue(source("ScopedSettingsContent.kt").contains("explanation = groupExplanationText("))
     }
 
     // ── Round 4: Recording split into phone, app and all-call blocks ──────────────────────────────

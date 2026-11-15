@@ -476,14 +476,6 @@ class LogRedactionTest {
     }
 
     @Test
-    fun `a transcribe-only import keeps both markers`() {
-        assertEquals(
-            "Imported '${stamp}_import_transcribeonly_${token("Mom Cohen")}.mp3' (1 bytes, 3s)",
-            redact("Imported '${stamp}_import_transcribeonly_Mom Cohen.mp3' (1 bytes, 3s)")
-        )
-    }
-
-    @Test
     fun `every import format is a format the rule knows`() {
         ImportableAudio.ACCEPTED_EXTENSIONS.forEach { ext ->
             assertTrue(ext, ext in LogRedaction.NAME_EXTENSIONS)

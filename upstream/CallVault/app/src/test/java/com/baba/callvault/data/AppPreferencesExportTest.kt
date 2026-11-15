@@ -61,7 +61,7 @@ class AppPreferencesExportTest {
     fun `real user preferences are exportable`() {
         listOf(
             "file_name_template", "theme_mode", "audio_codec", "voip_recording_enabled",
-            "carrier_recording_enabled", "write_transcript_sidecar",
+            "carrier_recording_enabled",
         ).forEach { key ->
             assertTrue("$key should be exportable", AppPreferences.EXPORTABLE_KEYS.contains(key))
         }

@@ -16,8 +16,8 @@ object ImportedRecording {
     private const val STAMP_PATTERN = "yyyyMMdd_HHmmss.SSSZ"
     private const val MAX_LABEL_LENGTH = 40
     private val forbiddenInLabel = Regex("""[/\\:*?"<>|_]""")
-    private val sourceExtension = Regex("""\\.[A-Za-z0-9]{1,5}$""")
-    private val stampHead = Regex("""\\d{8}""")
+    private val sourceExtension = Regex("""\.[A-Za-z0-9]{1,5}$""")
+    private val stampHead = Regex("""\d{8}""")
 
     fun nameFor(importedAtMillis: Long, label: String?, extension: String): String {
         val stamp = SimpleDateFormat(STAMP_PATTERN, Locale.CANADA).format(Date(importedAtMillis))

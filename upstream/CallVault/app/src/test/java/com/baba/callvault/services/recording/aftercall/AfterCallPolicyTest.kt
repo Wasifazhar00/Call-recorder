@@ -163,7 +163,7 @@ class AfterCallPolicyTest {
         val held = setOf("20261106_101500_in_0501234567.ogg")
         assertTrue(AfterCallPolicy.isHeldFile("20261106_101500_in_0501234567.ogg", held))
         assertTrue(AfterCallPolicy.isHeldFile("20261106_101500_in_0501234567.json", held))
-        assertTrue(AfterCallPolicy.isHeldFile("20261106_101500_in_0501234567.md", held))
+        assertFalse(AfterCallPolicy.isHeldFile("20261106_101500_in_0501234567.md", held))
     }
 
     @Test

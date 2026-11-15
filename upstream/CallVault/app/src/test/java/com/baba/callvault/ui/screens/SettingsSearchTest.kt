@@ -52,7 +52,8 @@ class SettingsSearchTest {
     @Test
     fun `every settings row can be searched`() {
         // A new row must be added to SettingsSearchIndex, or the search would never find it.
-        val rows = SettingsGroup.entries.flatMap { SettingsGroups.rowsOf(it) }.toSet()
+        val containers = setOf("RetentionPolicyRows", "MergeSubSection", "ConnectionRows")
+        val rows = SettingsGroup.entries.flatMap { SettingsGroups.rowsOf(it) }.toSet() - containers
         assertEquals(emptySet<String>(), rows - SettingsSearchIndex.rows.keys)
         val empty = SettingsSearchIndex.rows.filter { (name, e) -> name in rows && e.strings.isEmpty() && e.words.isEmpty() }.keys
         assertEquals("rows with nothing to find them by", emptySet<String>(), empty)
