@@ -42,7 +42,7 @@ class RecorderTransactionCodesTest {
         assertEquals(first + 10, IRecorderService.Stub.TRANSACTION_voipCallerName)
         assertEquals(first + 11, IRecorderService.Stub.TRANSACTION_startHandoffHeld)
         assertEquals(first + 12, IRecorderService.Stub.TRANSACTION_stopHandoff)
-        assertEquals(first + 13, IRecorderService.Stub.TRANSACTION_speakerTurns)
+        assertEquals(first + 13, IRecorderService.Stub.TRANSACTION_reservedLegacyString)
         // Appended for the Shizuku work. New methods go on the END, always: these ids are positional.
         assertEquals(first + 14, IRecorderService.Stub.TRANSACTION_grantAppOp)
         assertEquals(first + 15, IRecorderService.Stub.TRANSACTION_grantRole)

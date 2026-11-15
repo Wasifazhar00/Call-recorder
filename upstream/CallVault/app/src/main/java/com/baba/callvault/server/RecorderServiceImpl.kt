@@ -235,7 +235,7 @@ open class RecorderServiceImpl(private val apkPath: String) : IRecorderService.S
     override fun voipFarPartyHeard(): Boolean = lastVoipSession?.farPartyHeard ?: false
 
     /** Legacy Binder transaction retained for older clients; recorder-only capture has no speaker analysis. */
-    override fun speakerTurns(): String = ""
+    override fun reservedLegacyString(): String = ""
 
     override fun captureDiagnostics(): String = lastCaptureDiagnostics
 

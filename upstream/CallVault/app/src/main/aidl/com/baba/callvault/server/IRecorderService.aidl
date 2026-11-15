@@ -132,8 +132,8 @@ interface IRecorderService {
     /** Releases the daemon's held handoff AudioRecord (frees the capture input). Idempotent. */
     void stopHandoff();
 
-    /** Legacy no-op transaction retained so older daemons keep the same Binder transaction IDs. */
-    String speakerTurns();
+    /** Reserved string transaction retained so older daemons keep the same Binder transaction IDs. */
+    String reservedLegacyString();
 
     /**
      * Allows an app op for a package, returning whether it is allowed AFTERWARDS.
@@ -256,7 +256,7 @@ interface IRecorderService {
      * What the capture noticed about its own health during the recording that just ended, as a short
      * one-line summary, or {@code ""} when nothing went wrong — which is the normal answer.
      *
-     * Read after {@code stopRecording}, like {@code speakerTurns}. It exists because the daemon's own
+     * Read after {@code stopRecording}, like {@code reservedLegacyString}. It exists because the daemon's own
      * log reaches a bug report only through logcat, which only exists if the reporter happened to have
      * debug logging on BEFORE the call. Issue #28b needs the opposite: a fact about a call that has
      * already happened, in a report from someone who was not debugging at the time.
