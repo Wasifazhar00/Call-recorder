@@ -8,7 +8,6 @@
 
 package com.baba.callvault.ui.common
 
-import androidx.annotation.ArrayRes
 import androidx.annotation.StringRes
 import com.baba.callvault.R
 
@@ -26,7 +25,7 @@ data class ReleaseHighlight(
     val version: String,
     @StringRes val title: Int,
     /**
-     * One line per change, as a string-array.
+     * One line per change, as a newline-separated string.
      *
      * An array rather than one string with line breaks in it: raw newlines inside a string resource
      * are collapsed to spaces by the resource compiler, which turned nine changes into a single
@@ -35,7 +34,7 @@ data class ReleaseHighlight(
      *
      * Null for the older releases: only the newest is written out, the rest show their headline.
      */
-    @ArrayRes val items: Int? = null,
+    @StringRes val items: Int? = null,
     /** Where to find it, when the feature is off by default and needs switching on. */
     @StringRes val whereToFind: Int? = null,
 )
@@ -49,7 +48,7 @@ object ReleaseHighlights {
         ReleaseHighlight(
             version = "2.5.0",
             title = R.string.whatsnew_250_title,
-            items = R.array.whatsnew_250_items,
+            items = R.string.whatsnew_250_items,
         ),
     )
 

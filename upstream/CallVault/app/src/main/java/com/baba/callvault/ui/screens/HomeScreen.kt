@@ -162,7 +162,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.pluralStringResource
-import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -1206,7 +1205,7 @@ private fun ReleaseNote(release: ReleaseHighlight) {
     Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
         ReleaseHeadline(release)
         release.items?.let { items ->
-            stringArrayResource(items).forEach { change -> ChangeLine(change) }
+            stringResource(items).lineSequence().filter { it.isNotBlank() }.forEach { change -> ChangeLine(change) }
         }
         release.whereToFind?.let {
             Text(

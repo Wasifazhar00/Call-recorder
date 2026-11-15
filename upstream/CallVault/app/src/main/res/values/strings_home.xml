@@ -153,18 +153,7 @@
     <string name="home_scroll_to_top">Top</string>
     <string name="home_whatsnew_full_notes">Full release notes</string>
     <string name="whatsnew_250_title">Keep or delete after a call, and share what you need</string>
-    <string-array name="whatsnew_250_items">
-        <item>Keep or delete: CallVault can ask after each call whether to keep the recording (Settings ▸ Recording)</item>
-        <item>Share a recording, or just a selected part of it</item>
-        <item>Call history: every call from your phone\\'s log, next to its recording</item>
-        <item>Search in Settings</item>
-        <item>Your own file-name format, and an optional label for which SIM each call used</item>
-        <item>Calls placed through Google Voice keep the number you dialled</item>
-        <item>Shizuku mode: the microphone no longer stays on after a call, and no crash when the recorder restarts</item>
-        <item>Honor phones that pause CallVault during a call record more reliably</item>
-        <item>Drive: recordings are no longer lost when the Drive folder is also the recordings folder</item>
-        <item>When a call was not recorded because CallVault had been force-stopped, the card says so</item>
-    </string-array>
+    <string name="whatsnew_250_items">Keep or delete: CallVault can ask after each call whether to keep the recording (Settings ▸ Recording)\nShare a recording, or just a selected part of it\nCall history: every call from your phone\'s log, next to its recording\nSearch in Settings\nYour own file-name format, and an optional label for which SIM each call used\nCalls placed through Google Voice keep the number you dialled\nShizuku mode: the microphone no longer stays on after a call, and no crash when the recorder restarts\nHonor phones that pause CallVault during a call record more reliably\nDrive: recordings are no longer lost when the Drive folder is also the recordings folder\nWhen a call was not recorded because CallVault had been force-stopped, the card says so</string>
     
     
     
