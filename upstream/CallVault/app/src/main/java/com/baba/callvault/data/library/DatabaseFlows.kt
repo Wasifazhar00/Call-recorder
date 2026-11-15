@@ -1,7 +1,7 @@
-package com.baba.callvault.data.transcripts
+package com.baba.callvault.data.library
 
 import android.content.Context
-import com.baba.callvault.data.transcripts.db.TranscriptDatabase
+import com.baba.callvault.data.library.db.LibraryDatabase
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
@@ -17,11 +17,11 @@ import kotlinx.coroutines.flow.flow
 internal fun <T> onceMetadataDatabaseExists(
     context: Context,
     initial: T,
-    observe: (TranscriptDatabase) -> Flow<T>,
+    observe: (LibraryDatabase) -> Flow<T>,
 ): Flow<T> = flow {
-    if (!TranscriptDatabase.exists(context)) {
+    if (!LibraryDatabase.exists(context)) {
         emit(initial)
-        while (!TranscriptDatabase.exists(context)) delay(1_000L)
+        while (!LibraryDatabase.exists(context)) delay(1_000L)
     }
-    emitAll(observe(TranscriptDatabase.get(context)))
+    emitAll(observe(LibraryDatabase.get(context)))
 }

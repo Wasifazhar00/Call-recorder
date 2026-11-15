@@ -171,7 +171,6 @@
     
     
     <string name="list_separator">", "</string>
-    <string name="min_duration_caption">Cuộc gọi nhầm hoặc đổ chuông không nghe sẽ bị xóa ngay khi kết thúc, trước khi chép lời hay tải lên. Không ảnh hưởng đến bản ghi đã có.</string>
     <string name="min_duration_label">Bỏ bản ghi ngắn</string>
     <string name="min_duration_off">Giữ tất cả</string>
     <string name="min_duration_one_minute">Ngắn hơn một phút</string>
@@ -186,7 +185,6 @@
     <string name="mode_switch_problem_title">Chưa sẵn sàng</string>
     <string name="mode_switch_ready">Trình ghi đang chạy. Các cuộc gọi sẽ được ghi âm.</string>
     <string name="mode_switch_ready_shizuku">CallVault đang ghi âm qua Shizuku. Mọi tính năng đều dùng được, trừ ghi âm khi không có Wi-Fi, vốn cần trình ghi riêng của CallVault.</string>
-    <string name="mode_switch_ready_standalone">CallVault ghi âm bằng trình ghi riêng. Mọi thứ đều khả dụng, gồm cả cuộc gọi VoIP và tên người nói.</string>
     <string name="mode_switch_recorder_failed">Trình ghi không khởi động được. Sẽ không ghi được gì cho đến khi nó chạy.</string>
     <string name="mode_switch_shizuku_not_installed">Shizuku chưa được cài đặt nên không có gì để chuyển sang.</string>
     <string name="mode_switch_shizuku_not_permitted">Shizuku chưa cho phép CallVault. Mở Shizuku, cho phép rồi thử lại.</string>
@@ -343,7 +341,6 @@
     <string name="selection_select_all">Chọn tất cả</string>
     <string name="settings_allow_screenshots_description">Cho phép bạn chụp màn hình CallVault. Điều này cũng hiển thị nội dung của ứng dụng trong trình chuyển đổi ứng dụng. Tắt sẽ giữ mọi thứ ẩn.</string>
     <string name="settings_allow_screenshots_title">Cho phép chụp màn hình</string>
-    <string name="settings_app_lock_description">Yêu cầu khóa màn hình trước khi hiện bản ghi và bản chép lời. Đồng thời ẩn chúng khỏi ảnh chụp màn hình và trình chuyển ứng dụng.</string>
     <string name="settings_app_lock_title">Yêu cầu mở khóa</string>
     <string name="settings_app_lock_unavailable">Hãy đặt khóa màn hình trên điện thoại để dùng tính năng này.</string>
     <string name="settings_audio_bitrate">Tốc độ bit âm thanh</string>

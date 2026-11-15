@@ -6,12 +6,12 @@
  *  This software is distributed WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 
-package com.baba.callvault.data.transcripts
+package com.baba.callvault.data.library
 
 import android.content.Context
 import com.baba.callvault.data.recordings.RecordingsRepository.RecordingItem
-import com.baba.callvault.data.transcripts.db.RecordingLabelEntry
-import com.baba.callvault.data.transcripts.db.TranscriptDatabase
+import com.baba.callvault.data.library.db.RecordingLabelEntry
+import com.baba.callvault.data.library.db.LibraryDatabase
 import com.baba.callvault.utils.AppLogger
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
@@ -52,9 +52,9 @@ object LibraryLabels {
      * label in a library that has never saved recording metadata.
      */
     suspend fun refresh(context: Context, loaded: List<RecordingItem>) {
-        if (!TranscriptDatabase.exists(context)) return
+        if (!LibraryDatabase.exists(context)) return
         runCatching {
-            val dao = TranscriptDatabase.get(context).labelDao()
+            val dao = LibraryDatabase.get(context).labelDao()
             val toWrite = changed(dao.all(), loaded)
             if (toWrite.isNotEmpty()) dao.upsertAll(toWrite)
         }.onFailure { AppLogger.w(TAG, "Could not record the recordings' labels: ${it.message}") }

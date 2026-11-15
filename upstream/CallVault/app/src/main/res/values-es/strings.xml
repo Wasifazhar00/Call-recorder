@@ -172,7 +172,6 @@
     
     
     <string name="list_separator">", "</string>
-    <string name="min_duration_caption">Una llamada equivocada o que no se contestó se elimina en cuanto termina, antes de transcribirse o subirse. No afecta a lo ya grabado.</string>
     <string name="min_duration_label">Descartar grabaciones cortas</string>
     <string name="min_duration_off">Conservarlas todas</string>
     <string name="min_duration_one_minute">Menos de un minuto</string>
@@ -187,7 +186,6 @@
     <string name="mode_switch_problem_title">Aún no está listo</string>
     <string name="mode_switch_ready">El grabador está en marcha. Las llamadas se grabarán.</string>
     <string name="mode_switch_ready_shizuku">CallVault graba a través de Shizuku. Todo está disponible excepto grabar sin Wi-Fi, que necesita la grabadora propia de CallVault.</string>
-    <string name="mode_switch_ready_standalone">CallVault graba con su propio grabador. Todo está disponible, incluidas las llamadas VoIP y los nombres de interlocutores.</string>
     <string name="mode_switch_recorder_failed">El grabador no se inició. No se grabará nada hasta que lo haga.</string>
     <string name="mode_switch_shizuku_not_installed">Shizuku no está instalado, así que no hay a qué cambiar.</string>
     <string name="mode_switch_shizuku_not_permitted">Shizuku todavía no ha permitido a CallVault usarlo. Ábrelo, concede el permiso y vuelve a intentarlo.</string>
@@ -344,7 +342,6 @@
     <string name="selection_select_all">Seleccionar todo</string>
     <string name="settings_allow_screenshots_description">Te permite hacer capturas de pantalla de CallVault. También muestra su contenido en el selector de apps. Desactivado, todo queda oculto.</string>
     <string name="settings_allow_screenshots_title">Permitir capturas de pantalla</string>
-    <string name="settings_app_lock_description">Pedir el bloqueo de pantalla antes de mostrar grabaciones y transcripciones. También las mantiene fuera de las capturas y del selector de apps.</string>
     <string name="settings_app_lock_title">Requerir desbloqueo</string>
     <string name="settings_app_lock_unavailable">Configura un bloqueo de pantalla en tu teléfono para usar esto.</string>
     <string name="settings_audio_bitrate">Tasa de bits de audio</string>

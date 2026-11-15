@@ -6,7 +6,7 @@
  *  This software is distributed WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 
-package com.baba.callvault.data.transcripts.db
+package com.baba.callvault.data.library.db
 
 import androidx.room.Dao
 import androidx.room.Query

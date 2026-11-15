@@ -6,7 +6,7 @@
  *  This software is distributed WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 
-package com.baba.callvault.data.transcripts
+package com.baba.callvault.data.library
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull

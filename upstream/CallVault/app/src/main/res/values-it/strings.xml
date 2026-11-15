@@ -172,7 +172,6 @@
     
     
     <string name="list_separator">", "</string>
-    <string name="min_duration_caption">Una chiamata sbagliata o senza risposta viene eliminata appena finisce, prima della trascrizione o del caricamento. Le registrazioni esistenti non sono toccate.</string>
     <string name="min_duration_label">Scarta le registrazioni brevi</string>
     <string name="min_duration_off">Conservale tutte</string>
     <string name="min_duration_one_minute">Meno di un minuto</string>
@@ -187,7 +186,6 @@
     <string name="mode_switch_problem_title">Non ancora pronto</string>
     <string name="mode_switch_ready">Il registratore è in funzione. Le chiamate verranno registrate.</string>
     <string name="mode_switch_ready_shizuku">CallVault registra tramite Shizuku. È tutto disponibile tranne la registrazione senza Wi-Fi, che richiede il registratore di CallVault.</string>
-    <string name="mode_switch_ready_standalone">CallVault registra con il proprio registratore. È tutto disponibile, comprese le chiamate VoIP e i nomi degli interlocutori.</string>
     <string name="mode_switch_recorder_failed">Il registratore non è partito. Finché non parte non verrà registrato nulla.</string>
     <string name="mode_switch_shizuku_not_installed">Shizuku non è installato, quindi non c\'è nulla a cui passare.</string>
     <string name="mode_switch_shizuku_not_permitted">Shizuku non ha ancora autorizzato CallVault. Aprilo, concedi l\'autorizzazione e riprova.</string>
@@ -344,7 +342,6 @@
     <string name="selection_select_all">Seleziona tutto</string>
     <string name="settings_allow_screenshots_description">Ti consente di acquisire screenshot di CallVault. Mostra anche il suo contenuto nel selettore delle app. Disattivato, tutto resta nascosto.</string>
     <string name="settings_allow_screenshots_title">Consenti screenshot</string>
-    <string name="settings_app_lock_description">Richiede il blocco schermo prima di mostrare registrazioni e trascrizioni. Le esclude anche dagli screenshot e dal selettore app.</string>
     <string name="settings_app_lock_title">Richiedi sblocco</string>
     <string name="settings_app_lock_unavailable">Imposta un blocco schermo sul telefono per usare questa opzione.</string>
     <string name="settings_audio_bitrate">Bit rate audio</string>

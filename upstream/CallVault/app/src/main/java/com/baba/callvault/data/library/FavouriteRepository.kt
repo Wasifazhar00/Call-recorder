@@ -6,10 +6,10 @@
  *  This software is distributed WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 
-package com.baba.callvault.data.transcripts
+package com.baba.callvault.data.library
 
 import android.content.Context
-import com.baba.callvault.data.transcripts.db.TranscriptDatabase
+import com.baba.callvault.data.library.db.LibraryDatabase
 import com.baba.callvault.utils.AppLogger
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
@@ -26,17 +26,17 @@ object FavouriteRepository {
 
     private const val TAG = "CV:FavouriteRepository"
 
-    private fun dao(context: Context) = TranscriptDatabase.get(context).favouriteDao()
+    private fun dao(context: Context) = LibraryDatabase.get(context).favouriteDao()
 
     /** Whether one recording is starred, as a stream, for the star button. */
     fun isFavourite(context: Context, displayName: String): Flow<Boolean> {
-        if (!TranscriptDatabase.exists(context)) return flowOf(false)
+        if (!LibraryDatabase.exists(context)) return flowOf(false)
         return dao(context).observeIsFavourite(displayName)
     }
 
     /** Every starred name, for Home's filter facet. */
     fun all(context: Context): Flow<List<String>> {
-        if (!TranscriptDatabase.exists(context)) return flowOf(emptyList())
+        if (!LibraryDatabase.exists(context)) return flowOf(emptyList())
         return dao(context).observeAll()
     }
 
@@ -49,7 +49,7 @@ object FavouriteRepository {
      * exception as "protect everything" rather than "protect nothing".
      */
     suspend fun snapshot(context: Context): List<String> {
-        if (!TranscriptDatabase.exists(context)) return emptyList()
+        if (!LibraryDatabase.exists(context)) return emptyList()
         return dao(context).allFavourites()
     }
 
@@ -61,7 +61,7 @@ object FavouriteRepository {
 
     /** Unstars [displayName]. */
     suspend fun remove(context: Context, displayName: String) {
-        if (!TranscriptDatabase.exists(context)) return
+        if (!LibraryDatabase.exists(context)) return
         runCatching { dao(context).deleteFor(displayName) }
             .onFailure { AppLogger.w(TAG, "Failed to unstar '$displayName': ${it.message}") }
     }

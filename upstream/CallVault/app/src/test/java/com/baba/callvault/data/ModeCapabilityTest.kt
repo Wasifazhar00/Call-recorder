@@ -41,7 +41,6 @@ class ModeCapabilityTest {
     fun shizuku_does_everything_that_needs_a_privileged_audiorecord() {
         // One host code, one shell identity: the capture-side features no longer differ by mode.
         assertTrue(ModeCapability.RESILIENT_RECORDING.isAvailableIn(PrivilegedMode.SHIZUKU))
-        assertTrue(ModeCapability.SPEAKER_ATTRIBUTION.isAvailableIn(PrivilegedMode.SHIZUKU))
     }
 
     @Test
@@ -59,10 +58,7 @@ class ModeCapabilityTest {
     }
 
     @Test
-    fun transcription_and_storage_are_untouched_by_the_mode() {
-        // They read finished files and never go near the recorder, so a mode switch must not disturb
-        // them — listing them keeps that explicit rather than assumed.
-        assertTrue(ModeCapability.TRANSCRIPTION.isAvailableIn(PrivilegedMode.SHIZUKU))
+    fun storage_is_untouched_by_the_mode() {
         assertTrue(ModeCapability.CLOUD_SYNC.isAvailableIn(PrivilegedMode.SHIZUKU))
     }
 

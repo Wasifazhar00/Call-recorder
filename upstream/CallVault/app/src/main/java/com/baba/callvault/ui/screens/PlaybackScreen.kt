@@ -96,7 +96,7 @@ import androidx.compose.material3.SuggestionChipDefaults
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Label
-import com.baba.callvault.data.transcripts.TagName
+import com.baba.callvault.data.library.TagName
 import com.baba.callvault.ui.common.CvCard
 import com.baba.callvault.ui.common.rememberNoteDraft
 import com.baba.callvault.ui.common.rememberSpokenPositionMs

@@ -22,7 +22,7 @@ package com.baba.callvault.data
  *     nothing to talk to.
  *
  * Listing the capabilities that *do* survive is as deliberate as listing the ones that do not: it makes
- * "does a mode switch disturb transcription?" a question with a written answer.
+ * Each capability describes a feature that remains in the recorder-only app.
  */
 enum class ModeCapability {
 
@@ -41,14 +41,6 @@ enum class ModeCapability {
      */
     VOIP_RECORDING,
 
-    /**
-     * Attributing transcript lines to a speaker. The turns are measured from the two capture channels
-     * *during* the call by `SpeakerTurnDetector`, which lives in the direct, handoff and VoIP captures.
-     * Since the Shizuku host records directly (ShellAttribution, 2026-10-19), both modes have them; a call
-     * that still falls back to scrcpy gets them afterwards from the offline labeller instead.
-     */
-    SPEAKER_ATTRIBUTION,
-
     /** Recording while off Wi-Fi over a loopback ADB port. Pure embedded-ADB machinery. */
     OFFLINE_RECORDING,
 
@@ -61,9 +53,6 @@ enum class ModeCapability {
     /** Installing an update with no taps, by streaming into `pm install` over the ADB shell. */
     SILENT_UPDATE_INSTALL,
 
-    /** On-device transcription and summaries. Reads finished files; never touches the recorder. */
-    TRANSCRIPTION,
-
     /** Storage targets, Drive sync, retention. Also purely about files. */
     CLOUD_SYNC,
 
@@ -74,14 +63,13 @@ enum class ModeCapability {
         // Works in the Shizuku host since it presents the shell identity (ShellAttribution; measured
         // on the OP9 2026-10-19 with a call-free self-test).
         VOIP_RECORDING -> true
-        // Same privileged AudioRecord, same host code. Speaker turns come from the live detector in the
-        // capture, which no longer differs by host; the handoff refuses a record that did not start.
-        RESILIENT_RECORDING, SPEAKER_ATTRIBUTION -> true
+        // Same privileged AudioRecord and host code; the handoff refuses a record that did not start.
+        RESILIENT_RECORDING -> true
         // Needs our own embedded ADB.
         OFFLINE_RECORDING, WIRELESS_DEBUGGING_CONTROL, DAEMON_KEEP_ALIVE, SILENT_UPDATE_INSTALL ->
             !mode.needsShizuku
         // Mode-independent.
-        CARRIER_RECORDING, TRANSCRIPTION, CLOUD_SYNC -> true
+        CARRIER_RECORDING, CLOUD_SYNC -> true
     }
 
     /**

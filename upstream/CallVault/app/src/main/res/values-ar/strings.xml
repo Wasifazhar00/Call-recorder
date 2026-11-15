@@ -201,7 +201,6 @@
     
     
     <string name="list_separator">، </string>
-    <string name="min_duration_caption">يتم حذف مكالمة خاطئة أو مكالمة لم يتم الرد عليها بمجرد انتهائها، قبل تفريغها صوتيًا أو تحميلها. لا يتأثر أي شيء تم تسجيله بالفعل.</string>
     <string name="min_duration_label">تجاهل التسجيلات القصيرة</string>
     <string name="min_duration_off">احتفظ بها كلها</string>
     <string name="min_duration_one_minute">أقصر من دقيقة</string>
@@ -212,7 +211,6 @@
     <string name="mode_switch_problem_title">ليس جاهزًا بعد</string>
     <string name="mode_switch_ready">المسجل يعمل. سيتم تسجيل المكالمات.</string>
     <string name="mode_switch_ready_shizuku">يسجّل CallVault عبر Shizuku. كل الميزات متاحة ما عدا التسجيل بعيدًا عن Wi-Fi، الذي يحتاج إلى مسجّل CallVault الخاص.</string>
-    <string name="mode_switch_ready_standalone">يسجل CallVault باستخدام مسجله الخاص. كل شيء متاح، بما في ذلك مكالمات VoIP وأسماء المتحدثين.</string>
     <string name="mode_switch_recorder_failed">لم يبدأ المسجل. لن يتم تسجيل أي شيء حتى يبدأ.</string>
     <string name="mode_switch_shizuku_not_installed">لم يتم تثبيت Shizuku، لذا لا يوجد شيء للتبديل إليه.</string>
     <string name="mode_switch_shizuku_not_permitted">لم يسمح Shizuku لـ CallVault باستخدامه بعد. افتح Shizuku وامنحه الإذن، ثم حاول مرة أخرى.</string>
@@ -369,7 +367,6 @@
     <string name="selection_select_all">تحديد الكل</string>
     <string name="settings_allow_screenshots_description">يتيح لك التقاط لقطات شاشة لـ CallVault. كما يُظهر محتواه في مبدّل التطبيقات. إيقافه يُبقي كل شيء مخفيًا.</string>
     <string name="settings_allow_screenshots_title">السماح بلقطات الشاشة</string>
-    <string name="settings_app_lock_description">اطلب قفل شاشتك قبل عرض التسجيلات والنصوص. كما يحافظ عليها خارج لقطات الشاشة ومحول التطبيقات.</string>
     <string name="settings_app_lock_title">تطلب إلغاء القفل</string>
     <string name="settings_app_lock_unavailable">قم بتعيين قفل شاشة على هاتفك لاستخدام هذا.</string>
     <string name="settings_audio_bitrate">معدل البت للصوت (Bitrate)</string>

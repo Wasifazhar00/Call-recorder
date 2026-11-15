@@ -128,9 +128,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import com.baba.callvault.utils.AppLogger
-import com.baba.callvault.data.transcripts.FavouriteRepository
-import com.baba.callvault.data.transcripts.FlagRepository
-import com.baba.callvault.data.transcripts.TagRepository
+import com.baba.callvault.data.library.FavouriteRepository
+import com.baba.callvault.data.library.FlagRepository
+import com.baba.callvault.data.library.TagRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.launch
@@ -138,7 +138,6 @@ import kotlinx.coroutines.withContext
 import androidx.compose.runtime.setValue
 import com.baba.callvault.ui.common.OfflineDialogMode
 import com.baba.callvault.ui.common.OfflineRecordingDialog
-import com.baba.callvault.data.ChannelMap
 import com.baba.callvault.data.waveform.RecordingExtrasRepository
 import com.baba.callvault.data.waveform.WaveformDrawWorker
 import com.baba.callvault.ui.common.ImportedBadge

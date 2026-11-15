@@ -6,7 +6,7 @@
  *  This software is distributed WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 
-package com.baba.callvault.data.transcripts.db
+package com.baba.callvault.data.library.db
 
 import android.content.Context
 import androidx.room.Database
@@ -36,7 +36,7 @@ import java.io.File
     version = 11,
     exportSchema = true
 )
-abstract class TranscriptDatabase : RoomDatabase() {
+abstract class LibraryDatabase : RoomDatabase() {
 
     abstract fun noteDao(): RecordingNoteDao
     abstract fun tagDao(): RecordingTagDao
@@ -46,6 +46,7 @@ abstract class TranscriptDatabase : RoomDatabase() {
 
     companion object {
         // Keep the existing filename so the user's metadata database is upgraded in place.
+        // Keep the legacy filename so existing metadata is upgraded in place.
         private const val DB_NAME = "transcripts.db"
 
         private val MIGRATION_1_2 = object : Migration(1, 2) {
@@ -154,13 +155,13 @@ abstract class TranscriptDatabase : RoomDatabase() {
         )
 
         @Volatile
-        private var INSTANCE: TranscriptDatabase? = null
+        private var INSTANCE: LibraryDatabase? = null
 
-        fun get(context: Context): TranscriptDatabase =
+        fun get(context: Context): LibraryDatabase =
             INSTANCE ?: synchronized(this) {
                 INSTANCE ?: Room.databaseBuilder(
                     context.applicationContext,
-                    TranscriptDatabase::class.java,
+                    LibraryDatabase::class.java,
                     DB_NAME,
                 ).addMigrations(*MIGRATIONS)
                     .build().also { INSTANCE = it }

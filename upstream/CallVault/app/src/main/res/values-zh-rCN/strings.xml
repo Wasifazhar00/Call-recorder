@@ -171,7 +171,6 @@
     
     
     <string name="list_separator">、</string>
-    <string name="min_duration_caption">拨错或响铃未接的通话在结束时立即删除，不会被转录或上传。已有录音不受影响。</string>
     <string name="min_duration_label">丢弃过短的录音</string>
     <string name="min_duration_off">全部保留</string>
     <string name="min_duration_one_minute">短于一分钟</string>
@@ -186,7 +185,6 @@
     <string name="mode_switch_problem_title">尚未就绪</string>
     <string name="mode_switch_ready">录音器正在运行，通话将被录制。</string>
     <string name="mode_switch_ready_shizuku">CallVault 正在通过 Shizuku 录音。除离开 Wi-Fi 时录音（需要 CallVault 自己的录音器）外，其余功能均可使用。</string>
-    <string name="mode_switch_ready_standalone">CallVault 正使用自带录音器录音。所有功能均可用，包括 VoIP 通话和说话人姓名。</string>
     <string name="mode_switch_recorder_failed">录音器未能启动。在启动之前不会录制任何内容。</string>
     <string name="mode_switch_shizuku_not_installed">未安装 Shizuku，没有可切换的对象。</string>
     <string name="mode_switch_shizuku_not_permitted">Shizuku 尚未允许 CallVault。请打开 Shizuku 授权后重试。</string>
@@ -343,7 +341,6 @@
     <string name="selection_select_all">全选</string>
     <string name="settings_allow_screenshots_description">允许你对 CallVault 截屏。这也会在应用切换器中显示其内容。关闭则将所有内容隐藏。</string>
     <string name="settings_allow_screenshots_title">允许截屏</string>
-    <string name="settings_app_lock_description">在显示录音和转录文本前要求屏幕锁。同时使其不出现在截图和应用切换器中。</string>
     <string name="settings_app_lock_title">需要解锁</string>
     <string name="settings_app_lock_unavailable">请先在手机上设置屏幕锁以使用此功能。</string>
     <string name="settings_audio_bitrate">码率</string>

@@ -172,7 +172,6 @@
     
     
     <string name="list_separator">", "</string>
-    <string name="min_duration_caption">Ein Fehlanruf oder ein Anruf, der nur klingelte, wird sofort nach Ende gelöscht — vor Transkription und Upload. Bereits vorhandene Aufnahmen bleiben unberührt.</string>
     <string name="min_duration_label">Kurze Aufnahmen verwerfen</string>
     <string name="min_duration_off">Alle behalten</string>
     <string name="min_duration_one_minute">Kürzer als eine Minute</string>
@@ -187,7 +186,6 @@
     <string name="mode_switch_problem_title">Noch nicht bereit</string>
     <string name="mode_switch_ready">Der Recorder läuft. Anrufe werden aufgezeichnet.</string>
     <string name="mode_switch_ready_shizuku">CallVault nimmt über Shizuku auf. Alles ist verfügbar außer der Aufnahme ohne WLAN, die CallVaults eigenen Rekorder braucht.</string>
-    <string name="mode_switch_ready_standalone">CallVault zeichnet mit dem eigenen Recorder auf. Alles ist verfügbar, auch VoIP-Anrufe und Sprechernamen.</string>
     <string name="mode_switch_recorder_failed">Der Recorder wurde nicht gestartet. Bis dahin wird nichts aufgezeichnet.</string>
     <string name="mode_switch_shizuku_not_installed">Shizuku ist nicht installiert, es gibt nichts, wohin gewechselt werden könnte.</string>
     <string name="mode_switch_shizuku_not_permitted">Shizuku hat CallVault noch nicht erlaubt. Öffnen Sie Shizuku, erlauben Sie es und versuchen Sie es erneut.</string>
@@ -344,7 +342,6 @@
     <string name="selection_select_all">Alle auswählen</string>
     <string name="settings_allow_screenshots_description">Ermöglicht Screenshots von CallVault. Dadurch wird der Inhalt auch im App-Umschalter angezeigt. Aus hält alles verborgen.</string>
     <string name="settings_allow_screenshots_title">Screenshots erlauben</string>
-    <string name="settings_app_lock_description">Vor dem Anzeigen von Aufnahmen und Transkripten die Bildschirmsperre verlangen. Hält sie außerdem aus Screenshots und der App-Übersicht heraus.</string>
     <string name="settings_app_lock_title">Entsperren verlangen</string>
     <string name="settings_app_lock_unavailable">Richte dafür zuerst eine Bildschirmsperre auf deinem Telefon ein.</string>
     <string name="settings_audio_bitrate">Audio-Bitrate</string>

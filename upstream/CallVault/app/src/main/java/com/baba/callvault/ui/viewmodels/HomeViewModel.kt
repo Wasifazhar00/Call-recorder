@@ -24,8 +24,8 @@ import com.baba.callvault.data.calls.PhoneCall
 import com.baba.callvault.data.calls.PhoneCallReader
 import com.baba.callvault.data.calls.SimLabels
 import com.baba.callvault.integrations.adb.PairingLoss
-import com.baba.callvault.data.transcripts.FavouriteRepository
-import com.baba.callvault.data.transcripts.TagRepository
+import com.baba.callvault.data.library.FavouriteRepository
+import com.baba.callvault.data.library.TagRepository
 import com.baba.callvault.data.PrivilegedMode
 import com.baba.callvault.data.health.CallGapDetector
 import com.baba.callvault.data.health.CallLogReader

@@ -6,11 +6,11 @@
  *  This software is distributed WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 
-package com.baba.callvault.data.transcripts
+package com.baba.callvault.data.library
 
 import android.content.Context
-import com.baba.callvault.data.transcripts.db.RecordingFlagEntry
-import com.baba.callvault.data.transcripts.db.TranscriptDatabase
+import com.baba.callvault.data.library.db.RecordingFlagEntry
+import com.baba.callvault.data.library.db.LibraryDatabase
 import com.baba.callvault.utils.AppLogger
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
@@ -20,11 +20,11 @@ object FlagRepository {
 
     private const val TAG = "CV:FlagRepository"
 
-    private fun dao(context: Context) = TranscriptDatabase.get(context).flagDao()
+    private fun dao(context: Context) = LibraryDatabase.get(context).flagDao()
 
     /** The playback marks on one recording, earliest first. */
     fun flagsFor(context: Context, displayName: String): Flow<List<Long>> {
-        if (!TranscriptDatabase.exists(context)) return flowOf(emptyList())
+        if (!LibraryDatabase.exists(context)) return flowOf(emptyList())
         return dao(context).observeFor(displayName)
     }
 
@@ -45,7 +45,7 @@ object FlagRepository {
 
     /** Removes one mark, for the playback screen's long-press. */
     suspend fun remove(context: Context, displayName: String, atMs: Long) {
-        if (!TranscriptDatabase.exists(context)) return
+        if (!LibraryDatabase.exists(context)) return
         runCatching { dao(context).deleteOne(displayName, atMs) }
             .onFailure { AppLogger.w(TAG, "Could not remove a mark: ${it.message}") }
     }

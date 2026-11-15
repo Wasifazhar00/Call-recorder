@@ -6,12 +6,12 @@
  *  This software is distributed WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 
-package com.baba.callvault.data.transcripts
+package com.baba.callvault.data.library
 
 import android.content.Context
-import com.baba.callvault.data.transcripts.db.RecordingTagEntry
-import com.baba.callvault.data.transcripts.db.TagCount
-import com.baba.callvault.data.transcripts.db.TranscriptDatabase
+import com.baba.callvault.data.library.db.RecordingTagEntry
+import com.baba.callvault.data.library.db.TagCount
+import com.baba.callvault.data.library.db.LibraryDatabase
 import com.baba.callvault.utils.AppLogger
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
@@ -31,17 +31,17 @@ object TagRepository {
 
     private const val TAG = "CV:TagRepository"
 
-    private fun dao(context: Context) = TranscriptDatabase.get(context).tagDao()
+    private fun dao(context: Context) = LibraryDatabase.get(context).tagDao()
 
     /** The tags on one recording. */
     fun tagsFor(context: Context, displayName: String): Flow<List<String>> {
-        if (!TranscriptDatabase.exists(context)) return flowOf(emptyList())
+        if (!LibraryDatabase.exists(context)) return flowOf(emptyList())
         return dao(context).observeFor(displayName)
     }
 
     /** Every tag in use, most-used first — the filter row. */
     fun allTags(context: Context): Flow<List<TagCount>> {
-        if (!TranscriptDatabase.exists(context)) return flowOf(emptyList())
+        if (!LibraryDatabase.exists(context)) return flowOf(emptyList())
         return dao(context).observeAll()
     }
 
@@ -52,7 +52,7 @@ object TagRepository {
      * the contact and date facets it sits beside.
      */
     fun assignments(context: Context): Flow<Map<String, Set<String>>> {
-        if (!TranscriptDatabase.exists(context)) return flowOf(emptyMap())
+        if (!LibraryDatabase.exists(context)) return flowOf(emptyMap())
         return dao(context).observeAllAssignments().map { rows ->
             rows.groupBy { it.displayName }
                 .mapValues { (_, entries) -> entries.map { it.tag }.toSet() }
@@ -61,7 +61,7 @@ object TagRepository {
 
     /** The recordings carrying [tag], for filtering the list. */
     fun taggedWith(context: Context, tag: String): Flow<List<String>> {
-        if (!TranscriptDatabase.exists(context)) return flowOf(emptyList())
+        if (!LibraryDatabase.exists(context)) return flowOf(emptyList())
         return dao(context).observeTagged(tag)
     }
 

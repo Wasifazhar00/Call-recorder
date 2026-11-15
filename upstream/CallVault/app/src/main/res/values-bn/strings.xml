@@ -94,7 +94,6 @@
     <string name="mode_switch_done_shizuku">প্রস্তুত — Shizuku ব্যবহার হচ্ছে</string>
     <string name="mode_switch_done_standalone">প্রস্তুত — CallVault ব্যবহার হচ্ছে</string>
     <string name="mode_switch_ready_shizuku">CallVault Shizuku-র মাধ্যমে রেকর্ড করছে। Wi-Fi ছাড়া রেকর্ডিং ছাড়া সবকিছুই উপলব্ধ, কারণ সেটির জন্য CallVault-এর নিজস্ব রেকর্ডার দরকার।</string>
-    <string name="mode_switch_ready_standalone">CallVault নিজস্ব রেকর্ডার দিয়ে রেকর্ড করছে। VoIP কল ও বক্তার নামসহ সবকিছুই উপলব্ধ।</string>
     <string name="mode_switch_ready">রেকর্ডার চলছে। কল রেকর্ড হবে।</string>
     <string name="mode_switch_shizuku_not_installed">Shizuku ইনস্টল করা নেই, তাই বদলানোর কিছু নেই।</string>
     <string name="mode_switch_shizuku_not_running">Shizuku চলছে না। Shizuku খুলে চালু করুন, তারপর আবার চেষ্টা করুন — ফোন রিস্টার্ট হলেই এটি বন্ধ হয়ে যায়।</string>
@@ -701,7 +700,6 @@
     <string name="app_lock_unlock">আনলক</string>
     <string name="settings_section_privacy">গোপনীয়তা</string>
     <string name="settings_app_lock_title">আনলক করা আবশ্যক</string>
-    <string name="settings_app_lock_description">রেকর্ডিং ও ট্রান্সক্রিপ্ট দেখানোর আগে আপনার স্ক্রিন লক চাওয়া হবে। এগুলো স্ক্রিনশট আর অ্যাপ সুইচারেও দেখা যাবে না।</string>
     <string name="settings_app_lock_unavailable">এটি ব্যবহার করতে ফোনে একটি স্ক্রিন লক সেট করুন।</string>
     <string name="settings_allow_screenshots_title">স্ক্রিনশট নিতে দিন</string>
     <string name="settings_allow_screenshots_description">CallVault-এর স্ক্রিনশট নিতে দেয়। এতে অ্যাপ সুইচারেও এর কনটেন্ট দেখা যায়। বন্ধ থাকলে সবকিছু লুকানো থাকে।</string>
@@ -721,7 +719,6 @@
     <string name="min_duration_off">সব রাখুন</string>
     <string name="min_duration_seconds">%1$d সেকেন্ডের কম</string>
     <string name="min_duration_one_minute">এক মিনিটের কম</string>
-    <string name="min_duration_caption">ভুল নম্বরে ডায়াল বা কেউ না ধরা কল শেষ হওয়ামাত্র মুছে যায়, ট্রান্সক্রাইব বা আপলোডের আগেই। আগে রেকর্ড করা কিছুতে প্রভাব পড়ে না।</string>
     <string name="storage_cap_label">জায়গার ব্যবহার সীমিত করুন</string>
     <string name="storage_cap_off">সীমা নেই</string>
     <string name="storage_cap_gigabytes">এই ফোনে %1$d GB</string>
