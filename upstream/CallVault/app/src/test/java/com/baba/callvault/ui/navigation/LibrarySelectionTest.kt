@@ -15,11 +15,10 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 /**
- * A multi-selection that cannot cross between two library pages.
+ * A multi-selection that cannot leak between sections.
  *
- * Worth pinning because the failure is silent and the next tap is a delete: Transcripts and
- * Summaries are two lists of display names with a large overlap, so a set carried from one to the
- * other arrives looking like a perfectly valid selection of different things.
+ * Worth pinning because the failure is silent and the next tap is a delete: the selected names must
+ * remain scoped to the section where the selection was made.
  */
 class LibrarySelectionTest {
 
@@ -27,48 +26,47 @@ class LibrarySelectionTest {
     fun nothing_is_selected_to_begin_with() {
         assertTrue(LibrarySelection.EMPTY.names.isEmpty())
         assertNull(LibrarySelection.EMPTY.section)
-        assertTrue(LibrarySelection.EMPTY.on(HomeSection.Transcripts).isEmpty())
+        assertTrue(LibrarySelection.EMPTY.on(HomeSection.Recordings).isEmpty())
     }
 
     @Test
     fun selection_mode_is_closed_to_begin_with() {
         assertFalse(LibrarySelection.EMPTY.active)
-        assertFalse(LibrarySelection.EMPTY.activeOn(HomeSection.Transcripts))
+        assertFalse(LibrarySelection.EMPTY.activeOn(HomeSection.Recordings))
     }
 
     @Test
-    fun a_row_picked_on_transcripts_is_selected_there() {
-        val selection = LibrarySelection.EMPTY.toggled(HomeSection.Transcripts, "a.ogg")
-        assertEquals(setOf("a.ogg"), selection.on(HomeSection.Transcripts))
+    fun a_row_picked_on_recordings_is_selected_there() {
+        val selection = LibrarySelection.EMPTY.toggled(HomeSection.Recordings, "a.ogg")
+        assertEquals(setOf("a.ogg"), selection.on(HomeSection.Recordings))
     }
 
     @Test
-    fun a_row_picked_on_transcripts_is_not_selected_on_summaries() {
-        // The leak this type exists to stop. The same call is usually in both lists, so the names
-        // would resolve and the bulk delete would run — against the wrong page's meaning of Delete.
-        val selection = LibrarySelection.EMPTY.toggled(HomeSection.Transcripts, "a.ogg")
-        assertTrue(selection.on(HomeSection.Summaries).isEmpty())
+    fun a_row_picked_on_recordings_is_not_selected_on_hub() {
+        // The selection must not carry across sections, even if the same display name appears in both.
+        val selection = LibrarySelection.EMPTY.toggled(HomeSection.Recordings, "a.ogg")
+        assertTrue(selection.on(HomeSection.Hub).isEmpty())
     }
 
     @Test
     fun picking_on_another_page_replaces_the_selection_rather_than_adding_to_it() {
         val selection = LibrarySelection.EMPTY
-            .toggled(HomeSection.Transcripts, "a.ogg")
-            .toggled(HomeSection.Transcripts, "b.ogg")
-            .toggled(HomeSection.Summaries, "c.ogg")
+            .toggled(HomeSection.Recordings, "a.ogg")
+            .toggled(HomeSection.Recordings, "b.ogg")
+            .toggled(HomeSection.Hub, "c.ogg")
 
-        assertEquals(setOf("c.ogg"), selection.on(HomeSection.Summaries))
-        assertTrue(selection.on(HomeSection.Transcripts).isEmpty())
+        assertEquals(setOf("c.ogg"), selection.on(HomeSection.Hub))
+        assertTrue(selection.on(HomeSection.Recordings).isEmpty())
     }
 
     @Test
     fun tapping_a_selected_row_again_takes_it_out() {
         val selection = LibrarySelection.EMPTY
-            .toggled(HomeSection.Transcripts, "a.ogg")
-            .toggled(HomeSection.Transcripts, "b.ogg")
-            .toggled(HomeSection.Transcripts, "a.ogg")
+            .toggled(HomeSection.Recordings, "a.ogg")
+            .toggled(HomeSection.Recordings, "b.ogg")
+            .toggled(HomeSection.Recordings, "a.ogg")
 
-        assertEquals(setOf("b.ogg"), selection.on(HomeSection.Transcripts))
+        assertEquals(setOf("b.ogg"), selection.on(HomeSection.Recordings))
     }
 
     @Test
@@ -78,33 +76,33 @@ class LibrarySelectionTest {
         // picked; only the back arrow leaves (which sets EMPTY). So the section and the active flag
         // survive an empty name set.
         val selection = LibrarySelection.EMPTY
-            .toggled(HomeSection.Transcripts, "a.ogg")
-            .toggled(HomeSection.Transcripts, "a.ogg")
+            .toggled(HomeSection.Recordings, "a.ogg")
+            .toggled(HomeSection.Recordings, "a.ogg")
 
         assertTrue(selection.names.isEmpty())
         assertTrue(selection.active)
-        assertEquals(HomeSection.Transcripts, selection.section)
-        assertTrue(selection.activeOn(HomeSection.Transcripts))
-        // Still gated by page: the other library is not in selection mode.
-        assertFalse(selection.activeOn(HomeSection.Summaries))
+        assertEquals(HomeSection.Recordings, selection.section)
+        assertTrue(selection.activeOn(HomeSection.Recordings))
+        // Still gated by page: the other section is not in selection mode.
+        assertFalse(selection.activeOn(HomeSection.Hub))
     }
 
     @Test
     fun select_all_then_deselect_all_stays_in_mode() {
-        val all = LibrarySelection.EMPTY.selectedAll(HomeSection.Summaries, setOf("a", "b", "c"))
-        assertEquals(setOf("a", "b", "c"), all.on(HomeSection.Summaries))
-        assertTrue(all.activeOn(HomeSection.Summaries))
+        val all = LibrarySelection.EMPTY.selectedAll(HomeSection.Hub, setOf("a", "b", "c"))
+        assertEquals(setOf("a", "b", "c"), all.on(HomeSection.Hub))
+        assertTrue(all.activeOn(HomeSection.Hub))
 
         // Empty names is the "Deselect all" action: cleared, but the mode stays open on the page.
-        val cleared = all.selectedAll(HomeSection.Summaries, emptySet())
+        val cleared = all.selectedAll(HomeSection.Hub, emptySet())
         assertTrue(cleared.names.isEmpty())
         assertTrue(cleared.active)
-        assertTrue(cleared.activeOn(HomeSection.Summaries))
+        assertTrue(cleared.activeOn(HomeSection.Hub))
     }
 
     @Test
     fun backing_out_is_the_only_thing_that_closes_selection_mode() {
-        val selection = LibrarySelection.EMPTY.toggled(HomeSection.Transcripts, "a.ogg")
+        val selection = LibrarySelection.EMPTY.toggled(HomeSection.Recordings, "a.ogg")
         assertTrue(selection.active)
 
         // The back arrow / clearSelection sets EMPTY — the one representation of "mode closed".
@@ -113,12 +111,12 @@ class LibrarySelectionTest {
 
     @Test
     fun a_name_that_is_in_both_libraries_is_still_only_selected_where_it_was_picked() {
-        // The concrete shape of the overlap: most summarised calls are transcribed ones.
+        // The same recording name can appear in more than one section.
         val shared = "20260916_120000.000+0300_Dad.ogg"
-        val selection = LibrarySelection.EMPTY.toggled(HomeSection.Summaries, shared)
+        val selection = LibrarySelection.EMPTY.toggled(HomeSection.Hub, shared)
 
-        assertTrue(selection.on(HomeSection.Summaries).contains(shared))
-        assertFalse(selection.on(HomeSection.Transcripts).contains(shared))
+        assertTrue(selection.on(HomeSection.Hub).contains(shared))
+        assertFalse(selection.on(HomeSection.Recordings).contains(shared))
         assertFalse(selection.on(HomeSection.Recordings).contains(shared))
     }
 }

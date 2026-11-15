@@ -11,10 +11,10 @@ package com.baba.callvault.data.merge
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
 import com.baba.callvault.data.recordings.db.MergePartEntry
-import com.baba.callvault.data.transcripts.db.RecordingFlagEntry
-import com.baba.callvault.data.transcripts.db.RecordingNoteEntry
-import com.baba.callvault.data.transcripts.db.RecordingTagEntry
-import com.baba.callvault.data.transcripts.db.TranscriptDatabase
+import com.baba.callvault.data.library.db.RecordingFlagEntry
+import com.baba.callvault.data.library.db.RecordingNoteEntry
+import com.baba.callvault.data.library.db.RecordingTagEntry
+import com.baba.callvault.data.library.db.LibraryDatabase
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -45,7 +45,7 @@ class MergeMetadataTest {
         listOf(merged, partA, partB).forEach { MergeMetadata.onUnMerge(context, it) }
     }
 
-    private fun db() = TranscriptDatabase.get(context)
+    private fun db() = LibraryDatabase.get(context)
 
     @Test
     fun marks_shift_and_a_new_one_lands_on_the_seam() = runBlocking {

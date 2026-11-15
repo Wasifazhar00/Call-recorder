@@ -34,8 +34,8 @@ class HomeSectionTest {
     @Test
     fun `a stored section is reopened`() {
         assertEquals(HomeSection.Recordings, opening(AppScreen.Home, storedKey = "recordings"))
-        assertEquals(HomeSection.Transcripts, opening(AppScreen.Home, storedKey = "transcripts"))
-        assertEquals(HomeSection.Summaries, opening(AppScreen.Home, storedKey = "summaries"))
+        assertEquals(HomeSection.Hub, opening(AppScreen.Home, storedKey = "transcripts"))
+        assertEquals(HomeSection.Hub, opening(AppScreen.Home, storedKey = "summaries"))
         assertEquals(HomeSection.Hub, opening(AppScreen.Home, storedKey = "hub"))
     }
 
@@ -59,23 +59,11 @@ class HomeSectionTest {
     @Test
     fun `every notification lands where it can be acted on`() {
         // The status card, the update offer and the banners are all on the hub, so every one of
-        // these taps has to arrive there. Landing on a transcript list would show no sign of the
-        // problem the notification was about, and nothing would say so.
+        // these taps has to arrive there. The hub contains the recording status and setup guidance.
         assertEquals(HomeSection.Hub, forNotification(AppScreen.Home, NotificationDestination.Status))
         assertEquals(HomeSection.Hub, forNotification(AppScreen.Home, NotificationDestination.Update))
         assertEquals(HomeSection.Hub, forNotification(AppScreen.Home, NotificationDestination.Pairing))
         assertEquals(HomeSection.Hub, forNotification(AppScreen.Home, NotificationDestination.Debug))
-        // And the two transcript notices land on Transcripts, which is the only page carrying
-        // either of the things they are about: the finished transcripts, and the "didn't finish"
-        // group whose whole card retries.
-        assertEquals(
-            HomeSection.Transcripts,
-            forNotification(AppScreen.Home, NotificationDestination.Transcript)
-        )
-        assertEquals(
-            HomeSection.Transcripts,
-            forNotification(AppScreen.Home, NotificationDestination.TranscriptFailed)
-        )
     }
 
     @Test

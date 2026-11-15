@@ -20,7 +20,7 @@ import androidx.work.workDataOf
 import com.baba.callvault.data.AppPreferences
 import com.baba.callvault.data.AppPreferences.AfterCallUnanswered
 import com.baba.callvault.data.recordings.RecordingCatalog
-import com.baba.callvault.data.transcripts.db.TranscriptDatabase
+import com.baba.callvault.data.library.db.LibraryDatabase
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert.assertFalse
@@ -32,7 +32,7 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 
-/** The 24-hour check, end to end against the real store, catalog and transcripts database. */
+/** The 24-hour check, end to end against the real store, catalog and recording metadata database. */
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [35])
 class AfterCallUnansweredWorkerTest {
@@ -50,7 +50,7 @@ class AfterCallUnansweredWorkerTest {
         )
         AfterCallDecisions.pendingNames(context).forEach { AfterCallDecisions.release(context, it) }
         RecordingCatalog.all(context).forEach { RecordingCatalog.removeName(context, it.displayName) }
-        if (TranscriptDatabase.exists(context)) TranscriptDatabase.get(context).favouriteDao().deleteFor(name)
+        if (LibraryDatabase.exists(context)) LibraryDatabase.get(context).favouriteDao().deleteFor(name)
         prefs.setAfterCallUnanswered(AfterCallUnanswered.DELETE_AFTER_24H)
     }
 
@@ -72,7 +72,7 @@ class AfterCallUnansweredWorkerTest {
     fun `a starred recording is kept even under delete after 24 hours`() = runBlocking {
         RecordingCatalog.recordLocal(context, name, uri, 1_000L, 1L)
         AfterCallDecisions.hold(context, name, uri, "audio/ogg", isVoip = false)
-        TranscriptDatabase.get(context).favouriteDao().add(name)
+        LibraryDatabase.get(context).favouriteDao().add(name)
 
         runCheck()
 
@@ -91,7 +91,7 @@ class AfterCallUnansweredWorkerTest {
 
     @Test
     fun `an untouched recording is not engaged`() = runBlocking {
-        TranscriptDatabase.get(context) // exists, but holds nothing for this name
+        LibraryDatabase.get(context) // exists, but holds nothing for this name
         assertFalse(AfterCallEngagement.isEngaged(context, "nobody-touched-this.ogg"))
     }
 

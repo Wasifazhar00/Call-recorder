@@ -29,8 +29,6 @@ class BcrMetadataTest {
         phoneNumber: String? = "+11234567890",
         contactName: String? = "John Doe",
         direction: String? = "in",
-        speakerTurns: String? = "0:A;1200:+;3400:-",
-        nearChannel: String? = "B",
         simSlot: Int? = null,
     ) = BcrMetadata.Input(
         timestampUnixMs = 1689817988931L,
@@ -46,8 +44,6 @@ class BcrMetadataTest {
         sampleRate = 48000,
         channelCount = 1,
         durationSecsEncoded = 12.5,
-        speakerTurns = speakerTurns,
-        nearChannel = nearChannel,
         simSlot = simSlot,
     )
 
@@ -140,49 +136,8 @@ class BcrMetadataTest {
     }
 
     @Test
-    fun `the callvault block carries the measured turns and near channel`() {
-        // The whole point of issue #50: a server transcribing the mono Drive copy gets the speaker
-        // turns and the near-side mapping the app already measured, under its own namespaced key.
-        val callvault = JSONObject(BcrMetadata.build(input())).getJSONObject("callvault")
-
-        assertEquals(1, callvault.getInt("version"))
-        assertEquals("0:A;1200:+;3400:-", callvault.getString("speaker_turns"))
-        assertEquals("B", callvault.getString("near_channel"))
-    }
-
-    @Test
-    fun `an app call reports the near party on channel A`() {
-        // VoipCaptureSession builds its stereo with the near party on the left (channel A), so an app
-        // call's near_channel is known by construction even when nothing had to be learned.
-        val callvault = JSONObject(BcrMetadata.build(input(nearChannel = "A"))).getJSONObject("callvault")
-
-        assertEquals("A", callvault.getString("near_channel"))
-    }
-
-    @Test
-    fun `no turns means the speaker_turns key is absent, not an empty string`() {
-        // Its presence is the signal that turns were measured at all; Shizuku, an older daemon or a
-        // mono capture leave none, and a reader must see nothing rather than empty turns.
-        val callvault = JSONObject(BcrMetadata.build(input(speakerTurns = null))).getJSONObject("callvault")
-
-        assertTrue("speaker_turns should be absent when there are none", !callvault.has("speaker_turns"))
-        // The block still exists and still names its version.
-        assertEquals(1, callvault.getInt("version"))
-    }
-
-    @Test
-    fun `an unknown near channel is an explicit null, never a missing key`() {
-        // A carrier call whose mapping is not trusted: "we did not work out which side is yours" is a
-        // statement the reader can act on (fall back to neutral sides), not an absent field.
-        val callvault = JSONObject(BcrMetadata.build(input(nearChannel = null))).getJSONObject("callvault")
-
-        assertTrue("near_channel key was dropped", callvault.has("near_channel"))
-        assertTrue(callvault.isNull("near_channel"))
-    }
-
-    @Test
-    fun `the callvault block never disturbs the BCR fields a reader relies on`() {
-        // The block is additive: a BCR-only reader ignores it and still finds everything it expects.
+    fun `the BCR metadata contains the required fields`() {
+        // The JSON contains only the documented BCR fields.
         val json = JSONObject(BcrMetadata.build(input()))
 
         listOf(

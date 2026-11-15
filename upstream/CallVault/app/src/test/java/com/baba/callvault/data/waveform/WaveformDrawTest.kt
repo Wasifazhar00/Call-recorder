@@ -10,8 +10,8 @@ package com.baba.callvault.data.waveform
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
-import com.baba.callvault.data.transcripts.db.RecordingWaveformEntry
-import com.baba.callvault.data.transcripts.db.TranscriptDatabase
+import com.baba.callvault.data.library.db.RecordingWaveformEntry
+import com.baba.callvault.data.library.db.LibraryDatabase
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertArrayEquals
@@ -47,7 +47,7 @@ class WaveformDrawTest {
     @Test
     fun the_page_sees_the_bars_a_background_draw_saved() = runBlocking {
         val peaks = floatArrayOf(0.1f, 0.5f, 1f, 0.25f)
-        TranscriptDatabase.get(context).noteDao().upsertWaveform(
+        LibraryDatabase.get(context).noteDao().upsertWaveform(
             RecordingWaveformEntry(displayName = name, peaks = Waveform.encode(peaks), updatedAt = 1L)
         )
 

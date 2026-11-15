@@ -82,7 +82,6 @@ class SettingDecisionsTest {
         "min_duration_seconds" to Decision(SettingsOnly("a filter worth setting only once short calls annoy")),
         "write_metadata_file" to Decision(SettingsOnly("only for users of BCR-compatible tools")),
         "show_sim_label" to Decision(SettingsOnly("only matters on dual-SIM phones; off by default")),
-        "write_transcript_sidecar" to Decision(SettingsOnly("PC-backup users; changeable any time and back-fills")),
         "hide_recordings" to Decision(SettingsOnly("privacy opt-in; changeable any time and applies at once")),
         "keep_originals_after_merge" to Decision(SettingsOnly("only meaningful once merging is used")),
         // Sync schedule
@@ -90,18 +89,6 @@ class SettingDecisionsTest {
         "sync_time_hour" to Decision(Wizard(WizardStep.SCHEDULE)),
         "sync_time_minute" to Decision(Wizard(WizardStep.SCHEDULE)),
         "sync_day_of_week" to Decision(Wizard(WizardStep.SCHEDULE)),
-        // Transcription + summary policy
-        "transcription_mode" to Decision(Wizard(WizardStep.TRANSCRIPTION)),
-        "transcription_hour" to Decision(SettingsOnly("a refinement of the transcription mode chosen in the wizard")),
-        "transcription_minute" to Decision(SettingsOnly("as above")),
-        "transcription_requires_charging" to Decision(SettingsOnly("as above")),
-        "transcription_batch_limit" to Decision(SettingsOnly("as above")),
-        "transcription_confirm_before_run" to Decision(SettingsOnly("as above")),
-        "transcription_model_id" to Decision(Wizard(WizardStep.TRANSCRIPTION)),
-        "transcription_language" to Decision(Wizard(WizardStep.TRANSCRIPTION)),
-        "transcription_ask_language" to Decision(SettingsOnly("for multilingual phones, after the pin is chosen")),
-        "summary_confirm_requirements" to Decision(SettingsOnly("asked at the first summary instead")),
-        "summary_language" to Decision(SettingsOnly("follows the transcription language")),
         // App (VoIP) calls
         "voip_recording_enabled" to Decision(Wizard(WizardStep.AUTO_RECORD), ModeCapability.VOIP_RECORDING),
         "voip_auto_start" to Decision(Wizard(WizardStep.AUTO_RECORD), ModeCapability.VOIP_RECORDING),
@@ -114,13 +101,6 @@ class SettingDecisionsTest {
         "offline_recording" to Decision(Wizard(WizardStep.RELIABILITY), ModeCapability.OFFLINE_RECORDING),
         "persistent_server" to Decision(SettingsOnly("legacy keep-alive switch"), ModeCapability.DAEMON_KEEP_ALIVE),
         "wd_disable_when_idle" to Decision(SettingsOnly("transport detail"), ModeCapability.WIRELESS_DEBUGGING_CONTROL),
-        // Where to transcribe (#48). Device-only (not exported): the wizard cannot be re-run and has no
-        // place to paste a key, and sending call audio away is a choice made knowingly, in Settings.
-        "transcription_service" to Decision(SettingsOnly("#48: needs the user's own key, pasted in Settings; never in the wizard")),
-        "transcription_cloud_mobile_data" to Decision(SettingsOnly("#48: only shown under a chosen cloud service")),
-        "transcription_cloud_consent" to Decision(SettingsOnly("#48: asked by the consent dialog when a service is first chosen")),
-        "transcription_custom_base_url" to Decision(SettingsOnly("#48: Custom (advanced) only")),
-        "transcription_custom_model" to Decision(SettingsOnly("#48: Custom (advanced) only")),
         "wd_auto_approve_network" to Decision(
             SettingsOnly("off by default; only matters to people who move between Wi-Fi networks, found next to Keep Wireless debugging on"),
             ModeCapability.WIRELESS_DEBUGGING_CONTROL,
@@ -134,24 +114,9 @@ class SettingDecisionsTest {
     private val prefs = AppPreferences(ApplicationProvider.getApplicationContext())
     private val gated = prefs.gatedSwitchCapabilities()
 
-    /** User settings kept off the export on purpose, each still owed an onboarding decision. */
-    private val deviceOnlySettings = setOf(
-        "transcription_service", "transcription_cloud_mobile_data", "transcription_cloud_consent",
-        "transcription_custom_base_url", "transcription_custom_model",
-    )
-
-    @Test
-    fun `device-only settings are real keys and stay out of the export`() {
-        val ids = AppPreferences.Key.entries.map { it.id }.toSet()
-        deviceOnlySettings.forEach {
-            assertTrue("$it is not a Key", it in ids)
-            assertTrue("$it must not be exported", it !in AppPreferences.EXPORTABLE_KEYS)
-        }
-    }
-
     @Test
     fun `every user setting and every gated switch has a written decision`() {
-        val required = AppPreferences.EXPORTABLE_KEYS + gated.keys + deviceOnlySettings
+        val required = AppPreferences.EXPORTABLE_KEYS + gated.keys
         val missing = required - decisions.keys
         val stale = decisions.keys - required
         assertTrue("Decide onboarding + modes for: $missing", missing.isEmpty())

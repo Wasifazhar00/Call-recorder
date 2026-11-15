@@ -25,7 +25,7 @@ class SaveAndSyncRowsTest {
         assertEquals(
             listOf(
                 SaveAndSyncRow.STORAGE_TARGET, SaveAndSyncRow.RECORDING_FOLDER, SaveAndSyncRow.HIDE_RECORDINGS,
-                SaveAndSyncRow.METADATA_FILE, SaveAndSyncRow.TRANSCRIPT_SIDECAR,
+                SaveAndSyncRow.METADATA_FILE,
             ),
             rows,
         )
@@ -52,9 +52,4 @@ class SaveAndSyncRowsTest {
         assertTrue(SaveAndSyncRows.uploads(StorageTarget.BOTH))
     }
 
-    @Test
-    fun `clock time pads hours and minutes`() {
-        assertEquals("02:00", clockTime(2, 0))
-        assertEquals("23:45", clockTime(23, 45))
-    }
 }
