@@ -40,11 +40,11 @@ class LastHomeSectionTest {
 
     @Test
     fun `the section the user was in survives the visit`() {
-        preferences.setLastHomeSection(HomeSection.Transcripts)
+        preferences.setLastHomeSection(HomeSection.Recordings)
 
-        assertEquals(HomeSection.Transcripts.key, preferences.getLastHomeSectionKey())
+        assertEquals(HomeSection.Recordings.key, preferences.getLastHomeSectionKey())
         assertEquals(
-            HomeSection.Transcripts,
+            HomeSection.Recordings,
             HomeSection.opening(AppScreen.Home, preferences.getLastHomeSectionKey())
         )
     }
